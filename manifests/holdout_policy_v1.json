@@ -1,0 +1,13 @@
+{
+  "created_date": "2026-11-09",
+  "status": "frozen_before_method_selection",
+  "development_scenes": ["heads", "chess", "fire"],
+  "heldout_scenes": ["office", "pumpkin", "redkitchen", "stairs"],
+  "allowed_before_method_freeze": ["public_download", "preprocessing", "registration_equivalence_check", "input_hash_validation", "frame_count_validation"],
+  "not_allowed_before_method_freeze": ["method_hyperparameter_selection_using_heldout_metrics", "controller_training_using_heldout_reference_labels"],
+  "preferred_execution_order": "Freeze method and development-selected hyperparameters before computing held-out reconstruction metrics",
+  "heldout_optimizer_seeds": [7, 77, 777],
+  "heldout_corruption_seeds": [2718, 31415, 16180],
+  "reporting_unit": "scene and sequence; do not treat pixels or overlapping windows as independent scenes",
+  "limitations": "Small four-scene internal holdout; a second dataset is required for broader generalization claims"
+}
