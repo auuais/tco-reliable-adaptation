@@ -66,7 +66,8 @@ def fetch(url, dest):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=pathlib.Path, required=True)
-    parser.add_argument("--scenes", nargs="+", default=["heads"], choices=["heads", "chess", "fire"])
+    parser.add_argument("--scenes", nargs="+", default=["heads"],
+                        choices=["heads", "chess", "fire", "office", "pumpkin", "redkitchen", "stairs"])
     parser.add_argument("--skip-checkpoint", action="store_true")
     parser.add_argument("--checkpoint-only", action="store_true")
     args = parser.parse_args()

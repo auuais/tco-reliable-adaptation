@@ -14,3 +14,5 @@ Read REPRODUCTION.md, RESEARCH_PLAN.md and BUDGET.md before changing the method.
 10. Before ending a cloud session, verify archive checksum and local extraction, stop provider GPU billing, and record the stop state. CPU-side write-up and commits follow shutdown. Never leave a charged GPU waiting for prose.
 
 The public source-fetch script and Dockerfile support a fresh setup, while the existing local workspace also has cached offline cloud dependencies. Those private cache archives are operational assets and need not enter Git. Upstream preprocessing has separate licensing; follow THIRD_PARTY.md rather than publishing the excluded local derivative.
+
+The downloader supports all seven scenes. Preparing Office, Pumpkin, RedKitchen and Stairs locally does not authorize tuning on their evaluation labels; retain the scene holdout defined in RESEARCH_PLAN.md. Building the Docker image uses a minimal context so local datasets and cloud archives are not sent to the builder.
