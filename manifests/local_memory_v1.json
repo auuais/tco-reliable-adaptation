@@ -1,0 +1,16 @@
+{
+  "study_id": "local_memory_v1",
+  "scope": "engineering feasibility on RTX 3080 10 GB, not a proposed research-method result",
+  "scene": "heads/seq-01",
+  "frames": [0, 200, 400, 600, 800],
+  "size": 518,
+  "seed": 42,
+  "jobs": [
+    {"run_id": "memory1_control_s0", "runner": "scripts/run_experiment.py", "steps": 0},
+    {"run_id": "memory1_offload_s0", "runner": "scripts/run_memory_probe.py", "steps": 0},
+    {"run_id": "memory1_offload_s1", "runner": "scripts/run_memory_probe.py", "steps": 1}
+  ],
+  "per_job_timeout_seconds": 240,
+  "acceptance": "Check zero-step output equality and measured memory; one completed update only establishes feasibility, not equivalence after adaptation",
+  "stop": "Preserve failures. No unplanned full 40-step runs. Do not alter current cloud screen."
+}
