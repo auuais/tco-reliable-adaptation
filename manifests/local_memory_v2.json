@@ -1,0 +1,20 @@
+{
+  "study_id": "local_memory_v2",
+  "scope": "engineering feasibility on RTX 3080 10 GB, not a proposed research-method result",
+  "supersedes": "v1 control failed before model load because concurrent dataset preparation exposed an incomplete Office sequence; v1 evidence is retained",
+  "scene": "heads/seq-01",
+  "frames": [0, 200, 400, 600, 800],
+  "size": 518,
+  "seed": 42,
+  "dataset_cache": "runs/base4_local_lr_visual_smoke/dataset_metadata.npy",
+  "dataset_cache_sha256": "4afde1bb6a438cb2878a38f6d45c053530030f75ef2232876423a1cc07bdb494",
+  "cache_provenance": "Actual full-sequence counts of the original five prepared development sequences, before holdout preparation began",
+  "jobs": [
+    {"run_id": "memory2_control_s0", "runner": "scripts/run_experiment.py", "steps": 0},
+    {"run_id": "memory2_offload_s0", "runner": "scripts/run_memory_probe.py", "steps": 0},
+    {"run_id": "memory2_offload_s1", "runner": "scripts/run_memory_probe.py", "steps": 1}
+  ],
+  "per_job_timeout_seconds": 240,
+  "acceptance": "Compare matched current zero-step outputs and memory. One update only establishes feasibility, not equivalence after adaptation.",
+  "stop": "Preserve failures. No unplanned 40-step runs. Do not alter cloud screen."
+}
