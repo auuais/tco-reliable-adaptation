@@ -1,0 +1,12 @@
+diff --git a/utils/interfaces.py b/utils/interfaces.py
+index bed9429..dc66bbf 100644
+--- a/utils/interfaces.py
++++ b/utils/interfaces.py
+@@ -304,4 +304,5 @@ def infer_mv_pointclouds_w_priors_v2(data: dict, model: nn.Module, hydra_cfg: Di
+ 
+     global_points = pred['points'][0]  # (N, h, w, 3)
+ 
+-    return global_points.cpu().numpy()
+\ No newline at end of file
++    # NumPy does not support bfloat16; float32 represents these values exactly.
++    return global_points.cpu().float().numpy()

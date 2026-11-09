@@ -1,0 +1,24 @@
+# Official scripts/tco_vggt_7scenes.sh settings; overrides for a debug run are
+# recorded explicitly in run.json. This file contains no proposed method.
+tco_steps: 40
+tco_lr: 0.001
+lambda_pose: 1
+pose_translation_weight: 2
+enforce_canonical_reference: true
+lambda_intrinsics: 0.01
+tco_num_pose_pairs: null
+pose_rot_loss_type: angle
+pose_trans_loss_type: normed_l1
+lambda_mv_consistency: 0.2
+mv_depth_weight: 0
+mv_normal_weight: 0
+mv_rgb_weight: 1
+num_view_groups: 100
+use_cos_weighting: true
+lambda_redundancy: 0
+lora_rank: 4
+lora_alpha: 16
+lora_target_modules: [qkv, proj, fc1, fc2]
+lora_dropout: 0
+device: cuda
+seed: 42

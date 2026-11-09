@@ -1,0 +1,12 @@
+# Same dataset class and sparse frame protocol as the referenced Pi3 evaluation.
+7scenes-sparse:
+  cfg:
+    _target_: datasets.sevenscenes.SevenScenes
+    split: test
+    SEVENSCENES_DIR: ${oc.env:TCO_DATA_ROOT,/data/data}/7scenes
+    load_img_size: ${load_img_size}
+    cache_file: ${oc.env:TCO_DATA_ROOT,/data/data}/dataset_cache/7scenes_midterm.npy
+  sampling:
+    strategy: stride
+    kf_every: 200
+  seq_id_map: /workspace/manifests/heads_kf200.json

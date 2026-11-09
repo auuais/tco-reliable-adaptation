@@ -1,0 +1,23 @@
+{
+  "status": "planned_not_results",
+  "paper": "Learning 3D Reconstruction with Priors in Test Time",
+  "upstream_commit": "65387333877723cf99086f7f29089379dd50c59a",
+  "checkpoint": "facebook/VGGT-1B",
+  "checkpoint_revision": "860abec7937da0a4c03c41d3c269c366e82abdf9",
+  "deadline_local": "2026-11-10",
+  "timezone": "Asia/Seoul",
+  "first_scene": "heads/seq-01",
+  "published_sparse_frame_ids": [0, 200, 400, 600, 800],
+  "first_debug_frame_ids": [0, 200],
+  "debug_image_size": 224,
+  "reproduction_image_size": 518,
+  "debug_steps": [0, 1, 5],
+  "reproduction_steps": [0, 40],
+  "supplied_priors": ["reference_camera_pose", "reference_camera_intrinsics"],
+  "eval_only": ["reprojected_reference_depth", "reference_pointcloud"],
+  "evaluation": "upstream_similarity_alignment_then_rigid_ICP",
+  "scope": "bounded_subset_reproduction_not_full_benchmark",
+  "scientific_changes": "none",
+  "remote_tracking": "disabled",
+  "rental_spend_usd": 0
+}
