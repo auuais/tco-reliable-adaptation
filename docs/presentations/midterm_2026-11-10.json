@@ -1,0 +1,98 @@
+{
+  "title": "TCO: Implementation and Reproduction",
+  "presenter": "Muhammad Awais",
+  "date": "10 November 2026",
+  "slides": [
+    {
+      "title": "Midterm presentation",
+      "seconds": 20,
+      "script": "Today I present my implementation and reproduction of TCO, Test-time Constrained Optimization. The question is whether camera priors can improve pretrained 3D reconstruction at test time. I will show what we ran, the measured gains, and the limits revealed by repeated experiments.",
+      "cue": "Introduce the implementation question. Do not retell the entire first paper presentation.",
+      "transition": "First, a short reminder of what TCO changes.",
+      "sources": [
+        "https://arxiv.org/abs/2604.03878",
+        "https://github.com/cvlab-stonybrook/TCO"
+      ]
+    },
+    {
+      "title": "What we implemented",
+      "seconds": 50,
+      "script": "TCO starts with VGGT, which predicts scene geometry from several RGB images. We also provide reference camera poses and nominal camera intrinsics. The method compares its predictions with those priors, and renders between views to check agreement with observed images. These losses update small rank-four LoRA adapters for the current scene. The pretrained weights and output heads stay frozen. We used forty Adam steps with the released learning rate and loss weights. Importantly, reference depth is used only for evaluation. The experiment uses extra camera information and extra computation, so its comparison with image-only VGGT must be interpreted with that advantage in mind.",
+      "cue": "Point to the loss terms, then the observed/rendered example. State that the example comes from the paper.",
+      "transition": "Here is the exact scope of our reproduction.",
+      "sources": [
+        "https://arxiv.org/abs/2604.03878",
+        "https://openaccess.thecvf.com/content/CVPR2026/supplemental/Zhou_Learning_3D_Reconstruction_CVPR_2026_supplemental.pdf",
+        "https://github.com/auuais/tco-reliable-adaptation/blob/main/configs/7scenes_baseline.yaml"
+      ]
+    },
+    {
+      "title": "Reproduction protocol",
+      "seconds": 55,
+      "script": "The initial experiment uses five public 7-Scenes sequences, with five fixed images from each sequence. Every image is processed at 392 by 518 pixels. We compare unadapted VGGT with forty-step TCO, starting from a fresh model for each run. The original implementation is pinned, and the only compatibility patch changes the output conversion without changing optimization. We evaluate aligned point clouds: accuracy measures prediction-to-reference distance, and completeness measures reference-to-prediction distance. Lower is better for both. The alignment allows scale, rotation and translation corrections, so these results assess reconstruction shape, not absolute scale or SLAM drift. Full adaptation ran on a rented RTX 6000 Ada.",
+      "cue": "Read the scope, not every configuration number. Explain the direction of the two distances with one sentence.",
+      "transition": "On this initial subset, the result is encouraging.",
+      "sources": [
+        "https://github.com/auuais/tco-reliable-adaptation/blob/main/docs/REPRODUCTION.md",
+        "https://github.com/auuais/tco-reliable-adaptation/blob/main/results/reproduction/per_sequence.csv"
+      ]
+    },
+    {
+      "title": "Initial subset: lower reconstruction error",
+      "seconds": 60,
+      "script": "These are our measured results, averaged equally across the five sequences. Accuracy error falls from 1.770 to 1.415 centimetres, a twenty-percent reduction. Completeness error falls from 2.056 to 1.629 centimetres, a 20.8-percent reduction. Normal consistency also improves from 0.682 to 0.781. In this first execution, all five sequences improve on all three metrics. This supports the paper's central direction: camera-constrained adaptation can improve geometry. However, this is one execution per sequence on a selected subset. It is not an exact reproduction of the paper's full benchmark, and the next experiment explains why that qualification matters.",
+      "cue": "Point at the two pairs of bars. Emphasize 'initial subset' before saying the percentages.",
+      "transition": "We then checked whether the gain was consistent across repeated runs.",
+      "sources": [
+        "https://github.com/auuais/tco-reliable-adaptation/blob/main/results/reproduction/summary.json",
+        "https://github.com/auuais/tco-reliable-adaptation/blob/main/results/reproduction/per_sequence.csv"
+      ]
+    },
+    {
+      "title": "Repeated runs expose a reliability gap",
+      "seconds": 60,
+      "script": "This is a separate check on three development sequences, using three optimizer seeds and the same released forty-step settings. Mean accuracy remains better than VGGT, but individual outcomes vary. On Heads, for example, accuracy ranges from 0.916 to 1.660 centimetres, while the baseline is 1.366. Across the nine adaptations, three runs worsen accuracy or completeness by more than one percent. These are observed counts, not a population failure rate. We also saw variation when repeating the same seed in a separate diagnostic. Its source is still unresolved. The conclusion is therefore partial reproduction: the method can help, but one successful execution does not establish reliable improvement.",
+      "cue": "Point to the Heads range. Explain that the table is a different three-sequence study, not a correction to the five-sequence mean.",
+      "transition": "That gives us a concrete and testable direction for the final project.",
+      "sources": [
+        "https://github.com/auuais/tco-reliable-adaptation/blob/main/results/baselines_v4/RESULTS.md",
+        "https://github.com/auuais/tco-reliable-adaptation/blob/main/results/baselines_v4/summary.json",
+        "https://github.com/auuais/tco-reliable-adaptation/blob/main/docs/REPRODUCTION.md"
+      ]
+    },
+    {
+      "title": "Verdict and next experiments",
+      "seconds": 40,
+      "script": "We have a working implementation and traceable evidence of gains on the initial subset. Full-benchmark performance and reliability under imperfect priors remain unverified. Next, we will isolate pose and intrinsic constraints, then compare simple learning-rate baselines. Our research question is whether harmful updates can be rejected without reference depth at test time. This is our target for the final project, not a result we claim today.",
+      "cue": "End with the distinction between the completed reproduction and the proposed improvement.",
+      "transition": "Thank you.",
+      "sources": [
+        "https://github.com/auuais/tco-reliable-adaptation/blob/main/docs/DECISION_AFTER_BASELINES_V4.md",
+        "https://github.com/auuais/tco-reliable-adaptation"
+      ]
+    }
+  ],
+  "target_seconds": 285,
+  "scope": "Course midterm: released-method reproduction, six slides, measured subset results and repeatability limitations.",
+  "result_sources": [
+    "results/reproduction/summary.json",
+    "results/reproduction/per_sequence.csv",
+    "results/baselines_v4/summary.json",
+    "results/baselines_v4/RESULTS.md",
+    "results/local_memory_v2/RESULTS.md",
+    "docs/REPRODUCTION.md"
+  ],
+  "initial_subset_metrics": {
+    "VGGT": {
+      "accuracy_mean_m": 0.01769559510375564,
+      "completeness_mean_m": 0.020562592944478122,
+      "normal_consistency_mean": 0.682350617913473
+    },
+    "TCO": {
+      "accuracy_mean_m": 0.014150253684704468,
+      "completeness_mean_m": 0.016286768296811985,
+      "normal_consistency_mean": 0.7809098425543174
+    }
+  },
+  "presentation_assets": "Course-branded deck, slide images and study PDF are local/private artifacts; professor template artwork is not included in this repository."
+}
