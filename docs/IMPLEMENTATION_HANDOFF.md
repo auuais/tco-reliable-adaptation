@@ -1,0 +1,16 @@
+# Implementation handoff
+
+Read REPRODUCTION.md, RESEARCH_PLAN.md and BUDGET.md before changing the method. The user prioritizes publication potential, public data, 40 hours/week, local RTX 3080 development and the USD 200 preferred ceiling.
+
+1. Preserve `run_baseline.py`, `run_diagnostic.py`, frozen manifests and original run directories. New scientific variants require a new runner/study ID. Do not repair historical evidence in place.
+2. Commit and push code and the frozen manifest before rental execution. Require a clean research tree, record the commit in every run, and hash the runner, loss code, configuration, checkpoint and inputs. Git uses a no-reply address. Public Git excludes cloud endpoints, SSH files, account details, full datasets and checkpoints.
+3. The first new study is `baselines_v4`. Freeze with `python scripts/run_baseline_screen.py --freeze`; dry-run verifies exact equality. Run once with `--assets /workspace/tco-assets` in a prepared Linux checkout. It refuses to overwrite attempts. Summarize with `python scripts/aggregate_baseline_screen.py`. The manifest is an advance experimental commitment, not external preregistration.
+4. Local smoke tests use two views at 224 and a few steps; they validate plumbing only. GPU measurements use five views at 518. A lower resolution result never substitutes silently for the benchmark protocol.
+5. Keep reference depth outside adaptation inputs. Clean reference poses are intentional oracle priors only in that named setting. Estimated-prior experiments may not use hidden reference poses in online acceptance or stopping.
+6. Before adding a controller, test lower LR, fewer steps, visual-only, tuned global weights and robust loss. A visual-only run has zero camera-prior weights, not zero visual loss. Assert the actual optimizer learning rate as well as the config value.
+7. Validate candidate rollback on a small fixture: parameters, Adam moments, step counters and CPU/CUDA RNG restored. Validate geometric residuals with synthetic known transforms, units, gauge and finite differences. Test rejection and missing-data paths, not just successful output. Do not write tests that merely mirror implementation.
+8. For the controller, use fixed validation support and charge all probes/rejections to runtime. Never choose updates using reference reconstruction error. Treat numerically unstable tiny changes as unresolved.
+9. Preserve failure logs and report the planned denominator. Publish all seed-level metrics, scene means, variation, wall-clock cost and failure cases. A three-scene screen is development evidence, not a generalization claim.
+10. Before ending a cloud session, verify archive checksum and local extraction, stop provider GPU billing, and record the stop state. CPU-side write-up and commits follow shutdown. Never leave a charged GPU waiting for prose.
+
+The public source-fetch script and Dockerfile support a fresh setup, while the existing local workspace also has cached offline cloud dependencies. Those private cache archives are operational assets and need not enter Git. Upstream preprocessing has separate licensing; follow THIRD_PARTY.md rather than publishing the excluded local derivative.
