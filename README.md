@@ -14,6 +14,8 @@ Aggregate results are in [results](results/). See [reproduction boundaries](docs
 
 The [research plan](docs/RESEARCH_PLAN.md), [USD 200 budget](docs/BUDGET.md), and [implementation handoff](docs/IMPLEMENTATION_HANDOFF.md) define the next stages. The first new study is a precommitted 39-job learning-rate and visual-only baseline screen.
 
+A separate [local memory probe](results/local_memory_v2/RESULTS.md) completed one full-resolution adaptation step on the RTX 3080 at 8.54 GiB peak allocated memory by offloading inactive modules. Matched zero-step outputs were bitwise identical. Forty-step validation and controlled latency comparisons remain pending. [Mathematical notes](docs/MATH_NOTES.md) explain the bias, stopping and observability hypotheses behind the research plan.
+
 ## Setup and use
 
 Linux with CUDA is the reference execution environment. Local development uses an RTX 3080; full five-view 518-pixel adaptation was measured at about 11.5 GiB allocated memory on a 48 GB RTX 6000 Ada. The measured configuration does not fit a 10 GB 3080 without changing memory behavior. Reduced two-view 224-pixel runs are debugging only.

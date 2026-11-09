@@ -1,0 +1,54 @@
+{
+  "study_id": "local_memory_v2",
+  "status": "complete",
+  "gpu": "NVIDIA GeForce RTX 3080",
+  "code_commit": "6c69467519ec7b9fe429a79695573d81a05f8fc5",
+  "manifest_sha256": "55218bf34458a3ca7f89500b8b61e2a3fa829f301e7e67b86530e30a77fdda3e",
+  "zero_step_pointmaps_bitwise_equal": true,
+  "zero_step_max_absolute_difference": 0.0,
+  "runs": [
+    {
+      "run_id": "memory2_control_s0",
+      "steps": 0,
+      "status": "complete",
+      "peak_allocated_gib": 8.221059322357178,
+      "peak_reserved_gib": 9.962890625,
+      "inference_and_adaptation_seconds": 69.8486711459991,
+      "model_load_seconds": 24.167030985001475,
+      "base_parameter_count": 1190596120
+    },
+    {
+      "run_id": "memory2_offload_s0",
+      "steps": 0,
+      "status": "complete",
+      "peak_allocated_gib": 8.098119258880615,
+      "peak_reserved_gib": 9.89453125,
+      "inference_and_adaptation_seconds": 20.805828798998846,
+      "model_load_seconds": 22.34713004299556,
+      "base_parameter_count": 1157941492
+    },
+    {
+      "run_id": "memory2_offload_s1",
+      "steps": 1,
+      "status": "complete",
+      "peak_allocated_gib": 8.540306568145752,
+      "peak_reserved_gib": 9.89453125,
+      "inference_and_adaptation_seconds": 53.175242124998476,
+      "model_load_seconds": 23.786621815001126,
+      "base_parameter_count": 1157941492
+    }
+  ],
+  "limitations": [
+    "one scene and one execution per condition",
+    "one adaptation step only; 40 steps not tested",
+    "no adapted accuracy or adapted-output equivalence claim",
+    "shared Windows desktop GPU; timings are not a controlled speed benchmark",
+    "memory allocation is not a direct measure of physical VRAM residency"
+  ],
+  "earlier_attempt": {
+    "study_id": "local_memory_v1",
+    "run_id": "memory1_control_s0",
+    "status": "failed_before_model_load",
+    "reason": "Concurrent Office preprocessing exposed incomplete registered depth; preserved and replaced by a frozen metadata-cache protocol"
+  }
+}
