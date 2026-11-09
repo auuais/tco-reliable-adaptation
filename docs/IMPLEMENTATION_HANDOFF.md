@@ -2,6 +2,8 @@
 
 Read REPRODUCTION.md, RESEARCH_PLAN.md and BUDGET.md before changing the method. The user prioritizes publication potential, public data, 40 hours/week, local RTX 3080 development and the USD 200 preferred ceiling.
 
+Latest state: `baselines_v4` is complete, collected and validated; the cloud GPU is stopped. Read DECISION_AFTER_BASELINES_V4.md before the next experiment. The immediate scientific task is a pose-versus-intrinsics component ablation. All 18 public test sequences are now prepared locally. A separate local memory probe completed one full-resolution update; it does not yet validate a 40-step replacement for cloud runs.
+
 1. Preserve `run_baseline.py`, `run_diagnostic.py`, frozen manifests and original run directories. New scientific variants require a new runner/study ID. Do not repair historical evidence in place.
 2. Commit and push code and the frozen manifest before rental execution. Require a clean research tree, record the commit in every run, and hash the runner, loss code, configuration, checkpoint and inputs. Git uses a no-reply address. Public Git excludes cloud endpoints, SSH files, account details, full datasets and checkpoints.
 3. The first new study is `baselines_v4`. Freeze with `python scripts/run_baseline_screen.py --freeze`; dry-run verifies exact equality. Run once with `--assets /workspace/tco-assets` in a prepared Linux checkout. It refuses to overwrite attempts. Summarize with `python scripts/aggregate_baseline_screen.py`. The manifest is an advance experimental commitment, not external preregistration.

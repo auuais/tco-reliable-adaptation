@@ -1,0 +1,430 @@
+{
+  "study_id": "baselines_v4",
+  "status": "complete",
+  "jobs": 39,
+  "adaptation_updates": 1440,
+  "code_commit": "b060746b304c1fc0b82c60e2723202162cb1b42d",
+  "manifest_sha256": "60ec878ad7c4c9bb7b3a302bb1cc405d4140ef512eb3c99ae4e29cf07461b080",
+  "baselines": {
+    "heads/seq-01": {
+      "accuracy_mean_m": 0.013661435168076191,
+      "completeness_mean_m": 0.013100393412249826,
+      "normal_consistency_mean": 0.7086730748074488
+    },
+    "chess/seq-03": {
+      "accuracy_mean_m": 0.01894330990374954,
+      "completeness_mean_m": 0.02429071350737983,
+      "normal_consistency_mean": 0.6641975677167851
+    },
+    "fire/seq-03": {
+      "accuracy_mean_m": 0.016306191212827312,
+      "completeness_mean_m": 0.019102544511900618,
+      "normal_consistency_mean": 0.6604222410591287
+    }
+  },
+  "groups": [
+    {
+      "scene": "heads/seq-01",
+      "condition": "released",
+      "n": 3,
+      "metrics": {
+        "accuracy_mean_m": {
+          "mean": 0.012126486386797265,
+          "minimum": 0.009159396212289027,
+          "maximum": 0.01660229532092649
+        },
+        "completeness_mean_m": {
+          "mean": 0.013139712859884576,
+          "minimum": 0.009562619347643688,
+          "maximum": 0.01751891894976293
+        },
+        "normal_consistency_mean": {
+          "mean": 0.8537606708664222,
+          "minimum": 0.8403452534872485,
+          "maximum": 0.8677799645457792
+        },
+        "relative_error_score": {
+          "mean": 0.9453225298926818,
+          "minimum": 0.7002026948499354,
+          "maximum": 1.2762745943241813
+        },
+        "seconds": {
+          "mean": 27.43774565712859,
+          "minimum": 27.34072335716337,
+          "maximum": 27.590507437475026
+        }
+      },
+      "harmful_executions": 1
+    },
+    {
+      "scene": "heads/seq-01",
+      "condition": "lr3e4",
+      "n": 3,
+      "metrics": {
+        "accuracy_mean_m": {
+          "mean": 0.012914714019761058,
+          "minimum": 0.011410554183019951,
+          "maximum": 0.015104618441218801
+        },
+        "completeness_mean_m": {
+          "mean": 0.013847970864125361,
+          "minimum": 0.011657919587163073,
+          "maximum": 0.01694243593858533
+        },
+        "normal_consistency_mean": {
+          "mean": 0.8281618263541483,
+          "minimum": 0.8161658917906032,
+          "maximum": 0.8350728476165873
+        },
+        "relative_error_score": {
+          "mean": 1.001203105710406,
+          "minimum": 0.862564561399364,
+          "maximum": 1.1994580477441965
+        },
+        "seconds": {
+          "mean": 27.43334802147001,
+          "minimum": 27.29572448413819,
+          "maximum": 27.682290286757052
+        }
+      },
+      "harmful_executions": 1
+    },
+    {
+      "scene": "heads/seq-01",
+      "condition": "lr1e4",
+      "n": 3,
+      "metrics": {
+        "accuracy_mean_m": {
+          "mean": 0.01367721647283659,
+          "minimum": 0.012582612950165576,
+          "maximum": 0.014397237765406102
+        },
+        "completeness_mean_m": {
+          "mean": 0.01473171650770062,
+          "minimum": 0.01303907949066697,
+          "maximum": 0.015817503143005725
+        },
+        "normal_consistency_mean": {
+          "mean": 0.8141128054329422,
+          "minimum": 0.8113923574892705,
+          "maximum": 0.8155585569905708
+        },
+        "relative_error_score": {
+          "mean": 1.0628399563578106,
+          "minimum": 0.9581756244640294,
+          "maximum": 1.130633279700047
+        },
+        "seconds": {
+          "mean": 27.646851957465213,
+          "minimum": 27.323329593986273,
+          "maximum": 27.83717738557607
+        }
+      },
+      "harmful_executions": 2
+    },
+    {
+      "scene": "heads/seq-01",
+      "condition": "visual",
+      "n": 3,
+      "metrics": {
+        "accuracy_mean_m": {
+          "mean": 0.039306323398055946,
+          "minimum": 0.029457456423271963,
+          "maximum": 0.05112027806912107
+        },
+        "completeness_mean_m": {
+          "mean": 0.06977615879128912,
+          "minimum": 0.027442933670852293,
+          "maximum": 0.14805052348913944
+        },
+        "normal_consistency_mean": {
+          "mean": 0.6721339556965866,
+          "minimum": 0.5204213864378813,
+          "maximum": 0.7878290460609083
+        },
+        "relative_error_score": {
+          "mean": 4.101719092105117,
+          "minimum": 2.125533279649881,
+          "maximum": 7.521583912284747
+        },
+        "seconds": {
+          "mean": 27.365350214764476,
+          "minimum": 27.084749615751207,
+          "maximum": 27.629979151301086
+        }
+      },
+      "harmful_executions": 3
+    },
+    {
+      "scene": "chess/seq-03",
+      "condition": "released",
+      "n": 3,
+      "metrics": {
+        "accuracy_mean_m": {
+          "mean": 0.018497601565130008,
+          "minimum": 0.014539776552377587,
+          "maximum": 0.02259647072842065
+        },
+        "completeness_mean_m": {
+          "mean": 0.02256633141785386,
+          "minimum": 0.018329224280856125,
+          "maximum": 0.029352206164520146
+        },
+        "normal_consistency_mean": {
+          "mean": 0.755554178802267,
+          "minimum": 0.7501239208590555,
+          "maximum": 0.7630686882957569
+        },
+        "relative_error_score": {
+          "mean": 0.9527410546688153,
+          "minimum": 0.7610594686781949,
+          "maximum": 1.20060926406055
+        },
+        "seconds": {
+          "mean": 27.438681394482654,
+          "minimum": 27.1642836201936,
+          "maximum": 27.62292965501547
+        }
+      },
+      "harmful_executions": 1
+    },
+    {
+      "scene": "chess/seq-03",
+      "condition": "lr3e4",
+      "n": 3,
+      "metrics": {
+        "accuracy_mean_m": {
+          "mean": 0.015504619290989698,
+          "minimum": 0.01454588010969483,
+          "maximum": 0.016598880934407995
+        },
+        "completeness_mean_m": {
+          "mean": 0.019217435239584354,
+          "minimum": 0.017484766508147714,
+          "maximum": 0.02074759193932448
+        },
+        "normal_consistency_mean": {
+          "mean": 0.7624037056534154,
+          "minimum": 0.7533604626397634,
+          "maximum": 0.7687588717362822
+        },
+        "relative_error_score": {
+          "mean": 0.8048089840944598,
+          "minimum": 0.7438382521165424,
+          "maximum": 0.865188262200468
+        },
+        "seconds": {
+          "mean": 27.76012880448252,
+          "minimum": 27.62419356778264,
+          "maximum": 27.845915586687624
+        }
+      },
+      "harmful_executions": 0
+    },
+    {
+      "scene": "chess/seq-03",
+      "condition": "lr1e4",
+      "n": 3,
+      "metrics": {
+        "accuracy_mean_m": {
+          "mean": 0.016889450216385087,
+          "minimum": 0.01669579395309909,
+          "maximum": 0.017135162905522264
+        },
+        "completeness_mean_m": {
+          "mean": 0.021656180596124692,
+          "minimum": 0.02113442725359595,
+          "maximum": 0.022019566386511504
+        },
+        "normal_consistency_mean": {
+          "mean": 0.7577704780375031,
+          "minimum": 0.7549918200289181,
+          "maximum": 0.7595679615133828
+        },
+        "relative_error_score": {
+          "mean": 0.8915600926478789,
+          "minimum": 0.8794463173022065,
+          "maximum": 0.9055254990942272
+        },
+        "seconds": {
+          "mean": 27.610684011752408,
+          "minimum": 27.49034391902387,
+          "maximum": 27.837860418483615
+        }
+      },
+      "harmful_executions": 0
+    },
+    {
+      "scene": "chess/seq-03",
+      "condition": "visual",
+      "n": 3,
+      "metrics": {
+        "accuracy_mean_m": {
+          "mean": 0.02111230921055726,
+          "minimum": 0.018498504083137773,
+          "maximum": 0.025219570184906857
+        },
+        "completeness_mean_m": {
+          "mean": 0.0250997997204773,
+          "minimum": 0.02080604421617131,
+          "maximum": 0.031792225157391704
+        },
+        "normal_consistency_mean": {
+          "mean": 0.7617200241387914,
+          "minimum": 0.7516566180149112,
+          "maximum": 0.7729149651108582
+        },
+        "relative_error_score": {
+          "mean": 1.0739039736258484,
+          "minimum": 0.9165311278534545,
+          "maximum": 1.3200701206202143
+        },
+        "seconds": {
+          "mean": 27.579833708703518,
+          "minimum": 27.323846261948347,
+          "maximum": 27.899180522188544
+        }
+      },
+      "harmful_executions": 2
+    },
+    {
+      "scene": "fire/seq-03",
+      "condition": "released",
+      "n": 3,
+      "metrics": {
+        "accuracy_mean_m": {
+          "mean": 0.015229863802409756,
+          "minimum": 0.014955920134637367,
+          "maximum": 0.015462308901222336
+        },
+        "completeness_mean_m": {
+          "mean": 0.018214808615043054,
+          "minimum": 0.017288720431532702,
+          "maximum": 0.01962865218437591
+        },
+        "normal_consistency_mean": {
+          "mean": 0.7288529768228718,
+          "minimum": 0.7217721731898384,
+          "maximum": 0.7378852209010843
+        },
+        "relative_error_score": {
+          "mean": 0.9437602934240155,
+          "minimum": 0.9207928554267466,
+          "maximum": 0.9723669857039691
+        },
+        "seconds": {
+          "mean": 27.53286415276428,
+          "minimum": 27.38505000527948,
+          "maximum": 27.66697322204709
+        }
+      },
+      "harmful_executions": 1
+    },
+    {
+      "scene": "fire/seq-03",
+      "condition": "lr3e4",
+      "n": 3,
+      "metrics": {
+        "accuracy_mean_m": {
+          "mean": 0.015381834294965271,
+          "minimum": 0.015263212901246085,
+          "maximum": 0.015446690399057415
+        },
+        "completeness_mean_m": {
+          "mean": 0.01873176840661305,
+          "minimum": 0.01871220748051385,
+          "maximum": 0.018750671039223718
+        },
+        "normal_consistency_mean": {
+          "mean": 0.7210074216726559,
+          "minimum": 0.7187503426725013,
+          "maximum": 0.7229783471872241
+        },
+        "relative_error_score": {
+          "mean": 0.9619513712156053,
+          "minimum": 0.9583312902315309,
+          "maximum": 0.9640947544378389
+        },
+        "seconds": {
+          "mean": 27.64571500973155,
+          "minimum": 27.472405556589365,
+          "maximum": 27.909707130864263
+        }
+      },
+      "harmful_executions": 0
+    },
+    {
+      "scene": "fire/seq-03",
+      "condition": "lr1e4",
+      "n": 3,
+      "metrics": {
+        "accuracy_mean_m": {
+          "mean": 0.015372324612594966,
+          "minimum": 0.015245699364020497,
+          "maximum": 0.015448681757737474
+        },
+        "completeness_mean_m": {
+          "mean": 0.01847506454787571,
+          "minimum": 0.01828806030583733,
+          "maximum": 0.01870631383584676
+        },
+        "normal_consistency_mean": {
+          "mean": 0.7231020898352231,
+          "minimum": 0.722629068684271,
+          "maximum": 0.7237149412421112
+        },
+        "relative_error_score": {
+          "mean": 0.9549406727446635,
+          "minimum": 0.9461631905156724,
+          "maximum": 0.9625348935659216
+        },
+        "seconds": {
+          "mean": 27.73580663030346,
+          "minimum": 27.532711536623538,
+          "maximum": 28.095771653577685
+        }
+      },
+      "harmful_executions": 0
+    },
+    {
+      "scene": "fire/seq-03",
+      "condition": "visual",
+      "n": 3,
+      "metrics": {
+        "accuracy_mean_m": {
+          "mean": 0.011894567932733064,
+          "minimum": 0.01151087396994189,
+          "maximum": 0.012134668534134186
+        },
+        "completeness_mean_m": {
+          "mean": 0.017207940910893324,
+          "minimum": 0.016859804927186927,
+          "maximum": 0.01742755958425334
+        },
+        "normal_consistency_mean": {
+          "mean": 0.750549471118514,
+          "minimum": 0.7415702880946143,
+          "maximum": 0.7588082348255516
+        },
+        "relative_error_score": {
+          "mean": 0.815135167232075,
+          "minimum": 0.7942575890862156,
+          "maximum": 0.8282458340818419
+        },
+        "seconds": {
+          "mean": 27.540662029758096,
+          "minimum": 27.396299980580807,
+          "maximum": 27.669059081934392
+        }
+      },
+      "harmful_executions": 0
+    }
+  ],
+  "limitations": [
+    "three inspected sequences",
+    "three optimizer seeds with unresolved execution variability",
+    "clean reference priors only",
+    "aligned shape, not absolute metric scale",
+    "development screen, not generalization proof"
+  ]
+}

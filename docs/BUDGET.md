@@ -20,3 +20,9 @@ Use the RTX 3080 for CPU analysis, data preparation, synthetic geometry tests, s
 Prepare and test code, manifests, data and wheels before starting paid compute. Launch one job stream with fresh processes, a per-job timeout, a batch deadline and no automatic retries. Preserve a failed attempt under its original ID. Stop on the first unexpected failure; do not spend the remaining budget blindly. A process timeout does not stop provider billing: collect and checksum evidence, then explicitly stop the pod in the provider console and verify that state. Do writing, plotting and Git publication locally afterward.
 
 Keep one retained volume while frequent sessions need it. Verified local backups permit a later decision to remove storage, but deletion is a separate explicit action. Do not keep duplicate volumes or start extra GPUs speculatively.
+
+## First tranche completed
+
+The `baselines_v4` session completed 39 jobs and 1,440 updates. Its raw archive passed remote and local checks, then the GPU was stopped. Elapsed-time cost at the quoted roughly USD 1/hour rate was about **USD 0.67**, within the USD 5 session cap. The observed balance change was USD 0.58; billing can settle later. These costs belong to the first USD 20 allocation, not an addition to the USD 200 ceiling.
+
+Restart required a provider migration. The new stopped workspace is retained; the source duplicate also remains stopped pending action-time deletion confirmation, temporarily bringing quoted storage to roughly USD 0.26/day. All prior archives were verified on the migrated workspace and locally. The next component-ablation session has a provisional USD 3 cap, released only after its offline preparation is complete.

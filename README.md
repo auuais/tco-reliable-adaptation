@@ -14,6 +14,8 @@ Aggregate results are in [results](results/). See [reproduction boundaries](docs
 
 The [research plan](docs/RESEARCH_PLAN.md), [USD 200 budget](docs/BUDGET.md), and [implementation handoff](docs/IMPLEMENTATION_HANDOFF.md) define the next stages. The first new study is a precommitted 39-job learning-rate and visual-only baseline screen.
 
+That [39-run screen is complete](results/baselines_v4/RESULTS.md). LR 0.0003 reduced the average combined distance-error score by 2.6% relative to the released setting, with a normal-consistency tradeoff. Visual-only adaptation helped Fire but harmed Heads. The [next decision](docs/DECISION_AFTER_BASELINES_V4.md) is to separate pose and intrinsics constraints before developing selective adaptation. These are development observations, not a validated new method.
+
 A separate [local memory probe](results/local_memory_v2/RESULTS.md) completed one full-resolution adaptation step on the RTX 3080 at 8.54 GiB peak allocated memory by offloading inactive modules. Matched zero-step outputs were bitwise identical. Forty-step validation and controlled latency comparisons remain pending. [Mathematical notes](docs/MATH_NOTES.md) explain the bias, stopping and observability hypotheses behind the research plan.
 
 ## Setup and use
