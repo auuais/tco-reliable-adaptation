@@ -1,0 +1,7 @@
+# Original in-loop camera-frame implementation on the new window
+
+The RTX 3080 completed the Heads released-camera control with all 40 TCO updates. Inference and adaptation took 624.8 seconds and used 8.63 GiB peak allocated CUDA memory. The next case, Chess with the physical pose transform and released intrinsics, recorded six losses and six gradient norms before its 1,800-second runtime limit. It produced no final prediction. Ten cases remained unstarted when the supervisor stopped. [All twelve job records](interruption.json) · [Frozen factorial design](../../manifests/sensor_tco_v17.json)
+
+During the stalled Chess iteration, Windows reported roughly 2.33 GiB of shared GPU memory for the WSL GPU process, and nonblocking stack samples found the main thread at a synchronizing position lookup in the backbone. These observations identify where Python waited. They do not establish which queued CUDA operation caused the delay. The original container exited and released its GPU allocation.
+
+This execution cannot estimate the effect of changing the priors inside TCO. A separately specified replication runs the same 40-step objective with only the four feature outputs its camera and depth heads consume, and compares starting states against the available original attempts. The partial results remain separate. Cloud compute cost for the interrupted batch was **$0**. [Readout control](../selected_readouts/RESULTS.md) · [Replication protocol](../../manifests/sensor_tco_readout_replication.json)
