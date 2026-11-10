@@ -1,0 +1,37 @@
+{
+  "study": "single_camera_repair",
+  "sources": {
+    "scripts/screen_single_camera_repair.py": "40fb6054887ea76c9dae43b247e0a0ae70faf41fd1d465e7a3e624c2b866874b",
+    "scripts/repair_one_camera.py": "b773439033343c9672252a43b2ba7fb29a5c17c77158d4973bf218c471f86c3d",
+    "scripts/localize_camera_prior_faults.py": "7ad0288dd5a1801e584ae50fd51198bfa9a5c15483b20ddf0f00bcdbc135b583",
+    "manifests/single_camera_fault_localization.json": "d3730ac341eb5551c3fc96561c73a95a6abbb6f758fc24646d30475e099fcb52",
+    "results/sensor_public_replay/rgb_matches.zip": "86dd414290072806e59d7f545b5de1f6a219f2d6aa952810c677aaad02edbf86",
+    "results/sensor_windows_v16/summary.json": "180c29c15cbbd51ca76a987a71b6d23d98dfb1e686c155e4b69fb8492ae001ec",
+    "manifests/sensor_frame_v14.json": "ea2ee65dca80dff8c942f5482efa23baa4dab5c0b18272ac20f011f3450c7100"
+  },
+  "faults": [
+    "rotation",
+    "translation",
+    "focal",
+    "mixed"
+  ],
+  "methods": [
+    "unchanged",
+    "always",
+    "alert_only",
+    "validate_only",
+    "alert_and_validate",
+    "oracle_index"
+  ],
+  "seed": 977,
+  "rotation_deg": 3,
+  "translation_diameter_fraction": 0.06,
+  "focal_factor": 1.12,
+  "windows": 9,
+  "folds": 2,
+  "cloud_usd": 0,
+  "design": "Use calibrated RGB camera convention. Inject one fresh signed synthetic perturbation into each of five view locations; mixed means all three components at that location. Each of nine known development windows has 20 corrupted and one clean case, evaluated in both directions of the existing connected-track split. Fit and select using only the training fold. Hold every other camera fixed. Use up to 64 matches from each incident edge and require at least two neighbors with six matches per edge.",
+  "decision": "Select a unique highest median epipolar-error camera. Fit its rotation, center and shared focal multiplier by robust epipolar optimization with an identity-centered penalty. Alert if the training-fold score exceeds the maximum clean score in the other two scenes on the same fold. Validate if median incident edge error decreases strictly on the other track fold, using at least two neighbors. Primary method requires both. Oracle-index uses the known injected location solely as an offline comparator and never edits clean cases.",
+  "outcome": "Primary endpoint is mean virtual reprojection error over all five cameras at a fixed 7x5 pixel grid at 1, 2 and 4 metres in each uncorrupted camera. It captures cross-component damage and incorrect edits. Report pixels for all fault types, clean and all scenes. No actual test points, clean pose labels or virtual projections enter fitting or acceptance. Fold reversals and cameras in a scene are repeated units.",
+  "gate": "To justify a later dense pilot require >=20% lower mean error than unchanged over the four equally weighted corrupted profiles, a decrease within each profile, no increase within any scene over corruptions, and no clean window/fold above 1 pixel mean error. Compare simpler always, alert-only and validation-only baselines explicitly. Meeting this mechanism gate cannot release transfer funds."
+}
