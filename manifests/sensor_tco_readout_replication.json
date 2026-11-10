@@ -1,0 +1,95 @@
+{
+  "frames": [
+    50,
+    250,
+    450,
+    650,
+    850
+  ],
+  "seed": 42,
+  "steps": 40,
+  "learning_rate": 0.0003,
+  "size": 518,
+  "camera_pose_weight": 1,
+  "intrinsic_weight_scale": 1,
+  "upstream_commit": "65387333877723cf99086f7f29089379dd50c59a",
+  "dataset_cache_sha256": "ce8f28f03d960fc4fc8be5624823715822a41550bddd421af9ca1942295afb8a",
+  "method": "Use original full TCO with the local inactive-module offload. Factor 1: left-compose the physical depth-to-RGB transform with world-to-sensor extrinsics before optimization. Factor 2: supplied K is axis-aware registration focal 525 rather than released nominal. All conditions use the same frozen base checkpoint, adapters initialized from the same seed, objective, 40 Adam updates, image data and evaluation targets.",
+  "scope": "New five-frame offset-50 window per development sequence, already allocated to v16 image consistency. No v16 per-window scores used for design. No held-out scene, no scene-level inference from repeated frames. This is a new mechanism pilot, not a replication of old frame-index results.",
+  "analysis": "Evaluate released and registered RGB reference separately. Report per-scene accuracy and completeness, mean normals, and mean ratios to matched FP32 initial reconstruction. For 4 adapted cells per scene compute main contrasts and interaction. Compare full correction to unchanged TCO and to post-hoc half-depth for all conditions, direct calibrated and released priors, and initial. Require >=5% lower error vs strongest comparison, no scene >1% worse and no increased harmful scenes at BOTH refs to motivate additional seeds and a noisy matched test. One pilot seed cannot release funds.",
+  "additional_runpod_usd": 0,
+  "study": "sensor_tco_readout_replication",
+  "jobs": [
+    {
+      "scene": "heads/seq-01",
+      "condition": "released",
+      "run_id": "sensor17r_heads_seq-01_released"
+    },
+    {
+      "scene": "chess/seq-03",
+      "condition": "frame_only",
+      "run_id": "sensor17r_chess_seq-03_frame_only"
+    },
+    {
+      "scene": "fire/seq-03",
+      "condition": "intrinsics_only",
+      "run_id": "sensor17r_fire_seq-03_intrinsics_only"
+    },
+    {
+      "scene": "heads/seq-01",
+      "condition": "frame_only",
+      "run_id": "sensor17r_heads_seq-01_frame_only"
+    },
+    {
+      "scene": "chess/seq-03",
+      "condition": "intrinsics_only",
+      "run_id": "sensor17r_chess_seq-03_intrinsics_only"
+    },
+    {
+      "scene": "fire/seq-03",
+      "condition": "fixed_rgb",
+      "run_id": "sensor17r_fire_seq-03_fixed_rgb"
+    },
+    {
+      "scene": "heads/seq-01",
+      "condition": "intrinsics_only",
+      "run_id": "sensor17r_heads_seq-01_intrinsics_only"
+    },
+    {
+      "scene": "chess/seq-03",
+      "condition": "fixed_rgb",
+      "run_id": "sensor17r_chess_seq-03_fixed_rgb"
+    },
+    {
+      "scene": "fire/seq-03",
+      "condition": "released",
+      "run_id": "sensor17r_fire_seq-03_released"
+    },
+    {
+      "scene": "heads/seq-01",
+      "condition": "fixed_rgb",
+      "run_id": "sensor17r_heads_seq-01_fixed_rgb"
+    },
+    {
+      "scene": "chess/seq-03",
+      "condition": "released",
+      "run_id": "sensor17r_chess_seq-03_released"
+    },
+    {
+      "scene": "fire/seq-03",
+      "condition": "frame_only",
+      "run_id": "sensor17r_fire_seq-03_frame_only"
+    }
+  ],
+  "parent_manifest_sha256": "9d833c8ee05831a05c402b0fb129f8bc3cd8e48f00e9f49aa2e39f57a9b8df9a",
+  "sources": {
+    "scripts/selected_readouts.py": "9fdabbab3df2a41c33dd1a1ba2fad865c3d3ce4740d1ce776612c2bd7bce42f2",
+    "scripts/run_sensor_readout_replication.py": "df00bf5284fe4d8ec765b93c6897865bd5db0a1614f4d87250203f5b4241ba0a",
+    "patches/tco-selected-readouts.patch": "372bcbf9abcaac7d291013f35ea453bea561f2eb1f2051b683a770d19fc61ec0",
+    "results/selected_readouts/real_cpu_control.json": "bfad4504b8c7d50d9d1d3196ac836d71f5f0972790bd564cd4042e04494ad9ea",
+    "scripts/run_sensor_tco.py": "9c92fa55f2ea8e0342eed21960f67a317b6dc4a592fca31a33235e825d551202",
+    "scripts/evaluate_sensor_tco.py": "d1460547363113d3fbafa61640cc5609e766370466a8cf3e43ab1d007764bcf6"
+  },
+  "activation": "Use after a technical interruption in the original local factorial run. Run original Heads/released and Chess/frame-only configurations first as direct engineering bridges. Preserve the full original evidence. Report all four conditions from this uniform replication separately from the original implementation.",
+  "runtime": "Every run is fresh. All twelve use selected head readouts and otherwise the same upstream commands, full 40 updates and fixed frames. One attempt per new run, 30 minute job ceiling, archive incomplete attempts. Compare initial heads, adapter initialization, timing, peak memory and initial loss to available original executions. Do not infer GPU bitwise equivalence from the CPU control. An incompatible starting state halts the replication for review."
+}
