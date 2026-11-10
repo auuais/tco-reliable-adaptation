@@ -1,0 +1,24 @@
+{
+  "study": "cached_operand_gpu_probe",
+  "job": {
+    "scene": "heads/seq-01",
+    "condition": "released",
+    "run_id": "operand_probe_heads"
+  },
+  "steps": 8,
+  "limit_seconds": 480,
+  "cloud_usd": 0,
+  "sources": {
+    "scripts/probe_cached_operands_gpu.py": "a22ba3ff5d4d8ffddb6fcfb4233b903fa256f63eda2fc3c6a3d01c009ed1fb34",
+    "scripts/frozen_linear_storage.py": "564b57db44b4ef30dc7050f8e8fe36f758fd8eb29c7344e2655c4865e8f4ac5b",
+    "scripts/check_backbone_operands.py": "b9b7c1a9cb1b54106675ca9ea750208a160bd4b2b341b25642d298503ef015ce",
+    "manifests/sensor_tco_readout_replication.json": "35f84754dd41f7a47d03d743b1f1785116d89f1bff30e39db3c960adcec25fe7"
+  },
+  "parent": {
+    "scene": "heads/seq-01",
+    "condition": "released",
+    "run_id": "sensor17r_heads_seq-01_released"
+  },
+  "activation": "Use only after a technical interruption of the selected-readout replication and a passing two-update pretrained CPU equivalence control.",
+  "purpose": "Measure feasibility of full-size adaptation on one local device. Check matching data, priors, initial model/adapter/RNG, initial loss, eight finite gradients, and memory. Later loss differences are descriptive. This short engineering comparison cannot estimate reconstruction accuracy or benchmark speed."
+}
