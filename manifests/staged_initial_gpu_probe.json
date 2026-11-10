@@ -1,0 +1,19 @@
+{
+  "study": "staged_initial_gpu_probe",
+  "job": {
+    "scene": "heads/seq-01",
+    "condition": "released",
+    "run_id": "staged_probe_heads"
+  },
+  "steps": 8,
+  "limit_seconds": 480,
+  "cloud_usd": 0,
+  "hashes": {
+    "scripts/probe_staged_initial_gpu.py": "966678e5c1fbd6e8ed4f140b3913455ea527295668e3aaf79b9f43fd81bbc46c",
+    "scripts/stage_initial_forward.py": "377228e1ffa69d51f0177972a4d815978274d80aec1443f4cc03c2b1c2cebee2",
+    "manifests/cached_operand_gpu_probe.json": "b5f7858d4b5698c3e05e90280dc657defad09c2145eb627498db8184539430c4"
+  },
+  "activation": "The preceding cached-operand probe must have a recorded interruption before its storage installation.",
+  "method": "During initial inference execute the upstream model with image encoder, transformer blocks and prediction heads on CUDA in sequence. Retain all four required feature tensors. Restore transformer blocks to CUDA before upstream adapter initialization. Use the same cached operands and eight full-size optimization steps as the preceding probe.",
+  "criteria": "Match inputs, priors, initial prediction/adapter/RNG hashes, and initial scalar loss against the original completed Heads run. Require eight finite optimizer gradient records. Report all residency phase boundaries, timing, memory and any interruption, including the last completed phase."
+}
