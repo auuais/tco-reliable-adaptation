@@ -1,0 +1,50 @@
+{
+  "study": "sensor_windows_v16",
+  "sources": {
+    "scripts/check_sensor_windows.py": "82b42116399fb895b86bbb7f9df8576cc548fc08463175bd2a679cac1dbd5d54",
+    "scripts/learned_fixed_support.py": "ccbb9e0cd6dcaf0b0b3d91a4a203281c788235be647906fab3804cebce40660e",
+    "scripts/fixed_match_validation.py": "ff982bd4352f2798223d66185940861635c75764814643674a720cf1cdafa9d1",
+    "scripts/audit_sensor_frame.py": "c56b4289afdc6e2d9fce275e98b8f48552dad4dfd7e857cd8101c1d144b0d943",
+    "scripts/calibration_variants.py": "b27061aa16146d3c38ede07274f9011b2c81c242c15728072e5546ec8a7fffe7",
+    "manifests/learned_support_v8.json": "294f806eeebe5b967bb8d9c5cb757fbc345191a2c2bc4fad5a862ab4b96996ff",
+    "results/sensor_extrinsic_v15/seal.json": "885aa5bbce8f3be1931f61db3ba79089cdbcd9dd34cd48ca7c35ab78b0a111be",
+    "manifests/sensor_frame_v14.json": "ea2ee65dca80dff8c942f5482efa23baa4dab5c0b18272ac20f011f3450c7100"
+  },
+  "scenes": [
+    "heads/seq-01",
+    "chess/seq-03",
+    "fire/seq-03"
+  ],
+  "methods": [
+    "released",
+    "intrinsics_only",
+    "fixed_rgb",
+    "fitted_rgb",
+    "inverse_control"
+  ],
+  "windows": [
+    [
+      50,
+      250,
+      450,
+      650,
+      850
+    ],
+    [
+      100,
+      300,
+      500,
+      700,
+      900
+    ],
+    [
+      150,
+      350,
+      550,
+      750,
+      950
+    ]
+  ],
+  "analysis": "Transfer the frozen two-other-scene transform, physical transform and its inverse to nine five-frame windows with entirely new frame IDs on the same development sequences. No fitting. Include identity with both released and registration K. Use frozen CPU DISK/LightGlue parameters. Record all ten attempted pairs, including insufficient matches; score each retained pair in both directions. Report per-window median Sampson and registered-depth reprojection, positive-depth counts and pair coverage. Average window medians within scenes, then across scenes. Missing windows stay visible. Compare physical vs original and fitted vs physical. This estimates within-sequence consistency, without an independent-scene or dense-accuracy claim.",
+  "additional_cloud_usd": 0
+}
