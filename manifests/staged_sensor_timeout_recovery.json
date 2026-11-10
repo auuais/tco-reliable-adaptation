@@ -1,0 +1,7 @@
+{
+  "study_sha256": "0451d535df85bb6effd0c29a7a513dd5ea1374871304f2017c7dc62363f3d20a",
+  "handler_sha256": "a24ba900711ccc883a6c5c7e3f02c6280c7f6b69990e5644269c7b3316d94c22",
+  "policy": "Wait for terminal first-attempt records for all twelve predefined cells. Give each timeout exactly one fresh attempt in original study order with the same frozen model, seed, GPU settings, scientific configuration and 30-minute limit. No accuracy, loss, or number of completed steps is used for selection. Preserve every original byte and record both attempts. A second timeout leaves the full scientific comparison incomplete.",
+  "controls": "Check the new attempt's initialized heads, adapters, RNG, input/reference and priors against the original attempt wherever available; verify forty finite gradients and the matched storage mode. The scoring code already accepts at most one completed attempt among the two. Report completion conditioning if any retry supplies a score.",
+  "cloud_usd": 0
+}
