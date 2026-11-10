@@ -4,7 +4,7 @@ An independent research workspace for reproducing [TCO](https://github.com/cvlab
 
 ## Evidence so far
 
-**Current decision (November 11):** Keep the USD 25 MASt3R transfer and subsequent allocations unspent. The [first local depth redesign](results/depth_trust_v11/RESULTS.md) completed all 52 endpoint comparisons and scored 3.09% worse than simple half-shrinkage. Our [stage decision and next experiment](docs/STAGE_DECISION_AFTER_DEPTH_TRUST.md) explains what would justify transfer.
+**Current decision (November 11).** Keep the USD 25 MASt3R allocation available for a stronger method. The [RGB-track camera selector](results/track_camera_selection_v13/RESULTS.md) produced higher reconstruction errors than the best fixed comparator on both clean and perturbed inputs. A [sensor-frame audit](results/sensor_frame_v14/RESULTS.md) found that expressing the original depth-sensor poses in the registered RGB frame improved pixel agreement on all three development scenes under the released intrinsics. The [camera and depth swaps](results/camera_depth_swap_v12/RESULTS.md) quantify how strongly the two model outputs interact.
 
 The [40-job repeatability/calibration study](results/repeat_calibration_v6/RESULTS.md) completed under its USD 3 cap (approximately USD 0.72; GPU stopped). Axis-aware nominal resize improved the aggregate score by only 2.1%, below the frozen gate and observed execution variation. The 525-focal variant worsened it. Identical captured initialization and RNG still led to different adapted weights. The fixed sparse-match proxy abstained on every adapted run. [Later spending is withheld pending redesign](docs/DECISION_AFTER_REPEAT_CALIBRATION_V6.md); no MASt3R or held-out success is claimed.
 

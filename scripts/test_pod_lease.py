@@ -1,10 +1,11 @@
 import os
 import time
 import unittest
+from types import SimpleNamespace
 from unittest.mock import MagicMock, patch
 
 from pod_lease import pod_request, reason_to_stop
-from weekly_pod_guard import weekly_window
+from weekly_pod_guard import watch_pod, weekly_window
 
 
 class LeaseTests(unittest.TestCase):
@@ -33,3 +34,20 @@ class LeaseTests(unittest.TestCase):
             self.assertEqual(weekly_window({"rateLimitsByLimitId": {"codex": {name: week}}})["remaining_percent"], 5)
         with self.assertRaises(RuntimeError):
             weekly_window({"rateLimits": {"primary": dict(week, windowDurationMins=300)}})
+
+    def test_remote_lease_is_stopped_at_exact_reserve_or_failed_quota_read(self):
+        args = SimpleNamespace(pod_id="example1", host="example.invalid", port=22,
+                               deadline=int(time.time())+300, reserve=5, identity=None)
+        for readings, raises in (([{"remaining_percent": 6}, {"remaining_percent": 5}], False),
+                                 ([RuntimeError("quota unavailable")], True)):
+            with patch("weekly_pod_guard.subprocess.run") as run, patch("weekly_pod_guard.time.sleep"), \
+                 patch("weekly_pod_guard.read_quota", side_effect=readings), patch("builtins.print"):
+                if raises:
+                    with self.assertRaises(RuntimeError):
+                        watch_pod(args)
+                else:
+                    watch_pod(args)
+            commands = [call.args[0][-1] for call in run.call_args_list]
+            self.assertTrue(commands[-1].startswith("touch /tmp/tco-lease-"))
+            self.assertTrue(commands[-1].endswith("/stop"))
+            self.assertEqual(sum(c.endswith("/heartbeat") for c in commands), 0 if raises else 1)

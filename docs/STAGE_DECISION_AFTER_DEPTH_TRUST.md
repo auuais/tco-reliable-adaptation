@@ -1,5 +1,7 @@
 # Decision after repeatability, calibration and the first depth redesign
 
+**Subsequent experiments.** All 140 distinct point maps from the [camera-selection comparison](../results/track_camera_selection_v13/RESULTS.md) are scored and archived. The candidate failed the clean and perturbed development comparisons. Later paid stages remain on hold. The [camera-frame audit](../results/sensor_frame_v14/RESULTS.md) identifies a specific physical source of disagreement. The next local experiment should compare applying the fixed sensor transform with estimating one shared rigid sensor-to-camera transform from disjoint image tracks. Compare the original released reference and the registered RGB reference independently, then test new frame windows on the same development sequences before transfer.
+
 **Keep the later allocations on hold.** The repeatability and controlled calibration stage is complete. Neither calibration variant met the criterion set before collection. A local redesign that bounds dense shape changes also failed its prospective development comparison. No held-out labels were opened for these studies. A null result protects the test split and the budget; it does not rule out developing a different method.
 
 | Stage, in requested order | Status | Charge or allocation |
