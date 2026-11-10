@@ -2,7 +2,7 @@
 
 Date: 2026-11-09. Research capacity: 40 hours/week through early 2027. Public datasets only. The course midterm is November 10 and the final November 24.
 
-**Status update, 2026-11-11:** the baseline and component-ablation screens are complete. [V5 results](../results/prior_ablation_v5/RESULTS.md) favor retaining both penalties overall; the earlier visual-only Fire benefit did not repeat. [The current decision](DECISION_AFTER_PRIOR_ABLATION_V5.md) puts evaluation stability, same-device repeats and calibration accounting before a controller or MASt3R transfer. The stages below remain hypotheses and gates, not achieved claims.
+**Status update, 2026-11-11:** baseline, component-ablation and the 40-job controlled calibration screen are complete. [V6 primary results](../results/repeat_calibration_v6/RESULTS.md) fail the calibration advancement gate and confirm same-seed execution variation despite matching captured initialization/RNG. The fixed-match proxy has zero eligible coverage. [The current decision](DECISION_AFTER_REPEAT_CALIBRATION_V6.md) withholds later spending and prioritizes a local pose-precision engineering comparison before a redesigned method. The separately frozen CPU reference sensitivity is being completed. The stages below remain hypotheses and gates, not achieved claims.
 
 ## Central question
 

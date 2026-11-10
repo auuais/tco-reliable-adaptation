@@ -4,6 +4,8 @@ An independent research workspace for reproducing [TCO](https://github.com/cvlab
 
 ## Evidence so far
 
+**Latest (November 11):** the [40-job repeatability/calibration study](results/repeat_calibration_v6/RESULTS.md) completed under its USD 3 cap (approximately USD 0.72; GPU stopped). Axis-aware nominal resize improved the aggregate score by only 2.1%, below the frozen gate and observed execution variation. The 525-focal variant worsened it. Identical captured initialization and RNG still led to different adapted weights. The fixed sparse-match proxy abstained on every adapted run. [Later spending is withheld pending redesign](docs/DECISION_AFTER_REPEAT_CALIBRATION_V6.md); no MASt3R or held-out success is claimed.
+
 The initial five-sequence 7-Scenes subset showed mean aligned reconstruction accuracy error decreasing from **1.770 to 1.415 cm**, and completeness error from **2.056 to 1.629 cm**, after 40 TCO steps. This is partial reproduction on selected sequences, not reproduction of the full published benchmark.
 
 Follow-up execution repeats exposed substantial variation: on Heads, clean 40-step adaptation harmed accuracy or completeness in 2 of 3 executions. Severe synthetic camera-prior corruption harmed all executions on the two inspected sequences. Three execution repeats with the same seed are not three independent optimization seeds. These observations motivate stronger baselines and reliability experiments; they do not establish a novel method.
@@ -18,7 +20,7 @@ That [39-run screen is complete](results/baselines_v4/RESULTS.md). LR 0.0003 red
 
 The subsequent [pose/intrinsics ablation is complete](results/prior_ablation_v5/RESULTS.md): 39 validated runs favor both penalties overall (score 0.9269; 2/9 harmful executions), versus pose-only (0.9506; 5/9) and intrinsics-only (0.9391; 3/9). The earlier visual-only Fire benefit did not repeat; visual-only was unstable in this new batch. A [calibration audit](docs/PRIOR_ABLATION_V5.md) identified focal, resize and camera-parameterization discrepancies without changing the benchmark inputs. The [current decision](docs/DECISION_AFTER_PRIOR_ABLATION_V5.md) is to retain both penalties and isolate repeatability/calibration effects before a controller or MASt3R transfer. The session cost approximately USD 0.66; GPU compute is stopped.
 
-A separate [local memory probe](results/local_memory_v2/RESULTS.md) completed one full-resolution adaptation step on the RTX 3080 at 8.54 GiB peak allocated memory by offloading inactive modules. Matched zero-step outputs were bitwise identical. Forty-step validation and controlled latency comparisons remain pending. [Mathematical notes](docs/MATH_NOTES.md) explain the bias, stopping and observability hypotheses behind the research plan.
+A separate [local memory probe](results/local_memory_v3_full40/RESULTS.md) now completes 40 full-resolution adaptation steps on the RTX 3080 at 8.63 GiB peak allocated memory by offloading inactive modules. Matched zero-step outputs were bitwise identical. Reserved memory reached 10.57 GiB in Windows/WSL, so this is not a universal physical 10 GB fit guarantee or a speed/accuracy equivalence result. A [pose-loss precision audit](results/rotation_precision_v6/RESULTS.md) motivates a separately frozen local engineering comparison. [Mathematical notes](docs/MATH_NOTES.md) explain the bias, stopping and observability hypotheses behind the research plan.
 
 ## Setup and use
 
