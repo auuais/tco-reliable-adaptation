@@ -1,0 +1,39 @@
+{
+  "study_id": "local_memory_v3_full40",
+  "status": "complete",
+  "gpu": "NVIDIA GeForce RTX 3080",
+  "execution_commit": "8c90a9b1560bdb61552fc2b9c6b1facfd257b354",
+  "manifest_sha256": "f3b6d8cef4a33a68e156fdd00e86b529fffd186be5d34470c4acf09db7db047a",
+  "jobs": 2,
+  "updates": 40,
+  "zero_bitwise_equal_to_historical_canonical_control": true,
+  "all_gradients_and_predictions_finite": true,
+  "tracked_base_parameters_unchanged": true,
+  "runs": [
+    {
+      "run_id": "memory3_offload_s0",
+      "steps": 0,
+      "peak_allocated_GiB": 8.098119258880615,
+      "peak_reserved_GiB": 9.89453125,
+      "inference_and_adaptation_seconds": 2.636791290999099,
+      "model_load_seconds": 19.92311954499928,
+      "prediction_sha256": "2dadec9e05b2318ae05336626678433c1bbe562e2028da1875f0298df3a40a36"
+    },
+    {
+      "run_id": "memory3_offload_s40",
+      "steps": 40,
+      "peak_allocated_GiB": 8.62690782546997,
+      "peak_reserved_GiB": 10.5703125,
+      "inference_and_adaptation_seconds": 227.896277621001,
+      "model_load_seconds": 20.06381042099929,
+      "prediction_sha256": "dde01dffeb15cf9414cf970a97208361ccb19909aa67b180d262d659d9cabb21"
+    }
+  ],
+  "limitations": [
+    "One scene and one adapted execution; feasibility only",
+    "No adapted-output equivalence or accuracy comparison",
+    "Shared Windows desktop GPU; observed times are not a controlled speed comparison",
+    "Allocated memory is not physical VRAM residency",
+    "Offloading inactive modules is an engineering change, not a novel reconstruction method"
+  ]
+}
