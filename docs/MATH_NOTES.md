@@ -59,3 +59,23 @@ A bound on geometry displacement can limit how far one update changes a predicti
 Rotation, translation, focal and pointmap residuals have different units. Whitening and robust penalties must use documented scales. Camera constraints sharing a reference frame are correlated, so independent scalar residual weights are an approximation. Keep both a simple diagonal baseline and an explicit constraint-group design before introducing a more elaborate uncertainty model.
 
 The practical evidence needed is a better accuracy/runtime tradeoff and fewer harmful updates on frozen held-out data, beyond lower learning rates, fewer steps, robust loss and elementary gating. None of the algebra above establishes that result in advance.
+
+## Numerical precision is part of the camera constraint
+
+The [known-rotation audit](../results/rotation_precision_v6/RESULTS.md) found zero gradients under the released autocast path at all tested 0.1-3 degree errors, while float32 pose arithmetic retained the expected gradient. This is a controlled numerical result, not yet a reconstruction improvement.
+
+For a proper relative rotation, `cos(theta) = (trace(R)-1)/2`. Near identity, `1-cos(theta) ~= theta^2/2`. If the matrix-product rounding perturbs this cosine by order `u`, angles of order `sqrt(u)` can become difficult to distinguish through this trace formulation. Computing the final inverse cosine in float32 cannot restore already rounded matrix products. The actual threshold is orientation/operator dependent; the tested 3-degree observation is not a universal constant.
+
+Small angular errors can still matter geometrically. In an ideal rectified two-view model, disparity is `d=f*B/Z`. For a disparity error `delta_d`,
+
+`Z_hat/Z = 1 / (1 + delta_d/d)`.
+
+A small image-center orientation error approximately induces `delta_d ~= f*delta_theta`, giving the first-order sensitivity `delta_Z/Z ~= -(Z/B)*delta_theta` when the relative disparity error is small. Thus low parallax amplifies an angular error. As an illustrative calculation, with `Z/B=10` and a pixel-disparity perturbation corresponding to one degree, the exact disparity formula gives roughly 15% lower or 21% higher depth depending on the sign. These numbers are a hypothetical local model, not measurements on our sequences. Similarity-aligned evaluation can remove a uniform scale error; depth-dependent distortion is a separate issue.
+
+The immediate control is inexpensive float32 pose-loss arithmetic, tested separately from loss redesign. Only after that baseline is evaluated should we consider whether an uncertainty-aware or observability-aware update rule adds value. Otherwise an apparent reliability-method gain might merely compensate for a numerical defect.
+
+## Shared-gradient proposals
+
+Repeated renderer/backbone evaluations can produce different gradients even with matched RNG states. Capture weighted component gradients once, then construct each group subset from the same stored arrays and original optimizer moments. This removes independent recomputation of shared components from the within-step comparison; it does not remove error in the captured gradients or ensure either update is beneficial. Recompute clipping and the complete Adam step for each subset. Parameter-update subtraction is not equivalent because Adam and clipping are nonlinear.
+
+The [transaction primitive](../scripts/shared_gradient_proposals.py) implements state rollback and has CPU/CUDA tests. It does not yet implement a model controller. The fixed-match validation baseline also demonstrates why sufficient image support must be checked explicitly: its matches do not connect every sampled view in Heads and Chess. An unsupported comparison should abstain rather than manufacture a confident decision.
