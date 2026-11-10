@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "run_id": "repeat6_local_residual_capture",
+  "steps": 1,
+  "actual_supplied_K_hash_matches_metadata": true,
+  "recorded_target_matches_supplied_K": true,
+  "reference_unchanged": true,
+  "focal_loss_plateau_probe": {
+    "scope": "Saved two-view 224-pixel initial predictions; not a full-resolution finding",
+    "released_loss": 76.75798797607422,
+    "registration_loss": 76.75798797607422,
+    "gradient_bitwise_equal": true,
+    "explanation": "Both views have fx below both focal targets and fy above both targets by more than one pixel; Smooth-L1 has saturated slopes -1,+1. A shared target-focal shift cancels in the summed loss and leaves prediction gradients unchanged."
+  }
+}

@@ -16,7 +16,15 @@ The user explicitly chose to **wait for a redesigned method before spending late
 
 For CPU scoring, predeclare distance-metric relative range and normal-consistency absolute range thresholds of 1e-6. These are numerical diagnostic flags, not significance tests. Four purposively selected predictions cannot establish stability of every possible input or platform.
 
-For GPU studies, retain the existing equal-scene normalized accuracy/completeness score and individual-metric harm criterion (>1% worse than fresh zero-step control). Report all seeds and repeated executions, loss traces, latency and memory. Separate within-seed execution noise from between-seed variation. Do not attribute a change to hardware without a controlled hardware comparison. Precise advancement criteria and complete jobs are frozen before paid execution.
+For GPU studies, retain the existing equal-scene normalized accuracy/completeness score and individual-metric harm criterion (>1% worse than fresh zero-step control). Report all seeds and repeated executions, loss traces, latency and memory. Separate within-seed execution noise from between-seed variation. Do not attribute a change to hardware without a controlled hardware comparison.
+
+The frozen design has **40 jobs / 1,480 updates**: three fresh zero-step controls; 27 both-prior runs across three scenes, three seeds and three calibration choices; plus ten additional executions completing the three-repeat both/visual groups on Heads and Fire at seed 42. Two repeat-0 runs are shared with the calibration design by predeclared identity. Calibration summaries always use repeat 0, never whichever repeat performs best. Order is shuffled deterministically inside seed blocks.
+
+A calibration setting passes the conservative development diagnostic only with at least 5% aggregate score improvement over released K, no increase in harmful cells, no scene-mean regression greater than 1%, and an absolute score gain larger than the maximum observed same-seed both-prior score range. These are development criteria, not significance tests or publication guarantees. Calibration repair alone does not satisfy the requirement for a novel method. Full per-step focal residuals and Smooth-L1 slopes will show whether changing K actually changes the optimization signal.
+
+All 40 saved predictions will additionally receive CPU scoring against the same alternate axis-aware 525-focal reference, including zero-step controls. This sensitivity analysis retains released pose handling, changes no adaptation output, and reports separately. Depth is recovered by the exact inverse of the transform used to generate the stored reference, then reprojected; reconstruction of the original released reference must agree within 1e-6 metres before accepting the alternate reference. This is calibration sensitivity, not independent ground truth.
+
+Local integration checks passed seven two-view 224-pixel jobs, including one 40-update run (43 updates total), at 8.06 GiB peak allocation on the RTX 3080. All three zero-step calibration variants produced bitwise identical predictions, also matching the historical v5 zero-step check. A later one-update check verifies the added per-step residual capture and actual supplied-K metadata. These reduced-resolution checks establish pipeline behavior only.
 
 ## Budget status at stage opening
 
