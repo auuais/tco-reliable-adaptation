@@ -1,0 +1,131 @@
+{
+  "plan_sha256": "183bcd603e4462ca2a04d9c553ffdcef7dc0c27ee895c59ad4b73a1cbd93c711",
+  "planned_cases": 5,
+  "completed": 3,
+  "failed": 1,
+  "unattempted": 1,
+  "cases": [
+    {
+      "run_id": "backend6_local_default_renderoff_r0",
+      "status": "complete",
+      "error": null,
+      "settings": {
+        "arguments": {
+          "backend": "default",
+          "rendering": "off",
+          "profile_operators": true
+        },
+        "wrapper_sha256": "0f82d3878e707b1ffd106805993e5e6c3552624c5c9ef0f8f7cceb0d0b758d5a",
+        "historical_probe_sha256": "1e2c5f4ca31f4085ec3c68598df393331d6432d21fa8813b4979c44fbb726f87",
+        "scope": "Exploratory local operator diagnostic, two small views, no accuracy/speed claim",
+        "effective_lambda_mv_consistency": 0.0,
+        "enabled_backends": {
+          "math": true,
+          "flash": true,
+          "efficient": true,
+          "cudnn": true
+        },
+        "attention_operator_counts": {
+          "aten::scaled_dot_product_attention": 664,
+          "aten::_scaled_dot_product_flash_attention": 344,
+          "aten::_flash_attention_forward": 344,
+          "aten::_scaled_dot_product_efficient_attention": 32,
+          "aten::_efficient_attention_forward": 32,
+          "autograd::engine::evaluate_function: ScaledDotProductFlashAttentionBackward0": 104,
+          "ScaledDotProductFlashAttentionBackward0": 104,
+          "aten::_scaled_dot_product_flash_attention_backward": 104,
+          "aten::_flash_attention_backward": 104
+        }
+      }
+    },
+    {
+      "run_id": "backend6_local_flash_renderoff_r0",
+      "status": "failed",
+      "error": "RuntimeError('No available kernel. Aborting execution.')",
+      "settings": {
+        "arguments": {
+          "backend": "flash",
+          "rendering": "off",
+          "profile_operators": false
+        },
+        "wrapper_sha256": "0f82d3878e707b1ffd106805993e5e6c3552624c5c9ef0f8f7cceb0d0b758d5a",
+        "historical_probe_sha256": "1e2c5f4ca31f4085ec3c68598df393331d6432d21fa8813b4979c44fbb726f87",
+        "scope": "Exploratory local operator diagnostic, two small views, no accuracy/speed claim",
+        "effective_lambda_mv_consistency": 0.0,
+        "enabled_backends": {
+          "math": false,
+          "flash": true,
+          "efficient": false,
+          "cudnn": false
+        }
+      }
+    },
+    {
+      "run_id": "backend6_local_flash_renderoff_r1",
+      "status": "not_attempted"
+    },
+    {
+      "run_id": "backend6_local_math_renderon_r0",
+      "status": "complete",
+      "error": null,
+      "settings": {
+        "arguments": {
+          "backend": "math",
+          "rendering": "on",
+          "profile_operators": false
+        },
+        "wrapper_sha256": "0f82d3878e707b1ffd106805993e5e6c3552624c5c9ef0f8f7cceb0d0b758d5a",
+        "historical_probe_sha256": "1e2c5f4ca31f4085ec3c68598df393331d6432d21fa8813b4979c44fbb726f87",
+        "scope": "Exploratory local operator diagnostic, two small views, no accuracy/speed claim",
+        "effective_lambda_mv_consistency": 0.2,
+        "enabled_backends": {
+          "math": true,
+          "flash": false,
+          "efficient": false,
+          "cudnn": false
+        }
+      }
+    },
+    {
+      "run_id": "backend6_local_math_renderon_r1",
+      "status": "complete",
+      "error": null,
+      "settings": {
+        "arguments": {
+          "backend": "math",
+          "rendering": "on",
+          "profile_operators": false
+        },
+        "wrapper_sha256": "0f82d3878e707b1ffd106805993e5e6c3552624c5c9ef0f8f7cceb0d0b758d5a",
+        "historical_probe_sha256": "1e2c5f4ca31f4085ec3c68598df393331d6432d21fa8813b4979c44fbb726f87",
+        "scope": "Exploratory local operator diagnostic, two small views, no accuracy/speed claim",
+        "effective_lambda_mv_consistency": 0.2,
+        "enabled_backends": {
+          "math": true,
+          "flash": false,
+          "efficient": false,
+          "cudnn": false
+        }
+      }
+    }
+  ],
+  "math_with_rendering": {
+    "run_ids": [
+      "backend6_local_math_renderon_r0",
+      "backend6_local_math_renderon_r1"
+    ],
+    "same_initial_adapters": true,
+    "same_setup_rng": true,
+    "same_step_rng": [
+      true,
+      true
+    ],
+    "same_first_scalar_losses": true,
+    "identical_first_clipped_gradients": false,
+    "first_gradient_relative_l2": 0.006105942076526484,
+    "first_gradient_cosine": 0.9999813587374531,
+    "identical_final_pointmaps": false,
+    "maximum_pointmap_difference": 0.033843040466308594
+  },
+  "limitation": "Only two updates/two small views on RTX 3080. Operator trace records default-path names, not causality. Flash-only fails on an unsupported call; no equivalent-method or accuracy/speed claim."
+}
