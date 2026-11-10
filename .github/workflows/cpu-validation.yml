@@ -24,6 +24,7 @@ jobs:
       - run: python scripts/verify_camera_studies.py
       - run: python scripts/summarize_sensor_windows.py
       - run: python scripts/summarize_sensor_extrinsic.py
+      - run: python scripts/reference_repeat_sensitivity.py verify
       - run: python scripts/run_baseline_screen.py --dry-run
       - run: python scripts/run_prior_ablation_batch.py --dry-run
       - run: python scripts/evaluation_stability.py --dry-run

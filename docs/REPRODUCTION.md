@@ -1,5 +1,7 @@
 # Reproduction boundaries and evidence
 
+The [CPU replay from original Microsoft ZIPs](../results/sensor_public_replay/README.md) checks 45 calibration conditions using public inputs and the versioned image correspondences. The [dense reference comparison](../results/sensor_extrinsic_v15/RESULTS.md) contains the complete point-cloud score table, and the [identical-seed sensitivity](../results/reference_repeat_sensitivity/RESULTS.md) records how its interpretation changes across the available reruns.
+
 **Comparator precision:** Our stored zero-step TCO maps were unprojected in a different arithmetic context from the adapted endpoints. A [three-scene control](../results/pointmap_precision_v9/RESULTS.md) isolates this effect with identical model heads. Do not attribute the entire normal-consistency change to adaptation or retroactively replace the published historical score table. This control does not establish a defect in the authors' published benchmark.
 
 ## Immutable reference
