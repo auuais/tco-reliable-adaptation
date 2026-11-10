@@ -1,0 +1,112 @@
+{
+  "comparisons": [
+    {
+      "policy": "default",
+      "run_ids": [
+        "attention6_local_default_r0",
+        "attention6_local_default_r1"
+      ],
+      "same_initial_adapters": true,
+      "same_rng_before_setup": true,
+      "same_rng_after_setup": true,
+      "same_first_scalar_losses": true,
+      "same_step_rng": [
+        true,
+        true
+      ],
+      "identical_first_clipped_gradients": false,
+      "first_gradient_relative_l2": 0.005442892962652727,
+      "first_gradient_cosine": 0.9999851874578469,
+      "identical_final_pointmaps": false,
+      "maximum_pointmap_difference": 0.009666681289672852,
+      "peak_allocated_GiB": [
+        8.060025691986084,
+        8.060025691986084
+      ],
+      "operator_settings": [
+        {
+          "attention_policy": "default",
+          "effective_lambda_mv_consistency": 0.0,
+          "purpose": "Local backward repeatability isolation; no accuracy or speed claim",
+          "wrapper_sha256": "10f621d38010e707372cf9f4aa199951b2be2e5db815c22e384eee43fff247c4",
+          "historical_probe_sha256": "1e2c5f4ca31f4085ec3c68598df393331d6432d21fa8813b4979c44fbb726f87",
+          "enabled_backends": {
+            "math": true,
+            "flash": true,
+            "efficient": true,
+            "cudnn": true
+          }
+        },
+        {
+          "attention_policy": "default",
+          "effective_lambda_mv_consistency": 0.0,
+          "purpose": "Local backward repeatability isolation; no accuracy or speed claim",
+          "wrapper_sha256": "10f621d38010e707372cf9f4aa199951b2be2e5db815c22e384eee43fff247c4",
+          "historical_probe_sha256": "1e2c5f4ca31f4085ec3c68598df393331d6432d21fa8813b4979c44fbb726f87",
+          "enabled_backends": {
+            "math": true,
+            "flash": true,
+            "efficient": true,
+            "cudnn": true
+          }
+        }
+      ]
+    },
+    {
+      "policy": "math",
+      "run_ids": [
+        "attention6_local_math_r0",
+        "attention6_local_math_r1"
+      ],
+      "same_initial_adapters": true,
+      "same_rng_before_setup": true,
+      "same_rng_after_setup": true,
+      "same_first_scalar_losses": true,
+      "same_step_rng": [
+        true,
+        true
+      ],
+      "identical_first_clipped_gradients": true,
+      "first_gradient_relative_l2": 0.0,
+      "first_gradient_cosine": 1.0,
+      "identical_final_pointmaps": true,
+      "maximum_pointmap_difference": 0.0,
+      "peak_allocated_GiB": [
+        8.060254573822021,
+        8.060254573822021
+      ],
+      "operator_settings": [
+        {
+          "attention_policy": "math",
+          "effective_lambda_mv_consistency": 0.0,
+          "purpose": "Local backward repeatability isolation; no accuracy or speed claim",
+          "wrapper_sha256": "10f621d38010e707372cf9f4aa199951b2be2e5db815c22e384eee43fff247c4",
+          "historical_probe_sha256": "1e2c5f4ca31f4085ec3c68598df393331d6432d21fa8813b4979c44fbb726f87",
+          "enabled_backends": {
+            "math": true,
+            "flash": false,
+            "efficient": false,
+            "cudnn": false
+          }
+        },
+        {
+          "attention_policy": "math",
+          "effective_lambda_mv_consistency": 0.0,
+          "purpose": "Local backward repeatability isolation; no accuracy or speed claim",
+          "wrapper_sha256": "10f621d38010e707372cf9f4aa199951b2be2e5db815c22e384eee43fff247c4",
+          "historical_probe_sha256": "1e2c5f4ca31f4085ec3c68598df393331d6432d21fa8813b4979c44fbb726f87",
+          "enabled_backends": {
+            "math": true,
+            "flash": false,
+            "efficient": false,
+            "cudnn": false
+          }
+        }
+      ]
+    }
+  ],
+  "plan_sha256": "e7bd9a8bbebd5cedff3491df85bfc3a394a7c17c9976f6fd5c4cdcc15c7d6eb7",
+  "gpu": "NVIDIA GeForce RTX 3080",
+  "scope": "Two 168x224 views, Heads, seed 42, two updates, rendering disabled, local RTX 3080 only",
+  "limitation": "Exploratory numerical diagnosis, not full-resolution reproduction or accuracy/performance evidence. Backend association does not prove the responsible kernel."
+}
