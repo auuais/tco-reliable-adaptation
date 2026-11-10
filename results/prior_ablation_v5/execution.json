@@ -1,0 +1,38 @@
+{
+  "status": "complete_collected_validated_gpu_stopped",
+  "study_id": "prior_ablation_v5",
+  "planned_jobs": 39,
+  "completed_jobs": 39,
+  "failed_experiment_jobs": 0,
+  "adaptation_updates": 1440,
+  "code_commit": "568f92b7a5e6af982f3b3872a53928398db7688d",
+  "manifest_sha256": "5cefa44d45482fffaffab6d15e92891592c6791d860e8dcc23a1dc844b18f957",
+  "gpu": "NVIDIA A40",
+  "same_physical_gpu_all_runs": true,
+  "batch_minutes": 50.887936966666665,
+  "median_inference_adaptation_seconds": 52.440635409526294,
+  "max_allocated_gib": 11.498791217803955,
+  "budget_cap_usd": 3,
+  "estimated_session_cost_usd": 0.66,
+  "observed_balance_change_usd": 0.66,
+  "cost_note": "Elapsed-time estimate at quoted USD 0.597/hour, rounded to cents; observed balance change can include delayed charges and retained storage, not a settled invoice.",
+  "experiment_pod_stopped": true,
+  "experiment_pod_idle_cost_usd_per_hour": 0,
+  "experiment_persistent_volume_gb": 0,
+  "preexisting_stopped_volume_gb": 20,
+  "preexisting_storage_approx_usd_per_day": 0.13,
+  "raw_archive_sha256": "0a318379fa972e479c0b84ee46725fb5872585450cafe0e2b41df7002d17514a",
+  "raw_archive_bytes": 459808460,
+  "two_local_drive_copies_verified": true,
+  "preparation_notes": [
+    "Retained Ada restart and automatic migration unavailable; used A40 for all 39 jobs.",
+    "Slow upload replaced by SHA-256 verified downloads of identical wheel files; two locally built wheels copied from cache.",
+    "Initial setup failure preserved; no experimental jobs were retried."
+  ],
+  "validation": {
+    "unit_tests": 21,
+    "local_gpu_smokes": 6,
+    "remote_and_local_aggregates_identical": true,
+    "calibration_inputs_match": true
+  }
+}
