@@ -25,4 +25,4 @@ jobs:
       - name: Verify camera parameterization evidence
         run: |
           python scripts/audit_intrinsics_parameterization.py
-          python -c "import json,pathlib; p=pathlib.Path; assert json.loads(p('reports/calibration_v5/parameterization.json').read_text()) == json.loads(p('results/calibration_v5/parameterization.json').read_text())"
+          python scripts/verify_parameterization_evidence.py
