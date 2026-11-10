@@ -1,0 +1,50 @@
+{
+  "study": "sensor_extrinsic_v15",
+  "sources": {
+    "scripts/screen_sensor_extrinsic.py": "c521477884dc29f7defae0f1e4d549a924ac8bb20ab97bf04f6897e59f5a5bf6",
+    "scripts/fit_sensor_extrinsic.py": "097bc4309d10ee2522ece3c04c11c554299c66b1e045d48c5b27771f3697840a",
+    "scripts/camera_depth_swap.py": "d125ced358da7930a1e10dbbb0f15248d08293e1839d4f5e5d9c791bebd93e58",
+    "scripts/calibration_variants.py": "b27061aa16146d3c38ede07274f9011b2c81c242c15728072e5546ec8a7fffe7",
+    "scripts/run_repeat_calibration.py": "1ed51eba0b12ed7160bea9e15c02f0c2e9d41acc562cb00d2b0bf998de5e102f",
+    "scripts/audit_sensor_frame.py": "c56b4289afdc6e2d9fce275e98b8f48552dad4dfd7e857cd8101c1d144b0d943",
+    "scripts/audit_public_rgb_poses.py": "7f622864c4233caffee0c2ff1ed99747bbd2f40ed2b63afdfaba01dc406e9e09",
+    "scripts/calibration_audit.py": "361ce37d003e48387923c962f232aa6a5d8bf797544d7069dca3462c6a43607d",
+    "results/depth_trust_v11/sealed_predictions.json": "7a4420f3c2c741d6f7d8b9610a514fb0b3e1eb761560b93d951b2950f7015b2e",
+    "results/camera_depth_swap_v12/summary.json": "f7e8f431760217d80b16e7bace14ec98f2e7dcca65fb11af2591b535bd69d4b8",
+    "results/pointmap_precision_v9/summary.json": "6633a24fa646775f38bed6e66a263a807d799255161992a9cbff8bdf013f3ebf",
+    "results/learned_support_v8/support.json": "5fb18fe15323e3e1a787352f95e621f6f5cae91ecf7be606e119767113fff107",
+    "results/sensor_frame_v14/alternative_rgb_sfm.json": "37c0cb964ded402b935d133a15640452f3932b2533acf63034b93e71e3ef6360",
+    "manifests/sensor_frame_v14.json": "ea2ee65dca80dff8c942f5482efa23baa4dab5c0b18272ac20f011f3450c7100"
+  },
+  "scenes": [
+    "heads/seq-01",
+    "chess/seq-03",
+    "fire/seq-03"
+  ],
+  "methods": [
+    "initial",
+    "direct",
+    "intrinsics_only",
+    "frame_only",
+    "fixed_rgb",
+    "fitted_rgb",
+    "tco",
+    "half_shape"
+  ],
+  "references": [
+    "released",
+    "registered_rgb",
+    "rgb_sfm"
+  ],
+  "adaptation_seeds": [
+    42,
+    123,
+    2026
+  ],
+  "candidate": "For each target development scene, fit one extrinsic on RGB matches and metric supplied poses from the OTHER two scenes. Only edges with at least 12 matches enter the fit. Apply the transform to target supplied poses with registration intrinsics, then unproject frozen VGGT axial depth. Normalize camera translations to the median baseline of the predicted rig. No reference labels or target matches in fitting.",
+  "fit": "All eligible edges contribute equally to the sum of robust Sampson costs (2 px soft L1). Add squared standardized 6D deviation from physical registration. Units 1.5 degrees and 0.025 m, coordinate bounds +/-3. Hold focal and principal point fixed. Report Jacobian singular values without prior rows, active bounds and test-scene match errors.",
+  "reference": "Same registered axial depth and mask for all references. Primary uses original point targets bit-for-bit. Secondary uses registration intrinsics and physical frame. A further sensitivity uses published RGB SfM with its own focal, centered principal point and median baseline matched to physical poses. Reference conventions are analyzed separately.",
+  "gate": "Clean development only. Compare fitted_rgb to strongest fixed comparator on each reference. Mean of per-scene accuracy and completeness ratios to initial. Advance to noisy controls only if released and registered references each show >=5% relative improvement, no scene >1% worse than best fixed method, no extra harmful scenes. RGB SfM is a sensitivity. No transfer without noisy and repeat checks.",
+  "controls": "For unchanged TCO and half-depth average the three released clean adaptation seeds within scene before aggregation. Verify released direct and initial controls to 0.5% per distance against v12; check exact released references and input hashes. Methods share scenes and evaluate identical frames. Clean controls derive from benchmark poses.",
+  "additional_cloud_usd": 0
+}
