@@ -1,5 +1,7 @@
 # Reproduction boundaries and evidence
 
+**Comparator precision:** Our stored zero-step TCO maps were unprojected in a different arithmetic context from the adapted endpoints. A [three-scene control](../results/pointmap_precision_v9/RESULTS.md) isolates this effect with identical model heads. Do not attribute the entire normal-consistency change to adaptation or retroactively replace the published historical score table. This control does not establish a defect in the authors' published benchmark.
+
 ## Immutable reference
 
 - TCO commit: `65387333877723cf99086f7f29089379dd50c59a`.

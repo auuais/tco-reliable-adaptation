@@ -1,5 +1,7 @@
 # Decision after repeatability and controlled calibration
 
+**Subsequent local evidence:** The [RTX 3080 precision batch](../results/pose_precision_v7b_local/RESULTS.md) stopped on its prespecified timeout; its gate cannot be evaluated. The [zero-step precision control](../results/pointmap_precision_v9/RESULTS.md) identified a comparator confound without reversing the calibration decision. The [camera and shape audit](../results/camera_shape_v10/RESULTS.md) motivates the [bounded-depth screen](DEPTH_TRUST_V11.md).
+
 **Do not release later allocations.** The complete 40-job [primary calibration study](../results/repeat_calibration_v6/RESULTS.md) has no alternative passing the frozen development gate. Keep MASt3R's USD 25, held-out/cross-dataset and independent-verification allocations unspent until a redesigned method has reliable evidence. The GPU session cost approximately USD 0.72 under its USD 3 cap and is stopped.
 
 The important new evidence is matched initialization and RNG with divergent adapted weights, plus inadequate coverage of the proposed sparse correspondence check. A favorable single run or an always-abstaining gate would not support progress. Do not tune on Office, Pumpkin, RedKitchen or Stairs to rescue this result.

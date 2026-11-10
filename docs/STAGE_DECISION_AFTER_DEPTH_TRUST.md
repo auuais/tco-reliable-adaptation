@@ -1,0 +1,22 @@
+# Decision after repeatability, calibration and the first depth redesign
+
+**Keep the later allocations on hold.** The repeatability and controlled calibration stage is complete. Neither calibration variant met the criterion set before collection. A local redesign that bounds dense shape changes also failed its prospective development comparison. No held-out labels were opened for these studies. A null result protects the test split and the budget; it does not rule out developing a different method.
+
+| Stage, in requested order | Status | Charge or allocation |
+|---|---|---|
+| Repeatability and controlled calibration | 40/40 runs, 1,480 updates, both alternatives fail; current experiment GPU stopped | Approx. USD 0.72 of USD 3 session cap |
+| Local redesign and mechanism checks | 52/52 endpoint evaluations; 5% depth bound failed every gate requirement | USD 0 additional RunPod |
+| MASt3R transfer | Not started; no qualifying redesigned method | USD 0 of USD 25 allocation |
+| Held-out and cross-dataset evaluation | Not started | USD 0 of USD 45 allocation |
+| Independent verification and final tables | Not started; CI and repeated CPU measurements are not independent replication | USD 0 of USD 20 allocation |
+| Storage and contingency | Raw evidence verified on two local drives; no new persistent cloud volume | No new contingency expenditure; an older retained volume was quoted at about USD 0.13/day |
+
+**What is established.** The best calibration change improved normalized error by 2.15% against a 5% minimum. Its score gain (0.02075) was far below a same-seed execution range of 0.21078. The 525-focal variant worsened error and increased harmful outcomes. Initial predictions, adapters and RNG matched on the repeated cases; the optimized endpoints did not. We also found a zero-step output-precision mismatch that affects absolute metrics and interpretation of normal consistency. It does not reverse the calibration decision.
+
+The local 5% depth bound lost by 3.09% to a fixed rule that kept half of every shape change. That simple rule helped Heads' normalized scores, degraded Chess', and barely changed Fire's. Its nine-cell average score improved from 0.93437 to 0.91344 against unchanged TCO, but mean accuracy error worsened (1.5115 → 1.5490 cm), and the improvement is smaller than execution variation. It is a required comparator, not a transferable or publishable accuracy claim. The separate local precision intervention stopped on timeout; eight of 29 jobs completed, and no gate can be evaluated for it.
+
+**Next research question.** Can image evidence distinguish a useful camera correction from a camera move that merely fits a wrong prior? First isolate the camera contribution locally: retain one initial depth map per view, substitute initial versus final **relative** cameras in the same gauge, then swap depth at fixed cameras. Include hard use of the supplied camera priors as a simple comparator. Use one declared normalization for camera translation/depth scale, match output precision, check the unchanged reconstruction, and report both distance metrics separately. Do not compare absolute pose in arbitrary world frames. Next, apply controlled rotation, translation and focal errors separately. Compare visual evidence on independently partitioned image tracks to the known corruptions *offline*; inference may use RGB and supplied priors only. Do not tune another clipping threshold on these same nine cells.
+
+Only reopen MASt3R spending once a redesigned inference rule beats unchanged TCO, the strongest simple shrinkage rule, and direct camera-prior baselines under clean **and** noisy development conditions, without one scene absorbing the loss. Freeze that rule and evaluation split before transfer. Transfer, held-out/cross-dataset testing, and independent verification remain successive stages. If the effect exists only with clean reference-derived cameras, narrow the claim to that setting; do not present it as sensor robustness.
+
+[Full calibration results](../results/repeat_calibration_v6/RESULTS.md) · [Precision confound](../results/pointmap_precision_v9/RESULTS.md) · [Camera/shape diagnosis](../results/camera_shape_v10/RESULTS.md) · [Bounded-depth experiment](../results/depth_trust_v11/RESULTS.md) · [Interrupted local precision experiment](../results/pose_precision_v7b_local/RESULTS.md) · [Budget](BUDGET.md)

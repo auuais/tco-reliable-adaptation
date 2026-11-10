@@ -1,6 +1,6 @@
 # Budget and rental discipline
 
-Preferred ceiling: **USD 200 total**, including prior spending, compute, storage and recovery. USD 500 is a previously discussed stretch ceiling for compelling evidence; it is not automatically released. The latest component-ablation session completed for approximately USD 0.66 within its USD 3 cap. Any next session needs a new frozen plan and live quote; retain a USD 3 maximum for the next bounded diagnostic batch.
+Preferred ceiling: **USD 200 total**, including prior spending, compute, storage and recovery. USD 500 is a previously discussed stretch ceiling for compelling evidence; it is not automatically released. The completed component-ablation and repeatability/calibration sessions cost approximately USD 0.66 and USD 0.72 respectively, each within its own USD 3 cap. Later allocations are currently withheld. A new paid session requires a qualifying redesigned method, a frozen plan and a live quote.
 
 | Allocation | Ceiling USD | Release condition |
 |---|---:|---|

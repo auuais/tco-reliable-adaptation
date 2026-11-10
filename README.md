@@ -4,7 +4,9 @@ An independent research workspace for reproducing [TCO](https://github.com/cvlab
 
 ## Evidence so far
 
-**Latest (November 11):** the [40-job repeatability/calibration study](results/repeat_calibration_v6/RESULTS.md) completed under its USD 3 cap (approximately USD 0.72; GPU stopped). Axis-aware nominal resize improved the aggregate score by only 2.1%, below the frozen gate and observed execution variation. The 525-focal variant worsened it. Identical captured initialization and RNG still led to different adapted weights. The fixed sparse-match proxy abstained on every adapted run. [Later spending is withheld pending redesign](docs/DECISION_AFTER_REPEAT_CALIBRATION_V6.md); no MASt3R or held-out success is claimed.
+**Current decision (November 11):** Keep the USD 25 MASt3R transfer and subsequent allocations unspent. The [first local depth redesign](results/depth_trust_v11/RESULTS.md) completed all 52 endpoint comparisons and scored 3.09% worse than simple half-shrinkage. Our [stage decision and next experiment](docs/STAGE_DECISION_AFTER_DEPTH_TRUST.md) explains what would justify transfer.
+
+The [40-job repeatability/calibration study](results/repeat_calibration_v6/RESULTS.md) completed under its USD 3 cap (approximately USD 0.72; GPU stopped). Axis-aware nominal resize improved the aggregate score by only 2.1%, below the frozen gate and observed execution variation. The 525-focal variant worsened it. Identical captured initialization and RNG still led to different adapted weights. The fixed sparse-match proxy abstained on every adapted run. [Later spending is withheld pending redesign](docs/DECISION_AFTER_REPEAT_CALIBRATION_V6.md); no MASt3R or held-out success is claimed.
 
 A [matched-head coordinate precision control](results/pointmap_precision_v9/RESULTS.md) found that our zero-step and adapted output paths use different unprojection precision. On three development scenes this alone moved normal consistency by 0.059–0.084 and changed distance errors in opposite directions. Interpret historical zero-relative gains with this caveat; the calibration gate still fails.
 

@@ -1,5 +1,7 @@
 # Research plan from reproduction to a publishable method
 
+**Current stage:** [Calibration and first local redesign closed; transfer and later stages withheld](STAGE_DECISION_AFTER_DEPTH_TRUST.md).
+
 Date: 2026-11-09. Research capacity: 40 hours/week through early 2027. Public datasets only. The course midterm is November 10 and the final November 24.
 
 **Status update, 2026-11-11:** baseline, component-ablation and the 40-job controlled calibration screen are complete. [V6 results](../results/repeat_calibration_v6/RESULTS.md) fail the calibration advancement gate and confirm same-seed execution variation despite matching captured initialization/RNG. All 40 alternate-reference CPU evaluations are also complete and do not change that decision. The fixed-match proxy has zero eligible coverage. [The current decision](DECISION_AFTER_REPEAT_CALIBRATION_V6.md) withholds later spending and prioritizes a local pose-precision engineering comparison before a redesigned method. The stages below remain hypotheses and gates, not achieved claims.

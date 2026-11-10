@@ -1,5 +1,7 @@
 # What the current evidence permits next
 
+**Execution status:** The [local pose-precision batch](../results/pose_precision_v7b_local/RESULTS.md) was interrupted after eight completions and one timeout. Do not interpret it as evidence for a precision intervention. The [camera/shape diagnosis](../results/camera_shape_v10/RESULTS.md) completed on all 37 adapted outputs. A separate [bounded-depth test](DEPTH_TRUST_V11.md) compares a shape constraint with fixed shrinkage and frozen shape on the same camera trajectories.
+
 The calibration gate failed; all later rental allocations remain withheld. The active local pose-precision study is an engineering baseline. Its result must be evaluated against its frozen seed/repeat gate before attributing any improvement to precision. Even a passing result is not, by itself, a novel research contribution.
 
 The learned matching experiments resolve one bottleneck and expose another. Coverage is now adequate on the three development scenes, but absolute acceptance is almost empty and finer marginal prior rankings are poor. Do not build a policy around the present consistency score, select a favorable threshold, or claim that transactional rollback solves this problem. It solves state accounting, not geometric correctness.
