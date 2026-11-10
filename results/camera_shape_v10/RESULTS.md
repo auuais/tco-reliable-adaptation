@@ -1,0 +1,9 @@
+# Camera fit is not a quality monitor
+
+All 37 adapted v6 point maps passed the prespecified per-view camera recovery checks (185 views). The three zero controls use their actual captured camera/depth heads. No held-out scene, retraining or cloud compute was needed.
+
+Relative to initialization, adaptation moved closer to the **supplied** camera priors in 27/37 cases for relative rotation, 31/37 for camera-center displacement, and 31/37 for focal length. Yet 17/37 cases were harmful by the original v6 criterion. On Heads, 13 of 14 were harmful, although 11/14 moved closer on each of these camera measures. Across the 37 executions, the changes in those three camera residuals had weak rank associations with reconstruction error score (.084, .048, .028). A smaller prior loss is insufficient as a stopping or acceptance signal here. These counts pool several conditions and repeated starts; there are only three independent scene identities.
+
+After removing one global depth-scale change, larger dense shape movement was associated with worse reconstruction across the pooled runs (Spearman .550), but the association changed by scene: Heads .591, Chess −.483, Fire .182. It does not prove that restricting depth changes will help. It motivates a prospective, outcome-blind comparison of preserving depth, shrinking every change equally, and restricting only large local changes while retaining the final cameras.
+
+[All 40 rows and exact definitions](summary.json) · [Frozen analysis plan](../../manifests/camera_shape_v10.json). The frozen code source contained a CRLF at its last newline only. Git normalized that last newline on checkout. The [replay entry point](../../scripts/replay_camera_shape_v10.py) verifies that exact one-byte equivalence before accepting the frozen digest; it rejects other edits.
