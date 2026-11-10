@@ -1,0 +1,120 @@
+{
+  "study_id": "depth_trust_v11",
+  "phase": "Development only, after inspecting camera/shape diagnosis. No claim of independent data or novelty.",
+  "sources": {
+    "scripts/screen_depth_trust_v11.py": "76a0eca677123612da8a33316e5bf15a318fe32343a0a5bf049c5d0f71309d8e",
+    "scripts/depth_trust.py": "c8803965f40f0d760c3b8a8215c0e07d68c79389348d122e915eae6dd2a17ce8",
+    "scripts/pointmap_camera_diagnostic.py": "73e09b0090bba7b670d1909a3ff7bbe86b208375c51305212a3e75d6c7106265",
+    "scripts/run_repeat_calibration.py": "1ed51eba0b12ed7160bea9e15c02f0c2e9d41acc562cb00d2b0bf998de5e102f",
+    "results/pointmap_precision_v9/summary.json": "6633a24fa646775f38bed6e66a263a807d799255161992a9cbff8bdf013f3ebf",
+    "results/repeat_calibration_v6/per_run.csv": "03a95a093ead3446c33093d6e1479415c42a55cb2f99f4f765d9dd4c16857cde"
+  },
+  "runs": [
+    {
+      "run_id": "repeat6_heads_seq-01_both_released_seed42_r2",
+      "scene": "heads/seq-01",
+      "seed": 42,
+      "repeat": 2,
+      "input_points_sha256": "9053c4317b5ff585fbd117236ba6c502954c81357d250f25a71a92cfa3d2bbde"
+    },
+    {
+      "run_id": "repeat6_heads_seq-01_both_released_seed42_r1",
+      "scene": "heads/seq-01",
+      "seed": 42,
+      "repeat": 1,
+      "input_points_sha256": "4b584122da3945e12885fb8743cfd5a6f37241c92ae27a91b5d788b4ec6fc432"
+    },
+    {
+      "run_id": "repeat6_heads_seq-01_both_released_seed42_r0",
+      "scene": "heads/seq-01",
+      "seed": 42,
+      "repeat": 0,
+      "input_points_sha256": "a676666a9b8567a3336f9b74ee649416ad9dd72bf0e9d5aeff2344b0a9921289"
+    },
+    {
+      "run_id": "repeat6_fire_seq-03_both_released_seed42_r1",
+      "scene": "fire/seq-03",
+      "seed": 42,
+      "repeat": 1,
+      "input_points_sha256": "1813fcd6e0361faa6dee91aac95bfe38d78ca405bf11edbe50300b1678d292f7"
+    },
+    {
+      "run_id": "repeat6_fire_seq-03_both_released_seed42_r2",
+      "scene": "fire/seq-03",
+      "seed": 42,
+      "repeat": 2,
+      "input_points_sha256": "9b68b8890ac50cc83846a1d4e9d50e7a2b13df4e479dbf03dacab45bba5a95ad"
+    },
+    {
+      "run_id": "repeat6_fire_seq-03_both_released_seed42_r0",
+      "scene": "fire/seq-03",
+      "seed": 42,
+      "repeat": 0,
+      "input_points_sha256": "1a239bba8029f08f5d705bb63612cc5a3de16940b052d557994db093709c3673"
+    },
+    {
+      "run_id": "repeat6_chess_seq-03_both_released_seed42_r0",
+      "scene": "chess/seq-03",
+      "seed": 42,
+      "repeat": 0,
+      "input_points_sha256": "f2e452df89ecddac589127a57f56ea08ff2d91f315e6e32582515f98b37c87ff"
+    },
+    {
+      "run_id": "repeat6_fire_seq-03_both_released_seed123_r0",
+      "scene": "fire/seq-03",
+      "seed": 123,
+      "repeat": 0,
+      "input_points_sha256": "66237b3a540cc6ac8dee63123e814ba0576a85a799407385c8ed6ecf8251cbc8"
+    },
+    {
+      "run_id": "repeat6_chess_seq-03_both_released_seed123_r0",
+      "scene": "chess/seq-03",
+      "seed": 123,
+      "repeat": 0,
+      "input_points_sha256": "e85ed3137a0057b3b89cc2e5b58be3fc94c6c0769b5ef062b8c3f7c7bf995d99"
+    },
+    {
+      "run_id": "repeat6_heads_seq-01_both_released_seed123_r0",
+      "scene": "heads/seq-01",
+      "seed": 123,
+      "repeat": 0,
+      "input_points_sha256": "47ea5d3c7b7f149b201115f7ba973944f0bbf1f63bf1ebac6e971c1e42b3da28"
+    },
+    {
+      "run_id": "repeat6_chess_seq-03_both_released_seed2026_r0",
+      "scene": "chess/seq-03",
+      "seed": 2026,
+      "repeat": 0,
+      "input_points_sha256": "8f4c735ddf77a7f896707665201fd7bfe55adf8b565d9ccbdefbd964c84dc38e"
+    },
+    {
+      "run_id": "repeat6_fire_seq-03_both_released_seed2026_r0",
+      "scene": "fire/seq-03",
+      "seed": 2026,
+      "repeat": 0,
+      "input_points_sha256": "02d9090b1ddd70edd1b6697cac069c992cd423493835e98fe3a7ed1d89de547a"
+    },
+    {
+      "run_id": "repeat6_heads_seq-01_both_released_seed2026_r0",
+      "scene": "heads/seq-01",
+      "seed": 2026,
+      "repeat": 0,
+      "input_points_sha256": "cb1df0fc607da56a5116bb21060b2abfd4c71f3bb1e41eac4606892d23fc666a"
+    }
+  ],
+  "candidates": [
+    "tco",
+    "freeze_shape",
+    "half_shape",
+    "bounded_5pct"
+  ],
+  "evaluations": 52,
+  "offline_baseline": "V9 upstream FP32 zero, identical captured heads/unchanged released reference; absolute metrics also disclosed",
+  "policy": "Keep all final cameras and global median log depth ratio. Freeze relative depth change, halve everywhere, or clip to +/-log(1.05). TCO identity is exact. Use all pixels, no references, image correspondences or GT masks for method.",
+  "comparison": "Repeat 0 only, 3 development scenes x 3 seeds. Strongest of unchanged TCO, half-depth, frozen-depth, or FP32 zero by mean normalized score. Max 1% scene-score regression, no increase in harmful cells (either distance >1% above FP32 zero), >=5% relative gain, and absolute gain larger than largest repeated score range of candidate and comparator across Heads & Fire. Do not pool repeat 1/2 in primary means or select best runs.",
+  "scope": "Endpoints only. Does not constrain training or show savings in training. All candidates inherit original 40 TCO updates. Any early screen success still requires noisy-prior controls and independent evidence before spending later funds.",
+  "threads_per_evaluation": 2,
+  "max_cpu_workers": 3,
+  "seed": 42,
+  "timeout_seconds": 600
+}
