@@ -1,0 +1,28 @@
+--- a/tco_vggt_lora.py
++++ b/tco_vggt_lora.py
+@@ -131,6 +131,7 @@
+         
+         frame_idx = 0
+         global_idx = 0
++        readout_layers = getattr(self, "tco_readout_layers", None)
+         output_list = []
+ 
+         for block_idx in range(self.aggregator.aa_block_num):
+@@ -146,12 +147,11 @@
+                 else:
+                     raise ValueError(f"Unknown attention type: {attn_type}")
+             for i in range(len(frame_intermediates)):
+-                # if block_idx in [4, 11, 17, 23]:
+-                    # Concat frame and global intermediates
+-                concat_inter = torch.cat([frame_intermediates[i], global_intermediates[i]], dim=-1)
+-                output_list.append(concat_inter)
+-        
+-        del concat_inter
++                if readout_layers is None or len(output_list) in readout_layers:
++                    output_list.append(torch.cat([frame_intermediates[i], global_intermediates[i]], dim=-1))
++                else:
++                    output_list.append(None)
++
+         del frame_intermediates
+         del global_intermediates
+         
