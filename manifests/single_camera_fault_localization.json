@@ -1,0 +1,38 @@
+{
+  "study": "single_camera_fault_localization",
+  "sources": {
+    "scripts/localize_camera_prior_faults.py": "7ad0288dd5a1801e584ae50fd51198bfa9a5c15483b20ddf0f00bcdbc135b583",
+    "results/sensor_windows_v16/summary.json": "180c29c15cbbd51ca76a987a71b6d23d98dfb1e686c155e4b69fb8492ae001ec",
+    "results/sensor_public_replay/rgb_matches.zip": "86dd414290072806e59d7f545b5de1f6a219f2d6aa952810c677aaad02edbf86",
+    "manifests/sensor_frame_v14.json": "ea2ee65dca80dff8c942f5482efa23baa4dab5c0b18272ac20f011f3450c7100",
+    "scripts/fit_sensor_extrinsic.py": "097bc4309d10ee2522ece3c04c11c554299c66b1e045d48c5b27771f3697840a",
+    "scripts/prior_corruptions.py": "2b289db0195cc26c0aece52712a68efe5a65b3c10d6a0d899afbaaacbccd39b7",
+    "scripts/calibration_audit.py": "361ce37d003e48387923c962f232aa6a5d8bf797544d7069dca3462c6a43607d",
+    "scripts/audit_sensor_frame.py": "c56b4289afdc6e2d9fce275e98b8f48552dad4dfd7e857cd8101c1d144b0d943",
+    "scripts/replay_sensor_windows_from_zips.py": "6b649ff246121743ce3647028694bed81ca8ea2c0aea70e486d490d9a393a419"
+  },
+  "seeds": [
+    17,
+    43,
+    101
+  ],
+  "faults": [
+    "rotation",
+    "translation",
+    "focal"
+  ],
+  "conventions": [
+    "released",
+    "fixed_rgb"
+  ],
+  "views": 5,
+  "windows": 9,
+  "rotation_deg": 5,
+  "center_offset_fraction_of_window_diameter": 0.1,
+  "focal_factor": 1.1,
+  "design": "One corrupted camera at a time, including the anchor. For each of 9 previously used development windows, each of five cameras, three independent seeds and three fault types, evaluate both camera conventions. Use the same deterministic directions for both conventions. Add one clean observation per window and convention. Read only poses and previously frozen 2D RGB matches. No depth, learned model output, SfM reference or 3D metric enters the detector.",
+  "detector": "Median over neighbors of per-edge median absolute Sampson distance in both directions, equal weight per neighbor. A camera requires at least two retained edges. Give equal credit across tied highest-scoring eligible cameras. Unsupported faults count as misses. All five possible fault locations are included, so uniform blind top-one credit is 0.2.",
+  "alarm": "In each convention use the largest clean window score from the other two development scenes as a strict alert threshold. A correct detection requires both the alert and localization. Report clean false alarms, localization, detection, abstention and eligibility, with equal window weight. These cutoffs are descriptive given six calibration windows. The three focal seeds vary the sign only and are not independent images.",
+  "control": "Check noiseless synthetic projections and global translation-scale invariance. Report every fault type, convention and location separately. This is a diagnostic of selective camera supervision, not a new matching algorithm or a reconstruction benchmark. It cannot release transfer funds.",
+  "cloud_usd": 0
+}
