@@ -10,6 +10,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: python -m pip install numpy==2.1.2
+      - uses: actions/checkout@v4
+        with:
+          repository: cvlab-stonybrook/TCO
+          ref: 65387333877723cf99086f7f29089379dd50c59a
+          path: third_party/TCO
+      - name: Install CPU loss-test dependencies
+        run: |
+          python -m pip install torch==2.7.1 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install numpy==2.1.2 omegaconf==2.3.0 matplotlib==3.10.7
       - run: python -m unittest discover -s scripts -p 'test_*.py'
       - run: python scripts/run_baseline_screen.py --dry-run
+      - run: python scripts/run_prior_ablation_batch.py --dry-run
