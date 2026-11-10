@@ -1,0 +1,54 @@
+{
+  "scenes": [
+    "heads/seq-01",
+    "chess/seq-03",
+    "fire/seq-03"
+  ],
+  "intrinsics": [
+    "released",
+    "axis_nominal",
+    "axis_registration"
+  ],
+  "camera_conventions": [
+    "original_depth_pose",
+    "compose_depth_to_rgb",
+    "inverse_direction_control"
+  ],
+  "calibration": [
+    [
+      0.9999651801256764,
+      0.0026765126468950343,
+      -0.00790410123130009,
+      -0.025558943178152542
+    ],
+    [
+      -0.00274093112813167,
+      0.9999630280302759,
+      -0.008150452077801329,
+      0.00010109636268061706
+    ],
+    [
+      0.007881994213044533,
+      0.008171832877189063,
+      0.9999355455801403,
+      0.002031832172948704
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "calibration_source_sha256": "ac8dee029c28f600fc0e72ac79f8be19b83b7edfe9a2cdc88381abe5afe4e808",
+  "matcher_support_sha256": "5fb18fe15323e3e1a787352f95e621f6f5cae91ecf7be606e119767113fff107",
+  "source_sha256": "c56b4289afdc6e2d9fce275e98b8f48552dad4dfd7e857cd8101c1d144b0d943",
+  "frames": [
+    0,
+    200,
+    400,
+    600,
+    800
+  ],
+  "analysis": "Development diagnostic after v13 predictions were sealed. Verify original camera files, recover registered depth, apply the same rigid transform used by preprocessing to the world-to-camera matrix. Cross three K conventions and three frame conventions, including an inverse direction control. Report Sampson distance and registered-depth cross-view reprojection. Bilinear interpolated axial depth, all four source depth neighbors valid. All directed observations retained. No fitted calibration or replacement of v6 or v13 metrics."
+}
