@@ -37,7 +37,15 @@ Fixed-prediction counterfactuals along the nine released-K trajectories show tha
 
 The image-only fixed-match proxy, prepared before inspecting v6 outcomes, abstained on **all 37 adapted runs** because its frozen support/coverage rules were not met. Zero harmful acceptances therefore means zero coverage, not a successful reliability controller. Thresholds were not relaxed after observing outcomes. See [proxy evidence](fixed_match_proxy_validity.json) and [local redesign diagnostics](../../docs/LOCAL_REDESIGN_DIAGNOSTICS_V6.md).
 
-The separately frozen common-reference sensitivity analysis is being evaluated locally for all 40 saved predictions. Its results will be added separately; the primary table and gate above are already final and will not be replaced by a more favorable reference convention.
+The separately frozen common-reference sensitivity analysis completed **40/40 CPU evaluations**. All conditions, including zero controls, use the same axis-aware 525-focal reference. Recovering the original reference before reprojection agreed within 4.44e-16 m. This is an alternative calibration assumption, not independently measured physical truth.
+
+| Adaptation K | Score under alternate common reference | Harmful cells |
+|---|---:|---:|
+| Released | 0.985048 | 3/9 |
+| Axis-aware nominal | 0.954493 | 3/9 |
+| Axis-aware 525 | 1.000612 | 5/9 |
+
+The nominal change gives 3.102% relative gain here, still below 5%; the 525 variant is 1.580% worse. These metrics are **not pooled with or substituted for the primary results**. The failed primary gate remains unchanged. All per-run sensitivity outcomes are in [reference_sensitivity.json](reference_sensitivity.json).
 
 ## Provenance, budget and limits
 
@@ -47,5 +55,6 @@ The separately frozen common-reference sensitivity analysis is being evaluated l
 - One physical A40; median instrumented adaptation/inference 53.44 s, peak allocation 11.50 GiB. Capture overhead prevents an uninstrumented speed claim.
 - Approximately **USD 0.72** including setup and collection, under the USD 3 cap. The rounded balance delta is not a settled invoice. The experiment pod is verified stopped at USD 0/hour; no persistent volume was added. The older retained volume remains approximately USD 0.13/day.
 - One setup path-resolution failure occurred before experiments; its recovery logs are retained. No experiment job failed or was retried.
+- CPU-derived evidence has a separate two-drive archive, SHA-256 `ae4cee18d7dca4755fb78918cc2dda936de924f44ff85ebccade1d07765029ad` (89,936 bytes). The original GPU archive is unchanged.
 
 These are three inspected development sequences with reference camera priors and aligned shape metrics. They do not demonstrate held-out generalization, metric-scale recovery, a full benchmark reproduction, a new state of the art or a publishable improvement. All row-level outcomes, losses and gate checks are in [summary.json](summary.json), [per_run.csv](per_run.csv) and [mechanism_diagnostics.json](mechanism_diagnostics.json).
