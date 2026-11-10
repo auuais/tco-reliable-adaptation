@@ -25,6 +25,7 @@ jobs:
       - run: python scripts/evaluation_stability.py --dry-run
       - run: python scripts/run_repeat_calibration_batch.py --dry-run
       - run: python scripts/run_pose_precision_batch.py --dry-run
+      - run: python scripts/run_pose_precision_fullcache_batch.py --dry-run
       - name: Verify camera parameterization evidence
         run: |
           python scripts/audit_intrinsics_parameterization.py
