@@ -1,0 +1,81 @@
+{
+  "equal_tensors_and_patch_gradient": true,
+  "results": {
+    "all": {
+      "stored_layers": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "output_list_bytes": 20840448,
+      "loss": 1.9434776306152344,
+      "tensor_sha256": {
+        "pose_encoding": "9db385374703a36dd677b8407afb8730047dd1d4caabe62f7a34d1ca0d9b5dc5",
+        "depth": "9eea798f10e89c184fb5028d0e00d51cfd90910cf62827b19e17ae56d88893c6",
+        "confidence": "72d44ff06d907ded89d99ed604b4a3dfdcb239ac67f7d1e2922b7a3cdfbb2e49",
+        "patch_gradient": "9035cd0650c8240272319db185a76d51db4b4f1cf9119f0f565d8f7836a9411f",
+        "layer_4": "c311551f1a477c6809db9778ee8316a0ecbc20806d24316b8421bcdde831af50",
+        "layer_11": "10bcc949600b3e0ae5a5a87b2f65a27690ea4234743fd9c3238f9890c88fecad",
+        "layer_17": "0bd72b7e3af7628787a2b52c3a5b85eb20b17738bd60e0551046cdac2e8a080e",
+        "layer_23": "b6fff7684731ddd8587eec1e75b6a6aa0246b50cd596a4eaf6150ad2fe0bb9f1"
+      },
+      "seconds": 4.470223026997701
+    },
+    "selected": {
+      "stored_layers": [
+        4,
+        11,
+        17,
+        23
+      ],
+      "output_list_bytes": 3473408,
+      "loss": 1.9434776306152344,
+      "tensor_sha256": {
+        "pose_encoding": "9db385374703a36dd677b8407afb8730047dd1d4caabe62f7a34d1ca0d9b5dc5",
+        "depth": "9eea798f10e89c184fb5028d0e00d51cfd90910cf62827b19e17ae56d88893c6",
+        "confidence": "72d44ff06d907ded89d99ed604b4a3dfdcb239ac67f7d1e2922b7a3cdfbb2e49",
+        "patch_gradient": "9035cd0650c8240272319db185a76d51db4b4f1cf9119f0f565d8f7836a9411f",
+        "layer_4": "c311551f1a477c6809db9778ee8316a0ecbc20806d24316b8421bcdde831af50",
+        "layer_11": "10bcc949600b3e0ae5a5a87b2f65a27690ea4234743fd9c3238f9890c88fecad",
+        "layer_17": "0bd72b7e3af7628787a2b52c3a5b85eb20b17738bd60e0551046cdac2e8a080e",
+        "layer_23": "b6fff7684731ddd8587eec1e75b6a6aa0246b50cd596a4eaf6150ad2fe0bb9f1"
+      },
+      "seconds": 4.39859853300004
+    }
+  },
+  "shape": [
+    1,
+    2,
+    3,
+    84,
+    112
+  ],
+  "device": "cpu",
+  "checkpoint_sha256": "f164acf60724910d8fe1578bb499d800850c7bb0948db7555c413f9fbe60467e",
+  "torch": "2.7.1+cu128",
+  "source_tensor_sha256": "48f7e4466491bce35834cdfdab17241525bd22d38deda8b5b925b39ccb7516f6",
+  "patch_sha256": "372bcbf9abcaac7d291013f35ea453bea561f2eb1f2051b683a770d19fc61ec0",
+  "source_sha256": "b9c5b27b35f6af92e77379b177e1dd293617a322ee2de760be6e50152522627f",
+  "scope": "Two resized real development images, pretrained FP32 camera and depth heads, gradient checkpointing, deterministic scalar loss. This test measures readout-list tensor storage, not device peak allocation, GPU TCO gradients or end-to-end speed."
+}
