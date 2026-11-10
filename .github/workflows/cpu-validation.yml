@@ -40,3 +40,5 @@ jobs:
         run: python scripts/verify_local_execution_evidence.py
       - name: Verify all single-camera fault scoring conditions
         run: python scripts/localize_camera_prior_faults.py verify
+      - name: Verify the selective camera repair decision
+        run: python scripts/screen_single_camera_repair.py verify
