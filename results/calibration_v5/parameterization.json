@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "scope": "CPU synthetic derivative check; no adaptation experiment",
+  "decoder_principal_point": [
+    259.0,
+    196.0
+  ],
+  "released_prior_principal_point": [
+    261.2416687011719,
+    195.90834045410156
+  ],
+  "principal_point_gradient_max": 0.0,
+  "gradient_identical_after_removing_principal_point_constant": true,
+  "irreducible_principal_component_unweighted": 0.29097822308540344,
+  "irreducible_principal_component_weighted_001": 0.0029097822308540343,
+  "focal_loss_parameterization": "Smooth L1 on focal lengths measured in pixels; not relative or resolution normalized",
+  "source_sha256": {
+    "utils/geometry.py": "66101567220e29ac31b3d20811b02c60b22178f42f41c6117611b37fc1d34471",
+    "constraints.py": "b80bb6b368ff8f2c35f4215a6ce73865dad3b38ab2aa8e8c13845160340b0506"
+  },
+  "limitations": [
+    "A constant loss offset does not itself establish harmful parameter updates.",
+    "This checks the released decoder and loss in FP32, not a new CUDA experiment.",
+    "Adding learnable principal points or normalized residuals requires separate controlled tests."
+  ]
+}

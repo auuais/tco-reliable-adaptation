@@ -46,4 +46,4 @@ CPU validation:
 python -m unittest discover -s scripts -p 'test_*.py'
 ```
 
-NumPy is required for the CPU validation suite. GPU inference also requires the upstream dependencies and Dockerfile. There is no blanket license grant over upstream projects, datasets or checkpoints; consult their own terms.
+The CPU validation suite requires NumPy, CPU PyTorch 2.7.1, OmegaConf and Matplotlib, plus the pinned upstream checkout for camera-loss tests. The GitHub workflow installs these explicitly and checks both v4 and v5 frozen manifests. GPU inference also requires the upstream dependencies and Dockerfile. There is no blanket license grant over upstream projects, datasets or checkpoints; consult their own terms.
