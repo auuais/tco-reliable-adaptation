@@ -85,7 +85,7 @@ def prepare(evidence, support):
                 observations[scene].append(edge(e, rgb_k, pair["i"], pair["j"], xy["xy_i"], xy["xy_j"]))
     RAW.mkdir(parents=True, exist_ok=False)
     PUBLIC.mkdir(parents=True, exist_ok=False)
-    rows, fits, entries = [], [], {}
+    rows, fits, entries = [], {}, {}
     for scene in SCENES:
         z, initial, e, k, rgb_k = inputs[scene]
         training = [s for s in SCENES if s != scene]
