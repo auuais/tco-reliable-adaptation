@@ -1,0 +1,86 @@
+{
+  "study_id": "pointmap_precision_v9",
+  "jobs": [
+    {
+      "job_id": "heads_seq-01_saved_zero",
+      "scene": "heads/seq-01",
+      "mode": "saved_zero"
+    },
+    {
+      "job_id": "heads_seq-01_upstream_cpu_float32",
+      "scene": "heads/seq-01",
+      "mode": "upstream_cpu_float32"
+    },
+    {
+      "job_id": "heads_seq-01_upstream_cpu_bfloat16",
+      "scene": "heads/seq-01",
+      "mode": "upstream_cpu_bfloat16"
+    },
+    {
+      "job_id": "heads_seq-01_numpy_float64",
+      "scene": "heads/seq-01",
+      "mode": "numpy_float64"
+    },
+    {
+      "job_id": "chess_seq-03_saved_zero",
+      "scene": "chess/seq-03",
+      "mode": "saved_zero"
+    },
+    {
+      "job_id": "chess_seq-03_upstream_cpu_float32",
+      "scene": "chess/seq-03",
+      "mode": "upstream_cpu_float32"
+    },
+    {
+      "job_id": "chess_seq-03_upstream_cpu_bfloat16",
+      "scene": "chess/seq-03",
+      "mode": "upstream_cpu_bfloat16"
+    },
+    {
+      "job_id": "chess_seq-03_numpy_float64",
+      "scene": "chess/seq-03",
+      "mode": "numpy_float64"
+    },
+    {
+      "job_id": "fire_seq-03_saved_zero",
+      "scene": "fire/seq-03",
+      "mode": "saved_zero"
+    },
+    {
+      "job_id": "fire_seq-03_upstream_cpu_float32",
+      "scene": "fire/seq-03",
+      "mode": "upstream_cpu_float32"
+    },
+    {
+      "job_id": "fire_seq-03_upstream_cpu_bfloat16",
+      "scene": "fire/seq-03",
+      "mode": "upstream_cpu_bfloat16"
+    },
+    {
+      "job_id": "fire_seq-03_numpy_float64",
+      "scene": "fire/seq-03",
+      "mode": "numpy_float64"
+    }
+  ],
+  "sources": {
+    "scripts/pointmap_precision_v9.py": "34f37b791516ff8a2bfb6547061d599e1fffaab68cfd335f183d1c44c7391f58",
+    "scripts/pointmap_camera_diagnostic.py": "73e09b0090bba7b670d1909a3ff7bbe86b208375c51305212a3e75d6c7106265",
+    "scripts/run_repeat_calibration.py": "1ed51eba0b12ed7160bea9e15c02f0c2e9d41acc562cb00d2b0bf998de5e102f"
+  },
+  "upstream_geometry_lf_sha256": "0987a1032224e6aa7a6e8b682e62ce1ceecb7fa0259c7c2dca4706555bbc4541",
+  "hypothesis": "Our TCO zero-step path computes points outside the head's autocast-disabled scope; adapted final points are computed inside it. Isolate coordinate arithmetic using identical saved depth/camera tensors.",
+  "modes": [
+    "saved_zero",
+    "upstream_cpu_float32",
+    "upstream_cpu_bfloat16",
+    "numpy_float64"
+  ],
+  "planned_evaluations": 12,
+  "threads": 4,
+  "seed": 42,
+  "timeout_seconds_per_job": 600,
+  "scope": "Post-hoc CPU diagnostic of this reproduction's zero-step comparator, not proof about the authors' published baseline. No model rerun or cloud compute.",
+  "metric_reference": "Unchanged released v6 reference for every mode; saved zero rescored in the same CPU runtime",
+  "recovery_guard": "DLT null-space gap >=1000, all-pixel reprojection <=0.02px, positive depth; reject rather than relax after observing results",
+  "later_allocations_released": false
+}
