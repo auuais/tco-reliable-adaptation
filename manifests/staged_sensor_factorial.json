@@ -1,0 +1,105 @@
+{
+  "study": "staged_sensor_factorial",
+  "jobs": [
+    {
+      "scene": "heads/seq-01",
+      "condition": "released",
+      "run_id": "sensor17p_heads_seq-01_released"
+    },
+    {
+      "scene": "chess/seq-03",
+      "condition": "frame_only",
+      "run_id": "sensor17p_chess_seq-03_frame_only"
+    },
+    {
+      "scene": "fire/seq-03",
+      "condition": "intrinsics_only",
+      "run_id": "sensor17p_fire_seq-03_intrinsics_only"
+    },
+    {
+      "scene": "heads/seq-01",
+      "condition": "frame_only",
+      "run_id": "sensor17p_heads_seq-01_frame_only"
+    },
+    {
+      "scene": "chess/seq-03",
+      "condition": "intrinsics_only",
+      "run_id": "sensor17p_chess_seq-03_intrinsics_only"
+    },
+    {
+      "scene": "fire/seq-03",
+      "condition": "fixed_rgb",
+      "run_id": "sensor17p_fire_seq-03_fixed_rgb"
+    },
+    {
+      "scene": "heads/seq-01",
+      "condition": "intrinsics_only",
+      "run_id": "sensor17p_heads_seq-01_intrinsics_only"
+    },
+    {
+      "scene": "chess/seq-03",
+      "condition": "fixed_rgb",
+      "run_id": "sensor17p_chess_seq-03_fixed_rgb"
+    },
+    {
+      "scene": "fire/seq-03",
+      "condition": "released",
+      "run_id": "sensor17p_fire_seq-03_released"
+    },
+    {
+      "scene": "heads/seq-01",
+      "condition": "fixed_rgb",
+      "run_id": "sensor17p_heads_seq-01_fixed_rgb"
+    },
+    {
+      "scene": "chess/seq-03",
+      "condition": "released",
+      "run_id": "sensor17p_chess_seq-03_released"
+    },
+    {
+      "scene": "fire/seq-03",
+      "condition": "frame_only",
+      "run_id": "sensor17p_fire_seq-03_frame_only"
+    }
+  ],
+  "seed": 42,
+  "frames": [
+    50,
+    250,
+    450,
+    650,
+    850
+  ],
+  "steps": 40,
+  "size": 518,
+  "learning_rate": 0.0003,
+  "upstream_commit": "65387333877723cf99086f7f29089379dd50c59a",
+  "dataset_cache_sha256": "ce8f28f03d960fc4fc8be5624823715822a41550bddd421af9ca1942295afb8a",
+  "sources": {
+    "scripts/run_staged_sensor_factorial.py": "ef0ae4d90db5586b91756ac5efe5fd0092a244f1be83936f5c8b57b8915a8bb5",
+    "scripts/evaluate_staged_sensor_factorial.py": "6f06d6790328eab98f430cc0dc0631306056f269c29291d21a0717cf7ef1a8a8",
+    "scripts/run_sensor_readout_replication.py": "df00bf5284fe4d8ec765b93c6897865bd5db0a1614f4d87250203f5b4241ba0a",
+    "scripts/probe_staged_initial_gpu.py": "966678e5c1fbd6e8ed4f140b3913455ea527295668e3aaf79b9f43fd81bbc46c",
+    "scripts/probe_cached_operands_gpu.py": "a22ba3ff5d4d8ffddb6fcfb4233b903fa256f63eda2fc3c6a3d01c009ed1fb34",
+    "scripts/stage_initial_forward.py": "377228e1ffa69d51f0177972a4d815978274d80aec1443f4cc03c2b1c2cebee2",
+    "scripts/frozen_linear_storage.py": "564b57db44b4ef30dc7050f8e8fe36f758fd8eb29c7344e2655c4865e8f4ac5b",
+    "scripts/evaluate_sensor_tco.py": "d1460547363113d3fbafa61640cc5609e766370466a8cf3e43ab1d007764bcf6",
+    "scripts/diagnose_sensor_components.py": "bdcf5ab6f07f969ca637d997295dd7fd174b68f3b70003f38fcaff101c4af926",
+    "manifests/sensor_component_metrics.json": "0ef435f46fe62f648f133a697dd25862664c1c60c2fd81a43fd6e8bc0801b023",
+    "manifests/sensor_tco_readout_replication_evaluation.json": "b714ad269687094c824d91d6f18c9ae30273a4ab607b165388d581361942dd96",
+    "manifests/sensor_tco_readout_replication.json": "35f84754dd41f7a47d03d743b1f1785116d89f1bff30e39db3c960adcec25fe7",
+    "manifests/staged_initial_gpu_probe.json": "3c0db445aa8367cd89bc17def17fd872768a1117148cd2b8d36ca30483ec9e48",
+    "manifests/cached_operand_gpu_probe.json": "b5f7858d4b5698c3e05e90280dc657defad09c2145eb627498db8184539430c4",
+    "patches/tco-selected-readouts.patch": "372bcbf9abcaac7d291013f35ea453bea561f2eb1f2051b683a770d19fc61ec0",
+    "scripts/selected_readouts.py": "9fdabbab3df2a41c33dd1a1ba2fad865c3d3ce4740d1ce776612c2bd7bce42f2",
+    "manifests/sensor_tco_v17.json": "9d833c8ee05831a05c402b0fb129f8bc3cd8e48f00e9f49aa2e39f57a9b8df9a",
+    "results/staged_initial_gpu_probe/evidence.json": "56b6f2bd610d7a42a569d0be19f47ea2965d4564015d6d71ec78f24ea157a58f"
+  },
+  "limit_seconds": 1800,
+  "cloud_usd": 0,
+  "method": "Use original full TCO with the local inactive-module offload. Factor 1: left-compose the physical depth-to-RGB transform with world-to-sensor extrinsics before optimization. Factor 2: supplied K is axis-aware registration focal 525 rather than released nominal. All conditions use the same frozen base checkpoint, adapters initialized from the same seed, objective, 40 Adam updates, image data and evaluation targets.",
+  "engineering": "Use the same upstream code, staged initial inference, selected four readouts and host-backed BF16 projection operands as the successful eight-update probe in every cell. Run each optimizer trajectory in a fresh process. Include original initialization comparisons wherever original evidence exists.",
+  "analysis": "Evaluate released and registered RGB reference separately. Report per-scene accuracy and completeness, mean normals, and mean ratios to matched FP32 initial reconstruction. For 4 adapted cells per scene compute main contrasts and interaction. Compare full correction to unchanged TCO and to post-hoc half-depth for all conditions, direct calibrated and released priors, and initial. Require >=5% lower error vs strongest comparison, no scene >1% worse and no increased harmful scenes at BOTH refs to motivate additional seeds and a noisy matched test. One pilot seed cannot release funds.",
+  "dense_evaluations": 66,
+  "secondary_metrics": "Apply the registered depth and published RGB SfM component diagnostics to all 33 point maps."
+}
