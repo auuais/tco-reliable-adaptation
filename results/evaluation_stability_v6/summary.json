@@ -1,0 +1,3318 @@
+{
+  "study_id": "evaluation_stability_v6",
+  "manifest_sha256": "890a6f180d86749f9e1f47d38f777a5f8eaa50f6e782bee7456a2d0d2afed24d",
+  "completed_evaluations": 24,
+  "all_rows": [
+    {
+      "run_id": "prior5_heads_seq-01_visual_seed123_t1_r0",
+      "status": "complete",
+      "seconds": 70.87786343900007,
+      "source_run_id": "prior5_heads_seq-01_visual_seed123",
+      "threads": 1,
+      "seed": 123,
+      "python": "3.11.13 | packaged by conda-forge | (main, Jun  4 2025, 14:48:23) [GCC 13.3.0]",
+      "numpy": "2.1.2",
+      "torch": "2.7.1+cu128",
+      "open3d": "0.19.0",
+      "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+      "cpu": "x86_64",
+      "threadpools": [
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+          "version": "0.3.28",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-ff651d7f.so",
+          "version": "0.3.27",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libopenblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/opencv_python.libs/libopenblas-r0-f650aae0.3.3.so",
+          "version": null,
+          "threading_layer": "disabled",
+          "architecture": "Prescott"
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scikit_learn.libs/libgomp-e985bcbb.so.1.0.0",
+          "version": null
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/torch/lib/libgomp.so.1",
+          "version": null
+        }
+      ],
+      "prediction_sha256": "96d5be2505096caa98242735cfa60125ab087ab06caf73413a8e558288eaab60",
+      "inputs_file_sha256": "1fb46b236f773b705b7037d5dc5502811542c2d30a9591be5b00c273cd614f3a",
+      "research_commit": "c0996e4be5ed2243fbdca1ac87c8f85026960d79",
+      "manifest_sha256": "890a6f180d86749f9e1f47d38f777a5f8eaa50f6e782bee7456a2d0d2afed24d",
+      "metrics": {
+        "accuracy_mean_m": 0.09059317130616983,
+        "accuracy_median_m": 0.039625687283687164,
+        "completeness_mean_m": 0.1783343957133172,
+        "completeness_median_m": 0.10061615441130697,
+        "normal_consistency_mean": 0.48298152112636483,
+        "normal_consistency_median": 0.4662142470180619,
+        "nc1_mean": 0.5047749823445769,
+        "nc2_mean": 0.46118805990815276,
+        "valid_points": 688882,
+        "similarity_scale": 1.8713362286712305,
+        "similarity_rotation": [
+          [
+            0.8468765995827746,
+            -0.4615836552232201,
+            -0.2640843696811453
+          ],
+          [
+            0.5155953565360049,
+            0.8343062266001372,
+            0.195178248211092
+          ],
+          [
+            0.1302361447434113,
+            -0.30145256589886893,
+            0.9445448094798691
+          ]
+        ],
+        "similarity_translation": [
+          [
+            0.28183215618526186
+          ],
+          [
+            -0.25202589155426114
+          ],
+          [
+            -1.023850114868972
+          ]
+        ],
+        "icp_transformation": [
+          [
+            0.9964465189706778,
+            -0.08263996486027483,
+            -0.016277931045151732,
+            0.00565320646742472
+          ],
+          [
+            0.07777089000493596,
+            0.9769218859744556,
+            -0.19893546031806641,
+            0.21725147832912278
+          ],
+          [
+            0.0323422865465396,
+            0.19696259774894737,
+            0.9798773962026728,
+            0.0013261050781041286
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+      }
+    },
+    {
+      "run_id": "prior5_heads_seq-01_visual_seed123_t1_r1",
+      "status": "complete",
+      "seconds": 74.13286409400007,
+      "source_run_id": "prior5_heads_seq-01_visual_seed123",
+      "threads": 1,
+      "seed": 123,
+      "python": "3.11.13 | packaged by conda-forge | (main, Jun  4 2025, 14:48:23) [GCC 13.3.0]",
+      "numpy": "2.1.2",
+      "torch": "2.7.1+cu128",
+      "open3d": "0.19.0",
+      "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+      "cpu": "x86_64",
+      "threadpools": [
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+          "version": "0.3.28",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-ff651d7f.so",
+          "version": "0.3.27",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libopenblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/opencv_python.libs/libopenblas-r0-f650aae0.3.3.so",
+          "version": null,
+          "threading_layer": "disabled",
+          "architecture": "Prescott"
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scikit_learn.libs/libgomp-e985bcbb.so.1.0.0",
+          "version": null
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/torch/lib/libgomp.so.1",
+          "version": null
+        }
+      ],
+      "prediction_sha256": "96d5be2505096caa98242735cfa60125ab087ab06caf73413a8e558288eaab60",
+      "inputs_file_sha256": "1fb46b236f773b705b7037d5dc5502811542c2d30a9591be5b00c273cd614f3a",
+      "research_commit": "c0996e4be5ed2243fbdca1ac87c8f85026960d79",
+      "manifest_sha256": "890a6f180d86749f9e1f47d38f777a5f8eaa50f6e782bee7456a2d0d2afed24d",
+      "metrics": {
+        "accuracy_mean_m": 0.09059317130616983,
+        "accuracy_median_m": 0.039625687283687164,
+        "completeness_mean_m": 0.1783343957133172,
+        "completeness_median_m": 0.10061615441130697,
+        "normal_consistency_mean": 0.48298152112636483,
+        "normal_consistency_median": 0.4662142470180619,
+        "nc1_mean": 0.5047749823445769,
+        "nc2_mean": 0.46118805990815276,
+        "valid_points": 688882,
+        "similarity_scale": 1.8713362286712305,
+        "similarity_rotation": [
+          [
+            0.8468765995827746,
+            -0.4615836552232201,
+            -0.2640843696811453
+          ],
+          [
+            0.5155953565360049,
+            0.8343062266001372,
+            0.195178248211092
+          ],
+          [
+            0.1302361447434113,
+            -0.30145256589886893,
+            0.9445448094798691
+          ]
+        ],
+        "similarity_translation": [
+          [
+            0.28183215618526186
+          ],
+          [
+            -0.25202589155426114
+          ],
+          [
+            -1.023850114868972
+          ]
+        ],
+        "icp_transformation": [
+          [
+            0.9964465189706778,
+            -0.08263996486027483,
+            -0.016277931045151732,
+            0.00565320646742472
+          ],
+          [
+            0.07777089000493596,
+            0.9769218859744556,
+            -0.19893546031806641,
+            0.21725147832912278
+          ],
+          [
+            0.0323422865465396,
+            0.19696259774894737,
+            0.9798773962026728,
+            0.0013261050781041286
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+      }
+    },
+    {
+      "run_id": "prior5_heads_seq-01_visual_seed123_t1_r2",
+      "status": "complete",
+      "seconds": 92.42973874699965,
+      "source_run_id": "prior5_heads_seq-01_visual_seed123",
+      "threads": 1,
+      "seed": 123,
+      "python": "3.11.13 | packaged by conda-forge | (main, Jun  4 2025, 14:48:23) [GCC 13.3.0]",
+      "numpy": "2.1.2",
+      "torch": "2.7.1+cu128",
+      "open3d": "0.19.0",
+      "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+      "cpu": "x86_64",
+      "threadpools": [
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+          "version": "0.3.28",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-ff651d7f.so",
+          "version": "0.3.27",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libopenblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/opencv_python.libs/libopenblas-r0-f650aae0.3.3.so",
+          "version": null,
+          "threading_layer": "disabled",
+          "architecture": "Prescott"
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scikit_learn.libs/libgomp-e985bcbb.so.1.0.0",
+          "version": null
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/torch/lib/libgomp.so.1",
+          "version": null
+        }
+      ],
+      "prediction_sha256": "96d5be2505096caa98242735cfa60125ab087ab06caf73413a8e558288eaab60",
+      "inputs_file_sha256": "1fb46b236f773b705b7037d5dc5502811542c2d30a9591be5b00c273cd614f3a",
+      "research_commit": "c0996e4be5ed2243fbdca1ac87c8f85026960d79",
+      "manifest_sha256": "890a6f180d86749f9e1f47d38f777a5f8eaa50f6e782bee7456a2d0d2afed24d",
+      "metrics": {
+        "accuracy_mean_m": 0.09059317130616983,
+        "accuracy_median_m": 0.039625687283687164,
+        "completeness_mean_m": 0.1783343957133172,
+        "completeness_median_m": 0.10061615441130697,
+        "normal_consistency_mean": 0.48298152112636483,
+        "normal_consistency_median": 0.4662142470180619,
+        "nc1_mean": 0.5047749823445769,
+        "nc2_mean": 0.46118805990815276,
+        "valid_points": 688882,
+        "similarity_scale": 1.8713362286712305,
+        "similarity_rotation": [
+          [
+            0.8468765995827746,
+            -0.4615836552232201,
+            -0.2640843696811453
+          ],
+          [
+            0.5155953565360049,
+            0.8343062266001372,
+            0.195178248211092
+          ],
+          [
+            0.1302361447434113,
+            -0.30145256589886893,
+            0.9445448094798691
+          ]
+        ],
+        "similarity_translation": [
+          [
+            0.28183215618526186
+          ],
+          [
+            -0.25202589155426114
+          ],
+          [
+            -1.023850114868972
+          ]
+        ],
+        "icp_transformation": [
+          [
+            0.9964465189706778,
+            -0.08263996486027483,
+            -0.016277931045151732,
+            0.00565320646742472
+          ],
+          [
+            0.07777089000493596,
+            0.9769218859744556,
+            -0.19893546031806641,
+            0.21725147832912278
+          ],
+          [
+            0.0323422865465396,
+            0.19696259774894737,
+            0.9798773962026728,
+            0.0013261050781041286
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+      }
+    },
+    {
+      "run_id": "prior5_heads_seq-01_visual_seed123_t4_r0",
+      "status": "complete",
+      "seconds": 52.6762042979999,
+      "source_run_id": "prior5_heads_seq-01_visual_seed123",
+      "threads": 4,
+      "seed": 123,
+      "python": "3.11.13 | packaged by conda-forge | (main, Jun  4 2025, 14:48:23) [GCC 13.3.0]",
+      "numpy": "2.1.2",
+      "torch": "2.7.1+cu128",
+      "open3d": "0.19.0",
+      "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+      "cpu": "x86_64",
+      "threadpools": [
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 4,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+          "version": "0.3.28",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 4,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-ff651d7f.so",
+          "version": "0.3.27",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libopenblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/opencv_python.libs/libopenblas-r0-f650aae0.3.3.so",
+          "version": null,
+          "threading_layer": "disabled",
+          "architecture": "Prescott"
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 4,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scikit_learn.libs/libgomp-e985bcbb.so.1.0.0",
+          "version": null
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 4,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/torch/lib/libgomp.so.1",
+          "version": null
+        }
+      ],
+      "prediction_sha256": "96d5be2505096caa98242735cfa60125ab087ab06caf73413a8e558288eaab60",
+      "inputs_file_sha256": "1fb46b236f773b705b7037d5dc5502811542c2d30a9591be5b00c273cd614f3a",
+      "research_commit": "c0996e4be5ed2243fbdca1ac87c8f85026960d79",
+      "manifest_sha256": "890a6f180d86749f9e1f47d38f777a5f8eaa50f6e782bee7456a2d0d2afed24d",
+      "metrics": {
+        "accuracy_mean_m": 0.0905931713061793,
+        "accuracy_median_m": 0.039625687283666035,
+        "completeness_mean_m": 0.17833439571331264,
+        "completeness_median_m": 0.10061615441133716,
+        "normal_consistency_mean": 0.48298152112885484,
+        "normal_consistency_median": 0.4662142470750634,
+        "nc1_mean": 0.5047749823447314,
+        "nc2_mean": 0.46118805991297823,
+        "valid_points": 688882,
+        "similarity_scale": 1.8713362286712305,
+        "similarity_rotation": [
+          [
+            0.8468765995827746,
+            -0.4615836552232201,
+            -0.2640843696811453
+          ],
+          [
+            0.5155953565360049,
+            0.8343062266001372,
+            0.195178248211092
+          ],
+          [
+            0.1302361447434113,
+            -0.30145256589886893,
+            0.9445448094798691
+          ]
+        ],
+        "similarity_translation": [
+          [
+            0.28183215618526186
+          ],
+          [
+            -0.25202589155426114
+          ],
+          [
+            -1.023850114868972
+          ]
+        ],
+        "icp_transformation": [
+          [
+            0.996446518970677,
+            -0.08263996486027446,
+            -0.016277931045152065,
+            0.005653206467443421
+          ],
+          [
+            0.07777089000493609,
+            0.9769218859744581,
+            -0.19893546031806622,
+            0.21725147832910918
+          ],
+          [
+            0.0323422865465394,
+            0.19696259774894742,
+            0.9798773962026737,
+            0.0013261050782111899
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+      }
+    },
+    {
+      "run_id": "prior5_heads_seq-01_visual_seed123_t4_r1",
+      "status": "complete",
+      "seconds": 53.473382288999346,
+      "source_run_id": "prior5_heads_seq-01_visual_seed123",
+      "threads": 4,
+      "seed": 123,
+      "python": "3.11.13 | packaged by conda-forge | (main, Jun  4 2025, 14:48:23) [GCC 13.3.0]",
+      "numpy": "2.1.2",
+      "torch": "2.7.1+cu128",
+      "open3d": "0.19.0",
+      "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+      "cpu": "x86_64",
+      "threadpools": [
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 4,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+          "version": "0.3.28",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 4,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-ff651d7f.so",
+          "version": "0.3.27",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libopenblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/opencv_python.libs/libopenblas-r0-f650aae0.3.3.so",
+          "version": null,
+          "threading_layer": "disabled",
+          "architecture": "Prescott"
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 4,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scikit_learn.libs/libgomp-e985bcbb.so.1.0.0",
+          "version": null
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 4,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/torch/lib/libgomp.so.1",
+          "version": null
+        }
+      ],
+      "prediction_sha256": "96d5be2505096caa98242735cfa60125ab087ab06caf73413a8e558288eaab60",
+      "inputs_file_sha256": "1fb46b236f773b705b7037d5dc5502811542c2d30a9591be5b00c273cd614f3a",
+      "research_commit": "c0996e4be5ed2243fbdca1ac87c8f85026960d79",
+      "manifest_sha256": "890a6f180d86749f9e1f47d38f777a5f8eaa50f6e782bee7456a2d0d2afed24d",
+      "metrics": {
+        "accuracy_mean_m": 0.09059317130617948,
+        "accuracy_median_m": 0.03962568728366585,
+        "completeness_mean_m": 0.17833439571331255,
+        "completeness_median_m": 0.10061615441133726,
+        "normal_consistency_mean": 0.4829815211259544,
+        "normal_consistency_median": 0.46621424706136727,
+        "nc1_mean": 0.5047749823443093,
+        "nc2_mean": 0.4611880599075995,
+        "valid_points": 688882,
+        "similarity_scale": 1.8713362286712305,
+        "similarity_rotation": [
+          [
+            0.8468765995827746,
+            -0.4615836552232201,
+            -0.2640843696811453
+          ],
+          [
+            0.5155953565360049,
+            0.8343062266001372,
+            0.195178248211092
+          ],
+          [
+            0.1302361447434113,
+            -0.30145256589886893,
+            0.9445448094798691
+          ]
+        ],
+        "similarity_translation": [
+          [
+            0.28183215618526186
+          ],
+          [
+            -0.25202589155426114
+          ],
+          [
+            -1.023850114868972
+          ]
+        ],
+        "icp_transformation": [
+          [
+            0.9964465189706776,
+            -0.08263996486027486,
+            -0.016277931045152058,
+            0.005653206467443215
+          ],
+          [
+            0.07777089000493578,
+            0.9769218859744566,
+            -0.19893546031806666,
+            0.21725147832910954
+          ],
+          [
+            0.0323422865465395,
+            0.196962597748948,
+            0.9798773962026752,
+            0.0013261050782104051
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+      }
+    },
+    {
+      "run_id": "prior5_heads_seq-01_visual_seed123_t4_r2",
+      "status": "complete",
+      "seconds": 54.60930605699923,
+      "source_run_id": "prior5_heads_seq-01_visual_seed123",
+      "threads": 4,
+      "seed": 123,
+      "python": "3.11.13 | packaged by conda-forge | (main, Jun  4 2025, 14:48:23) [GCC 13.3.0]",
+      "numpy": "2.1.2",
+      "torch": "2.7.1+cu128",
+      "open3d": "0.19.0",
+      "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+      "cpu": "x86_64",
+      "threadpools": [
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 4,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+          "version": "0.3.28",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 4,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-ff651d7f.so",
+          "version": "0.3.27",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libopenblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/opencv_python.libs/libopenblas-r0-f650aae0.3.3.so",
+          "version": null,
+          "threading_layer": "disabled",
+          "architecture": "Prescott"
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 4,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scikit_learn.libs/libgomp-e985bcbb.so.1.0.0",
+          "version": null
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 4,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/torch/lib/libgomp.so.1",
+          "version": null
+        }
+      ],
+      "prediction_sha256": "96d5be2505096caa98242735cfa60125ab087ab06caf73413a8e558288eaab60",
+      "inputs_file_sha256": "1fb46b236f773b705b7037d5dc5502811542c2d30a9591be5b00c273cd614f3a",
+      "research_commit": "c0996e4be5ed2243fbdca1ac87c8f85026960d79",
+      "manifest_sha256": "890a6f180d86749f9e1f47d38f777a5f8eaa50f6e782bee7456a2d0d2afed24d",
+      "metrics": {
+        "accuracy_mean_m": 0.09059317130617946,
+        "accuracy_median_m": 0.039625687283665834,
+        "completeness_mean_m": 0.17833439571331242,
+        "completeness_median_m": 0.1006161544113372,
+        "normal_consistency_mean": 0.4829815211262318,
+        "normal_consistency_median": 0.4662142470834437,
+        "nc1_mean": 0.5047749823444274,
+        "nc2_mean": 0.4611880599080363,
+        "valid_points": 688882,
+        "similarity_scale": 1.8713362286712305,
+        "similarity_rotation": [
+          [
+            0.8468765995827746,
+            -0.4615836552232201,
+            -0.2640843696811453
+          ],
+          [
+            0.5155953565360049,
+            0.8343062266001372,
+            0.195178248211092
+          ],
+          [
+            0.1302361447434113,
+            -0.30145256589886893,
+            0.9445448094798691
+          ]
+        ],
+        "similarity_translation": [
+          [
+            0.28183215618526186
+          ],
+          [
+            -0.25202589155426114
+          ],
+          [
+            -1.023850114868972
+          ]
+        ],
+        "icp_transformation": [
+          [
+            0.9964465189706785,
+            -0.08263996486027476,
+            -0.016277931045151926,
+            0.005653206467442589
+          ],
+          [
+            0.0777708900049357,
+            0.9769218859744566,
+            -0.19893546031806675,
+            0.21725147832910957
+          ],
+          [
+            0.032342286546539784,
+            0.19696259774894861,
+            0.9798773962026756,
+            0.0013261050782099424
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+      }
+    },
+    {
+      "run_id": "prior5_fire_seq-03_visual_seed42_t1_r0",
+      "status": "complete",
+      "seconds": 33.162237418000586,
+      "source_run_id": "prior5_fire_seq-03_visual_seed42",
+      "threads": 1,
+      "seed": 42,
+      "python": "3.11.13 | packaged by conda-forge | (main, Jun  4 2025, 14:48:23) [GCC 13.3.0]",
+      "numpy": "2.1.2",
+      "torch": "2.7.1+cu128",
+      "open3d": "0.19.0",
+      "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+      "cpu": "x86_64",
+      "threadpools": [
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scikit_learn.libs/libgomp-e985bcbb.so.1.0.0",
+          "version": null
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/torch/lib/libgomp.so.1",
+          "version": null
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+          "version": "0.3.28",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-ff651d7f.so",
+          "version": "0.3.27",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libopenblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/opencv_python.libs/libopenblas-r0-f650aae0.3.3.so",
+          "version": null,
+          "threading_layer": "disabled",
+          "architecture": "Prescott"
+        }
+      ],
+      "prediction_sha256": "aed7f220205972afc7eb0566bdb63106c4f7481975eaf5ab4e18dd9b69de1dad",
+      "inputs_file_sha256": "e5d39904c63610ca0d0a0ba288afcb2ec7704503e935b4ceffc10c667d799a24",
+      "research_commit": "c0996e4be5ed2243fbdca1ac87c8f85026960d79",
+      "manifest_sha256": "890a6f180d86749f9e1f47d38f777a5f8eaa50f6e782bee7456a2d0d2afed24d",
+      "metrics": {
+        "accuracy_mean_m": 0.019796562239212348,
+        "accuracy_median_m": 0.010849378995221452,
+        "completeness_mean_m": 0.018566880885479812,
+        "completeness_median_m": 0.01202742926487274,
+        "normal_consistency_mean": 0.7439498456471316,
+        "normal_consistency_median": 0.8635200626073396,
+        "nc1_mean": 0.7532005419704952,
+        "nc2_mean": 0.7346991493237679,
+        "valid_points": 697344,
+        "similarity_scale": 2.682938704191983,
+        "similarity_rotation": [
+          [
+            0.9746152777918954,
+            -0.21867020663422698,
+            0.04804582214065635
+          ],
+          [
+            0.1887870219551732,
+            0.9180349395838678,
+            0.34867077601161656
+          ],
+          [
+            -0.12035165406393131,
+            -0.3307494375411555,
+            0.9360129747659943
+          ]
+        ],
+        "similarity_translation": [
+          [
+            0.01680494689284112
+          ],
+          [
+            -0.8089143974935104
+          ],
+          [
+            -0.4649034018902054
+          ]
+        ],
+        "icp_transformation": [
+          [
+            0.9999446774323876,
+            -0.003309383441947117,
+            -0.00998449076723984,
+            0.006378413990416738
+          ],
+          [
+            0.003278232828758211,
+            0.9999897135116234,
+            -0.0031346547602041867,
+            0.003443826988855891
+          ],
+          [
+            0.009994761836450766,
+            0.0031017498576395184,
+            0.9999452404425248,
+            0.0022578814989621405
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+      }
+    },
+    {
+      "run_id": "prior5_fire_seq-03_visual_seed42_t1_r1",
+      "status": "complete",
+      "seconds": 28.231588718999774,
+      "source_run_id": "prior5_fire_seq-03_visual_seed42",
+      "threads": 1,
+      "seed": 42,
+      "python": "3.11.13 | packaged by conda-forge | (main, Jun  4 2025, 14:48:23) [GCC 13.3.0]",
+      "numpy": "2.1.2",
+      "torch": "2.7.1+cu128",
+      "open3d": "0.19.0",
+      "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+      "cpu": "x86_64",
+      "threadpools": [
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scikit_learn.libs/libgomp-e985bcbb.so.1.0.0",
+          "version": null
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/torch/lib/libgomp.so.1",
+          "version": null
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+          "version": "0.3.28",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-ff651d7f.so",
+          "version": "0.3.27",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libopenblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/opencv_python.libs/libopenblas-r0-f650aae0.3.3.so",
+          "version": null,
+          "threading_layer": "disabled",
+          "architecture": "Prescott"
+        }
+      ],
+      "prediction_sha256": "aed7f220205972afc7eb0566bdb63106c4f7481975eaf5ab4e18dd9b69de1dad",
+      "inputs_file_sha256": "e5d39904c63610ca0d0a0ba288afcb2ec7704503e935b4ceffc10c667d799a24",
+      "research_commit": "c0996e4be5ed2243fbdca1ac87c8f85026960d79",
+      "manifest_sha256": "890a6f180d86749f9e1f47d38f777a5f8eaa50f6e782bee7456a2d0d2afed24d",
+      "metrics": {
+        "accuracy_mean_m": 0.019796562239212348,
+        "accuracy_median_m": 0.010849378995221452,
+        "completeness_mean_m": 0.018566880885479812,
+        "completeness_median_m": 0.01202742926487274,
+        "normal_consistency_mean": 0.7439498456471316,
+        "normal_consistency_median": 0.8635200626073396,
+        "nc1_mean": 0.7532005419704952,
+        "nc2_mean": 0.7346991493237679,
+        "valid_points": 697344,
+        "similarity_scale": 2.682938704191983,
+        "similarity_rotation": [
+          [
+            0.9746152777918954,
+            -0.21867020663422698,
+            0.04804582214065635
+          ],
+          [
+            0.1887870219551732,
+            0.9180349395838678,
+            0.34867077601161656
+          ],
+          [
+            -0.12035165406393131,
+            -0.3307494375411555,
+            0.9360129747659943
+          ]
+        ],
+        "similarity_translation": [
+          [
+            0.01680494689284112
+          ],
+          [
+            -0.8089143974935104
+          ],
+          [
+            -0.4649034018902054
+          ]
+        ],
+        "icp_transformation": [
+          [
+            0.9999446774323876,
+            -0.003309383441947117,
+            -0.00998449076723984,
+            0.006378413990416738
+          ],
+          [
+            0.003278232828758211,
+            0.9999897135116234,
+            -0.0031346547602041867,
+            0.003443826988855891
+          ],
+          [
+            0.009994761836450766,
+            0.0031017498576395184,
+            0.9999452404425248,
+            0.0022578814989621405
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+      }
+    },
+    {
+      "run_id": "prior5_fire_seq-03_visual_seed42_t1_r2",
+      "status": "complete",
+      "seconds": 27.11866432900024,
+      "source_run_id": "prior5_fire_seq-03_visual_seed42",
+      "threads": 1,
+      "seed": 42,
+      "python": "3.11.13 | packaged by conda-forge | (main, Jun  4 2025, 14:48:23) [GCC 13.3.0]",
+      "numpy": "2.1.2",
+      "torch": "2.7.1+cu128",
+      "open3d": "0.19.0",
+      "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+      "cpu": "x86_64",
+      "threadpools": [
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scikit_learn.libs/libgomp-e985bcbb.so.1.0.0",
+          "version": null
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/torch/lib/libgomp.so.1",
+          "version": null
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+          "version": "0.3.28",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-ff651d7f.so",
+          "version": "0.3.27",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libopenblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/opencv_python.libs/libopenblas-r0-f650aae0.3.3.so",
+          "version": null,
+          "threading_layer": "disabled",
+          "architecture": "Prescott"
+        }
+      ],
+      "prediction_sha256": "aed7f220205972afc7eb0566bdb63106c4f7481975eaf5ab4e18dd9b69de1dad",
+      "inputs_file_sha256": "e5d39904c63610ca0d0a0ba288afcb2ec7704503e935b4ceffc10c667d799a24",
+      "research_commit": "c0996e4be5ed2243fbdca1ac87c8f85026960d79",
+      "manifest_sha256": "890a6f180d86749f9e1f47d38f777a5f8eaa50f6e782bee7456a2d0d2afed24d",
+      "metrics": {
+        "accuracy_mean_m": 0.019796562239212348,
+        "accuracy_median_m": 0.010849378995221452,
+        "completeness_mean_m": 0.018566880885479812,
+        "completeness_median_m": 0.01202742926487274,
+        "normal_consistency_mean": 0.7439498456471316,
+        "normal_consistency_median": 0.8635200626073396,
+        "nc1_mean": 0.7532005419704952,
+        "nc2_mean": 0.7346991493237679,
+        "valid_points": 697344,
+        "similarity_scale": 2.682938704191983,
+        "similarity_rotation": [
+          [
+            0.9746152777918954,
+            -0.21867020663422698,
+            0.04804582214065635
+          ],
+          [
+            0.1887870219551732,
+            0.9180349395838678,
+            0.34867077601161656
+          ],
+          [
+            -0.12035165406393131,
+            -0.3307494375411555,
+            0.9360129747659943
+          ]
+        ],
+        "similarity_translation": [
+          [
+            0.01680494689284112
+          ],
+          [
+            -0.8089143974935104
+          ],
+          [
+            -0.4649034018902054
+          ]
+        ],
+        "icp_transformation": [
+          [
+            0.9999446774323876,
+            -0.003309383441947117,
+            -0.00998449076723984,
+            0.006378413990416738
+          ],
+          [
+            0.003278232828758211,
+            0.9999897135116234,
+            -0.0031346547602041867,
+            0.003443826988855891
+          ],
+          [
+            0.009994761836450766,
+            0.0031017498576395184,
+            0.9999452404425248,
+            0.0022578814989621405
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+      }
+    },
+    {
+      "run_id": "prior5_fire_seq-03_visual_seed42_t4_r0",
+      "status": "complete",
+      "seconds": 12.163161565999872,
+      "source_run_id": "prior5_fire_seq-03_visual_seed42",
+      "threads": 4,
+      "seed": 42,
+      "python": "3.11.13 | packaged by conda-forge | (main, Jun  4 2025, 14:48:23) [GCC 13.3.0]",
+      "numpy": "2.1.2",
+      "torch": "2.7.1+cu128",
+      "open3d": "0.19.0",
+      "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+      "cpu": "x86_64",
+      "threadpools": [
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 4,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scikit_learn.libs/libgomp-e985bcbb.so.1.0.0",
+          "version": null
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 4,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/torch/lib/libgomp.so.1",
+          "version": null
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 4,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+          "version": "0.3.28",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 4,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-ff651d7f.so",
+          "version": "0.3.27",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libopenblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/opencv_python.libs/libopenblas-r0-f650aae0.3.3.so",
+          "version": null,
+          "threading_layer": "disabled",
+          "architecture": "Prescott"
+        }
+      ],
+      "prediction_sha256": "aed7f220205972afc7eb0566bdb63106c4f7481975eaf5ab4e18dd9b69de1dad",
+      "inputs_file_sha256": "e5d39904c63610ca0d0a0ba288afcb2ec7704503e935b4ceffc10c667d799a24",
+      "research_commit": "c0996e4be5ed2243fbdca1ac87c8f85026960d79",
+      "manifest_sha256": "890a6f180d86749f9e1f47d38f777a5f8eaa50f6e782bee7456a2d0d2afed24d",
+      "metrics": {
+        "accuracy_mean_m": 0.019796562239214124,
+        "accuracy_median_m": 0.010849378995224021,
+        "completeness_mean_m": 0.01856688088547185,
+        "completeness_median_m": 0.012027429264597034,
+        "normal_consistency_mean": 0.743949845647106,
+        "normal_consistency_median": 0.8635200625943342,
+        "nc1_mean": 0.7532005419705773,
+        "nc2_mean": 0.7346991493236347,
+        "valid_points": 697344,
+        "similarity_scale": 2.682938704191983,
+        "similarity_rotation": [
+          [
+            0.9746152777918954,
+            -0.21867020663422698,
+            0.04804582214065635
+          ],
+          [
+            0.1887870219551732,
+            0.9180349395838678,
+            0.34867077601161656
+          ],
+          [
+            -0.12035165406393131,
+            -0.3307494375411555,
+            0.9360129747659943
+          ]
+        ],
+        "similarity_translation": [
+          [
+            0.01680494689284112
+          ],
+          [
+            -0.8089143974935104
+          ],
+          [
+            -0.4649034018902054
+          ]
+        ],
+        "icp_transformation": [
+          [
+            0.9999446774323903,
+            -0.003309383441947234,
+            -0.009984490767240136,
+            0.006378413990414978
+          ],
+          [
+            0.0032782328287588145,
+            0.9999897135116278,
+            -0.0031346547602043727,
+            0.003443826988853203
+          ],
+          [
+            0.009994761836450901,
+            0.003101749857640024,
+            0.9999452404425261,
+            0.002257881498436771
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+      }
+    },
+    {
+      "run_id": "prior5_fire_seq-03_visual_seed42_t4_r1",
+      "status": "complete",
+      "seconds": 12.218362530000377,
+      "source_run_id": "prior5_fire_seq-03_visual_seed42",
+      "threads": 4,
+      "seed": 42,
+      "python": "3.11.13 | packaged by conda-forge | (main, Jun  4 2025, 14:48:23) [GCC 13.3.0]",
+      "numpy": "2.1.2",
+      "torch": "2.7.1+cu128",
+      "open3d": "0.19.0",
+      "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+      "cpu": "x86_64",
+      "threadpools": [
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 4,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scikit_learn.libs/libgomp-e985bcbb.so.1.0.0",
+          "version": null
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 4,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/torch/lib/libgomp.so.1",
+          "version": null
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 4,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+          "version": "0.3.28",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 4,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-ff651d7f.so",
+          "version": "0.3.27",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libopenblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/opencv_python.libs/libopenblas-r0-f650aae0.3.3.so",
+          "version": null,
+          "threading_layer": "disabled",
+          "architecture": "Prescott"
+        }
+      ],
+      "prediction_sha256": "aed7f220205972afc7eb0566bdb63106c4f7481975eaf5ab4e18dd9b69de1dad",
+      "inputs_file_sha256": "e5d39904c63610ca0d0a0ba288afcb2ec7704503e935b4ceffc10c667d799a24",
+      "research_commit": "c0996e4be5ed2243fbdca1ac87c8f85026960d79",
+      "manifest_sha256": "890a6f180d86749f9e1f47d38f777a5f8eaa50f6e782bee7456a2d0d2afed24d",
+      "metrics": {
+        "accuracy_mean_m": 0.019796562239212796,
+        "accuracy_median_m": 0.010849378995224684,
+        "completeness_mean_m": 0.018566880885479076,
+        "completeness_median_m": 0.012027429264840166,
+        "normal_consistency_mean": 0.7439498456470022,
+        "normal_consistency_median": 0.8635200626034867,
+        "nc1_mean": 0.7532005419705163,
+        "nc2_mean": 0.734699149323488,
+        "valid_points": 697344,
+        "similarity_scale": 2.682938704191983,
+        "similarity_rotation": [
+          [
+            0.9746152777918954,
+            -0.21867020663422698,
+            0.04804582214065635
+          ],
+          [
+            0.1887870219551732,
+            0.9180349395838678,
+            0.34867077601161656
+          ],
+          [
+            -0.12035165406393131,
+            -0.3307494375411555,
+            0.9360129747659943
+          ]
+        ],
+        "similarity_translation": [
+          [
+            0.01680494689284112
+          ],
+          [
+            -0.8089143974935104
+          ],
+          [
+            -0.4649034018902054
+          ]
+        ],
+        "icp_transformation": [
+          [
+            0.9999446774323895,
+            -0.0033093834419470323,
+            -0.00998449076723977,
+            0.006378413990412858
+          ],
+          [
+            0.0032782328287587845,
+            0.9999897135116271,
+            -0.0031346547602052062,
+            0.0034438269888583677
+          ],
+          [
+            0.009994761836450284,
+            0.003101749857639247,
+            0.9999452404425266,
+            0.0022578814988995066
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+      }
+    },
+    {
+      "run_id": "prior5_fire_seq-03_visual_seed42_t4_r2",
+      "status": "complete",
+      "seconds": 12.261462524999843,
+      "source_run_id": "prior5_fire_seq-03_visual_seed42",
+      "threads": 4,
+      "seed": 42,
+      "python": "3.11.13 | packaged by conda-forge | (main, Jun  4 2025, 14:48:23) [GCC 13.3.0]",
+      "numpy": "2.1.2",
+      "torch": "2.7.1+cu128",
+      "open3d": "0.19.0",
+      "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+      "cpu": "x86_64",
+      "threadpools": [
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 4,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scikit_learn.libs/libgomp-e985bcbb.so.1.0.0",
+          "version": null
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 4,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/torch/lib/libgomp.so.1",
+          "version": null
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 4,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+          "version": "0.3.28",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 4,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-ff651d7f.so",
+          "version": "0.3.27",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libopenblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/opencv_python.libs/libopenblas-r0-f650aae0.3.3.so",
+          "version": null,
+          "threading_layer": "disabled",
+          "architecture": "Prescott"
+        }
+      ],
+      "prediction_sha256": "aed7f220205972afc7eb0566bdb63106c4f7481975eaf5ab4e18dd9b69de1dad",
+      "inputs_file_sha256": "e5d39904c63610ca0d0a0ba288afcb2ec7704503e935b4ceffc10c667d799a24",
+      "research_commit": "c0996e4be5ed2243fbdca1ac87c8f85026960d79",
+      "manifest_sha256": "890a6f180d86749f9e1f47d38f777a5f8eaa50f6e782bee7456a2d0d2afed24d",
+      "metrics": {
+        "accuracy_mean_m": 0.01979656223921361,
+        "accuracy_median_m": 0.010849378995227213,
+        "completeness_mean_m": 0.01856688088547431,
+        "completeness_median_m": 0.012027429264676176,
+        "normal_consistency_mean": 0.7439498456471474,
+        "normal_consistency_median": 0.8635200625993472,
+        "nc1_mean": 0.753200541970624,
+        "nc2_mean": 0.7346991493236706,
+        "valid_points": 697344,
+        "similarity_scale": 2.682938704191983,
+        "similarity_rotation": [
+          [
+            0.9746152777918954,
+            -0.21867020663422698,
+            0.04804582214065635
+          ],
+          [
+            0.1887870219551732,
+            0.9180349395838678,
+            0.34867077601161656
+          ],
+          [
+            -0.12035165406393131,
+            -0.3307494375411555,
+            0.9360129747659943
+          ]
+        ],
+        "similarity_translation": [
+          [
+            0.01680494689284112
+          ],
+          [
+            -0.8089143974935104
+          ],
+          [
+            -0.4649034018902054
+          ]
+        ],
+        "icp_transformation": [
+          [
+            0.9999446774323905,
+            -0.0033093834419472635,
+            -0.009984490767239932,
+            0.006378413990409799
+          ],
+          [
+            0.0032782328287581605,
+            0.9999897135116261,
+            -0.003134654760204703,
+            0.0034438269888534753
+          ],
+          [
+            0.009994761836450951,
+            0.0031017498576408533,
+            0.9999452404425276,
+            0.0022578814985879827
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+      }
+    },
+    {
+      "run_id": "prior5_fire_seq-03_both_seed42_t1_r0",
+      "status": "complete",
+      "seconds": 33.000433845999396,
+      "source_run_id": "prior5_fire_seq-03_both_seed42",
+      "threads": 1,
+      "seed": 42,
+      "python": "3.11.13 | packaged by conda-forge | (main, Jun  4 2025, 14:48:23) [GCC 13.3.0]",
+      "numpy": "2.1.2",
+      "torch": "2.7.1+cu128",
+      "open3d": "0.19.0",
+      "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+      "cpu": "x86_64",
+      "threadpools": [
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scikit_learn.libs/libgomp-e985bcbb.so.1.0.0",
+          "version": null
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/torch/lib/libgomp.so.1",
+          "version": null
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+          "version": "0.3.28",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-ff651d7f.so",
+          "version": "0.3.27",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libopenblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/opencv_python.libs/libopenblas-r0-f650aae0.3.3.so",
+          "version": null,
+          "threading_layer": "disabled",
+          "architecture": "Prescott"
+        }
+      ],
+      "prediction_sha256": "860a27cabf25a5977c2e3821a8092c8586298fc442ecae4603943da80d60f41b",
+      "inputs_file_sha256": "e5d39904c63610ca0d0a0ba288afcb2ec7704503e935b4ceffc10c667d799a24",
+      "research_commit": "c0996e4be5ed2243fbdca1ac87c8f85026960d79",
+      "manifest_sha256": "890a6f180d86749f9e1f47d38f777a5f8eaa50f6e782bee7456a2d0d2afed24d",
+      "metrics": {
+        "accuracy_mean_m": 0.015377950585944237,
+        "accuracy_median_m": 0.007514195601704858,
+        "completeness_mean_m": 0.018832123886383733,
+        "completeness_median_m": 0.012475346644942185,
+        "normal_consistency_mean": 0.7243608554615655,
+        "normal_consistency_median": 0.8415529300156765,
+        "nc1_mean": 0.7252554183436508,
+        "nc2_mean": 0.7234662925794803,
+        "valid_points": 697344,
+        "similarity_scale": 1.8879053681095026,
+        "similarity_rotation": [
+          [
+            0.9735193204551157,
+            -0.2030415540352588,
+            0.10504408615222828
+          ],
+          [
+            0.158703499004244,
+            0.9309971760687121,
+            0.32872094176655864
+          ],
+          [
+            -0.16453975843065893,
+            -0.3033453238258838,
+            0.9385671432606995
+          ]
+        ],
+        "similarity_translation": [
+          [
+            -0.04936532441230494
+          ],
+          [
+            -0.49131397863107806
+          ],
+          [
+            0.23356734059021744
+          ]
+        ],
+        "icp_transformation": [
+          [
+            0.999930122607448,
+            0.0022697029381923465,
+            -0.011601652935423428,
+            0.01885656998048729
+          ],
+          [
+            -0.0025314501301249384,
+            0.9997414608568459,
+            -0.022596530796861556,
+            0.0272699308766145
+          ],
+          [
+            0.011547366041672466,
+            0.022624320816038376,
+            0.9996773471701333,
+            -0.03170411476067654
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+      }
+    },
+    {
+      "run_id": "prior5_fire_seq-03_both_seed42_t1_r1",
+      "status": "complete",
+      "seconds": 27.876611843999854,
+      "source_run_id": "prior5_fire_seq-03_both_seed42",
+      "threads": 1,
+      "seed": 42,
+      "python": "3.11.13 | packaged by conda-forge | (main, Jun  4 2025, 14:48:23) [GCC 13.3.0]",
+      "numpy": "2.1.2",
+      "torch": "2.7.1+cu128",
+      "open3d": "0.19.0",
+      "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+      "cpu": "x86_64",
+      "threadpools": [
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scikit_learn.libs/libgomp-e985bcbb.so.1.0.0",
+          "version": null
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/torch/lib/libgomp.so.1",
+          "version": null
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+          "version": "0.3.28",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-ff651d7f.so",
+          "version": "0.3.27",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libopenblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/opencv_python.libs/libopenblas-r0-f650aae0.3.3.so",
+          "version": null,
+          "threading_layer": "disabled",
+          "architecture": "Prescott"
+        }
+      ],
+      "prediction_sha256": "860a27cabf25a5977c2e3821a8092c8586298fc442ecae4603943da80d60f41b",
+      "inputs_file_sha256": "e5d39904c63610ca0d0a0ba288afcb2ec7704503e935b4ceffc10c667d799a24",
+      "research_commit": "c0996e4be5ed2243fbdca1ac87c8f85026960d79",
+      "manifest_sha256": "890a6f180d86749f9e1f47d38f777a5f8eaa50f6e782bee7456a2d0d2afed24d",
+      "metrics": {
+        "accuracy_mean_m": 0.015377950585944237,
+        "accuracy_median_m": 0.007514195601704858,
+        "completeness_mean_m": 0.018832123886383733,
+        "completeness_median_m": 0.012475346644942185,
+        "normal_consistency_mean": 0.7243608554615655,
+        "normal_consistency_median": 0.8415529300156765,
+        "nc1_mean": 0.7252554183436508,
+        "nc2_mean": 0.7234662925794803,
+        "valid_points": 697344,
+        "similarity_scale": 1.8879053681095026,
+        "similarity_rotation": [
+          [
+            0.9735193204551157,
+            -0.2030415540352588,
+            0.10504408615222828
+          ],
+          [
+            0.158703499004244,
+            0.9309971760687121,
+            0.32872094176655864
+          ],
+          [
+            -0.16453975843065893,
+            -0.3033453238258838,
+            0.9385671432606995
+          ]
+        ],
+        "similarity_translation": [
+          [
+            -0.04936532441230494
+          ],
+          [
+            -0.49131397863107806
+          ],
+          [
+            0.23356734059021744
+          ]
+        ],
+        "icp_transformation": [
+          [
+            0.999930122607448,
+            0.0022697029381923465,
+            -0.011601652935423428,
+            0.01885656998048729
+          ],
+          [
+            -0.0025314501301249384,
+            0.9997414608568459,
+            -0.022596530796861556,
+            0.0272699308766145
+          ],
+          [
+            0.011547366041672466,
+            0.022624320816038376,
+            0.9996773471701333,
+            -0.03170411476067654
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+      }
+    },
+    {
+      "run_id": "prior5_fire_seq-03_both_seed42_t1_r2",
+      "status": "complete",
+      "seconds": 28.381946574999347,
+      "source_run_id": "prior5_fire_seq-03_both_seed42",
+      "threads": 1,
+      "seed": 42,
+      "python": "3.11.13 | packaged by conda-forge | (main, Jun  4 2025, 14:48:23) [GCC 13.3.0]",
+      "numpy": "2.1.2",
+      "torch": "2.7.1+cu128",
+      "open3d": "0.19.0",
+      "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+      "cpu": "x86_64",
+      "threadpools": [
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scikit_learn.libs/libgomp-e985bcbb.so.1.0.0",
+          "version": null
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/torch/lib/libgomp.so.1",
+          "version": null
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+          "version": "0.3.28",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-ff651d7f.so",
+          "version": "0.3.27",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libopenblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/opencv_python.libs/libopenblas-r0-f650aae0.3.3.so",
+          "version": null,
+          "threading_layer": "disabled",
+          "architecture": "Prescott"
+        }
+      ],
+      "prediction_sha256": "860a27cabf25a5977c2e3821a8092c8586298fc442ecae4603943da80d60f41b",
+      "inputs_file_sha256": "e5d39904c63610ca0d0a0ba288afcb2ec7704503e935b4ceffc10c667d799a24",
+      "research_commit": "c0996e4be5ed2243fbdca1ac87c8f85026960d79",
+      "manifest_sha256": "890a6f180d86749f9e1f47d38f777a5f8eaa50f6e782bee7456a2d0d2afed24d",
+      "metrics": {
+        "accuracy_mean_m": 0.015377950585944237,
+        "accuracy_median_m": 0.007514195601704858,
+        "completeness_mean_m": 0.018832123886383733,
+        "completeness_median_m": 0.012475346644942185,
+        "normal_consistency_mean": 0.7243608554615655,
+        "normal_consistency_median": 0.8415529300156765,
+        "nc1_mean": 0.7252554183436508,
+        "nc2_mean": 0.7234662925794803,
+        "valid_points": 697344,
+        "similarity_scale": 1.8879053681095026,
+        "similarity_rotation": [
+          [
+            0.9735193204551157,
+            -0.2030415540352588,
+            0.10504408615222828
+          ],
+          [
+            0.158703499004244,
+            0.9309971760687121,
+            0.32872094176655864
+          ],
+          [
+            -0.16453975843065893,
+            -0.3033453238258838,
+            0.9385671432606995
+          ]
+        ],
+        "similarity_translation": [
+          [
+            -0.04936532441230494
+          ],
+          [
+            -0.49131397863107806
+          ],
+          [
+            0.23356734059021744
+          ]
+        ],
+        "icp_transformation": [
+          [
+            0.999930122607448,
+            0.0022697029381923465,
+            -0.011601652935423428,
+            0.01885656998048729
+          ],
+          [
+            -0.0025314501301249384,
+            0.9997414608568459,
+            -0.022596530796861556,
+            0.0272699308766145
+          ],
+          [
+            0.011547366041672466,
+            0.022624320816038376,
+            0.9996773471701333,
+            -0.03170411476067654
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+      }
+    },
+    {
+      "run_id": "prior5_fire_seq-03_both_seed42_t4_r0",
+      "status": "complete",
+      "seconds": 12.092575681000199,
+      "source_run_id": "prior5_fire_seq-03_both_seed42",
+      "threads": 4,
+      "seed": 42,
+      "python": "3.11.13 | packaged by conda-forge | (main, Jun  4 2025, 14:48:23) [GCC 13.3.0]",
+      "numpy": "2.1.2",
+      "torch": "2.7.1+cu128",
+      "open3d": "0.19.0",
+      "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+      "cpu": "x86_64",
+      "threadpools": [
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 4,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scikit_learn.libs/libgomp-e985bcbb.so.1.0.0",
+          "version": null
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 4,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/torch/lib/libgomp.so.1",
+          "version": null
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 4,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+          "version": "0.3.28",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 4,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-ff651d7f.so",
+          "version": "0.3.27",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libopenblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/opencv_python.libs/libopenblas-r0-f650aae0.3.3.so",
+          "version": null,
+          "threading_layer": "disabled",
+          "architecture": "Prescott"
+        }
+      ],
+      "prediction_sha256": "860a27cabf25a5977c2e3821a8092c8586298fc442ecae4603943da80d60f41b",
+      "inputs_file_sha256": "e5d39904c63610ca0d0a0ba288afcb2ec7704503e935b4ceffc10c667d799a24",
+      "research_commit": "c0996e4be5ed2243fbdca1ac87c8f85026960d79",
+      "manifest_sha256": "890a6f180d86749f9e1f47d38f777a5f8eaa50f6e782bee7456a2d0d2afed24d",
+      "metrics": {
+        "accuracy_mean_m": 0.015377950585947386,
+        "accuracy_median_m": 0.007514195601729463,
+        "completeness_mean_m": 0.018832123886394388,
+        "completeness_median_m": 0.0124753466449427,
+        "normal_consistency_mean": 0.7243608554614436,
+        "normal_consistency_median": 0.8415529300184359,
+        "nc1_mean": 0.7252554183433755,
+        "nc2_mean": 0.7234662925795116,
+        "valid_points": 697344,
+        "similarity_scale": 1.8879053681095026,
+        "similarity_rotation": [
+          [
+            0.9735193204551157,
+            -0.2030415540352588,
+            0.10504408615222828
+          ],
+          [
+            0.158703499004244,
+            0.9309971760687121,
+            0.32872094176655864
+          ],
+          [
+            -0.16453975843065893,
+            -0.3033453238258838,
+            0.9385671432606995
+          ]
+        ],
+        "similarity_translation": [
+          [
+            -0.04936532441230494
+          ],
+          [
+            -0.49131397863107806
+          ],
+          [
+            0.23356734059021744
+          ]
+        ],
+        "icp_transformation": [
+          [
+            0.999930122607449,
+            0.0022697029381929016,
+            -0.011601652935423822,
+            0.018856569980486904
+          ],
+          [
+            -0.0025314501301247076,
+            0.9997414608568492,
+            -0.022596530796860453,
+            0.027269930876606025
+          ],
+          [
+            0.01154736604167244,
+            0.0226243208160375,
+            0.9996773471701331,
+            -0.03170411476078078
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+      }
+    },
+    {
+      "run_id": "prior5_fire_seq-03_both_seed42_t4_r1",
+      "status": "complete",
+      "seconds": 12.925479759000154,
+      "source_run_id": "prior5_fire_seq-03_both_seed42",
+      "threads": 4,
+      "seed": 42,
+      "python": "3.11.13 | packaged by conda-forge | (main, Jun  4 2025, 14:48:23) [GCC 13.3.0]",
+      "numpy": "2.1.2",
+      "torch": "2.7.1+cu128",
+      "open3d": "0.19.0",
+      "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+      "cpu": "x86_64",
+      "threadpools": [
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 4,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scikit_learn.libs/libgomp-e985bcbb.so.1.0.0",
+          "version": null
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 4,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/torch/lib/libgomp.so.1",
+          "version": null
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 4,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+          "version": "0.3.28",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 4,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-ff651d7f.so",
+          "version": "0.3.27",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libopenblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/opencv_python.libs/libopenblas-r0-f650aae0.3.3.so",
+          "version": null,
+          "threading_layer": "disabled",
+          "architecture": "Prescott"
+        }
+      ],
+      "prediction_sha256": "860a27cabf25a5977c2e3821a8092c8586298fc442ecae4603943da80d60f41b",
+      "inputs_file_sha256": "e5d39904c63610ca0d0a0ba288afcb2ec7704503e935b4ceffc10c667d799a24",
+      "research_commit": "a709dbbcb91a0f7a79771512e8d269f2250cd6bd",
+      "manifest_sha256": "890a6f180d86749f9e1f47d38f777a5f8eaa50f6e782bee7456a2d0d2afed24d",
+      "metrics": {
+        "accuracy_mean_m": 0.015377950585940051,
+        "accuracy_median_m": 0.007514195601670802,
+        "completeness_mean_m": 0.018832123886369508,
+        "completeness_median_m": 0.012475346644935987,
+        "normal_consistency_mean": 0.7243608554617378,
+        "normal_consistency_median": 0.8415529300077125,
+        "nc1_mean": 0.7252554183436307,
+        "nc2_mean": 0.7234662925798448,
+        "valid_points": 697344,
+        "similarity_scale": 1.8879053681095026,
+        "similarity_rotation": [
+          [
+            0.9735193204551157,
+            -0.2030415540352588,
+            0.10504408615222828
+          ],
+          [
+            0.158703499004244,
+            0.9309971760687121,
+            0.32872094176655864
+          ],
+          [
+            -0.16453975843065893,
+            -0.3033453238258838,
+            0.9385671432606995
+          ]
+        ],
+        "similarity_translation": [
+          [
+            -0.04936532441230494
+          ],
+          [
+            -0.49131397863107806
+          ],
+          [
+            0.23356734059021744
+          ]
+        ],
+        "icp_transformation": [
+          [
+            0.9999301226074468,
+            0.0022697029381927186,
+            -0.011601652935423553,
+            0.018856569980486525
+          ],
+          [
+            -0.0025314501301249783,
+            0.9997414608568449,
+            -0.022596530796860744,
+            0.027269930876610535
+          ],
+          [
+            0.011547366041672377,
+            0.02262432081603728,
+            0.9996773471701306,
+            -0.03170411476052532
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+      }
+    },
+    {
+      "run_id": "prior5_fire_seq-03_both_seed42_t4_r2",
+      "status": "complete",
+      "seconds": 12.004375952000373,
+      "source_run_id": "prior5_fire_seq-03_both_seed42",
+      "threads": 4,
+      "seed": 42,
+      "python": "3.11.13 | packaged by conda-forge | (main, Jun  4 2025, 14:48:23) [GCC 13.3.0]",
+      "numpy": "2.1.2",
+      "torch": "2.7.1+cu128",
+      "open3d": "0.19.0",
+      "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+      "cpu": "x86_64",
+      "threadpools": [
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 4,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scikit_learn.libs/libgomp-e985bcbb.so.1.0.0",
+          "version": null
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 4,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/torch/lib/libgomp.so.1",
+          "version": null
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 4,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+          "version": "0.3.28",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 4,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-ff651d7f.so",
+          "version": "0.3.27",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libopenblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/opencv_python.libs/libopenblas-r0-f650aae0.3.3.so",
+          "version": null,
+          "threading_layer": "disabled",
+          "architecture": "Prescott"
+        }
+      ],
+      "prediction_sha256": "860a27cabf25a5977c2e3821a8092c8586298fc442ecae4603943da80d60f41b",
+      "inputs_file_sha256": "e5d39904c63610ca0d0a0ba288afcb2ec7704503e935b4ceffc10c667d799a24",
+      "research_commit": "a709dbbcb91a0f7a79771512e8d269f2250cd6bd",
+      "manifest_sha256": "890a6f180d86749f9e1f47d38f777a5f8eaa50f6e782bee7456a2d0d2afed24d",
+      "metrics": {
+        "accuracy_mean_m": 0.015377950585940612,
+        "accuracy_median_m": 0.007514195601674253,
+        "completeness_mean_m": 0.0188321238863714,
+        "completeness_median_m": 0.012475346644937128,
+        "normal_consistency_mean": 0.72436085546193,
+        "normal_consistency_median": 0.841552930017982,
+        "nc1_mean": 0.7252554183439214,
+        "nc2_mean": 0.7234662925799386,
+        "valid_points": 697344,
+        "similarity_scale": 1.8879053681095026,
+        "similarity_rotation": [
+          [
+            0.9735193204551157,
+            -0.2030415540352588,
+            0.10504408615222828
+          ],
+          [
+            0.158703499004244,
+            0.9309971760687121,
+            0.32872094176655864
+          ],
+          [
+            -0.16453975843065893,
+            -0.3033453238258838,
+            0.9385671432606995
+          ]
+        ],
+        "similarity_translation": [
+          [
+            -0.04936532441230494
+          ],
+          [
+            -0.49131397863107806
+          ],
+          [
+            0.23356734059021744
+          ]
+        ],
+        "icp_transformation": [
+          [
+            0.9999301226074472,
+            0.002269702938192625,
+            -0.01160165293542359,
+            0.018856569980485176
+          ],
+          [
+            -0.002531450130124928,
+            0.9997414608568466,
+            -0.02259653079685976,
+            0.027269930876607968
+          ],
+          [
+            0.011547366041672467,
+            0.02262432081603713,
+            0.9996773471701306,
+            -0.031704114760544
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+      }
+    },
+    {
+      "run_id": "base4_fire_seq-03_visual_seed42_t1_r0",
+      "status": "complete",
+      "seconds": 26.017188057000567,
+      "source_run_id": "base4_fire_seq-03_visual_seed42",
+      "threads": 1,
+      "seed": 42,
+      "python": "3.11.13 | packaged by conda-forge | (main, Jun  4 2025, 14:48:23) [GCC 13.3.0]",
+      "numpy": "2.1.2",
+      "torch": "2.7.1+cu128",
+      "open3d": "0.19.0",
+      "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+      "cpu": "x86_64",
+      "threadpools": [
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scikit_learn.libs/libgomp-e985bcbb.so.1.0.0",
+          "version": null
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/torch/lib/libgomp.so.1",
+          "version": null
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+          "version": "0.3.28",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-ff651d7f.so",
+          "version": "0.3.27",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libopenblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/opencv_python.libs/libopenblas-r0-f650aae0.3.3.so",
+          "version": null,
+          "threading_layer": "disabled",
+          "architecture": "Prescott"
+        }
+      ],
+      "prediction_sha256": "329cd696a971a4558a454e52f5c8b89f498273bb6dec6aeb4c98f8551bdfbc5b",
+      "inputs_file_sha256": "e5d39904c63610ca0d0a0ba288afcb2ec7704503e935b4ceffc10c667d799a24",
+      "research_commit": "a709dbbcb91a0f7a79771512e8d269f2250cd6bd",
+      "manifest_sha256": "890a6f180d86749f9e1f47d38f777a5f8eaa50f6e782bee7456a2d0d2afed24d",
+      "metrics": {
+        "accuracy_mean_m": 0.012134668534136014,
+        "accuracy_median_m": 0.00718492504613458,
+        "completeness_mean_m": 0.017427559584253363,
+        "completeness_median_m": 0.011992636131401418,
+        "normal_consistency_mean": 0.7512698904355928,
+        "normal_consistency_median": 0.8739118988939429,
+        "nc1_mean": 0.759238134370949,
+        "nc2_mean": 0.7433016465002366,
+        "valid_points": 697344,
+        "similarity_scale": 1.950233249068467,
+        "similarity_rotation": [
+          [
+            0.9714575682419043,
+            -0.2203784610103027,
+            0.08776973868171636
+          ],
+          [
+            0.1798753091889822,
+            0.9255762070815894,
+            0.33309691987262036
+          ],
+          [
+            -0.15464496839436537,
+            -0.3078019148855143,
+            0.9387986551668659
+          ]
+        ],
+        "similarity_translation": [
+          [
+            -0.007002044093699505
+          ],
+          [
+            -0.4971557922263903
+          ],
+          [
+            0.2568205132646708
+          ]
+        ],
+        "icp_transformation": [
+          [
+            0.999816128512631,
+            0.007490458686757497,
+            -0.017652257495271002,
+            0.02449393881026202
+          ],
+          [
+            -0.00749607642438905,
+            0.999971872246639,
+            -0.00025209878601983014,
+            -0.009901255026863414
+          ],
+          [
+            0.017649872641384186,
+            0.00038437510348490896,
+            0.999844154981924,
+            -0.004304804134946232
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+      }
+    },
+    {
+      "run_id": "base4_fire_seq-03_visual_seed42_t1_r1",
+      "status": "complete",
+      "seconds": 25.94432153100024,
+      "source_run_id": "base4_fire_seq-03_visual_seed42",
+      "threads": 1,
+      "seed": 42,
+      "python": "3.11.13 | packaged by conda-forge | (main, Jun  4 2025, 14:48:23) [GCC 13.3.0]",
+      "numpy": "2.1.2",
+      "torch": "2.7.1+cu128",
+      "open3d": "0.19.0",
+      "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+      "cpu": "x86_64",
+      "threadpools": [
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scikit_learn.libs/libgomp-e985bcbb.so.1.0.0",
+          "version": null
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/torch/lib/libgomp.so.1",
+          "version": null
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+          "version": "0.3.28",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-ff651d7f.so",
+          "version": "0.3.27",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libopenblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/opencv_python.libs/libopenblas-r0-f650aae0.3.3.so",
+          "version": null,
+          "threading_layer": "disabled",
+          "architecture": "Prescott"
+        }
+      ],
+      "prediction_sha256": "329cd696a971a4558a454e52f5c8b89f498273bb6dec6aeb4c98f8551bdfbc5b",
+      "inputs_file_sha256": "e5d39904c63610ca0d0a0ba288afcb2ec7704503e935b4ceffc10c667d799a24",
+      "research_commit": "a709dbbcb91a0f7a79771512e8d269f2250cd6bd",
+      "manifest_sha256": "890a6f180d86749f9e1f47d38f777a5f8eaa50f6e782bee7456a2d0d2afed24d",
+      "metrics": {
+        "accuracy_mean_m": 0.012134668534136014,
+        "accuracy_median_m": 0.00718492504613458,
+        "completeness_mean_m": 0.017427559584253363,
+        "completeness_median_m": 0.011992636131401418,
+        "normal_consistency_mean": 0.7512698904355928,
+        "normal_consistency_median": 0.8739118988939429,
+        "nc1_mean": 0.759238134370949,
+        "nc2_mean": 0.7433016465002366,
+        "valid_points": 697344,
+        "similarity_scale": 1.950233249068467,
+        "similarity_rotation": [
+          [
+            0.9714575682419043,
+            -0.2203784610103027,
+            0.08776973868171636
+          ],
+          [
+            0.1798753091889822,
+            0.9255762070815894,
+            0.33309691987262036
+          ],
+          [
+            -0.15464496839436537,
+            -0.3078019148855143,
+            0.9387986551668659
+          ]
+        ],
+        "similarity_translation": [
+          [
+            -0.007002044093699505
+          ],
+          [
+            -0.4971557922263903
+          ],
+          [
+            0.2568205132646708
+          ]
+        ],
+        "icp_transformation": [
+          [
+            0.999816128512631,
+            0.007490458686757497,
+            -0.017652257495271002,
+            0.02449393881026202
+          ],
+          [
+            -0.00749607642438905,
+            0.999971872246639,
+            -0.00025209878601983014,
+            -0.009901255026863414
+          ],
+          [
+            0.017649872641384186,
+            0.00038437510348490896,
+            0.999844154981924,
+            -0.004304804134946232
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+      }
+    },
+    {
+      "run_id": "base4_fire_seq-03_visual_seed42_t1_r2",
+      "status": "complete",
+      "seconds": 24.796288824999465,
+      "source_run_id": "base4_fire_seq-03_visual_seed42",
+      "threads": 1,
+      "seed": 42,
+      "python": "3.11.13 | packaged by conda-forge | (main, Jun  4 2025, 14:48:23) [GCC 13.3.0]",
+      "numpy": "2.1.2",
+      "torch": "2.7.1+cu128",
+      "open3d": "0.19.0",
+      "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+      "cpu": "x86_64",
+      "threadpools": [
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scikit_learn.libs/libgomp-e985bcbb.so.1.0.0",
+          "version": null
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 1,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/torch/lib/libgomp.so.1",
+          "version": null
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+          "version": "0.3.28",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-ff651d7f.so",
+          "version": "0.3.27",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libopenblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/opencv_python.libs/libopenblas-r0-f650aae0.3.3.so",
+          "version": null,
+          "threading_layer": "disabled",
+          "architecture": "Prescott"
+        }
+      ],
+      "prediction_sha256": "329cd696a971a4558a454e52f5c8b89f498273bb6dec6aeb4c98f8551bdfbc5b",
+      "inputs_file_sha256": "e5d39904c63610ca0d0a0ba288afcb2ec7704503e935b4ceffc10c667d799a24",
+      "research_commit": "a709dbbcb91a0f7a79771512e8d269f2250cd6bd",
+      "manifest_sha256": "890a6f180d86749f9e1f47d38f777a5f8eaa50f6e782bee7456a2d0d2afed24d",
+      "metrics": {
+        "accuracy_mean_m": 0.012134668534136014,
+        "accuracy_median_m": 0.00718492504613458,
+        "completeness_mean_m": 0.017427559584253363,
+        "completeness_median_m": 0.011992636131401418,
+        "normal_consistency_mean": 0.7512698904355928,
+        "normal_consistency_median": 0.8739118988939429,
+        "nc1_mean": 0.759238134370949,
+        "nc2_mean": 0.7433016465002366,
+        "valid_points": 697344,
+        "similarity_scale": 1.950233249068467,
+        "similarity_rotation": [
+          [
+            0.9714575682419043,
+            -0.2203784610103027,
+            0.08776973868171636
+          ],
+          [
+            0.1798753091889822,
+            0.9255762070815894,
+            0.33309691987262036
+          ],
+          [
+            -0.15464496839436537,
+            -0.3078019148855143,
+            0.9387986551668659
+          ]
+        ],
+        "similarity_translation": [
+          [
+            -0.007002044093699505
+          ],
+          [
+            -0.4971557922263903
+          ],
+          [
+            0.2568205132646708
+          ]
+        ],
+        "icp_transformation": [
+          [
+            0.999816128512631,
+            0.007490458686757497,
+            -0.017652257495271002,
+            0.02449393881026202
+          ],
+          [
+            -0.00749607642438905,
+            0.999971872246639,
+            -0.00025209878601983014,
+            -0.009901255026863414
+          ],
+          [
+            0.017649872641384186,
+            0.00038437510348490896,
+            0.999844154981924,
+            -0.004304804134946232
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+      }
+    },
+    {
+      "run_id": "base4_fire_seq-03_visual_seed42_t4_r0",
+      "status": "complete",
+      "seconds": 11.260977478000314,
+      "source_run_id": "base4_fire_seq-03_visual_seed42",
+      "threads": 4,
+      "seed": 42,
+      "python": "3.11.13 | packaged by conda-forge | (main, Jun  4 2025, 14:48:23) [GCC 13.3.0]",
+      "numpy": "2.1.2",
+      "torch": "2.7.1+cu128",
+      "open3d": "0.19.0",
+      "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+      "cpu": "x86_64",
+      "threadpools": [
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 4,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scikit_learn.libs/libgomp-e985bcbb.so.1.0.0",
+          "version": null
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 4,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/torch/lib/libgomp.so.1",
+          "version": null
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 4,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+          "version": "0.3.28",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 4,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-ff651d7f.so",
+          "version": "0.3.27",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libopenblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/opencv_python.libs/libopenblas-r0-f650aae0.3.3.so",
+          "version": null,
+          "threading_layer": "disabled",
+          "architecture": "Prescott"
+        }
+      ],
+      "prediction_sha256": "329cd696a971a4558a454e52f5c8b89f498273bb6dec6aeb4c98f8551bdfbc5b",
+      "inputs_file_sha256": "e5d39904c63610ca0d0a0ba288afcb2ec7704503e935b4ceffc10c667d799a24",
+      "research_commit": "a709dbbcb91a0f7a79771512e8d269f2250cd6bd",
+      "manifest_sha256": "890a6f180d86749f9e1f47d38f777a5f8eaa50f6e782bee7456a2d0d2afed24d",
+      "metrics": {
+        "accuracy_mean_m": 0.0121346685341366,
+        "accuracy_median_m": 0.007184925046171454,
+        "completeness_mean_m": 0.017427559584253308,
+        "completeness_median_m": 0.011992636131404139,
+        "normal_consistency_mean": 0.7512698904356836,
+        "normal_consistency_median": 0.8739118988917398,
+        "nc1_mean": 0.7592381343710358,
+        "nc2_mean": 0.7433016465003314,
+        "valid_points": 697344,
+        "similarity_scale": 1.950233249068467,
+        "similarity_rotation": [
+          [
+            0.9714575682419043,
+            -0.2203784610103027,
+            0.08776973868171636
+          ],
+          [
+            0.1798753091889822,
+            0.9255762070815894,
+            0.33309691987262036
+          ],
+          [
+            -0.15464496839436537,
+            -0.3078019148855143,
+            0.9387986551668659
+          ]
+        ],
+        "similarity_translation": [
+          [
+            -0.007002044093699505
+          ],
+          [
+            -0.4971557922263903
+          ],
+          [
+            0.2568205132646708
+          ]
+        ],
+        "icp_transformation": [
+          [
+            0.9998161285126294,
+            0.0074904586867576735,
+            -0.017652257495270923,
+            0.0244939388102617
+          ],
+          [
+            -0.007496076424389046,
+            0.9999718722466368,
+            -0.0002520987860194953,
+            -0.009901255026869223
+          ],
+          [
+            0.017649872641383936,
+            0.0003843751034844626,
+            0.9998441549819238,
+            -0.0043048041350017465
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+      }
+    },
+    {
+      "run_id": "base4_fire_seq-03_visual_seed42_t4_r1",
+      "status": "complete",
+      "seconds": 10.779866081999899,
+      "source_run_id": "base4_fire_seq-03_visual_seed42",
+      "threads": 4,
+      "seed": 42,
+      "python": "3.11.13 | packaged by conda-forge | (main, Jun  4 2025, 14:48:23) [GCC 13.3.0]",
+      "numpy": "2.1.2",
+      "torch": "2.7.1+cu128",
+      "open3d": "0.19.0",
+      "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+      "cpu": "x86_64",
+      "threadpools": [
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 4,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scikit_learn.libs/libgomp-e985bcbb.so.1.0.0",
+          "version": null
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 4,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/torch/lib/libgomp.so.1",
+          "version": null
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 4,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+          "version": "0.3.28",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 4,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-ff651d7f.so",
+          "version": "0.3.27",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libopenblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/opencv_python.libs/libopenblas-r0-f650aae0.3.3.so",
+          "version": null,
+          "threading_layer": "disabled",
+          "architecture": "Prescott"
+        }
+      ],
+      "prediction_sha256": "329cd696a971a4558a454e52f5c8b89f498273bb6dec6aeb4c98f8551bdfbc5b",
+      "inputs_file_sha256": "e5d39904c63610ca0d0a0ba288afcb2ec7704503e935b4ceffc10c667d799a24",
+      "research_commit": "a709dbbcb91a0f7a79771512e8d269f2250cd6bd",
+      "manifest_sha256": "890a6f180d86749f9e1f47d38f777a5f8eaa50f6e782bee7456a2d0d2afed24d",
+      "metrics": {
+        "accuracy_mean_m": 0.012134668534135454,
+        "accuracy_median_m": 0.007184925046108679,
+        "completeness_mean_m": 0.01742755958425329,
+        "completeness_median_m": 0.011992636131400485,
+        "normal_consistency_mean": 0.7512698904355718,
+        "normal_consistency_median": 0.873911898891018,
+        "nc1_mean": 0.7592381343709009,
+        "nc2_mean": 0.7433016465002427,
+        "valid_points": 697344,
+        "similarity_scale": 1.950233249068467,
+        "similarity_rotation": [
+          [
+            0.9714575682419043,
+            -0.2203784610103027,
+            0.08776973868171636
+          ],
+          [
+            0.1798753091889822,
+            0.9255762070815894,
+            0.33309691987262036
+          ],
+          [
+            -0.15464496839436537,
+            -0.3078019148855143,
+            0.9387986551668659
+          ]
+        ],
+        "similarity_translation": [
+          [
+            -0.007002044093699505
+          ],
+          [
+            -0.4971557922263903
+          ],
+          [
+            0.2568205132646708
+          ]
+        ],
+        "icp_transformation": [
+          [
+            0.9998161285126314,
+            0.007490458686757688,
+            -0.01765225749527094,
+            0.0244939388102633
+          ],
+          [
+            -0.0074960764243891835,
+            0.9999718722466384,
+            -0.0002520987860197175,
+            -0.009901255026867265
+          ],
+          [
+            0.017649872641384106,
+            0.0003843751034840176,
+            0.9998441549819248,
+            -0.004304804134910491
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+      }
+    },
+    {
+      "run_id": "base4_fire_seq-03_visual_seed42_t4_r2",
+      "status": "complete",
+      "seconds": 10.975198494999859,
+      "source_run_id": "base4_fire_seq-03_visual_seed42",
+      "threads": 4,
+      "seed": 42,
+      "python": "3.11.13 | packaged by conda-forge | (main, Jun  4 2025, 14:48:23) [GCC 13.3.0]",
+      "numpy": "2.1.2",
+      "torch": "2.7.1+cu128",
+      "open3d": "0.19.0",
+      "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+      "cpu": "x86_64",
+      "threadpools": [
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 4,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scikit_learn.libs/libgomp-e985bcbb.so.1.0.0",
+          "version": null
+        },
+        {
+          "user_api": "openmp",
+          "internal_api": "openmp",
+          "num_threads": 4,
+          "prefix": "libgomp",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/torch/lib/libgomp.so.1",
+          "version": null
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 4,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+          "version": "0.3.28",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 4,
+          "prefix": "libscipy_openblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-ff651d7f.so",
+          "version": "0.3.27",
+          "threading_layer": "pthreads",
+          "architecture": "Haswell"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libopenblas",
+          "filepath": "/opt/conda/lib/python3.11/site-packages/opencv_python.libs/libopenblas-r0-f650aae0.3.3.so",
+          "version": null,
+          "threading_layer": "disabled",
+          "architecture": "Prescott"
+        }
+      ],
+      "prediction_sha256": "329cd696a971a4558a454e52f5c8b89f498273bb6dec6aeb4c98f8551bdfbc5b",
+      "inputs_file_sha256": "e5d39904c63610ca0d0a0ba288afcb2ec7704503e935b4ceffc10c667d799a24",
+      "research_commit": "a709dbbcb91a0f7a79771512e8d269f2250cd6bd",
+      "manifest_sha256": "890a6f180d86749f9e1f47d38f777a5f8eaa50f6e782bee7456a2d0d2afed24d",
+      "metrics": {
+        "accuracy_mean_m": 0.012134668534137569,
+        "accuracy_median_m": 0.007184925046219641,
+        "completeness_mean_m": 0.01742755958425326,
+        "completeness_median_m": 0.011992636131406508,
+        "normal_consistency_mean": 0.7512698904354866,
+        "normal_consistency_median": 0.8739118988937142,
+        "nc1_mean": 0.7592381343708844,
+        "nc2_mean": 0.7433016465000889,
+        "valid_points": 697344,
+        "similarity_scale": 1.950233249068467,
+        "similarity_rotation": [
+          [
+            0.9714575682419043,
+            -0.2203784610103027,
+            0.08776973868171636
+          ],
+          [
+            0.1798753091889822,
+            0.9255762070815894,
+            0.33309691987262036
+          ],
+          [
+            -0.15464496839436537,
+            -0.3078019148855143,
+            0.9387986551668659
+          ]
+        ],
+        "similarity_translation": [
+          [
+            -0.007002044093699505
+          ],
+          [
+            -0.4971557922263903
+          ],
+          [
+            0.2568205132646708
+          ]
+        ],
+        "icp_transformation": [
+          [
+            0.9998161285126315,
+            0.007490458686757575,
+            -0.017652257495270836,
+            0.024493938810263315
+          ],
+          [
+            -0.007496076424389249,
+            0.9999718722466381,
+            -0.0002520987860202177,
+            -0.009901255026866665
+          ],
+          [
+            0.01764987264138412,
+            0.0003843751034846287,
+            0.9998441549819255,
+            -0.004304804135076362
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+      }
+    }
+  ],
+  "groups": [
+    {
+      "source_run_id": "prior5_heads_seq-01_visual_seed123",
+      "metrics": {
+        "accuracy_mean_m": {
+          "min": 0.09059317130616983,
+          "max": 0.09059317130617948,
+          "original": 0.09059317130617962,
+          "range_relative_if_distance": 1.066188563108619e-13,
+          "exceeds_threshold": false,
+          "max_absolute_difference_from_original": 9.797718192317006e-15
+        },
+        "completeness_mean_m": {
+          "min": 0.17833439571331242,
+          "max": 0.1783343957133172,
+          "original": 0.1783343957133127,
+          "range_relative_if_distance": 2.6769704110040037e-14,
+          "exceeds_threshold": false,
+          "max_absolute_difference_from_original": 4.496403249731884e-15
+        },
+        "normal_consistency_mean": {
+          "min": 0.4829815211259544,
+          "max": 0.48298152112885484,
+          "original": 0.48298152112816556,
+          "range_relative_if_distance": 2.9004576518332215e-12,
+          "exceeds_threshold": false,
+          "max_absolute_difference_from_original": 2.211175686994693e-12
+        }
+      }
+    },
+    {
+      "source_run_id": "prior5_fire_seq-03_visual_seed42",
+      "metrics": {
+        "accuracy_mean_m": {
+          "min": 0.019796562239212348,
+          "max": 0.019796562239214124,
+          "original": 0.019796562239213864,
+          "range_relative_if_distance": 8.973057129492756e-14,
+          "exceeds_threshold": false,
+          "max_absolute_difference_from_original": 1.5161483180037294e-15
+        },
+        "completeness_mean_m": {
+          "min": 0.01856688088547185,
+          "max": 0.018566880885479812,
+          "original": 0.018566880885472842,
+          "range_relative_if_distance": 4.2884859357090483e-13,
+          "exceeds_threshold": false,
+          "max_absolute_difference_from_original": 6.970118926474811e-15
+        },
+        "normal_consistency_mean": {
+          "min": 0.7439498456470022,
+          "max": 0.7439498456471474,
+          "original": 0.7439498456470806,
+          "range_relative_if_distance": 1.4521717162097048e-13,
+          "exceeds_threshold": false,
+          "max_absolute_difference_from_original": 7.838174553853605e-14
+        }
+      }
+    },
+    {
+      "source_run_id": "prior5_fire_seq-03_both_seed42",
+      "metrics": {
+        "accuracy_mean_m": {
+          "min": 0.015377950585940051,
+          "max": 0.015377950585947386,
+          "original": 0.015377950585940221,
+          "range_relative_if_distance": 4.769433231978037e-13,
+          "exceeds_threshold": false,
+          "max_absolute_difference_from_original": 7.164407955784213e-15
+        },
+        "completeness_mean_m": {
+          "min": 0.018832123886369508,
+          "max": 0.018832123886394388,
+          "original": 0.018832123886369793,
+          "range_relative_if_distance": 1.321115145725355e-12,
+          "exceeds_threshold": false,
+          "max_absolute_difference_from_original": 2.459490944239917e-14
+        },
+        "normal_consistency_mean": {
+          "min": 0.7243608554614436,
+          "max": 0.72436085546193,
+          "original": 0.7243608554616188,
+          "range_relative_if_distance": 4.863887070882811e-13,
+          "exceeds_threshold": false,
+          "max_absolute_difference_from_original": 3.111955138024314e-13
+        }
+      }
+    },
+    {
+      "source_run_id": "base4_fire_seq-03_visual_seed42",
+      "metrics": {
+        "accuracy_mean_m": {
+          "min": 0.012134668534135454,
+          "max": 0.012134668534137569,
+          "original": 0.012134668534134186,
+          "range_relative_if_distance": 1.742633440103774e-13,
+          "exceeds_threshold": false,
+          "max_absolute_difference_from_original": 3.382710778154774e-15
+        },
+        "completeness_mean_m": {
+          "min": 0.01742755958425326,
+          "max": 0.017427559584253363,
+          "original": 0.01742755958425334,
+          "range_relative_if_distance": 5.9723455860482574e-15,
+          "exceeds_threshold": false,
+          "max_absolute_difference_from_original": 7.979727989493313e-17
+        },
+        "normal_consistency_mean": {
+          "min": 0.7512698904354866,
+          "max": 0.7512698904356836,
+          "original": 0.7512698904353761,
+          "range_relative_if_distance": 1.9695356456850277e-13,
+          "exceeds_threshold": false,
+          "max_absolute_difference_from_original": 3.0753177782116836e-13
+        }
+      }
+    }
+  ],
+  "conclusion": "Evaluator stability is assessed only for these four saved predictions and this local CPU/runtime."
+}
