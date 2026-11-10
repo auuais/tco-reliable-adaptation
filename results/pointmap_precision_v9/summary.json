@@ -1,0 +1,2349 @@
+{
+  "study_id": "pointmap_precision_v9",
+  "manifest_sha256": "7cf803aa298033175066a379e220644c60eabcda8895fce05c7e8e564ce35cf5",
+  "completed_evaluations": 12,
+  "rows": [
+    {
+      "job_id": "heads_seq-01_saved_zero",
+      "scene": "heads/seq-01",
+      "mode": "saved_zero",
+      "metrics": {
+        "accuracy_mean_m": 0.013615729551261637,
+        "accuracy_median_m": 0.008134926007349708,
+        "completeness_mean_m": 0.012897169253798507,
+        "completeness_median_m": 0.006751878936409144,
+        "normal_consistency_mean": 0.7188229931718303,
+        "normal_consistency_median": 0.8352692173094574,
+        "nc1_mean": 0.7073797629241809,
+        "nc2_mean": 0.7302662234194797,
+        "valid_points": 688882,
+        "similarity_scale": 0.9171733037882636,
+        "similarity_rotation": [
+          [
+            0.9517301914864494,
+            0.009605899340663308,
+            -0.30678554286508314
+          ],
+          [
+            0.06700759525260258,
+            0.9688986349509058,
+            0.23821296641605222
+          ],
+          [
+            0.29953234348168495,
+            -0.24727143362735812,
+            0.9214864151577284
+          ]
+        ],
+        "similarity_translation": [
+          [
+            -0.2191719660297517
+          ],
+          [
+            -0.12373809024959895
+          ],
+          [
+            0.2317833759559732
+          ]
+        ],
+        "icp_transformation": [
+          [
+            0.9998053182042431,
+            0.010648524457627121,
+            -0.0166112798237611,
+            0.01298614327753557
+          ],
+          [
+            -0.010821990297238075,
+            0.9998874811736965,
+            -0.010387950622195725,
+            0.003654135199180294
+          ],
+          [
+            0.01649879439578704,
+            0.010565695386391162,
+            0.9998080595116695,
+            -0.01611510308555645
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+      },
+      "initial_heads_tensor_sha256": "f19a19b0d14cbfa9747959d0af7a4230c767ddd3bd311c9af79a9acbe72a6893",
+      "reference_tensor_sha256": "d62b095b472ffa80521e3148848b898c619955ffbb21de3fddcd5b5d59e6891e",
+      "saved_prediction_sha256": "8893d2d4eb2dfc897b4dac3bbc2e992eaa9c89e13e7ff59af133f14a4fa2115f",
+      "prediction_sha256": "8893d2d4eb2dfc897b4dac3bbc2e992eaa9c89e13e7ff59af133f14a4fa2115f",
+      "output_dtype": "float32",
+      "bitwise_equal_to_saved": true,
+      "fraction_float32_values_exactly_bfloat16": 1.0,
+      "max_raw_coordinate_error_vs_float64": 0.021082403078454437,
+      "raw_coordinate_rmse_vs_float64": 0.0022826523091146714,
+      "camera_recovery": [
+        {
+          "view": 0,
+          "status": "rejected",
+          "reason": "Ambiguous pinhole camera: null-space gap 146.07769432755964"
+        },
+        {
+          "view": 1,
+          "status": "rejected",
+          "reason": "Ambiguous pinhole camera: null-space gap 111.45332487013303"
+        },
+        {
+          "view": 2,
+          "status": "rejected",
+          "reason": "Ambiguous pinhole camera: null-space gap 84.15372080621117"
+        },
+        {
+          "view": 3,
+          "status": "rejected",
+          "reason": "Ambiguous pinhole camera: null-space gap 134.0561138170776"
+        },
+        {
+          "view": 4,
+          "status": "rejected",
+          "reason": "Ambiguous pinhole camera: null-space gap 95.79478084545248"
+        }
+      ],
+      "status": "complete",
+      "model_inference_performed": false,
+      "adaptation_performed": false
+    },
+    {
+      "job_id": "heads_seq-01_upstream_cpu_float32",
+      "scene": "heads/seq-01",
+      "mode": "upstream_cpu_float32",
+      "metrics": {
+        "accuracy_mean_m": 0.013398205128029037,
+        "accuracy_median_m": 0.007941832123735193,
+        "completeness_mean_m": 0.013927272581228198,
+        "completeness_median_m": 0.008000769928160291,
+        "normal_consistency_mean": 0.8032882287177079,
+        "normal_consistency_median": 0.9143221073280868,
+        "nc1_mean": 0.8166299773316398,
+        "nc2_mean": 0.789946480103776,
+        "valid_points": 688882,
+        "similarity_scale": 0.9174273691022791,
+        "similarity_rotation": [
+          [
+            0.9515240309339753,
+            0.009521838144142904,
+            -0.30742698832977566
+          ],
+          [
+            0.0669807626249542,
+            0.9691172006183555,
+            0.23732978933084234
+          ],
+          [
+            0.30019259816547583,
+            -0.2464166919346154,
+            0.9215005251993416
+          ]
+        ],
+        "similarity_translation": [
+          [
+            -0.21837594312896624
+          ],
+          [
+            -0.12344623590095338
+          ],
+          [
+            0.23123728162293655
+          ]
+        ],
+        "icp_transformation": [
+          [
+            0.9997962362959357,
+            0.010687948817159862,
+            -0.017124650027760025,
+            0.01369251721355529
+          ],
+          [
+            -0.0108748590600319,
+            0.9998819028168301,
+            -0.010858999025174464,
+            0.003932235617909837
+          ],
+          [
+            0.0170065672290424,
+            0.011043014510815583,
+            0.9997943931137069,
+            -0.015831554799952303
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+      },
+      "initial_heads_tensor_sha256": "f19a19b0d14cbfa9747959d0af7a4230c767ddd3bd311c9af79a9acbe72a6893",
+      "reference_tensor_sha256": "d62b095b472ffa80521e3148848b898c619955ffbb21de3fddcd5b5d59e6891e",
+      "saved_prediction_sha256": "8893d2d4eb2dfc897b4dac3bbc2e992eaa9c89e13e7ff59af133f14a4fa2115f",
+      "prediction_sha256": "d17128dab6a416f48c4d257189af2df34f8d4851f332782331a071714df54a64",
+      "output_dtype": "float32",
+      "bitwise_equal_to_saved": false,
+      "fraction_float32_values_exactly_bfloat16": 3.480156541381031e-05,
+      "max_raw_coordinate_error_vs_float64": 2.4413706700698867e-07,
+      "raw_coordinate_rmse_vs_float64": 3.205607106572233e-08,
+      "camera_recovery": [
+        {
+          "view": 0,
+          "status": "recovered",
+          "dense_reprojection_max_pixels": 6.206735326005948e-05,
+          "intrinsic_max_absolute_error": 3.310708660819728e-05,
+          "extrinsic_max_absolute_error": 5.289625075491865e-08,
+          "depth_max_absolute_error": 1.7047034628348e-07
+        },
+        {
+          "view": 1,
+          "status": "recovered",
+          "dense_reprojection_max_pixels": 7.751877270094073e-05,
+          "intrinsic_max_absolute_error": 1.4994140713042725e-05,
+          "extrinsic_max_absolute_error": 3.5660752906174764e-08,
+          "depth_max_absolute_error": 2.4348584104494364e-07
+        },
+        {
+          "view": 2,
+          "status": "recovered",
+          "dense_reprojection_max_pixels": 7.058059845556382e-05,
+          "intrinsic_max_absolute_error": 1.647872761623148e-05,
+          "extrinsic_max_absolute_error": 4.648023843589755e-08,
+          "depth_max_absolute_error": 1.0647554393727887e-07
+        },
+        {
+          "view": 3,
+          "status": "recovered",
+          "dense_reprojection_max_pixels": 6.455273413454804e-05,
+          "intrinsic_max_absolute_error": 2.582003733664351e-05,
+          "extrinsic_max_absolute_error": 5.6535234216337216e-08,
+          "depth_max_absolute_error": 1.6522759049841795e-07
+        },
+        {
+          "view": 4,
+          "status": "recovered",
+          "dense_reprojection_max_pixels": 8.403823131667348e-05,
+          "intrinsic_max_absolute_error": 1.3064812589851952e-05,
+          "extrinsic_max_absolute_error": 6.713574096650632e-08,
+          "depth_max_absolute_error": 2.679433450669677e-07
+        }
+      ],
+      "status": "complete",
+      "model_inference_performed": false,
+      "adaptation_performed": false
+    },
+    {
+      "job_id": "heads_seq-01_upstream_cpu_bfloat16",
+      "scene": "heads/seq-01",
+      "mode": "upstream_cpu_bfloat16",
+      "metrics": {
+        "accuracy_mean_m": 0.013615729551260607,
+        "accuracy_median_m": 0.008134926007350734,
+        "completeness_mean_m": 0.012897169253797655,
+        "completeness_median_m": 0.006751878936416448,
+        "normal_consistency_mean": 0.7186903903632837,
+        "normal_consistency_median": 0.8351463515597359,
+        "nc1_mean": 0.7073813456690979,
+        "nc2_mean": 0.7299994350574697,
+        "valid_points": 688882,
+        "similarity_scale": 0.9171733037882636,
+        "similarity_rotation": [
+          [
+            0.9517301914864494,
+            0.009605899340663308,
+            -0.30678554286508314
+          ],
+          [
+            0.06700759525260258,
+            0.9688986349509058,
+            0.23821296641605222
+          ],
+          [
+            0.29953234348168495,
+            -0.24727143362735812,
+            0.9214864151577284
+          ]
+        ],
+        "similarity_translation": [
+          [
+            -0.2191719660297517
+          ],
+          [
+            -0.12373809024959895
+          ],
+          [
+            0.2317833759559732
+          ]
+        ],
+        "icp_transformation": [
+          [
+            0.9998053182042436,
+            0.010648524457627283,
+            -0.016611279823760938,
+            0.012986143277537792
+          ],
+          [
+            -0.010821990297238257,
+            0.9998874811736972,
+            -0.010387950622195842,
+            0.003654135199180532
+          ],
+          [
+            0.016498794395786786,
+            0.010565695386390484,
+            0.9998080595116683,
+            -0.016115103085575434
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+      },
+      "initial_heads_tensor_sha256": "f19a19b0d14cbfa9747959d0af7a4230c767ddd3bd311c9af79a9acbe72a6893",
+      "reference_tensor_sha256": "d62b095b472ffa80521e3148848b898c619955ffbb21de3fddcd5b5d59e6891e",
+      "saved_prediction_sha256": "8893d2d4eb2dfc897b4dac3bbc2e992eaa9c89e13e7ff59af133f14a4fa2115f",
+      "prediction_sha256": "8893d2d4eb2dfc897b4dac3bbc2e992eaa9c89e13e7ff59af133f14a4fa2115f",
+      "output_dtype": "float32",
+      "bitwise_equal_to_saved": true,
+      "fraction_float32_values_exactly_bfloat16": 1.0,
+      "max_raw_coordinate_error_vs_float64": 0.021082403078454437,
+      "raw_coordinate_rmse_vs_float64": 0.0022826523091146714,
+      "camera_recovery": [
+        {
+          "view": 0,
+          "status": "rejected",
+          "reason": "Ambiguous pinhole camera: null-space gap 146.07769432755964"
+        },
+        {
+          "view": 1,
+          "status": "rejected",
+          "reason": "Ambiguous pinhole camera: null-space gap 111.45332487013303"
+        },
+        {
+          "view": 2,
+          "status": "rejected",
+          "reason": "Ambiguous pinhole camera: null-space gap 84.15372080621117"
+        },
+        {
+          "view": 3,
+          "status": "rejected",
+          "reason": "Ambiguous pinhole camera: null-space gap 134.0561138170776"
+        },
+        {
+          "view": 4,
+          "status": "rejected",
+          "reason": "Ambiguous pinhole camera: null-space gap 95.79478084545248"
+        }
+      ],
+      "status": "complete",
+      "model_inference_performed": false,
+      "adaptation_performed": false
+    },
+    {
+      "job_id": "heads_seq-01_numpy_float64",
+      "scene": "heads/seq-01",
+      "mode": "numpy_float64",
+      "metrics": {
+        "accuracy_mean_m": 0.013398208037851737,
+        "accuracy_median_m": 0.007941965889514159,
+        "completeness_mean_m": 0.013927267565027724,
+        "completeness_median_m": 0.00800089003786324,
+        "normal_consistency_mean": 0.8032881896573059,
+        "normal_consistency_median": 0.9143254664513925,
+        "nc1_mean": 0.8166301058627057,
+        "nc2_mean": 0.7899462734519059,
+        "valid_points": 688882,
+        "similarity_scale": 0.9174273341220274,
+        "similarity_rotation": [
+          [
+            0.9515240313318328,
+            0.00952182908122306,
+            -0.3074269873790619
+          ],
+          [
+            0.06698076883256708,
+            0.9691172022671022,
+            0.2373297808463624
+          ],
+          [
+            0.3001925955193034,
+            -0.24641668580056014,
+            0.9215005277016673
+          ]
+        ],
+        "similarity_translation": [
+          [
+            -0.218382530810189
+          ],
+          [
+            -0.12343896926732117
+          ],
+          [
+            0.23126344306561664
+          ]
+        ],
+        "icp_transformation": [
+          [
+            0.9997962339845664,
+            0.010687927218328066,
+            -0.017124798453043037,
+            0.013698723373351962
+          ],
+          [
+            -0.01087483167537195,
+            0.9998819078541642,
+            -0.01085856260992521,
+            0.003924862416510848
+          ],
+          [
+            0.017006720621976362,
+            0.011042579304540239,
+            0.9997943953113535,
+            -0.01585758750501543
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+      },
+      "initial_heads_tensor_sha256": "f19a19b0d14cbfa9747959d0af7a4230c767ddd3bd311c9af79a9acbe72a6893",
+      "reference_tensor_sha256": "d62b095b472ffa80521e3148848b898c619955ffbb21de3fddcd5b5d59e6891e",
+      "saved_prediction_sha256": "8893d2d4eb2dfc897b4dac3bbc2e992eaa9c89e13e7ff59af133f14a4fa2115f",
+      "prediction_sha256": "b23663274b18b1d9bbe2b258322783b0dea58ba3e57ad230ad3797a4a13103e9",
+      "output_dtype": "float64",
+      "bitwise_equal_to_saved": false,
+      "fraction_float32_values_exactly_bfloat16": 1.5102566122974287e-05,
+      "max_raw_coordinate_error_vs_float64": 0.0,
+      "raw_coordinate_rmse_vs_float64": 0.0,
+      "camera_recovery": [
+        {
+          "view": 0,
+          "status": "recovered",
+          "dense_reprojection_max_pixels": 5.454877784701712e-13,
+          "intrinsic_max_absolute_error": 2.083058802782034e-06,
+          "extrinsic_max_absolute_error": 6.317642187170236e-09,
+          "depth_max_absolute_error": 9.057646188637136e-09
+        },
+        {
+          "view": 1,
+          "status": "recovered",
+          "dense_reprojection_max_pixels": 5.054476603183122e-13,
+          "intrinsic_max_absolute_error": 2.3745826581489382e-05,
+          "extrinsic_max_absolute_error": 4.735406089473315e-08,
+          "depth_max_absolute_error": 3.2259816373780836e-08
+        },
+        {
+          "view": 2,
+          "status": "recovered",
+          "dense_reprojection_max_pixels": 6.967667714054223e-13,
+          "intrinsic_max_absolute_error": 1.1056603057113534e-05,
+          "extrinsic_max_absolute_error": 2.170800295075992e-08,
+          "depth_max_absolute_error": 7.201224061503808e-09
+        },
+        {
+          "view": 3,
+          "status": "recovered",
+          "dense_reprojection_max_pixels": 4.1382633578908315e-13,
+          "intrinsic_max_absolute_error": 8.430067623521609e-06,
+          "extrinsic_max_absolute_error": 2.322180336911117e-08,
+          "depth_max_absolute_error": 3.214015364960687e-08
+        },
+        {
+          "view": 4,
+          "status": "recovered",
+          "dense_reprojection_max_pixels": 6.355287432313019e-13,
+          "intrinsic_max_absolute_error": 1.7344851755751733e-05,
+          "extrinsic_max_absolute_error": 6.573687549860097e-08,
+          "depth_max_absolute_error": 1.0861787735905182e-07
+        }
+      ],
+      "status": "complete",
+      "model_inference_performed": false,
+      "adaptation_performed": false
+    },
+    {
+      "job_id": "chess_seq-03_saved_zero",
+      "scene": "chess/seq-03",
+      "mode": "saved_zero",
+      "metrics": {
+        "accuracy_mean_m": 0.01888602482133379,
+        "accuracy_median_m": 0.008704600446920029,
+        "completeness_mean_m": 0.02432786535026899,
+        "completeness_median_m": 0.011693852608637385,
+        "normal_consistency_mean": 0.664015489401187,
+        "normal_consistency_median": 0.7166159053586565,
+        "nc1_mean": 0.6370838685195055,
+        "nc2_mean": 0.6909471102828686,
+        "valid_points": 716290,
+        "similarity_scale": 2.5019103931312725,
+        "similarity_rotation": [
+          [
+            0.9936709156719584,
+            0.050201303697913965,
+            0.10048850906785885
+          ],
+          [
+            -0.08551929154869505,
+            0.9181112373113041,
+            0.3869860549111773
+          ],
+          [
+            -0.07283242492640675,
+            -0.3931304936401361,
+            0.9165936137949047
+          ]
+        ],
+        "similarity_translation": [
+          [
+            -0.1438117337298333
+          ],
+          [
+            -0.8356864968878898
+          ],
+          [
+            -0.6464685891254172
+          ]
+        ],
+        "icp_transformation": [
+          [
+            0.9992754389673061,
+            -0.011197509271711233,
+            -0.0363759929459608,
+            0.0766140028035451
+          ],
+          [
+            0.0110668111855359,
+            0.9999315695529205,
+            -0.0037923477705745843,
+            -0.02128945272633861
+          ],
+          [
+            0.03641596856982287,
+            0.0033870337375383995,
+            0.9993309788231225,
+            -0.035039966313583415
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+      },
+      "initial_heads_tensor_sha256": "b1946325a05edf8be57183a463b25c9003256866be3ac204221dabb2295458cf",
+      "reference_tensor_sha256": "cbc30910b3772817e1d1175d77df2d3b2363acf4169efbeeef08e5ef1395d1cb",
+      "saved_prediction_sha256": "919f3ab4f077e88c2cb3f6814192d6b898eda8f720982ed00215743df8abfcaa",
+      "prediction_sha256": "919f3ab4f077e88c2cb3f6814192d6b898eda8f720982ed00215743df8abfcaa",
+      "output_dtype": "float32",
+      "bitwise_equal_to_saved": true,
+      "fraction_float32_values_exactly_bfloat16": 1.0,
+      "max_raw_coordinate_error_vs_float64": 0.010636717589215916,
+      "raw_coordinate_rmse_vs_float64": 0.001708453769810701,
+      "camera_recovery": [
+        {
+          "view": 0,
+          "status": "rejected",
+          "reason": "Ambiguous pinhole camera: null-space gap 234.24766079559777"
+        },
+        {
+          "view": 1,
+          "status": "rejected",
+          "reason": "Ambiguous pinhole camera: null-space gap 115.54569408928711"
+        },
+        {
+          "view": 2,
+          "status": "rejected",
+          "reason": "Ambiguous pinhole camera: null-space gap 108.38328034939019"
+        },
+        {
+          "view": 3,
+          "status": "rejected",
+          "reason": "Ambiguous pinhole camera: null-space gap 104.14797494415802"
+        },
+        {
+          "view": 4,
+          "status": "rejected",
+          "reason": "Ambiguous pinhole camera: null-space gap 120.64102473358523"
+        }
+      ],
+      "status": "complete",
+      "model_inference_performed": false,
+      "adaptation_performed": false
+    },
+    {
+      "job_id": "chess_seq-03_upstream_cpu_float32",
+      "scene": "chess/seq-03",
+      "mode": "upstream_cpu_float32",
+      "metrics": {
+        "accuracy_mean_m": 0.018518859609842748,
+        "accuracy_median_m": 0.008427130622603744,
+        "completeness_mean_m": 0.02603879154123525,
+        "completeness_median_m": 0.013921534176553205,
+        "normal_consistency_mean": 0.7415331837721919,
+        "normal_consistency_median": 0.8587860519456951,
+        "nc1_mean": 0.7313062409204395,
+        "nc2_mean": 0.7517601266239443,
+        "valid_points": 716290,
+        "similarity_scale": 2.5016779542896708,
+        "similarity_rotation": [
+          [
+            0.9936551760575795,
+            0.04998827621132403,
+            0.1007500041459102
+          ],
+          [
+            -0.08549764756294878,
+            0.917734716580313,
+            0.38788289759211303
+          ],
+          [
+            -0.0730721790778288,
+            -0.39403573724304836,
+            0.916185731399559
+          ]
+        ],
+        "similarity_translation": [
+          [
+            -0.14553904958811867
+          ],
+          [
+            -0.8387523988182811
+          ],
+          [
+            -0.6454253260424692
+          ]
+        ],
+        "icp_transformation": [
+          [
+            0.9992684889886735,
+            -0.011384517242222569,
+            -0.03650862475448652,
+            0.0769042447878633
+          ],
+          [
+            0.01121046481953105,
+            0.9999248163765906,
+            -0.004968608735976762,
+            -0.020031544660080076
+          ],
+          [
+            0.036562445115615703,
+            0.004555695490553102,
+            0.9993209860929434,
+            -0.03345281991814664
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+      },
+      "initial_heads_tensor_sha256": "b1946325a05edf8be57183a463b25c9003256866be3ac204221dabb2295458cf",
+      "reference_tensor_sha256": "cbc30910b3772817e1d1175d77df2d3b2363acf4169efbeeef08e5ef1395d1cb",
+      "saved_prediction_sha256": "919f3ab4f077e88c2cb3f6814192d6b898eda8f720982ed00215743df8abfcaa",
+      "prediction_sha256": "1f68faa129bad0567915ab025ef38954299b834a60cce5de6a4a51f0982d75cc",
+      "output_dtype": "float32",
+      "bitwise_equal_to_saved": false,
+      "fraction_float32_values_exactly_bfloat16": 0.00010604627951566727,
+      "max_raw_coordinate_error_vs_float64": 2.0884374851704024e-07,
+      "raw_coordinate_rmse_vs_float64": 2.7591320891088532e-08,
+      "camera_recovery": [
+        {
+          "view": 0,
+          "status": "recovered",
+          "dense_reprojection_max_pixels": 6.217752256329741e-05,
+          "intrinsic_max_absolute_error": 1.353567790829402e-05,
+          "extrinsic_max_absolute_error": 3.968386831426971e-08,
+          "depth_max_absolute_error": 2.5543499759805854e-07
+        },
+        {
+          "view": 1,
+          "status": "recovered",
+          "dense_reprojection_max_pixels": 8.310458776868001e-05,
+          "intrinsic_max_absolute_error": 1.5036235686852967e-05,
+          "extrinsic_max_absolute_error": 2.5676696546739208e-08,
+          "depth_max_absolute_error": 1.1768917596022277e-07
+        },
+        {
+          "view": 2,
+          "status": "recovered",
+          "dense_reprojection_max_pixels": 7.560630424094374e-05,
+          "intrinsic_max_absolute_error": 2.0229236326940736e-05,
+          "extrinsic_max_absolute_error": 5.101835498511065e-08,
+          "depth_max_absolute_error": 1.170081339596507e-07
+        },
+        {
+          "view": 3,
+          "status": "recovered",
+          "dense_reprojection_max_pixels": 9.025675003395337e-05,
+          "intrinsic_max_absolute_error": 2.2441564681230375e-05,
+          "extrinsic_max_absolute_error": 3.664324083052506e-08,
+          "depth_max_absolute_error": 1.287837940733283e-07
+        },
+        {
+          "view": 4,
+          "status": "recovered",
+          "dense_reprojection_max_pixels": 0.000102800794999255,
+          "intrinsic_max_absolute_error": 2.4037588048031466e-05,
+          "extrinsic_max_absolute_error": 5.133564634496324e-08,
+          "depth_max_absolute_error": 1.06395479093635e-07
+        }
+      ],
+      "status": "complete",
+      "model_inference_performed": false,
+      "adaptation_performed": false
+    },
+    {
+      "job_id": "chess_seq-03_upstream_cpu_bfloat16",
+      "scene": "chess/seq-03",
+      "mode": "upstream_cpu_bfloat16",
+      "metrics": {
+        "accuracy_mean_m": 0.018886024821334765,
+        "accuracy_median_m": 0.008704600446873703,
+        "completeness_mean_m": 0.024327865350271035,
+        "completeness_median_m": 0.01169385260864013,
+        "normal_consistency_mean": 0.6639396278209864,
+        "normal_consistency_median": 0.7165662540021217,
+        "nc1_mean": 0.6370855286893161,
+        "nc2_mean": 0.6907937269526566,
+        "valid_points": 716290,
+        "similarity_scale": 2.5019103931312725,
+        "similarity_rotation": [
+          [
+            0.9936709156719584,
+            0.050201303697913965,
+            0.10048850906785885
+          ],
+          [
+            -0.08551929154869505,
+            0.9181112373113041,
+            0.3869860549111773
+          ],
+          [
+            -0.07283242492640675,
+            -0.3931304936401361,
+            0.9165936137949047
+          ]
+        ],
+        "similarity_translation": [
+          [
+            -0.1438117337298333
+          ],
+          [
+            -0.8356864968878898
+          ],
+          [
+            -0.6464685891254172
+          ]
+        ],
+        "icp_transformation": [
+          [
+            0.9992754389673089,
+            -0.011197509271711306,
+            -0.0363759929459619,
+            0.07661400280354723
+          ],
+          [
+            0.011066811185536065,
+            0.9999315695529231,
+            -0.0037923477705747617,
+            -0.021289452726337258
+          ],
+          [
+            0.03641596856982276,
+            0.0033870337375382312,
+            0.9993309788231227,
+            -0.0350399663136369
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+      },
+      "initial_heads_tensor_sha256": "b1946325a05edf8be57183a463b25c9003256866be3ac204221dabb2295458cf",
+      "reference_tensor_sha256": "cbc30910b3772817e1d1175d77df2d3b2363acf4169efbeeef08e5ef1395d1cb",
+      "saved_prediction_sha256": "919f3ab4f077e88c2cb3f6814192d6b898eda8f720982ed00215743df8abfcaa",
+      "prediction_sha256": "919f3ab4f077e88c2cb3f6814192d6b898eda8f720982ed00215743df8abfcaa",
+      "output_dtype": "float32",
+      "bitwise_equal_to_saved": true,
+      "fraction_float32_values_exactly_bfloat16": 1.0,
+      "max_raw_coordinate_error_vs_float64": 0.010636717589215916,
+      "raw_coordinate_rmse_vs_float64": 0.001708453769810701,
+      "camera_recovery": [
+        {
+          "view": 0,
+          "status": "rejected",
+          "reason": "Ambiguous pinhole camera: null-space gap 234.24766079559777"
+        },
+        {
+          "view": 1,
+          "status": "rejected",
+          "reason": "Ambiguous pinhole camera: null-space gap 115.54569408928711"
+        },
+        {
+          "view": 2,
+          "status": "rejected",
+          "reason": "Ambiguous pinhole camera: null-space gap 108.38328034939019"
+        },
+        {
+          "view": 3,
+          "status": "rejected",
+          "reason": "Ambiguous pinhole camera: null-space gap 104.14797494415802"
+        },
+        {
+          "view": 4,
+          "status": "rejected",
+          "reason": "Ambiguous pinhole camera: null-space gap 120.64102473358523"
+        }
+      ],
+      "status": "complete",
+      "model_inference_performed": false,
+      "adaptation_performed": false
+    },
+    {
+      "job_id": "chess_seq-03_numpy_float64",
+      "scene": "chess/seq-03",
+      "mode": "numpy_float64",
+      "metrics": {
+        "accuracy_mean_m": 0.018519097828087458,
+        "accuracy_median_m": 0.008427402971229559,
+        "completeness_mean_m": 0.026039982139899415,
+        "completeness_median_m": 0.013923376667027018,
+        "normal_consistency_mean": 0.7415219181711799,
+        "normal_consistency_median": 0.8587734374635011,
+        "nc1_mean": 0.7313205252410673,
+        "nc2_mean": 0.7517233111012923,
+        "valid_points": 716290,
+        "similarity_scale": 2.5016792513335844,
+        "similarity_rotation": [
+          [
+            0.993655175413716,
+            0.049988277508701884,
+            0.10075000985235756
+          ],
+          [
+            -0.08549765182990485,
+            0.9177347119329171,
+            0.3878829076473694
+          ],
+          [
+            -0.07307218284073294,
+            -0.3940357479025453,
+            0.9161857265149748
+          ]
+        ],
+        "similarity_translation": [
+          [
+            -0.1456003786363652
+          ],
+          [
+            -0.8389887018012461
+          ],
+          [
+            -0.6459825602486144
+          ]
+        ],
+        "icp_transformation": [
+          [
+            0.9992681831628213,
+            -0.011382856201738926,
+            -0.036517512280694546,
+            0.07694256419554008
+          ],
+          [
+            0.011209275914785063,
+            0.9999248993656498,
+            -0.004954569815463662,
+            -0.019809871179935986
+          ],
+          [
+            0.036571166948107456,
+            0.0045416091069729525,
+            0.9993207310642457,
+            -0.03292352250885247
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+      },
+      "initial_heads_tensor_sha256": "b1946325a05edf8be57183a463b25c9003256866be3ac204221dabb2295458cf",
+      "reference_tensor_sha256": "cbc30910b3772817e1d1175d77df2d3b2363acf4169efbeeef08e5ef1395d1cb",
+      "saved_prediction_sha256": "919f3ab4f077e88c2cb3f6814192d6b898eda8f720982ed00215743df8abfcaa",
+      "prediction_sha256": "f609f88fc2d515e092ccd0bb23fcaedb785a930bcda3b100f86bf57cf6fac6d8",
+      "output_dtype": "float64",
+      "bitwise_equal_to_saved": false,
+      "fraction_float32_values_exactly_bfloat16": 1.4445932813279752e-05,
+      "max_raw_coordinate_error_vs_float64": 0.0,
+      "raw_coordinate_rmse_vs_float64": 0.0,
+      "camera_recovery": [
+        {
+          "view": 0,
+          "status": "recovered",
+          "dense_reprojection_max_pixels": 5.46229728115577e-13,
+          "intrinsic_max_absolute_error": 1.7899199633575336e-06,
+          "extrinsic_max_absolute_error": 4.488941773850286e-09,
+          "depth_max_absolute_error": 9.075301843353145e-09
+        },
+        {
+          "view": 1,
+          "status": "recovered",
+          "dense_reprojection_max_pixels": 6.821210263296962e-13,
+          "intrinsic_max_absolute_error": 1.1906366612591063e-05,
+          "extrinsic_max_absolute_error": 2.2464117732656774e-08,
+          "depth_max_absolute_error": 1.2553904582546238e-09
+        },
+        {
+          "view": 2,
+          "status": "recovered",
+          "dense_reprojection_max_pixels": 5.521956024968762e-13,
+          "intrinsic_max_absolute_error": 2.2953571090056357e-05,
+          "extrinsic_max_absolute_error": 4.351179516692838e-08,
+          "depth_max_absolute_error": 4.467609171499021e-09
+        },
+        {
+          "view": 3,
+          "status": "recovered",
+          "dense_reprojection_max_pixels": 8.985767397728349e-13,
+          "intrinsic_max_absolute_error": 1.3935303456946713e-05,
+          "extrinsic_max_absolute_error": 2.990208214370682e-08,
+          "depth_max_absolute_error": 4.0291709968443e-09
+        },
+        {
+          "view": 4,
+          "status": "recovered",
+          "dense_reprojection_max_pixels": 1.0054870144020999e-12,
+          "intrinsic_max_absolute_error": 1.3559975116095302e-05,
+          "extrinsic_max_absolute_error": 3.1024133928525544e-08,
+          "depth_max_absolute_error": 2.2096557916739812e-10
+        }
+      ],
+      "status": "complete",
+      "model_inference_performed": false,
+      "adaptation_performed": false
+    },
+    {
+      "job_id": "fire_seq-03_saved_zero",
+      "scene": "fire/seq-03",
+      "mode": "saved_zero",
+      "metrics": {
+        "accuracy_mean_m": 0.016306963321277235,
+        "accuracy_median_m": 0.007803435278147031,
+        "completeness_mean_m": 0.018975026587579623,
+        "completeness_median_m": 0.01108989669381358,
+        "normal_consistency_mean": 0.663395460836099,
+        "normal_consistency_median": 0.7430454557119985,
+        "nc1_mean": 0.6531386663750088,
+        "nc2_mean": 0.6736522552971893,
+        "valid_points": 697344,
+        "similarity_scale": 1.8492164113890244,
+        "similarity_rotation": [
+          [
+            0.9717344605156614,
+            -0.20667115358508795,
+            0.11410158860482986
+          ],
+          [
+            0.1597521682124612,
+            0.931516812603795,
+            0.32673486588958206
+          ],
+          [
+            -0.17381421978006953,
+            -0.29927155246076215,
+            0.9382031522490059
+          ]
+        ],
+        "similarity_translation": [
+          [
+            -0.05929138585690663
+          ],
+          [
+            -0.4758407671300682
+          ],
+          [
+            0.26078684118007756
+          ]
+        ],
+        "icp_transformation": [
+          [
+            0.9999252294164864,
+            0.0003625676269623046,
+            -0.012223097852490351,
+            0.020297559395955376
+          ],
+          [
+            -0.0006311103676739571,
+            0.9997583562376222,
+            -0.021973411950669475,
+            0.02494179173490264
+          ],
+          [
+            0.012212177369310436,
+            0.0219794831096149,
+            0.999683832542136,
+            -0.033290480297430994
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+      },
+      "initial_heads_tensor_sha256": "2e901fcaf30c7f911eb517b2e75a6b75e1e22f717aea16db453966d192dcc597",
+      "reference_tensor_sha256": "857a2af7ef7735be766577efaac09214bf3a3e796ff1d6af5c521c6b71fae043",
+      "saved_prediction_sha256": "63eabc98350b783f6e8df299066e0ee89059fb104fc533cc5272da09ccb2e386",
+      "prediction_sha256": "63eabc98350b783f6e8df299066e0ee89059fb104fc533cc5272da09ccb2e386",
+      "output_dtype": "float32",
+      "bitwise_equal_to_saved": true,
+      "fraction_float32_values_exactly_bfloat16": 1.0,
+      "max_raw_coordinate_error_vs_float64": 0.009499072988879975,
+      "raw_coordinate_rmse_vs_float64": 0.001776159916029761,
+      "camera_recovery": [
+        {
+          "view": 0,
+          "status": "rejected",
+          "reason": "Ambiguous pinhole camera: null-space gap 224.00370456656643"
+        },
+        {
+          "view": 1,
+          "status": "rejected",
+          "reason": "Ambiguous pinhole camera: null-space gap 102.51078363356943"
+        },
+        {
+          "view": 2,
+          "status": "rejected",
+          "reason": "Ambiguous pinhole camera: null-space gap 105.77831663634878"
+        },
+        {
+          "view": 3,
+          "status": "rejected",
+          "reason": "Ambiguous pinhole camera: null-space gap 104.28673130109098"
+        },
+        {
+          "view": 4,
+          "status": "rejected",
+          "reason": "Ambiguous pinhole camera: null-space gap 65.3969896997531"
+        }
+      ],
+      "status": "complete",
+      "model_inference_performed": false,
+      "adaptation_performed": false
+    },
+    {
+      "job_id": "fire_seq-03_upstream_cpu_float32",
+      "scene": "fire/seq-03",
+      "mode": "upstream_cpu_float32",
+      "metrics": {
+        "accuracy_mean_m": 0.016236433341901623,
+        "accuracy_median_m": 0.007633569091209141,
+        "completeness_mean_m": 0.020992423141390958,
+        "completeness_median_m": 0.013639828517500757,
+        "normal_consistency_mean": 0.7225541635141879,
+        "normal_consistency_median": 0.8397495312817469,
+        "nc1_mean": 0.7229474302887998,
+        "nc2_mean": 0.7221608967395761,
+        "valid_points": 697344,
+        "similarity_scale": 1.848087908790617,
+        "similarity_rotation": [
+          [
+            0.9716885375462946,
+            -0.20629472549033948,
+            0.11516888571141772
+          ],
+          [
+            0.159213838064534,
+            0.9318891603362056,
+            0.32593488094501566
+          ],
+          [
+            -0.17456328299474796,
+            -0.298370707481057,
+            0.9383509903801186
+          ]
+        ],
+        "similarity_translation": [
+          [
+            -0.06115955324535853
+          ],
+          [
+            -0.47494821189327896
+          ],
+          [
+            0.26220592703739176
+          ]
+        ],
+        "icp_transformation": [
+          [
+            0.9999275209900241,
+            0.00022882953943859652,
+            -0.012037458361354406,
+            0.020418804212275623
+          ],
+          [
+            -0.0004932178016219558,
+            0.9997586095362745,
+            -0.021965413592803067,
+            0.02518651309113417
+          ],
+          [
+            0.0120295262982227,
+            0.02196975865011964,
+            0.9996862608848349,
+            -0.03316539194019308
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+      },
+      "initial_heads_tensor_sha256": "2e901fcaf30c7f911eb517b2e75a6b75e1e22f717aea16db453966d192dcc597",
+      "reference_tensor_sha256": "857a2af7ef7735be766577efaac09214bf3a3e796ff1d6af5c521c6b71fae043",
+      "saved_prediction_sha256": "63eabc98350b783f6e8df299066e0ee89059fb104fc533cc5272da09ccb2e386",
+      "prediction_sha256": "16cbd1816a6f6eebfa6eb9c1e231bbea22dffbc8f8d8e091099effe832632c8d",
+      "output_dtype": "float32",
+      "bitwise_equal_to_saved": false,
+      "fraction_float32_values_exactly_bfloat16": 8.667559687967851e-05,
+      "max_raw_coordinate_error_vs_float64": 2.566038801443682e-07,
+      "raw_coordinate_rmse_vs_float64": 2.778346775595778e-08,
+      "camera_recovery": [
+        {
+          "view": 0,
+          "status": "recovered",
+          "dense_reprojection_max_pixels": 5.875482019907637e-05,
+          "intrinsic_max_absolute_error": 1.2471172169625788e-05,
+          "extrinsic_max_absolute_error": 4.246263540785833e-08,
+          "depth_max_absolute_error": 1.9914723248248833e-07
+        },
+        {
+          "view": 1,
+          "status": "recovered",
+          "dense_reprojection_max_pixels": 6.336608122080302e-05,
+          "intrinsic_max_absolute_error": 2.4350855994725862e-05,
+          "extrinsic_max_absolute_error": 5.313729095623998e-08,
+          "depth_max_absolute_error": 1.3489109229603002e-07
+        },
+        {
+          "view": 2,
+          "status": "recovered",
+          "dense_reprojection_max_pixels": 7.075086978765217e-05,
+          "intrinsic_max_absolute_error": 4.3354554861707584e-05,
+          "extrinsic_max_absolute_error": 6.664076576679001e-08,
+          "depth_max_absolute_error": 2.1826339313690823e-07
+        },
+        {
+          "view": 3,
+          "status": "recovered",
+          "dense_reprojection_max_pixels": 8.145617208209924e-05,
+          "intrinsic_max_absolute_error": 2.4386011034494004e-05,
+          "extrinsic_max_absolute_error": 4.923229657283201e-08,
+          "depth_max_absolute_error": 1.1786090925447468e-07
+        },
+        {
+          "view": 4,
+          "status": "recovered",
+          "dense_reprojection_max_pixels": 7.953072398619008e-05,
+          "intrinsic_max_absolute_error": 3.703660172504897e-05,
+          "extrinsic_max_absolute_error": 7.690233394530566e-08,
+          "depth_max_absolute_error": 1.2510548147437461e-07
+        }
+      ],
+      "status": "complete",
+      "model_inference_performed": false,
+      "adaptation_performed": false
+    },
+    {
+      "job_id": "fire_seq-03_upstream_cpu_bfloat16",
+      "scene": "fire/seq-03",
+      "mode": "upstream_cpu_bfloat16",
+      "metrics": {
+        "accuracy_mean_m": 0.016306985328677196,
+        "accuracy_median_m": 0.007803450337767798,
+        "completeness_mean_m": 0.018975037030334457,
+        "completeness_median_m": 0.011089979486217285,
+        "normal_consistency_mean": 0.6635096951616666,
+        "normal_consistency_median": 0.743159384884266,
+        "nc1_mean": 0.6533809721143323,
+        "nc2_mean": 0.6736384182090007,
+        "valid_points": 697344,
+        "similarity_scale": 1.849216426354674,
+        "similarity_rotation": [
+          [
+            0.9717344575982116,
+            -0.20667115039564882,
+            0.11410161922798853
+          ],
+          [
+            0.15975216178945129,
+            0.9315168250620682,
+            0.3267348335116434
+          ],
+          [
+            -0.17381424199387913,
+            -0.299271515885531,
+            0.9382031598005147
+          ]
+        ],
+        "similarity_translation": [
+          [
+            -0.05929143967932975
+          ],
+          [
+            -0.47584071851700793
+          ],
+          [
+            0.26078680503027796
+          ]
+        ],
+        "icp_transformation": [
+          [
+            0.9999252301143616,
+            0.000362461720697683,
+            -0.01222304390293422,
+            0.020297482807303556
+          ],
+          [
+            -0.0006310045013051288,
+            0.9997583541307089,
+            -0.021973510852381722,
+            0.024942108646132673
+          ],
+          [
+            0.012212125698311833,
+            0.021979580691206927,
+            0.9996838310278738,
+            -0.033290636904567024
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+      },
+      "initial_heads_tensor_sha256": "2e901fcaf30c7f911eb517b2e75a6b75e1e22f717aea16db453966d192dcc597",
+      "reference_tensor_sha256": "857a2af7ef7735be766577efaac09214bf3a3e796ff1d6af5c521c6b71fae043",
+      "saved_prediction_sha256": "63eabc98350b783f6e8df299066e0ee89059fb104fc533cc5272da09ccb2e386",
+      "prediction_sha256": "916b94fbb7737ca7b4ea042c36b16e394422b00dc1c119355856d4dd64233ac5",
+      "output_dtype": "float32",
+      "bitwise_equal_to_saved": false,
+      "fraction_float32_values_exactly_bfloat16": 1.0,
+      "max_raw_coordinate_error_vs_float64": 0.009499072988879975,
+      "raw_coordinate_rmse_vs_float64": 0.0017761543346110243,
+      "camera_recovery": [
+        {
+          "view": 0,
+          "status": "rejected",
+          "reason": "Ambiguous pinhole camera: null-space gap 224.00370456656643"
+        },
+        {
+          "view": 1,
+          "status": "rejected",
+          "reason": "Ambiguous pinhole camera: null-space gap 102.51078363356943"
+        },
+        {
+          "view": 2,
+          "status": "rejected",
+          "reason": "Ambiguous pinhole camera: null-space gap 105.77831663634878"
+        },
+        {
+          "view": 3,
+          "status": "rejected",
+          "reason": "Ambiguous pinhole camera: null-space gap 104.28673130109098"
+        },
+        {
+          "view": 4,
+          "status": "rejected",
+          "reason": "Ambiguous pinhole camera: null-space gap 65.3969896997531"
+        }
+      ],
+      "status": "complete",
+      "model_inference_performed": false,
+      "adaptation_performed": false
+    },
+    {
+      "job_id": "fire_seq-03_numpy_float64",
+      "scene": "fire/seq-03",
+      "mode": "numpy_float64",
+      "metrics": {
+        "accuracy_mean_m": 0.016239520290189786,
+        "accuracy_median_m": 0.00764101437309035,
+        "completeness_mean_m": 0.021001687266803543,
+        "completeness_median_m": 0.013649940135927833,
+        "normal_consistency_mean": 0.7225741906354828,
+        "normal_consistency_median": 0.8398125791212743,
+        "nc1_mean": 0.7229661504044189,
+        "nc2_mean": 0.7221822308665468,
+        "valid_points": 697344,
+        "similarity_scale": 1.848089085083761,
+        "similarity_rotation": [
+          [
+            0.9716885373260218,
+            -0.20629472717783726,
+            0.1151688845471646
+          ],
+          [
+            0.15921383996904465,
+            0.9318891598812667,
+            0.3259348813154208
+          ],
+          [
+            -0.17456328248382535,
+            -0.298370707735206,
+            0.9383509903943537
+          ]
+        ],
+        "similarity_translation": [
+          [
+            -0.06108133356865489
+          ],
+          [
+            -0.4747304719064587
+          ],
+          [
+            0.2628359454630327
+          ]
+        ],
+        "icp_transformation": [
+          [
+            0.9999274956861792,
+            0.0002070846316344524,
+            -0.012039953767560403,
+            0.020290731640101645
+          ],
+          [
+            -0.0004723496705600901,
+            0.9997571236452696,
+            -0.02203339752116997,
+            0.0250663119195009
+          ],
+          [
+            0.01203246676946899,
+            0.022037487072994785,
+            0.9996847347573888,
+            -0.0338465004730875
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+      },
+      "initial_heads_tensor_sha256": "2e901fcaf30c7f911eb517b2e75a6b75e1e22f717aea16db453966d192dcc597",
+      "reference_tensor_sha256": "857a2af7ef7735be766577efaac09214bf3a3e796ff1d6af5c521c6b71fae043",
+      "saved_prediction_sha256": "63eabc98350b783f6e8df299066e0ee89059fb104fc533cc5272da09ccb2e386",
+      "prediction_sha256": "477bd0398036157f09e2a2f63301c68696ad8b1cbb0f79b710dbdfb9055e4a62",
+      "output_dtype": "float64",
+      "bitwise_equal_to_saved": false,
+      "fraction_float32_values_exactly_bfloat16": 1.9698999290836026e-05,
+      "max_raw_coordinate_error_vs_float64": 0.0,
+      "raw_coordinate_rmse_vs_float64": 0.0,
+      "camera_recovery": [
+        {
+          "view": 0,
+          "status": "recovered",
+          "dense_reprojection_max_pixels": 5.655738925653163e-13,
+          "intrinsic_max_absolute_error": 9.069933071259584e-07,
+          "extrinsic_max_absolute_error": 3.43874573260905e-09,
+          "depth_max_absolute_error": 9.326522665276116e-09
+        },
+        {
+          "view": 1,
+          "status": "recovered",
+          "dense_reprojection_max_pixels": 4.1382633578908315e-13,
+          "intrinsic_max_absolute_error": 1.5256977974331676e-05,
+          "extrinsic_max_absolute_error": 2.984515073967131e-08,
+          "depth_max_absolute_error": 1.2828446305235275e-08
+        },
+        {
+          "view": 2,
+          "status": "recovered",
+          "dense_reprojection_max_pixels": 3.8131724593878115e-13,
+          "intrinsic_max_absolute_error": 1.5905296891105536e-05,
+          "extrinsic_max_absolute_error": 3.229241152258311e-08,
+          "depth_max_absolute_error": 4.027758571112372e-08
+        },
+        {
+          "view": 3,
+          "status": "recovered",
+          "dense_reprojection_max_pixels": 4.5123659644182874e-13,
+          "intrinsic_max_absolute_error": 1.8407262814434944e-05,
+          "extrinsic_max_absolute_error": 3.794421199465603e-08,
+          "depth_max_absolute_error": 9.431306846607868e-09
+        },
+        {
+          "view": 4,
+          "status": "recovered",
+          "dense_reprojection_max_pixels": 5.429959962425187e-13,
+          "intrinsic_max_absolute_error": 1.3106607316411519e-05,
+          "extrinsic_max_absolute_error": 2.6366032579439036e-08,
+          "depth_max_absolute_error": 4.8477901692933756e-09
+        }
+      ],
+      "status": "complete",
+      "model_inference_performed": false,
+      "adaptation_performed": false
+    }
+  ],
+  "contrasts": [
+    {
+      "scene": "heads/seq-01",
+      "modes": {
+        "saved_zero": {
+          "metrics": {
+            "accuracy_mean_m": 0.013615729551261637,
+            "accuracy_median_m": 0.008134926007349708,
+            "completeness_mean_m": 0.012897169253798507,
+            "completeness_median_m": 0.006751878936409144,
+            "normal_consistency_mean": 0.7188229931718303,
+            "normal_consistency_median": 0.8352692173094574,
+            "nc1_mean": 0.7073797629241809,
+            "nc2_mean": 0.7302662234194797,
+            "valid_points": 688882,
+            "similarity_scale": 0.9171733037882636,
+            "similarity_rotation": [
+              [
+                0.9517301914864494,
+                0.009605899340663308,
+                -0.30678554286508314
+              ],
+              [
+                0.06700759525260258,
+                0.9688986349509058,
+                0.23821296641605222
+              ],
+              [
+                0.29953234348168495,
+                -0.24727143362735812,
+                0.9214864151577284
+              ]
+            ],
+            "similarity_translation": [
+              [
+                -0.2191719660297517
+              ],
+              [
+                -0.12373809024959895
+              ],
+              [
+                0.2317833759559732
+              ]
+            ],
+            "icp_transformation": [
+              [
+                0.9998053182042431,
+                0.010648524457627121,
+                -0.0166112798237611,
+                0.01298614327753557
+              ],
+              [
+                -0.010821990297238075,
+                0.9998874811736965,
+                -0.010387950622195725,
+                0.003654135199180294
+              ],
+              [
+                0.01649879439578704,
+                0.010565695386391162,
+                0.9998080595116695,
+                -0.01611510308555645
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+          },
+          "relative_distance_change_vs_saved": {
+            "accuracy_mean_m": 0.0,
+            "completeness_mean_m": 0.0
+          },
+          "max_raw_coordinate_error_vs_float64": 0.021082403078454437,
+          "camera_recovery_passes": 0
+        },
+        "upstream_cpu_float32": {
+          "metrics": {
+            "accuracy_mean_m": 0.013398205128029037,
+            "accuracy_median_m": 0.007941832123735193,
+            "completeness_mean_m": 0.013927272581228198,
+            "completeness_median_m": 0.008000769928160291,
+            "normal_consistency_mean": 0.8032882287177079,
+            "normal_consistency_median": 0.9143221073280868,
+            "nc1_mean": 0.8166299773316398,
+            "nc2_mean": 0.789946480103776,
+            "valid_points": 688882,
+            "similarity_scale": 0.9174273691022791,
+            "similarity_rotation": [
+              [
+                0.9515240309339753,
+                0.009521838144142904,
+                -0.30742698832977566
+              ],
+              [
+                0.0669807626249542,
+                0.9691172006183555,
+                0.23732978933084234
+              ],
+              [
+                0.30019259816547583,
+                -0.2464166919346154,
+                0.9215005251993416
+              ]
+            ],
+            "similarity_translation": [
+              [
+                -0.21837594312896624
+              ],
+              [
+                -0.12344623590095338
+              ],
+              [
+                0.23123728162293655
+              ]
+            ],
+            "icp_transformation": [
+              [
+                0.9997962362959357,
+                0.010687948817159862,
+                -0.017124650027760025,
+                0.01369251721355529
+              ],
+              [
+                -0.0108748590600319,
+                0.9998819028168301,
+                -0.010858999025174464,
+                0.003932235617909837
+              ],
+              [
+                0.0170065672290424,
+                0.011043014510815583,
+                0.9997943931137069,
+                -0.015831554799952303
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+          },
+          "relative_distance_change_vs_saved": {
+            "accuracy_mean_m": -0.015975965328456798,
+            "completeness_mean_m": 0.07987049771610177
+          },
+          "max_raw_coordinate_error_vs_float64": 2.4413706700698867e-07,
+          "camera_recovery_passes": 5
+        },
+        "upstream_cpu_bfloat16": {
+          "metrics": {
+            "accuracy_mean_m": 0.013615729551260607,
+            "accuracy_median_m": 0.008134926007350734,
+            "completeness_mean_m": 0.012897169253797655,
+            "completeness_median_m": 0.006751878936416448,
+            "normal_consistency_mean": 0.7186903903632837,
+            "normal_consistency_median": 0.8351463515597359,
+            "nc1_mean": 0.7073813456690979,
+            "nc2_mean": 0.7299994350574697,
+            "valid_points": 688882,
+            "similarity_scale": 0.9171733037882636,
+            "similarity_rotation": [
+              [
+                0.9517301914864494,
+                0.009605899340663308,
+                -0.30678554286508314
+              ],
+              [
+                0.06700759525260258,
+                0.9688986349509058,
+                0.23821296641605222
+              ],
+              [
+                0.29953234348168495,
+                -0.24727143362735812,
+                0.9214864151577284
+              ]
+            ],
+            "similarity_translation": [
+              [
+                -0.2191719660297517
+              ],
+              [
+                -0.12373809024959895
+              ],
+              [
+                0.2317833759559732
+              ]
+            ],
+            "icp_transformation": [
+              [
+                0.9998053182042436,
+                0.010648524457627283,
+                -0.016611279823760938,
+                0.012986143277537792
+              ],
+              [
+                -0.010821990297238257,
+                0.9998874811736972,
+                -0.010387950622195842,
+                0.003654135199180532
+              ],
+              [
+                0.016498794395786786,
+                0.010565695386390484,
+                0.9998080595116683,
+                -0.016115103085575434
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+          },
+          "relative_distance_change_vs_saved": {
+            "accuracy_mean_m": -7.571721027943568e-14,
+            "completeness_mean_m": -6.605826996519681e-14
+          },
+          "max_raw_coordinate_error_vs_float64": 0.021082403078454437,
+          "camera_recovery_passes": 0
+        },
+        "numpy_float64": {
+          "metrics": {
+            "accuracy_mean_m": 0.013398208037851737,
+            "accuracy_median_m": 0.007941965889514159,
+            "completeness_mean_m": 0.013927267565027724,
+            "completeness_median_m": 0.00800089003786324,
+            "normal_consistency_mean": 0.8032881896573059,
+            "normal_consistency_median": 0.9143254664513925,
+            "nc1_mean": 0.8166301058627057,
+            "nc2_mean": 0.7899462734519059,
+            "valid_points": 688882,
+            "similarity_scale": 0.9174273341220274,
+            "similarity_rotation": [
+              [
+                0.9515240313318328,
+                0.00952182908122306,
+                -0.3074269873790619
+              ],
+              [
+                0.06698076883256708,
+                0.9691172022671022,
+                0.2373297808463624
+              ],
+              [
+                0.3001925955193034,
+                -0.24641668580056014,
+                0.9215005277016673
+              ]
+            ],
+            "similarity_translation": [
+              [
+                -0.218382530810189
+              ],
+              [
+                -0.12343896926732117
+              ],
+              [
+                0.23126344306561664
+              ]
+            ],
+            "icp_transformation": [
+              [
+                0.9997962339845664,
+                0.010687927218328066,
+                -0.017124798453043037,
+                0.013698723373351962
+              ],
+              [
+                -0.01087483167537195,
+                0.9998819078541642,
+                -0.01085856260992521,
+                0.003924862416510848
+              ],
+              [
+                0.017006720621976362,
+                0.011042579304540239,
+                0.9997943953113535,
+                -0.01585758750501543
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+          },
+          "relative_distance_change_vs_saved": {
+            "accuracy_mean_m": -0.015975751618079403,
+            "completeness_mean_m": 0.07987010877800427
+          },
+          "max_raw_coordinate_error_vs_float64": 0.0,
+          "camera_recovery_passes": 5
+        }
+      }
+    },
+    {
+      "scene": "chess/seq-03",
+      "modes": {
+        "saved_zero": {
+          "metrics": {
+            "accuracy_mean_m": 0.01888602482133379,
+            "accuracy_median_m": 0.008704600446920029,
+            "completeness_mean_m": 0.02432786535026899,
+            "completeness_median_m": 0.011693852608637385,
+            "normal_consistency_mean": 0.664015489401187,
+            "normal_consistency_median": 0.7166159053586565,
+            "nc1_mean": 0.6370838685195055,
+            "nc2_mean": 0.6909471102828686,
+            "valid_points": 716290,
+            "similarity_scale": 2.5019103931312725,
+            "similarity_rotation": [
+              [
+                0.9936709156719584,
+                0.050201303697913965,
+                0.10048850906785885
+              ],
+              [
+                -0.08551929154869505,
+                0.9181112373113041,
+                0.3869860549111773
+              ],
+              [
+                -0.07283242492640675,
+                -0.3931304936401361,
+                0.9165936137949047
+              ]
+            ],
+            "similarity_translation": [
+              [
+                -0.1438117337298333
+              ],
+              [
+                -0.8356864968878898
+              ],
+              [
+                -0.6464685891254172
+              ]
+            ],
+            "icp_transformation": [
+              [
+                0.9992754389673061,
+                -0.011197509271711233,
+                -0.0363759929459608,
+                0.0766140028035451
+              ],
+              [
+                0.0110668111855359,
+                0.9999315695529205,
+                -0.0037923477705745843,
+                -0.02128945272633861
+              ],
+              [
+                0.03641596856982287,
+                0.0033870337375383995,
+                0.9993309788231225,
+                -0.035039966313583415
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+          },
+          "relative_distance_change_vs_saved": {
+            "accuracy_mean_m": 0.0,
+            "completeness_mean_m": 0.0
+          },
+          "max_raw_coordinate_error_vs_float64": 0.010636717589215916,
+          "camera_recovery_passes": 0
+        },
+        "upstream_cpu_float32": {
+          "metrics": {
+            "accuracy_mean_m": 0.018518859609842748,
+            "accuracy_median_m": 0.008427130622603744,
+            "completeness_mean_m": 0.02603879154123525,
+            "completeness_median_m": 0.013921534176553205,
+            "normal_consistency_mean": 0.7415331837721919,
+            "normal_consistency_median": 0.8587860519456951,
+            "nc1_mean": 0.7313062409204395,
+            "nc2_mean": 0.7517601266239443,
+            "valid_points": 716290,
+            "similarity_scale": 2.5016779542896708,
+            "similarity_rotation": [
+              [
+                0.9936551760575795,
+                0.04998827621132403,
+                0.1007500041459102
+              ],
+              [
+                -0.08549764756294878,
+                0.917734716580313,
+                0.38788289759211303
+              ],
+              [
+                -0.0730721790778288,
+                -0.39403573724304836,
+                0.916185731399559
+              ]
+            ],
+            "similarity_translation": [
+              [
+                -0.14553904958811867
+              ],
+              [
+                -0.8387523988182811
+              ],
+              [
+                -0.6454253260424692
+              ]
+            ],
+            "icp_transformation": [
+              [
+                0.9992684889886735,
+                -0.011384517242222569,
+                -0.03650862475448652,
+                0.0769042447878633
+              ],
+              [
+                0.01121046481953105,
+                0.9999248163765906,
+                -0.004968608735976762,
+                -0.020031544660080076
+              ],
+              [
+                0.036562445115615703,
+                0.004555695490553102,
+                0.9993209860929434,
+                -0.03345281991814664
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+          },
+          "relative_distance_change_vs_saved": {
+            "accuracy_mean_m": -0.019441106054053803,
+            "completeness_mean_m": 0.07032783872865944
+          },
+          "max_raw_coordinate_error_vs_float64": 2.0884374851704024e-07,
+          "camera_recovery_passes": 5
+        },
+        "upstream_cpu_bfloat16": {
+          "metrics": {
+            "accuracy_mean_m": 0.018886024821334765,
+            "accuracy_median_m": 0.008704600446873703,
+            "completeness_mean_m": 0.024327865350271035,
+            "completeness_median_m": 0.01169385260864013,
+            "normal_consistency_mean": 0.6639396278209864,
+            "normal_consistency_median": 0.7165662540021217,
+            "nc1_mean": 0.6370855286893161,
+            "nc2_mean": 0.6907937269526566,
+            "valid_points": 716290,
+            "similarity_scale": 2.5019103931312725,
+            "similarity_rotation": [
+              [
+                0.9936709156719584,
+                0.050201303697913965,
+                0.10048850906785885
+              ],
+              [
+                -0.08551929154869505,
+                0.9181112373113041,
+                0.3869860549111773
+              ],
+              [
+                -0.07283242492640675,
+                -0.3931304936401361,
+                0.9165936137949047
+              ]
+            ],
+            "similarity_translation": [
+              [
+                -0.1438117337298333
+              ],
+              [
+                -0.8356864968878898
+              ],
+              [
+                -0.6464685891254172
+              ]
+            ],
+            "icp_transformation": [
+              [
+                0.9992754389673089,
+                -0.011197509271711306,
+                -0.0363759929459619,
+                0.07661400280354723
+              ],
+              [
+                0.011066811185536065,
+                0.9999315695529231,
+                -0.0037923477705747617,
+                -0.021289452726337258
+              ],
+              [
+                0.03641596856982276,
+                0.0033870337375382312,
+                0.9993309788231227,
+                -0.0350399663136369
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+          },
+          "relative_distance_change_vs_saved": {
+            "accuracy_mean_m": 5.1514348342607263e-14,
+            "completeness_mean_m": 8.393286066166183e-14
+          },
+          "max_raw_coordinate_error_vs_float64": 0.010636717589215916,
+          "camera_recovery_passes": 0
+        },
+        "numpy_float64": {
+          "metrics": {
+            "accuracy_mean_m": 0.018519097828087458,
+            "accuracy_median_m": 0.008427402971229559,
+            "completeness_mean_m": 0.026039982139899415,
+            "completeness_median_m": 0.013923376667027018,
+            "normal_consistency_mean": 0.7415219181711799,
+            "normal_consistency_median": 0.8587734374635011,
+            "nc1_mean": 0.7313205252410673,
+            "nc2_mean": 0.7517233111012923,
+            "valid_points": 716290,
+            "similarity_scale": 2.5016792513335844,
+            "similarity_rotation": [
+              [
+                0.993655175413716,
+                0.049988277508701884,
+                0.10075000985235756
+              ],
+              [
+                -0.08549765182990485,
+                0.9177347119329171,
+                0.3878829076473694
+              ],
+              [
+                -0.07307218284073294,
+                -0.3940357479025453,
+                0.9161857265149748
+              ]
+            ],
+            "similarity_translation": [
+              [
+                -0.1456003786363652
+              ],
+              [
+                -0.8389887018012461
+              ],
+              [
+                -0.6459825602486144
+              ]
+            ],
+            "icp_transformation": [
+              [
+                0.9992681831628213,
+                -0.011382856201738926,
+                -0.036517512280694546,
+                0.07694256419554008
+              ],
+              [
+                0.011209275914785063,
+                0.9999248993656498,
+                -0.004954569815463662,
+                -0.019809871179935986
+              ],
+              [
+                0.036571166948107456,
+                0.0045416091069729525,
+                0.9993207310642457,
+                -0.03292352250885247
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+          },
+          "relative_distance_change_vs_saved": {
+            "accuracy_mean_m": -0.019428492587378665,
+            "completeness_mean_m": 0.07037677843820744
+          },
+          "max_raw_coordinate_error_vs_float64": 0.0,
+          "camera_recovery_passes": 5
+        }
+      }
+    },
+    {
+      "scene": "fire/seq-03",
+      "modes": {
+        "saved_zero": {
+          "metrics": {
+            "accuracy_mean_m": 0.016306963321277235,
+            "accuracy_median_m": 0.007803435278147031,
+            "completeness_mean_m": 0.018975026587579623,
+            "completeness_median_m": 0.01108989669381358,
+            "normal_consistency_mean": 0.663395460836099,
+            "normal_consistency_median": 0.7430454557119985,
+            "nc1_mean": 0.6531386663750088,
+            "nc2_mean": 0.6736522552971893,
+            "valid_points": 697344,
+            "similarity_scale": 1.8492164113890244,
+            "similarity_rotation": [
+              [
+                0.9717344605156614,
+                -0.20667115358508795,
+                0.11410158860482986
+              ],
+              [
+                0.1597521682124612,
+                0.931516812603795,
+                0.32673486588958206
+              ],
+              [
+                -0.17381421978006953,
+                -0.29927155246076215,
+                0.9382031522490059
+              ]
+            ],
+            "similarity_translation": [
+              [
+                -0.05929138585690663
+              ],
+              [
+                -0.4758407671300682
+              ],
+              [
+                0.26078684118007756
+              ]
+            ],
+            "icp_transformation": [
+              [
+                0.9999252294164864,
+                0.0003625676269623046,
+                -0.012223097852490351,
+                0.020297559395955376
+              ],
+              [
+                -0.0006311103676739571,
+                0.9997583562376222,
+                -0.021973411950669475,
+                0.02494179173490264
+              ],
+              [
+                0.012212177369310436,
+                0.0219794831096149,
+                0.999683832542136,
+                -0.033290480297430994
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+          },
+          "relative_distance_change_vs_saved": {
+            "accuracy_mean_m": 0.0,
+            "completeness_mean_m": 0.0
+          },
+          "max_raw_coordinate_error_vs_float64": 0.009499072988879975,
+          "camera_recovery_passes": 0
+        },
+        "upstream_cpu_float32": {
+          "metrics": {
+            "accuracy_mean_m": 0.016236433341901623,
+            "accuracy_median_m": 0.007633569091209141,
+            "completeness_mean_m": 0.020992423141390958,
+            "completeness_median_m": 0.013639828517500757,
+            "normal_consistency_mean": 0.7225541635141879,
+            "normal_consistency_median": 0.8397495312817469,
+            "nc1_mean": 0.7229474302887998,
+            "nc2_mean": 0.7221608967395761,
+            "valid_points": 697344,
+            "similarity_scale": 1.848087908790617,
+            "similarity_rotation": [
+              [
+                0.9716885375462946,
+                -0.20629472549033948,
+                0.11516888571141772
+              ],
+              [
+                0.159213838064534,
+                0.9318891603362056,
+                0.32593488094501566
+              ],
+              [
+                -0.17456328299474796,
+                -0.298370707481057,
+                0.9383509903801186
+              ]
+            ],
+            "similarity_translation": [
+              [
+                -0.06115955324535853
+              ],
+              [
+                -0.47494821189327896
+              ],
+              [
+                0.26220592703739176
+              ]
+            ],
+            "icp_transformation": [
+              [
+                0.9999275209900241,
+                0.00022882953943859652,
+                -0.012037458361354406,
+                0.020418804212275623
+              ],
+              [
+                -0.0004932178016219558,
+                0.9997586095362745,
+                -0.021965413592803067,
+                0.02518651309113417
+              ],
+              [
+                0.0120295262982227,
+                0.02196975865011964,
+                0.9996862608848349,
+                -0.03316539194019308
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+          },
+          "relative_distance_change_vs_saved": {
+            "accuracy_mean_m": -0.004325144908100986,
+            "completeness_mean_m": 0.10631850998995973
+          },
+          "max_raw_coordinate_error_vs_float64": 2.566038801443682e-07,
+          "camera_recovery_passes": 5
+        },
+        "upstream_cpu_bfloat16": {
+          "metrics": {
+            "accuracy_mean_m": 0.016306985328677196,
+            "accuracy_median_m": 0.007803450337767798,
+            "completeness_mean_m": 0.018975037030334457,
+            "completeness_median_m": 0.011089979486217285,
+            "normal_consistency_mean": 0.6635096951616666,
+            "normal_consistency_median": 0.743159384884266,
+            "nc1_mean": 0.6533809721143323,
+            "nc2_mean": 0.6736384182090007,
+            "valid_points": 697344,
+            "similarity_scale": 1.849216426354674,
+            "similarity_rotation": [
+              [
+                0.9717344575982116,
+                -0.20667115039564882,
+                0.11410161922798853
+              ],
+              [
+                0.15975216178945129,
+                0.9315168250620682,
+                0.3267348335116434
+              ],
+              [
+                -0.17381424199387913,
+                -0.299271515885531,
+                0.9382031598005147
+              ]
+            ],
+            "similarity_translation": [
+              [
+                -0.05929143967932975
+              ],
+              [
+                -0.47584071851700793
+              ],
+              [
+                0.26078680503027796
+              ]
+            ],
+            "icp_transformation": [
+              [
+                0.9999252301143616,
+                0.000362461720697683,
+                -0.01222304390293422,
+                0.020297482807303556
+              ],
+              [
+                -0.0006310045013051288,
+                0.9997583541307089,
+                -0.021973510852381722,
+                0.024942108646132673
+              ],
+              [
+                0.012212125698311833,
+                0.021979580691206927,
+                0.9996838310278738,
+                -0.033290636904567024
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+          },
+          "relative_distance_change_vs_saved": {
+            "accuracy_mean_m": 1.3495707034127946e-06,
+            "completeness_mean_m": 5.503420397179326e-07
+          },
+          "max_raw_coordinate_error_vs_float64": 0.009499072988879975,
+          "camera_recovery_passes": 0
+        },
+        "numpy_float64": {
+          "metrics": {
+            "accuracy_mean_m": 0.016239520290189786,
+            "accuracy_median_m": 0.00764101437309035,
+            "completeness_mean_m": 0.021001687266803543,
+            "completeness_median_m": 0.013649940135927833,
+            "normal_consistency_mean": 0.7225741906354828,
+            "normal_consistency_median": 0.8398125791212743,
+            "nc1_mean": 0.7229661504044189,
+            "nc2_mean": 0.7221822308665468,
+            "valid_points": 697344,
+            "similarity_scale": 1.848089085083761,
+            "similarity_rotation": [
+              [
+                0.9716885373260218,
+                -0.20629472717783726,
+                0.1151688845471646
+              ],
+              [
+                0.15921383996904465,
+                0.9318891598812667,
+                0.3259348813154208
+              ],
+              [
+                -0.17456328248382535,
+                -0.298370707735206,
+                0.9383509903943537
+              ]
+            ],
+            "similarity_translation": [
+              [
+                -0.06108133356865489
+              ],
+              [
+                -0.4747304719064587
+              ],
+              [
+                0.2628359454630327
+              ]
+            ],
+            "icp_transformation": [
+              [
+                0.9999274956861792,
+                0.0002070846316344524,
+                -0.012039953767560403,
+                0.020290731640101645
+              ],
+              [
+                -0.0004723496705600901,
+                0.9997571236452696,
+                -0.02203339752116997,
+                0.0250663119195009
+              ],
+              [
+                0.01203246676946899,
+                0.022037487072994785,
+                0.9996847347573888,
+                -0.0338465004730875
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+          },
+          "relative_distance_change_vs_saved": {
+            "accuracy_mean_m": -0.004135842447100524,
+            "completeness_mean_m": 0.10680673725909284
+          },
+          "max_raw_coordinate_error_vs_float64": 0.0,
+          "camera_recovery_passes": 5
+        }
+      }
+    }
+  ],
+  "interpretation": "Post-hoc CPU diagnostic of this reproduction's zero-step comparator, not proof about the authors' published baseline. No model rerun or cloud compute.",
+  "historical_primary_results_unchanged": true,
+  "later_allocations_released": false
+}

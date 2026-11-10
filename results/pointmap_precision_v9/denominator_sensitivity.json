@@ -1,0 +1,35 @@
+{
+  "primary_v6_unchanged": true,
+  "note": "Post-hoc only: fixed original 27 adapted GPU outputs and released evaluation reference, same CPU zero rescore or reconstructed FP32 zero.",
+  "unit": "3 scenes by 3 seeds within condition; 1 means equal mean normalized distance to the scene zero",
+  "results": {
+    "saved_zero": {
+      "released": {
+        "score": 0.9674085979874029,
+        "harmful_cells": 3
+      },
+      "axis_nominal": {
+        "score": 0.9466568747269934,
+        "harmful_cells": 3
+      },
+      "axis_registration": {
+        "score": 1.0161782655180538,
+        "harmful_cells": 5
+      }
+    },
+    "upstream_cpu_float32": {
+      "released": {
+        "score": 0.9343658746029642,
+        "harmful_cells": 2
+      },
+      "axis_nominal": {
+        "score": 0.9141587596378292,
+        "harmful_cells": 2
+      },
+      "axis_registration": {
+        "score": 0.982609192684649,
+        "harmful_cells": 5
+      }
+    }
+  }
+}
