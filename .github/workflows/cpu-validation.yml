@@ -36,3 +36,5 @@ jobs:
         run: |
           python scripts/audit_intrinsics_parameterization.py
           python scripts/verify_parameterization_evidence.py
+      - name: Verify the published CPU controls and paired reconstruction scores
+        run: python scripts/verify_local_execution_evidence.py
