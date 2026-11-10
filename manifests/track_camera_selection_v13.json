@@ -1,0 +1,47 @@
+{
+  "study": "track_camera_selection_v13",
+  "sources": {
+    "scripts/screen_track_cameras.py": "9df66a900bbd8bfad3a96d27b3737fcdb41990fe9b2cf06730d0f0561eff51d4",
+    "scripts/track_camera_selection.py": "6d62e3e66fa144ea738b5188b348c51505b07712f25aab7dc61ebcb8e351bf20",
+    "scripts/camera_depth_swap.py": "d125ced358da7930a1e10dbbb0f15248d08293e1839d4f5e5d9c791bebd93e58",
+    "scripts/fixed_match_validation.py": "ff982bd4352f2798223d66185940861635c75764814643674a720cf1cdafa9d1",
+    "scripts/prior_corruptions.py": "2b289db0195cc26c0aece52712a68efe5a65b3c10d6a0d899afbaaacbccd39b7",
+    "scripts/score_saved_geometry.py": "14552c7622e8db79d6d77cdeac8dbe9f2f12f5be753e4caba92e0a5d0093ff75",
+    "scripts/run_repeat_calibration.py": "1ed51eba0b12ed7160bea9e15c02f0c2e9d41acc562cb00d2b0bf998de5e102f",
+    "configs/diagnostic_profiles.json": "ae591b4596f4f7a49846da8fa057231a1e1346005798a4f3862b544d601a378c",
+    "results/learned_support_v8/support.json": "5fb18fe15323e3e1a787352f95e621f6f5cae91ecf7be606e119767113fff107",
+    "results/depth_trust_v11/summary.json": "713f510310560bdcc77e351d770fb4aa86ee5534b340c1f65ad75720bf5d85db"
+  },
+  "scenes": [
+    "heads/seq-01",
+    "chess/seq-03",
+    "fire/seq-03"
+  ],
+  "profiles": [
+    "clean",
+    "rotation5",
+    "translation10",
+    "focal_plus10",
+    "mixed_moderate",
+    "mixed_severe"
+  ],
+  "perturbation_seeds": [
+    1729,
+    1730,
+    1731
+  ],
+  "baselines": {
+    "initial": "000_unchanged",
+    "initial_fitted": "000_per_view",
+    "direct_prior": "111_unchanged",
+    "prior_global_scale": "111_shared",
+    "prior_per_view_scale": "111_per_view"
+  },
+  "clean_cases": 3,
+  "noisy_cases": 45,
+  "method": "Form eight combinations of entire relative rotation, center and intrinsics sets from the frozen prediction and supplied priors. Align centers using median trajectory baselines. Estimate per-view depth scales by median of pair medians of triangulated axial depth divided by frozen model depth. Require positive depth in both cameras, >=1 degree ray angle, >=5 observations per edge. Bound scale to [0.5,2]. Include raw and globally scaled full-model and full-prior cameras. Select by bidirectional pixel reprojection on the opposite RGB track fold, swapping folds then averaging. Refit selected scales with all tracks.",
+  "support": "Same frozen DISK/LightGlue correspondences and connected-track folds as v8. Both folds are used for model selection. Independent reference geometry is opened only in the dense evaluator.",
+  "primary": "Report each profile separately with every scene/draw. Clean has one deterministic case per scene. Reference zero uses initial cameras and depth in identical arithmetic. Clean comparator includes scene means of the original 3-seed TCO and half-depth baselines. For each of clean and pooled noisy cases compare to strongest fixed baseline by mean normalized distance. To advance require >=5% gain in each group, no extra harmful cases and no scene regression >1%. Positive results require a matched noisy TCO run and repeat comparison before paid transfer.",
+  "limits": "Clean priors derive from 7-Scenes reference cameras. Synthetic errors exercise the declared profiles. No held-out dataset or measured latency in this screen.",
+  "additional_runpod_usd": 0
+}
