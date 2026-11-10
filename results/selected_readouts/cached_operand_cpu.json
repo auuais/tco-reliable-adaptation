@@ -1,0 +1,76 @@
+{
+  "results": {
+    "normal": {
+      "storage": {},
+      "updates": [
+        {
+          "step": 0,
+          "loss": 1.939756989479065,
+          "gradient_norm_before_clip": 2.825511932373047,
+          "clipped_gradient_sha256": "002218aa519cd6ab906c9972457f0971fcfbf431be73c16cdf7e2f34c8737b7d",
+          "head_sha256": "b04dd6d17ce46ed7a7b56b6a7d849a90115f1b4ed3f89b08491079ed0b50c396",
+          "features_sha256": "5b1b6c852fef3e9d5111a5cd86e00882a8b97e591618b3c23907194daa64d1a6",
+          "updated_adapter_sha256": "fffcb3a0d302b33632fa5875713253318437acf79b5c103ef07fb649b4ca2ff2",
+          "seconds": 188.50380760600092
+        },
+        {
+          "step": 1,
+          "loss": 1.6256380081176758,
+          "gradient_norm_before_clip": 3.090101480484009,
+          "clipped_gradient_sha256": "639455e07dab256493159809aaa2c8427c606c964eb778338dd4e5dfd692fc2d",
+          "head_sha256": "23532d442b3ebf8882e65912fef0a5875863bb64dde914899f27c8f8872c382a",
+          "features_sha256": "8ba3500d337e8e46bdb2a6edf7c4d6e5a7e2c58196a3b085a9d1696faf805522",
+          "updated_adapter_sha256": "f77ce426193fcacfcaeb34934d91defeded7ed0e26979e9240649a36338b6547",
+          "seconds": 183.574890994998
+        }
+      ]
+    },
+    "cached": {
+      "storage": {
+        "projections": 192,
+        "fp32_master_bytes": 2417688576,
+        "cached_operand_bytes": 1208844288,
+        "adapter_dtype": "float32",
+        "operand_dtype": "torch.bfloat16"
+      },
+      "updates": [
+        {
+          "step": 0,
+          "loss": 1.939756989479065,
+          "gradient_norm_before_clip": 2.825511932373047,
+          "clipped_gradient_sha256": "002218aa519cd6ab906c9972457f0971fcfbf431be73c16cdf7e2f34c8737b7d",
+          "head_sha256": "b04dd6d17ce46ed7a7b56b6a7d849a90115f1b4ed3f89b08491079ed0b50c396",
+          "features_sha256": "5b1b6c852fef3e9d5111a5cd86e00882a8b97e591618b3c23907194daa64d1a6",
+          "updated_adapter_sha256": "fffcb3a0d302b33632fa5875713253318437acf79b5c103ef07fb649b4ca2ff2",
+          "seconds": 189.31394594200174
+        },
+        {
+          "step": 1,
+          "loss": 1.6256380081176758,
+          "gradient_norm_before_clip": 3.090101480484009,
+          "clipped_gradient_sha256": "639455e07dab256493159809aaa2c8427c606c964eb778338dd4e5dfd692fc2d",
+          "head_sha256": "23532d442b3ebf8882e65912fef0a5875863bb64dde914899f27c8f8872c382a",
+          "features_sha256": "8ba3500d337e8e46bdb2a6edf7c4d6e5a7e2c58196a3b085a9d1696faf805522",
+          "updated_adapter_sha256": "f77ce426193fcacfcaeb34934d91defeded7ed0e26979e9240649a36338b6547",
+          "seconds": 185.02839441899778
+        }
+      ]
+    }
+  },
+  "bitwise_match": true,
+  "checkpoint_sha256": "f164acf60724910d8fe1578bb499d800850c7bb0948db7555c413f9fbe60467e",
+  "adapter_tensors": 384,
+  "device": "cpu",
+  "image_shape": [
+    1,
+    2,
+    3,
+    84,
+    112
+  ],
+  "torch": "2.7.1+cu128",
+  "source_tensor_sha256": "48f7e4466491bce35834cdfdab17241525bd22d38deda8b5b925b39ccb7516f6",
+  "implementation_sha256": "564b57db44b4ef30dc7050f8e8fe36f758fd8eb29c7344e2655c4865e8f4ac5b",
+  "test_sha256": "b9b7c1a9cb1b54106675ca9ea750208a160bd4b2b341b25642d298503ef015ce",
+  "scope": "Real pretrained model with two small images. Both arms use four consumed readouts. Two FP32 Adam updates under CPU BF16 autocast, with a scalar objective on camera, depth and confidence. No GPU renderer, device peak-memory or speed claim."
+}
