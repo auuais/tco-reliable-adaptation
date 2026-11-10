@@ -1,0 +1,18 @@
+{
+  "studies": {
+    "sensor_extrinsic_v15": 0,
+    "sensor_tco_v17": 50
+  },
+  "metrics": [
+    "depth_abs_rel",
+    "depth_delta_1_25",
+    "pair_rotation_median_deg",
+    "pair_translation_direction_median_deg",
+    "mean_abs_log_focal"
+  ],
+  "code_sha256": "bdcf5ab6f07f969ca637d997295dd7fd174b68f3b70003f38fcaff101c4af926",
+  "v15_seal_sha256": "885aa5bbce8f3be1931f61db3ba79089cdbcd9dd34cd48ca7c35ab78b0a111be",
+  "v17_job_plan_sha256": "9d833c8ee05831a05c402b0fb129f8bc3cd8e48f00e9f49aa2e39f57a9b8df9a",
+  "public_pose_release": "22b7c48a0e55b49d0214a8dbb022426f518e2795",
+  "method": "Offline diagnostic, outside all advancement gates. Recover each prediction's pinhole cameras and axial depths from the sealed map with the v10 camera fit. Recover reference axial depth with the exact inverse of the loader's camera-to-world transform. A single median ratio of GT to estimated depth over all valid pixels fixes scale for the complete five-frame window; report mean absolute relative depth error and delta<1.25. Compare predicted cameras to pinned public RGB SfM camera estimates for the same frames. For all ten pairs use relative rotation angle and the angle between translation directions expressed in the target camera. Focal metric is the mean absolute log ratio over two axes and all cameras. Per-scene means average seeds, global means average scenes. These alternative labels never enter the method. No claim of metric-scale recovery or independently surveyed camera poses."
+}
