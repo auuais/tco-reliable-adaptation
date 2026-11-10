@@ -1,0 +1,310 @@
+{
+  "manifest_sha256": "3c0db445aa8367cd89bc17def17fd872768a1117148cd2b8d36ca30483ec9e48",
+  "supervisor": {
+    "status": "complete",
+    "checks": {
+      "initial_predictions": true,
+      "initial_adapters": true,
+      "after_adapter_initialization_rng": true,
+      "input_match": true,
+      "prior_match": true,
+      "initial_loss_match": true,
+      "complete": true,
+      "finite_gradients": true,
+      "frozen_base": true
+    },
+    "concordant": true,
+    "storage": {
+      "projections": 192,
+      "fp32_master_bytes": 2417688576,
+      "cached_operand_bytes": 1208844288,
+      "adapter_dtype": "float32",
+      "operand_dtype": "torch.bfloat16",
+      "allocated_before_bytes": 3479389696,
+      "allocated_after_bytes": 2270545408,
+      "device": "NVIDIA GeForce RTX 3080"
+    },
+    "final_record_sha256": "19e021bc92faf4b75b0ad02fd7f7859829e9df2ba31fa540dcec2648530aef3b",
+    "cpu_control_sha256": "6ca5e38c04fa1a551fddd148638310af1551eecf51ed25822de0c4f4a5441372",
+    "peak_allocated_bytes": 7202544640,
+    "peak_reserved_bytes": 8856272896,
+    "inference_and_adaptation_seconds": 28.758975315999123,
+    "first_eight_total_losses": [
+      {
+        "original": 0.32205966114997864,
+        "cached": 0.32205966114997864
+      },
+      {
+        "original": 0.26207971572875977,
+        "cached": 0.27270737290382385
+      },
+      {
+        "original": 0.2546834945678711,
+        "cached": 0.25229451060295105
+      },
+      {
+        "original": 0.22826942801475525,
+        "cached": 0.2332962155342102
+      },
+      {
+        "original": 0.22365626692771912,
+        "cached": 0.17693302035331726
+      },
+      {
+        "original": 0.17473219335079193,
+        "cached": 0.128640279173851
+      },
+      {
+        "original": 0.14201746881008148,
+        "cached": 0.12479715049266815
+      },
+      {
+        "original": 0.13401006162166595,
+        "cached": 0.13411813974380493
+      }
+    ],
+    "initial_phases": {
+      "image_encoder_ready": {
+        "allocated_bytes": 1230116864,
+        "reserved_bytes": 1249902592
+      },
+      "patch_tokens_ready": {
+        "allocated_bytes": 2461431808,
+        "reserved_bytes": 2470445056
+      },
+      "head_features_ready": {
+        "allocated_bytes": 1208589824,
+        "reserved_bytes": 1224736768
+      },
+      "initial_heads_ready": {
+        "allocated_bytes": 1046156800,
+        "reserved_bytes": 4229955584
+      },
+      "ready_for_adapters": {
+        "allocated_bytes": 3466806784,
+        "reserved_bytes": 3709861888
+      }
+    }
+  },
+  "container_exit_code": 0,
+  "worker_last_status": "complete",
+  "worker_last_stage": "adapters_initialized",
+  "storage": {
+    "projections": 192,
+    "fp32_master_bytes": 2417688576,
+    "cached_operand_bytes": 1208844288,
+    "adapter_dtype": "float32",
+    "operand_dtype": "torch.bfloat16",
+    "allocated_before_bytes": 3479389696,
+    "allocated_after_bytes": 2270545408,
+    "device": "NVIDIA GeForce RTX 3080"
+  },
+  "initial_phases": {
+    "image_encoder_ready": {
+      "allocated_bytes": 1230116864,
+      "reserved_bytes": 1249902592
+    },
+    "patch_tokens_ready": {
+      "allocated_bytes": 2461431808,
+      "reserved_bytes": 2470445056
+    },
+    "head_features_ready": {
+      "allocated_bytes": 1208589824,
+      "reserved_bytes": 1224736768
+    },
+    "initial_heads_ready": {
+      "allocated_bytes": 1046156800,
+      "reserved_bytes": 4229955584
+    },
+    "ready_for_adapters": {
+      "allocated_bytes": 3466806784,
+      "reserved_bytes": 3709861888
+    }
+  },
+  "losses": [
+    {
+      "pose_rot_loss": 0.06769157201051712,
+      "pose_trans_loss": 0.022519737482070923,
+      "intrinsics_loss": 18.22570037841797,
+      "depth_loss": 0.0,
+      "mv_consistency_loss": 0.1353580802679062,
+      "redundancy_loss": 0.0,
+      "total": 0.32205966114997864,
+      "step": 0
+    },
+    {
+      "pose_rot_loss": 0.07805436104536057,
+      "pose_trans_loss": 0.02196701057255268,
+      "intrinsics_loss": 13.029765129089355,
+      "depth_loss": 0.0,
+      "mv_consistency_loss": 0.10210683941841125,
+      "redundancy_loss": 0.0,
+      "total": 0.27270737290382385,
+      "step": 1
+    },
+    {
+      "pose_rot_loss": 0.07805436104536057,
+      "pose_trans_loss": 0.022017985582351685,
+      "intrinsics_loss": 11.443302154541016,
+      "depth_loss": 0.0,
+      "mv_consistency_loss": 0.07885568588972092,
+      "redundancy_loss": 0.0,
+      "total": 0.25229451060295105,
+      "step": 2
+    },
+    {
+      "pose_rot_loss": 0.06444638222455978,
+      "pose_trans_loss": 0.018400004133582115,
+      "intrinsics_loss": 10.613082885742188,
+      "depth_loss": 0.0,
+      "mv_consistency_loss": 0.12959504127502441,
+      "redundancy_loss": 0.0,
+      "total": 0.2332962155342102,
+      "step": 3
+    },
+    {
+      "pose_rot_loss": 0.05010579898953438,
+      "pose_trans_loss": 0.0145469531416893,
+      "intrinsics_loss": 8.22603988647461,
+      "depth_loss": 0.0,
+      "mv_consistency_loss": 0.07736457884311676,
+      "redundancy_loss": 0.0,
+      "total": 0.17693302035331726,
+      "step": 4
+    },
+    {
+      "pose_rot_loss": 0.03770142048597336,
+      "pose_trans_loss": 0.012945032678544521,
+      "intrinsics_loss": 4.051082611083984,
+      "depth_loss": 0.0,
+      "mv_consistency_loss": 0.12268984317779541,
+      "redundancy_loss": 0.0,
+      "total": 0.128640279173851,
+      "step": 5
+    },
+    {
+      "pose_rot_loss": 0.0552871935069561,
+      "pose_trans_loss": 0.011700257658958435,
+      "intrinsics_loss": 1.7793052196502686,
+      "depth_loss": 0.0,
+      "mv_consistency_loss": 0.14158190786838531,
+      "redundancy_loss": 0.0,
+      "total": 0.12479715049266815,
+      "step": 6
+    },
+    {
+      "pose_rot_loss": 0.0552871935069561,
+      "pose_trans_loss": 0.012240901589393616,
+      "intrinsics_loss": 3.207545280456543,
+      "depth_loss": 0.0,
+      "mv_consistency_loss": 0.11136846989393234,
+      "redundancy_loss": 0.0,
+      "total": 0.13411813974380493,
+      "step": 7
+    }
+  ],
+  "gradients": [
+    {
+      "step": 0,
+      "finite": true,
+      "gradient_norm_after_upstream_clipping": 0.6566831276553844,
+      "tensors_with_gradient": 384
+    },
+    {
+      "step": 1,
+      "finite": true,
+      "gradient_norm_after_upstream_clipping": 0.5050931475051572,
+      "tensors_with_gradient": 384
+    },
+    {
+      "step": 2,
+      "finite": true,
+      "gradient_norm_after_upstream_clipping": 0.392592903571252,
+      "tensors_with_gradient": 384
+    },
+    {
+      "step": 3,
+      "finite": true,
+      "gradient_norm_after_upstream_clipping": 0.4954429323473859,
+      "tensors_with_gradient": 384
+    },
+    {
+      "step": 4,
+      "finite": true,
+      "gradient_norm_after_upstream_clipping": 0.5624550538536275,
+      "tensors_with_gradient": 384
+    },
+    {
+      "step": 5,
+      "finite": true,
+      "gradient_norm_after_upstream_clipping": 0.34234670305216863,
+      "tensors_with_gradient": 384
+    },
+    {
+      "step": 6,
+      "finite": true,
+      "gradient_norm_after_upstream_clipping": 0.25225516358834765,
+      "tensors_with_gradient": 384
+    },
+    {
+      "step": 7,
+      "finite": true,
+      "gradient_norm_after_upstream_clipping": 0.4246851113745496,
+      "tensors_with_gradient": 384
+    }
+  ],
+  "output_sha256": "187a02701be0aaaf334091d9ce14ba1c8fa685f194fd7de15d47538c3d8eedc8",
+  "run_record_sha256": "19e021bc92faf4b75b0ad02fd7f7859829e9df2ba31fa540dcec2648530aef3b",
+  "captured_initial_heads": {
+    "file": "initial_predictions.npz",
+    "file_sha256": "479f0c9b32cd0aafd3db39c4f3219606e6a84b4fbd7ac95aacd514dde6957fb7",
+    "tensor_sha256": "26aa664493d0a331c48380d7bf8a38b5ecb5985e608ad5f11f7d7312b4926e40",
+    "dtypes": {
+      "pose_enc": "torch.float32",
+      "extrinsics": "torch.float32",
+      "intrinsics": "torch.float32",
+      "camera_poses": "torch.float32",
+      "depth": "torch.float32",
+      "depth_conf": "torch.float32"
+    },
+    "shapes": {
+      "pose_enc": [
+        1,
+        5,
+        9
+      ],
+      "extrinsics": [
+        1,
+        5,
+        4,
+        4
+      ],
+      "intrinsics": [
+        1,
+        5,
+        3,
+        3
+      ],
+      "camera_poses": [
+        1,
+        5,
+        4,
+        4
+      ],
+      "depth": [
+        1,
+        5,
+        392,
+        518,
+        1
+      ],
+      "depth_conf": [
+        1,
+        5,
+        392,
+        518
+      ]
+    }
+  },
+  "additional_cloud_usd": 0
+}
