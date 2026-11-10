@@ -1,0 +1,127 @@
+{
+  "common": {
+    "heads/seq-01": {
+      "inputs": "runs/diagnostic_inputs/9e60af645e9424941e58e4f12cc711175f5239fa30f2e1575472a245cba11970/evaluation_inputs.npz",
+      "reference": "9e60af645e9424941e58e4f12cc711175f5239fa30f2e1575472a245cba11970",
+      "heads": "26aa664493d0a331c48380d7bf8a38b5ecb5985e608ad5f11f7d7312b4926e40",
+      "adapters": "2f30b0d4d01219c317a54bf1146e1861554bc720fc924d984837252efcb060ae",
+      "rng": "c160c316691bb466c809776843d05e1cc462c84f8eb1130c420b24ceb0d7989f",
+      "supplied_prior": {
+        "profile": "clean",
+        "seed": 1729,
+        "scene": "heads/seq-01",
+        "settings": {
+          "rotation_deg": 0,
+          "translation_diameter_fraction": 0,
+          "focal_scale": 1
+        },
+        "provenance": "synthetic_corruption_of_reference_priors_for_diagnostics",
+        "first_pose_unchanged": true,
+        "translation_scale": "maximum_pairwise_clean_camera_center_distance",
+        "trajectory_diameter": 0.988123708334099,
+        "center_displacement_magnitude": 0.0,
+        "profile_file_sha256": "ae591b4596f4f7a49846da8fa057231a1e1346005798a4f3862b544d601a378c",
+        "extrinsics_sha256": "b7c8506c2d54f620202d9acc2a20959e333e934f9752ae5a5e5db35e3ed936a6",
+        "intrinsics_sha256": "c983cdf9f5d9353dd13983f4de0980b97aea94b07335b82fe754aa6035d52725",
+        "deltas": [
+          {
+            "view": 1,
+            "rotation_axis": [
+              0.3705786469181212,
+              0.9148766316824093,
+              0.1602255137291928
+            ],
+            "center_displacement": [
+              -0.0,
+              0.0,
+              -0.0
+            ]
+          },
+          {
+            "view": 2,
+            "rotation_axis": [
+              -0.5922193944957723,
+              0.04602863183748071,
+              -0.8044610331359938
+            ],
+            "center_displacement": [
+              -0.0,
+              0.0,
+              -0.0
+            ]
+          },
+          {
+            "view": 3,
+            "rotation_axis": [
+              -0.25475038966016855,
+              0.35205254080279336,
+              0.9006449064322132
+            ],
+            "center_displacement": [
+              -0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "view": 4,
+            "rotation_axis": [
+              0.09066346843043399,
+              0.5339092535689398,
+              -0.8406670235269261
+            ],
+            "center_displacement": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        ],
+        "original_extrinsics_sha256": "b7c8506c2d54f620202d9acc2a20959e333e934f9752ae5a5e5db35e3ed936a6",
+        "sensor_condition": "released",
+        "intrinsics_before_calibration_sha256": "c983cdf9f5d9353dd13983f4de0980b97aea94b07335b82fe754aa6035d52725",
+        "calibration_intervention": "released",
+        "common_evaluation_reference": "released_nominal_uniform_resize"
+      },
+      "first_loss": 0.32205966114997864
+    }
+  },
+  "maps": {
+    "heads/seq-01": {
+      "original": "heads_seq-01_e6d2e05f6e440e1be4a1acad331f3e68eec6133e3b01e20405437f59ea1925fa",
+      "staged": "heads_seq-01_03a37ac7d15ea2323d2462c561c919c64f93049fe88a14c73fde0f22d52d3f05"
+    }
+  },
+  "entries": {
+    "heads_seq-01_e6d2e05f6e440e1be4a1acad331f3e68eec6133e3b01e20405437f59ea1925fa": {
+      "scene": "heads/seq-01",
+      "source_run": "sensor17_heads_seq-01_released_a1",
+      "sha256": "e5a401f60754d94ac776f0f04fe7d516831f5ffee1b28c78a4d5d1d0fc54f522",
+      "key": "heads_seq-01_e6d2e05f6e440e1be4a1acad331f3e68eec6133e3b01e20405437f59ea1925fa"
+    },
+    "heads_seq-01_03a37ac7d15ea2323d2462c561c919c64f93049fe88a14c73fde0f22d52d3f05": {
+      "scene": "heads/seq-01",
+      "source_run": "sensor17p_heads_seq-01_released_a1",
+      "sha256": "cf5fde8598996d08d62ddde5d54f65ef3ac53b80e717dd2846ccb84187effe98",
+      "key": "heads_seq-01_03a37ac7d15ea2323d2462c561c919c64f93049fe88a14c73fde0f22d52d3f05"
+    }
+  },
+  "arms": {
+    "original": {
+      "inference_and_adaptation_seconds": 624.8151141690032,
+      "model_load_seconds": 39.092308273000526,
+      "peak_allocated_bytes": 9263071744,
+      "peak_reserved_bytes": 11349786624,
+      "research_commit": "dd5017ba703aa76dda8085343d0f9e74e035a6ac"
+    },
+    "staged": {
+      "inference_and_adaptation_seconds": 89.33356171199921,
+      "model_load_seconds": 22.106331350998516,
+      "peak_allocated_bytes": 7202544640,
+      "peak_reserved_bytes": 8856272896,
+      "research_commit": "689e1e75e7e340e9eb48bd5180c22f9f54cec706"
+    }
+  },
+  "manifest_sha256": "5db9851149c984eb42cfc0f679719d806bf684fb9cb171bceeff06c4b610ee8b",
+  "evaluation_source_sha256": "d1460547363113d3fbafa61640cc5609e766370466a8cf3e43ab1d007764bcf6"
+}

@@ -1,0 +1,26 @@
+{
+  "scene": "heads/seq-01",
+  "arms": {
+    "original": [
+      "sensor_tco_v17",
+      "sensor17_heads_seq-01_released_a1"
+    ],
+    "staged": [
+      "staged_sensor_factorial",
+      "sensor17p_heads_seq-01_released_a1"
+    ]
+  },
+  "references": [
+    "released",
+    "registered_rgb"
+  ],
+  "updates": 40,
+  "seed": 42,
+  "sources": {
+    "scripts/check_full_size_bridge.py": "2485b7fccb56f707ff5b4ab8ada6e71af139cd50d49d23b3726fd86716300108",
+    "scripts/evaluate_sensor_tco.py": "d1460547363113d3fbafa61640cc5609e766370466a8cf3e43ab1d007764bcf6",
+    "manifests/sensor_tco_v17.json": "9d833c8ee05831a05c402b0fb129f8bc3cd8e48f00e9f49aa2e39f57a9b8df9a",
+    "manifests/staged_sensor_factorial.json": "0451d535df85bb6effd0c29a7a513dd5ea1374871304f2017c7dc62363f3d20a"
+  },
+  "interpretation": "Compare the one full original trajectory that finished on this window with its prespecified staged counterpart. Compare instrumented adaptation time, peak allocations, and both distance errors on the released and registered references. Report normal consistency as well. This single paired execution under WSL cannot establish a general speedup, noninferiority, or a memory-only causal effect. Other original cells are unavailable. No advancement decision."
+}
