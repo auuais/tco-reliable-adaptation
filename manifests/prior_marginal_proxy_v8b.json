@@ -1,0 +1,35 @@
+{
+  "study_id": "prior_marginal_proxy_v8b",
+  "sources": {
+    "scripts/score_prior_marginals_v8b.py": "c4acb8b621f2e5c619a89e1a7ab822ac64c6edf02e63fcbeb7f0ddfb92526be9",
+    "scripts/fixed_match_validation.py": "ff982bd4352f2798223d66185940861635c75764814643674a720cf1cdafa9d1",
+    "scripts/evaluate_fixed_matches.py": "7f4ae7f6bd8c8d6377da86029e271c2eb56b82f959badcee55d0133062491e38"
+  },
+  "prior_manifest_sha256": "5cefa44d45482fffaffab6d15e92891592c6791d860e8dcc23a1dc844b18f957",
+  "support_manifest_sha256": "294f806eeebe5b967bb8d9c5cb757fbc345191a2c2bc4fad5a862ab4b96996ff",
+  "support_summary_sha256": "5fb18fe15323e3e1a787352f95e621f6f5cae91ecf7be606e119767113fff107",
+  "families": {
+    "add_pose_to_visual": [
+      "visual",
+      "pose_only"
+    ],
+    "add_intrinsics_to_visual": [
+      "visual",
+      "intrinsics_only"
+    ],
+    "add_pose_to_intrinsics": [
+      "intrinsics_only",
+      "both"
+    ],
+    "add_intrinsics_to_pose": [
+      "pose_only",
+      "both"
+    ]
+  },
+  "planned_predictions": 39,
+  "planned_contrasts": 36,
+  "hypothesis": "Compare the fixed visual proxy's whole-trajectory marginal ranking with offline reference differences",
+  "selection_rule": "Favor addition only if both eligible fold scores are at least 2% lower than the without-group endpoint",
+  "labels": "Report signed normalized-score difference and >1% accuracy OR completeness regression relative to without-group; do not tune thresholds",
+  "limitations": "v5 labels already inspected; matched scene/seed but separate stochastic trajectories, not shared-gradient one-step causality. Report all four families separately. No held-out claim or paid-stage release."
+}
