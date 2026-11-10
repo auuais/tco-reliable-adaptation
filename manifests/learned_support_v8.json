@@ -1,0 +1,101 @@
+{
+  "study_id": "learned_support_v8",
+  "upstream_commit": "5a650c444718caffc2669dc0094cde908f42dd73",
+  "upstream_url": "https://github.com/cvg/LightGlue",
+  "input_metadata": {
+    "rows": [
+      {
+        "scene": "heads/seq-01",
+        "file": "heads_seq-01.npy",
+        "file_sha256": "dce46a8306bdbaa01f6a7c92829e954a1f4e59684b36ec794dc4641725696b14",
+        "image_sha256": "f8ddad80540c4f6eb36fb2166934c28817404f317c1d0d905067e43a48264a61",
+        "shape": [
+          5,
+          3,
+          392,
+          518
+        ]
+      },
+      {
+        "scene": "chess/seq-03",
+        "file": "chess_seq-03.npy",
+        "file_sha256": "67b6f51ae091aac3d0e2dc55470ac0e28510815c16699c2b9c6e0e2feb47bf36",
+        "image_sha256": "271a41a84306ee166cbc0cf5a24a217d2c7148d43581ec0ea33295493692f6e4",
+        "shape": [
+          5,
+          3,
+          392,
+          518
+        ]
+      },
+      {
+        "scene": "fire/seq-03",
+        "file": "fire_seq-03.npy",
+        "file_sha256": "4a6e966bbda95c676590deadad131dfc885730ac35a4b569721d3fa73d858688",
+        "image_sha256": "e6ba48fb11778283c234f10507faa6b37cd91790e204aacf23aa4d491f17331f",
+        "shape": [
+          5,
+          3,
+          392,
+          518
+        ]
+      }
+    ],
+    "reference_geometry_exported": false,
+    "source_sha256": "c7c3338bf20c27a932593969905808ddd1879a3d787a06dfb6201f6c8314f7a0"
+  },
+  "sources": {
+    "scripts/prepare_learned_support_rgb.py": "c7c3338bf20c27a932593969905808ddd1879a3d787a06dfb6201f6c8314f7a0",
+    "scripts/learned_fixed_support.py": "ccbb9e0cd6dcaf0b0b3d91a4a203281c788235be647906fab3804cebce40660e",
+    "scripts/cache_learned_support_v8.py": "c0c4a858363cc7cb19a423fb6aed6979582be312d6e65a2692ea899f58aaeef0",
+    "scripts/fixed_match_validation.py": "ff982bd4352f2798223d66185940861635c75764814643674a720cf1cdafa9d1",
+    "scripts/evaluate_fixed_matches.py": "7f4ae7f6bd8c8d6377da86029e271c2eb56b82f959badcee55d0133062491e38",
+    "scripts/evaluation_stability.py": "77391bcd53212814737aebc26bfd4ca1bb98dcafa51d9b874122c3135557bf40"
+  },
+  "upstream_python_sha256_lf": {
+    "lightglue/__init__.py": "cf4322abb908f69282198931fb23c09a1ef1101b066d57842402e6436a92eaa3",
+    "lightglue/aliked.py": "bf579653b2d1b5b4d0c88cefd87113b4ea8ce1ad094fa07e2db41c9bc47b178e",
+    "lightglue/disk.py": "90940a3f8b22d9b63c48a559fb664b0e211f0f1d0d290e67e7b340096a9d0826",
+    "lightglue/dog_hardnet.py": "912694f65277380b7ba9cc633af00a0a0114aa9dfb4a18b98dcbc0ebca4c4b7b",
+    "lightglue/lightglue.py": "dcb75b9cad1985c5e7a537c512d4318d47fbcc99df75b39a513de60e027c039f",
+    "lightglue/sift.py": "df01ab3252fa6296afaf6a773381f14951600c180ce2ef2c6318668515ce3c0b",
+    "lightglue/superpoint.py": "9842cbe5db75c6398950723df410d0223448cecc0d56baa13cf4de327498f733",
+    "lightglue/utils.py": "82c7336f56853e26bd0a7cf69e1706f32910d9ac53a059e19820e0a8a7ccaa8a",
+    "lightglue/viz2d.py": "142195bd74971bbfb8de871e731d412b7a505c2a7389ca8f5d0f29af2a3701e7"
+  },
+  "weight_sha256": {
+    "depth-save.pth": "9c2ee4ded238892dfa51569941372601e35e4a74aa6f84ea80053d2ab1c07abe",
+    "disk_lightglue_v0-1_arxiv.pth": "b5b21d47ea24f2c5e501aec9c91b9716e4c8c3429a4dc1e615c133c4c9378335"
+  },
+  "runtime": {
+    "torch": "2.7.1+cu128",
+    "numpy": "2.1.2",
+    "kornia": "0.8.2",
+    "kornia_rs": "0.1.10",
+    "opencv": "4.11.0"
+  },
+  "extractor": {
+    "name": "DISK",
+    "weights": "depth",
+    "max_num_keypoints": 2000,
+    "origin": "center",
+    "resize": null
+  },
+  "matcher": {
+    "name": "LightGlue",
+    "features": "disk",
+    "flash": false,
+    "mp": false,
+    "depth_confidence": -1,
+    "width_confidence": -1,
+    "filter_threshold": 0.1
+  },
+  "support": "All 10 pairs per scene; same F-RANSAC 1.5px/.999/5000 and >=20 inliers as v6. Reject out-of-image coordinates without clipping.",
+  "folds": "Same connected-component hash parity with half-pixel location identity; no shared component between folds",
+  "eligibility": "Both folds connect all 5 views with >=100 matches each and >=10 matches per counted edge; unchanged from v6",
+  "next_analysis": "Freeze all proxy scores before joining all 40 v6 reference outcomes; unchanged 2% both-fold improvement rule; no threshold fitting",
+  "limitations": "A conventional matcher baseline, not a proposed contribution. v6 labels were already inspected before this redesign; no held-out validity claim.",
+  "device": "cpu",
+  "cpu_threads": 4,
+  "runpod_spend_usd": 0
+}

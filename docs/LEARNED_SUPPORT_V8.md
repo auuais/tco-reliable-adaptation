@@ -1,0 +1,15 @@
+# Local visual-support redesign baseline
+
+The SIFT proxy failed coverage on all 37 adapted v6 runs. Before implementing an acceptance controller, this CPU-only follow-up tests whether a stronger standard image matcher supplies usable fixed support. It spends no RunPod allocation and does not start MASt3R transfer or inspect held-out labels.
+
+Use pretrained **DISK + LightGlue**, a conventional feature/matching baseline from the [official LightGlue repository](https://github.com/cvg/LightGlue), commit `5a650c444718caffc2669dc0094cde908f42dd73`. The upstream project documents Apache-2.0 terms for this code/weight combination; obtain its assets directly. No matcher weights or upstream source are redistributed here. This is not our method contribution.
+
+The frozen manifest pins our source hashes, normalized upstream Python hashes, both checkpoint hashes, RGB hashes and runtime versions. Each image has at most 2,000 keypoints. Use original 392x518 resized RGB, center-origin coordinates, CPU float32 inference, all nine matcher layers, no adaptive depth/width pruning and matching threshold 0.1. Process all ten image pairs in each of the same three development sequences. Keep v6's F-RANSAC threshold (1.5 pixels), confidence (0.999), iteration limit (5,000), minimum 20 retained inliers, component-disjoint fold split and coverage thresholds unchanged. Coordinates outside the image are rejected, not clipped.
+
+The matcher receives a separately exported RGB-only payload. No reference camera, depth, mask, reconstruction error or adapted prediction is needed to construct support. Both folds must connect all five views and contain at least 100 matches, with ten per counted pair. Preserve failures and abstentions without threshold adjustment.
+
+After support is frozen, use the unchanged v6 scorer on every saved v6 prediction. Freeze all proxy scores before joining reference outcomes. The provisional acceptance rule remains at least 2% improvement on both folds over the fresh zero prediction. Report coverage, accepted/harmful counts, within-scene rank association and all rows. V6 outcomes were already inspected before this redesign: this remains exploratory development evidence, **not held-out proxy validation**. Even favorable associations do not authorize an online controller or release later funds; a separately frozen intervention study would be needed.
+
+All CPU model loading, extraction and matching time is recorded. Concurrent local GPU/CPU work prevents a controlled speed comparison. The active pose-precision study remains isolated in the main checkout; this support experiment uses a separate worktree so it cannot change that study's frozen code or clean-tree provenance.
+
+Preparation encountered a transient import failure when an isolated pip target was read before installation had fully returned. After installation completed, both pretrained CPU components loaded successfully before any image was processed. Dependency wheels and weights are retained locally with hashes. This setup event is separate from scientific matching outcomes.
