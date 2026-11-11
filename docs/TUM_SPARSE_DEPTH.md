@@ -11,3 +11,7 @@ Use both predeclared 8-by-8 source ray grids. Apply the frozen correction, local
 Download and validate archives locally while held-out scoring runs. Execute cross-dataset inference and evaluation after reviewing the held-out outcome, respecting the existing instruction to defer later spending when the method lacks a reliable improvement. Local preparation costs zero RunPod dollars. A model failure, missing coverage or unavailable download is recorded explicitly.
 
 The source documentation describes the color/depth registration, units, calibration and optical-camera trajectory convention. [TUM formats](https://cvg.cit.tum.de/data/datasets/rgbd-dataset/file_formats) · [TUM download page](https://cvg.cit.tum.de/data/datasets/rgbd-dataset/download)
+
+For TUM, use the complete published intrinsic matrix in all supplied-pose arms and the direct calibrated-camera baseline. The unmodified native VGGT map retains its predicted camera. The earlier 7-Scenes development study replaced the focal axes while retaining the model principal point. This dataset-specific calibration difference is explicit and shared by the candidate and its controls. The frozen depth correction itself has the same bandwidths, bounds and neighbor count.
+
+TUM has one correctly registered motion-compensated reference, so no additional released-versus-registered reference comparison is defined. Primary advancement requires the gain and component thresholds and nonnegative gains in every sequence for both grids. Keep the original two-reference checks on 7-Scenes.
