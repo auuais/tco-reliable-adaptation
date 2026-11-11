@@ -31,3 +31,12 @@ python scripts/score_dense_focal_pilot.py evaluate
 python scripts/score_dense_focal_pilot.py publish
 python scripts/score_dense_focal_pilot.py verify
 ```
+
+### Same-target repeatability check
+
+Each adaptive run has an independently executed control with the same images, supplied cameras, seed and final choice of focal target. The 24 pairs provide a direct estimate of how far two TCO runs can diverge even when they use the same target. After scoring, verify that both runs actually passed identical focal values to their loss, then compare the initial and final point-map hashes, adapter tensors, random states and metric differences. Report the signed mean, median absolute and largest absolute difference in the normalized distance score on each reference. This secondary check helps interpret the size of any observed gain. The progression criterion is specified in the [registered dense experiment](../../docs/DENSE_FOCAL_PILOT.md).
+
+```sh
+python scripts/audit_dense_focal_pairs.py write
+python scripts/audit_dense_focal_pairs.py verify
+```
