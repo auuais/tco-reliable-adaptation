@@ -1,0 +1,5 @@
+# Neighborhood normals for the camera-depth update
+
+Repeat the half-weight update on the same 15 targets and all four archived pose-noise draws. Replace the central-difference normal with an average of unit central-difference normals in a 7 by 7 window, using a Gaussian spatial scale of two pixels and a Gaussian log-depth scale of 0.02. Keep the central point as the plane anchor. Use consistent orientation relative to the central normal. Preserve the original central-depth continuity, ray-incidence and 5% displacement tests. Only changed incidence/displacement eligibility can differ. The original normal and camera-only map are comparators. Check recovery of an analytic slanted plane before computing the study.
+
+Use the existing corresponding depth and normal metrics. Advance this estimator to the canonical surface screen if the average excess normal error over fixed depth falls by half or more, the average squared log axial error is no worse than the original tangent correction, and normal error improves over the original tangent correction on all four draws. This is a local screening decision. The original transfer criterion still applies.
