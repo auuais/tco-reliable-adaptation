@@ -70,3 +70,8 @@ jobs:
           python scripts/focal_prevalence_sensitivity.py
       - name: Replay the relative focal redesign
         run: python scripts/relative_focal_confirmation.py
+      - name: Replay the offset-25 image windows and refit the visual solver
+        env:
+          OPENBLAS_NUM_THREADS: "1"
+          OMP_NUM_THREADS: "1"
+        run: python scripts/verify_relative_focal_windows.py --refit-solver

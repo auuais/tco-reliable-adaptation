@@ -1,0 +1,893 @@
+{
+  "method": "relative",
+  "cases": {
+    "heads_wide_metadata_fault": {
+      "cpu_model_edit": true,
+      "two_folds": true,
+      "matcher_seconds": 24.239649799004837,
+      "fold_scoring_seconds": 0.0017209970028488897
+    },
+    "chess_wide_metadata_fault": {
+      "cpu_model_edit": true,
+      "two_folds": true,
+      "matcher_seconds": 53.57525007700315,
+      "fold_scoring_seconds": 0.0027307140044285916
+    },
+    "fire_wide_metadata_fault": {
+      "cpu_model_edit": true,
+      "two_folds": true,
+      "matcher_seconds": 95.72276425600285,
+      "fold_scoring_seconds": 0.0024902869990910403
+    },
+    "heads_tight_metadata_fault": {
+      "cpu_model_edit": true,
+      "two_folds": true,
+      "matcher_seconds": 24.239649799004837,
+      "fold_scoring_seconds": 0.0013936600007582456
+    },
+    "chess_tight_metadata_fault": {
+      "cpu_model_edit": true,
+      "two_folds": false,
+      "matcher_seconds": 53.57525007700315,
+      "fold_scoring_seconds": 0.0023027649949654005
+    },
+    "fire_tight_metadata_fault": {
+      "cpu_model_edit": true,
+      "two_folds": true,
+      "matcher_seconds": 95.72276425600285,
+      "fold_scoring_seconds": 0.003026947997568641
+    },
+    "heads_wide_valid_zoom": {
+      "cpu_model_edit": false,
+      "two_folds": false,
+      "matcher_seconds": 24.57167994700285,
+      "fold_scoring_seconds": 0.0012905480034532957
+    },
+    "chess_wide_valid_zoom": {
+      "cpu_model_edit": false,
+      "two_folds": true,
+      "matcher_seconds": 51.64370616200176,
+      "fold_scoring_seconds": 0.005092784995213151
+    },
+    "fire_wide_valid_zoom": {
+      "cpu_model_edit": false,
+      "two_folds": false,
+      "matcher_seconds": 93.87643328800186,
+      "fold_scoring_seconds": 0.0024887859981390648
+    },
+    "heads_tight_valid_zoom": {
+      "cpu_model_edit": false,
+      "two_folds": false,
+      "matcher_seconds": 37.397434835998865,
+      "fold_scoring_seconds": 0.001899319002404809
+    },
+    "chess_tight_valid_zoom": {
+      "cpu_model_edit": false,
+      "two_folds": false,
+      "matcher_seconds": 46.898956461001944,
+      "fold_scoring_seconds": 0.0019116199982818216
+    },
+    "fire_tight_valid_zoom": {
+      "cpu_model_edit": false,
+      "two_folds": false,
+      "matcher_seconds": 92.07777382299537,
+      "fold_scoring_seconds": 0.0020233329996699467
+    }
+  },
+  "steps": 40,
+  "lr": 0.0003,
+  "model_sha256": "f164acf60724910d8fe1578bb499d800850c7bb0948db7555c413f9fbe60467e",
+  "upstream_revision": "65387333877723cf99086f7f29089379dd50c59a",
+  "jobs": [
+    {
+      "scene": "heads/seq-01",
+      "case": "metadata_fault",
+      "direction": -1,
+      "view": 0,
+      "seed": 42,
+      "arm": "retain",
+      "input_key": "heads_base",
+      "prior_key": "heads_wide",
+      "run_id": "heads_wide_metadata_fault_retain_s42"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "metadata_fault",
+      "direction": -1,
+      "view": 2,
+      "seed": 42,
+      "arm": "consensus",
+      "input_key": "chess_base",
+      "prior_key": "chess_wide",
+      "run_id": "chess_wide_metadata_fault_consensus_s42"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "metadata_fault",
+      "direction": -1,
+      "view": 4,
+      "seed": 42,
+      "arm": "adaptive",
+      "input_key": "fire_base",
+      "prior_key": "fire_wide",
+      "run_id": "fire_wide_metadata_fault_adaptive_s42"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "metadata_fault",
+      "direction": -1,
+      "view": 0,
+      "seed": 42,
+      "arm": "consensus",
+      "input_key": "heads_base",
+      "prior_key": "heads_wide",
+      "run_id": "heads_wide_metadata_fault_consensus_s42"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "metadata_fault",
+      "direction": -1,
+      "view": 2,
+      "seed": 42,
+      "arm": "adaptive",
+      "input_key": "chess_base",
+      "prior_key": "chess_wide",
+      "run_id": "chess_wide_metadata_fault_adaptive_s42"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "metadata_fault",
+      "direction": -1,
+      "view": 4,
+      "seed": 42,
+      "arm": "retain",
+      "input_key": "fire_base",
+      "prior_key": "fire_wide",
+      "run_id": "fire_wide_metadata_fault_retain_s42"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "metadata_fault",
+      "direction": -1,
+      "view": 0,
+      "seed": 42,
+      "arm": "adaptive",
+      "input_key": "heads_base",
+      "prior_key": "heads_wide",
+      "run_id": "heads_wide_metadata_fault_adaptive_s42"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "metadata_fault",
+      "direction": -1,
+      "view": 2,
+      "seed": 42,
+      "arm": "retain",
+      "input_key": "chess_base",
+      "prior_key": "chess_wide",
+      "run_id": "chess_wide_metadata_fault_retain_s42"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "metadata_fault",
+      "direction": -1,
+      "view": 4,
+      "seed": 42,
+      "arm": "consensus",
+      "input_key": "fire_base",
+      "prior_key": "fire_wide",
+      "run_id": "fire_wide_metadata_fault_consensus_s42"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "metadata_fault",
+      "direction": 1,
+      "view": 0,
+      "seed": 42,
+      "arm": "retain",
+      "input_key": "heads_base",
+      "prior_key": "heads_tight",
+      "run_id": "heads_tight_metadata_fault_retain_s42"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "metadata_fault",
+      "direction": 1,
+      "view": 2,
+      "seed": 42,
+      "arm": "consensus",
+      "input_key": "chess_base",
+      "prior_key": "chess_tight",
+      "run_id": "chess_tight_metadata_fault_consensus_s42"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "metadata_fault",
+      "direction": 1,
+      "view": 4,
+      "seed": 42,
+      "arm": "adaptive",
+      "input_key": "fire_base",
+      "prior_key": "fire_tight",
+      "run_id": "fire_tight_metadata_fault_adaptive_s42"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "metadata_fault",
+      "direction": 1,
+      "view": 0,
+      "seed": 42,
+      "arm": "consensus",
+      "input_key": "heads_base",
+      "prior_key": "heads_tight",
+      "run_id": "heads_tight_metadata_fault_consensus_s42"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "metadata_fault",
+      "direction": 1,
+      "view": 2,
+      "seed": 42,
+      "arm": "adaptive",
+      "input_key": "chess_base",
+      "prior_key": "chess_tight",
+      "run_id": "chess_tight_metadata_fault_adaptive_s42"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "metadata_fault",
+      "direction": 1,
+      "view": 4,
+      "seed": 42,
+      "arm": "retain",
+      "input_key": "fire_base",
+      "prior_key": "fire_tight",
+      "run_id": "fire_tight_metadata_fault_retain_s42"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "metadata_fault",
+      "direction": 1,
+      "view": 0,
+      "seed": 42,
+      "arm": "adaptive",
+      "input_key": "heads_base",
+      "prior_key": "heads_tight",
+      "run_id": "heads_tight_metadata_fault_adaptive_s42"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "metadata_fault",
+      "direction": 1,
+      "view": 2,
+      "seed": 42,
+      "arm": "retain",
+      "input_key": "chess_base",
+      "prior_key": "chess_tight",
+      "run_id": "chess_tight_metadata_fault_retain_s42"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "metadata_fault",
+      "direction": 1,
+      "view": 4,
+      "seed": 42,
+      "arm": "consensus",
+      "input_key": "fire_base",
+      "prior_key": "fire_tight",
+      "run_id": "fire_tight_metadata_fault_consensus_s42"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "valid_zoom",
+      "direction": -1,
+      "view": 0,
+      "seed": 42,
+      "arm": "retain",
+      "input_key": "heads_v0_wide",
+      "prior_key": "heads_wide",
+      "run_id": "heads_wide_valid_zoom_retain_s42"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "valid_zoom",
+      "direction": -1,
+      "view": 2,
+      "seed": 42,
+      "arm": "consensus",
+      "input_key": "chess_v2_wide",
+      "prior_key": "chess_wide",
+      "run_id": "chess_wide_valid_zoom_consensus_s42"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "valid_zoom",
+      "direction": -1,
+      "view": 4,
+      "seed": 42,
+      "arm": "adaptive",
+      "input_key": "fire_v4_wide",
+      "prior_key": "fire_wide",
+      "run_id": "fire_wide_valid_zoom_adaptive_s42"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "valid_zoom",
+      "direction": -1,
+      "view": 0,
+      "seed": 42,
+      "arm": "consensus",
+      "input_key": "heads_v0_wide",
+      "prior_key": "heads_wide",
+      "run_id": "heads_wide_valid_zoom_consensus_s42"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "valid_zoom",
+      "direction": -1,
+      "view": 2,
+      "seed": 42,
+      "arm": "adaptive",
+      "input_key": "chess_v2_wide",
+      "prior_key": "chess_wide",
+      "run_id": "chess_wide_valid_zoom_adaptive_s42"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "valid_zoom",
+      "direction": -1,
+      "view": 4,
+      "seed": 42,
+      "arm": "retain",
+      "input_key": "fire_v4_wide",
+      "prior_key": "fire_wide",
+      "run_id": "fire_wide_valid_zoom_retain_s42"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "valid_zoom",
+      "direction": -1,
+      "view": 0,
+      "seed": 42,
+      "arm": "adaptive",
+      "input_key": "heads_v0_wide",
+      "prior_key": "heads_wide",
+      "run_id": "heads_wide_valid_zoom_adaptive_s42"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "valid_zoom",
+      "direction": -1,
+      "view": 2,
+      "seed": 42,
+      "arm": "retain",
+      "input_key": "chess_v2_wide",
+      "prior_key": "chess_wide",
+      "run_id": "chess_wide_valid_zoom_retain_s42"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "valid_zoom",
+      "direction": -1,
+      "view": 4,
+      "seed": 42,
+      "arm": "consensus",
+      "input_key": "fire_v4_wide",
+      "prior_key": "fire_wide",
+      "run_id": "fire_wide_valid_zoom_consensus_s42"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "valid_zoom",
+      "direction": 1,
+      "view": 0,
+      "seed": 42,
+      "arm": "retain",
+      "input_key": "heads_v0_tight",
+      "prior_key": "heads_tight",
+      "run_id": "heads_tight_valid_zoom_retain_s42"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "valid_zoom",
+      "direction": 1,
+      "view": 2,
+      "seed": 42,
+      "arm": "consensus",
+      "input_key": "chess_v2_tight",
+      "prior_key": "chess_tight",
+      "run_id": "chess_tight_valid_zoom_consensus_s42"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "valid_zoom",
+      "direction": 1,
+      "view": 4,
+      "seed": 42,
+      "arm": "adaptive",
+      "input_key": "fire_v4_tight",
+      "prior_key": "fire_tight",
+      "run_id": "fire_tight_valid_zoom_adaptive_s42"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "valid_zoom",
+      "direction": 1,
+      "view": 0,
+      "seed": 42,
+      "arm": "consensus",
+      "input_key": "heads_v0_tight",
+      "prior_key": "heads_tight",
+      "run_id": "heads_tight_valid_zoom_consensus_s42"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "valid_zoom",
+      "direction": 1,
+      "view": 2,
+      "seed": 42,
+      "arm": "adaptive",
+      "input_key": "chess_v2_tight",
+      "prior_key": "chess_tight",
+      "run_id": "chess_tight_valid_zoom_adaptive_s42"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "valid_zoom",
+      "direction": 1,
+      "view": 4,
+      "seed": 42,
+      "arm": "retain",
+      "input_key": "fire_v4_tight",
+      "prior_key": "fire_tight",
+      "run_id": "fire_tight_valid_zoom_retain_s42"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "valid_zoom",
+      "direction": 1,
+      "view": 0,
+      "seed": 42,
+      "arm": "adaptive",
+      "input_key": "heads_v0_tight",
+      "prior_key": "heads_tight",
+      "run_id": "heads_tight_valid_zoom_adaptive_s42"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "valid_zoom",
+      "direction": 1,
+      "view": 2,
+      "seed": 42,
+      "arm": "retain",
+      "input_key": "chess_v2_tight",
+      "prior_key": "chess_tight",
+      "run_id": "chess_tight_valid_zoom_retain_s42"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "valid_zoom",
+      "direction": 1,
+      "view": 4,
+      "seed": 42,
+      "arm": "consensus",
+      "input_key": "fire_v4_tight",
+      "prior_key": "fire_tight",
+      "run_id": "fire_tight_valid_zoom_consensus_s42"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "metadata_fault",
+      "direction": -1,
+      "view": 0,
+      "seed": 123,
+      "arm": "consensus",
+      "input_key": "heads_base",
+      "prior_key": "heads_wide",
+      "run_id": "heads_wide_metadata_fault_consensus_s123"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "metadata_fault",
+      "direction": -1,
+      "view": 2,
+      "seed": 123,
+      "arm": "adaptive",
+      "input_key": "chess_base",
+      "prior_key": "chess_wide",
+      "run_id": "chess_wide_metadata_fault_adaptive_s123"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "metadata_fault",
+      "direction": -1,
+      "view": 4,
+      "seed": 123,
+      "arm": "retain",
+      "input_key": "fire_base",
+      "prior_key": "fire_wide",
+      "run_id": "fire_wide_metadata_fault_retain_s123"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "metadata_fault",
+      "direction": -1,
+      "view": 0,
+      "seed": 123,
+      "arm": "adaptive",
+      "input_key": "heads_base",
+      "prior_key": "heads_wide",
+      "run_id": "heads_wide_metadata_fault_adaptive_s123"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "metadata_fault",
+      "direction": -1,
+      "view": 2,
+      "seed": 123,
+      "arm": "retain",
+      "input_key": "chess_base",
+      "prior_key": "chess_wide",
+      "run_id": "chess_wide_metadata_fault_retain_s123"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "metadata_fault",
+      "direction": -1,
+      "view": 4,
+      "seed": 123,
+      "arm": "consensus",
+      "input_key": "fire_base",
+      "prior_key": "fire_wide",
+      "run_id": "fire_wide_metadata_fault_consensus_s123"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "metadata_fault",
+      "direction": -1,
+      "view": 0,
+      "seed": 123,
+      "arm": "retain",
+      "input_key": "heads_base",
+      "prior_key": "heads_wide",
+      "run_id": "heads_wide_metadata_fault_retain_s123"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "metadata_fault",
+      "direction": -1,
+      "view": 2,
+      "seed": 123,
+      "arm": "consensus",
+      "input_key": "chess_base",
+      "prior_key": "chess_wide",
+      "run_id": "chess_wide_metadata_fault_consensus_s123"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "metadata_fault",
+      "direction": -1,
+      "view": 4,
+      "seed": 123,
+      "arm": "adaptive",
+      "input_key": "fire_base",
+      "prior_key": "fire_wide",
+      "run_id": "fire_wide_metadata_fault_adaptive_s123"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "metadata_fault",
+      "direction": 1,
+      "view": 0,
+      "seed": 123,
+      "arm": "consensus",
+      "input_key": "heads_base",
+      "prior_key": "heads_tight",
+      "run_id": "heads_tight_metadata_fault_consensus_s123"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "metadata_fault",
+      "direction": 1,
+      "view": 2,
+      "seed": 123,
+      "arm": "adaptive",
+      "input_key": "chess_base",
+      "prior_key": "chess_tight",
+      "run_id": "chess_tight_metadata_fault_adaptive_s123"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "metadata_fault",
+      "direction": 1,
+      "view": 4,
+      "seed": 123,
+      "arm": "retain",
+      "input_key": "fire_base",
+      "prior_key": "fire_tight",
+      "run_id": "fire_tight_metadata_fault_retain_s123"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "metadata_fault",
+      "direction": 1,
+      "view": 0,
+      "seed": 123,
+      "arm": "adaptive",
+      "input_key": "heads_base",
+      "prior_key": "heads_tight",
+      "run_id": "heads_tight_metadata_fault_adaptive_s123"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "metadata_fault",
+      "direction": 1,
+      "view": 2,
+      "seed": 123,
+      "arm": "retain",
+      "input_key": "chess_base",
+      "prior_key": "chess_tight",
+      "run_id": "chess_tight_metadata_fault_retain_s123"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "metadata_fault",
+      "direction": 1,
+      "view": 4,
+      "seed": 123,
+      "arm": "consensus",
+      "input_key": "fire_base",
+      "prior_key": "fire_tight",
+      "run_id": "fire_tight_metadata_fault_consensus_s123"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "metadata_fault",
+      "direction": 1,
+      "view": 0,
+      "seed": 123,
+      "arm": "retain",
+      "input_key": "heads_base",
+      "prior_key": "heads_tight",
+      "run_id": "heads_tight_metadata_fault_retain_s123"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "metadata_fault",
+      "direction": 1,
+      "view": 2,
+      "seed": 123,
+      "arm": "consensus",
+      "input_key": "chess_base",
+      "prior_key": "chess_tight",
+      "run_id": "chess_tight_metadata_fault_consensus_s123"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "metadata_fault",
+      "direction": 1,
+      "view": 4,
+      "seed": 123,
+      "arm": "adaptive",
+      "input_key": "fire_base",
+      "prior_key": "fire_tight",
+      "run_id": "fire_tight_metadata_fault_adaptive_s123"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "valid_zoom",
+      "direction": -1,
+      "view": 0,
+      "seed": 123,
+      "arm": "consensus",
+      "input_key": "heads_v0_wide",
+      "prior_key": "heads_wide",
+      "run_id": "heads_wide_valid_zoom_consensus_s123"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "valid_zoom",
+      "direction": -1,
+      "view": 2,
+      "seed": 123,
+      "arm": "adaptive",
+      "input_key": "chess_v2_wide",
+      "prior_key": "chess_wide",
+      "run_id": "chess_wide_valid_zoom_adaptive_s123"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "valid_zoom",
+      "direction": -1,
+      "view": 4,
+      "seed": 123,
+      "arm": "retain",
+      "input_key": "fire_v4_wide",
+      "prior_key": "fire_wide",
+      "run_id": "fire_wide_valid_zoom_retain_s123"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "valid_zoom",
+      "direction": -1,
+      "view": 0,
+      "seed": 123,
+      "arm": "adaptive",
+      "input_key": "heads_v0_wide",
+      "prior_key": "heads_wide",
+      "run_id": "heads_wide_valid_zoom_adaptive_s123"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "valid_zoom",
+      "direction": -1,
+      "view": 2,
+      "seed": 123,
+      "arm": "retain",
+      "input_key": "chess_v2_wide",
+      "prior_key": "chess_wide",
+      "run_id": "chess_wide_valid_zoom_retain_s123"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "valid_zoom",
+      "direction": -1,
+      "view": 4,
+      "seed": 123,
+      "arm": "consensus",
+      "input_key": "fire_v4_wide",
+      "prior_key": "fire_wide",
+      "run_id": "fire_wide_valid_zoom_consensus_s123"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "valid_zoom",
+      "direction": -1,
+      "view": 0,
+      "seed": 123,
+      "arm": "retain",
+      "input_key": "heads_v0_wide",
+      "prior_key": "heads_wide",
+      "run_id": "heads_wide_valid_zoom_retain_s123"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "valid_zoom",
+      "direction": -1,
+      "view": 2,
+      "seed": 123,
+      "arm": "consensus",
+      "input_key": "chess_v2_wide",
+      "prior_key": "chess_wide",
+      "run_id": "chess_wide_valid_zoom_consensus_s123"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "valid_zoom",
+      "direction": -1,
+      "view": 4,
+      "seed": 123,
+      "arm": "adaptive",
+      "input_key": "fire_v4_wide",
+      "prior_key": "fire_wide",
+      "run_id": "fire_wide_valid_zoom_adaptive_s123"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "valid_zoom",
+      "direction": 1,
+      "view": 0,
+      "seed": 123,
+      "arm": "consensus",
+      "input_key": "heads_v0_tight",
+      "prior_key": "heads_tight",
+      "run_id": "heads_tight_valid_zoom_consensus_s123"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "valid_zoom",
+      "direction": 1,
+      "view": 2,
+      "seed": 123,
+      "arm": "adaptive",
+      "input_key": "chess_v2_tight",
+      "prior_key": "chess_tight",
+      "run_id": "chess_tight_valid_zoom_adaptive_s123"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "valid_zoom",
+      "direction": 1,
+      "view": 4,
+      "seed": 123,
+      "arm": "retain",
+      "input_key": "fire_v4_tight",
+      "prior_key": "fire_tight",
+      "run_id": "fire_tight_valid_zoom_retain_s123"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "valid_zoom",
+      "direction": 1,
+      "view": 0,
+      "seed": 123,
+      "arm": "adaptive",
+      "input_key": "heads_v0_tight",
+      "prior_key": "heads_tight",
+      "run_id": "heads_tight_valid_zoom_adaptive_s123"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "valid_zoom",
+      "direction": 1,
+      "view": 2,
+      "seed": 123,
+      "arm": "retain",
+      "input_key": "chess_v2_tight",
+      "prior_key": "chess_tight",
+      "run_id": "chess_tight_valid_zoom_retain_s123"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "valid_zoom",
+      "direction": 1,
+      "view": 4,
+      "seed": 123,
+      "arm": "consensus",
+      "input_key": "fire_v4_tight",
+      "prior_key": "fire_tight",
+      "run_id": "fire_tight_valid_zoom_consensus_s123"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "valid_zoom",
+      "direction": 1,
+      "view": 0,
+      "seed": 123,
+      "arm": "retain",
+      "input_key": "heads_v0_tight",
+      "prior_key": "heads_tight",
+      "run_id": "heads_tight_valid_zoom_retain_s123"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "valid_zoom",
+      "direction": 1,
+      "view": 2,
+      "seed": 123,
+      "arm": "consensus",
+      "input_key": "chess_v2_tight",
+      "prior_key": "chess_tight",
+      "run_id": "chess_tight_valid_zoom_consensus_s123"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "valid_zoom",
+      "direction": 1,
+      "view": 4,
+      "seed": 123,
+      "arm": "adaptive",
+      "input_key": "fire_v4_tight",
+      "prior_key": "fire_tight",
+      "run_id": "fire_tight_valid_zoom_adaptive_s123"
+    }
+  ],
+  "sources": {
+    "docs/DENSE_FOCAL_PILOT.md": "fb87f847d86805a26e68fca319bdd6340d5a64fe00129608ab0453c1995739b8",
+    "manifests/dense_focal_inputs.json": "20bbc76fabc3e903b0ba904beb04bf42931e141d074291e2748a185a40befd57",
+    "scripts/run_dense_focal_pilot.py": "a5ee24d2e3b6b881a8850891075a383b200c77a92421513d735b90490f704599",
+    "scripts/tco_focal_policy.py": "6151bc8ab78232c42c9df0cbe7ea2a539cc18e1cd648541b127da5b16e127ff5",
+    "scripts/relative_focal_confirmation.py": "f81a1b33cca6550e939b0f195985a05d825240352358356b5741f8416e8e8012",
+    "scripts/prepare_dense_focal_pilot.py": "6b4ee083c91ac0eecc62bb3fb35ed3bd53aed6b3ccf2eff742795257ccc347a4",
+    "scripts/prior_ablation_config.py": "47e7dac58bb6bf2f76c5018fe2bfe9cf36156d30ecedb3ced9e6edc688859147",
+    "scripts/repeatability_capture.py": "262cef63ed8bc8d2fcc77e7dce9443e50886414234dc7c6d32dcd174ed978240",
+    "scripts/score_dense_focal_pilot.py": "cd8795f6154780f2f0c4c62097540aca4278e1f1394424c09e10f5cbaf172080",
+    "scripts/dense_focal_support.py": "a2f466cdac0cf0df4bcfc42cc7481fb2eb7c54dca7d32eb30b4d902170619c06",
+    "results/dense_focal_pilot/geometric_support.json": "38c4f95dddf2afe2e6e20bd6fca8a88c5221fed706740098bc268c34691d6087",
+    "configs/7scenes_baseline.yaml": "da2393f4f571e3a5e361fe2cc84bb1a948371192801edd4891ee6c265dc68c39",
+    "patches/0001-bfloat16-numpy-export.patch": "f28e214b8cef970a0b6cab46ee205191147eb4f3a86c08b4779da5056f68303f"
+  },
+  "replication_sha256": "e75bfaab5ea6603644bc206834dbedc5175b3d0e274ca9ddb4c811ecd586a749",
+  "stage_cap_usd": 3,
+  "additional_session_cap_usd": 1.5
+}
