@@ -27,7 +27,7 @@ def images(assets,scene,entry):
     return next(batches(np.stack(frames)))[1]
 
 
-def capture(assets,weights):
+def capture(assets,weights,public=PUBLIC,raw=RAW,rgb_directory=None):
     import torch
     from selected_readouts import enable
     from stage_initial_forward import stage_initial_forward
@@ -43,14 +43,22 @@ def capture(assets,weights):
     model.point_head=None
     enable(model)
     stage_initial_forward(model,lambda name,value:None)
-    for scene,entry in read(PUBLIC/'input_index.json')['sequences'].items():
+    for scene,entry in read(public/'input_index.json')['sequences'].items():
         key=scene.replace('/','_')
-        path=RAW/(key+'.npz')
-        meta=PUBLIC/'captures'/(key+'.json')
+        path=raw/(key+'.npz')
+        meta=public/'captures'/(key+'.json')
         if meta.exists():
             assert read(meta)['archive_sha256']==sha(path)
             continue
-        rgb=images(assets,scene,entry)
+        if rgb_directory is None:
+            rgb=images(assets,scene,entry)
+        else:
+            prepared=rgb_directory/entry['rgb_file']
+            assert sha(prepared)==entry['rgb_sha256']
+            with np.load(prepared) as archive:
+                rgb=archive['images']
+            assert tensor_digest(rgb)==entry['rgb_tensor_sha256']
+            assert rgb.shape==(len(entry['targets']),3,392,518)
         model.to('cuda')
         torch.cuda.reset_peak_memory_stats()
         start=time.perf_counter()
@@ -62,7 +70,7 @@ def capture(assets,weights):
         assert native.shape==(len(entry['targets']),392,518,3)
         assert np.all(np.isfinite(native)) and np.all(values['depth']>0)
         seconds=time.perf_counter()-start
-        RAW.mkdir(parents=True,exist_ok=True)
+        raw.mkdir(parents=True,exist_ok=True)
         write_arrays(path,dict(native=native,**values))
         dump(meta,dict(scene=scene,target_frames=entry['targets'],model_sha256=MODEL_SHA,
                        rgb_tensor_sha256=tensor_digest(rgb),archive_sha256=sha(path),
