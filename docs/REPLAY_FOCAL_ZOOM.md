@@ -48,3 +48,11 @@ python scripts/verify_visual_focal_baseline.py --rerun-solver
 ```
 
 The checksum above identifies the Linux x86-64 CPython 3.11 wheel used here. The public evidence contains derived correspondences, model camera encodings, gradients and checksums. Images and model weights come from their original owners. Timing depends on the host and thread count.
+
+### Check the input evidence and the balanced case assumption
+
+On a checkout containing the public result files, `python scripts/replay_focal_track_decisions.py` checks that the two folds share no half-pixel feature identities within any image batch. Add `--archives /data/archives` to reconstruct the supplied poses from the original 7-Scenes files, independently recompute each per-fold epipolar score, and check every accept/retain decision.
+
+The primary experiment assigns equal weight to valid and erroneous focal outliers. As a descriptive sensitivity analysis, let `p` be the fraction of such outliers that are faults. Each method's expected relative focal-gradient error is `(1-p) * mean_error_valid + p * mean_error_fault`. The intersections of these lines give the range of fault proportions where the two-fold rule matches or beats a comparator. This analysis holds scene mix and camera-noise settings fixed and does not estimate the real-world frequency of metadata errors. Once the comparison is available, run `python scripts/focal_prevalence_sensitivity.py --write` on fresh evidence or omit the flag to verify a saved result.
+
+The paired 30 one-view image changes also test the frozen network's response to the known focal change independently of any supplied pose. Divide the predicted change in each axis's log focal by the known signed log zoom factor. A value of one is the exact response and zero is no response. Compute the corresponding change on the other four unchanged input images and report their mean absolute drift. `python scripts/measure_focal_crop_response.py` replays this descriptive model check. Use `--write` for a newly collected experiment.
