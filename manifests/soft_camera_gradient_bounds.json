@@ -1,0 +1,25 @@
+{
+  "study": "soft_camera_gradient_bounds",
+  "sources": {
+    "scripts/soft_camera_gradient_bounds.py": "89d10c3702bf7f33a73776d4758801d31c0a954170f7a28b3c2d8bdf4d671f9c",
+    "results/masked_camera_gradients/summary.json": "37f4078f2b5949e83edaacd446df86471e33649092bff411b0728066413ef08b",
+    "results/masked_camera_gradients/gradient_traces.zip": "54b528fedf149d6d18dd01522fc7e9740fde216dcc5182dcb121f9f6d3bff1f1",
+    "manifests/masked_camera_gradients.json": "c04c627672ec6deb7280047de764e5abc3b2122d00c7ee680e9b624119141124"
+  },
+  "data": "Secondary development analysis of the already published 183 cases and frozen alert decisions; 180 injected faults, three clean windows, three scenes. No new independent observations.",
+  "loss": "A constant convex weight on the original and one view-excluded camera loss gives the same convex mixture of their derivatives. Error is the Euclidean distance to the clean unmasked derivative, normalized by its norm. Visual loss and target parameters are outside this audit.",
+  "fitted": "Hold out one development scene. Fit one scalar per policy on the two remaining scenes: sum of normalized squared errors over corrupted cases, and a maximum normalized distortion of 0.05 on every training clean case and possible omission. Apply weights using only the signed-off alert/suspect at evaluation. Do not refit on the target scene. Random policy averages the errors of the five equiprobable view choices; global policy downweights all camera terms.",
+  "bounds": "Compute the exact clamped line projection per case using its privileged clean gradient. Report detected view with alert; known faulty view with no alert restriction; best of all five views with no restriction. Clean ground truth never enters the deployed policies. The best-view envelope is a gain ceiling for selecting one whole-view omission and one mixing weight per case.",
+  "decision": "Require detected policy at least 20 percent lower mean corrupted normalized error than unchanged, lower than both fitted controls, no scene worse, no fault profile more than 5 percent worse and maximum clean distortion at most 0.05. A pass motivates an independent development window only. If even the best-view envelope has gain below 20 percent, set aside every one-view scalar mixture on this grid.",
+  "methods": [
+    "unchanged",
+    "detected",
+    "random",
+    "global",
+    "oracle_detected",
+    "oracle_actual",
+    "oracle_best_view"
+  ],
+  "clean_cap": 0.05,
+  "cloud_usd": 0
+}
