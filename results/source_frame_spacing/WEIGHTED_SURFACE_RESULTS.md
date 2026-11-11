@@ -43,3 +43,9 @@ The weighted update had a lower nearest-neighbor score than direct focal after e
 | After each arm's own ICP fit | -9.12% | -3.44% |
 
 On Fire, the registered comparison went from +1.55% before ICP to -23.75% with the shared rigid transform and -24.04% with separate fits. Heads improved under all three comparisons. The own-transform accuracy and completeness replayed the archived metrics on both references within the specified 0.02 mm tolerance. The change in relative ranking persists under a shared rigid transform, so a candidate-specific ICP fit is unnecessary to produce that reversal. The paper-style evaluation retains its original alignment convention. [Registered diagnostic](../../docs/MOTION_ICP_EFFECT.md) and [transform matrices, distances and scene scores](motion_icp_effect.json).
+
+## Four additional permutation seeds
+
+All four independent permutations reproduced the ranking reversal. On the registered reference, the shuffled composite score ranged from 0.94115 to 0.94191, versus 1.06873 for learned placement. On the released reference it ranged from 0.88793 to 0.88938, versus 1.01817. Registered normal consistency ranged from 0.67685 to 0.67756, versus 0.74092. Each new permutation increased mean per-target axial squared log-depth error by 1.19% to 1.21% versus unchanged depth. The learned placement reduced it by 4.90%.
+
+Across all 12 combinations of three scenes and four additional seeds, shuffling lowered the surface score and reference-to-prediction distance, and decreased normal consistency on each reference convention. These 12 comparisons reuse three scenes and are not independent scene replications. This experiment establishes sensitivity to placement on these data. It does not establish that the same ranking reversal occurs on other datasets or in the authors' complete benchmark. [All four runs and per-scene components](shuffle_repeat_scores.json) and [prediction inventory](shuffle_repeat_archive.json).
