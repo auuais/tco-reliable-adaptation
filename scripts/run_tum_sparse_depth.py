@@ -10,7 +10,7 @@ from evaluation_stability import dump,sha
 from fixed_camera_depth_scale import point_map
 from neighbor_sparse_depth import corrections
 from scale_shift_sparse_depth import estimate as calibrate
-from prepare_dense_focal_pilot import write_arrays
+from prepare_dense_focal_pilot import ROOT,write_arrays
 from prepare_tum_sparse_packet import GRIDS,RAW
 from prepare_tum_sparse_depth import PUBLIC,SEQUENCES
 from score_saved_geometry import read

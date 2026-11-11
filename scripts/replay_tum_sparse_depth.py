@@ -26,9 +26,10 @@ def replay(export=False,predictions_only=False):
                 path.parent.mkdir(exist_ok=True)
                 source=RAW/(sequence+'.npz')
                 assert sha(source)==read(meta)['archive_sha256']
-                with np.load(source) as z:
-                    fields=dict(z)
-                write_arrays(path,fields)
+                import shutil
+                if not path.exists():
+                    shutil.copyfile(source,path)
+            assert sha(path)==read(meta)['archive_sha256']
             with np.load(path) as z:
                 depth=z['depth'][...,0].astype(float)
                 model=z['extrinsics'].astype(float)
