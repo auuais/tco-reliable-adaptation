@@ -22,6 +22,12 @@ HISTORICAL = ('native_3090','tco_retain','tco_consensus','tco_adaptive')
 
 
 def evaluate_batch(key):
+    rows = [r for r in read(PUBLIC/'predictions.json')['rows'] if r['input_key']==key]
+    digests = {h for r in rows for h in r['predictions'].values()}
+    return evaluate_points(key,digests,RAW)
+
+
+def evaluate_points(key,digests,raw):
     import open3d as o3d
     import torch
     from run_repeat_calibration import evaluate
@@ -34,12 +40,10 @@ def evaluate_batch(key):
         images = torch.from_numpy(z['images'])
     with np.load(REF/ref['file'],allow_pickle=False) as z:
         refs = dict(z)
-    rows = [r for r in read(PUBLIC/'predictions.json')['rows'] if r['input_key']==key]
-    digests = {h for r in rows for h in r['predictions'].values()}
     measured = {}
     for digest in sorted(digests):
-        folder = RAW/'evaluation'/key/digest
-        with np.load(RAW/'points'/(digest+'.npz'),allow_pickle=False) as z:
+        folder = raw/'evaluation'/key/digest
+        with np.load(raw/'points'/(digest+'.npz'),allow_pickle=False) as z:
             points = z['points']
         if tensor_digest(points)!=digest:
             raise ValueError('Sealed point map changed')
@@ -91,10 +95,10 @@ def join_controls(rows):
                     out[arm] = {m:mean(r['scores'][ref]['final'][m] for r in pair) for m in METRICS}
 
 
-def aggregate(rows):
+def aggregate(rows,local=LOCAL,controls=('frozen','direct','shared')):
     def average(group,ref):
         result = {}
-        for arm in LOCAL+HISTORICAL:
+        for arm in local+HISTORICAL:
             cells = [r['metrics'][ref] for r in group]
             relative = [mean(c[arm][m]/c['frozen'][m] for c in cells) for m in METRICS[:2]]
             result[arm] = dict(score=mean(relative),relative_accuracy=relative[0],relative_completeness=relative[1],
@@ -107,7 +111,7 @@ def aggregate(rows):
             cases={s:average([r for r in rows if r['case']==s],ref) for s in sorted({r['case'] for r in rows})})
     primary = references[REFS[0]]['overall']
     released = references[REFS[1]]['overall']
-    best = min(('frozen','direct','shared'),key=lambda a:primary[a]['score'])
+    best = min(controls,key=lambda a:primary[a]['score'])
     historical = min(HISTORICAL,key=lambda a:primary[a]['score'])
     gain = 1-primary['guarded']['score']/primary[best]['score']
     historical_gain = 1-primary['guarded']['score']/primary[historical]['score']
