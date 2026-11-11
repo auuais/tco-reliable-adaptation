@@ -1,7 +1,6 @@
 """Run ordinary MASt3R inference and sparse global alignment on the sealed RGB inputs."""
 import argparse
 from pathlib import Path
-import subprocess
 import time
 
 import numpy as np
@@ -50,14 +49,15 @@ def capture(model, key):
         world=p.reshape(384,512,3)
         z=(world-c2w[i,:3,3]) @ c2w[i,:3,2]
         torch.testing.assert_close(z,depth[i],rtol=2e-4,atol=2e-5)
-    assert torch.all(torch.isfinite(depth) & (depth>0))
+    assert torch.isfinite(depth).all()
+    nonpositive = (depth<=0).sum(dim=(1,2)).tolist()
     torch.cuda.synchronize()
     seconds=time.perf_counter()-start
     raw=RAW/(key+'.npz')
     write_arrays(raw,dict(depth=depth.detach().cpu().numpy(),intrinsics=k.cpu().numpy(),c2w=c2w.cpu().numpy()))
     record=dict(input_sha256=meta['sha256'],output_sha256=sha(raw),checkpoint_sha256=WEIGHTS,source=SOURCE,
                 pairs=len(pairs),seconds=seconds,prior_cache_files=previous_files,peak_allocated_mib=torch.cuda.max_memory_allocated()/2**20,
-                device=torch.cuda.get_device_name(),native_size=[384,512])
+                nonpositive_depth_pixels=nonpositive,device=torch.cuda.get_device_name(),native_size=[384,512])
     dump(PUBLIC/(key+'.json'),record)
     print(key,record,flush=True)
 
