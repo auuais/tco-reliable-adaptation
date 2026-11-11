@@ -1,0 +1,145 @@
+{
+  "study": "canonical_sensor_factorial",
+  "upstream_commit": "65387333877723cf99086f7f29089379dd50c59a",
+  "jobs": [
+    {
+      "scene": "heads/seq-01",
+      "condition": "released",
+      "run_id": "sensor17c_heads_seq-01_released"
+    },
+    {
+      "scene": "chess/seq-03",
+      "condition": "frame_only",
+      "run_id": "sensor17c_chess_seq-03_frame_only"
+    },
+    {
+      "scene": "fire/seq-03",
+      "condition": "intrinsics_only",
+      "run_id": "sensor17c_fire_seq-03_intrinsics_only"
+    },
+    {
+      "scene": "heads/seq-01",
+      "condition": "frame_only",
+      "run_id": "sensor17c_heads_seq-01_frame_only"
+    },
+    {
+      "scene": "chess/seq-03",
+      "condition": "intrinsics_only",
+      "run_id": "sensor17c_chess_seq-03_intrinsics_only"
+    },
+    {
+      "scene": "fire/seq-03",
+      "condition": "fixed_rgb",
+      "run_id": "sensor17c_fire_seq-03_fixed_rgb"
+    },
+    {
+      "scene": "heads/seq-01",
+      "condition": "intrinsics_only",
+      "run_id": "sensor17c_heads_seq-01_intrinsics_only"
+    },
+    {
+      "scene": "chess/seq-03",
+      "condition": "fixed_rgb",
+      "run_id": "sensor17c_chess_seq-03_fixed_rgb"
+    },
+    {
+      "scene": "fire/seq-03",
+      "condition": "released",
+      "run_id": "sensor17c_fire_seq-03_released"
+    },
+    {
+      "scene": "heads/seq-01",
+      "condition": "fixed_rgb",
+      "run_id": "sensor17c_heads_seq-01_fixed_rgb"
+    },
+    {
+      "scene": "chess/seq-03",
+      "condition": "released",
+      "run_id": "sensor17c_chess_seq-03_released"
+    },
+    {
+      "scene": "fire/seq-03",
+      "condition": "frame_only",
+      "run_id": "sensor17c_fire_seq-03_frame_only"
+    }
+  ],
+  "frames": [
+    50,
+    250,
+    450,
+    650,
+    850
+  ],
+  "seed": 42,
+  "size": 518,
+  "steps": 40,
+  "learning_rate": 0.0003,
+  "analysis": "Evaluate released and registered RGB reference separately. Report per-scene accuracy and completeness, mean normals, and mean ratios to matched FP32 initial reconstruction. For 4 adapted cells per scene compute main contrasts and interaction. Compare full correction to unchanged TCO and to post-hoc half-depth for all conditions, direct calibrated and released priors, and initial. Require >=5% lower error vs strongest comparison, no scene >1% worse and no increased harmful scenes at BOTH refs to motivate additional seeds and a noisy matched test. One pilot seed cannot release funds.",
+  "dataset_cache_sha256": "ce8f28f03d960fc4fc8be5624823715822a41550bddd421af9ca1942295afb8a",
+  "sources": {
+    "manifests/sensor_tco_v17.json": "9d833c8ee05831a05c402b0fb129f8bc3cd8e48f00e9f49aa2e39f57a9b8df9a",
+    "scripts/run_canonical_sensor_factorial.py": "99d47acd4f1044ac82322903d88a94e082042237c1b0a5a8f272ee9c21b81ba9",
+    "scripts/evaluate_canonical_sensor_factorial.py": "47df22ae7b8398867e32a786df27a4a7392fbbc0919a0186457304e08350d0e8",
+    "scripts/evaluate_sensor_tco.py": "d1460547363113d3fbafa61640cc5609e766370466a8cf3e43ab1d007764bcf6",
+    "scripts/diagnose_sensor_components.py": "bdcf5ab6f07f969ca637d997295dd7fd174b68f3b70003f38fcaff101c4af926",
+    "scripts/repeatability_capture.py": "262cef63ed8bc8d2fcc77e7dce9443e50886414234dc7c6d32dcd174ed978240",
+    "scripts/prior_ablation_config.py": "47e7dac58bb6bf2f76c5018fe2bfe9cf36156d30ecedb3ced9e6edc688859147",
+    "configs/7scenes_baseline.yaml": "da2393f4f571e3a5e361fe2cc84bb1a948371192801edd4891ee6c265dc68c39",
+    "patches/0001-bfloat16-numpy-export.patch": "f28e214b8cef970a0b6cab46ee205191147eb4f3a86c08b4779da5056f68303f",
+    "manifests/sensor_tco_readout_replication_evaluation.json": "b714ad269687094c824d91d6f18c9ae30273a4ab607b165388d581361942dd96"
+  },
+  "model_sha256": "f164acf60724910d8fe1578bb499d800850c7bb0948db7555c413f9fbe60467e",
+  "method": "Original TCO model and GPU path. Cross the supplied sensor-to-RGB pose transform and the registered focal calibration. Fresh process for every cell. Same three offset-50 development windows and frozen analysis as the local experiment. Preserve both original image-based and external camera objectives.",
+  "recovery": "Stop the batch on any technical failure. Keep its partial trace. A repeat requires a distinct attempt after a diagnosed technical failure, within the same budget.",
+  "capture": "40 optimizer updates per run; compare 33 frozen point maps on both dense references and one independent source of RGB camera poses. Scoring is local.",
+  "stage_cap_usd": 3,
+  "additional_session_cap_usd": 1,
+  "later_allocations_released": false,
+  "frame_sha256": {
+    "data/7scenes/chess/seq-03/frame-000050.color.png": "d00f37623bc013ed37a3098033397811f6eccf4dd6b97360ae581ba7c2f2192c",
+    "data/7scenes/chess/seq-03/frame-000050.depth.proj.png": "c8dd256f158422cc0ea279d2366d634c8f79341283c74ea2437e64d088fd5c66",
+    "data/7scenes/chess/seq-03/frame-000050.pose.txt": "906dc1e3ef48ae44823721221bd214102cf95fa87fa5d4be7237f5686629fc52",
+    "data/7scenes/chess/seq-03/frame-000250.color.png": "55c2d72cc1e3a2a3ba216d23f25f2a8a642cb8d2747266a51657ccaed158bc2e",
+    "data/7scenes/chess/seq-03/frame-000250.depth.proj.png": "8f0751db56be74567c1f379841cdb1764e17e230d205c8b5f969ac31adb7e8d5",
+    "data/7scenes/chess/seq-03/frame-000250.pose.txt": "b3e91ce8c99459243ec9807ef1429fb4aa99253ea6cf870492278bf858fb4b08",
+    "data/7scenes/chess/seq-03/frame-000450.color.png": "9722c9c21a1a64570a8234bcdf0aeb130042021596a5ef484bdec3786d505412",
+    "data/7scenes/chess/seq-03/frame-000450.depth.proj.png": "5bd268222d8244d5d57a901ef704dcfc908e31e3e82bdd4d49c9cb8e8583d7fd",
+    "data/7scenes/chess/seq-03/frame-000450.pose.txt": "8c23b99ff25cb1769629a19f2224ef41aa42a3ccaa762a6fc4ae34a3b39a3b45",
+    "data/7scenes/chess/seq-03/frame-000650.color.png": "8ccf4dce3dcf7ad6c1450223b3da9ac5df62ad2d5c4ab27d97dd1eea7d042c68",
+    "data/7scenes/chess/seq-03/frame-000650.depth.proj.png": "e23ef79b02714f4ead02ae61af9586662f2eb40cc29a58dfeba7488b8bf010a9",
+    "data/7scenes/chess/seq-03/frame-000650.pose.txt": "df5097b7a474a8034961320344f91df31e00971e5729d1cd908fd195c9654ec5",
+    "data/7scenes/chess/seq-03/frame-000850.color.png": "2dfe1f1c0af1b485641d75c0aabc5f6b8143137bf11fcf30876d108b7eea02c3",
+    "data/7scenes/chess/seq-03/frame-000850.depth.proj.png": "2669660725d693c00aefa05f8219a628483fd2a201938268f1b63d2af0d05b99",
+    "data/7scenes/chess/seq-03/frame-000850.pose.txt": "d6cca8724206043be4b4bc88c18afb72c0279d2b069e2747e43bdaa88135fa9d",
+    "data/7scenes/fire/seq-03/frame-000050.color.png": "6171b8c1ad80c99f63f08e7ff0d0cbd5a62d34010fd2b7111b2fc2d991e92b3e",
+    "data/7scenes/fire/seq-03/frame-000050.depth.proj.png": "dea76ed27d5f9915d262d6a7c9a7351494589f8b31a77072be2c49b04ff1aa20",
+    "data/7scenes/fire/seq-03/frame-000050.pose.txt": "e052089560e034c4345e7d8f720978290ca0f94bf6fe1b1e7afcb93b8248e7c4",
+    "data/7scenes/fire/seq-03/frame-000250.color.png": "dfbe7e34a2c29250377aa4bc2dea7e358ffa021e01e69b6aa11f9365efa61f09",
+    "data/7scenes/fire/seq-03/frame-000250.depth.proj.png": "aa8e655a0826374d52af61f89ede6dd4baea1f20f448f9187feb7c372db3591d",
+    "data/7scenes/fire/seq-03/frame-000250.pose.txt": "95ab86bb072b6ee816f75e7b62f7e3b7a25840823816076c2eab8f132f4bb04c",
+    "data/7scenes/fire/seq-03/frame-000450.color.png": "db3f96e32b5d70406bb834ba777e9cb2de2da4b43179c4521984ab65c3bf11d8",
+    "data/7scenes/fire/seq-03/frame-000450.depth.proj.png": "a6ba1e989dee4aa47901ecd1100a7c17cca4334ecc898216cd5b02b5d69049a7",
+    "data/7scenes/fire/seq-03/frame-000450.pose.txt": "c0aa885a161ddbe0f6f424ef064bdb23d6048e357377e095da9734685457986e",
+    "data/7scenes/fire/seq-03/frame-000650.color.png": "5e2c6d9c2021369c398cfa44c1da22ec65217bb0f9975b6021b15b55fb6513d4",
+    "data/7scenes/fire/seq-03/frame-000650.depth.proj.png": "b4300fd8c992d6603ca87ee8ae2085505573e16478563d878a87cfd7f797acbe",
+    "data/7scenes/fire/seq-03/frame-000650.pose.txt": "e7f0c6be045ae9999bf82cf3983fd3c994e3097bab1a70c1ea0651083e4166cb",
+    "data/7scenes/fire/seq-03/frame-000850.color.png": "ad873157c9aadb2376a856fe681345d400f41dc91edbb4988f2b2b173f67c3d0",
+    "data/7scenes/fire/seq-03/frame-000850.depth.proj.png": "a348b12adc4b9c556109581670ca7bc9e671955fbddeaf0842edf7dc4eaeab24",
+    "data/7scenes/fire/seq-03/frame-000850.pose.txt": "53f62ad5269500d0ab8274b0330ed92b76d43d35ebeb5f8fcd8a0cadeb669a67",
+    "data/7scenes/heads/seq-01/frame-000050.color.png": "dadc2478ec9ba295159056aa2216e37d5f297ece5b0cf3f8232f61e02bd24295",
+    "data/7scenes/heads/seq-01/frame-000050.depth.proj.png": "bc650687bdc4afa170ed78ee68093b3fd48163042c32f557d6b0a5da91ac5ddd",
+    "data/7scenes/heads/seq-01/frame-000050.pose.txt": "9e2611843f61d93cb28f6297e2bf8ad43670deec961fa1a655c75721b6e2f241",
+    "data/7scenes/heads/seq-01/frame-000250.color.png": "7364f054ee615c1446bc6bfd682bfa75acfd8ffa30e1bcbb0fc77f385c71b955",
+    "data/7scenes/heads/seq-01/frame-000250.depth.proj.png": "a09d385dbacbc57e747466f42d1ef27689de43399a8e71c9d64346976bcf6d11",
+    "data/7scenes/heads/seq-01/frame-000250.pose.txt": "217138bb1ba6fbee2c15a97869e54a35091a281ef6b8bc4d84fc12725a424654",
+    "data/7scenes/heads/seq-01/frame-000450.color.png": "ed2dab77828cfb446196231eb130d5e7a66a4edd00d630839df449b95e18b71f",
+    "data/7scenes/heads/seq-01/frame-000450.depth.proj.png": "292ebf9c8aeadcb88b65f764dcc01aab4fc2d9a5093c0f550f98d86949379100",
+    "data/7scenes/heads/seq-01/frame-000450.pose.txt": "4a21529fb3c4ab05326bdb074388babacc8619dc6ab7118368d55426c196665f",
+    "data/7scenes/heads/seq-01/frame-000650.color.png": "bf743360e636e1e69e78eddbed8813e19711c43e0cb1f5e18708b213b1932ad8",
+    "data/7scenes/heads/seq-01/frame-000650.depth.proj.png": "4a506d05b6b85d5c64c3e05ef05a81bca27f79762c382be0bd23760f3faaad19",
+    "data/7scenes/heads/seq-01/frame-000650.pose.txt": "998aba91b3a55dacbe0451dd061c71cb7475b4bd1ec0de596c030f0274f6cf79",
+    "data/7scenes/heads/seq-01/frame-000850.color.png": "ecf5e080142acfbbc89db8b1d70ec1904d1bd43630dac0dfe3ef5af0b697c9b8",
+    "data/7scenes/heads/seq-01/frame-000850.depth.proj.png": "22af179fae2ad0190dce0175cebf8b0e8e5d761598a188b5b69cc324b077f49f",
+    "data/7scenes/heads/seq-01/frame-000850.pose.txt": "3dc84b688072a462db1959de1e116049b14474a28c591465fcbe78af14cb7a85"
+  }
+}
