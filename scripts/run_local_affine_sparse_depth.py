@@ -49,31 +49,32 @@ def prepare():
     dump(path,result)
 
 
-def score():
-    seal=read(PUBLIC/'predictions.json')
+def score(public=PUBLIC,raw=RAW,parents=GRIDS,previous_name="previous_depth_aware"):
+    seal=read(public/'predictions.json')
     outcomes={}
     observations={}
-    for grid,parent in GRIDS.items():
-        old=read(parent/'scores.json')['results']['references']
+    for grid,parent in parents.items():
+        parent_scores=read(parent/'scores.json')
+        old=(parent_scores['grids'][grid] if 'grids' in parent_scores else parent_scores['results'])['references']
         rows=[]
         observations[grid]={}
         with ProcessPoolExecutor(3) as pool:
-            jobs={key:pool.submit(evaluate_points,key,set(b['hashes'].values()),RAW/grid) for key,b in seal['batches'][grid].items()}
+            jobs={key:pool.submit(evaluate_points,key,set(b['hashes'].values()),raw/grid) for key,b in seal['batches'][grid].items()}
             for scene in SCENES:
                 key=scene.split('/')[0]+'_base'
                 _,measured=jobs[key].result()
                 observations[grid][key]=measured
                 metrics={}
                 for ref in REFS:
-                    cell={('previous_depth_aware' if a=='guarded' else a):v['raw'] for a,v in old[ref]['scenes'][scene].items()}
+                    cell={(previous_name if a=='guarded' else a):v['raw'] for a,v in old[ref]['scenes'][scene].items()}
                     cell.update({a:measured[h][ref] for a,h in seal['batches'][grid][key]['hashes'].items()})
                     metrics[ref]=cell
                 rows.append(dict(scene=scene,case='base',metrics=metrics))
         controls=tuple(a for a in cell if a not in HISTORICAL+('guarded',))
         outcomes[grid]=aggregate(rows,controls+('guarded',),controls)
         print(grid,outcomes[grid]['local_gain'],outcomes[grid]['checks'],flush=True)
-    dump(PUBLIC/'observations.json',observations)
-    dump(PUBLIC/'scores.json',dict(seal_sha256=sha(PUBLIC/'predictions.json'),grids=outcomes))
+    dump(public/'observations.json',observations)
+    dump(public/'scores.json',dict(seal_sha256=sha(public/'predictions.json'),grids=outcomes))
 
 
 if __name__=='__main__':
