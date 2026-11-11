@@ -74,6 +74,10 @@ def evaluate_sequence(sequence):
     with np.load(ref_path) as z:
         truth,mask,depth=z['points'],z['valid_mask'],z['depth']
     meta=read(PUBLIC/'inputs.json')['sequences'][sequence]
+    with np.load(RAW/(sequence+'.npz')) as heads:
+        model_camera=heads['extrinsics'].astype(float)
+    with np.load(PUBLIC/'measurements.npz') as packet:
+        supplied_camera=packet[sequence+'_poses']
     rgb_path=RAW/'inference'/meta['rgb_file']
     assert sha(rgb_path)==meta['rgb_sha256']
     with np.load(rgb_path) as z:
@@ -97,6 +101,30 @@ def evaluate_sequence(sequence):
             metrics=evaluate(points,dict(images=images,pointclouds=truth,valid_mask=mask),folder)
             row=dict(identity=identity,metrics=metrics)
             dump(path,row)
+        metric_depth={}
+        aliases=[a for a,h in seal['batches'][sequence]['hashes'].items() if h==digest]
+        for grid in GRIDS:
+            for arm in aliases:
+                if arm in ('frozen','direct'):
+                    cameras=model_camera
+                    gauge=seal['batches'][sequence]['grids'][grid]['gauge']
+                elif arm.startswith(grid+'_'):
+                    cameras=supplied_camera
+                    gauge=1.
+                else:
+                    continue
+                axial=(np.einsum('nhwj,nj->nhw',points,cameras[:,2,:3])+cameras[:,2,3,None,None])*gauge
+                if not np.all(np.isfinite(axial[mask]) & (axial[mask]>0)):
+                    raise ValueError('Invalid metric depth on the common evaluation mask')
+                metrics=[]
+                for i in range(len(depth)):
+                    predicted=axial[i][mask[i]]
+                    truth_depth=depth[i][mask[i]]
+                    metrics.append(dict(mean_absolute_log_depth=float(np.mean(np.abs(np.log(predicted/truth_depth)))),
+                                        rmse_m=float(np.sqrt(np.mean((predicted-truth_depth)**2))),
+                                        abs_relative=float(np.mean(np.abs(predicted-truth_depth)/truth_depth))))
+                metric_depth.setdefault(grid,{})[arm]={m:mean(v[m] for v in metrics) for m in metrics[0]}
+        row=dict(row,metric_depth=metric_depth)
         output[digest]=row
         print(sequence,digest[:8],'surface scored',flush=True)
     return sequence,output
@@ -114,7 +142,8 @@ def summarize(seal,observations):
                 if arm in ('frozen','direct') or arm.startswith(grid+'_'):
                     raw=observations[scene][h]['metrics']
                     ratios=[raw[m]/frozen[m] for m in ('accuracy_mean_m','completeness_mean_m')]
-                    cell[arm]=dict(score=mean(ratios),accuracy=ratios[0],completeness=ratios[1],raw=raw)
+                    cell[arm]=dict(score=mean(ratios),accuracy=ratios[0],completeness=ratios[1],raw=raw,
+                                   metric_depth=observations[scene][h]['metric_depth'][grid][arm])
             sequences[scene]=cell
         overall={a:{m:mean(v[a][m] for v in sequences.values()) for m in ('score','accuracy','completeness')} for a in cell}
         best=min((a for a in overall if a!=candidate),key=lambda a:overall[a]['score'])
