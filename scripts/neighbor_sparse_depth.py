@@ -144,6 +144,11 @@ def score():
     controls = tuple(a for a in rows[0]['metrics'][REFS[0]] if a not in HISTORICAL + ('guarded',))
     result = aggregate(rows, controls + ('guarded',), controls)
     dump(PUBLIC / 'scores.json', dict(seal_sha256=sha(SEAL), panel_sha256=sha(PANEL), results=result))
+    observations = {}
+    for key, batch in sealed['batches'].items():
+        observations[key] = {arm: {ref: read(RAW/'evaluation'/key/digest/ref/'checked.json') for ref in REFS}
+                             for arm, digest in batch['predictions'].items()}
+    dump(PUBLIC/'surface_observations.json', observations)
     print(result['checks'], result['local_gain'], flush=True)
 
 
