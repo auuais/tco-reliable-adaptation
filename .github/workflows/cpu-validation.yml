@@ -42,3 +42,7 @@ jobs:
         run: python scripts/localize_camera_prior_faults.py verify
       - name: Verify the selective camera repair decision
         run: python scripts/screen_single_camera_repair.py verify
+      - name: Recompute camera omission errors from published gradients
+        env:
+          OPENBLAS_NUM_THREADS: "1"
+        run: python scripts/audit_masked_camera_gradients.py verify
