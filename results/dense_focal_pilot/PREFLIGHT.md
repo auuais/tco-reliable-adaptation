@@ -40,3 +40,7 @@ Each adaptive run has an independently executed control with the same images, su
 python scripts/audit_dense_focal_pairs.py write
 python scripts/audit_dense_focal_pairs.py verify
 ```
+
+### Can choosing between these two focal targets improve 3D error?
+
+After scoring, compute three diagnostic comparisons from the 48 independently executed unconditional controls. First, use the known fault or genuine-zoom label to select the physically correct focal target. Second, select the lower measured 3D error separately for each condition and seed. This gives an optimistic bound for those two recorded endpoints on those same measurements. Third, select the lower-error arm on seed 42 and measure it on seed 123, then reverse the seeds. The last comparison measures how well the choice repeats on the same images. Both selections that use measured 3D error require reference depth and serve only as diagnostics. Keep the registered progression rule unchanged. [Analysis code](../../scripts/dense_focal_headroom.py)
