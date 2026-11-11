@@ -52,3 +52,5 @@ jobs:
         run: python scripts/evaluate_canonical_sensor_factorial.py verify
       - name: Verify matched focal-error and valid-zoom decisions
         run: python scripts/verify_focal_metadata_control.py
+      - name: Replay focal ambiguity through measured optimizer updates
+        run: python scripts/focal_gradient_deferral.py verify
