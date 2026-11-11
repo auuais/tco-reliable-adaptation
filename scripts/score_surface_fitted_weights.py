@@ -49,7 +49,7 @@ def batch(item):
     return evaluate_points(key,set(hashes.values()),DATA)
 
 
-def summarize(obs, candidate=None):
+def summarize(obs, candidate=None, extra=None):
     historic = temporal.controls()
     context = read(temporal.SCORES)['observed']
     axial = read(old.RESULT)['observed']
@@ -69,10 +69,13 @@ def summarize(obs, candidate=None):
             if candidate is not None:
                 v["previous_surface_fit"] = v["guarded"]
                 v["guarded"] = candidate[key][ref]
+            for arm, measured in (extra or {}).items():
+                v[arm] = measured[key][ref]
             metrics[ref] = v
         rows.append(dict(scene=scene,case='base',input_key=key,metrics=metrics))
     if candidate is not None:
         controls += ('previous_surface_fit',)
+    controls += tuple(extra or {})
     return aggregate(rows,controls+('guarded',),controls)
 
 
