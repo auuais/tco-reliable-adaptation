@@ -9,6 +9,7 @@ from collect_matched_focal_heads import tensor_digest
 from evaluation_stability import dump,sha
 from fixed_camera_depth_scale import point_map
 from neighbor_sparse_depth import corrections
+from scale_shift_sparse_depth import estimate as calibrate
 from prepare_dense_focal_pilot import write_arrays
 from prepare_tum_sparse_packet import GRIDS,RAW
 from prepare_tum_sparse_depth import PUBLIC,SEQUENCES
@@ -46,16 +47,25 @@ def predict():
                 updates['direct']=depth
                 details[grid]=dict(gauge=gauge,counts=list(map(len,samples)))
                 for arm in METHODS:
+                    name='uncalibrated_depth_aware' if arm=='guarded' else arm
                     original=point_map(np.asarray(updates[arm]),k,model,np.ones(5))
-                    arms[grid+'_'+arm]=place(original,model,supplied,gauge)
+                    arms[grid+'_'+name]=place(original,model,supplied,gauge)
+                calibrated,diagnostics=calibrate(depth,samples)
+                details[grid]['calibration_diagnostics']=diagnostics
+                details[grid]['calibrated_gauges']={arm:v['gauge'] for arm,v in calibrated.items()}
+                for arm,value in calibrated.items():
+                    original=point_map(value['depth'],k,model,np.ones(5))
+                    arms[grid+'_'+arm]=place(original,model,supplied,value['gauge'])
             hashes={}
             for arm,points in arms.items():
                 h=tensor_digest(points)
                 write_arrays(maps/(h+'.npz'),dict(points=points))
                 hashes[arm]=h
             batches[sequence]=dict(hashes=hashes,grids=details)
-            print(sequence,'ten predictions sealed',flush=True)
-    record=dict(inputs_sha256=sha(PUBLIC/'inputs.json'),captures=captures,batches=batches)
+            print(sequence,len(arms),'predictions sealed',flush=True)
+    record=dict(inputs_sha256=sha(PUBLIC/'inputs.json'),captures=captures,batches=batches,
+                calibration_solver_sha256=sha(ROOT/'scripts/scale_shift_sparse_depth.py'),
+                calibration_development_sha256=sha(ROOT/'results/scale_shift_sparse_depth/scores.json'))
     seal=PUBLIC/'predictions.json'
     if seal.exists() and read(seal)!=record:
         raise ValueError('Sealed TUM predictions changed')

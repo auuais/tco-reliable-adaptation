@@ -36,10 +36,14 @@ if __name__=='__main__':
         scores=ROOT/'results/heldout_sparse_depth/scores.json'
         if not scores.exists():
             p.error('Held-out scoring is still running. Prepared inference inputs are ready.')
-        if not all(v['advance'] for v in read(scores)['grids'].values()):
-            p.error('The frozen method failed its held-out advancement checks. Retain the prepared inputs for a redesign.')
+        calibrated=ROOT/'results/scale_shift_sparse_depth/scores.json'
+        if not calibrated.exists():
+            p.error('Complete the redesigned calibration study before confirmatory inference')
+        revised=read(calibrated)['grids']
+        if not all(v['local_gain']>0 and v['checks']['all_scenes'] and v['checks']['component_safety'] for v in revised.values()):
+            p.error('The redesigned method lacks a consistent development improvement')
         if args.weights is None:
             p.error('--weights is required for model inference')
         capture(None,args.weights,public=PUBLIC,raw=RAW,rgb_directory=RAW/'inference')
     else:
-        print('TUM model inference prepared. Both held-out grid decisions are required before --run.')
+        print('TUM model inference prepared. Completed held-out results and consistent redesigned-method development gains are required before --run.')
