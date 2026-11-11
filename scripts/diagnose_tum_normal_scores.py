@@ -1,6 +1,7 @@
 """Separate normal-score sensitivity to Sim(3) precision from nearest-neighbor backend effects."""
 import argparse
 from concurrent.futures import ProcessPoolExecutor
+from functools import partial
 import sys
 
 import numpy as np
@@ -33,7 +34,7 @@ def metrics(points,target,pn,tn,backend):
     return dict(accuracy_mean_m=distances[0],completeness_mean_m=distances[1],normal_consistency_mean=float(np.mean(normals)))
 
 
-def check(sequence):
+def check(sequence,slow=False):
     import open3d as o3d
     sys.path.insert(0,str(UPSTREAM))
     from evaluation.mv_recon.utils import umeyama
@@ -59,8 +60,8 @@ def check(sequence):
         registered=o3d.pipelines.registration.registration_icp(predicted,reference,.1,np.eye(4),
             o3d.pipelines.registration.TransformationEstimationPointToPoint())
         predicted.transform(registered.transformation)
-        predicted.estimate_normals()
-        reference.estimate_normals()
+        predicted.estimate_normals(fast_normal_computation=not slow)
+        reference.estimate_normals(fast_normal_computation=not slow)
         xyz=np.asarray(predicted.points)
         pn,tn=np.asarray(predicted.normals),np.asarray(reference.normals)
         scores={backend:metrics(xyz,target,pn,tn,backend) for backend in ('scipy','open3d_core')}
@@ -71,14 +72,16 @@ def check(sequence):
     return sequence,dict(prediction=h,measurements=result)
 
 
-def run():
+def run(slow=False):
     with ProcessPoolExecutor(3) as pool:
-        records=dict(pool.map(check,SEQUENCES))
-    dump(PUBLIC/'normal_factorial.json',dict(prediction_sha256=sha(PUBLIC/'predictions.json'),
+        records=dict(pool.map(partial(check,slow=slow),SEQUENCES))
+    name='normal_solver_factorial.json' if slow else 'normal_factorial.json'
+    dump(PUBLIC/name,dict(normal_solver='iterative_eigen' if slow else 'default_fast',prediction_sha256=sha(PUBLIC/'predictions.json'),
         original_observations_sha256=sha(PUBLIC/'observations.json'),independent_sha256=sha(PUBLIC/'independent_surface.json'),
         cases=records))
 
 
 if __name__=='__main__':
-    argparse.ArgumentParser(description=__doc__).parse_args()
-    run()
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--slow-normals',action='store_true')
+    run(parser.parse_args().slow_normals)
