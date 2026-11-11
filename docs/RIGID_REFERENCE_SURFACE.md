@@ -1,0 +1,5 @@
+# Reference-assisted per-view rigid surface control
+
+On each original direct-focal map, use only the registered reference and checkerboard fold zero of the prior 32-pixel split. Estimate the scene similarity, then per-view rigid transforms with the same scene scale. Transform each whole view by its fitted rigid alignment and return it to the direct-focal scene frame by the inverse scene similarity. Use one rigid transform per entire view, including the unobserved blocks. Keep the original depth shape and metric gauge. Do not use the released reference for fitting.
+
+Run canonical whole-surface evaluation against both depth conventions. The registered score includes fit pixels and the two references share views. Compare with direct, RGB-only rigid, smoothed depth and the established controls. Interpret the resulting score as evidence about reference-assisted corresponding-point alignment only; this method uses ground truth, so it cannot qualify for paid transfer even if it passes the numerical criteria. The opposite-block correspondence diagnostic remains separate.
