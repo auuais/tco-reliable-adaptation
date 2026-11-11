@@ -41,14 +41,14 @@ def stats(errors,indices,region):
                 worse=int(np.count_nonzero(changed & (selected>errors[0]))),sse=float(selected[region].sum()))
 
 
-def measure(seal):
+def measure(seal,directory=PUBLIC):
     plan = read(PLAN)
     parent = read(PARENT/'predictions.json')['rows']
     observations = {(o['camera']['scene'],o['camera']['batch']):o['tracks'] for o in read(TRACKS/'observations.json')}
     result = {}
-    with zipfile.ZipFile(PUBLIC/'choices.zip') as selections, zipfile.ZipFile(TRACKS/'redetected_tracks.zip') as z:
+    with zipfile.ZipFile(directory/'choices.zip') as selections, zipfile.ZipFile(TRACKS/'redetected_tracks.zip') as z:
         for key,b in seal.items():
-            img,depth,k,poses,_ = inputs(key,parent,plan)
+            _,depth,k,poses,_ = inputs(key,parent,plan)
             camera = plan['inputs'][key]
             meta = observations[camera['scene'],camera['batch']]
             if meta['rgb_sha256']!=camera['rgb_sha256']:
@@ -87,10 +87,10 @@ def measure(seal):
     return result
 
 
-def aggregate(batches,rows):
+def aggregate(batches,rows,methods=METHODS):
     def group(subset,ref,regions):
         out = {}
-        for arm in METHODS:
+        for arm in methods:
             fractions,reductions,initial,final = [],[],[],[]
             better = changed = 0
             for r in subset:
@@ -113,7 +113,7 @@ def aggregate(batches,rows):
             for ref in REFS}
 
 
-def check(batches,seal,rows):
+def check(batches,seal,rows,methods=METHODS):
     plan = read(PLAN)
     origins = read(PARENT/'geometry_headroom.json')['results']['rows']
     for r,o in zip(rows,origins):
@@ -130,7 +130,7 @@ def check(batches,seal,rows):
                 raise ValueError('Different valid-depth mask')
             np.testing.assert_allclose(sum(c['baseline_sse'] for c in cells),o['arms']['direct'][label]['global']['sse_m2'],rtol=1e-9)
             for c in cells:
-                for a in METHODS:
+                for a in methods:
                     m = c['arms'][a]
                     if (not 0<=m['better']+m['worse']<=m['changed']<=c['n'] or not np.isfinite(m['sse'])
                             or not 0<=c['arms']['oracle']['sse']<=min(m['sse'],c['baseline_sse'])+1e-9):

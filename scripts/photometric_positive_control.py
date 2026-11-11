@@ -77,12 +77,12 @@ def measure(key,plan):
     return dict(rgb_sha256=rgb['sha256'],ref_sha256=ref['sha256'],views=views)
 
 
-def summarize(batches,rows):
+def summarize(batches,rows,methods=METHODS):
     def group(rows):
         result = {}
         for state,start in STARTS.items():
             result[state] = {}
-            for arm in METHODS:
+            for arm in methods:
                 all_fractions,eligibles = [],[]
                 histogram = np.zeros(len(LOG_STEPS),dtype=int)
                 for r in rows:

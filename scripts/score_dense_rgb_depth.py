@@ -39,6 +39,16 @@ def build_rows(controls,measured):
     return rows
 
 
+def check_archive(directory,seal):
+    backup = read(directory/'archive.json')
+    files = backup['files']
+    expected = {v+'.npz' for b in seal.values() for v in b['point_hashes'].values()}
+    if (len(files)!=len(expected) or {f['file'] for f in files}!=expected
+            or backup['verified_physical_drives']!=2 or sum(f['bytes'] for f in files)!=backup['total_bytes']
+            or any(len(f['sha256'])!=64 or f['bytes']<=0 for f in files)):
+        raise ValueError('Raw prediction backup inventory differs')
+
+
 def main(action,workers):
     seal = verify_choices()['batches']
     target = PUBLIC/'scores.json'
@@ -53,13 +63,7 @@ def main(action,workers):
         measured = {key:{arm:values[key][h] for arm,h in arms.items()} for key,arms in hashes.items()}
     else:
         saved = read(target)
-        backup = read(PUBLIC/'archive.json')
-        files = backup['files']
-        expected = {v+'.npz' for b in seal.values() for v in b['point_hashes'].values()}
-        if (len(files)!=len(expected) or {f['file'] for f in files}!=expected
-                or backup['verified_physical_drives']!=2 or sum(f['bytes'] for f in files)!=backup['total_bytes']
-                or any(len(f['sha256'])!=64 or f['bytes']<=0 for f in files)):
-            raise ValueError('Raw prediction backup inventory differs')
+        check_archive(PUBLIC,seal)
         if saved['provenance']!=provenance:
             raise ValueError('Scores refer to a different experiment')
         measured = saved['observed']

@@ -52,24 +52,24 @@ def inputs(key,rows,plan):
     return images,depth,cameras[0],poses,direct_hash
 
 
-def main():
+def generate(estimator,source_file,design,public,raw):
     parent = PARENT/'predictions.json'
     rows = read(parent)['rows']
     plan = read(PLAN)
-    PUBLIC.mkdir(parents=True,exist_ok=True)
-    maps = RAW/'points'
+    public.mkdir(parents=True,exist_ok=True)
+    maps = raw/'points'
     maps.mkdir(parents=True,exist_ok=True)
-    target = PUBLIC/'predictions.json'
+    target = public/'predictions.json'
     if target.exists():
         raise FileExistsError(target)
-    final = PUBLIC/'choices.zip'
+    final = public/'choices.zip'
     part = final.with_suffix('.partial')
     observations = {}
     with zipfile.ZipFile(part,'w') as archive:
         for key in sorted({r['input_key'] for r in rows}):
             images,depth,k,poses,direct_hash = inputs(key,rows,plan)
             start = time.perf_counter()
-            choices,views = estimate(images,depth,k,poses)
+            choices,views = estimator(images,depth,k,poses)
             selection_seconds = time.perf_counter()-start
             digests,times = {},{}
             for arm,idx in choices.items():
@@ -83,21 +83,21 @@ def main():
             archive.writestr(key+'.npz',buf.getvalue())
             observations[key] = dict(direct_sha256=direct_hash,point_hashes=digests,selection_seconds=selection_seconds,
                 point_construction_seconds=times,choice_hashes={a:tensor_digest(c) for a,c in choices.items()},views=views)
-            print(key,'sealed',round(selection_seconds,2),'s RGB scoring',flush=True)
+            print(key,'sealed',round(selection_seconds,2),'s correction selection',flush=True)
     part.replace(final)
-    dump(target,dict(design_sha256=sha(DESIGN),parent_sha256=sha(parent),choices_sha256=sha(final),
-                     estimator_sha256=sha(ROOT/'scripts/dense_rgb_depth.py'),batches=observations))
+    dump(target,dict(design_sha256=sha(design),parent_sha256=sha(parent),choices_sha256=sha(final),
+                     estimator_sha256=sha(source_file),batches=observations))
 
 
-def verify_choices():
-    saved = read(PUBLIC/'predictions.json')
+def verify_decisions(public,design,source_file,arms,check_support):
+    saved = read(public/'predictions.json')
     parent = PARENT/'predictions.json'
     rows = read(parent)['rows']
-    path = PUBLIC/'choices.zip'
+    path = public/'choices.zip'
     batches = saved['batches']
-    if (set(batches)!={r['input_key'] for r in rows} or saved['design_sha256']!=sha(DESIGN)
+    if (set(batches)!={r['input_key'] for r in rows} or saved['design_sha256']!=sha(design)
             or saved['parent_sha256']!=sha(parent) or saved['choices_sha256']!=sha(path)
-            or saved['estimator_sha256']!=sha(ROOT/'scripts/dense_rgb_depth.py')):
+            or saved['estimator_sha256']!=sha(source_file)):
         raise ValueError('Dense protocol or inference inputs changed')
     with zipfile.ZipFile(path) as z:
         for key,b in batches.items():
@@ -105,7 +105,9 @@ def verify_choices():
                 raise ValueError('Changed baseline identity')
             with np.load(io.BytesIO(z.read(key+'.npz')),allow_pickle=False) as data:
                 maps = dict(data)
-            for arm in ARMS:
+            if set(maps)!=set(arms) or len(b['views'])!=5:
+                raise ValueError('Incomplete prediction archive')
+            for arm in arms:
                 d = maps[arm]
                 if d.shape!=(5,392,518) or d.dtype!=np.uint8 or np.max(d)>=len(FACTORS) or tensor_digest(d)!=b['choice_hashes'][arm]:
                     raise ValueError('Invalid dense choice map')
@@ -114,13 +116,20 @@ def verify_choices():
                         raise ValueError('Invalid source split')
                     if s['histograms'][arm]!=np.bincount(d[i].ravel(),minlength=len(FACTORS)).tolist():
                         raise ValueError('Choice histogram differs')
-                    if not (0<=s['joint_pixels']<=min(s['fit_pixels'],s['validation_pixels'])<=d[i].size):
-                        raise ValueError('Invalid common visibility counts')
-            active = maps['guarded']!=0
-            if np.any(maps['guarded'][active]!=maps['two_source'][active]):
-                raise ValueError('Validation changed a proposed direction')
+            check_support(maps,b['views'])
     return saved
 
 
+def verify_choices():
+    def check_support(maps,views):
+        for s in views:
+            if not (0<=s['joint_pixels']<=min(s['fit_pixels'],s['validation_pixels'])<=maps['guarded'][0].size):
+                raise ValueError('Invalid common visibility counts')
+        active = maps['guarded']!=0
+        if np.any(maps['guarded'][active]!=maps['two_source'][active]):
+            raise ValueError('Validation changed a proposed direction')
+    return verify_decisions(PUBLIC,DESIGN,ROOT/'scripts/dense_rgb_depth.py',ARMS,check_support)
+
+
 if __name__=='__main__':
-    main()
+    generate(estimate,ROOT/'scripts/dense_rgb_depth.py',DESIGN,PUBLIC,RAW)
