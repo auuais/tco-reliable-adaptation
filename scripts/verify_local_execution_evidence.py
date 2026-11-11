@@ -3,6 +3,7 @@ import hashlib
 import json
 import math
 from pathlib import Path
+from statistics import mean
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -62,7 +63,39 @@ def verify_bridge():
             raise ValueError("Published metric differences did not reproduce")
 
 
+def verify_camera_components():
+    folder = ROOT / "results/canonical_sensor_factorial"
+    seal = read(folder / "seal.json")
+    result = read(folder / "component_metrics.json")
+    expected_subset = read(ROOT / "manifests/sensor_tco_readout_replication_evaluation.json")["pose_subset_sha256"]
+    if (result["prediction_seal_sha256"] != sha(folder / "seal.json") or result["subset_sha256"] != expected_subset
+            or result["protocol_sha256"] != sha(ROOT / "manifests/sensor_component_metrics.json")):
+        raise ValueError("Component reference or prediction seal changed")
+    expected = {(scene,method):seal["entries"][key]["sha256"]
+                for scene,maps in seal["maps"].items() for method,key in maps.items()}
+    rows = {(r["scene"],r["method"]):r for r in result["rows"]}
+    if len(rows) != 33 or len(result["rows"]) != 33 or set(rows) != set(expected):
+        raise ValueError("Incomplete component grid")
+    metrics = ("depth_abs_rel","depth_delta_1_25","pair_rotation_median_deg",
+               "pair_translation_direction_median_deg","mean_abs_log_focal")
+    for (scene,method), row in rows.items():
+        if (row["prediction_sha256"] != expected[scene,method] or row["seed"] != 42
+                or row["valid_depth_pixels"] <= 0 or row["depth_alignment_scale"] <= 0):
+            raise ValueError("Invalid source for a component evaluation")
+        table = result["tables"][method]["scenes"][scene]
+        if any(not math.isfinite(row[k]) or row[k] < 0 or table[k] != row[k] for k in metrics):
+            raise ValueError("Invalid scene-level component metric")
+    for method,table in result["tables"].items():
+        if any(table["overall"][k] != mean(rows[scene,method][k] for scene in seal["maps"]) for k in metrics):
+            raise ValueError("Scene-balanced component average changed")
+    depth_error = max(abs(rows[scene,method]["depth_abs_rel"] - rows[scene,"initial"]["depth_abs_rel"])
+                      for scene in seal["maps"] for method in ("direct_released","direct_fixed_rgb"))
+    if result["direct_depth_abs_rel_max_difference"] != depth_error or result["control_pass"] != (depth_error <= 1e-5):
+        raise ValueError("The direct-depth consistency check changed")
+
+
 if __name__ == "__main__":
     verify_cpu()
     verify_bridge()
-    print("Verified two recorded CPU updates and four full-size matched-pair scores.")
+    verify_camera_components()
+    print("Verified CPU controls, four matched-pair scores and 33 depth and camera evaluations.")
