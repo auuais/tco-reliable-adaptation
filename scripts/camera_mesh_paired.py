@@ -12,7 +12,7 @@ from score_saved_geometry import read
 RESULT=PUBLIC/"camera_mesh_paired.json"
 
 
-def measure():
+def measure(extra=None):
     rows=[]
     load=mesh.fusion.depth.cross.temporal.load_points
     for scene in SCENES:
@@ -26,6 +26,8 @@ def measure():
             for prefix,study in (("fixed",mesh.fusion),("tangent",mesh.tangent),("render",mesh)):
                 digest=read(study.SEAL)["rows"][key]["hashes"][arm]
                 maps[prefix+"_"+arm]=(load(study.DATA,digest),arm)
+        if extra is not None:
+            maps.update(extra(key))
         for i,frame in enumerate(FRAMES):
             path=RAW/"reference"/slug/f"{frame:06d}.npz"
             if sha(path)!=read(INDEX)["frames"][scene][str(frame)]["reference_sha256"]: raise ValueError("Reference differs")
