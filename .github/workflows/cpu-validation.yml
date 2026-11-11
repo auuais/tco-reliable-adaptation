@@ -84,7 +84,10 @@ jobs:
           python scripts/diagnose_dense_focal_readout.py replay
       - name: Replay the local frozen-point precision comparison
         run: python scripts/score_matched_focal_heads.py verify
-      - name: Refit depth scales from the published RGB constraints
+      - name: Refit depth scales and verify surface and pixel geometry results
         env:
           OPENBLAS_NUM_THREADS: "1"
-        run: python scripts/score_depth_scale_study.py fits
+        run: |
+          python scripts/score_depth_scale_study.py verify
+          python scripts/diagnose_depth_scale_pixels.py verify
+          python scripts/depth_geometry_headroom.py verify
