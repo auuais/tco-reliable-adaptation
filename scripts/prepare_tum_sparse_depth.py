@@ -4,8 +4,6 @@ import hashlib
 from pathlib import Path
 import tarfile
 
-import requests
-
 from evaluation_stability import dump,sha
 from prepare_dense_focal_pilot import ROOT
 
@@ -14,6 +12,7 @@ PUBLIC=ROOT/'results/tum_sparse_depth'
 
 
 def download(destination):
+    import requests
     destination.mkdir(parents=True,exist_ok=True)
     for sequence in SEQUENCES:
         name='rgbd_dataset_freiburg3_'+sequence+'.tgz'
