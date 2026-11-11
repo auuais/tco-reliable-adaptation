@@ -53,10 +53,24 @@ def main(action,workers):
         measured = {key:{arm:values[key][h] for arm,h in arms.items()} for key,arms in hashes.items()}
     else:
         saved = read(target)
+        backup = read(PUBLIC/'archive.json')
+        files = backup['files']
+        expected = {v+'.npz' for b in seal.values() for v in b['point_hashes'].values()}
+        if (len(files)!=len(expected) or {f['file'] for f in files}!=expected
+                or backup['verified_physical_drives']!=2 or sum(f['bytes'] for f in files)!=backup['total_bytes']
+                or any(len(f['sha256'])!=64 or f['bytes']<=0 for f in files)):
+            raise ValueError('Raw prediction backup inventory differs')
         if saved['provenance']!=provenance:
             raise ValueError('Scores refer to a different experiment')
         measured = saved['observed']
     rows = build_rows(read(old)['rows'],measured)
+    for row in rows:
+        b = seal[row['input_key']]
+        for arm,h in b['point_hashes'].items():
+            if h==b['direct_sha256']:
+                for ref in REFS:
+                    d = row['metrics'][ref]
+                    np.testing.assert_allclose([d[arm][m] for m in METRICS],[d['direct'][m] for m in METRICS],rtol=0,atol=1e-10)
     report = aggregate(rows,CONTROLS+('guarded',),CONTROLS)
     if action=='evaluate':
         dump(target,dict(provenance=provenance,observed=measured,results=report,cloud_usd=0))

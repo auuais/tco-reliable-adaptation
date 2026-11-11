@@ -92,3 +92,10 @@ jobs:
           python scripts/diagnose_depth_scale_pixels.py verify
           python scripts/depth_geometry_headroom.py verify
           python scripts/depth_spatial_support.py verify
+      - name: Verify dense RGB depth decisions, reference scores and known-error controls
+        env:
+          OPENBLAS_NUM_THREADS: "1"
+        run: |
+          python scripts/score_dense_rgb_depth.py verify
+          python scripts/dense_rgb_pixel_check.py verify
+          python scripts/photometric_positive_control.py verify
