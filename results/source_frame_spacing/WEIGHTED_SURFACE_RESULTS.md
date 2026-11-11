@@ -31,3 +31,15 @@ All methods below use the same images and predicted cameras. The permutation pre
 The permutation produced a lower composite surface score than the learned placement on every scene and both references. On the registered reference, the mean reference-to-prediction distance fell from 16.56 to 11.35 mm, while prediction-to-reference distance rose from 18.94 to 19.71 mm and normal consistency fell by 0.0635. This is one fixed random permutation per target. It motivates checking metric rankings across seeds and sampling densities. It is not a reliable reconstruction improvement or an advancement result. [Registered placement comparison](../../docs/MOTION_PLACEMENT_SURFACE.md) and [all measured scores](placement_surface_scores.json).
 
 The weighted rule also reduced corresponding-pixel 3D mean squared error against direct focal by 0.63% under the shared similarity and 1.12% when the similarity was refit. On released depth these gains were 0.33% and 0.80%. Thus the adverse registered surface ranking against direct focal is absent from paired Euclidean error after similarity fitting. [Paired 3D errors and fitted similarities](weighted_paired_geometry.json).
+
+## Where does the registered surface ranking reverse?
+
+The weighted update had a lower nearest-neighbor score than direct focal after each method's initial similarity fit. Its score then became higher after rigid ICP. Applying the direct-focal rigid transform to both predictions gave almost the same ranking as fitting separate ICP transforms.
+
+| Evaluation against direct focal | Registered score reduction | Released score reduction |
+|---|---:|---:|
+| Nearest neighbors before rigid ICP | +2.89% | +1.28% |
+| After direct-focal ICP transform on both arms | -9.15% | -3.43% |
+| After each arm's own ICP fit | -9.12% | -3.44% |
+
+On Fire, the registered comparison went from +1.55% before ICP to -23.75% with the shared rigid transform and -24.04% with separate fits. Heads improved under all three comparisons. The own-transform accuracy and completeness replayed the archived metrics on both references within the specified 0.02 mm tolerance. The change in relative ranking persists under a shared rigid transform, so a candidate-specific ICP fit is unnecessary to produce that reversal. The paper-style evaluation retains its original alignment convention. [Registered diagnostic](../../docs/MOTION_ICP_EFFECT.md) and [transform matrices, distances and scene scores](motion_icp_effect.json).
