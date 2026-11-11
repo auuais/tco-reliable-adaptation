@@ -87,3 +87,15 @@ IMU is a later branch, not the midterm dependency. Start with orientation constr
 | Jan-early 2027 | Independent reruns, related-work audit, complete tables and manuscript | Choose a suitable venue based on demonstrated contribution and current deadlines |
 
 Internal advancement targets, not promised results: at least 5% lower combined error than the strongest tuned baseline on aggregate held-out data without a >2% aggregate degradation in either component, or at least 30% lower measured latency at comparable accuracy. Seek a substantial reduction in harmful adaptation, with no hidden collapse in low-overlap subsets. These thresholds are resource decisions, not statistical proof or acceptance criteria. If simple baselines explain the benefit, publish a rigorous limited-scope study or change the research question rather than inflate novelty.
+
+## Sparse-depth comparison update
+
+The successful development configuration corrects frozen depth maps from neighboring measured ranges with supplied poses. Publication comparisons must address existing sparse-depth methods with equal measurements and an explicit pose convention.
+
+CAPA adapts frozen 3D foundation models using LoRA or visual prompt tuning with sparse geometric observations and sequence-level parameter sharing. Its experiments explicitly include VGGT. Test-time sparse-depth adaptation and temporal parameter sharing therefore have established prior work. Compare its accuracy, memory and runtime at the same measurement density before advancing an efficiency claim. [CAPA paper](https://arxiv.org/html/2602.14751v1)
+
+Pow3R accepts camera intrinsics, relative poses and sparse or dense depth alongside RGB. Its official CVPR 2025 checkpoint and inference code provide a relevant conditioned-model comparator. Distinguish model pretraining, test-time optimization and postprocessing costs when comparing its results. [Pow3R implementation](https://github.com/naver/pow3r)
+
+Chen and colleagues propagate sparse depth using foundation-model structural cues through 2D and 3D spaces, with an additional learned correction module. Their paper reports evaluation on sixteen out-of-distribution datasets. Depth-guided propagation itself therefore requires a specific comparison rather than a broad novelty claim. [Propagation paper](https://arxiv.org/html/2508.04984v1)
+
+The current result remains evidence for a fixed, inexpensive correction on VGGT under accurate supplied poses. A potential contribution is a demonstrated accuracy and cost advantage with calibrated uncertainty about pose and sampling failures. This is an inference about the research direction. It requires the held-out and second-dataset experiments and the relevant strong baselines. No new benchmark result follows from this literature check.
