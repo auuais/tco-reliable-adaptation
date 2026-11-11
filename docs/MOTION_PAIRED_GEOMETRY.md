@@ -1,0 +1,5 @@
+# Paired 3D error before nearest-neighbor surface scoring
+
+Compare the unchanged dispersed direct-focal reconstruction with the weighted depth update, quarter step and pooled step. Use the same 15 targets, both reference point clouds and exact validity masks. First fit a single similarity per scene from the unchanged prediction to each reference using all valid corresponding pixels. Apply that transform to all methods. Next fit the best similarity separately to each method. Measure corresponding-pixel mean squared Euclidean error in metres squared in both conditions. Report both per-scene errors and equal-scene relative gains against direct focal. Also report the per-target paired gains for the weighted method. Use the sealed prediction hashes; ensure refitting never increases total squared error.
+
+These measures omit nearest-neighbor correspondence and rigid ICP. Comparing them with the archived surface scores can locate when a sign change appears across endpoints. It cannot separate the effects of nearest-neighbor matching and ICP. Reference geometry is for diagnosis only. No budget allocation depends on this comparison alone.
