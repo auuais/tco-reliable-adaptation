@@ -26,6 +26,16 @@ PANEL = ROOT / 'results/source_frame_spacing/profile_camera_scores.json'
 ARMS = ('range_median', 'range_spatial', 'guarded')
 
 
+def project_samples(mm, uv, rays, relative, target, source):
+    xyz = (rays * (mm / 1000.)[:, None]) @ relative[:3, :3].T + relative[:3, 3]
+    valid = (mm > 0) & (mm <= 10000) & (xyz[:, 2] > 0)
+    xy = (xyz[valid] @ target.T)[:, :2] / xyz[valid, 2:3]
+    pixel = np.rint(xy).astype(int)
+    keep = ((pixel >= 0) & (pixel < [518, 392])).all(axis=1)
+    return np.column_stack([pixel, xyz[valid, 2], np.full(len(pixel), source),
+                                      uv[valid], mm[valid]])[keep]
+
+
 def packet(assets):
     index = read(ROOT / 'results/source_frame_spacing/inputs.json')['frames']
     calibration = np.asarray(read(ROOT / 'manifests/sensor_frame_v14.json')['calibration'])
@@ -56,13 +66,7 @@ def packet(assets):
                 with Image.open(checked(source, 'depth.proj.png')) as image:
                     assert image.size == (640, 480)
                     mm = np.asarray(image)[uv[:, 1], uv[:, 0]]
-                xyz = (rays * (mm / 1000.)[:, None]) @ relative[:3, :3].T + relative[:3, 3]
-                valid = (mm > 0) & (mm <= 10000) & (xyz[:, 2] > 0)
-                xy = (xyz[valid] @ target.T)[:, :2] / xyz[valid, 2:3]
-                pixel = np.rint(xy).astype(int)
-                keep = ((pixel >= 0) & (pixel < [518, 392])).all(axis=1)
-                observed.extend(np.column_stack([pixel, xyz[valid, 2], np.full(len(pixel), source),
-                                                  uv[valid], mm[valid]])[keep])
+                observed.extend(project_samples(mm, uv, rays, relative, target, source))
             nearest = {}
             for row in sorted(observed, key=lambda r: r[2]):
                 nearest.setdefault(tuple(row[:2]), row)
