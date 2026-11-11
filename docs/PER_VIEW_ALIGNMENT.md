@@ -1,0 +1,5 @@
+# Per-view rigid alignment diagnostic
+
+Compare direct focal, unsmoothed axial weighting and depth diffusion on all 15 development views and both depth references. Partition each view by parity of 32-pixel checkerboard blocks. In each direction fit a scene similarity using training blocks, then keep its scale fixed while fitting either translations or full rigid transforms separately in each view. Score corresponding-point squared distance on complementary blocks. Pool the two disjoint evaluation sets by point count per scene; average fractional improvements across scenes. Repeat with the same pixels for fitting and evaluation to measure in-sample headroom. Archive raw first and second moments for an independent CPU replay of all fits and errors.
+
+Per-view fits use reference geometry and serve as an oracle diagnostic. Translations and rotations can absorb coherent shape bias as well as camera error. A consistent reduction motivates estimating relative view placement from RGB evidence; the independent surface criterion remains necessary before transfer spending.
