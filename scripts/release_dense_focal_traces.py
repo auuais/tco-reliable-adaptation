@@ -5,12 +5,13 @@ from tempfile import TemporaryDirectory
 import zipfile
 
 import numpy as np
+import yaml
 
 from audit_dense_focal_pairs import audit
 from evaluation_stability import sha
-from prior_ablation_config import validate_loss_components
+from prior_ablation_config import effective_config, validate_loss_components
 from relative_focal_confirmation import confirmation
-from run_dense_focal_pilot import PLAN, RUNS
+from run_dense_focal_pilot import PLAN, ROOT, RUNS
 from score_dense_focal_pilot import PUBLIC, RAW, summarize
 from score_saved_geometry import read
 
@@ -45,6 +46,12 @@ def verify_run(row, folder, plan):
             or run["checkpoint_sha256"] != plan["model_sha256"] or run["optimizer_updates"] != plan["steps"]
             or run["base_parameters_changed"] or not run["model_fresh"]):
         raise ValueError(f"Trajectory identity differs in {row['tag']}")
+    config_path = ROOT / 'configs/7scenes_baseline.yaml'
+    if sha(config_path) != plan['sources']['configs/7scenes_baseline.yaml']:
+        raise ValueError('Baseline configuration differs from the frozen design')
+    expected = effective_config(yaml.safe_load(config_path.read_bytes()), 1., 1., plan['steps'], job['seed'], plan['lr'])
+    if run['configuration'] != expected:
+        raise ValueError(f"Camera, visual, adapter, or optimizer settings differ in {row['tag']}")
     for key in ("capture", "losses", "gradients"):
         if sha(folder / f"{key}.json") != run[f"{key}_sha256"]:
             raise ValueError(f"{key} trace does not match its trajectory")

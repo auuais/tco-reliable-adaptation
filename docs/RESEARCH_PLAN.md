@@ -1,6 +1,6 @@
 # Research plan from reproduction to a publishable method
 
-**Current stage:** [Calibration and first local redesign closed; transfer and later stages withheld](STAGE_DECISION_AFTER_DEPTH_TRUST.md).
+**Current stage.** The 72-run dense focal pilot is complete. Adaptive TCO recovered the physical focal target on all 12 controlled camera conditions at both seeds. Its aggregate 3D error exceeded frozen VGGT by 3.92%. MASt3R, held-out and later allocations remain reserved. The next local test checks a matched-precision frozen control and uses RGB matches to fit a bounded correction to each view's depth scale. [Full results](../results/dense_focal_pilot/RESULTS.md) · [Local redesign](DEPTH_SCALE_REDESIGN.md)
 
 Date: 2026-11-09. Research capacity: 40 hours/week through early 2027. Public datasets only. The course midterm is November 10 and the final November 24.
 

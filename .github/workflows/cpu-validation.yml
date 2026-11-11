@@ -75,3 +75,10 @@ jobs:
           OPENBLAS_NUM_THREADS: "1"
           OMP_NUM_THREADS: "1"
         run: python scripts/verify_relative_focal_windows.py --refit-solver
+      - name: Replay 72 dense focal trajectories and both depth-reference comparisons
+        env:
+          OPENBLAS_NUM_THREADS: "1"
+        run: |
+          python scripts/release_dense_focal_traces.py verify
+          python scripts/dense_focal_headroom.py verify
+          python scripts/diagnose_dense_focal_readout.py replay

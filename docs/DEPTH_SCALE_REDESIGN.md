@@ -1,0 +1,19 @@
+# Local redesign after the dense focal pilot
+
+The focal selector identified all 12 controlled targets at both seeds, yet even selecting the lower-error unconditional endpoint using its measured reference depth scored 1.0174 against frozen VGGT's 1.0000. Choosing between the actual frozen and adaptive endpoints with reference depth available gave 0.9840. Retuning the focal classifier or learning a binary stop decision on these endpoints has insufficient measured headroom for the 5% target. The next experiment changes the proposed 3D geometry and keeps the image-based focal check fixed. [Dense results and limitations](../results/dense_focal_pilot/RESULTS.md)
+
+### First recover a matched-precision frozen control
+
+Use the same nine RGB tensors, five-view layout and pretrained model as the dense pilot. Capture the frozen depth, extrinsics and intrinsics from the initial forward pass before any adaptation. Compute world points from the very same heads twice, once with upstream arithmetic and once with autocast disabled and all operands converted to float32. Record tensor hashes, reprojection residuals, depth units and both dense references. Compare the upstream result against its sealed RTX 3090 point-map hash for each batch. Report exact agreement per batch. If the local runtime produces a different initial state, evaluate both arithmetic modes on that same local state and label that comparison separately. Preserve the published 72-run result. The point-map precision check found all nine original frozen maps on the BF16 coordinate grid. [Observed precision](../results/dense_focal_pilot/point_precision.json)
+
+### Test a five-parameter depth correction
+
+Keep the predicted camera poses and the shape of each predicted depth map. Use the image-based focal choice with the supplied calibration and fit one positive depth multiplier per view. For pixel $p$, let $b_{ip}=R_i^\top K_i^{-1}\tilde p\,d_{ip}$ be the predicted world-space ray displacement at the chosen focal length. Its reconstructed point is $C_i+s_i b_{ip}$. Two matched pixels in views $i$ and $j$ provide the three-coordinate residual $C_i-C_j+s_i b_{ip}-s_j b_{jq}$. At fixed cameras this residual is linear in the five unknown multipliers. An identity penalty anchors the solution when parallax or overlap is weak.
+
+Fit with RGB correspondences on the existing development windows. Normalize lengths by the frozen median camera baseline and give each camera pair equal total weight. Register a robust residual loss, scale bounds, regularization, minimum support and a second-fold acceptance rule before opening any new dense comparisons. Include zero-change behavior on missing or degenerate support. Test camera-coordinate conventions, global similarity invariance, recovery of a known injected scale and robustness to mismatches on synthetic data first. The second RGB fold can reject a correction that increases its own disagreement. Reference depth is used only for final scoring.
+
+### Compare geometry and total cost
+
+Run the frozen model, direct focal substitution with unchanged depth, one shared depth scale, five unguarded per-view scales, the proposed guarded scales, and the existing 40-update TCO controls. Include accuracy, completeness, normal consistency, worst scene and elapsed end-to-end time, including fresh matching. Report the precision and camera frame in every arm. Distinguish development images shared with this pilot from future unseen scenes. This is a proposed experiment. A five-scalar solve has yet to demonstrate a dense gain or an end-to-end speed advantage.
+
+Use local compute for engineering and the first comparison. Keep the remaining calibration funds and the $25 MASt3R allocation unspent during this work. Only a redesigned method with a registered reconstruction result can release later allocations. [Research plan](RESEARCH_PLAN.md) · [Cost ledger](BUDGET.md)
