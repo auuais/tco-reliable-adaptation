@@ -1,0 +1,5 @@
+# Surface evaluation of the RGB reliability rule
+
+Use the three physical five-target surfaces and archived per-scene weights from the RGB reliability study. Use the original dispersed poses and supplied focal calibration. Construct maps for the fixed quarter step, a cross-fitted pooled step and the four cross-fitted per-pixel weights. Missing RGB measurements preserve original depth. Verify reconstructed fixed-gauge axial errors against the sealed depth scores.
+
+Score the sealed point maps with the existing Open3D evaluator against registered and released depth. Compare with all archived local dispersed baselines, all shorter-spacing model alternatives, the new same-input quarter and pooled predictors and historical native/TCO results for the same base targets. Reuse the existing surface advancement rule: at least 5% lower registered composite against both best comparator groups, no component over 2% worse than the best local arm, no scene worse and released composite no worse. Report uncertainty due to reuse of development scenes. Compute locally before any transfer spending.
