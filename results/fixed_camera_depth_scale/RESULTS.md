@@ -58,7 +58,11 @@ Using the reference coordinates for this diagnostic, we fitted increasingly flex
 | Registered RGB | 148.28 | 145.31 | 143.80 | 142.87 | 139.72 |
 | Released | 149.30 | 144.64 | 142.90 | 141.87 | 138.74 |
 
-Even with reference geometry available, independently aligning and scaling each view reduces the average registered pixel RMSE by only 3.65%. Allowing independent scales after the rotations and translations accounts for 0.94 mm. The bound applies to corresponding-pixel RMSE. It explains the limited scope of one scale per view on this measure. The next local diagnostic should locate the remaining error within each image and measure how much of it is visible to RGB correspondences before fitting a spatially varying depth correction. [Experimental design](../../docs/DEPTH_GEOMETRY_HEADROOM.md) · [Replayable view statistics](geometry_headroom.json)
+Even with reference geometry available, independently aligning and scaling each view reduces the average registered pixel RMSE by only 3.65%. Allowing independent scales after the rotations and translations accounts for 0.94 mm. The bound applies to corresponding-pixel RMSE. It explains the limited scope of one scale per view on this measure. [Experimental design](../../docs/DEPTH_GEOMETRY_HEADROOM.md) · [Replayable view statistics](geometry_headroom.json)
+
+## Which errors do sparse matches cover?
+
+After independently aligning each view, 12.30% of valid pixels are near a depth hole or a geometric jump. They carry 36.14% of registered squared error. The interior carries the remainder. The eight-pixel neighborhoods of fitting-fold RGB matches cover 12.77% of valid pixels and 4.69% of squared error. Even the union of both folds covers only 8.58% of squared error. These fractions describe directly observed support. A smooth model can propagate information farther than eight pixels. Whether dense image alignment can identify a beneficial correction on the remaining surfaces is the next local research question. [Region definitions](../../docs/DEPTH_SPATIAL_SUPPORT.md) · [Per-view counts and squared errors](spatial_support.json)
 
 ## Decision and cost
 
@@ -81,6 +85,7 @@ python -m unittest discover -s scripts -p test_fixed_camera_depth_scale.py
 python scripts/score_depth_scale_study.py verify
 python scripts/diagnose_depth_scale_pixels.py verify
 python scripts/depth_geometry_headroom.py verify
+python scripts/depth_spatial_support.py verify
 ```
 
 To recompute distances from pixels and depths, use a separate scratch checkout with the dense pilot RGB and depth inputs and the frozen head archives. Generate predictions into an empty study output directory with `python scripts/run_depth_scale_study.py`, then run `python scripts/score_depth_scale_study.py evaluate` in the pinned TCO environment. [Dense input reconstruction](../dense_focal_pilot/REPLAY.md) · [Frozen head capture](../matched_focal_heads/RESULTS.md) · [Public sparse match systems](match_systems.zip)

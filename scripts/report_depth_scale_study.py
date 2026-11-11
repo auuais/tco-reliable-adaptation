@@ -88,9 +88,23 @@ def main():
         f'average registered pixel RMSE by only {1-reg["scales"]/reg["global"]:.2%}. Allowing independent scales '
         f'after the rotations and translations accounts for {1000*(reg["rotations"]-reg["scales"]):.2f} mm. '
         'The bound applies to corresponding-pixel RMSE. It explains the limited scope of one scale per view on this '
-        'measure. The next local diagnostic should locate the remaining error within each image and measure how much '
-        'of it is visible to RGB correspondences before fitting a spatially varying depth correction. '
+        'measure. '
         '[Experimental design](../../docs/DEPTH_GEOMETRY_HEADROOM.md) · [Replayable view statistics](geometry_headroom.json)',
+        '', '## Which errors do sparse matches cover?', '']
+    spatial = read(PUBLIC/'spatial_support.json')['results']['overall'][REFS[0]]
+    fit = spatial['fit']
+    fit_pixels = sum(pair['near']['pixel_fraction'] for pair in fit.values())
+    fit_error = sum(pair['near']['error_fraction'] for pair in fit.values())
+    both_error = sum(pair['near']['error_fraction'] for pair in spatial['both'].values())
+    boundary = [cell for k,pair in fit.items() if k!='interior' for cell in pair.values()]
+    lines += [f'After independently aligning each view, {sum(c["pixel_fraction"] for c in boundary):.2%} of valid '
+        f'pixels are near a depth hole or a geometric jump. They carry {sum(c["error_fraction"] for c in boundary):.2%} '
+        f'of registered squared error. The interior carries the remainder. The eight-pixel neighborhoods of fitting-fold '
+        f'RGB matches cover {fit_pixels:.2%} of valid pixels and {fit_error:.2%} of squared error. Even the union of '
+        f'both folds covers only {both_error:.2%} of squared error. These fractions describe directly observed support. '
+        'A smooth model can propagate information farther than eight pixels. Whether dense image alignment can identify '
+        'a beneficial correction on the remaining surfaces is the next local research question. '
+        '[Region definitions](../../docs/DEPTH_SPATIAL_SUPPORT.md) · [Per-view counts and squared errors](spatial_support.json)',
         '', '## Decision and cost','']
     checks = dict(local_gain='At least 5% lower error than the best local control',
         historical_gain='At least 5% lower error than the best historical control',
@@ -114,7 +128,7 @@ def main():
         'the disjoint fold, imports the original controls and rebuilds the tables from the measured dense distances.','',
         '```sh','python -m unittest discover -s scripts -p test_fixed_camera_depth_scale.py',
         'python scripts/score_depth_scale_study.py verify','python scripts/diagnose_depth_scale_pixels.py verify',
-        'python scripts/depth_geometry_headroom.py verify','```','',
+        'python scripts/depth_geometry_headroom.py verify','python scripts/depth_spatial_support.py verify','```','',
         'To recompute distances from pixels and depths, use a separate scratch checkout with the '
         'dense pilot RGB and depth inputs and the frozen head archives. Generate predictions into an empty study '
         'output directory with `python scripts/run_depth_scale_study.py`, then run '
