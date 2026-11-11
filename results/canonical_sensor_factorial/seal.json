@@ -1,0 +1,558 @@
+{
+  "manifest_sha256": "fa0f53b5dbb1d9cb6d2dc35814cc4d8b25d0640bf10685b98e651643dfbd333f",
+  "evaluation_source_sha256": "d1460547363113d3fbafa61640cc5609e766370466a8cf3e43ab1d007764bcf6",
+  "common": {
+    "heads/seq-01": {
+      "heads": "11d6d779872fda8613fe04238f0d7eb97e2b59f1975fd338b984b53bea2e6fd8",
+      "adapters": "2f30b0d4d01219c317a54bf1146e1861554bc720fc924d984837252efcb060ae",
+      "rng": "c160c316691bb466c809776843d05e1cc462c84f8eb1130c420b24ceb0d7989f",
+      "reference": "9e60af645e9424941e58e4f12cc711175f5239fa30f2e1575472a245cba11970",
+      "inputs": "runs/diagnostic_inputs/9e60af645e9424941e58e4f12cc711175f5239fa30f2e1575472a245cba11970/evaluation_inputs.npz"
+    },
+    "chess/seq-03": {
+      "heads": "c1c82a4afd36600b64abba49d03e1881de548bd753cbb3c2f48a26e5302cbe24",
+      "adapters": "2f30b0d4d01219c317a54bf1146e1861554bc720fc924d984837252efcb060ae",
+      "rng": "c160c316691bb466c809776843d05e1cc462c84f8eb1130c420b24ceb0d7989f",
+      "reference": "7df4341e1f37902ee44be7d5daa6052e45e6c12784a06ee3d917c15560020f58",
+      "inputs": "runs/diagnostic_inputs/7df4341e1f37902ee44be7d5daa6052e45e6c12784a06ee3d917c15560020f58/evaluation_inputs.npz"
+    },
+    "fire/seq-03": {
+      "heads": "abd485a0306e799cb1e6f78e397df0a7b7d7aa632fda52844ef1964f119b31d4",
+      "adapters": "2f30b0d4d01219c317a54bf1146e1861554bc720fc924d984837252efcb060ae",
+      "rng": "c160c316691bb466c809776843d05e1cc462c84f8eb1130c420b24ceb0d7989f",
+      "reference": "603d1491fcf1db6e704e64302ae8e8da19d350a390aafaecf5c6feb3c53f654e",
+      "inputs": "runs/diagnostic_inputs/603d1491fcf1db6e704e64302ae8e8da19d350a390aafaecf5c6feb3c53f654e/evaluation_inputs.npz"
+    }
+  },
+  "maps": {
+    "heads/seq-01": {
+      "released": "heads_seq-01_e716829b3d257133e22a6b9eaa3839a072ac65e053c64c4825c5bdc60d3d7204",
+      "half_released": "heads_seq-01_febba62005f10c555aa737747499dcddf5246f83caa81e91179bae9c9918c16f",
+      "direct_released": "heads_seq-01_191a6d1af6452c50b4e40c15d02b646b31f0ea62e070231fc43b6e7e662ba5a6",
+      "initial": "heads_seq-01_f685f7bb9142a3da3ce661167c493b3fb419a235bcda9bd0a2c7aa9889172e58",
+      "frame_only": "heads_seq-01_45b17cbcb2bbf372f5a99df55a5af51224b17b8d8a58c890d33c156d2d826d95",
+      "half_frame_only": "heads_seq-01_0607f4cb82174a947283508245f504ea0a972cadca31ddf58520a4378a3d8c52",
+      "intrinsics_only": "heads_seq-01_60f552a43ff129334d4251965e3144b26eaf67a7427034f39ed12a23fe27af7a",
+      "half_intrinsics_only": "heads_seq-01_25912fec5c331063d0ed42dd74da737c59322fbac5507b0400fe041f6e2650e8",
+      "fixed_rgb": "heads_seq-01_4699cea2ba8d3300d24cac4471cd6a75671669d42ff8c4aaeac3646405f0a4c2",
+      "half_fixed_rgb": "heads_seq-01_4f2799059e3e474cffaa4b8e7e9b5e8be9cedbd0d95cd85a2b4fb5b6406ad99b",
+      "direct_fixed_rgb": "heads_seq-01_89d12f6d51d80dfd0a1ac6384e248a824ff168c2495f8b86b24d0f84638ecc19"
+    },
+    "chess/seq-03": {
+      "frame_only": "chess_seq-03_e192dae525524f3ce39381f2ad56b12efbdcff2f0e75e06ab85122cf8c2cc3e9",
+      "half_frame_only": "chess_seq-03_042698f46a67a4631651f68de00632c54ec3dbbd12797974c97c6c0a97cae3f0",
+      "intrinsics_only": "chess_seq-03_e3403caca055d697ec0a1d70cc26c7d9727fa879b4799bf16020e0085c31736b",
+      "half_intrinsics_only": "chess_seq-03_ba373424c346dcfb41a030548dd6413420b67e744de251ad066443460cd6280e",
+      "fixed_rgb": "chess_seq-03_17186c650deafd0093c7aba35f552e2b048d136576419346cbeed6ae501e7182",
+      "half_fixed_rgb": "chess_seq-03_ce79e6061e5d90f1bb51c79c4e15ba426a0eb5c1582b6ad61f42c9cf730da167",
+      "direct_fixed_rgb": "chess_seq-03_3026b843e1263f2bdcb46044cc05f063bd56b6a2c57ecc789da7ed5576ccc197",
+      "released": "chess_seq-03_4a6b2c8365f9007a5580438ce18a35f9d9484dacdc49eaa064481bf023958c3e",
+      "half_released": "chess_seq-03_64626f5e972918b8d8274c535c48f511945b7b01395944b52d76882a97460624",
+      "direct_released": "chess_seq-03_d59ecb00afe7377c8ca26720f9f2d786518b0d87c7915b1f2ee38902724a467a",
+      "initial": "chess_seq-03_d29fee67f05436805047764b013adcbe5fb38077bcfff107017c4dffaa621691"
+    },
+    "fire/seq-03": {
+      "intrinsics_only": "fire_seq-03_4e153090aa019bb41f1adad26fd8c68bb7eb2e428efaac036c32a6b26ab8922c",
+      "half_intrinsics_only": "fire_seq-03_2b3325a3c4d6326ad28cd4785369e0663c32f86b6fd36eb64f5cf4d1c40c0c09",
+      "fixed_rgb": "fire_seq-03_46468a132470ede098c50185e373c6a9a5eb068eed4698b961c26c3311738951",
+      "half_fixed_rgb": "fire_seq-03_98a4e97ee265fae0c785dd3856a38c42ddea03e29bca8900bbd725f76bbd0256",
+      "direct_fixed_rgb": "fire_seq-03_0b106f82871abc3a7ff86a9f5e8efdb3d0542f2dbd443d4e39e9aeab536abda3",
+      "released": "fire_seq-03_83b0569a6ccd29c19b52c1299d356bb5c860c26de7f211140928d382fd50e743",
+      "half_released": "fire_seq-03_88996d0ced0a94d7f2674a6166a35cf7b2249a5deed7cce46383e1a8807d0b8f",
+      "direct_released": "fire_seq-03_67c9c4b02eedc398d0a08bc403937fcda4d79b9c374a8acc435744927a1cc777",
+      "initial": "fire_seq-03_b6743c822e9cdeb34f8263fcaec9fa7fce47568af637d63005257ea5829281d8",
+      "frame_only": "fire_seq-03_9b01fd63fce356588506e41a0bbe3dcb7509460b654974fd28fedb50ecf9be7e",
+      "half_frame_only": "fire_seq-03_9e73ef6973ef79daa07087909c193afa7ba2adbe95426e590c3f251801fbbf30"
+    }
+  },
+  "entries": {
+    "heads_seq-01_e716829b3d257133e22a6b9eaa3839a072ac65e053c64c4825c5bdc60d3d7204": {
+      "scene": "heads/seq-01",
+      "source_run": "sensor17c_heads_seq-01_released_a1",
+      "sha256": "4692f31e6979716c3098a615ee2b3fc49f1fadcfdd9f0d2161cad80c0a27f847",
+      "key": "heads_seq-01_e716829b3d257133e22a6b9eaa3839a072ac65e053c64c4825c5bdc60d3d7204"
+    },
+    "heads_seq-01_febba62005f10c555aa737747499dcddf5246f83caa81e91179bae9c9918c16f": {
+      "scene": "heads/seq-01",
+      "source_run": "sensor17c_heads_seq-01_released_a1",
+      "sha256": "9656159d86be0de6c0a696a76bdc9119f380a4911f0c42dc7cb0105fe38759b4",
+      "key": "heads_seq-01_febba62005f10c555aa737747499dcddf5246f83caa81e91179bae9c9918c16f"
+    },
+    "heads_seq-01_191a6d1af6452c50b4e40c15d02b646b31f0ea62e070231fc43b6e7e662ba5a6": {
+      "scene": "heads/seq-01",
+      "source_run": "sensor17c_heads_seq-01_released_a1",
+      "sha256": "ca8aa5058ffdc93472d37b452df87ea556ac3c395510ad0d1825a06ef203ebd1",
+      "key": "heads_seq-01_191a6d1af6452c50b4e40c15d02b646b31f0ea62e070231fc43b6e7e662ba5a6"
+    },
+    "heads_seq-01_f685f7bb9142a3da3ce661167c493b3fb419a235bcda9bd0a2c7aa9889172e58": {
+      "scene": "heads/seq-01",
+      "source_run": "sensor17c_heads_seq-01_released_a1",
+      "sha256": "0e0af531f558d241e6e4f3dc9c8f4749605018ea79d2604d0ecfc7072dd850af",
+      "key": "heads_seq-01_f685f7bb9142a3da3ce661167c493b3fb419a235bcda9bd0a2c7aa9889172e58"
+    },
+    "chess_seq-03_e192dae525524f3ce39381f2ad56b12efbdcff2f0e75e06ab85122cf8c2cc3e9": {
+      "scene": "chess/seq-03",
+      "source_run": "sensor17c_chess_seq-03_frame_only_a1",
+      "sha256": "b3457bb854f026ffcfe06cd55d9e66b9970ea6c7ceaacdffd0450e85bd931cc3",
+      "key": "chess_seq-03_e192dae525524f3ce39381f2ad56b12efbdcff2f0e75e06ab85122cf8c2cc3e9"
+    },
+    "chess_seq-03_042698f46a67a4631651f68de00632c54ec3dbbd12797974c97c6c0a97cae3f0": {
+      "scene": "chess/seq-03",
+      "source_run": "sensor17c_chess_seq-03_frame_only_a1",
+      "sha256": "d9e25263d500010014e7049746132fef3ccbdb64bd661124fec832a9af530b16",
+      "key": "chess_seq-03_042698f46a67a4631651f68de00632c54ec3dbbd12797974c97c6c0a97cae3f0"
+    },
+    "fire_seq-03_4e153090aa019bb41f1adad26fd8c68bb7eb2e428efaac036c32a6b26ab8922c": {
+      "scene": "fire/seq-03",
+      "source_run": "sensor17c_fire_seq-03_intrinsics_only_a1",
+      "sha256": "d0c10c3d778b19cd4d00e3e070c9ff75309e09d7227be014fb5ea935367f1305",
+      "key": "fire_seq-03_4e153090aa019bb41f1adad26fd8c68bb7eb2e428efaac036c32a6b26ab8922c"
+    },
+    "fire_seq-03_2b3325a3c4d6326ad28cd4785369e0663c32f86b6fd36eb64f5cf4d1c40c0c09": {
+      "scene": "fire/seq-03",
+      "source_run": "sensor17c_fire_seq-03_intrinsics_only_a1",
+      "sha256": "456e0e9c30d0bda7e3da035c7165595a0d95c9557121786d368249054d434e7d",
+      "key": "fire_seq-03_2b3325a3c4d6326ad28cd4785369e0663c32f86b6fd36eb64f5cf4d1c40c0c09"
+    },
+    "heads_seq-01_45b17cbcb2bbf372f5a99df55a5af51224b17b8d8a58c890d33c156d2d826d95": {
+      "scene": "heads/seq-01",
+      "source_run": "sensor17c_heads_seq-01_frame_only_a1",
+      "sha256": "5fe619f47491b4343b43ab9051c0e259872b98fe4ba09bc2a380f588a21abe64",
+      "key": "heads_seq-01_45b17cbcb2bbf372f5a99df55a5af51224b17b8d8a58c890d33c156d2d826d95"
+    },
+    "heads_seq-01_0607f4cb82174a947283508245f504ea0a972cadca31ddf58520a4378a3d8c52": {
+      "scene": "heads/seq-01",
+      "source_run": "sensor17c_heads_seq-01_frame_only_a1",
+      "sha256": "8812e69426e553a04a77ef2dee9290c9683407975aafef96a13916a38820b922",
+      "key": "heads_seq-01_0607f4cb82174a947283508245f504ea0a972cadca31ddf58520a4378a3d8c52"
+    },
+    "chess_seq-03_e3403caca055d697ec0a1d70cc26c7d9727fa879b4799bf16020e0085c31736b": {
+      "scene": "chess/seq-03",
+      "source_run": "sensor17c_chess_seq-03_intrinsics_only_a1",
+      "sha256": "f62d29626f6aabd42da15f4c6e40fa9999f3803dd2f0c2e3f1b9791462b9f63f",
+      "key": "chess_seq-03_e3403caca055d697ec0a1d70cc26c7d9727fa879b4799bf16020e0085c31736b"
+    },
+    "chess_seq-03_ba373424c346dcfb41a030548dd6413420b67e744de251ad066443460cd6280e": {
+      "scene": "chess/seq-03",
+      "source_run": "sensor17c_chess_seq-03_intrinsics_only_a1",
+      "sha256": "b46d545ef8e49c15c0bae7e69bf051c8e6f12a8f8f2cd1b0b47535fd389769c5",
+      "key": "chess_seq-03_ba373424c346dcfb41a030548dd6413420b67e744de251ad066443460cd6280e"
+    },
+    "fire_seq-03_46468a132470ede098c50185e373c6a9a5eb068eed4698b961c26c3311738951": {
+      "scene": "fire/seq-03",
+      "source_run": "sensor17c_fire_seq-03_fixed_rgb_a1",
+      "sha256": "1731e0bc16162d428e8e281ff5c5d06baff5b33fae4c438049db231dbd5ca3de",
+      "key": "fire_seq-03_46468a132470ede098c50185e373c6a9a5eb068eed4698b961c26c3311738951"
+    },
+    "fire_seq-03_98a4e97ee265fae0c785dd3856a38c42ddea03e29bca8900bbd725f76bbd0256": {
+      "scene": "fire/seq-03",
+      "source_run": "sensor17c_fire_seq-03_fixed_rgb_a1",
+      "sha256": "dcece6b3b2207e3809cee4aa48cd8fca7a9db7c107d825187ec82bf8f4bd2b1e",
+      "key": "fire_seq-03_98a4e97ee265fae0c785dd3856a38c42ddea03e29bca8900bbd725f76bbd0256"
+    },
+    "fire_seq-03_0b106f82871abc3a7ff86a9f5e8efdb3d0542f2dbd443d4e39e9aeab536abda3": {
+      "scene": "fire/seq-03",
+      "source_run": "sensor17c_fire_seq-03_fixed_rgb_a1",
+      "sha256": "399041fb6cb82de66c0db66a4dae56fa005a50856218e475e6a8b28b6f8ff478",
+      "key": "fire_seq-03_0b106f82871abc3a7ff86a9f5e8efdb3d0542f2dbd443d4e39e9aeab536abda3"
+    },
+    "heads_seq-01_60f552a43ff129334d4251965e3144b26eaf67a7427034f39ed12a23fe27af7a": {
+      "scene": "heads/seq-01",
+      "source_run": "sensor17c_heads_seq-01_intrinsics_only_a1",
+      "sha256": "eef6ef5513bbf2404eb70c5aa524ab3f02a0126f7ebc2407095f34a505cdb585",
+      "key": "heads_seq-01_60f552a43ff129334d4251965e3144b26eaf67a7427034f39ed12a23fe27af7a"
+    },
+    "heads_seq-01_25912fec5c331063d0ed42dd74da737c59322fbac5507b0400fe041f6e2650e8": {
+      "scene": "heads/seq-01",
+      "source_run": "sensor17c_heads_seq-01_intrinsics_only_a1",
+      "sha256": "964a9ac1a7ca473ab6f617b534d4fdf5f35ae6692fda421c392509425c244c9e",
+      "key": "heads_seq-01_25912fec5c331063d0ed42dd74da737c59322fbac5507b0400fe041f6e2650e8"
+    },
+    "chess_seq-03_17186c650deafd0093c7aba35f552e2b048d136576419346cbeed6ae501e7182": {
+      "scene": "chess/seq-03",
+      "source_run": "sensor17c_chess_seq-03_fixed_rgb_a1",
+      "sha256": "f8ac1b28f1fac893db3c626bdc5e159dae810cacc682be2f184648fbe41c57de",
+      "key": "chess_seq-03_17186c650deafd0093c7aba35f552e2b048d136576419346cbeed6ae501e7182"
+    },
+    "chess_seq-03_ce79e6061e5d90f1bb51c79c4e15ba426a0eb5c1582b6ad61f42c9cf730da167": {
+      "scene": "chess/seq-03",
+      "source_run": "sensor17c_chess_seq-03_fixed_rgb_a1",
+      "sha256": "8d25ca246b8d3850b6412e5c7e5f1874c463af9d16e9fe064a453473f04fb9fd",
+      "key": "chess_seq-03_ce79e6061e5d90f1bb51c79c4e15ba426a0eb5c1582b6ad61f42c9cf730da167"
+    },
+    "chess_seq-03_3026b843e1263f2bdcb46044cc05f063bd56b6a2c57ecc789da7ed5576ccc197": {
+      "scene": "chess/seq-03",
+      "source_run": "sensor17c_chess_seq-03_fixed_rgb_a1",
+      "sha256": "b9de90d53b2d6e0f9143de0e2402428fa7fddc780ec91b30dc9a0db1248e3b0c",
+      "key": "chess_seq-03_3026b843e1263f2bdcb46044cc05f063bd56b6a2c57ecc789da7ed5576ccc197"
+    },
+    "fire_seq-03_83b0569a6ccd29c19b52c1299d356bb5c860c26de7f211140928d382fd50e743": {
+      "scene": "fire/seq-03",
+      "source_run": "sensor17c_fire_seq-03_released_a1",
+      "sha256": "a9918f006fd51cd9871a3f70771a99bd419d1eeb363981b91a805658f21792e1",
+      "key": "fire_seq-03_83b0569a6ccd29c19b52c1299d356bb5c860c26de7f211140928d382fd50e743"
+    },
+    "fire_seq-03_88996d0ced0a94d7f2674a6166a35cf7b2249a5deed7cce46383e1a8807d0b8f": {
+      "scene": "fire/seq-03",
+      "source_run": "sensor17c_fire_seq-03_released_a1",
+      "sha256": "78a758238529e6b9038d76bd2aa51882952aaecd8ef75ff4d67e232179116c83",
+      "key": "fire_seq-03_88996d0ced0a94d7f2674a6166a35cf7b2249a5deed7cce46383e1a8807d0b8f"
+    },
+    "fire_seq-03_67c9c4b02eedc398d0a08bc403937fcda4d79b9c374a8acc435744927a1cc777": {
+      "scene": "fire/seq-03",
+      "source_run": "sensor17c_fire_seq-03_released_a1",
+      "sha256": "545f85aabab2b297fa6c2a4cf3dce53bd2fc097b292b56babd95d713145401ee",
+      "key": "fire_seq-03_67c9c4b02eedc398d0a08bc403937fcda4d79b9c374a8acc435744927a1cc777"
+    },
+    "fire_seq-03_b6743c822e9cdeb34f8263fcaec9fa7fce47568af637d63005257ea5829281d8": {
+      "scene": "fire/seq-03",
+      "source_run": "sensor17c_fire_seq-03_released_a1",
+      "sha256": "af9d2dffde90c52236735e022f83d92a229b6d539c998c82ac14244e63762a6d",
+      "key": "fire_seq-03_b6743c822e9cdeb34f8263fcaec9fa7fce47568af637d63005257ea5829281d8"
+    },
+    "heads_seq-01_4699cea2ba8d3300d24cac4471cd6a75671669d42ff8c4aaeac3646405f0a4c2": {
+      "scene": "heads/seq-01",
+      "source_run": "sensor17c_heads_seq-01_fixed_rgb_a1",
+      "sha256": "99b5b9e85a4d80e83283b7b6cfbe1757923034c00ff7365783bcb3a971254686",
+      "key": "heads_seq-01_4699cea2ba8d3300d24cac4471cd6a75671669d42ff8c4aaeac3646405f0a4c2"
+    },
+    "heads_seq-01_4f2799059e3e474cffaa4b8e7e9b5e8be9cedbd0d95cd85a2b4fb5b6406ad99b": {
+      "scene": "heads/seq-01",
+      "source_run": "sensor17c_heads_seq-01_fixed_rgb_a1",
+      "sha256": "eb1e77af9ad08d2c988e13aa6bd40c3c0507c933a980468870b975a32bf47b35",
+      "key": "heads_seq-01_4f2799059e3e474cffaa4b8e7e9b5e8be9cedbd0d95cd85a2b4fb5b6406ad99b"
+    },
+    "heads_seq-01_89d12f6d51d80dfd0a1ac6384e248a824ff168c2495f8b86b24d0f84638ecc19": {
+      "scene": "heads/seq-01",
+      "source_run": "sensor17c_heads_seq-01_fixed_rgb_a1",
+      "sha256": "29ec559eef9ebb4c3d63617bfa4f4c25e779c0f0f7e9aba9d2960fbf0262e2cb",
+      "key": "heads_seq-01_89d12f6d51d80dfd0a1ac6384e248a824ff168c2495f8b86b24d0f84638ecc19"
+    },
+    "chess_seq-03_4a6b2c8365f9007a5580438ce18a35f9d9484dacdc49eaa064481bf023958c3e": {
+      "scene": "chess/seq-03",
+      "source_run": "sensor17c_chess_seq-03_released_a1",
+      "sha256": "702b2dc8745bcfeeccb7d358d4223cf327bce7441efac82abb93088f2f2f3ffc",
+      "key": "chess_seq-03_4a6b2c8365f9007a5580438ce18a35f9d9484dacdc49eaa064481bf023958c3e"
+    },
+    "chess_seq-03_64626f5e972918b8d8274c535c48f511945b7b01395944b52d76882a97460624": {
+      "scene": "chess/seq-03",
+      "source_run": "sensor17c_chess_seq-03_released_a1",
+      "sha256": "256874050722170cc9445c5a89bbb916f4d7e93a488aefca1f39853ebb50a6ba",
+      "key": "chess_seq-03_64626f5e972918b8d8274c535c48f511945b7b01395944b52d76882a97460624"
+    },
+    "chess_seq-03_d59ecb00afe7377c8ca26720f9f2d786518b0d87c7915b1f2ee38902724a467a": {
+      "scene": "chess/seq-03",
+      "source_run": "sensor17c_chess_seq-03_released_a1",
+      "sha256": "11a96f349e9feebf7d3a5e891cb181beaff22e24a52d0badf03d2ac920dcbea3",
+      "key": "chess_seq-03_d59ecb00afe7377c8ca26720f9f2d786518b0d87c7915b1f2ee38902724a467a"
+    },
+    "chess_seq-03_d29fee67f05436805047764b013adcbe5fb38077bcfff107017c4dffaa621691": {
+      "scene": "chess/seq-03",
+      "source_run": "sensor17c_chess_seq-03_released_a1",
+      "sha256": "20b673cc0e62daa76480fa420b1b324e680ab9ecffa225090b46bd8a4d704907",
+      "key": "chess_seq-03_d29fee67f05436805047764b013adcbe5fb38077bcfff107017c4dffaa621691"
+    },
+    "fire_seq-03_9b01fd63fce356588506e41a0bbe3dcb7509460b654974fd28fedb50ecf9be7e": {
+      "scene": "fire/seq-03",
+      "source_run": "sensor17c_fire_seq-03_frame_only_a1",
+      "sha256": "a4c2397822a279ffd54a59059b079e970af9f3e83b5220160d3bc44d1f92fd8a",
+      "key": "fire_seq-03_9b01fd63fce356588506e41a0bbe3dcb7509460b654974fd28fedb50ecf9be7e"
+    },
+    "fire_seq-03_9e73ef6973ef79daa07087909c193afa7ba2adbe95426e590c3f251801fbbf30": {
+      "scene": "fire/seq-03",
+      "source_run": "sensor17c_fire_seq-03_frame_only_a1",
+      "sha256": "eb1e0e7c0877477bdebb7a25dc80fcea53c63e3f43e031908353f4c8267f6b9a",
+      "key": "fire_seq-03_9e73ef6973ef79daa07087909c193afa7ba2adbe95426e590c3f251801fbbf30"
+    }
+  },
+  "runs": [
+    {
+      "scene": "heads/seq-01",
+      "condition": "released",
+      "run_id": "sensor17c_heads_seq-01_released",
+      "attempts": [
+        {
+          "scene": "heads/seq-01",
+          "condition": "released",
+          "run_id": "sensor17c_heads_seq-01_released",
+          "attempt": 1,
+          "status": "complete",
+          "gpu": "NVIDIA GeForce RTX 3090",
+          "record_sha256": "dba4119fca8b1ef62bc6ba7ebbc081835acd95f6a1dc2ffc6f53a21c5d76b4fd"
+        }
+      ],
+      "source_prediction_sha256": "4692f31e6979716c3098a615ee2b3fc49f1fadcfdd9f0d2161cad80c0a27f847",
+      "corrected_pose_sha256": "b7c8506c2d54f620202d9acc2a20959e333e934f9752ae5a5e5db35e3ed936a6",
+      "intrinsic_sha256": "c983cdf9f5d9353dd13983f4de0980b97aea94b07335b82fe754aa6035d52725",
+      "model_inference_adaptation_seconds": 53.690336981089786,
+      "peak_allocated_bytes": 12346733056,
+      "peak_reserved_bytes": 13094617088,
+      "research_commit": "c0b801be8dcd4e60d43d151e19bd510a5273ecea",
+      "final_adapters_sha256": "a4f598e0615410bc03cf76f357ccba84193f5bcef50329b3480bc3048f94d387"
+    },
+    {
+      "scene": "chess/seq-03",
+      "condition": "frame_only",
+      "run_id": "sensor17c_chess_seq-03_frame_only",
+      "attempts": [
+        {
+          "scene": "chess/seq-03",
+          "condition": "frame_only",
+          "run_id": "sensor17c_chess_seq-03_frame_only",
+          "attempt": 1,
+          "status": "complete",
+          "gpu": "NVIDIA GeForce RTX 3090",
+          "record_sha256": "ab97dd6d1a947487e0b1bc5b218c13e38bfaba618d913352d67e3abc8852d897"
+        }
+      ],
+      "source_prediction_sha256": "b3457bb854f026ffcfe06cd55d9e66b9970ea6c7ceaacdffd0450e85bd931cc3",
+      "corrected_pose_sha256": "83d524e1723938caa16aca35a4d13334db6b00cf2aa446f5cd665dddcf97cc96",
+      "intrinsic_sha256": "c983cdf9f5d9353dd13983f4de0980b97aea94b07335b82fe754aa6035d52725",
+      "model_inference_adaptation_seconds": 53.525153995957226,
+      "peak_allocated_bytes": 12346733056,
+      "peak_reserved_bytes": 13094617088,
+      "research_commit": "c0b801be8dcd4e60d43d151e19bd510a5273ecea",
+      "final_adapters_sha256": "b6b9df7f537334d9c8075c25838b6808215569362841efcfc1e4c67330e93a4e"
+    },
+    {
+      "scene": "fire/seq-03",
+      "condition": "intrinsics_only",
+      "run_id": "sensor17c_fire_seq-03_intrinsics_only",
+      "attempts": [
+        {
+          "scene": "fire/seq-03",
+          "condition": "intrinsics_only",
+          "run_id": "sensor17c_fire_seq-03_intrinsics_only",
+          "attempt": 1,
+          "status": "complete",
+          "gpu": "NVIDIA GeForce RTX 3090",
+          "record_sha256": "eac6ac2e3f62f034b16068fab401f0d1a05596453c22fee1bab2faf0aa033da5"
+        }
+      ],
+      "source_prediction_sha256": "d0c10c3d778b19cd4d00e3e070c9ff75309e09d7227be014fb5ea935367f1305",
+      "corrected_pose_sha256": "4aae39c279ee2f38b979c0ef5f420ea6e002ce945b444a94009ff7f192e3c14d",
+      "intrinsic_sha256": "3c8fbdc86bdfa5c0ab0d96a5be978f612b3f5d1736af29896d29f81cb91a8d85",
+      "model_inference_adaptation_seconds": 54.45935508189723,
+      "peak_allocated_bytes": 12346733056,
+      "peak_reserved_bytes": 13094617088,
+      "research_commit": "c0b801be8dcd4e60d43d151e19bd510a5273ecea",
+      "final_adapters_sha256": "9a40f5d7efc3a2bd9787fa288ddd4fce7097bc29651bfd4170048dd800d52859"
+    },
+    {
+      "scene": "heads/seq-01",
+      "condition": "frame_only",
+      "run_id": "sensor17c_heads_seq-01_frame_only",
+      "attempts": [
+        {
+          "scene": "heads/seq-01",
+          "condition": "frame_only",
+          "run_id": "sensor17c_heads_seq-01_frame_only",
+          "attempt": 1,
+          "status": "complete",
+          "gpu": "NVIDIA GeForce RTX 3090",
+          "record_sha256": "8da7024a62ad4411cd0ba6693fe17fca7110de85bca13fc0d245723236cf12d6"
+        }
+      ],
+      "source_prediction_sha256": "5fe619f47491b4343b43ab9051c0e259872b98fe4ba09bc2a380f588a21abe64",
+      "corrected_pose_sha256": "54f70739213595b2398e432b93e071b82ed93f199d3226f7f2bbe217cb727a4a",
+      "intrinsic_sha256": "c983cdf9f5d9353dd13983f4de0980b97aea94b07335b82fe754aa6035d52725",
+      "model_inference_adaptation_seconds": 53.36728988192044,
+      "peak_allocated_bytes": 12346733056,
+      "peak_reserved_bytes": 13094617088,
+      "research_commit": "c0b801be8dcd4e60d43d151e19bd510a5273ecea",
+      "final_adapters_sha256": "49c980f9fd97a04f2e5dc72b4c5a989d9b5296f33ce80ae97e844d4cff6673c0"
+    },
+    {
+      "scene": "chess/seq-03",
+      "condition": "intrinsics_only",
+      "run_id": "sensor17c_chess_seq-03_intrinsics_only",
+      "attempts": [
+        {
+          "scene": "chess/seq-03",
+          "condition": "intrinsics_only",
+          "run_id": "sensor17c_chess_seq-03_intrinsics_only",
+          "attempt": 1,
+          "status": "complete",
+          "gpu": "NVIDIA GeForce RTX 3090",
+          "record_sha256": "bcf3fef3d828b1001b167ee45bc23e45fc6b9968ebfb06ddaa3718f20f68ce16"
+        }
+      ],
+      "source_prediction_sha256": "f62d29626f6aabd42da15f4c6e40fa9999f3803dd2f0c2e3f1b9791462b9f63f",
+      "corrected_pose_sha256": "42ce95133ffc9ad89c257400ee9534443e3a875212ac151d68a84206297da246",
+      "intrinsic_sha256": "3c8fbdc86bdfa5c0ab0d96a5be978f612b3f5d1736af29896d29f81cb91a8d85",
+      "model_inference_adaptation_seconds": 55.011577125871554,
+      "peak_allocated_bytes": 12346733056,
+      "peak_reserved_bytes": 13094617088,
+      "research_commit": "c0b801be8dcd4e60d43d151e19bd510a5273ecea",
+      "final_adapters_sha256": "297f286c6aed32f7125ca7f7489df440fae549f6b41bb1b2d58cf94ff903f22d"
+    },
+    {
+      "scene": "fire/seq-03",
+      "condition": "fixed_rgb",
+      "run_id": "sensor17c_fire_seq-03_fixed_rgb",
+      "attempts": [
+        {
+          "scene": "fire/seq-03",
+          "condition": "fixed_rgb",
+          "run_id": "sensor17c_fire_seq-03_fixed_rgb",
+          "attempt": 1,
+          "status": "complete",
+          "gpu": "NVIDIA GeForce RTX 3090",
+          "record_sha256": "fa126622f12f9661db55214366b53186ec85de64b74e521d933e60c18b06ef8c"
+        }
+      ],
+      "source_prediction_sha256": "1731e0bc16162d428e8e281ff5c5d06baff5b33fae4c438049db231dbd5ca3de",
+      "corrected_pose_sha256": "fbc6cef7cfc505c1159e642244e3e8e6e76dae9250a7e23921607a36672aa28d",
+      "intrinsic_sha256": "3c8fbdc86bdfa5c0ab0d96a5be978f612b3f5d1736af29896d29f81cb91a8d85",
+      "model_inference_adaptation_seconds": 53.561674969037995,
+      "peak_allocated_bytes": 12346733056,
+      "peak_reserved_bytes": 13094617088,
+      "research_commit": "c0b801be8dcd4e60d43d151e19bd510a5273ecea",
+      "final_adapters_sha256": "50f501c1b76733c9b620fb281f1aaf906d5ff27141da2c506003a65ea36b978c"
+    },
+    {
+      "scene": "heads/seq-01",
+      "condition": "intrinsics_only",
+      "run_id": "sensor17c_heads_seq-01_intrinsics_only",
+      "attempts": [
+        {
+          "scene": "heads/seq-01",
+          "condition": "intrinsics_only",
+          "run_id": "sensor17c_heads_seq-01_intrinsics_only",
+          "attempt": 1,
+          "status": "complete",
+          "gpu": "NVIDIA GeForce RTX 3090",
+          "record_sha256": "c02b613a711cc4e80c9c562b23e3200fb349139e0406f1871f04223afb1b9f12"
+        }
+      ],
+      "source_prediction_sha256": "eef6ef5513bbf2404eb70c5aa524ab3f02a0126f7ebc2407095f34a505cdb585",
+      "corrected_pose_sha256": "b7c8506c2d54f620202d9acc2a20959e333e934f9752ae5a5e5db35e3ed936a6",
+      "intrinsic_sha256": "3c8fbdc86bdfa5c0ab0d96a5be978f612b3f5d1736af29896d29f81cb91a8d85",
+      "model_inference_adaptation_seconds": 53.89461181894876,
+      "peak_allocated_bytes": 12346733056,
+      "peak_reserved_bytes": 13094617088,
+      "research_commit": "c0b801be8dcd4e60d43d151e19bd510a5273ecea",
+      "final_adapters_sha256": "943944b11d735f31577f198f780a9685b027ed77a83d6bdc217fedd864b298c0"
+    },
+    {
+      "scene": "chess/seq-03",
+      "condition": "fixed_rgb",
+      "run_id": "sensor17c_chess_seq-03_fixed_rgb",
+      "attempts": [
+        {
+          "scene": "chess/seq-03",
+          "condition": "fixed_rgb",
+          "run_id": "sensor17c_chess_seq-03_fixed_rgb",
+          "attempt": 1,
+          "status": "complete",
+          "gpu": "NVIDIA GeForce RTX 3090",
+          "record_sha256": "9de9e04d7ebbcc4cb88d219826027ce74e1b96f743803a64cf63f0089ce36959"
+        }
+      ],
+      "source_prediction_sha256": "f8ac1b28f1fac893db3c626bdc5e159dae810cacc682be2f184648fbe41c57de",
+      "corrected_pose_sha256": "83d524e1723938caa16aca35a4d13334db6b00cf2aa446f5cd665dddcf97cc96",
+      "intrinsic_sha256": "3c8fbdc86bdfa5c0ab0d96a5be978f612b3f5d1736af29896d29f81cb91a8d85",
+      "model_inference_adaptation_seconds": 54.50503360317089,
+      "peak_allocated_bytes": 12346733056,
+      "peak_reserved_bytes": 13094617088,
+      "research_commit": "c0b801be8dcd4e60d43d151e19bd510a5273ecea",
+      "final_adapters_sha256": "5a735e0b06d91f736becea20eb9c538c7b38e59a38c507234fdfeff5183f5db1"
+    },
+    {
+      "scene": "fire/seq-03",
+      "condition": "released",
+      "run_id": "sensor17c_fire_seq-03_released",
+      "attempts": [
+        {
+          "scene": "fire/seq-03",
+          "condition": "released",
+          "run_id": "sensor17c_fire_seq-03_released",
+          "attempt": 1,
+          "status": "complete",
+          "gpu": "NVIDIA GeForce RTX 3090",
+          "record_sha256": "5226b7ce0c6b8a6f965ed5c7a0e7ce107364843c319a9c8635aeb77bdf589fe2"
+        }
+      ],
+      "source_prediction_sha256": "a9918f006fd51cd9871a3f70771a99bd419d1eeb363981b91a805658f21792e1",
+      "corrected_pose_sha256": "4aae39c279ee2f38b979c0ef5f420ea6e002ce945b444a94009ff7f192e3c14d",
+      "intrinsic_sha256": "c983cdf9f5d9353dd13983f4de0980b97aea94b07335b82fe754aa6035d52725",
+      "model_inference_adaptation_seconds": 53.767271938035265,
+      "peak_allocated_bytes": 12346733056,
+      "peak_reserved_bytes": 13094617088,
+      "research_commit": "c0b801be8dcd4e60d43d151e19bd510a5273ecea",
+      "final_adapters_sha256": "27b1f515d242d5025c8abca526bfae6ecf50fa3f990adc0b55a510d6159fd0fd"
+    },
+    {
+      "scene": "heads/seq-01",
+      "condition": "fixed_rgb",
+      "run_id": "sensor17c_heads_seq-01_fixed_rgb",
+      "attempts": [
+        {
+          "scene": "heads/seq-01",
+          "condition": "fixed_rgb",
+          "run_id": "sensor17c_heads_seq-01_fixed_rgb",
+          "attempt": 1,
+          "status": "complete",
+          "gpu": "NVIDIA GeForce RTX 3090",
+          "record_sha256": "80978016d5b0806a3a804bc48215016aae755a1a98165b2134f7e6c60c9c9c9a"
+        }
+      ],
+      "source_prediction_sha256": "99b5b9e85a4d80e83283b7b6cfbe1757923034c00ff7365783bcb3a971254686",
+      "corrected_pose_sha256": "54f70739213595b2398e432b93e071b82ed93f199d3226f7f2bbe217cb727a4a",
+      "intrinsic_sha256": "3c8fbdc86bdfa5c0ab0d96a5be978f612b3f5d1736af29896d29f81cb91a8d85",
+      "model_inference_adaptation_seconds": 53.2712245399598,
+      "peak_allocated_bytes": 12346733056,
+      "peak_reserved_bytes": 13094617088,
+      "research_commit": "c0b801be8dcd4e60d43d151e19bd510a5273ecea",
+      "final_adapters_sha256": "2d7395d039ffbc69a56dcaca24af6322cf506cea279137907592da6d79cf1686"
+    },
+    {
+      "scene": "chess/seq-03",
+      "condition": "released",
+      "run_id": "sensor17c_chess_seq-03_released",
+      "attempts": [
+        {
+          "scene": "chess/seq-03",
+          "condition": "released",
+          "run_id": "sensor17c_chess_seq-03_released",
+          "attempt": 1,
+          "status": "complete",
+          "gpu": "NVIDIA GeForce RTX 3090",
+          "record_sha256": "378693b0be8ff7378ce60974701e80da6bd4040401de38ac7dea06db9328c5d1"
+        }
+      ],
+      "source_prediction_sha256": "702b2dc8745bcfeeccb7d358d4223cf327bce7441efac82abb93088f2f2f3ffc",
+      "corrected_pose_sha256": "42ce95133ffc9ad89c257400ee9534443e3a875212ac151d68a84206297da246",
+      "intrinsic_sha256": "c983cdf9f5d9353dd13983f4de0980b97aea94b07335b82fe754aa6035d52725",
+      "model_inference_adaptation_seconds": 52.49285154789686,
+      "peak_allocated_bytes": 12346733056,
+      "peak_reserved_bytes": 13094617088,
+      "research_commit": "c0b801be8dcd4e60d43d151e19bd510a5273ecea",
+      "final_adapters_sha256": "a6b7a933b1b91e08891ba41f5fac8d4fb9d904bb80b032ccadeae2103a29f0ff"
+    },
+    {
+      "scene": "fire/seq-03",
+      "condition": "frame_only",
+      "run_id": "sensor17c_fire_seq-03_frame_only",
+      "attempts": [
+        {
+          "scene": "fire/seq-03",
+          "condition": "frame_only",
+          "run_id": "sensor17c_fire_seq-03_frame_only",
+          "attempt": 1,
+          "status": "complete",
+          "gpu": "NVIDIA GeForce RTX 3090",
+          "record_sha256": "8204b9b93222cafa77e765df7cf633749539b7a8b3204c9e5ece04494c81b40f"
+        }
+      ],
+      "source_prediction_sha256": "a4c2397822a279ffd54a59059b079e970af9f3e83b5220160d3bc44d1f92fd8a",
+      "corrected_pose_sha256": "fbc6cef7cfc505c1159e642244e3e8e6e76dae9250a7e23921607a36672aa28d",
+      "intrinsic_sha256": "c983cdf9f5d9353dd13983f4de0980b97aea94b07335b82fe754aa6035d52725",
+      "model_inference_adaptation_seconds": 52.30963832093403,
+      "peak_allocated_bytes": 12346733056,
+      "peak_reserved_bytes": 13094617088,
+      "research_commit": "c0b801be8dcd4e60d43d151e19bd510a5273ecea",
+      "final_adapters_sha256": "f548fa3aa08d4d1eae8e893611af1f0774e1185ac591dae994109883b974370e"
+    }
+  ]
+}
