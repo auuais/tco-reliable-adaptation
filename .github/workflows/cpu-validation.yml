@@ -111,3 +111,14 @@ jobs:
           python scripts/spatial_depth_transfer.py verify
           python scripts/capture_visibility_support.py verify
           python scripts/observation_selection.py verify
+      - name: Replay camera-spacing coverage and verify matched-input temporal comparisons
+        env:
+          OPENBLAS_NUM_THREADS: "1"
+        run: |
+          python scripts/prepare_source_spacing.py verify
+          python scripts/source_spacing_control.py verify
+          python scripts/collect_spacing_heads.py verify
+          python scripts/predict_temporal_depth.py verify
+          python scripts/score_temporal_depth.py verify
+          python scripts/nearby_camera_depth_control.py verify
+          python scripts/nearby_motion_depth.py verify
