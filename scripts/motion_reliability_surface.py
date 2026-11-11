@@ -103,8 +103,12 @@ def verify_inventory(seal,observed):
             for metrics in observed[key][arm].values():
                 if set(metrics)!=set(temporal.METRICS) or not np.isfinite(list(metrics.values())).all():
                     raise ValueError('Unexpected surface metrics')
-    archive = read(PUBLIC/'weighted_surface_archive.json')
-    expected = {h+'.npz' for arms in seal['hashes'].values() for h in arms.values()}
+    verify_map_archive(PUBLIC/'weighted_surface_archive.json',seal['hashes'])
+
+
+def verify_map_archive(path,hashes):
+    archive = read(path)
+    expected = {h+'.npz' for arms in hashes.values() for h in arms.values()}
     entries = archive['files']
     if (archive['verified_physical_drives']!=2 or len(entries)!=len(expected)
             or {e['file'] for e in entries}!=expected or archive['total_bytes']!=sum(e['bytes'] for e in entries)

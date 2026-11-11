@@ -137,4 +137,6 @@ if __name__=='__main__':
         report = read(RESULT)
         if report['inputs']!=provenance or report['results']!=summarize(report['observed'],records):
             raise ValueError('Permutation comparison changed')
+        if action=='verify':
+            primary.verify_map_archive(PUBLIC/'shuffle_repeat_archive.json',{k:r['hashes'] for k,r in records.items()})
         print(report['results']['axial_gain'])
