@@ -1,6 +1,7 @@
 """Prepare selected TUM RGB images and sparse neighboring depth without opening target depth."""
 import argparse
 import io
+import hashlib
 from pathlib import Path
 import tarfile
 
@@ -44,58 +45,56 @@ def prepare(destination):
         if sha(path)!=download['archive_sha256']:
             raise ValueError('Archive changed')
         input_files={}
-        def member_bytes(archive,name):
-            # Names are supplied by the validated timestamps. Access is restricted to
-            # the explicit set of target RGBs and neighboring source depth frames.
-            if name not in allowed:
-                raise ValueError('Image is outside the inference allowlist')
-            full=folder+'/'+name
-            member=archive.getmember(full)
-            if not member.isfile():
-                raise ValueError('Expected an ordinary image file')
-            with archive.extractfile(member) as stream:
-                content=stream.read()
-            import hashlib
-            input_files[name]=hashlib.sha256(content).hexdigest()
-            return content
         allowed={t['rgb_file'] for t in entry['targets']}
         allowed.update(s['depth_file'] for t in entry['targets'] for s in t['sources'])
+        expected={folder+'/'+name:name for name in allowed}
+        selected={}
+        with tarfile.open(path,'r|gz') as archive:
+            for member in archive:
+                if member.name in expected:
+                    if not member.isfile():
+                        raise ValueError('Expected an ordinary image file')
+                    name=expected[member.name]
+                    with archive.extractfile(member) as stream:
+                        selected[name]=stream.read()
+                    input_files[name]=hashlib.sha256(selected[name]).hexdigest()
+        if set(selected)!=allowed:
+            raise ValueError('Inference images missing from archive')
         rgb=[]
         poses=[]
         views=[]
-        with tarfile.open(path,'r:gz') as archive:
-            for i,t in enumerate(entry['targets']):
-                with Image.open(io.BytesIO(member_bytes(archive,t['rgb_file']))) as image:
-                    if image.size!=(640,480):
-                        raise ValueError('Unexpected RGB size')
-                    resized=image.convert('RGB').resize((518,392),Image.Resampling.LANCZOS)
-                    pixels=np.asarray(resized,dtype=np.float32)/255
-                rgb.append(cv2.warpAffine(pixels,zoom,(518,392),flags=cv2.INTER_LINEAR,borderMode=cv2.BORDER_REPLICATE).transpose(2,0,1))
-                world_to_target=np.linalg.inv(np.asarray(t['c2w']))
-                poses.append(world_to_target)
-                counts={}
-                for grid,origin in GRIDS.items():
-                    u,v=np.meshgrid(np.arange(origin[0],640,80),np.arange(origin[1],480,60))
-                    uv=np.column_stack([u.ravel(),v.ravel()])
-                    rays=np.column_stack([uv,np.ones(len(uv))])@np.linalg.inv(native).T
-                    measurements=[]
-                    for source in t['sources']:
-                        with Image.open(io.BytesIO(member_bytes(archive,source['depth_file']))) as image:
-                            if image.size!=(640,480):
-                                raise ValueError('Unexpected registered depth size')
-                            # project_samples consumes millimeters, TUM stores 5000 units/m.
-                            mm=np.asarray(image)[uv[:,1],uv[:,0]].astype(float)/5
-                        relative=world_to_target@np.asarray(source['c2w'])
-                        measurements.extend(project_samples(mm,uv,rays,relative,target,source['depth_index']))
-                    nearest={}
-                    for row in sorted(measurements,key=lambda r:r[2]):
-                        nearest.setdefault(tuple(row[:2]),row)
-                    packet=np.array(list(nearest.values()))
-                    if len(packet)<8:
-                        raise ValueError('Insufficient source-depth coverage')
-                    arrays[f'{sequence}_{grid}_{i}']=packet
-                    counts[grid]=len(packet)
-                views.append(dict(rgb_time=t['rgb_time'],counts=counts))
+        for i,t in enumerate(entry['targets']):
+            with Image.open(io.BytesIO(selected[t['rgb_file']])) as image:
+                if image.size!=(640,480):
+                    raise ValueError('Unexpected RGB size')
+                resized=image.convert('RGB').resize((518,392),Image.Resampling.LANCZOS)
+                pixels=np.asarray(resized,dtype=np.float32)/255
+            rgb.append(cv2.warpAffine(pixels,zoom,(518,392),flags=cv2.INTER_LINEAR,borderMode=cv2.BORDER_REPLICATE).transpose(2,0,1))
+            world_to_target=np.linalg.inv(np.asarray(t['c2w']))
+            poses.append(world_to_target)
+            counts={}
+            for grid,origin in GRIDS.items():
+                u,v=np.meshgrid(np.arange(origin[0],640,80),np.arange(origin[1],480,60))
+                uv=np.column_stack([u.ravel(),v.ravel()])
+                rays=np.column_stack([uv,np.ones(len(uv))])@np.linalg.inv(native).T
+                measurements=[]
+                for source in t['sources']:
+                    with Image.open(io.BytesIO(selected[source['depth_file']])) as image:
+                        if image.size!=(640,480):
+                            raise ValueError('Unexpected registered depth size')
+                        # project_samples consumes millimeters, TUM stores 5000 units/m.
+                        mm=np.asarray(image)[uv[:,1],uv[:,0]].astype(float)/5
+                    relative=world_to_target@np.asarray(source['c2w'])
+                    measurements.extend(project_samples(mm,uv,rays,relative,target,source['depth_index']))
+                nearest={}
+                for row in sorted(measurements,key=lambda r:r[2]):
+                    nearest.setdefault(tuple(row[:2]),row)
+                packet=np.array(list(nearest.values()))
+                if len(packet)<8:
+                    raise ValueError('Insufficient source-depth coverage')
+                arrays[f'{sequence}_{grid}_{i}']=packet
+                counts[grid]=len(packet)
+            views.append(dict(rgb_time=t['rgb_time'],counts=counts))
         rgb=np.stack(rgb)
         folder=RAW/'inference'
         folder.mkdir(parents=True,exist_ok=True)
