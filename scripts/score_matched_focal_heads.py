@@ -92,6 +92,26 @@ def summarize(rows):
                 max_unprojection_check=max(r['fp32_max_absolute_vs_numpy_float64'] for r in rows),references=result)
 
 
+def verify_capture(rows, captures):
+    if [r['input_key'] for r in rows] != [c['input_key'] for c in captures]:
+        raise ValueError('Local camera batches differ from their capture inventory')
+    references = read(INPUT_PLAN)['references']
+    for r,c in zip(rows,captures):
+        bridge = r['historical_native_bridge']
+        if (r['archive_sha256'] != c['archive_sha256'] or r['reference_sha256'] != references[r['input_key']]['sha256']
+                or bridge['point_count'] != 5*392*518 or bridge['exact'] != c['bridge_exact']
+                or not 0 <= bridge['exact_points'] <= bridge['point_count']
+                or bridge['exact'] != (bridge['exact_points'] == bridge['point_count'])
+                or not 0 <= bridge['median_model_units'] <= bridge['p95_model_units'] <= bridge['max_model_units']):
+            raise ValueError('Local capture or historical comparison differs')
+        for ref in REFS:
+            for mode in ('native','fp32'):
+                values = r['metrics'][ref][mode]
+                if (set(values) != set(METRICS) or not all(np.isfinite(v) for v in values.values())
+                        or min(values[k] for k in METRICS[:2]) <= 0 or not 0 <= values[METRICS[2]] <= 1):
+                    raise ValueError('Invalid measured distances or normal consistency')
+
+
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('action',choices=('evaluate','verify'))
@@ -107,6 +127,7 @@ if __name__=='__main__':
         dump(target,dict(capture_sha256=sha(obs_path),rows=rows,results=summarize(rows),cloud_usd=0))
     else:
         data=read(target)
+        verify_capture(data['rows'],read(obs_path)['rows'])
         if data['capture_sha256']!=sha(obs_path) or data['results']!=summarize(data['rows']):
             raise ValueError('Local frozen sensitivity differs from the measured rows')
         print('Verified both arithmetic modes on nine image batches and both references.')

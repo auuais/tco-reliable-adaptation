@@ -82,3 +82,5 @@ jobs:
           python scripts/release_dense_focal_traces.py verify
           python scripts/dense_focal_headroom.py verify
           python scripts/diagnose_dense_focal_readout.py replay
+      - name: Replay the local frozen-point precision comparison
+        run: python scripts/score_matched_focal_heads.py verify
