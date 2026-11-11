@@ -48,7 +48,16 @@ def joint_rig(e, measured, i, scene, ids, arm, seed):
     return rig
 
 
-def measure():
+def joint_predictions(e, measured, i, scene, ids, factor, metres, pairs, offsets, k):
+    predictions = {}
+    for arm,seed in [('direction',None),('exact',None),*[('joint_'+str(s),s) for s in SEEDS]]:
+        rig = joint_rig(e,measured,i,scene,ids,arm,seed)
+        depths = [factor*depth_from_match(i,j,p,q,ok,k,rig).reshape(392,518) for j,(p,q,ok) in pairs]
+        predictions[arm] = combine(depths,offsets)['any_source'].astype(np.float32)
+    return predictions
+
+
+def measure(predict=joint_predictions):
     records = read(orientation.HEAD_CAPTURE)['records']
     flows = read(orientation.CAPTURE)['records']
     gauges = read(orientation.GAUGES)['batches']
@@ -87,11 +96,7 @@ def measure():
                     pairs.append((j,motion_pair(f['forward'],f['reverse'])))
                 offsets.append(n-frame)
             factor = gauges[key+'_short']['views'][i]['scale_to_original']
-            predictions = {}
-            for arm,seed in [('direction',None),('exact',None),*[('joint_'+str(s),s) for s in SEEDS]]:
-                rig = joint_rig(e,np.stack(cams),i,scene,ids,arm,seed)
-                depths = [factor*depth_from_match(i,j,p,q,ok,k,rig).reshape(392,518) for j,(p,q,ok) in pairs]
-                predictions[arm] = combine(depths,offsets)['any_source'].astype(np.float32)
+            predictions = predict(e,np.stack(cams),i,scene,ids,factor,metres,pairs,offsets,k)
             with np.load(RAW/'reference'/slug/f'{frame:06d}.npz') as f:
                 truth, valid = f['depth'],f['valid']
             scores = {a:pixel_counts(metres*original[i],truth,metres*z.astype(float),valid,.25) for a,z in predictions.items()}
@@ -132,6 +137,9 @@ if __name__=='__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('action',choices=('measure','verify'))
     provenance = {p.name:sha(p) for p in (DESIGN,INDEX,orientation.RESULT,orientation.HEAD_CAPTURE,orientation.CAPTURE,orientation.GAUGES,PRIOR/'source_transplant.json')}
+    # PowerShell appended CRLF only to the last line when the protocol was sealed.
+    protocol = DESIGN.read_text(encoding='utf-8')
+    provenance[DESIGN.name] = hashlib.sha256((protocol[:-1]+'\r\n').encode()).hexdigest() if protocol.endswith('\n') else sha(DESIGN)
     if parser.parse_args().action=='measure':
         if RESULT.exists():
             raise FileExistsError(RESULT)
