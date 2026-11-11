@@ -1,0 +1,5 @@
+# Fusing poses across reference-image orders
+
+Before viewing the depth-ensemble surface scores, freeze a second intervention using the same 15 captures. Estimate the scene rotation mapping each alternate order's world axes into anchor zero by projecting the sum of the five camera-axis cross-products to its nearest proper rotation. Align its camera centers to the mean anchor-zero center using the batch depth scale from the previous protocol. In this shared frame take the arithmetic mean of the five center predictions and the nearest proper rotation to the sum of the five rotations for each view. Keep the same direct-focal intrinsics. Gauge alignment is model-only and uses every camera. Report the RMS center and rotation dispersion in each scene.
+
+Seal two candidate maps, one from the fused poses with original depth, the other from the fused poses with the full median depth. The combined method is primary. Compare to both separate interventions, the fixed rotation variants and all existing surface controls using the unchanged advancement criterion. No extra neural forward or held-out data are needed.
