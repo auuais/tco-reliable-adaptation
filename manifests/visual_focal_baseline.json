@@ -1,0 +1,26 @@
+{
+  "study": "visual_focal_baseline",
+  "parent_sha256": "1375fcb1ea08f3d746febf231212e6734fece961b63b8fd9f8e5a4e1944956c3",
+  "code_sha256": "ff9d119b2c5aa64e25f7dacde5a976d91663121e6b8a0545cabcba71a6fd3dd0",
+  "paper": "https://github.com/kocurvik/robust_self_calibration",
+  "package": "poselib==2.0.5",
+  "linux_cp311_wheel_sha256": "5035f1053cb4ae70aec4b57b56552e17eef9e96dc9ac3940ad83f0875e12f33c",
+  "options": {
+    "max_epipolar_error": 1.5,
+    "max_iterations": 5000,
+    "min_iterations": 1000,
+    "success_prob": 0.999,
+    "seed": 941,
+    "real_focal_check": false
+  },
+  "max_solver_iterations": 50,
+  "weights": [
+    0.0005,
+    1.0,
+    0.0005,
+    1.0
+  ],
+  "design": "Use all retained redetected correspondences. Recenter around each supplied principal point and rescale the two axes to square pixels while preserving area. For each pair estimate F with PoseLib then use its published iterative focal solver, initialized at the supplied focal priors. Convert the positive focal back to the supplied aspect ratio. Use the median across at least two successful neighbors for each camera. A missing estimate leaves that camera unchanged. Preserve supplied principal points and poses. Compare unrestricted continuous focal changes for all five cameras and a separate two-candidate decision on the unique median outlier. Only images, tracks and supplied intrinsics enter either estimate.",
+  "evaluation": "Use the same primary mild-noise and severe-noise groups, hidden changes and uniform controls as the frozen parent. Report field-of-view and full gradients at the same image-conditioned outputs. Report log-focal error across every camera to expose collateral edits. These are additional established-method comparators. The prespecified parent pass criterion is unchanged. A claimed improvement over the published solver needs a direct paired comparison.",
+  "cloud_usd": 0
+}
