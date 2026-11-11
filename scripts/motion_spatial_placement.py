@@ -13,6 +13,23 @@ DESIGN = ROOT/'docs/MOTION_SPATIAL_PLACEMENT.md'
 RESULT = PUBLIC/'motion_spatial_placement.json'
 
 
+def placements(u, groups, weights, scene, frame):
+    active = np.isfinite(u)
+    correction = np.zeros_like(u)
+    for cell,mask in zip(model.CELLS,groups):
+        correction[mask] = weights[cell]*u[mask]
+    shuffle = np.zeros_like(correction)
+    seed = int.from_bytes(hashlib.sha256(f'{scene}/{frame}'.encode()).digest()[:8],'big')
+    shuffle[active] = np.random.default_rng(seed).permutation(correction[active])
+    avg = correction[active].mean() if active.any() else 0.
+    maps = dict(weighted=correction,global_mean=np.full_like(u,correction.mean()),
+                support_mean=np.where(active,avg,0.),permuted=shuffle)
+    np.testing.assert_array_equal(np.sort(shuffle[active]),np.sort(correction[active]))
+    for m in maps.values():
+        np.testing.assert_allclose(m.mean(),correction.mean(),atol=1e-12)
+    return maps
+
+
 def measure():
     results = []
     records = read(model.prior.ESTIMATES)['targets']
@@ -31,19 +48,7 @@ def measure():
                 raise ValueError('Motion input changed')
             with np.load(path) as f:
                 u,groups = model.reliability_cells(original[i],f['frozen_any_source'].astype(float),f['frozen_two_sided'])
-            active = np.isfinite(u)
-            correction = np.zeros_like(u)
-            for cell,mask in zip(model.CELLS,groups):
-                correction[mask] = folds[scene]['weights'][cell]*u[mask]
-            shuffle = np.zeros_like(correction)
-            seed = int.from_bytes(hashlib.sha256(f'{scene}/{frame}'.encode()).digest()[:8],'big')
-            shuffle[active] = np.random.default_rng(seed).permutation(correction[active])
-            avg = correction[active].mean() if active.any() else 0.
-            maps = dict(weighted=correction,global_mean=np.full_like(u,correction.mean()),
-                        support_mean=np.where(active,avg,0.),permuted=shuffle)
-            np.testing.assert_array_equal(np.sort(shuffle[active]),np.sort(correction[active]))
-            for m in maps.values():
-                np.testing.assert_allclose(m.mean(),correction.mean(),atol=1e-12)
+            maps = placements(u,groups,folds[scene]['weights'],scene,frame)
             ref = RAW/'reference'/slug/f'{frame:06d}.npz'
             if sha(ref)!=index[scene][str(frame)]['reference_sha256']:
                 raise ValueError('Reference changed')

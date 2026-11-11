@@ -18,20 +18,29 @@ DESIGN = ROOT/'docs/MOTION_RELIABILITY_SURFACE.md'
 DATA = RAW/'weighted_surface'
 SEAL = PUBLIC/'weighted_surface_predictions.json'
 RESULT = PUBLIC/'weighted_surface_scores.json'
+PLACEMENT_DATA = RAW/'placement_surface'
 RULES = ('quarter','pooled','weighted')
 
 
-def infer():
+def infer(placement=False):
+    from motion_spatial_placement import placements, RESULT as placement_result
+    rules = ('global_mean','support_mean','permuted') if placement else RULES
+    point_dir = PLACEMENT_DATA if placement else DATA
+    if placement:
+        spatial = read(placement_result)
+        risks = {(r['scene'],r['frame']):{a:v/r['base'] for a,v in r['scores'].items()} for r in spatial['targets']}
     study = read(model.RESULT)['results']
     archives = read(model.prior.ESTIMATES)['targets']
     expected = {(r['scene'],r['frame']):r['risk'] for r in study['targets']}
     out = {}
-    (DATA/'points').mkdir(parents=True,exist_ok=True)
+    if placement:
+        expected = risks
+    (point_dir/'points').mkdir(parents=True,exist_ok=True)
     for scene in SCENES:
         key = scene.split('/')[0]+'_base'
         fold = study['folds'][scene]
         _,depth,k,e,_ = inputs(key,read(PARENT/'predictions.json')['rows'],read(PLAN))
-        fields = {rule:[] for rule in RULES}
+        fields = {rule:[] for rule in rules}
         for i,frame in enumerate(FRAMES):
             label = model.prior.tag(scene,'short',frame)
             path = model.prior.MAPS/(label+'.npz')
@@ -39,18 +48,23 @@ def infer():
                 raise ValueError('Motion prediction hash differs')
             with np.load(path) as f:
                 u,masks = model.reliability_cells(depth[i],f['frozen_any_source'].astype(float),f['frozen_two_sided'])
-            for rule in RULES:
+            if placement:
+                maps = placements(u,masks,fold['weights'],scene,frame)
+                for rule in rules:
+                    fields[rule].append(depth[i]*np.exp(maps[rule]))
+                continue
+            for rule in rules:
                 weights = fold['weights'] if rule=='weighted' else dict.fromkeys(model.CELLS,.25 if rule=='quarter' else fold['pooled'])
                 step = np.zeros_like(depth[i])
                 for cell,mask in zip(model.CELLS,masks):
                     step[mask] = weights[cell]*u[mask]
                 fields[rule].append(depth[i]*np.exp(step))
         hashes = {}
-        for rule in RULES:
+        for rule in rules:
             z = np.stack(fields[rule])
             points = point_map(z,k,e,np.ones(5))
             h = tensor_digest(points)
-            write_arrays(DATA/'points'/(h+'.npz'),dict(points=points))
+            write_arrays(point_dir/'points'/(h+'.npz'),dict(points=points))
             hashes[rule] = h
         # Verify depth scores only after all map choices for this scene are fixed.
         scale = read(model.prior.PRIOR/'source_transplant.json')['batches'][key]['scale_to_metres']
@@ -62,10 +76,12 @@ def infer():
                 valid = f['valid']
                 truth = f['depth'][valid]
             base = np.sum(np.log(scale*depth[i][valid]/truth)**2)
-            for rule in RULES:
+            for rule in rules:
                 risk = np.sum(np.log(scale*fields[rule][i][valid]/truth)**2)/base
                 np.testing.assert_allclose(risk,expected[scene,frame][rule],rtol=1e-9)
         out[key] = hashes
+    if placement:
+        return out
     dump(SEAL,dict(weights=sha(model.RESULT),protocol=hashlib.sha256(DESIGN.read_text().encode()).hexdigest(),hashes=out))
 
 
