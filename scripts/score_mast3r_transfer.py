@@ -3,7 +3,6 @@ import argparse
 from concurrent.futures import ProcessPoolExecutor
 from statistics import mean
 
-import cv2
 import numpy as np
 from neighbor_sparse_depth import ROOT, FRAMES, SCENES, REFS, corrections, dump, evaluate_points, point_map, read, sha, tensor_digest, write_arrays
 from supplied_pose_sparse_depth import METHODS, place
@@ -15,6 +14,7 @@ GRIDS={'centered':ROOT/'results/neighbor_sparse_depth/measurements.npz',
 
 
 def resample(depth,k):
+    import cv2
     height,width=depth.shape[1:]
     out_h,out_w=392,518
     resize=np.diag([out_w/width,out_h/height,1.])
@@ -71,7 +71,6 @@ def predict():
 
 def score():
     record=read(PUBLIC/'predictions.json')
-    summary={}
     observations={}
     with ProcessPoolExecutor(3) as pool:
         jobs={}
@@ -82,6 +81,13 @@ def score():
             jobs[key]=pool.submit(evaluate_points,key,hashes,RAW)
         for key,job in jobs.items():
             _,observations[key]=job.result()
+    summary = summarize(record, observations)
+    dump(PUBLIC/'scores.json',dict(seal_sha256=sha(PUBLIC/'predictions.json'),grids=summary))
+    print({g:(v['local_gain'],v['checks']) for g,v in summary.items()},flush=True)
+
+
+def summarize(record, observations):
+    summary = {}
     for grid in GRIDS:
         comparison={}
         for ref in REFS:
@@ -105,8 +111,7 @@ def score():
                     components=all(primary['guarded'][m]<=1.02*primary[best][m] for m in ('accuracy','completeness')),
                     released=second['guarded']['score']<=second[best]['score'])
         summary[grid]=dict(references=comparison,best_control=best,local_gain=gain,scene_gains=gains,checks=checks,advance=all(checks.values()))
-    dump(PUBLIC/'scores.json',dict(seal_sha256=sha(PUBLIC/'predictions.json'),grids=summary))
-    print({g:(v['local_gain'],v['checks']) for g,v in summary.items()},flush=True)
+    return summary
 
 
 if __name__=='__main__':
