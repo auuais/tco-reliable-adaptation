@@ -60,4 +60,12 @@ if __name__=='__main__':
         report = read(RESULT)
         if report['inputs']!=deps or report['results']!=summarize(report['observed']):
             raise ValueError('Spatial surface comparison failed replay')
+        if action=='verify':
+            archive = read(PUBLIC/'placement_surface_archive.json')
+            hashes = {h+'.npz' for arms in seal['hashes'].values() for h in arms.values()}
+            entries = archive['files']
+            if (archive['verified_physical_drives']!=2 or len(entries)!=len(hashes)
+                    or {e['file'] for e in entries}!=hashes or archive['total_bytes']!=sum(e['bytes'] for e in entries)
+                    or any(e['bytes']<=0 or len(e['sha256'])!=64 for e in entries)):
+                raise ValueError('Placement map archive differs')
         print({r:g['overall'] for r,g in report['results'].items()})

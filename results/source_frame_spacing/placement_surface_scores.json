@@ -1,0 +1,181 @@
+{
+  "inputs": [
+    "1d705aa426623e3b1f0a067c0998df7727abb0f610d9b2e166f48f1efe197930",
+    "6ca4c48be8b9e37320e49e0d7c0895bc75845590dde1e021aa75f8639cb10db4",
+    "101640ab3ea766dbe1a3ddeaed38974f8f716e58dfb4fd3f010cd0c549590c61"
+  ],
+  "observed": {
+    "heads_base": {
+      "global_mean": {
+        "registered_rgb": {
+          "accuracy_mean_m": 0.019686523209933894,
+          "completeness_mean_m": 0.019842101947180488,
+          "normal_consistency_mean": 0.7783555968903677
+        },
+        "released": {
+          "accuracy_mean_m": 0.020696803940990948,
+          "completeness_mean_m": 0.021368339729770106,
+          "normal_consistency_mean": 0.7718988658384129
+        }
+      },
+      "support_mean": {
+        "registered_rgb": {
+          "accuracy_mean_m": 0.01975289679050919,
+          "completeness_mean_m": 0.019062573163116086,
+          "normal_consistency_mean": 0.7732114868842306
+        },
+        "released": {
+          "accuracy_mean_m": 0.020608018579984524,
+          "completeness_mean_m": 0.020438737964932292,
+          "normal_consistency_mean": 0.7659673786490916
+        }
+      },
+      "permuted": {
+        "registered_rgb": {
+          "accuracy_mean_m": 0.020729479169851076,
+          "completeness_mean_m": 0.011473318726222531,
+          "normal_consistency_mean": 0.7066160656474484
+        },
+        "released": {
+          "accuracy_mean_m": 0.02129126073605992,
+          "completeness_mean_m": 0.012579186831754534,
+          "normal_consistency_mean": 0.7053856433428833
+        }
+      }
+    },
+    "chess_base": {
+      "global_mean": {
+        "registered_rgb": {
+          "accuracy_mean_m": 0.019723146542103526,
+          "completeness_mean_m": 0.019601126511283446,
+          "normal_consistency_mean": 0.7403908406435773
+        },
+        "released": {
+          "accuracy_mean_m": 0.02056904213368586,
+          "completeness_mean_m": 0.02346386850236111,
+          "normal_consistency_mean": 0.7245180292056687
+        }
+      },
+      "support_mean": {
+        "registered_rgb": {
+          "accuracy_mean_m": 0.019903254359674244,
+          "completeness_mean_m": 0.019375470218959218,
+          "normal_consistency_mean": 0.7362899036670969
+        },
+        "released": {
+          "accuracy_mean_m": 0.020645344273468893,
+          "completeness_mean_m": 0.023113791615756697,
+          "normal_consistency_mean": 0.7210931846937345
+        }
+      },
+      "permuted": {
+        "registered_rgb": {
+          "accuracy_mean_m": 0.021725132766375322,
+          "completeness_mean_m": 0.014065196095055708,
+          "normal_consistency_mean": 0.6665407317836913
+        },
+        "released": {
+          "accuracy_mean_m": 0.022241352106868645,
+          "completeness_mean_m": 0.01775003238315637,
+          "normal_consistency_mean": 0.6538603302583641
+        }
+      }
+    },
+    "fire_base": {
+      "global_mean": {
+        "registered_rgb": {
+          "accuracy_mean_m": 0.011811554735630269,
+          "completeness_mean_m": 0.01095639179839248,
+          "normal_consistency_mean": 0.759032378066176
+        },
+        "released": {
+          "accuracy_mean_m": 0.013717957105290975,
+          "completeness_mean_m": 0.01747966971199432,
+          "normal_consistency_mean": 0.7332318704516199
+        }
+      },
+      "support_mean": {
+        "registered_rgb": {
+          "accuracy_mean_m": 0.012301806337162767,
+          "completeness_mean_m": 0.010731331285616257,
+          "normal_consistency_mean": 0.7462842258840993
+        },
+        "released": {
+          "accuracy_mean_m": 0.013827909438740358,
+          "completeness_mean_m": 0.016589561184194218,
+          "normal_consistency_mean": 0.7272176947626952
+        }
+      },
+      "permuted": {
+        "registered_rgb": {
+          "accuracy_mean_m": 0.01666283743444536,
+          "completeness_mean_m": 0.008519579544554724,
+          "normal_consistency_mean": 0.6591936948479198
+        },
+        "released": {
+          "accuracy_mean_m": 0.01700435230335223,
+          "completeness_mean_m": 0.010954801539258844,
+          "normal_consistency_mean": 0.6476679420845668
+        }
+      }
+    }
+  },
+  "results": {
+    "registered_rgb": {
+      "scenes": {
+        "heads/seq-01": {
+          "global_mean": 0.9760076434649931,
+          "support_mean": 0.9584310479271346,
+          "permuted": 0.7954809776304241,
+          "weighted": 0.9219376068931469
+        },
+        "chess/seq-03": {
+          "global_mean": 0.9834110947142283,
+          "support_mean": 0.9823901623817869,
+          "permuted": 0.8972321217211341,
+          "weighted": 1.0341736668263803
+        },
+        "fire/seq-03": {
+          "global_mean": 1.0238511315023449,
+          "support_mean": 1.0355364292364164,
+          "permuted": 1.1299776814769389,
+          "weighted": 1.2500860590150709
+        }
+      },
+      "overall": {
+        "global_mean": 0.9944232898938554,
+        "support_mean": 0.9921192131817792,
+        "permuted": 0.9408969269428323,
+        "weighted": 1.068732444244866
+      }
+    },
+    "released": {
+      "scenes": {
+        "heads/seq-01": {
+          "global_mean": 0.9808574204605929,
+          "support_mean": 0.9572767163494431,
+          "permuted": 0.7916354397472626,
+          "weighted": 0.9197483836024478
+        },
+        "chess/seq-03": {
+          "global_mean": 1.0076191632068525,
+          "support_mean": 1.0020914906101432,
+          "permuted": 0.9279893557348158,
+          "weighted": 1.0575963466590252
+        },
+        "fire/seq-03": {
+          "global_mean": 1.0069998434017937,
+          "support_mean": 0.9861211002801777,
+          "permuted": 0.9472141879945184,
+          "weighted": 1.0771676351240311
+        }
+      },
+      "overall": {
+        "global_mean": 0.998492142356413,
+        "support_mean": 0.9818297690799214,
+        "permuted": 0.8889463278255323,
+        "weighted": 1.0181707884618347
+      }
+    }
+  }
+}
