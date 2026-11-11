@@ -68,3 +68,5 @@ jobs:
         run: |
           python scripts/verify_visual_focal_baseline.py --rerun-solver
           python scripts/focal_prevalence_sensitivity.py
+      - name: Replay the relative focal redesign
+        run: python scripts/relative_focal_confirmation.py
