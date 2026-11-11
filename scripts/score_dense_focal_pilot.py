@@ -1,6 +1,8 @@
 """Score sealed GPU point maps on both crop-correct depth references, on CPU."""
 import argparse
+from concurrent.futures import ProcessPoolExecutor
 import hashlib
+import multiprocessing
 from statistics import mean
 
 import numpy as np
@@ -170,16 +172,32 @@ def publish():
     dump(path,dict(seal_sha256=sha(sealpath),rows=rows,results=summarize(rows)))
 
 
+def score_group(indices):
+    for i in indices:
+        evaluate(i)
+
+
 if __name__=="__main__":
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument("action",choices=("seal","evaluate","publish","verify"))
     p.add_argument("--job",type=int,choices=range(72))
+    p.add_argument("--workers",type=int,choices=range(1,5),default=1)
     args=p.parse_args()
     if args.action=="seal":
         seal()
     elif args.action=="evaluate":
-        for i in ([args.job] if args.job is not None else range(72)):
-            evaluate(i)
+        grid=jobs()
+        selected=range(len(grid)) if args.job is None else [args.job]
+        # Each image owns its own cache. No two processes ever write the same cache key.
+        groups={}
+        for i in selected:
+            groups.setdefault(grid[i]["input_key"],[]).append(i)
+        if args.workers==1:
+            for group in groups.values():
+                score_group(group)
+        else:
+            with ProcessPoolExecutor(max_workers=args.workers,mp_context=multiprocessing.get_context("spawn")) as pool:
+                list(pool.map(score_group,groups.values()))
     elif args.action=="publish":
         publish()
     else:

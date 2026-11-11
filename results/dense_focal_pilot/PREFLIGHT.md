@@ -4,6 +4,8 @@ The local preparation produced nine distinct 518 × 392 five-view image batches,
 
 An independent projection calculation checked all 15,317,624 valid reference points against the cropped RGB pixel coordinates. The largest reprojection discrepancy was 0.000080 pixel. Corresponding registered and released points retained the same axial depth within 0.00000024 metre. [Per-batch checks](input_geometry_checks.json)
 
+As an end-to-end check of the scoring path, we submitted the Heads reference point cloud itself as the prediction. The actual similarity alignment, ICP, nearest-neighbor distances and normal evaluation ran on 811,621 points per reference. Mean accuracy and completeness errors were 0.34 micrometre on registered RGB and 0.24 micrometre on the released geometry. Normal consistency exceeded 0.99999 for both. [Identity metrics](metric_identity.json)
+
 One original full-size TCO forward pass on CPU exercised the focal selection before adapter optimization. On the Heads base input with a spurious longer focal, the relative rule selected the neighbor median. The unadapted world-point tensor captured for scoring matched upstream's returned tensor bit for bit across 1,015,280 points. The original caller's camera matrices remained intact. The actual model output differed from the separately computed FP32 calibration-head result by at most 0.00022 pixel in focal length. This check used zero optimizer updates. [Actual forward-pass record](cpu_initial_readout.json)
 
 ### Replay
@@ -13,6 +15,7 @@ Use the pinned TCO checkout, checkpoint, registered 7-Scenes development data an
 ```sh
 python scripts/prepare_dense_focal_pilot.py --assets /data
 python scripts/check_dense_focal_inputs.py --assets /data
+python scripts/check_dense_metric_identity.py
 python scripts/check_dense_focal_cpu.py --checkpoint /data/checkpoints/VGGT-1B --output /tmp/focal-cpu-check.json
 ```
 
