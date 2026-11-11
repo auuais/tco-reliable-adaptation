@@ -1,0 +1,56 @@
+{
+  "study": "masked_camera_gradients",
+  "sources": {
+    "scripts/audit_masked_camera_gradients.py": "ec3808ca56f1ef88e21dec7810d5b8207576204557c60b3ec670bd3d6eb9ba89",
+    "scripts/pack_camera_gradient_inputs.py": "07f2c25d4b52c2a3713fbc09a99f7d7001854e2a800c34924275fdb59da149c3",
+    "scripts/masked_camera_supervision.py": "2e6c68c6d64a8708881963416ac76c37b1974d84a72fa7aed657969a6dc87777",
+    "scripts/localize_camera_prior_faults.py": "7ad0288dd5a1801e584ae50fd51198bfa9a5c15483b20ddf0f00bcdbc135b583",
+    "scripts/screen_single_camera_repair.py": "40fb6054887ea76c9dae43b247e0a0ae70faf41fd1d465e7a3e624c2b866874b",
+    "scripts/repair_one_camera.py": "b773439033343c9672252a43b2ba7fb29a5c17c77158d4973bf218c471f86c3d",
+    "results/masked_camera_gradients/inputs.json": "aa99fae9e92228df17d5e6f87758987eb908298e3b9f0c5e626d78be14c35c81",
+    "results/masked_camera_gradients/rgb_matches.zip": "568ddfb6e82a5ecaa931be7a2845d36a4fbca07c7fe29c6c864246e23d258520",
+    "results/single_camera_fault_localization/summary.json": "56ffbf15357556a3cc24a921b3640e8c682a2024ec74fbcb1c5c556f2a6e18c5",
+    "manifests/sensor_frame_v14.json": "ea2ee65dca80dff8c942f5482efa23baa4dab5c0b18272ac20f011f3450c7100",
+    "configs/7scenes_baseline.yaml": "da2393f4f571e3a5e361fe2cc84bb1a948371192801edd4891ee6c265dc68c39",
+    "third_party/TCO/constraints.py": "b80bb6b368ff8f2c35f4215a6ce73865dad3b38ab2aa8e8c13845160340b0506",
+    "third_party/TCO/tco_loss.py": "4703ce16776743fd569dac5a17fe8918aa0347b04ebeb95ee1bb29a7c4c88f78",
+    "third_party/TCO/utils/geometry.py": "66101567220e29ac31b3d20811b02c60b22178f42f41c6117611b37fc1d34471"
+  },
+  "seeds": [
+    211,
+    367,
+    859
+  ],
+  "frames": [
+    0,
+    200,
+    400,
+    600,
+    800
+  ],
+  "methods": [
+    "unchanged",
+    "omit_on_alert",
+    "global_dropout_on_alert",
+    "random_omission_on_alert",
+    "always_omit_highest",
+    "oracle_omission"
+  ],
+  "channels": [
+    "whole",
+    "translation",
+    "quaternion",
+    "field_of_view"
+  ],
+  "faults": [
+    "rotation",
+    "translation",
+    "focal",
+    "mixed"
+  ],
+  "cloud_usd": 0,
+  "design": "Three captured VGGT initial camera encodings. Use the upstream decoder and TCO camera supervision on CPU in FP32, pose weight 1, translation weight 2, intrinsics weight .01, angle rotation, normed L1 translations. Measure derivatives with respect to all 45 encoding entries. Use clean calibrated supplied cameras as the offline gradient reference. Exclude visual/depth losses, backbone Jacobians and optimizer state. No inference-time access to clean gradients.",
+  "faults_design": "Each of five cameras separately receives 3 degrees of rotation, 6% of window-diameter center displacement, a 1.12 focal factor or its inverse, or their joint perturbation. Three fresh deterministic seeds per location/profile. Include three clean inputs. Use all matched observations for ranking. For each target scene use the largest clean calibrated detector score on six offset-50/100/150 windows from the other two scenes. Unchanged input is used on a tie or when no alert occurs.",
+  "analysis": "Primary error is the Euclidean norm of a method gradient minus the clean unmasked gradient, divided by the clean whole-encoding gradient norm. Report contributions of translations, quaternions and FoV using that same denominator. Random omission is the exact average of the five possible exclusion errors on the same alert, not the error of their averaged gradient. Known-index omission is privileged. Treat repeated faults as synthetic interventions within three development scenes.",
+  "gate": "Require at least 20% lower mean corrupted error for alert-based omission vs unchanged, lower than same-alert global dropout and random omission, no scene worse than unchanged, no fault profile more than 5% worse, and maximum clean distortion <=0.05. This would justify a local dense pilot only. A failed primary comparison cannot release later allocations."
+}
