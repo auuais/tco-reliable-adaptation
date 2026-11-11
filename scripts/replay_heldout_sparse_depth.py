@@ -21,7 +21,6 @@ def replay(export=False, require_scores=True):
     if export:
         public_heads.mkdir(exist_ok=True)
     samples3d={}
-    calibration=np.asarray(read(ROOT/'manifests/sensor_frame_v14.json')['calibration'])
     poses_path=PUBLIC/'supplied_poses.npz'
     with np.load(PUBLIC/'measurements.npz') as packet:
         for scene,entry in index['sequences'].items():
