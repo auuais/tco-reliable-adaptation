@@ -39,7 +39,7 @@ def fit(gram, fixed_scale=None, fixed_rotation=None):
     return scale, rot, np.vstack((scale*rot, -np.eye(3), offset))
 
 
-def collect():
+def collect(additional=None):
     measured = {}
     for scene in SCENES:
         key = scene.split("/")[0]+"_base"
@@ -55,6 +55,8 @@ def collect():
         paths = {"direct": (temporal.OLD_POINTS, read(temporal.SEAL)["batches"][key+"_short"]["baseline_sha256"]),
                  "weighted": (surface.DATA, read(surface.SEAL)["hashes"][key]["weighted"]),
                  "diffused": (diffusion.DATA, read(diffusion.SEAL)["hashes"][key])}
+        if additional is not None:
+            paths = additional(key)
         measured[scene] = {}
         for arm, source in paths.items():
             cloud = temporal.load_points(*source)
