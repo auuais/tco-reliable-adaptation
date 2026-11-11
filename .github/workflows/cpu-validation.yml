@@ -175,7 +175,7 @@ jobs:
       - run: python scripts/replay_mast3r_transfer.py
       - run: python scripts/replay_heldout_sparse_depth.py
       - run: python scripts/verify_tum_sparse_inputs.py
-      - run: python scripts/replay_tum_sparse_depth.py --predictions-only
+      - run: python scripts/replay_tum_sparse_depth.py
       - run: python scripts/replay_local_affine_sparse_depth.py
       - run: python scripts/replay_scale_shift_sparse_depth.py
       - name: Refit all 12 joint RGB reprojection models from public inputs
