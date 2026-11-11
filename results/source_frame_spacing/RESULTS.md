@@ -94,3 +94,17 @@ We replaced the measured optical flow with dataset-derived exact correspondences
 | Measured | Exact | 52.07% | +14.27% | +81.83% | +32.86% |
 
 All 15 targets contributed to the all-valid comparison. The two-sided four-arm intersection comprised 167,933 of 2,571,812 valid pixels and was empty on five targets. On the ten contributing targets, replacing DIS with exact matches under frozen geometry worsened the mean relative error reduction by 25.00 percentage points. Under exact matches, replacing the frozen rig with the measured rig improved it by 252.67 points. These percentages average per-target ratios on a selected subset. Values below −100% mean the updated error more than doubled on that metric. With frozen geometry, exact matches still increased error by 2.92% across all pixels. Improving a matcher alone leaves a camera-geometry and depth-scale problem in this particular triangulation pipeline. [Design and shared visibility rule](../../docs/MOTION_SOURCE_SUBSTITUTION.md) · [Per-target counts, exact-depth check and four-arm comparison](motion_substitution.json)
+
+### Which camera error matters for triangulation?
+
+Holding target depths and image matches at their measured values, we crossed five camera components in all 32 combinations. The frozen rig generated a mean squared reprojection error of 14.895 pixels² at true depth (3.86 pixels RMS). Its mean squared first-order log-depth displacement along the ideal projection derivative was 0.03880. The measured rig recovered the ideal projections. Each attribution is the average gain from substituting a measured component across all 120 substitution orders. The single-substitution columns measure what happens when only that component changes in the frozen rig.
+
+| Component supplied from measured rig | Share of pixel error | Share of depth-sensitive error | Pixel error reduction when replaced alone | Depth-sensitive error reduction when replaced alone |
+|---|---:|---:|---:|---:|
+| Both cameras' intrinsics | −0.03% | −0.03% | −0.06% | −0.06% |
+| Relative rotation | 86.50% | 80.98% | 5.33% | 60.00% |
+| Translation direction | −12.18% | −7.92% | −84.82% | −40.45% |
+| One translation scale for the bundle | 10.59% | −0.04% | −6.00% | −14.03% |
+| Relative lengths of the four baselines | 15.12% | 27.01% | 13.04% | 20.49% |
+
+Relative rotation had the largest contribution on Heads, Chess and Fire under both metrics. The primary estimate weighted each of the 60 edges equally within its target. Of 191,100 sampled target/source pixels, 97,865 met all conditions. One edge retained only two pixels. Pooling pixels within targets gave rotation shares of 76.63% and 84.66% on the two metrics. Removing the edge with fewer than 25 pixels gave 76.61% and 84.67%. Component interactions explain why a share can be negative or exceed 100% in one scene. The derivative metric measures sensitivity at true depth and differs from reconstruction accuracy. An orientation aid deserves a direct reconstruction test with realistic errors before any claim about IMU performance. [Registered component definitions](../../docs/NEARBY_RIG_COMPONENTS.md) · [Per-edge errors, derivatives, masks and attributions](rig_components.json)
