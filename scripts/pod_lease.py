@@ -35,8 +35,11 @@ def scoped_key(pod, env, provider_env=Path("/proc/1/environ")):
 def pod_request(pod, key, stop=False):
     if not re.fullmatch(r"[a-zA-Z0-9]{4,64}", pod) or pod != os.environ.get("RUNPOD_POD_ID"):
         raise ValueError("Expected the ID of this Pod")
-    url = "https://rest.runpod.io/v1/pods/" + pod + ("/stop" if stop else "")
-    req = Request(url, headers={"Authorization": "Bearer " + key}, method="POST" if stop else "GET")
+    # Runpod's current CLI uses the v2 Pod resource and the explicit stop action.
+    url = "https://api.runpod.io/v2/pods/" + pod + ("/action" if stop else "")
+    headers = {"Authorization": "Bearer " + key, "Content-Type": "application/json",
+               "Accept": "application/json", "User-Agent": "tco-research-pod-lease/1.0"}
+    req = Request(url, data=b'{"action":"stop"}' if stop else None, headers=headers, method="POST" if stop else "GET")
     with build_opener(NoRedirect()).open(req, timeout=12) as response:
         if stop:
             return response.status

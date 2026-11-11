@@ -40,7 +40,8 @@ class LeaseTests(unittest.TestCase):
             self.assertEqual(pod_request("example1", "example-key", stop=True), 200)
             requested = opener.return_value.open.call_args.args[0]
             self.assertEqual(requested.method, "POST")
-            self.assertEqual(requested.full_url, "https://rest.runpod.io/v1/pods/example1/stop")
+            self.assertEqual(requested.full_url, "https://api.runpod.io/v2/pods/example1/action")
+            self.assertEqual(requested.data,b'{"action":"stop"}')
 
     def test_weekly_window_can_be_primary_or_secondary(self):
         week = {"windowDurationMins": 10080, "usedPercent": 95, "resetsAt": int(time.time()) + 300}
