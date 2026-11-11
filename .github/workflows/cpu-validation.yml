@@ -169,3 +169,7 @@ jobs:
           python scripts/joint_reprojection_paired.py verify
           python scripts/joint_rgb_reprojection.py verify
           python scripts/profile_camera_depth.py verify
+      - name: Refit all 12 joint RGB reprojection models from public inputs
+        env:
+          OPENBLAS_NUM_THREADS: '1'
+        run: python scripts/replay_joint_reprojection_fit.py

@@ -5,7 +5,7 @@ import zipfile
 from concurrent.futures import ProcessPoolExecutor
 
 import numpy as np
-from scipy.optimize import least_squares
+from reprojection_fit import fit
 from scipy.spatial.transform import Rotation
 
 import camera_mesh_range_limit as previous
@@ -20,7 +20,6 @@ SEAL=PUBLIC/"joint_reprojection_predictions.json"
 RESULT=PUBLIC/"joint_reprojection_scores.json"
 DESIGN=ROOT/"docs/JOINT_RGB_REPROJECTION.md"
 ARMS=("pose","depth","joint","joint_prior")
-UNIT=np.array([np.deg2rad(1.)]*3+[.01]*3+[.02]*2)
 
 
 def sample_fold(pairs,z,k,scale):
@@ -34,61 +33,6 @@ def sample_fold(pairs,z,k,scale):
     return tuple(np.concatenate(col) for col in zip(*fields))
 
 
-def robust(r):
-    # Signed square root of twice the soft-L1 cost, with scale measured in pixels.
-    return r*np.sqrt(2/(np.sqrt(1+(r/3)**2)+1))
-
-
-def project(params,fold,rot,centers,k):
-    a,b,rays,observed=fold
-    basis=np.clip(1/rays[:,2]-1,-1,1)
-    corrected=rays*np.exp(params[a,6]+params[a,7]*basis)[:,None]
-    r=rot@Rotation.from_rotvec(params[:,:3]).as_matrix().transpose(0,2,1)
-    c=centers+params[:,3:6]
-    world=np.einsum("ni,nij->nj",corrected,r[a])+c[a]
-    cam=np.einsum("nij,nj->ni",r[b],world-c[b])
-    xy=cam[:,:2]/np.maximum(cam[:,2,None],1e-4)
-    pixels=xy*np.stack((k[b,0,0],k[b,1,1]),axis=1)+k[b,:2,2]
-    return pixels-observed
-
-
-def fit(arm,folds,rot,c,k,prior_params):
-    mask=np.ones((len(c),8),bool)
-    mask[0,:7]=False
-    if arm=="depth": mask[:,:6]=False
-    if arm=="pose": mask[:,6:]=False
-    zero=np.zeros_like(mask,dtype=float)
-    train,test=folds
-    if train is None or test is None:
-        return zero,dict(accepted=False,reason="missing_fold")
-    a,b,*_=train
-    visited={0}
-    for _ in range(len(c)-1):
-        visited.update(b[np.isin(a,list(visited))].tolist())
-    if len(visited)!=len(c): return zero,dict(accepted=False,reason="disconnected")
-    def unpack(v):
-        out=zero.copy()
-        out[mask]=v
-        return out*UNIT
-    def cost(p,fold):
-        return float(np.mean(robust(project(p,fold,rot,c,k))**2))
-    def residual(v):
-        p=unpack(v)
-        image=robust(project(p,train,rot,c,k)).ravel()
-        parts=[image/np.sqrt(image.size),v/np.sqrt(v.size)]
-        if arm=="joint_prior":
-            err=((p[1:,:6]-prior_params[1:,:6])/UNIT[:6]).ravel()
-            parts.append(err/np.sqrt(err.size))
-        return np.concatenate(parts)
-    solution=least_squares(residual,np.zeros(mask.sum()),bounds=(-2.,2.),max_nfev=150)
-    if not solution.success: raise RuntimeError(solution.message)
-    proposed=unpack(solution.x)
-    before,after=cost(zero,test),cost(proposed,test)
-    accepted=after<=.99*before and before>0
-    return proposed if accepted else zero,dict(accepted=accepted,train_before=cost(zero,train),train_after=cost(proposed,train),
-            validation_before=before,validation_after=after,proposed=proposed.tolist(),evals=solution.nfev)
-
-
 def apply_update(base,c,z,scale,p):
     basis=np.clip(scale/z-1,-1,1)
     factor=np.exp(p[:,6,None,None]+p[:,7,None,None]*basis)
@@ -98,11 +42,9 @@ def apply_update(base,c,z,scale,p):
     return points
 
 
-def infer():
-    rows={}
+def input_batches():
     plan=read(rgb.tracks.PLAN)
     observations={(r["camera"]["scene"],r["camera"]["batch"]):r["tracks"] for r in read(rgb.tracks.TRACKS/"observations.json")}
-    (DATA/"points").mkdir(parents=True,exist_ok=True)
     with zipfile.ZipFile(rgb.tracks.TRACKS/"redetected_tracks.zip") as archive:
         for scene in SCENES:
             slug=scene.split("/")[0]
@@ -129,16 +71,23 @@ def infer():
             meta=observations[scene,info["batch"]]
             if meta["rgb_sha256"]!=info["rgb_sha256"]: raise ValueError("Wrong matched views")
             folds=[sample_fold(p,z,k,scale) for p in rgb.tracks.load_folds(archive,meta)]
-            arms={}
-            for arm in ARMS:
-                p,stats=fit(arm,folds,rot,c/scale,k,target)
-                points=apply_update(base,c,z,scale,p)
-                h=fusion.prior.tensor_digest(points)
-                if not stats["accepted"] and h!=source["hashes"]["joint"]: raise ValueError("Rejected update changed map")
-                fusion.prior.write_arrays(DATA/"points"/(h+".npz"),dict(points=points))
-                arms[arm]=dict(hash=h,**stats)
-            rows[key]=dict(matches=meta["matches_sha256"],fold_counts=[len(f[0]) if f else 0 for f in folds],arms=arms)
-            print(key,{a:v["accepted"] for a,v in arms.items()},flush=True)
+            yield key,source,base,z,scale,rot,c,k,target,meta,folds
+
+
+def infer():
+    rows={}
+    (DATA/"points").mkdir(parents=True,exist_ok=True)
+    for key,source,base,z,scale,rot,c,k,target,meta,folds in input_batches():
+        arms={}
+        for arm in ARMS:
+            p,stats=fit(arm,folds,rot,c/scale,k,target)
+            points=apply_update(base,c,z,scale,p)
+            h=fusion.prior.tensor_digest(points)
+            if not stats["accepted"] and h!=source["hashes"]["joint"]: raise ValueError("Rejected update changed map")
+            fusion.prior.write_arrays(DATA/"points"/(h+".npz"),dict(points=points))
+            arms[arm]=dict(hash=h,**stats)
+        rows[key]=dict(matches=meta["matches_sha256"],fold_counts=[len(f[0]) if f else 0 for f in folds],arms=arms)
+        print(key,{a:v["accepted"] for a,v in arms.items()},flush=True)
     return rows
 
 
