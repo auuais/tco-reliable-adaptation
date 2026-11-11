@@ -28,7 +28,9 @@ def predict():
         for sequence in SEQUENCES:
             path=RAW/(sequence+'.npz')
             capture=PUBLIC/'captures'/(sequence+'.json')
-            assert sha(path)==read(capture)['archive_sha256']
+            metadata=read(capture)
+            assert sha(path)==metadata['archive_sha256']
+            assert metadata['rgb_tensor_sha256']==inputs['sequences'][sequence]['rgb_tensor_sha256']
             captures[sequence]=sha(capture)
             with np.load(path) as z:
                 depth=z['depth'][...,0].astype(float)
@@ -66,7 +68,13 @@ def evaluate_sequence(sequence):
     from run_repeat_calibration import evaluate
     torch.set_num_threads(2)
     seal=read(PUBLIC/'predictions.json')
+    assert seal['inputs_sha256']==sha(PUBLIC/'inputs.json')
+    capture=PUBLIC/'captures'/(sequence+'.json')
+    assert seal['captures'][sequence]==sha(capture)
+    assert read(capture)['archive_sha256']==sha(RAW/(sequence+'.npz'))
+    assert read(PUBLIC/'inputs.json')['packet_sha256']==sha(PUBLIC/'measurements.npz')
     reference=read(PUBLIC/'references.json')
+    assert reference['evaluation_selection_sha256']==sha(PUBLIC/'evaluation_selection.json')
     assert reference['prediction_seal_sha256']==sha(PUBLIC/'predictions.json')
     ref=reference['sequences'][sequence]
     ref_path=RAW/'references'/ref['file']
@@ -146,6 +154,9 @@ def summarize(seal,observations):
                                    metric_depth=observations[scene][h]['metric_depth'][grid][arm])
             sequences[scene]=cell
         overall={a:{m:mean(v[a][m] for v in sequences.values()) for m in ('score','accuracy','completeness')} for a in cell}
+        for arm in overall:
+            keys=sequences[SEQUENCES[0]][arm]['metric_depth']
+            overall[arm]['metric_depth']={m:mean(v[arm]['metric_depth'][m] for v in sequences.values()) for m in keys}
         best=min((a for a in overall if a!=candidate),key=lambda a:overall[a]['score'])
         gain=1-overall[candidate]['score']/overall[best]['score']
         per_sequence={s:1-v[candidate]['score']/v[best]['score'] for s,v in sequences.items()}
