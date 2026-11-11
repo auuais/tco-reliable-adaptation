@@ -1,0 +1,5 @@
+# Does the direction of the camera correction matter?
+
+For the original perturbation and each of the three new draws, reverse the half-weight move from the no-prior model. Retain the exact size of each rotation angle and camera-center displacement, while taking the opposite tangent direction on SO(3) and the opposite translation in the shared model frame. Apply the same local tangent-plane depth rule and validity criteria. No reference labels enter the control. Using the positive gains in the same function must reproduce both archived original-direction point maps before scoring the opposite direction.
+
+Compare correct and opposite directions on each scene, seed and canonical reference, including the raw directional distances and surface normals. Also report paired axial and camera-frame normal errors on the same targets. The reversal is a diagnostic of directional specificity, not a new candidate selected from outcomes. A directional advantage over the reversed control would still require beating the original baselines to justify transfer. Scenes and images are shared across seeds.
