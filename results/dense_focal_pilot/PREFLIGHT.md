@@ -19,6 +19,7 @@ python scripts/check_dense_focal_cpu.py --checkpoint /data/checkpoints/VGGT-1B -
 After a qualifying offset-25 replication, freeze the execution manifest. A GPU job consumes only the `inference` directory and the model checkpoint. Transfer its terminal evidence back for CPU evaluation on the retained references. The local smoke check spent $0 on RunPod.
 
 ```sh
+python scripts/dense_focal_support.py --write
 python scripts/run_dense_focal_pilot.py freeze
 python scripts/run_dense_focal_pilot.py dry-run --inputs /inputs --checkpoint /data/checkpoints/VGGT-1B
 python scripts/run_dense_focal_pilot.py run --inputs /inputs --checkpoint /data/checkpoints/VGGT-1B

@@ -30,6 +30,9 @@ def plan():
     method = parent["results"]["dense_pilot_method"]
     if method not in ("relative","relative_with_folds"):
         raise ValueError("New-window replication did not advance a dense candidate")
+    measured=read(ROOT/"results/dense_focal_pilot/geometric_support.json")
+    if measured["replication_sha256"]!=sha(REPLICATION/"summary.json"):
+        raise ValueError("Evidence for staged camera support changed")
     cases = {}
     for job in inputs["jobs"]:
         scene,kind,v,d = (job[k] for k in ("scene","case","view","direction"))
@@ -40,11 +43,17 @@ def plan():
                 == (scene,kind,v,d,"mild",137)]
         if row["rgb_sha256"] != inputs["inputs"][job["input_key"]]["rgb_sha256"]:
             raise ValueError("Dense RGB hash differs from the replication")
-        cases[key] = dict(cpu_model_edit=row["edited"][method], two_folds=bool(row["edited"]["both_folds"]))
+        support=measured["cases"][key]
+        if (support["supplied_prior_sha256"]!=inputs["priors"][job["prior_key"]]["sha256"]
+                or support["rgb_sha256"]!=row["rgb_sha256"]):
+            raise ValueError("Staged support identity differs")
+        cases[key] = dict(cpu_model_edit=row["edited"][method], two_folds=support["two_folds"],
+                          matcher_seconds=support["matcher_seconds"],fold_scoring_seconds=support["fold_scoring_seconds"])
     files = [DESIGN,INPUT_PLAN,ROOT/"scripts/run_dense_focal_pilot.py",ROOT/"scripts/tco_focal_policy.py",
              ROOT/"scripts/relative_focal_confirmation.py",ROOT/"scripts/prepare_dense_focal_pilot.py",
              ROOT/"scripts/prior_ablation_config.py",ROOT/"scripts/repeatability_capture.py",
-             ROOT/"scripts/score_dense_focal_pilot.py",ROOT/"configs/7scenes_baseline.yaml",
+             ROOT/"scripts/score_dense_focal_pilot.py",ROOT/"scripts/dense_focal_support.py",
+             ROOT/"results/dense_focal_pilot/geometric_support.json",ROOT/"configs/7scenes_baseline.yaml",
              ROOT/"patches/0001-bfloat16-numpy-export.patch"]
     return dict(method=method,cases=cases,steps=40,lr=.0003,model_sha256=MODEL_SHA,upstream_revision=UPSTREAM_REV,
                 jobs=inputs["jobs"],sources={p.relative_to(ROOT).as_posix():sha(p) for p in files},
@@ -148,6 +157,8 @@ def worker(args, spec, job, folder):
         dump(folder/"run.json",record)
     case=spec["cases"][job["prior_key"]+"_"+job["case"]]
     support=case["two_folds"] if spec["method"]=="relative_with_folds" else None
+    record["additional_precomputed_matching_seconds"]=(case["matcher_seconds"]+case["fold_scoring_seconds"]
+        if support is not None and job["arm"]=="adaptive" else 0.)
     torch.cuda.reset_peak_memory_stats()
     capture.rng("before_inference")
     start=time.perf_counter()
@@ -172,11 +183,11 @@ def worker(args, spec, job, folder):
 
 
 def check_source():
-    args=["git","-c","core.fileMode=false","-C",str(UPSTREAM)]
+    args=["git","-c","core.fileMode=false","-c","core.autocrlf=input","-c","core.safecrlf=false","-C",str(UPSTREAM)]
     if subprocess.check_output(args+["rev-parse","HEAD"],text=True).strip()!=UPSTREAM_REV:
         raise ValueError("Wrong upstream TCO revision")
-    changes=subprocess.check_output(args+["diff","--ignore-cr-at-eol","--name-only","HEAD"],text=True).splitlines()
-    if changes!=["utils/interfaces.py"]:
+    changes=subprocess.check_output(args+["diff","--numstat","--ignore-cr-at-eol","HEAD"],text=True).splitlines()
+    if [line.split("\t",2)[-1] for line in changes]!=["utils/interfaces.py"]:
         raise ValueError("Unexpected modifications to TCO")
     subprocess.run(args+["apply","--reverse","--check",str(ROOT/"patches/0001-bfloat16-numpy-export.patch")],check=True)
 
