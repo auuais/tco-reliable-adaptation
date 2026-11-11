@@ -1,0 +1,3726 @@
+{
+  "provenance": {
+    "MOTION_SOURCE_SUBSTITUTION.md": "77e3fd24855baa83089af3eb1c8277ad3aa6986c4851da6487b7f924819fa3df",
+    "inputs.json": "1b154f1640b7eb5f514c8346fa28a921284e30692574ce97e24d41e09b5ffa2e",
+    "nearby_rgb_flows.json": "6e70322337ca3a4bb508e267c6d61d76299ddae06fc3447b1e425efa47568f30",
+    "temporal_predictions.json": "5734199321f957c4d535a7dedc42f51897f1398617aef8648d888d4b4a3988d5",
+    "frozen_heads.json": "f84f06f979e3a03a8df02c360c6e6e19b12fcbbbe4aef1d6a05de7583d03b72f",
+    "source_transplant.json": "29f8c500d6f045d1451f20c2e040d820e0099ef58ee7b9022168925486f8ae79"
+  },
+  "targets": [
+    {
+      "scene": "heads/seq-01",
+      "frame": 25,
+      "source_support": [
+        {
+          "source": 13,
+          "visible": 135697,
+          "cycle": 80997,
+          "shared": 71836
+        },
+        {
+          "source": 21,
+          "visible": 132339,
+          "cycle": 108418,
+          "shared": 91472
+        },
+        {
+          "source": 29,
+          "visible": 126319,
+          "cycle": 109812,
+          "shared": 95235
+        },
+        {
+          "source": 37,
+          "visible": 97805,
+          "cycle": 76107,
+          "shared": 62183
+        }
+      ],
+      "rules": {
+        "any_source": {
+          "cells": {
+            "frozen_observed": {
+              "all": {
+                "n": 153715,
+                "eligible": 90161,
+                "changed": 90161,
+                "improved": 21568,
+                "close": 42242,
+                "initial_sse": 995.7040733620685,
+                "final_sse": 1138.8498508108858,
+                "final_abs": 8367.408172935504
+              },
+              "common": {
+                "n": 82625,
+                "eligible": 82625,
+                "changed": 82625,
+                "improved": 20149,
+                "close": 18384,
+                "initial_sse": 377.58846337917714,
+                "final_sse": 509.0134298589782,
+                "final_abs": 4415.962324191231
+              }
+            },
+            "frozen_exact": {
+              "all": {
+                "n": 153715,
+                "eligible": 114893,
+                "changed": 114893,
+                "improved": 35548,
+                "close": 32468,
+                "initial_sse": 995.7040733620685,
+                "final_sse": 796.6241985056505,
+                "final_abs": 6886.850024911292
+              },
+              "common": {
+                "n": 82625,
+                "eligible": 82625,
+                "changed": 82625,
+                "improved": 22284,
+                "close": 10814,
+                "initial_sse": 377.58846337917714,
+                "final_sse": 239.9875429232978,
+                "final_abs": 3192.88342512384
+              }
+            },
+            "measured_observed": {
+              "all": {
+                "n": 153715,
+                "eligible": 94527,
+                "changed": 94527,
+                "improved": 35309,
+                "close": 58713,
+                "initial_sse": 995.7040733620685,
+                "final_sse": 1146.5430541392718,
+                "final_abs": 7847.771531020033
+              },
+              "common": {
+                "n": 82625,
+                "eligible": 82625,
+                "changed": 82625,
+                "improved": 31458,
+                "close": 33347,
+                "initial_sse": 377.58846337917714,
+                "final_sse": 502.04283119585966,
+                "final_abs": 3901.3685942543493
+              }
+            },
+            "measured_exact": {
+              "all": {
+                "n": 153715,
+                "eligible": 119425,
+                "changed": 119425,
+                "improved": 119425,
+                "close": 123753,
+                "initial_sse": 995.7040733620685,
+                "final_sse": 612.8804517826258,
+                "final_abs": 3297.351778340689
+              },
+              "common": {
+                "n": 82625,
+                "eligible": 82625,
+                "changed": 82625,
+                "improved": 82625,
+                "close": 76241,
+                "initial_sse": 377.58846337917714,
+                "final_sse": 154.85121650815876,
+                "final_abs": 811.6897280430228
+              }
+            }
+          },
+          "max_oracle_relative_error": 6.417089082333405e-14
+        },
+        "two_sided": {
+          "cells": {
+            "frozen_observed": {
+              "all": {
+                "n": 153715,
+                "eligible": 32832,
+                "changed": 32832,
+                "improved": 6123,
+                "close": 54919,
+                "initial_sse": 995.7040733620685,
+                "final_sse": 1020.224707865189,
+                "final_abs": 7089.3632835145145
+              },
+              "common": {
+                "n": 23656,
+                "eligible": 23656,
+                "changed": 23656,
+                "improved": 4408,
+                "close": 5688,
+                "initial_sse": 33.15800182291247,
+                "final_sse": 53.18985037763219,
+                "final_abs": 814.877273362924
+              }
+            },
+            "frozen_exact": {
+              "all": {
+                "n": 153715,
+                "eligible": 69428,
+                "changed": 69428,
+                "improved": 13550,
+                "close": 38892,
+                "initial_sse": 995.7040733620685,
+                "final_sse": 988.8227290495541,
+                "final_abs": 7220.55131270424
+              },
+              "common": {
+                "n": 23656,
+                "eligible": 23656,
+                "changed": 23656,
+                "improved": 4119,
+                "close": 2238,
+                "initial_sse": 33.15800182291247,
+                "final_sse": 32.403597400638624,
+                "final_abs": 761.7920683450311
+              }
+            },
+            "measured_observed": {
+              "all": {
+                "n": 153715,
+                "eligible": 37431,
+                "changed": 37431,
+                "improved": 17485,
+                "close": 66192,
+                "initial_sse": 995.7040733620685,
+                "final_sse": 1049.5073504404643,
+                "final_abs": 6881.942750253842
+              },
+              "common": {
+                "n": 23656,
+                "eligible": 23656,
+                "changed": 23656,
+                "improved": 14032,
+                "close": 16450,
+                "initial_sse": 33.15800182291247,
+                "final_sse": 45.525011971041295,
+                "final_abs": 541.3529801752509
+              }
+            },
+            "measured_exact": {
+              "all": {
+                "n": 153715,
+                "eligible": 81968,
+                "changed": 81968,
+                "improved": 81968,
+                "close": 103993,
+                "initial_sse": 995.7040733620685,
+                "final_sse": 825.7943533590222,
+                "final_abs": 4663.548593283538
+              },
+              "common": {
+                "n": 23656,
+                "eligible": 23656,
+                "changed": 23656,
+                "improved": 23656,
+                "close": 23106,
+                "initial_sse": 33.15800182291247,
+                "final_sse": 9.537178288809317,
+                "final_abs": 60.81571645780534
+              }
+            }
+          },
+          "max_oracle_relative_error": 3.3639757646142243e-14
+        }
+      }
+    },
+    {
+      "scene": "heads/seq-01",
+      "frame": 225,
+      "source_support": [
+        {
+          "source": 213,
+          "visible": 144512,
+          "cycle": 113312,
+          "shared": 108236
+        },
+        {
+          "source": 221,
+          "visible": 162076,
+          "cycle": 138215,
+          "shared": 132121
+        },
+        {
+          "source": 229,
+          "visible": 162285,
+          "cycle": 137005,
+          "shared": 126877
+        },
+        {
+          "source": 237,
+          "visible": 148115,
+          "cycle": 107026,
+          "shared": 100351
+        }
+      ],
+      "rules": {
+        "any_source": {
+          "cells": {
+            "frozen_observed": {
+              "all": {
+                "n": 175884,
+                "eligible": 120098,
+                "changed": 120098,
+                "improved": 50632,
+                "close": 39938,
+                "initial_sse": 2739.168228172295,
+                "final_sse": 2678.148618602504,
+                "final_abs": 12222.478452873254
+              },
+              "common": {
+                "n": 87764,
+                "eligible": 87764,
+                "changed": 87764,
+                "improved": 33456,
+                "close": 19115,
+                "initial_sse": 192.1682184574724,
+                "final_sse": 275.7401312538319,
+                "final_abs": 4065.603010756179
+              }
+            },
+            "frozen_exact": {
+              "all": {
+                "n": 175884,
+                "eligible": 98642,
+                "changed": 98642,
+                "improved": 14315,
+                "close": 23087,
+                "initial_sse": 2739.168228172295,
+                "final_sse": 3202.3390038766893,
+                "final_abs": 15814.68735946058
+              },
+              "common": {
+                "n": 87764,
+                "eligible": 87764,
+                "changed": 87764,
+                "improved": 10467,
+                "close": 1176,
+                "initial_sse": 192.1682184574724,
+                "final_sse": 643.2853747708626,
+                "final_abs": 6953.302292808291
+              }
+            },
+            "measured_observed": {
+              "all": {
+                "n": 175884,
+                "eligible": 102601,
+                "changed": 102601,
+                "improved": 44112,
+                "close": 42518,
+                "initial_sse": 2739.168228172295,
+                "final_sse": 2782.6102688936044,
+                "final_abs": 12455.577548534347
+              },
+              "common": {
+                "n": 87764,
+                "eligible": 87764,
+                "changed": 87764,
+                "improved": 40285,
+                "close": 20529,
+                "initial_sse": 192.1682184574724,
+                "final_sse": 202.86510054644626,
+                "final_abs": 3398.8714734374166
+              }
+            },
+            "measured_exact": {
+              "all": {
+                "n": 175884,
+                "eligible": 137888,
+                "changed": 137888,
+                "improved": 137888,
+                "close": 127756,
+                "initial_sse": 2739.168228172295,
+                "final_sse": 2070.6466811976907,
+                "final_abs": 6429.296788343307
+              },
+              "common": {
+                "n": 87764,
+                "eligible": 87764,
+                "changed": 87764,
+                "improved": 87764,
+                "close": 86586,
+                "initial_sse": 192.1682184574724,
+                "final_sse": 34.90395317940229,
+                "final_abs": 162.06980997402016
+              }
+            }
+          },
+          "max_oracle_relative_error": 2.9976021664879227e-14
+        },
+        "two_sided": {
+          "cells": {
+            "frozen_observed": {
+              "all": {
+                "n": 175884,
+                "eligible": 72210,
+                "changed": 72210,
+                "improved": 30212,
+                "close": 46816,
+                "initial_sse": 2739.168228172295,
+                "final_sse": 2758.5633489666134,
+                "final_abs": 12142.528063366357
+              },
+              "common": {
+                "n": 6202,
+                "eligible": 6202,
+                "changed": 6202,
+                "improved": 2162,
+                "close": 672,
+                "initial_sse": 15.283479771884663,
+                "final_sse": 18.53739367500656,
+                "final_abs": 311.25363739932766
+              }
+            },
+            "frozen_exact": {
+              "all": {
+                "n": 175884,
+                "eligible": 34303,
+                "changed": 34303,
+                "improved": 4546,
+                "close": 37792,
+                "initial_sse": 2739.168228172295,
+                "final_sse": 2905.5409532999965,
+                "final_abs": 13211.732221113878
+              },
+              "common": {
+                "n": 6202,
+                "eligible": 6202,
+                "changed": 6202,
+                "improved": 561,
+                "close": 7,
+                "initial_sse": 15.283479771884663,
+                "final_sse": 50.73933323807575,
+                "final_abs": 549.7966853588631
+              }
+            },
+            "measured_observed": {
+              "all": {
+                "n": 175884,
+                "eligible": 19874,
+                "changed": 19874,
+                "improved": 11537,
+                "close": 47246,
+                "initial_sse": 2739.168228172295,
+                "final_sse": 2714.7852668526675,
+                "final_abs": 11653.689099179677
+              },
+              "common": {
+                "n": 6202,
+                "eligible": 6202,
+                "changed": 6202,
+                "improved": 4836,
+                "close": 556,
+                "initial_sse": 15.283479771884663,
+                "final_sse": 8.275685773523186,
+                "final_abs": 212.61658864131897
+              }
+            },
+            "measured_exact": {
+              "all": {
+                "n": 175884,
+                "eligible": 96107,
+                "changed": 96107,
+                "improved": 96107,
+                "close": 113791,
+                "initial_sse": 2739.168228172295,
+                "final_sse": 2502.518389421605,
+                "final_abs": 8356.553964473685
+              },
+              "common": {
+                "n": 6202,
+                "eligible": 6202,
+                "changed": 6202,
+                "improved": 6202,
+                "close": 6071,
+                "initial_sse": 15.283479771884663,
+                "final_sse": 0.18386608953384992,
+                "final_abs": 5.444062714036084
+              }
+            }
+          },
+          "max_oracle_relative_error": 1.9095836023552692e-14
+        }
+      }
+    },
+    {
+      "scene": "heads/seq-01",
+      "frame": 425,
+      "source_support": [
+        {
+          "source": 413,
+          "visible": 142506,
+          "cycle": 105637,
+          "shared": 100928
+        },
+        {
+          "source": 421,
+          "visible": 150985,
+          "cycle": 125200,
+          "shared": 121395
+        },
+        {
+          "source": 429,
+          "visible": 152057,
+          "cycle": 126125,
+          "shared": 122074
+        },
+        {
+          "source": 437,
+          "visible": 141461,
+          "cycle": 111884,
+          "shared": 108606
+        }
+      ],
+      "rules": {
+        "any_source": {
+          "cells": {
+            "frozen_observed": {
+              "all": {
+                "n": 160491,
+                "eligible": 130179,
+                "changed": 130179,
+                "improved": 71192,
+                "close": 51953,
+                "initial_sse": 524.6863544690441,
+                "final_sse": 474.3573018553806,
+                "final_abs": 5869.86225344954
+              },
+              "common": {
+                "n": 113673,
+                "eligible": 113673,
+                "changed": 113673,
+                "improved": 58960,
+                "close": 30129,
+                "initial_sse": 257.72514926755133,
+                "final_sse": 235.95331965040683,
+                "final_abs": 4168.268962529053
+              }
+            },
+            "frozen_exact": {
+              "all": {
+                "n": 160491,
+                "eligible": 133479,
+                "changed": 133479,
+                "improved": 72236,
+                "close": 61404,
+                "initial_sse": 524.6863544690441,
+                "final_sse": 410.6180892023802,
+                "final_abs": 5283.085283798158
+              },
+              "common": {
+                "n": 113673,
+                "eligible": 113673,
+                "changed": 113673,
+                "improved": 63944,
+                "close": 44214,
+                "initial_sse": 257.72514926755133,
+                "final_sse": 151.69760485116794,
+                "final_abs": 3295.090009581809
+              }
+            },
+            "measured_observed": {
+              "all": {
+                "n": 160491,
+                "eligible": 125486,
+                "changed": 125486,
+                "improved": 73488,
+                "close": 84355,
+                "initial_sse": 524.6863544690441,
+                "final_sse": 376.2020817104437,
+                "final_abs": 4374.172975108779
+              },
+              "common": {
+                "n": 113673,
+                "eligible": 113673,
+                "changed": 113673,
+                "improved": 64873,
+                "close": 57971,
+                "initial_sse": 257.72514926755133,
+                "final_sse": 142.29657093712925,
+                "final_abs": 2871.9928118206017
+              }
+            },
+            "measured_exact": {
+              "all": {
+                "n": 160491,
+                "eligible": 146302,
+                "changed": 146302,
+                "improved": 146301,
+                "close": 150815,
+                "initial_sse": 524.6863544690441,
+                "final_sse": 194.40810814648188,
+                "final_abs": 932.4474013861787
+              },
+              "common": {
+                "n": 113673,
+                "eligible": 113673,
+                "changed": 113673,
+                "improved": 113672,
+                "close": 111080,
+                "initial_sse": 257.72514926755133,
+                "final_sse": 27.574763479872704,
+                "final_abs": 219.1308565049757
+              }
+            }
+          },
+          "max_oracle_relative_error": 2.4980018054066022e-14
+        },
+        "two_sided": {
+          "cells": {
+            "frozen_observed": {
+              "all": {
+                "n": 160491,
+                "eligible": 75305,
+                "changed": 75305,
+                "improved": 40013,
+                "close": 55132,
+                "initial_sse": 524.6863544690441,
+                "final_sse": 506.60587345009014,
+                "final_abs": 6033.789253223885
+              },
+              "common": {
+                "n": 52295,
+                "eligible": 52295,
+                "changed": 52295,
+                "improved": 20487,
+                "close": 11528,
+                "initial_sse": 67.30277650085382,
+                "final_sse": 95.9016414986594,
+                "final_abs": 1927.7061983638732
+              }
+            },
+            "frozen_exact": {
+              "all": {
+                "n": 160491,
+                "eligible": 69262,
+                "changed": 69262,
+                "improved": 29760,
+                "close": 61418,
+                "initial_sse": 524.6863544690441,
+                "final_sse": 499.3649042038974,
+                "final_abs": 5941.492273167717
+              },
+              "common": {
+                "n": 52295,
+                "eligible": 52295,
+                "changed": 52295,
+                "improved": 24655,
+                "close": 26549,
+                "initial_sse": 67.30277650085382,
+                "final_sse": 44.289951620711214,
+                "final_abs": 1221.2275857310594
+              }
+            },
+            "measured_observed": {
+              "all": {
+                "n": 160491,
+                "eligible": 78872,
+                "changed": 78872,
+                "improved": 45286,
+                "close": 82089,
+                "initial_sse": 524.6863544690441,
+                "final_sse": 427.74454285746776,
+                "final_abs": 4789.10971894135
+              },
+              "common": {
+                "n": 52295,
+                "eligible": 52295,
+                "changed": 52295,
+                "improved": 23674,
+                "close": 28907,
+                "initial_sse": 67.30277650085382,
+                "final_sse": 46.111313825066226,
+                "final_abs": 1171.243333813373
+              }
+            },
+            "measured_exact": {
+              "all": {
+                "n": 160491,
+                "eligible": 116222,
+                "changed": 116222,
+                "improved": 116221,
+                "close": 140434,
+                "initial_sse": 524.6863544690441,
+                "final_sse": 263.28598909757136,
+                "final_abs": 1690.4076573382727
+              },
+              "common": {
+                "n": 52295,
+                "eligible": 52295,
+                "changed": 52295,
+                "improved": 52295,
+                "close": 51703,
+                "initial_sse": 67.30277650085382,
+                "final_sse": 6.72250638457715,
+                "final_abs": 55.32375136566962
+              }
+            }
+          },
+          "max_oracle_relative_error": 1.84297022087776e-14
+        }
+      }
+    },
+    {
+      "scene": "heads/seq-01",
+      "frame": 625,
+      "source_support": [
+        {
+          "source": 613,
+          "visible": 103450,
+          "cycle": 73969,
+          "shared": 66991
+        },
+        {
+          "source": 621,
+          "visible": 125582,
+          "cycle": 124455,
+          "shared": 109658
+        },
+        {
+          "source": 629,
+          "visible": 127868,
+          "cycle": 111170,
+          "shared": 103784
+        },
+        {
+          "source": 637,
+          "visible": 107539,
+          "cycle": 66312,
+          "shared": 63515
+        }
+      ],
+      "rules": {
+        "any_source": {
+          "cells": {
+            "frozen_observed": {
+              "all": {
+                "n": 149128,
+                "eligible": 113546,
+                "changed": 113546,
+                "improved": 22372,
+                "close": 11496,
+                "initial_sse": 3316.758770395869,
+                "final_sse": 3860.4599848391895,
+                "final_abs": 14293.392659806435
+              },
+              "common": {
+                "n": 69505,
+                "eligible": 69505,
+                "changed": 69505,
+                "improved": 13027,
+                "close": 5009,
+                "initial_sse": 479.46156220889134,
+                "final_sse": 879.4260522345453,
+                "final_abs": 5967.083868928963
+              }
+            },
+            "frozen_exact": {
+              "all": {
+                "n": 149128,
+                "eligible": 109413,
+                "changed": 109413,
+                "improved": 23911,
+                "close": 11259,
+                "initial_sse": 3316.758770395869,
+                "final_sse": 3753.0753058453865,
+                "final_abs": 14577.173219276016
+              },
+              "common": {
+                "n": 69505,
+                "eligible": 69505,
+                "changed": 69505,
+                "improved": 14632,
+                "close": 4587,
+                "initial_sse": 479.46156220889134,
+                "final_sse": 916.9476735333681,
+                "final_abs": 6517.007038573391
+              }
+            },
+            "measured_observed": {
+              "all": {
+                "n": 149128,
+                "eligible": 77719,
+                "changed": 77719,
+                "improved": 31227,
+                "close": 26943,
+                "initial_sse": 3316.758770395869,
+                "final_sse": 3346.5687066634773,
+                "final_abs": 11055.909318097005
+              },
+              "common": {
+                "n": 69505,
+                "eligible": 69505,
+                "changed": 69505,
+                "improved": 28174,
+                "close": 12642,
+                "initial_sse": 479.46156220889134,
+                "final_sse": 532.1710392176276,
+                "final_abs": 4158.831762749065
+              }
+            },
+            "measured_exact": {
+              "all": {
+                "n": 149128,
+                "eligible": 117776,
+                "changed": 117776,
+                "improved": 117776,
+                "close": 116533,
+                "initial_sse": 3316.758770395869,
+                "final_sse": 2934.9981498327115,
+                "final_abs": 5401.431980859121
+              },
+              "common": {
+                "n": 69505,
+                "eligible": 69505,
+                "changed": 69505,
+                "improved": 69505,
+                "close": 67025,
+                "initial_sse": 479.46156220889134,
+                "final_sse": 244.04563789090895,
+                "final_abs": 578.398674478433
+              }
+            }
+          },
+          "max_oracle_relative_error": 2.531308496145357e-14
+        },
+        "two_sided": {
+          "cells": {
+            "frozen_observed": {
+              "all": {
+                "n": 149128,
+                "eligible": 46825,
+                "changed": 46825,
+                "improved": 7880,
+                "close": 24944,
+                "initial_sse": 3316.758770395869,
+                "final_sse": 3623.207315625903,
+                "final_abs": 11894.903067403904
+              },
+              "common": {
+                "n": 0,
+                "eligible": 0,
+                "changed": 0,
+                "improved": 0,
+                "close": 0,
+                "initial_sse": 0.0,
+                "final_sse": 0.0,
+                "final_abs": 0.0
+              }
+            },
+            "frozen_exact": {
+              "all": {
+                "n": 149128,
+                "eligible": 1134,
+                "changed": 1134,
+                "improved": 1,
+                "close": 31938,
+                "initial_sse": 3316.758770395869,
+                "final_sse": 3325.3617113342357,
+                "final_abs": 10023.574827313843
+              },
+              "common": {
+                "n": 0,
+                "eligible": 0,
+                "changed": 0,
+                "improved": 0,
+                "close": 0,
+                "initial_sse": 0.0,
+                "final_sse": 0.0,
+                "final_abs": 0.0
+              }
+            },
+            "measured_observed": {
+              "all": {
+                "n": 149128,
+                "eligible": 435,
+                "changed": 435,
+                "improved": 300,
+                "close": 32981,
+                "initial_sse": 3316.758770395869,
+                "final_sse": 3310.3922218441185,
+                "final_abs": 9923.78849303151
+              },
+              "common": {
+                "n": 0,
+                "eligible": 0,
+                "changed": 0,
+                "improved": 0,
+                "close": 0,
+                "initial_sse": 0.0,
+                "final_sse": 0.0,
+                "final_abs": 0.0
+              }
+            },
+            "measured_exact": {
+              "all": {
+                "n": 149128,
+                "eligible": 65281,
+                "changed": 65281,
+                "improved": 65281,
+                "close": 78018,
+                "initial_sse": 3316.758770395869,
+                "final_sse": 3192.243233334928,
+                "final_abs": 7642.395231960298
+              },
+              "common": {
+                "n": 0,
+                "eligible": 0,
+                "changed": 0,
+                "improved": 0,
+                "close": 0,
+                "initial_sse": 0.0,
+                "final_sse": 0.0,
+                "final_abs": 0.0
+              }
+            }
+          },
+          "max_oracle_relative_error": 1.5210055437364645e-14
+        }
+      }
+    },
+    {
+      "scene": "heads/seq-01",
+      "frame": 825,
+      "source_support": [
+        {
+          "source": 813,
+          "visible": 105378,
+          "cycle": 46169,
+          "shared": 41898
+        },
+        {
+          "source": 821,
+          "visible": 142423,
+          "cycle": 71954,
+          "shared": 65156
+        },
+        {
+          "source": 829,
+          "visible": 155443,
+          "cycle": 98955,
+          "shared": 92729
+        },
+        {
+          "source": 837,
+          "visible": 137608,
+          "cycle": 48271,
+          "shared": 44252
+        }
+      ],
+      "rules": {
+        "any_source": {
+          "cells": {
+            "frozen_observed": {
+              "all": {
+                "n": 172403,
+                "eligible": 81178,
+                "changed": 81178,
+                "improved": 4513,
+                "close": 25550,
+                "initial_sse": 315.41129033687906,
+                "final_sse": 715.6173803548513,
+                "final_abs": 8970.833053209086
+              },
+              "common": {
+                "n": 45675,
+                "eligible": 45675,
+                "changed": 45675,
+                "improved": 2044,
+                "close": 1863,
+                "initial_sse": 49.18839536309548,
+                "final_sse": 282.02158535974064,
+                "final_abs": 3257.8252718693434
+              }
+            },
+            "frozen_exact": {
+              "all": {
+                "n": 172403,
+                "eligible": 80621,
+                "changed": 80621,
+                "improved": 11722,
+                "close": 31697,
+                "initial_sse": 315.41129033687906,
+                "final_sse": 619.9273931251918,
+                "final_abs": 8185.470460766045
+              },
+              "common": {
+                "n": 45675,
+                "eligible": 45675,
+                "changed": 45675,
+                "improved": 713,
+                "close": 106,
+                "initial_sse": 49.18839536309548,
+                "final_sse": 313.93572761236743,
+                "final_abs": 3482.3521307221868
+              }
+            },
+            "measured_observed": {
+              "all": {
+                "n": 172403,
+                "eligible": 69327,
+                "changed": 69327,
+                "improved": 5445,
+                "close": 27468,
+                "initial_sse": 315.41129033687906,
+                "final_sse": 739.9804278561148,
+                "final_abs": 9173.919431240844
+              },
+              "common": {
+                "n": 45675,
+                "eligible": 45675,
+                "changed": 45675,
+                "improved": 3656,
+                "close": 2895,
+                "initial_sse": 49.18839536309548,
+                "final_sse": 318.3513668651924,
+                "final_abs": 3567.022633971238
+              }
+            },
+            "measured_exact": {
+              "all": {
+                "n": 172403,
+                "eligible": 113136,
+                "changed": 113136,
+                "improved": 113136,
+                "close": 126001,
+                "initial_sse": 315.41129033687906,
+                "final_sse": 177.5735636751232,
+                "final_abs": 2305.3482440195594
+              },
+              "common": {
+                "n": 45675,
+                "eligible": 45675,
+                "changed": 45675,
+                "improved": 45675,
+                "close": 44612,
+                "initial_sse": 49.18839536309548,
+                "final_sse": 6.690604399169183,
+                "final_abs": 81.07683755296122
+              }
+            }
+          },
+          "max_oracle_relative_error": 5.972999872483342e-14
+        },
+        "two_sided": {
+          "cells": {
+            "frozen_observed": {
+              "all": {
+                "n": 172403,
+                "eligible": 16030,
+                "changed": 16030,
+                "improved": 464,
+                "close": 54532,
+                "initial_sse": 315.41129033687906,
+                "final_sse": 404.5245266270112,
+                "final_abs": 6048.858937721768
+              },
+              "common": {
+                "n": 594,
+                "eligible": 594,
+                "changed": 594,
+                "improved": 0,
+                "close": 0,
+                "initial_sse": 0.4715277215031905,
+                "final_sse": 4.913030856134292,
+                "final_abs": 51.51548565639528
+              }
+            },
+            "frozen_exact": {
+              "all": {
+                "n": 172403,
+                "eligible": 11779,
+                "changed": 11779,
+                "improved": 58,
+                "close": 58847,
+                "initial_sse": 315.41129033687906,
+                "final_sse": 377.52950349547376,
+                "final_abs": 5782.178439059435
+              },
+              "common": {
+                "n": 594,
+                "eligible": 594,
+                "changed": 594,
+                "improved": 0,
+                "close": 0,
+                "initial_sse": 0.4715277215031905,
+                "final_sse": 4.922749376716572,
+                "final_abs": 51.58013534508363
+              }
+            },
+            "measured_observed": {
+              "all": {
+                "n": 172403,
+                "eligible": 1549,
+                "changed": 1549,
+                "improved": 127,
+                "close": 64369,
+                "initial_sse": 315.41129033687906,
+                "final_sse": 323.5297868441541,
+                "final_abs": 5224.9113011769105
+              },
+              "common": {
+                "n": 594,
+                "eligible": 594,
+                "changed": 594,
+                "improved": 72,
+                "close": 59,
+                "initial_sse": 0.4715277215031905,
+                "final_sse": 3.62350606628981,
+                "final_abs": 43.78808922711562
+              }
+            },
+            "measured_exact": {
+              "all": {
+                "n": 172403,
+                "eligible": 45552,
+                "changed": 45552,
+                "improved": 45552,
+                "close": 83951,
+                "initial_sse": 315.41129033687906,
+                "final_sse": 286.5680134356982,
+                "final_abs": 4300.4004395448555
+              },
+              "common": {
+                "n": 594,
+                "eligible": 594,
+                "changed": 594,
+                "improved": 594,
+                "close": 594,
+                "initial_sse": 0.4715277215031905,
+                "final_sse": 0.002035329883495259,
+                "final_abs": 0.1641122861022599
+              }
+            }
+          },
+          "max_oracle_relative_error": 3.8191672047105385e-14
+        }
+      }
+    },
+    {
+      "scene": "chess/seq-03",
+      "frame": 25,
+      "source_support": [
+        {
+          "source": 13,
+          "visible": 149726,
+          "cycle": 97367,
+          "shared": 90345
+        },
+        {
+          "source": 21,
+          "visible": 167292,
+          "cycle": 157691,
+          "shared": 149554
+        },
+        {
+          "source": 29,
+          "visible": 154051,
+          "cycle": 133853,
+          "shared": 125189
+        },
+        {
+          "source": 37,
+          "visible": 117010,
+          "cycle": 77592,
+          "shared": 71331
+        }
+      ],
+      "rules": {
+        "any_source": {
+          "cells": {
+            "frozen_observed": {
+              "all": {
+                "n": 179447,
+                "eligible": 129140,
+                "changed": 129140,
+                "improved": 38875,
+                "close": 63969,
+                "initial_sse": 2086.2885787505243,
+                "final_sse": 2215.906695656176,
+                "final_abs": 11751.757054219768
+              },
+              "common": {
+                "n": 97606,
+                "eligible": 97606,
+                "changed": 97606,
+                "improved": 31360,
+                "close": 33713,
+                "initial_sse": 661.8992782697836,
+                "final_sse": 769.5488198359217,
+                "final_abs": 5309.877735763809
+              }
+            },
+            "frozen_exact": {
+              "all": {
+                "n": 179447,
+                "eligible": 114805,
+                "changed": 114805,
+                "improved": 33513,
+                "close": 63810,
+                "initial_sse": 2086.2885787505243,
+                "final_sse": 1757.8354144131413,
+                "final_abs": 9885.73967941445
+              },
+              "common": {
+                "n": 97606,
+                "eligible": 97606,
+                "changed": 97606,
+                "improved": 25417,
+                "close": 24036,
+                "initial_sse": 661.8992782697836,
+                "final_sse": 520.0016101645185,
+                "final_abs": 4598.829978508184
+              }
+            },
+            "measured_observed": {
+              "all": {
+                "n": 179447,
+                "eligible": 124510,
+                "changed": 124510,
+                "improved": 27857,
+                "close": 59136,
+                "initial_sse": 2086.2885787505243,
+                "final_sse": 2347.814776793485,
+                "final_abs": 12087.509062796153
+              },
+              "common": {
+                "n": 97606,
+                "eligible": 97606,
+                "changed": 97606,
+                "improved": 23302,
+                "close": 29340,
+                "initial_sse": 661.8992782697836,
+                "final_sse": 810.6794095022917,
+                "final_abs": 5498.683187322677
+              }
+            },
+            "measured_exact": {
+              "all": {
+                "n": 179447,
+                "eligible": 149678,
+                "changed": 149678,
+                "improved": 149678,
+                "close": 147429,
+                "initial_sse": 2086.2885787505243,
+                "final_sse": 1454.7738991634608,
+                "final_abs": 5390.207528276392
+              },
+              "common": {
+                "n": 97606,
+                "eligible": 97606,
+                "changed": 97606,
+                "improved": 97606,
+                "close": 90563,
+                "initial_sse": 661.8992782697836,
+                "final_sse": 357.76295967618574,
+                "final_abs": 1364.4153871962285
+              }
+            }
+          },
+          "max_oracle_relative_error": 1.63202784619898e-13
+        },
+        "two_sided": {
+          "cells": {
+            "frozen_observed": {
+              "all": {
+                "n": 179447,
+                "eligible": 51347,
+                "changed": 51347,
+                "improved": 22378,
+                "close": 100054,
+                "initial_sse": 2086.2885787505243,
+                "final_sse": 2093.9639223855843,
+                "final_abs": 9434.894018349747
+              },
+              "common": {
+                "n": 4343,
+                "eligible": 4343,
+                "changed": 4343,
+                "improved": 2049,
+                "close": 1881,
+                "initial_sse": 15.47540738377089,
+                "final_sse": 15.257391421463378,
+                "final_abs": 142.23819981741048
+              }
+            },
+            "frozen_exact": {
+              "all": {
+                "n": 179447,
+                "eligible": 12247,
+                "changed": 12247,
+                "improved": 8558,
+                "close": 110697,
+                "initial_sse": 2086.2885787505243,
+                "final_sse": 2028.1594259240392,
+                "final_abs": 8760.225258404646
+              },
+              "common": {
+                "n": 4343,
+                "eligible": 4343,
+                "changed": 4343,
+                "improved": 3178,
+                "close": 3159,
+                "initial_sse": 15.47540738377089,
+                "final_sse": 10.158047499020839,
+                "final_abs": 81.18330735454916
+              }
+            },
+            "measured_observed": {
+              "all": {
+                "n": 179447,
+                "eligible": 23210,
+                "changed": 23210,
+                "improved": 6832,
+                "close": 101355,
+                "initial_sse": 2086.2885787505243,
+                "final_sse": 2109.0395768088742,
+                "final_abs": 9291.981292716033
+              },
+              "common": {
+                "n": 4343,
+                "eligible": 4343,
+                "changed": 4343,
+                "improved": 2340,
+                "close": 2167,
+                "initial_sse": 15.47540738377089,
+                "final_sse": 14.471053131178172,
+                "final_abs": 128.23587984693097
+              }
+            },
+            "measured_exact": {
+              "all": {
+                "n": 179447,
+                "eligible": 103745,
+                "changed": 103745,
+                "improved": 103745,
+                "close": 133746,
+                "initial_sse": 2086.2885787505243,
+                "final_sse": 1773.960956471156,
+                "final_abs": 6785.798679720338
+              },
+              "common": {
+                "n": 4343,
+                "eligible": 4343,
+                "changed": 4343,
+                "improved": 4343,
+                "close": 4286,
+                "initial_sse": 15.47540738377089,
+                "final_sse": 9.048275327432513,
+                "final_abs": 22.688823035148857
+              }
+            }
+          },
+          "max_oracle_relative_error": 7.893685705084863e-14
+        }
+      }
+    },
+    {
+      "scene": "chess/seq-03",
+      "frame": 225,
+      "source_support": [
+        {
+          "source": 213,
+          "visible": 97761,
+          "cycle": 492,
+          "shared": 192
+        },
+        {
+          "source": 221,
+          "visible": 143459,
+          "cycle": 130083,
+          "shared": 120549
+        },
+        {
+          "source": 229,
+          "visible": 150696,
+          "cycle": 138310,
+          "shared": 125027
+        },
+        {
+          "source": 237,
+          "visible": 128720,
+          "cycle": 52338,
+          "shared": 44408
+        }
+      ],
+      "rules": {
+        "any_source": {
+          "cells": {
+            "frozen_observed": {
+              "all": {
+                "n": 176294,
+                "eligible": 79596,
+                "changed": 79596,
+                "improved": 15313,
+                "close": 42411,
+                "initial_sse": 2515.3343083777213,
+                "final_sse": 2853.7180869842437,
+                "final_abs": 13104.935140610132
+              },
+              "common": {
+                "n": 22300,
+                "eligible": 22300,
+                "changed": 22300,
+                "improved": 4778,
+                "close": 4117,
+                "initial_sse": 73.07518514373756,
+                "final_sse": 149.41744829552113,
+                "final_abs": 1344.6814854252261
+              }
+            },
+            "frozen_exact": {
+              "all": {
+                "n": 176294,
+                "eligible": 113399,
+                "changed": 113399,
+                "improved": 16816,
+                "close": 20037,
+                "initial_sse": 2515.3343083777213,
+                "final_sse": 3012.680209458558,
+                "final_abs": 14840.076500784038
+              },
+              "common": {
+                "n": 22300,
+                "eligible": 22300,
+                "changed": 22300,
+                "improved": 3225,
+                "close": 278,
+                "initial_sse": 73.07518514373756,
+                "final_sse": 135.50004215454976,
+                "final_abs": 1412.2848552461214
+              }
+            },
+            "measured_observed": {
+              "all": {
+                "n": 176294,
+                "eligible": 40961,
+                "changed": 40961,
+                "improved": 14198,
+                "close": 54552,
+                "initial_sse": 2515.3343083777213,
+                "final_sse": 2591.747285837217,
+                "final_abs": 11403.834965231481
+              },
+              "common": {
+                "n": 22300,
+                "eligible": 22300,
+                "changed": 22300,
+                "improved": 5195,
+                "close": 5101,
+                "initial_sse": 73.07518514373756,
+                "final_sse": 143.35416928198458,
+                "final_abs": 1376.9625319703998
+              }
+            },
+            "measured_exact": {
+              "all": {
+                "n": 176294,
+                "eligible": 110365,
+                "changed": 110365,
+                "improved": 110365,
+                "close": 123076,
+                "initial_sse": 2515.3343083777213,
+                "final_sse": 2286.783501608739,
+                "final_abs": 7571.132727018864
+              },
+              "common": {
+                "n": 22300,
+                "eligible": 22300,
+                "changed": 22300,
+                "improved": 22300,
+                "close": 21488,
+                "initial_sse": 73.07518514373756,
+                "final_sse": 32.27728164884947,
+                "final_abs": 126.50577070739014
+              }
+            }
+          },
+          "max_oracle_relative_error": 3.3306690738754696e-14
+        },
+        "two_sided": {
+          "cells": {
+            "frozen_observed": {
+              "all": {
+                "n": 176294,
+                "eligible": 11073,
+                "changed": 11073,
+                "improved": 2161,
+                "close": 56703,
+                "initial_sse": 2515.3343083777213,
+                "final_sse": 2559.634591279015,
+                "final_abs": 10907.096377949054
+              },
+              "common": {
+                "n": 0,
+                "eligible": 0,
+                "changed": 0,
+                "improved": 0,
+                "close": 0,
+                "initial_sse": 0.0,
+                "final_sse": 0.0,
+                "final_abs": 0.0
+              }
+            },
+            "frozen_exact": {
+              "all": {
+                "n": 176294,
+                "eligible": 3016,
+                "changed": 3016,
+                "improved": 876,
+                "close": 59662,
+                "initial_sse": 2515.3343083777213,
+                "final_sse": 2543.6749984204507,
+                "final_abs": 10697.806705905614
+              },
+              "common": {
+                "n": 0,
+                "eligible": 0,
+                "changed": 0,
+                "improved": 0,
+                "close": 0,
+                "initial_sse": 0.0,
+                "final_sse": 0.0,
+                "final_abs": 0.0
+              }
+            },
+            "measured_observed": {
+              "all": {
+                "n": 176294,
+                "eligible": 294,
+                "changed": 294,
+                "improved": 81,
+                "close": 60146,
+                "initial_sse": 2515.3343083777213,
+                "final_sse": 2515.6328218880813,
+                "final_abs": 10578.764814590771
+              },
+              "common": {
+                "n": 0,
+                "eligible": 0,
+                "changed": 0,
+                "improved": 0,
+                "close": 0,
+                "initial_sse": 0.0,
+                "final_sse": 0.0,
+                "final_abs": 0.0
+              }
+            },
+            "measured_exact": {
+              "all": {
+                "n": 176294,
+                "eligible": 55662,
+                "changed": 55662,
+                "improved": 55662,
+                "close": 90461,
+                "initial_sse": 2515.3343083777213,
+                "final_sse": 2463.7108024870486,
+                "final_abs": 9309.320438084389
+              },
+              "common": {
+                "n": 0,
+                "eligible": 0,
+                "changed": 0,
+                "improved": 0,
+                "close": 0,
+                "initial_sse": 0.0,
+                "final_sse": 0.0,
+                "final_abs": 0.0
+              }
+            }
+          },
+          "max_oracle_relative_error": 2.3314683517128287e-14
+        }
+      }
+    },
+    {
+      "scene": "chess/seq-03",
+      "frame": 425,
+      "source_support": [
+        {
+          "source": 413,
+          "visible": 137423,
+          "cycle": 115165,
+          "shared": 106950
+        },
+        {
+          "source": 421,
+          "visible": 157371,
+          "cycle": 150935,
+          "shared": 138848
+        },
+        {
+          "source": 429,
+          "visible": 167503,
+          "cycle": 157629,
+          "shared": 148677
+        },
+        {
+          "source": 437,
+          "visible": 159018,
+          "cycle": 121151,
+          "shared": 113033
+        }
+      ],
+      "rules": {
+        "any_source": {
+          "cells": {
+            "frozen_observed": {
+              "all": {
+                "n": 177637,
+                "eligible": 129783,
+                "changed": 129783,
+                "improved": 21732,
+                "close": 77302,
+                "initial_sse": 1765.4055186233634,
+                "final_sse": 1969.3959209571076,
+                "final_abs": 9910.426560711474
+              },
+              "common": {
+                "n": 100236,
+                "eligible": 100236,
+                "changed": 100236,
+                "improved": 17230,
+                "close": 40215,
+                "initial_sse": 249.0115200419418,
+                "final_sse": 442.51829058968474,
+                "final_abs": 4214.609440605252
+              }
+            },
+            "frozen_exact": {
+              "all": {
+                "n": 177637,
+                "eligible": 119891,
+                "changed": 119891,
+                "improved": 15303,
+                "close": 67198,
+                "initial_sse": 1765.4055186233634,
+                "final_sse": 1826.3002431497557,
+                "final_abs": 9283.32304129243
+              },
+              "common": {
+                "n": 100236,
+                "eligible": 100236,
+                "changed": 100236,
+                "improved": 11738,
+                "close": 25118,
+                "initial_sse": 249.0115200419418,
+                "final_sse": 285.56528690015267,
+                "final_abs": 3834.489079892568
+              }
+            },
+            "measured_observed": {
+              "all": {
+                "n": 177637,
+                "eligible": 120623,
+                "changed": 120623,
+                "improved": 24032,
+                "close": 86314,
+                "initial_sse": 1765.4055186233634,
+                "final_sse": 1985.2181008524726,
+                "final_abs": 9723.35369805229
+              },
+              "common": {
+                "n": 100236,
+                "eligible": 100236,
+                "changed": 100236,
+                "improved": 21371,
+                "close": 43833,
+                "initial_sse": 249.0115200419418,
+                "final_sse": 386.6179058877151,
+                "final_abs": 3991.070863829783
+              }
+            },
+            "measured_exact": {
+              "all": {
+                "n": 177637,
+                "eligible": 148633,
+                "changed": 148633,
+                "improved": 148633,
+                "close": 158934,
+                "initial_sse": 1765.4055186233634,
+                "final_sse": 1420.746957885259,
+                "final_abs": 4370.867590957728
+              },
+              "common": {
+                "n": 100236,
+                "eligible": 100236,
+                "changed": 100236,
+                "improved": 100236,
+                "close": 97852,
+                "initial_sse": 249.0115200419418,
+                "final_sse": 135.3289743169331,
+                "final_abs": 521.5610060806475
+              }
+            }
+          },
+          "max_oracle_relative_error": 1.574296248918472e-13
+        },
+        "two_sided": {
+          "cells": {
+            "frozen_observed": {
+              "all": {
+                "n": 177637,
+                "eligible": 43612,
+                "changed": 43612,
+                "improved": 11777,
+                "close": 130830,
+                "initial_sse": 1765.4055186233634,
+                "final_sse": 1803.0623891395915,
+                "final_abs": 7027.8617507123745
+              },
+              "common": {
+                "n": 25385,
+                "eligible": 25385,
+                "changed": 25385,
+                "improved": 8734,
+                "close": 21775,
+                "initial_sse": 2.1964906927104044,
+                "final_sse": 5.278550075961978,
+                "final_abs": 276.0181386866699
+              }
+            },
+            "frozen_exact": {
+              "all": {
+                "n": 177637,
+                "eligible": 42780,
+                "changed": 42780,
+                "improved": 5737,
+                "close": 118909,
+                "initial_sse": 1765.4055186233634,
+                "final_sse": 1789.388069195714,
+                "final_abs": 7103.005257896645
+              },
+              "common": {
+                "n": 25385,
+                "eligible": 25385,
+                "changed": 25385,
+                "improved": 1852,
+                "close": 8836,
+                "initial_sse": 2.1964906927104044,
+                "final_sse": 13.886413064284241,
+                "final_abs": 555.6952620227514
+              }
+            },
+            "measured_observed": {
+              "all": {
+                "n": 177637,
+                "eligible": 43346,
+                "changed": 43346,
+                "improved": 14715,
+                "close": 133904,
+                "initial_sse": 1765.4055186233634,
+                "final_sse": 1780.7205782194587,
+                "final_abs": 6799.7461406121765
+              },
+              "common": {
+                "n": 25385,
+                "eligible": 25385,
+                "changed": 25385,
+                "improved": 9843,
+                "close": 20844,
+                "initial_sse": 2.1964906927104044,
+                "final_sse": 6.396642753031371,
+                "final_abs": 301.11051804807994
+              }
+            },
+            "measured_exact": {
+              "all": {
+                "n": 177637,
+                "eligible": 88415,
+                "changed": 88415,
+                "improved": 88415,
+                "close": 148365,
+                "initial_sse": 1765.4055186233634,
+                "final_sse": 1685.3565544004423,
+                "final_abs": 5580.416799115964
+              },
+              "common": {
+                "n": 25385,
+                "eligible": 25385,
+                "changed": 25385,
+                "improved": 25385,
+                "close": 25385,
+                "initial_sse": 2.1964906927104044,
+                "final_sse": 9.313714948494919e-25,
+                "final_abs": 1.0216120918660332e-10
+              }
+            }
+          },
+          "max_oracle_relative_error": 6.661338147750939e-14
+        }
+      }
+    },
+    {
+      "scene": "chess/seq-03",
+      "frame": 625,
+      "source_support": [
+        {
+          "source": 613,
+          "visible": 125940,
+          "cycle": 60024,
+          "shared": 55032
+        },
+        {
+          "source": 621,
+          "visible": 146738,
+          "cycle": 114422,
+          "shared": 104730
+        },
+        {
+          "source": 629,
+          "visible": 157882,
+          "cycle": 122076,
+          "shared": 112458
+        },
+        {
+          "source": 637,
+          "visible": 144781,
+          "cycle": 72710,
+          "shared": 65885
+        }
+      ],
+      "rules": {
+        "any_source": {
+          "cells": {
+            "frozen_observed": {
+              "all": {
+                "n": 174283,
+                "eligible": 107851,
+                "changed": 107851,
+                "improved": 29200,
+                "close": 72684,
+                "initial_sse": 1697.178473963287,
+                "final_sse": 1757.8846339505742,
+                "final_abs": 8584.853396800721
+              },
+              "common": {
+                "n": 88614,
+                "eligible": 88614,
+                "changed": 88614,
+                "improved": 23289,
+                "close": 32771,
+                "initial_sse": 421.7389658938794,
+                "final_sse": 460.85174906346685,
+                "final_abs": 3848.995876243323
+              }
+            },
+            "frozen_exact": {
+              "all": {
+                "n": 174283,
+                "eligible": 111744,
+                "changed": 111744,
+                "improved": 41644,
+                "close": 80123,
+                "initial_sse": 1697.178473963287,
+                "final_sse": 1394.8215581984268,
+                "final_abs": 7179.578227762193
+              },
+              "common": {
+                "n": 88614,
+                "eligible": 88614,
+                "changed": 88614,
+                "improved": 35163,
+                "close": 45536,
+                "initial_sse": 421.7389658938794,
+                "final_sse": 295.25032136141294,
+                "final_abs": 2675.767171296278
+              }
+            },
+            "measured_observed": {
+              "all": {
+                "n": 174283,
+                "eligible": 106435,
+                "changed": 106435,
+                "improved": 33250,
+                "close": 81660,
+                "initial_sse": 1697.178473963287,
+                "final_sse": 1666.784193823988,
+                "final_abs": 7894.6556942703555
+              },
+              "common": {
+                "n": 88614,
+                "eligible": 88614,
+                "changed": 88614,
+                "improved": 29624,
+                "close": 42332,
+                "initial_sse": 421.7389658938794,
+                "final_sse": 378.39624550867325,
+                "final_abs": 3171.6859933916185
+              }
+            },
+            "measured_exact": {
+              "all": {
+                "n": 174283,
+                "eligible": 139627,
+                "changed": 139627,
+                "improved": 139627,
+                "close": 148331,
+                "initial_sse": 1697.178473963287,
+                "final_sse": 1268.0797775164483,
+                "final_abs": 4010.683085229561
+              },
+              "common": {
+                "n": 88614,
+                "eligible": 88614,
+                "changed": 88614,
+                "improved": 88614,
+                "close": 83732,
+                "initial_sse": 421.7389658938794,
+                "final_sse": 226.08198651726897,
+                "final_abs": 829.9033465369356
+              }
+            }
+          },
+          "max_oracle_relative_error": 2.5757174171303632e-14
+        },
+        "two_sided": {
+          "cells": {
+            "frozen_observed": {
+              "all": {
+                "n": 174283,
+                "eligible": 46328,
+                "changed": 46328,
+                "improved": 14608,
+                "close": 97015,
+                "initial_sse": 1697.178473963287,
+                "final_sse": 1698.8337834625781,
+                "final_abs": 7266.7658561387525
+              },
+              "common": {
+                "n": 28773,
+                "eligible": 28773,
+                "changed": 28773,
+                "improved": 8219,
+                "close": 15303,
+                "initial_sse": 32.823872582401464,
+                "final_sse": 42.56184354448377,
+                "final_abs": 753.7240799431285
+              }
+            },
+            "frozen_exact": {
+              "all": {
+                "n": 174283,
+                "eligible": 57957,
+                "changed": 57957,
+                "improved": 23580,
+                "close": 99485,
+                "initial_sse": 1697.178473963287,
+                "final_sse": 1663.4105754265624,
+                "final_abs": 6984.355809710453
+              },
+              "common": {
+                "n": 28773,
+                "eligible": 28773,
+                "changed": 28773,
+                "improved": 12643,
+                "close": 20364,
+                "initial_sse": 32.823872582401464,
+                "final_sse": 22.604446673398655,
+                "final_abs": 519.5665571032522
+              }
+            },
+            "measured_observed": {
+              "all": {
+                "n": 174283,
+                "eligible": 50049,
+                "changed": 50049,
+                "improved": 14651,
+                "close": 96238,
+                "initial_sse": 1697.178473963287,
+                "final_sse": 1679.459546074868,
+                "final_abs": 7248.304099547474
+              },
+              "common": {
+                "n": 28773,
+                "eligible": 28773,
+                "changed": 28773,
+                "improved": 8991,
+                "close": 17264,
+                "initial_sse": 32.823872582401464,
+                "final_sse": 33.47537311553595,
+                "final_abs": 659.1682520097086
+              }
+            },
+            "measured_exact": {
+              "all": {
+                "n": 174283,
+                "eligible": 89472,
+                "changed": 89472,
+                "improved": 89472,
+                "close": 131325,
+                "initial_sse": 1697.178473963287,
+                "final_sse": 1549.6325098606128,
+                "final_abs": 5301.99373873592
+              },
+              "common": {
+                "n": 28773,
+                "eligible": 28773,
+                "changed": 28773,
+                "improved": 28773,
+                "close": 28157,
+                "initial_sse": 32.823872582401464,
+                "final_sse": 9.782863882828622,
+                "final_abs": 73.86241474060954
+              }
+            }
+          },
+          "max_oracle_relative_error": 1.176836406102666e-14
+        }
+      }
+    },
+    {
+      "scene": "chess/seq-03",
+      "frame": 825,
+      "source_support": [
+        {
+          "source": 813,
+          "visible": 152514,
+          "cycle": 140718,
+          "shared": 128860
+        },
+        {
+          "source": 821,
+          "visible": 164902,
+          "cycle": 155127,
+          "shared": 144915
+        },
+        {
+          "source": 829,
+          "visible": 162104,
+          "cycle": 162878,
+          "shared": 154728
+        },
+        {
+          "source": 837,
+          "visible": 146045,
+          "cycle": 132402,
+          "shared": 120407
+        }
+      ],
+      "rules": {
+        "any_source": {
+          "cells": {
+            "frozen_observed": {
+              "all": {
+                "n": 177586,
+                "eligible": 94675,
+                "changed": 94675,
+                "improved": 8543,
+                "close": 49861,
+                "initial_sse": 801.158883137095,
+                "final_sse": 1229.324465456403,
+                "final_abs": 10133.589345898936
+              },
+              "common": {
+                "n": 67597,
+                "eligible": 67597,
+                "changed": 67597,
+                "improved": 5679,
+                "close": 6837,
+                "initial_sse": 81.56721407090222,
+                "final_sse": 416.6757970217331,
+                "final_abs": 4699.495191708271
+              }
+            },
+            "frozen_exact": {
+              "all": {
+                "n": 177586,
+                "eligible": 110544,
+                "changed": 110544,
+                "improved": 10262,
+                "close": 47410,
+                "initial_sse": 801.158883137095,
+                "final_sse": 1180.5635984336031,
+                "final_abs": 10341.63681749427
+              },
+              "common": {
+                "n": 67597,
+                "eligible": 67597,
+                "changed": 67597,
+                "improved": 7477,
+                "close": 8140,
+                "initial_sse": 81.56721407090222,
+                "final_sse": 312.1261735364525,
+                "final_abs": 4124.757671029454
+              }
+            },
+            "measured_observed": {
+              "all": {
+                "n": 177586,
+                "eligible": 114562,
+                "changed": 114562,
+                "improved": 24779,
+                "close": 66814,
+                "initial_sse": 801.158883137095,
+                "final_sse": 995.0459823504535,
+                "final_abs": 7754.535823616804
+              },
+              "common": {
+                "n": 67597,
+                "eligible": 67597,
+                "changed": 67597,
+                "improved": 13280,
+                "close": 19110,
+                "initial_sse": 81.56721407090222,
+                "final_sse": 162.39401709301984,
+                "final_abs": 2629.189627189099
+              }
+            },
+            "measured_exact": {
+              "all": {
+                "n": 177586,
+                "eligible": 135163,
+                "changed": 135163,
+                "improved": 135163,
+                "close": 150895,
+                "initial_sse": 801.158883137095,
+                "final_sse": 542.2619492511183,
+                "final_abs": 2785.1873983191517
+              },
+              "common": {
+                "n": 67597,
+                "eligible": 67597,
+                "changed": 67597,
+                "improved": 67597,
+                "close": 66488,
+                "initial_sse": 81.56721407090222,
+                "final_sse": 20.756086833661765,
+                "final_abs": 132.60068124335152
+              }
+            }
+          },
+          "max_oracle_relative_error": 9.370282327836321e-14
+        },
+        "two_sided": {
+          "cells": {
+            "frozen_observed": {
+              "all": {
+                "n": 177586,
+                "eligible": 24261,
+                "changed": 24261,
+                "improved": 3687,
+                "close": 93854,
+                "initial_sse": 801.158883137095,
+                "final_sse": 861.9467099786417,
+                "final_abs": 6335.01071840267
+              },
+              "common": {
+                "n": 6969,
+                "eligible": 6969,
+                "changed": 6969,
+                "improved": 1157,
+                "close": 1119,
+                "initial_sse": 15.050966777482133,
+                "final_sse": 31.284626885593728,
+                "final_abs": 381.64871073134896
+              }
+            },
+            "frozen_exact": {
+              "all": {
+                "n": 177586,
+                "eligible": 40498,
+                "changed": 40498,
+                "improved": 1158,
+                "close": 77753,
+                "initial_sse": 801.158883137095,
+                "final_sse": 1013.685131036529,
+                "final_abs": 7815.619989494908
+              },
+              "common": {
+                "n": 6969,
+                "eligible": 6969,
+                "changed": 6969,
+                "improved": 414,
+                "close": 21,
+                "initial_sse": 15.050966777482133,
+                "final_sse": 27.665656807664682,
+                "final_abs": 406.9460073041144
+              }
+            },
+            "measured_observed": {
+              "all": {
+                "n": 177586,
+                "eligible": 51289,
+                "changed": 51289,
+                "improved": 14321,
+                "close": 92958,
+                "initial_sse": 801.158883137095,
+                "final_sse": 851.7800261596241,
+                "final_abs": 5991.728347208703
+              },
+              "common": {
+                "n": 6969,
+                "eligible": 6969,
+                "changed": 6969,
+                "improved": 3395,
+                "close": 3710,
+                "initial_sse": 15.050966777482133,
+                "final_sse": 12.869752188359255,
+                "final_abs": 194.08166279868576
+              }
+            },
+            "measured_exact": {
+              "all": {
+                "n": 177586,
+                "eligible": 93966,
+                "changed": 93966,
+                "improved": 93966,
+                "close": 136564,
+                "initial_sse": 801.158883137095,
+                "final_sse": 706.335251968014,
+                "final_abs": 3779.876019084347
+              },
+              "common": {
+                "n": 6969,
+                "eligible": 6969,
+                "changed": 6969,
+                "improved": 6969,
+                "close": 6821,
+                "initial_sse": 15.050966777482133,
+                "final_sse": 5.4978311033564795,
+                "final_abs": 26.06311182498791
+              }
+            }
+          },
+          "max_oracle_relative_error": 5.040412531798211e-14
+        }
+      }
+    },
+    {
+      "scene": "fire/seq-03",
+      "frame": 25,
+      "source_support": [
+        {
+          "source": 13,
+          "visible": 155460,
+          "cycle": 139753,
+          "shared": 120267
+        },
+        {
+          "source": 21,
+          "visible": 160520,
+          "cycle": 158394,
+          "shared": 139840
+        },
+        {
+          "source": 29,
+          "visible": 156204,
+          "cycle": 144196,
+          "shared": 134297
+        },
+        {
+          "source": 37,
+          "visible": 122922,
+          "cycle": 101507,
+          "shared": 91753
+        }
+      ],
+      "rules": {
+        "any_source": {
+          "cells": {
+            "frozen_observed": {
+              "all": {
+                "n": 181540,
+                "eligible": 62708,
+                "changed": 62708,
+                "improved": 11644,
+                "close": 55171,
+                "initial_sse": 1533.8751939161211,
+                "final_sse": 1712.9791801128454,
+                "final_abs": 10819.158865563775
+              },
+              "common": {
+                "n": 52232,
+                "eligible": 52232,
+                "changed": 52232,
+                "improved": 10445,
+                "close": 7155,
+                "initial_sse": 59.17056770333449,
+                "final_sse": 213.3408299443014,
+                "final_abs": 2883.06413120829
+              }
+            },
+            "frozen_exact": {
+              "all": {
+                "n": 181540,
+                "eligible": 103739,
+                "changed": 103739,
+                "improved": 37542,
+                "close": 54778,
+                "initial_sse": 1533.8751939161211,
+                "final_sse": 1665.5202000576235,
+                "final_abs": 10799.750157243336
+              },
+              "common": {
+                "n": 52232,
+                "eligible": 52232,
+                "changed": 52232,
+                "improved": 14686,
+                "close": 7817,
+                "initial_sse": 59.17056770333449,
+                "final_sse": 184.13037002235436,
+                "final_abs": 2771.161895154407
+              }
+            },
+            "measured_observed": {
+              "all": {
+                "n": 181540,
+                "eligible": 129412,
+                "changed": 129412,
+                "improved": 64095,
+                "close": 74945,
+                "initial_sse": 1533.8751939161211,
+                "final_sse": 1461.1718236785662,
+                "final_abs": 9047.641927206912
+              },
+              "common": {
+                "n": 52232,
+                "eligible": 52232,
+                "changed": 52232,
+                "improved": 24407,
+                "close": 20445,
+                "initial_sse": 59.17056770333449,
+                "final_sse": 87.57641642252524,
+                "final_abs": 1607.65628510948
+              }
+            },
+            "measured_exact": {
+              "all": {
+                "n": 181540,
+                "eligible": 146818,
+                "changed": 146818,
+                "improved": 146818,
+                "close": 153824,
+                "initial_sse": 1533.8751939161211,
+                "final_sse": 960.3988831593522,
+                "final_abs": 4272.548818985509
+              },
+              "common": {
+                "n": 52232,
+                "eligible": 52232,
+                "changed": 52232,
+                "improved": 52232,
+                "close": 51882,
+                "initial_sse": 59.17056770333449,
+                "final_sse": 7.417932439588219,
+                "final_abs": 45.1429271786554
+              }
+            }
+          },
+          "max_oracle_relative_error": 7.260858581048524e-14
+        },
+        "two_sided": {
+          "cells": {
+            "frozen_observed": {
+              "all": {
+                "n": 181540,
+                "eligible": 3444,
+                "changed": 3444,
+                "improved": 633,
+                "close": 81549,
+                "initial_sse": 1533.8751939161211,
+                "final_sse": 1540.8525942044841,
+                "final_abs": 8817.831457513324
+              },
+              "common": {
+                "n": 632,
+                "eligible": 632,
+                "changed": 632,
+                "improved": 107,
+                "close": 31,
+                "initial_sse": 0.7344720494472836,
+                "final_sse": 1.534357510387232,
+                "final_abs": 30.27729053325164
+              }
+            },
+            "frozen_exact": {
+              "all": {
+                "n": 181540,
+                "eligible": 20839,
+                "changed": 20839,
+                "improved": 8036,
+                "close": 77696,
+                "initial_sse": 1533.8751939161211,
+                "final_sse": 1555.3122115154063,
+                "final_abs": 8998.724537559321
+              },
+              "common": {
+                "n": 632,
+                "eligible": 632,
+                "changed": 632,
+                "improved": 225,
+                "close": 63,
+                "initial_sse": 0.7344720494472836,
+                "final_sse": 1.259297566157795,
+                "final_abs": 26.25038288394692
+              }
+            },
+            "measured_observed": {
+              "all": {
+                "n": 181540,
+                "eligible": 60807,
+                "changed": 60807,
+                "improved": 26579,
+                "close": 73089,
+                "initial_sse": 1533.8751939161211,
+                "final_sse": 1533.3349656522098,
+                "final_abs": 9028.133309253613
+              },
+              "common": {
+                "n": 632,
+                "eligible": 632,
+                "changed": 632,
+                "improved": 508,
+                "close": 424,
+                "initial_sse": 0.7344720494472836,
+                "final_sse": 0.4041553119458695,
+                "final_abs": 11.96944045160332
+              }
+            },
+            "measured_exact": {
+              "all": {
+                "n": 181540,
+                "eligible": 104272,
+                "changed": 104272,
+                "improved": 104272,
+                "close": 137308,
+                "initial_sse": 1533.8751939161211,
+                "final_sse": 1306.282408389389,
+                "final_abs": 5840.927072395531
+              },
+              "common": {
+                "n": 632,
+                "eligible": 632,
+                "changed": 632,
+                "improved": 632,
+                "close": 632,
+                "initial_sse": 0.7344720494472836,
+                "final_sse": 6.153279146945888e-27,
+                "final_abs": 1.6987366374676682e-12
+              }
+            }
+          },
+          "max_oracle_relative_error": 4.374278717023117e-14
+        }
+      }
+    },
+    {
+      "scene": "fire/seq-03",
+      "frame": 225,
+      "source_support": [
+        {
+          "source": 213,
+          "visible": 138357,
+          "cycle": 95601,
+          "shared": 89657
+        },
+        {
+          "source": 221,
+          "visible": 162562,
+          "cycle": 140811,
+          "shared": 134937
+        },
+        {
+          "source": 229,
+          "visible": 145865,
+          "cycle": 141674,
+          "shared": 127826
+        },
+        {
+          "source": 237,
+          "visible": 109041,
+          "cycle": 67398,
+          "shared": 60826
+        }
+      ],
+      "rules": {
+        "any_source": {
+          "cells": {
+            "frozen_observed": {
+              "all": {
+                "n": 183751,
+                "eligible": 129805,
+                "changed": 129805,
+                "improved": 35369,
+                "close": 35814,
+                "initial_sse": 1303.4186979481901,
+                "final_sse": 1508.8709826746897,
+                "final_abs": 10650.720811365938
+              },
+              "common": {
+                "n": 2929,
+                "eligible": 2929,
+                "changed": 2929,
+                "improved": 930,
+                "close": 753,
+                "initial_sse": 19.385458667703055,
+                "final_sse": 32.97361302305466,
+                "final_abs": 223.05649926340584
+              }
+            },
+            "frozen_exact": {
+              "all": {
+                "n": 183751,
+                "eligible": 15463,
+                "changed": 15463,
+                "improved": 511,
+                "close": 57369,
+                "initial_sse": 1303.4186979481901,
+                "final_sse": 1449.268078840027,
+                "final_abs": 9153.168419145539
+              },
+              "common": {
+                "n": 2929,
+                "eligible": 2929,
+                "changed": 2929,
+                "improved": 252,
+                "close": 36,
+                "initial_sse": 19.385458667703055,
+                "final_sse": 39.46186696150901,
+                "final_abs": 311.7612734824099
+              }
+            },
+            "measured_observed": {
+              "all": {
+                "n": 183751,
+                "eligible": 15265,
+                "changed": 15265,
+                "improved": 1016,
+                "close": 58481,
+                "initial_sse": 1303.4186979481901,
+                "final_sse": 1380.2031688760985,
+                "final_abs": 8545.863346641678
+              },
+              "common": {
+                "n": 2929,
+                "eligible": 2929,
+                "changed": 2929,
+                "improved": 314,
+                "close": 115,
+                "initial_sse": 19.385458667703055,
+                "final_sse": 30.49876374217911,
+                "final_abs": 233.5703945801942
+              }
+            },
+            "measured_exact": {
+              "all": {
+                "n": 183751,
+                "eligible": 151355,
+                "changed": 151355,
+                "improved": 151355,
+                "close": 146603,
+                "initial_sse": 1303.4186979481901,
+                "final_sse": 897.3079450069799,
+                "final_abs": 3742.3247112402614
+              },
+              "common": {
+                "n": 2929,
+                "eligible": 2929,
+                "changed": 2929,
+                "improved": 2929,
+                "close": 2715,
+                "initial_sse": 19.385458667703055,
+                "final_sse": 10.2426341827883,
+                "final_abs": 34.73027543107142
+              }
+            }
+          },
+          "max_oracle_relative_error": 1.6053824936079764e-13
+        },
+        "two_sided": {
+          "cells": {
+            "frozen_observed": {
+              "all": {
+                "n": 183751,
+                "eligible": 49985,
+                "changed": 49985,
+                "improved": 14208,
+                "close": 46768,
+                "initial_sse": 1303.4186979481901,
+                "final_sse": 1373.522951178958,
+                "final_abs": 8757.63596118578
+              },
+              "common": {
+                "n": 0,
+                "eligible": 0,
+                "changed": 0,
+                "improved": 0,
+                "close": 0,
+                "initial_sse": 0.0,
+                "final_sse": 0.0,
+                "final_abs": 0.0
+              }
+            },
+            "frozen_exact": {
+              "all": {
+                "n": 183751,
+                "eligible": 0,
+                "changed": 0,
+                "improved": 0,
+                "close": 60257,
+                "initial_sse": 1303.4186979481901,
+                "final_sse": 1303.4186979481901,
+                "final_abs": 8018.364217138464
+              },
+              "common": {
+                "n": 0,
+                "eligible": 0,
+                "changed": 0,
+                "improved": 0,
+                "close": 0,
+                "initial_sse": 0.0,
+                "final_sse": 0.0,
+                "final_abs": 0.0
+              }
+            },
+            "measured_observed": {
+              "all": {
+                "n": 183751,
+                "eligible": 0,
+                "changed": 0,
+                "improved": 0,
+                "close": 60257,
+                "initial_sse": 1303.4186979481901,
+                "final_sse": 1303.4186979481901,
+                "final_abs": 8018.364217138464
+              },
+              "common": {
+                "n": 0,
+                "eligible": 0,
+                "changed": 0,
+                "improved": 0,
+                "close": 0,
+                "initial_sse": 0.0,
+                "final_sse": 0.0,
+                "final_abs": 0.0
+              }
+            },
+            "measured_exact": {
+              "all": {
+                "n": 183751,
+                "eligible": 93763,
+                "changed": 93763,
+                "improved": 93763,
+                "close": 110934,
+                "initial_sse": 1303.4186979481901,
+                "final_sse": 1110.0858838065146,
+                "final_abs": 5454.440193320551
+              },
+              "common": {
+                "n": 0,
+                "eligible": 0,
+                "changed": 0,
+                "improved": 0,
+                "close": 0,
+                "initial_sse": 0.0,
+                "final_sse": 0.0,
+                "final_abs": 0.0
+              }
+            }
+          },
+          "max_oracle_relative_error": 7.860379014346108e-14
+        }
+      }
+    },
+    {
+      "scene": "fire/seq-03",
+      "frame": 425,
+      "source_support": [
+        {
+          "source": 413,
+          "visible": 167899,
+          "cycle": 156207,
+          "shared": 144084
+        },
+        {
+          "source": 421,
+          "visible": 178117,
+          "cycle": 166913,
+          "shared": 160031
+        },
+        {
+          "source": 429,
+          "visible": 170512,
+          "cycle": 162180,
+          "shared": 155702
+        },
+        {
+          "source": 437,
+          "visible": 164024,
+          "cycle": 151459,
+          "shared": 144597
+        }
+      ],
+      "rules": {
+        "any_source": {
+          "cells": {
+            "frozen_observed": {
+              "all": {
+                "n": 185860,
+                "eligible": 144220,
+                "changed": 144220,
+                "improved": 30743,
+                "close": 71619,
+                "initial_sse": 568.7782018904578,
+                "final_sse": 707.5739572678573,
+                "final_abs": 7029.295758575677
+              },
+              "common": {
+                "n": 104938,
+                "eligible": 104938,
+                "changed": 104938,
+                "improved": 24087,
+                "close": 40871,
+                "initial_sse": 126.23914081310946,
+                "final_sse": 225.98517001593876,
+                "final_abs": 3463.6096141030534
+              }
+            },
+            "frozen_exact": {
+              "all": {
+                "n": 185860,
+                "eligible": 136329,
+                "changed": 136329,
+                "improved": 3618,
+                "close": 29714,
+                "initial_sse": 568.7782018904578,
+                "final_sse": 1308.153093285285,
+                "final_abs": 12844.310804571605
+              },
+              "common": {
+                "n": 104938,
+                "eligible": 104938,
+                "changed": 104938,
+                "improved": 2469,
+                "close": 341,
+                "initial_sse": 126.23914081310946,
+                "final_sse": 707.930088659263,
+                "final_abs": 8286.464171015246
+              }
+            },
+            "measured_observed": {
+              "all": {
+                "n": 185860,
+                "eligible": 125208,
+                "changed": 125208,
+                "improved": 21308,
+                "close": 59901,
+                "initial_sse": 568.7782018904578,
+                "final_sse": 769.2265150357888,
+                "final_abs": 8369.25557738315
+              },
+              "common": {
+                "n": 104938,
+                "eligible": 104938,
+                "changed": 104938,
+                "improved": 15568,
+                "close": 14189,
+                "initial_sse": 126.23914081310946,
+                "final_sse": 357.818249639015,
+                "final_abs": 5366.90158791928
+              }
+            },
+            "measured_exact": {
+              "all": {
+                "n": 185860,
+                "eligible": 162502,
+                "changed": 162502,
+                "improved": 162502,
+                "close": 171640,
+                "initial_sse": 568.7782018904578,
+                "final_sse": 324.8924649908962,
+                "final_abs": 1746.7982104954383
+              },
+              "common": {
+                "n": 104938,
+                "eligible": 104938,
+                "changed": 104938,
+                "improved": 104938,
+                "close": 103186,
+                "initial_sse": 126.23914081310946,
+                "final_sse": 41.38826080296732,
+                "final_abs": 243.29602720031508
+              }
+            }
+          },
+          "max_oracle_relative_error": 4.951594689828198e-14
+        },
+        "two_sided": {
+          "cells": {
+            "frozen_observed": {
+              "all": {
+                "n": 185860,
+                "eligible": 4958,
+                "changed": 4958,
+                "improved": 2643,
+                "close": 132140,
+                "initial_sse": 568.7782018904578,
+                "final_sse": 564.0959762568152,
+                "final_abs": 4416.158082263678
+              },
+              "common": {
+                "n": 0,
+                "eligible": 0,
+                "changed": 0,
+                "improved": 0,
+                "close": 0,
+                "initial_sse": 0.0,
+                "final_sse": 0.0,
+                "final_abs": 0.0
+              }
+            },
+            "frozen_exact": {
+              "all": {
+                "n": 185860,
+                "eligible": 0,
+                "changed": 0,
+                "improved": 0,
+                "close": 132390,
+                "initial_sse": 568.7782018904578,
+                "final_sse": 568.7782018904578,
+                "final_abs": 4416.869783335739
+              },
+              "common": {
+                "n": 0,
+                "eligible": 0,
+                "changed": 0,
+                "improved": 0,
+                "close": 0,
+                "initial_sse": 0.0,
+                "final_sse": 0.0,
+                "final_abs": 0.0
+              }
+            },
+            "measured_observed": {
+              "all": {
+                "n": 185860,
+                "eligible": 13439,
+                "changed": 13439,
+                "improved": 2974,
+                "close": 125844,
+                "initial_sse": 568.7782018904578,
+                "final_sse": 576.5272247264743,
+                "final_abs": 4691.827551126568
+              },
+              "common": {
+                "n": 0,
+                "eligible": 0,
+                "changed": 0,
+                "improved": 0,
+                "close": 0,
+                "initial_sse": 0.0,
+                "final_sse": 0.0,
+                "final_abs": 0.0
+              }
+            },
+            "measured_exact": {
+              "all": {
+                "n": 185860,
+                "eligible": 123627,
+                "changed": 123627,
+                "improved": 123627,
+                "close": 158572,
+                "initial_sse": 568.7782018904578,
+                "final_sse": 457.816044396618,
+                "final_abs": 2648.3282134695787
+              },
+              "common": {
+                "n": 0,
+                "eligible": 0,
+                "changed": 0,
+                "improved": 0,
+                "close": 0,
+                "initial_sse": 0.0,
+                "final_sse": 0.0,
+                "final_abs": 0.0
+              }
+            }
+          },
+          "max_oracle_relative_error": 2.5757174171303632e-14
+        }
+      }
+    },
+    {
+      "scene": "fire/seq-03",
+      "frame": 625,
+      "source_support": [
+        {
+          "source": 613,
+          "visible": 149582,
+          "cycle": 75310,
+          "shared": 69307
+        },
+        {
+          "source": 621,
+          "visible": 152693,
+          "cycle": 136354,
+          "shared": 117328
+        },
+        {
+          "source": 629,
+          "visible": 150595,
+          "cycle": 131778,
+          "shared": 114929
+        },
+        {
+          "source": 637,
+          "visible": 120416,
+          "cycle": 47334,
+          "shared": 42400
+        }
+      ],
+      "rules": {
+        "any_source": {
+          "cells": {
+            "frozen_observed": {
+              "all": {
+                "n": 179678,
+                "eligible": 116558,
+                "changed": 116558,
+                "improved": 30611,
+                "close": 65533,
+                "initial_sse": 3076.873498308518,
+                "final_sse": 3198.1821538498766,
+                "final_abs": 13423.900377391665
+              },
+              "common": {
+                "n": 95709,
+                "eligible": 95709,
+                "changed": 95709,
+                "improved": 26273,
+                "close": 24631,
+                "initial_sse": 1312.2938985522435,
+                "final_sse": 1418.7646425043724,
+                "final_abs": 6915.01252843394
+              }
+            },
+            "frozen_exact": {
+              "all": {
+                "n": 179678,
+                "eligible": 125646,
+                "changed": 125646,
+                "improved": 47037,
+                "close": 79128,
+                "initial_sse": 3076.873498308518,
+                "final_sse": 2487.1796500252576,
+                "final_abs": 11016.84802040063
+              },
+              "common": {
+                "n": 95709,
+                "eligible": 95709,
+                "changed": 95709,
+                "improved": 35751,
+                "close": 36491,
+                "initial_sse": 1312.2938985522435,
+                "final_sse": 935.7863687644526,
+                "final_abs": 5254.315747271728
+              }
+            },
+            "measured_observed": {
+              "all": {
+                "n": 179678,
+                "eligible": 119670,
+                "changed": 119670,
+                "improved": 34650,
+                "close": 58624,
+                "initial_sse": 3076.873498308518,
+                "final_sse": 2915.1114661353226,
+                "final_abs": 13439.962717043514
+              },
+              "common": {
+                "n": 95709,
+                "eligible": 95709,
+                "changed": 95709,
+                "improved": 28487,
+                "close": 19406,
+                "initial_sse": 1312.2938985522435,
+                "final_sse": 1214.6005956681427,
+                "final_abs": 7080.985681892076
+              }
+            },
+            "measured_exact": {
+              "all": {
+                "n": 179678,
+                "eligible": 148229,
+                "changed": 148229,
+                "improved": 148229,
+                "close": 145933,
+                "initial_sse": 3076.873498308518,
+                "final_sse": 2144.564326826057,
+                "final_abs": 6871.600862405065
+              },
+              "common": {
+                "n": 95709,
+                "eligible": 95709,
+                "changed": 95709,
+                "improved": 95709,
+                "close": 83547,
+                "initial_sse": 1312.2938985522435,
+                "final_sse": 781.9427728981905,
+                "final_abs": 2537.165194371893
+              }
+            }
+          },
+          "max_oracle_relative_error": 4.39648317751562e-14
+        },
+        "two_sided": {
+          "cells": {
+            "frozen_observed": {
+              "all": {
+                "n": 179678,
+                "eligible": 45372,
+                "changed": 45372,
+                "improved": 13438,
+                "close": 97914,
+                "initial_sse": 3076.873498308518,
+                "final_sse": 3107.346120211332,
+                "final_abs": 11266.455335997625
+              },
+              "common": {
+                "n": 19084,
+                "eligible": 19084,
+                "changed": 19084,
+                "improved": 7757,
+                "close": 9907,
+                "initial_sse": 27.83406405213935,
+                "final_sse": 29.79030106307085,
+                "final_abs": 524.2920982963091
+              }
+            },
+            "frozen_exact": {
+              "all": {
+                "n": 179678,
+                "eligible": 50274,
+                "changed": 50274,
+                "improved": 21229,
+                "close": 109760,
+                "initial_sse": 3076.873498308518,
+                "final_sse": 3004.9985810801727,
+                "final_abs": 10521.556092189227
+              },
+              "common": {
+                "n": 19084,
+                "eligible": 19084,
+                "changed": 19084,
+                "improved": 9708,
+                "close": 13459,
+                "initial_sse": 27.83406405213935,
+                "final_sse": 13.072263622156637,
+                "final_abs": 346.520582818938
+              }
+            },
+            "measured_observed": {
+              "all": {
+                "n": 179678,
+                "eligible": 32364,
+                "changed": 32364,
+                "improved": 15362,
+                "close": 108508,
+                "initial_sse": 3076.873498308518,
+                "final_sse": 2935.2004504533443,
+                "final_abs": 10655.737990700853
+              },
+              "common": {
+                "n": 19084,
+                "eligible": 19084,
+                "changed": 19084,
+                "improved": 9129,
+                "close": 10290,
+                "initial_sse": 27.83406405213935,
+                "final_sse": 24.664115359533483,
+                "final_abs": 497.9231870712715
+              }
+            },
+            "measured_exact": {
+              "all": {
+                "n": 179678,
+                "eligible": 90302,
+                "changed": 90302,
+                "improved": 90302,
+                "close": 133398,
+                "initial_sse": 3076.873498308518,
+                "final_sse": 2604.0903314316492,
+                "final_abs": 8540.362663462525
+              },
+              "common": {
+                "n": 19084,
+                "eligible": 19084,
+                "changed": 19084,
+                "improved": 19084,
+                "close": 18281,
+                "initial_sse": 27.83406405213935,
+                "final_sse": 4.608026861202135,
+                "final_abs": 48.16979250854921
+              }
+            }
+          },
+          "max_oracle_relative_error": 2.4646951146678475e-14
+        }
+      }
+    },
+    {
+      "scene": "fire/seq-03",
+      "frame": 825,
+      "source_support": [
+        {
+          "source": 813,
+          "visible": 108737,
+          "cycle": 110016,
+          "shared": 96581
+        },
+        {
+          "source": 821,
+          "visible": 125243,
+          "cycle": 129851,
+          "shared": 117373
+        },
+        {
+          "source": 829,
+          "visible": 134011,
+          "cycle": 129468,
+          "shared": 120976
+        },
+        {
+          "source": 837,
+          "visible": 136028,
+          "cycle": 124584,
+          "shared": 117082
+        }
+      ],
+      "rules": {
+        "any_source": {
+          "cells": {
+            "frozen_observed": {
+              "all": {
+                "n": 144115,
+                "eligible": 108569,
+                "changed": 108569,
+                "improved": 25738,
+                "close": 69537,
+                "initial_sse": 331.9265170274718,
+                "final_sse": 404.25295202508215,
+                "final_abs": 4882.801026826258
+              },
+              "common": {
+                "n": 102164,
+                "eligible": 102164,
+                "changed": 102164,
+                "improved": 23764,
+                "close": 44019,
+                "initial_sse": 214.58039335391766,
+                "final_sse": 277.244085118888,
+                "final_abs": 3602.6946590154607
+              }
+            },
+            "frozen_exact": {
+              "all": {
+                "n": 144115,
+                "eligible": 125211,
+                "changed": 125211,
+                "improved": 10985,
+                "close": 24307,
+                "initial_sse": 331.9265170274718,
+                "final_sse": 732.4409270756565,
+                "final_abs": 8249.37859152135
+              },
+              "common": {
+                "n": 102164,
+                "eligible": 102164,
+                "changed": 102164,
+                "improved": 7478,
+                "close": 7040,
+                "initial_sse": 214.58039335391766,
+                "final_sse": 540.709620779129,
+                "final_abs": 6299.114738897294
+              }
+            },
+            "measured_observed": {
+              "all": {
+                "n": 144115,
+                "eligible": 106993,
+                "changed": 106993,
+                "improved": 17971,
+                "close": 41926,
+                "initial_sse": 331.9265170274718,
+                "final_sse": 599.9317751043995,
+                "final_abs": 7202.986938609436
+              },
+              "common": {
+                "n": 102164,
+                "eligible": 102164,
+                "changed": 102164,
+                "improved": 17127,
+                "close": 16584,
+                "initial_sse": 214.58039335391766,
+                "final_sse": 472.52342034542426,
+                "final_abs": 5900.780327386023
+              }
+            },
+            "measured_exact": {
+              "all": {
+                "n": 144115,
+                "eligible": 130013,
+                "changed": 130013,
+                "improved": 130013,
+                "close": 134212,
+                "initial_sse": 331.9265170274718,
+                "final_sse": 153.94128984960685,
+                "final_abs": 1002.928357701553
+              },
+              "common": {
+                "n": 102164,
+                "eligible": 102164,
+                "changed": 102164,
+                "improved": 102164,
+                "close": 98053,
+                "initial_sse": 214.58039335391766,
+                "final_sse": 76.52991869570201,
+                "final_abs": 433.13312812016227
+              }
+            }
+          },
+          "max_oracle_relative_error": 6.339373470609644e-14
+        },
+        "two_sided": {
+          "cells": {
+            "frozen_observed": {
+              "all": {
+                "n": 144115,
+                "eligible": 39910,
+                "changed": 39910,
+                "improved": 12126,
+                "close": 95694,
+                "initial_sse": 331.9265170274718,
+                "final_sse": 340.98437749615636,
+                "final_abs": 3604.8392398861947
+              },
+              "common": {
+                "n": 0,
+                "eligible": 0,
+                "changed": 0,
+                "improved": 0,
+                "close": 0,
+                "initial_sse": 0.0,
+                "final_sse": 0.0,
+                "final_abs": 0.0
+              }
+            },
+            "frozen_exact": {
+              "all": {
+                "n": 144115,
+                "eligible": 0,
+                "changed": 0,
+                "improved": 0,
+                "close": 105763,
+                "initial_sse": 331.9265170274718,
+                "final_sse": 331.9265170274718,
+                "final_abs": 3232.000471190695
+              },
+              "common": {
+                "n": 0,
+                "eligible": 0,
+                "changed": 0,
+                "improved": 0,
+                "close": 0,
+                "initial_sse": 0.0,
+                "final_sse": 0.0,
+                "final_abs": 0.0
+              }
+            },
+            "measured_observed": {
+              "all": {
+                "n": 144115,
+                "eligible": 1548,
+                "changed": 1548,
+                "improved": 865,
+                "close": 105981,
+                "initial_sse": 331.9265170274718,
+                "final_sse": 329.6128554382361,
+                "final_abs": 3231.895878508583
+              },
+              "common": {
+                "n": 0,
+                "eligible": 0,
+                "changed": 0,
+                "improved": 0,
+                "close": 0,
+                "initial_sse": 0.0,
+                "final_sse": 0.0,
+                "final_abs": 0.0
+              }
+            },
+            "measured_exact": {
+              "all": {
+                "n": 144115,
+                "eligible": 88991,
+                "changed": 88991,
+                "improved": 88991,
+                "close": 122170,
+                "initial_sse": 331.9265170274718,
+                "final_sse": 268.65924362894833,
+                "final_abs": 1970.6617329003204
+              },
+              "common": {
+                "n": 0,
+                "eligible": 0,
+                "changed": 0,
+                "improved": 0,
+                "close": 0,
+                "initial_sse": 0.0,
+                "final_sse": 0.0,
+                "final_abs": 0.0
+              }
+            }
+          },
+          "max_oracle_relative_error": 4.907185768843192e-14
+        }
+      }
+    }
+  ],
+  "results": {
+    "overall": {
+      "any_source": {
+        "all": {
+          "frozen_observed": {
+            "targets": 15,
+            "coverage": 0.6397550713417418,
+            "gain": -0.20776511972595313,
+            "improved_among_changed": 0.25520628887585184
+          },
+          "frozen_exact": {
+            "targets": 15,
+            "coverage": 0.6346711100402425,
+            "gain": -0.24877323842946478,
+            "improved_among_changed": 0.2323451390769349
+          },
+          "measured_observed": {
+            "targets": 15,
+            "coverage": 0.5761699307578378,
+            "gain": -0.1908364452572042,
+            "improved_among_changed": 0.3072947175013354
+          },
+          "measured_exact": {
+            "targets": 15,
+            "coverage": 0.8007651939012502,
+            "gain": 0.32855712831398554,
+            "improved_among_changed": 0.9999995138338575
+          }
+        },
+        "common": {
+          "frozen_observed": {
+            "targets": 15,
+            "coverage": 1.0,
+            "gain": -1.1280997962938109,
+            "improved_among_changed": 0.2606559647555019
+          },
+          "frozen_exact": {
+            "targets": 15,
+            "coverage": 1.0,
+            "gain": -1.3445406671491476,
+            "improved_among_changed": 0.22556761091316171
+          },
+          "measured_observed": {
+            "targets": 15,
+            "coverage": 1.0,
+            "gain": -0.8108077756552041,
+            "improved_among_changed": 0.30622009991469407
+          },
+          "measured_exact": {
+            "targets": 15,
+            "coverage": 1.0,
+            "gain": 0.6270627946282046,
+            "improved_among_changed": 0.9999991178289417
+          }
+        }
+      },
+      "two_sided": {
+        "all": {
+          "frozen_observed": {
+            "targets": 15,
+            "coverage": 0.22295691300784945,
+            "gain": -0.03859584154666562,
+            "improved_among_changed": 0.32360885336437784
+          },
+          "frozen_exact": {
+            "targets": 15,
+            "coverage": 0.16237044250732552,
+            "gain": -0.029205799077381543,
+            "improved_among_changed": 0.28315401785174493
+          },
+          "measured_observed": {
+            "targets": 15,
+            "coverage": 0.1605984241037815,
+            "gain": 0.005540493015453659,
+            "improved_among_changed": 0.41281570636925313
+          },
+          "measured_exact": {
+            "targets": 15,
+            "coverage": 0.5206527206492099,
+            "gain": 0.14274341400684293,
+            "improved_among_changed": 0.9999992522497935
+          }
+        },
+        "common": {
+          "frozen_observed": {
+            "targets": 10,
+            "coverage": 1.0,
+            "gain": -1.4585037867000872,
+            "improved_among_changed": 0.32798794757433025
+          },
+          "frozen_exact": {
+            "targets": 10,
+            "coverage": 1.0,
+            "gain": -1.7084690887670844,
+            "improved_among_changed": 0.34153501694128013
+          },
+          "measured_observed": {
+            "targets": 10,
+            "coverage": 1.0,
+            "gain": -0.744280824575446,
+            "improved_among_changed": 0.45744433792048017
+          },
+          "measured_exact": {
+            "targets": 10,
+            "coverage": 1.0,
+            "gain": 0.8182577437758976,
+            "improved_among_changed": 1.0
+          }
+        }
+      }
+    },
+    "by_scene": {
+      "heads/seq-01": {
+        "any_source": {
+          "all": {
+            "frozen_observed": {
+              "targets": 5,
+              "coverage": 0.6625525299455199,
+              "gain": -0.2916657594939275,
+              "improved_among_changed": 0.3181784207398881
+            },
+            "frozen_exact": {
+              "targets": 5,
+              "coverage": 0.6682569943096865,
+              "gain": -0.16975129430517816,
+              "improved_among_changed": 0.2937018664998287
+            },
+            "measured_observed": {
+              "targets": 5,
+              "coverage": 0.580692124996382,
+              "gain": -0.24788434730496278,
+              "improved_among_changed": 0.4036558361367798
+            },
+            "measured_exact": {
+              "targets": 5,
+              "coverage": 0.7836961035619772,
+              "gain": 0.3620245669284766,
+              "improved_among_changed": 0.9999984240229336
+            }
+          },
+          "common": {
+            "frozen_observed": {
+              "targets": 5,
+              "coverage": 1.0,
+              "gain": -1.2532339919852131,
+              "improved_among_changed": 0.31969582358569487
+            },
+            "frozen_exact": {
+              "targets": 5,
+              "coverage": 1.0,
+              "gain": -1.5732918940643092,
+              "improved_among_changed": 0.28063179725579973
+            },
+            "measured_observed": {
+              "targets": 5,
+              "coverage": 1.0,
+              "gain": -1.1038820321452334,
+              "improved_among_changed": 0.421914528030618
+            },
+            "measured_exact": {
+              "targets": 5,
+              "coverage": 1.0,
+              "gain": 0.7312499304601227,
+              "improved_among_changed": 0.9999974952535053
+            }
+          }
+        },
+        "two_sided": {
+          "all": {
+            "frozen_observed": {
+              "targets": 5,
+              "coverage": 0.3000665878139085,
+              "gain": -0.07443434768169695,
+              "improved_among_changed": 0.34823726778562675
+            },
+            "frozen_exact": {
+              "targets": 5,
+              "coverage": 0.2308377644834278,
+              "gain": -0.04102090440829544,
+              "improved_among_changed": 0.25773778145944726
+            },
+            "measured_observed": {
+              "targets": 5,
+              "coverage": 0.17196952547482028,
+              "gain": 0.02316154914279962,
+              "improved_among_changed": 0.5409268896432423
+            },
+            "measured_exact": {
+              "targets": 5,
+              "coverage": 0.5011608109581205,
+              "gain": 0.17684571054433362,
+              "improved_among_changed": 0.9999975316565053
+            }
+          },
+          "common": {
+            "frozen_observed": {
+              "targets": 4,
+              "coverage": 1.0,
+              "gain": -2.665338707968495,
+              "improved_among_changed": 0.32698466409658355
+            },
+            "frozen_exact": {
+              "targets": 4,
+              "coverage": 1.0,
+              "gain": -2.848799815416547,
+              "improved_among_changed": 0.35451436305847944
+            },
+            "measured_observed": {
+              "targets": 4,
+              "coverage": 1.0,
+              "gain": -1.5710481166735888,
+              "improved_among_changed": 0.5149914800536576
+            },
+            "measured_exact": {
+              "targets": 4,
+              "coverage": 1.0,
+              "gain": 0.8990350924393958,
+              "improved_among_changed": 1.0
+            }
+          }
+        }
+      },
+      "chess/seq-03": {
+        "any_source": {
+          "all": {
+            "frozen_observed": {
+              "targets": 5,
+              "coverage": 0.6107415877151762,
+              "gain": -0.17648146737483245,
+              "improved_among_changed": 0.2100804923804859
+            },
+            "frozen_exact": {
+              "targets": 5,
+              "coverage": 0.6443151977153008,
+              "gain": -0.07404037840308117,
+              "improved_among_changed": 0.20606855393656542
+            },
+            "measured_observed": {
+              "targets": 5,
+              "coverage": 0.5722100226664316,
+              "gain": -0.10086886003546262,
+              "improved_among_changed": 0.24476080230175648
+            },
+            "measured_exact": {
+              "targets": 5,
+              "coverage": 0.7718244501890065,
+              "gain": 0.2329546896739546,
+              "improved_among_changed": 1.0
+            }
+          },
+          "common": {
+            "frozen_observed": {
+              "targets": 5,
+              "coverage": 1.0,
+              "gain": -1.23711213557101,
+              "improved_among_changed": 0.21877333248306777
+            },
+            "frozen_exact": {
+              "targets": 5,
+              "coverage": 1.0,
+              "gain": -0.6626725275765095,
+              "improved_among_changed": 0.22059077514992573
+            },
+            "measured_observed": {
+              "targets": 5,
+              "coverage": 1.0,
+              "gain": -0.5254549313881915,
+              "improved_among_changed": 0.24650261855226344
+            },
+            "measured_exact": {
+              "targets": 5,
+              "coverage": 1.0,
+              "gain": 0.5367578093119917,
+              "improved_among_changed": 1.0
+            }
+          }
+        },
+        "two_sided": {
+          "all": {
+            "frozen_observed": {
+              "targets": 5,
+              "coverage": 0.1993795992193499,
+              "gain": -0.023894333914624255,
+              "improved_among_changed": 0.30919879289552205
+            },
+            "frozen_exact": {
+              "targets": 5,
+              "coverage": 0.17735543084652367,
+              "gain": -0.04847329276146393,
+              "improved_among_changed": 0.2550128436146149
+            },
+            "measured_observed": {
+              "targets": 5,
+              "coverage": 0.1902014011786891,
+              "gain": -0.014488690857467068,
+              "improved_among_changed": 0.3008538064546817
+            },
+            "measured_exact": {
+              "targets": 5,
+              "coverage": 0.48682024271315694,
+              "gain": 0.08417312750564336,
+              "improved_among_changed": 1.0
+            }
+          },
+          "common": {
+            "frozen_observed": {
+              "targets": 4,
+              "coverage": 1.0,
+              "gain": -0.6910847759833513,
+              "improved_among_changed": 0.30791202077287305
+            },
+            "frozen_exact": {
+              "targets": 4,
+              "coverage": 1.0,
+              "gain": -1.3763200495331285,
+              "improved_among_changed": 0.2762639376813808
+            },
+            "measured_observed": {
+              "targets": 4,
+              "coverage": 1.0,
+              "gain": -0.4305591830477351,
+              "improved_among_changed": 0.3752711165419276
+            },
+            "measured_exact": {
+              "targets": 4,
+              "coverage": 1.0,
+              "gain": 0.6879976432411502,
+              "improved_among_changed": 1.0
+            }
+          }
+        }
+      },
+      "fire/seq-03": {
+        "any_source": {
+          "all": {
+            "frozen_observed": {
+              "targets": 5,
+              "coverage": 0.6459710963645293,
+              "gain": -0.15514813230909946,
+              "improved_among_changed": 0.23868045420567402
+            },
+            "frozen_exact": {
+              "targets": 5,
+              "coverage": 0.5914411380957402,
+              "gain": -0.502528042580135,
+              "improved_among_changed": 0.19687077892841062
+            },
+            "measured_observed": {
+              "targets": 5,
+              "coverage": 0.5756076446107001,
+              "gain": -0.22375612843118717,
+              "improved_among_changed": 0.2800132112101952
+            },
+            "measured_exact": {
+              "targets": 5,
+              "coverage": 0.846775027952767,
+              "gain": 0.3906921283395253,
+              "improved_among_changed": 1.0
+            }
+          },
+          "common": {
+            "frozen_observed": {
+              "targets": 5,
+              "coverage": 1.0,
+              "gain": -0.8939532613252092,
+              "improved_among_changed": 0.2388427027812231
+            },
+            "frozen_exact": {
+              "targets": 5,
+              "coverage": 1.0,
+              "gain": -1.7976575798066237,
+              "improved_among_changed": 0.16938754986423518
+            },
+            "measured_observed": {
+              "targets": 5,
+              "coverage": 1.0,
+              "gain": -0.8030863634321874,
+              "improved_among_changed": 0.23997128267015297
+            },
+            "measured_exact": {
+              "targets": 5,
+              "coverage": 1.0,
+              "gain": 0.6131806441124994,
+              "improved_among_changed": 1.0
+            }
+          }
+        },
+        "two_sided": {
+          "all": {
+            "frozen_observed": {
+              "targets": 5,
+              "coverage": 0.16942455199029,
+              "gain": -0.017458843043675665,
+              "improved_among_changed": 0.29963318461185084
+            },
+            "frozen_exact": {
+              "targets": 5,
+              "coverage": 0.07891813219202506,
+              "gain": 0.0018767999376147371,
+              "improved_among_changed": 0.4115281312840128
+            },
+            "measured_observed": {
+              "targets": 5,
+              "coverage": 0.11962434565783515,
+              "gain": 0.007948620761028424,
+              "improved_among_changed": 0.4232696610514248
+            },
+            "measured_exact": {
+              "targets": 5,
+              "coverage": 0.5739771082763521,
+              "gain": 0.16721140397055181,
+              "improved_among_changed": 1.0
+            }
+          },
+          "common": {
+            "frozen_observed": {
+              "targets": 2,
+              "coverage": 1.0,
+              "gain": -0.5796719655967438,
+              "improved_among_changed": 0.39886386691012377
+            },
+            "frozen_exact": {
+              "targets": 2,
+              "coverage": 1.0,
+              "gain": -0.09210571393607159,
+              "improved_among_changed": 0.5038040170419964
+            },
+            "measured_observed": {
+              "targets": 2,
+              "coverage": 1.0,
+              "gain": 0.2818104765654179,
+              "improved_among_changed": 0.48879082978291744
+            },
+            "measured_exact": {
+              "targets": 2,
+              "coverage": 1.0,
+              "gain": 0.9172232475183955,
+              "improved_among_changed": 1.0
+            }
+          }
+        }
+      }
+    }
+  }
+}

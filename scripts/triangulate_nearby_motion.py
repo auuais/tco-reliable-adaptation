@@ -9,13 +9,17 @@ from fixed_camera_depth_scale import centers
 from track_camera_selection import bearings
 
 
-def triangulate(target, source, forward, reverse, k, e):
+def motion_pair(forward, reverse):
     height, width = forward.shape[:2]
     y, x = np.indices((height,width), dtype=float)
     xy = np.column_stack((x.ravel(),y.ravel()))
     match = xy+forward.reshape(-1,2)
     back, inside = bilinear(reverse, match[:,0], match[:,1])
     cycle_error = np.linalg.norm(match+back-xy, axis=1)
+    return xy, match, inside & (cycle_error<=1)
+
+
+def depth_from_match(target, source, xy, match, support, k, e):
     rig = Rig(rotation=e[:,:3,:3], center=centers(e), intrinsic=k)
     ray = bearings(rig, target, xy)
     line = bearings(rig, source, match)
@@ -28,9 +32,14 @@ def triangulate(target, source, forward, reverse, k, e):
     image = source_xyz@k[source].T
     with np.errstate(divide='ignore', invalid='ignore'):
         pixel_error = np.linalg.norm(image[:,:2]/image[:,2,None]-match, axis=1)
-    valid = (inside & (cycle_error<=1) & (depth>0) & (source_xyz[:,2]>0) & (pixel_error<=1)
+    valid = (support & (depth>0) & (source_xyz[:,2]>0) & (pixel_error<=1)
              & (square>=np.sum(ray**2,axis=1)*np.sin(np.deg2rad(1.))**2))
-    return np.where(valid,depth,np.nan).reshape(height,width)
+    return np.where(valid,depth,np.nan)
+
+
+def triangulate(target, source, forward, reverse, k, e):
+    xy, match, ok = motion_pair(forward, reverse)
+    return depth_from_match(target, source, xy, match, ok, k, e).reshape(forward.shape[:2])
 
 
 def combine(estimates, offsets):

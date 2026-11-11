@@ -81,3 +81,16 @@ Multiplying the bounded log-depth correction by a single scalar reduced the aver
 | Measured, two-sided support | 0.553 | 1.58% | 1.42% | 2.42% |
 
 For two-sided frozen geometry, the step learned from the other two scenes reduced error by 1.29% on Heads, 0.17% on Chess and 0.92% on Fire. There is a weak transferable direction in these development frames, and the unit step gives it too much weight. The simpler any-source rule retained more of this signal. These post-hoc depth gains do not establish a surface improvement. A single multiplier per target has little remaining headroom on this metric. [Quadratic diagnostic design](../../docs/MOTION_DEPTH_SHRINKAGE.md) · [Per-target coefficients, leave-one-scene-out fits and endpoint checks](motion_shrinkage.json)
+
+### Would more accurate matching resolve the triangulation failure?
+
+We replaced the measured optical flow with dataset-derived exact correspondences and crossed this change with measured or frozen cameras. Both correspondence channels used identical input pixels, screened for mutual image-motion consistency and reference visibility. With measured cameras and exact correspondences, triangulated axial depths recovered target truth within a maximum relative difference of 1.64 × 10⁻¹³. Refactoring the triangulation routine for these substitutions reproduced all 60 previous depth maps bit for bit.
+
+| Camera rig | Image match | Two-sided coverage on valid targets | Two-sided error reduction, all valid | Two-sided error reduction, common support | Any-source error reduction, all valid |
+|---|---|---:|---:|---:|---:|
+| Frozen | DIS | 22.30% | −3.86% | −145.85% | −20.78% |
+| Frozen | Exact | 16.24% | −2.92% | −170.85% | −24.88% |
+| Measured | DIS | 16.06% | +0.55% | −74.43% | −19.08% |
+| Measured | Exact | 52.07% | +14.27% | +81.83% | +32.86% |
+
+All 15 targets contributed to the all-valid comparison. The two-sided four-arm intersection comprised 167,933 of 2,571,812 valid pixels and was empty on five targets. On the ten contributing targets, replacing DIS with exact matches under frozen geometry worsened the mean relative error reduction by 25.00 percentage points. Under exact matches, replacing the frozen rig with the measured rig improved it by 252.67 points. These percentages average per-target ratios on a selected subset. Values below −100% mean the updated error more than doubled on that metric. With frozen geometry, exact matches still increased error by 2.92% across all pixels. Improving a matcher alone leaves a camera-geometry and depth-scale problem in this particular triangulation pipeline. [Design and shared visibility rule](../../docs/MOTION_SOURCE_SUBSTITUTION.md) · [Per-target counts, exact-depth check and four-arm comparison](motion_substitution.json)
