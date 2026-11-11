@@ -14,8 +14,8 @@ def pair_key(job):
     return job["input_key"], job["prior_key"], job["seed"]
 
 
-def inspect(row):
-    folder = RUNS / row["tag"]
+def inspect(row, runs):
+    folder = runs / row["tag"]
     if sha(folder / "run.json") != row["run_sha256"]:
         raise ValueError(f"Run record differs for {folder.name}")
     run = read(folder / "run.json")
@@ -25,9 +25,9 @@ def inspect(row):
     return run, captures
 
 
-def compare(adaptive, matched):
-    a, a_capture = inspect(adaptive)
-    b, b_capture = inspect(matched)
+def compare(adaptive, matched, runs=RUNS):
+    a, a_capture = inspect(adaptive, runs)
+    b, b_capture = inspect(matched, runs)
     for field in ("used_focal", "supplied_focal"):
         np.testing.assert_array_equal(a["decision"][field], b["decision"][field])
     if a["configuration"] != b["configuration"] or a["checkpoint_sha256"] != b["checkpoint_sha256"]:
@@ -51,7 +51,7 @@ def compare(adaptive, matched):
                 matched_arm=matched["job"]["arm"], identical=same, adaptive_minus_matched=signed)
 
 
-def audit():
+def audit(runs=RUNS):
     summary_path = PUBLIC / "summary.json"
     rows = read(summary_path)["rows"]
     if [r["job"] for r in rows] != read(PLAN)["jobs"]:
@@ -61,7 +61,7 @@ def audit():
     for row in rows:
         if row["job"]["arm"] == "adaptive":
             arm = "consensus" if row["edited"] else "retain"
-            pairs.append(compare(row, arms[pair_key(row["job"]), arm]))
+            pairs.append(compare(row, arms[pair_key(row["job"]), arm], runs))
     if len(pairs) != 24 or len({p["matched_tag"] for p in pairs}) != 24:
         raise ValueError("Expected 24 distinct paired executions")
     repeatability = {}
