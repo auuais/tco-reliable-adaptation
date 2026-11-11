@@ -1,0 +1,960 @@
+{
+  "protocol_sha256": "fb87f847d86805a26e68fca319bdd6340d5a64fe00129608ab0453c1995739b8",
+  "replication_manifest_sha256": "f104289f3c03c3825fe8803d076df7e9b5d7ac005995be8120c28c55b3fa5b23",
+  "dataset_cache_sha256": "ce8f28f03d960fc4fc8be5624823715822a41550bddd421af9ca1942295afb8a",
+  "inputs": {
+    "heads_base": {
+      "file": "heads_base_rgb.npz",
+      "sha256": "cdcf6eed07ba83824cafd8c0370eb43194be0d0cd2b8582ba1e7f5cf4824e469",
+      "rgb_sha256": "267018afe5b86a47e1b1027eca90941c7d2f2a4fd68c83622fe9c97c43338ed1",
+      "scene": "heads/seq-01",
+      "batch": "base"
+    },
+    "heads_v0_wide": {
+      "file": "heads_v0_wide_rgb.npz",
+      "sha256": "6f4629935f6dfdeab217ecbb48c72acbe2af48d06216b4242ae0686f942af1c5",
+      "rgb_sha256": "671e3f53857ff5ad2f3b2cae22ba13c4beab77013b56d580a12665dbaa0ba81f",
+      "scene": "heads/seq-01",
+      "batch": "v0_wide"
+    },
+    "heads_v0_tight": {
+      "file": "heads_v0_tight_rgb.npz",
+      "sha256": "91c1a946ed0968273f3ceeca6983bed5ce37b61e80c2977289d47d2475242a8e",
+      "rgb_sha256": "78995c92f79d06f769a8e807d1006e7095903f00357d78132a265491472f8fe5",
+      "scene": "heads/seq-01",
+      "batch": "v0_tight"
+    },
+    "chess_base": {
+      "file": "chess_base_rgb.npz",
+      "sha256": "3da9b2748ef9eef39e1231acdbbf552eca9bcd2d8ff468ed9eac69b981dee88c",
+      "rgb_sha256": "18e1825401291648dcbebe4e7029df465c3ff551ef0eb31c48c522d683a76c24",
+      "scene": "chess/seq-03",
+      "batch": "base"
+    },
+    "chess_v2_wide": {
+      "file": "chess_v2_wide_rgb.npz",
+      "sha256": "d53e6409d74972318401b64cf5d3c458fb159b05c7198d9d726ddccda9737fc4",
+      "rgb_sha256": "acdc477eb8772586e50bf3a48cedae50df1a241e70184748ff49d88dc2a2e8f9",
+      "scene": "chess/seq-03",
+      "batch": "v2_wide"
+    },
+    "chess_v2_tight": {
+      "file": "chess_v2_tight_rgb.npz",
+      "sha256": "ed5931b2d8c5199ba9f81dfe03cda6fd06924cb9f95070da204650455259b603",
+      "rgb_sha256": "c657fced101d2725cf385902f4f45ff383f146a2041f7f22da2e009745fb8c35",
+      "scene": "chess/seq-03",
+      "batch": "v2_tight"
+    },
+    "fire_base": {
+      "file": "fire_base_rgb.npz",
+      "sha256": "7013237eb2aeb920374d8e422645059a267ba1c0cf18e3ddb4994db4df664c12",
+      "rgb_sha256": "8f876ee98945aea341197e378fae2b237e780f73b711772c23c03e5d8567e5fc",
+      "scene": "fire/seq-03",
+      "batch": "base"
+    },
+    "fire_v4_wide": {
+      "file": "fire_v4_wide_rgb.npz",
+      "sha256": "7f40b9806eddd0820a3ca3422bf2bfbfe3d3a900ba7c1176b660edc22e94ce34",
+      "rgb_sha256": "7f85eeb373e83b047cbc9d7df3140c0614cf6b51410002d2e8c1e1fe44004f4d",
+      "scene": "fire/seq-03",
+      "batch": "v4_wide"
+    },
+    "fire_v4_tight": {
+      "file": "fire_v4_tight_rgb.npz",
+      "sha256": "c9df6579703d258a6a7b920c616567f549e9bd676faefdfd8a69f3a54cc10130",
+      "rgb_sha256": "349b9974b8341d1093a4b7b4200b686b5a2098e976b7ff4abdcea471501b330a",
+      "scene": "fire/seq-03",
+      "batch": "v4_tight"
+    }
+  },
+  "priors": {
+    "heads_wide": {
+      "file": "heads_wide_prior.npz",
+      "sha256": "a6bc5d57cf6906fb8ec4e6b3fe71acc2c9cdc3dd228dde31945a6edabcf25327"
+    },
+    "heads_tight": {
+      "file": "heads_tight_prior.npz",
+      "sha256": "e29b65ac96a3198d36a8ccab5a8d0e173945ea24ce22f3543711b91b90a4e356"
+    },
+    "chess_wide": {
+      "file": "chess_wide_prior.npz",
+      "sha256": "60ad8e35506dd1cd2c91d38dabe4b09bd6506df5e7c6e5020f12c1e6ee551c64"
+    },
+    "chess_tight": {
+      "file": "chess_tight_prior.npz",
+      "sha256": "96dc970b6e5e023a9b913d97dbf15343f023e31e5806ed001803fd9d54917901"
+    },
+    "fire_wide": {
+      "file": "fire_wide_prior.npz",
+      "sha256": "c84ad4f5641c85a1e218061abb0991f0f014a79258b57b1282f03645d2de48f2"
+    },
+    "fire_tight": {
+      "file": "fire_tight_prior.npz",
+      "sha256": "781b07fc9d5bab1375e756fb08a20ef050918e7607dbb5d4b7940fb44f740139"
+    }
+  },
+  "registered_depth_sources": {
+    "heads/seq-01": {
+      "frame-000025.depth.proj.png": "d0a7d40b31890778cf495684fd8af2ac672f5f57d05cb1c917f4b91af77d9876",
+      "frame-000225.depth.proj.png": "a986c6e41bb58e2c6e527cf0651a088030124977d46e0a1349291d4cd9079a10",
+      "frame-000425.depth.proj.png": "782398d4e65cda95bd6f719621ffe6e1e44800b3441553c12e011992612e0741",
+      "frame-000625.depth.proj.png": "2397963bf1485d3684ae713ddc49624cb6d3924c98eaac1424b1f10fcc907305",
+      "frame-000825.depth.proj.png": "86ad3c528648ab5035756a7398ce46930a9a8ed51ea2f329b3f28d468acefdd0"
+    },
+    "chess/seq-03": {
+      "frame-000025.depth.proj.png": "e42312c4734658b62464762e3cb5b67a80c3cde12701443ef5e1b1386fe84443",
+      "frame-000225.depth.proj.png": "9a6aa70370a39659962f61e62239b691c8cd0e97c52a3ae5d9164ed844aa8afc",
+      "frame-000425.depth.proj.png": "98a254c47a4aa1604003d7c140739a9c2393d5960d868caeba49120dbd87472f",
+      "frame-000625.depth.proj.png": "9c54634fd4f387d7bbdabad429939416657280b4dd2463e417c87b1cf3a50861",
+      "frame-000825.depth.proj.png": "427b8979d2a77e2aa8a02b709cd2720f242938a517cdb11ba53f4437b0ed4666"
+    },
+    "fire/seq-03": {
+      "frame-000025.depth.proj.png": "4038fea11a9f052979eb0db4b9dd0e08657846c6fc38b80b859402d4e0ff9166",
+      "frame-000225.depth.proj.png": "b39b9921f8a0d944b9b4a90112ab71cb6b4cabd6d34663d06c217daef0df64ea",
+      "frame-000425.depth.proj.png": "fd910cfd502858e1e5467f458596803635686919b45bb260083e76a8788694a6",
+      "frame-000625.depth.proj.png": "fce74a66a5c40f313ff2b177948462a8bb4515cdc6872c898998dad320133b22",
+      "frame-000825.depth.proj.png": "66a1a6dee757bfc1e0ecd1218f85da265f5459a65fa2b386bcee1db7efb2f9cc"
+    }
+  },
+  "references": {
+    "heads_base": {
+      "file": "heads_base.npz",
+      "sha256": "8e7ed56e208d65c0236f16326d999e079ffcbbfc8f0a45a6987916f51fa6df3e",
+      "valid_pixels": 811621
+    },
+    "heads_v0_wide": {
+      "file": "heads_v0_wide.npz",
+      "sha256": "be5360467d9ccd59c16d6e483f247eda6f0a5240cc7a1be1154616c5da4a1af7",
+      "valid_pixels": 786147
+    },
+    "heads_v0_tight": {
+      "file": "heads_v0_tight.npz",
+      "sha256": "e985ea007fe3253b49757bda523b8f187de744c461cd5157c114e9837b1e2243",
+      "valid_pixels": 818201
+    },
+    "chess_base": {
+      "file": "chess_base.npz",
+      "sha256": "2c5f30d93b7ea6b15696f986a11f3724e379f07739f8a01d2d93889502372d24",
+      "valid_pixels": 885247
+    },
+    "chess_v2_wide": {
+      "file": "chess_v2_wide.npz",
+      "sha256": "ec9b260340b9a17582b275e15a66673292c62f331eb05da86e55e7c219dbdb40",
+      "valid_pixels": 853662
+    },
+    "chess_v2_tight": {
+      "file": "chess_v2_tight.npz",
+      "sha256": "8b3f52ef776dd48a427b4c1f70523a9383055d8334d07a38f1ea72d2437a7cd5",
+      "valid_pixels": 895121
+    },
+    "fire_base": {
+      "file": "fire_base.npz",
+      "sha256": "655950e9421f1a76ba487b376a4fa2d3bd0c3da6ef195d8d3509259aaa843225",
+      "valid_pixels": 874944
+    },
+    "fire_v4_wide": {
+      "file": "fire_v4_wide.npz",
+      "sha256": "02b423d97495713c68f2c43649dc6814e0aa9c0a5a0c2e01b491b6618aacd8d6",
+      "valid_pixels": 848987
+    },
+    "fire_v4_tight": {
+      "file": "fire_v4_tight.npz",
+      "sha256": "f115ed73070fae1fb614f249933dbf8313be035f1b3cebcbaf3bc2d2c2680057",
+      "valid_pixels": 884882
+    }
+  },
+  "jobs": [
+    {
+      "scene": "heads/seq-01",
+      "case": "metadata_fault",
+      "direction": -1,
+      "view": 0,
+      "seed": 42,
+      "arm": "retain",
+      "input_key": "heads_base",
+      "prior_key": "heads_wide",
+      "run_id": "heads_wide_metadata_fault_retain_s42"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "metadata_fault",
+      "direction": -1,
+      "view": 2,
+      "seed": 42,
+      "arm": "consensus",
+      "input_key": "chess_base",
+      "prior_key": "chess_wide",
+      "run_id": "chess_wide_metadata_fault_consensus_s42"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "metadata_fault",
+      "direction": -1,
+      "view": 4,
+      "seed": 42,
+      "arm": "adaptive",
+      "input_key": "fire_base",
+      "prior_key": "fire_wide",
+      "run_id": "fire_wide_metadata_fault_adaptive_s42"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "metadata_fault",
+      "direction": -1,
+      "view": 0,
+      "seed": 42,
+      "arm": "consensus",
+      "input_key": "heads_base",
+      "prior_key": "heads_wide",
+      "run_id": "heads_wide_metadata_fault_consensus_s42"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "metadata_fault",
+      "direction": -1,
+      "view": 2,
+      "seed": 42,
+      "arm": "adaptive",
+      "input_key": "chess_base",
+      "prior_key": "chess_wide",
+      "run_id": "chess_wide_metadata_fault_adaptive_s42"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "metadata_fault",
+      "direction": -1,
+      "view": 4,
+      "seed": 42,
+      "arm": "retain",
+      "input_key": "fire_base",
+      "prior_key": "fire_wide",
+      "run_id": "fire_wide_metadata_fault_retain_s42"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "metadata_fault",
+      "direction": -1,
+      "view": 0,
+      "seed": 42,
+      "arm": "adaptive",
+      "input_key": "heads_base",
+      "prior_key": "heads_wide",
+      "run_id": "heads_wide_metadata_fault_adaptive_s42"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "metadata_fault",
+      "direction": -1,
+      "view": 2,
+      "seed": 42,
+      "arm": "retain",
+      "input_key": "chess_base",
+      "prior_key": "chess_wide",
+      "run_id": "chess_wide_metadata_fault_retain_s42"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "metadata_fault",
+      "direction": -1,
+      "view": 4,
+      "seed": 42,
+      "arm": "consensus",
+      "input_key": "fire_base",
+      "prior_key": "fire_wide",
+      "run_id": "fire_wide_metadata_fault_consensus_s42"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "metadata_fault",
+      "direction": 1,
+      "view": 0,
+      "seed": 42,
+      "arm": "retain",
+      "input_key": "heads_base",
+      "prior_key": "heads_tight",
+      "run_id": "heads_tight_metadata_fault_retain_s42"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "metadata_fault",
+      "direction": 1,
+      "view": 2,
+      "seed": 42,
+      "arm": "consensus",
+      "input_key": "chess_base",
+      "prior_key": "chess_tight",
+      "run_id": "chess_tight_metadata_fault_consensus_s42"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "metadata_fault",
+      "direction": 1,
+      "view": 4,
+      "seed": 42,
+      "arm": "adaptive",
+      "input_key": "fire_base",
+      "prior_key": "fire_tight",
+      "run_id": "fire_tight_metadata_fault_adaptive_s42"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "metadata_fault",
+      "direction": 1,
+      "view": 0,
+      "seed": 42,
+      "arm": "consensus",
+      "input_key": "heads_base",
+      "prior_key": "heads_tight",
+      "run_id": "heads_tight_metadata_fault_consensus_s42"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "metadata_fault",
+      "direction": 1,
+      "view": 2,
+      "seed": 42,
+      "arm": "adaptive",
+      "input_key": "chess_base",
+      "prior_key": "chess_tight",
+      "run_id": "chess_tight_metadata_fault_adaptive_s42"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "metadata_fault",
+      "direction": 1,
+      "view": 4,
+      "seed": 42,
+      "arm": "retain",
+      "input_key": "fire_base",
+      "prior_key": "fire_tight",
+      "run_id": "fire_tight_metadata_fault_retain_s42"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "metadata_fault",
+      "direction": 1,
+      "view": 0,
+      "seed": 42,
+      "arm": "adaptive",
+      "input_key": "heads_base",
+      "prior_key": "heads_tight",
+      "run_id": "heads_tight_metadata_fault_adaptive_s42"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "metadata_fault",
+      "direction": 1,
+      "view": 2,
+      "seed": 42,
+      "arm": "retain",
+      "input_key": "chess_base",
+      "prior_key": "chess_tight",
+      "run_id": "chess_tight_metadata_fault_retain_s42"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "metadata_fault",
+      "direction": 1,
+      "view": 4,
+      "seed": 42,
+      "arm": "consensus",
+      "input_key": "fire_base",
+      "prior_key": "fire_tight",
+      "run_id": "fire_tight_metadata_fault_consensus_s42"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "valid_zoom",
+      "direction": -1,
+      "view": 0,
+      "seed": 42,
+      "arm": "retain",
+      "input_key": "heads_v0_wide",
+      "prior_key": "heads_wide",
+      "run_id": "heads_wide_valid_zoom_retain_s42"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "valid_zoom",
+      "direction": -1,
+      "view": 2,
+      "seed": 42,
+      "arm": "consensus",
+      "input_key": "chess_v2_wide",
+      "prior_key": "chess_wide",
+      "run_id": "chess_wide_valid_zoom_consensus_s42"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "valid_zoom",
+      "direction": -1,
+      "view": 4,
+      "seed": 42,
+      "arm": "adaptive",
+      "input_key": "fire_v4_wide",
+      "prior_key": "fire_wide",
+      "run_id": "fire_wide_valid_zoom_adaptive_s42"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "valid_zoom",
+      "direction": -1,
+      "view": 0,
+      "seed": 42,
+      "arm": "consensus",
+      "input_key": "heads_v0_wide",
+      "prior_key": "heads_wide",
+      "run_id": "heads_wide_valid_zoom_consensus_s42"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "valid_zoom",
+      "direction": -1,
+      "view": 2,
+      "seed": 42,
+      "arm": "adaptive",
+      "input_key": "chess_v2_wide",
+      "prior_key": "chess_wide",
+      "run_id": "chess_wide_valid_zoom_adaptive_s42"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "valid_zoom",
+      "direction": -1,
+      "view": 4,
+      "seed": 42,
+      "arm": "retain",
+      "input_key": "fire_v4_wide",
+      "prior_key": "fire_wide",
+      "run_id": "fire_wide_valid_zoom_retain_s42"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "valid_zoom",
+      "direction": -1,
+      "view": 0,
+      "seed": 42,
+      "arm": "adaptive",
+      "input_key": "heads_v0_wide",
+      "prior_key": "heads_wide",
+      "run_id": "heads_wide_valid_zoom_adaptive_s42"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "valid_zoom",
+      "direction": -1,
+      "view": 2,
+      "seed": 42,
+      "arm": "retain",
+      "input_key": "chess_v2_wide",
+      "prior_key": "chess_wide",
+      "run_id": "chess_wide_valid_zoom_retain_s42"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "valid_zoom",
+      "direction": -1,
+      "view": 4,
+      "seed": 42,
+      "arm": "consensus",
+      "input_key": "fire_v4_wide",
+      "prior_key": "fire_wide",
+      "run_id": "fire_wide_valid_zoom_consensus_s42"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "valid_zoom",
+      "direction": 1,
+      "view": 0,
+      "seed": 42,
+      "arm": "retain",
+      "input_key": "heads_v0_tight",
+      "prior_key": "heads_tight",
+      "run_id": "heads_tight_valid_zoom_retain_s42"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "valid_zoom",
+      "direction": 1,
+      "view": 2,
+      "seed": 42,
+      "arm": "consensus",
+      "input_key": "chess_v2_tight",
+      "prior_key": "chess_tight",
+      "run_id": "chess_tight_valid_zoom_consensus_s42"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "valid_zoom",
+      "direction": 1,
+      "view": 4,
+      "seed": 42,
+      "arm": "adaptive",
+      "input_key": "fire_v4_tight",
+      "prior_key": "fire_tight",
+      "run_id": "fire_tight_valid_zoom_adaptive_s42"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "valid_zoom",
+      "direction": 1,
+      "view": 0,
+      "seed": 42,
+      "arm": "consensus",
+      "input_key": "heads_v0_tight",
+      "prior_key": "heads_tight",
+      "run_id": "heads_tight_valid_zoom_consensus_s42"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "valid_zoom",
+      "direction": 1,
+      "view": 2,
+      "seed": 42,
+      "arm": "adaptive",
+      "input_key": "chess_v2_tight",
+      "prior_key": "chess_tight",
+      "run_id": "chess_tight_valid_zoom_adaptive_s42"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "valid_zoom",
+      "direction": 1,
+      "view": 4,
+      "seed": 42,
+      "arm": "retain",
+      "input_key": "fire_v4_tight",
+      "prior_key": "fire_tight",
+      "run_id": "fire_tight_valid_zoom_retain_s42"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "valid_zoom",
+      "direction": 1,
+      "view": 0,
+      "seed": 42,
+      "arm": "adaptive",
+      "input_key": "heads_v0_tight",
+      "prior_key": "heads_tight",
+      "run_id": "heads_tight_valid_zoom_adaptive_s42"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "valid_zoom",
+      "direction": 1,
+      "view": 2,
+      "seed": 42,
+      "arm": "retain",
+      "input_key": "chess_v2_tight",
+      "prior_key": "chess_tight",
+      "run_id": "chess_tight_valid_zoom_retain_s42"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "valid_zoom",
+      "direction": 1,
+      "view": 4,
+      "seed": 42,
+      "arm": "consensus",
+      "input_key": "fire_v4_tight",
+      "prior_key": "fire_tight",
+      "run_id": "fire_tight_valid_zoom_consensus_s42"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "metadata_fault",
+      "direction": -1,
+      "view": 0,
+      "seed": 123,
+      "arm": "consensus",
+      "input_key": "heads_base",
+      "prior_key": "heads_wide",
+      "run_id": "heads_wide_metadata_fault_consensus_s123"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "metadata_fault",
+      "direction": -1,
+      "view": 2,
+      "seed": 123,
+      "arm": "adaptive",
+      "input_key": "chess_base",
+      "prior_key": "chess_wide",
+      "run_id": "chess_wide_metadata_fault_adaptive_s123"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "metadata_fault",
+      "direction": -1,
+      "view": 4,
+      "seed": 123,
+      "arm": "retain",
+      "input_key": "fire_base",
+      "prior_key": "fire_wide",
+      "run_id": "fire_wide_metadata_fault_retain_s123"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "metadata_fault",
+      "direction": -1,
+      "view": 0,
+      "seed": 123,
+      "arm": "adaptive",
+      "input_key": "heads_base",
+      "prior_key": "heads_wide",
+      "run_id": "heads_wide_metadata_fault_adaptive_s123"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "metadata_fault",
+      "direction": -1,
+      "view": 2,
+      "seed": 123,
+      "arm": "retain",
+      "input_key": "chess_base",
+      "prior_key": "chess_wide",
+      "run_id": "chess_wide_metadata_fault_retain_s123"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "metadata_fault",
+      "direction": -1,
+      "view": 4,
+      "seed": 123,
+      "arm": "consensus",
+      "input_key": "fire_base",
+      "prior_key": "fire_wide",
+      "run_id": "fire_wide_metadata_fault_consensus_s123"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "metadata_fault",
+      "direction": -1,
+      "view": 0,
+      "seed": 123,
+      "arm": "retain",
+      "input_key": "heads_base",
+      "prior_key": "heads_wide",
+      "run_id": "heads_wide_metadata_fault_retain_s123"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "metadata_fault",
+      "direction": -1,
+      "view": 2,
+      "seed": 123,
+      "arm": "consensus",
+      "input_key": "chess_base",
+      "prior_key": "chess_wide",
+      "run_id": "chess_wide_metadata_fault_consensus_s123"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "metadata_fault",
+      "direction": -1,
+      "view": 4,
+      "seed": 123,
+      "arm": "adaptive",
+      "input_key": "fire_base",
+      "prior_key": "fire_wide",
+      "run_id": "fire_wide_metadata_fault_adaptive_s123"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "metadata_fault",
+      "direction": 1,
+      "view": 0,
+      "seed": 123,
+      "arm": "consensus",
+      "input_key": "heads_base",
+      "prior_key": "heads_tight",
+      "run_id": "heads_tight_metadata_fault_consensus_s123"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "metadata_fault",
+      "direction": 1,
+      "view": 2,
+      "seed": 123,
+      "arm": "adaptive",
+      "input_key": "chess_base",
+      "prior_key": "chess_tight",
+      "run_id": "chess_tight_metadata_fault_adaptive_s123"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "metadata_fault",
+      "direction": 1,
+      "view": 4,
+      "seed": 123,
+      "arm": "retain",
+      "input_key": "fire_base",
+      "prior_key": "fire_tight",
+      "run_id": "fire_tight_metadata_fault_retain_s123"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "metadata_fault",
+      "direction": 1,
+      "view": 0,
+      "seed": 123,
+      "arm": "adaptive",
+      "input_key": "heads_base",
+      "prior_key": "heads_tight",
+      "run_id": "heads_tight_metadata_fault_adaptive_s123"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "metadata_fault",
+      "direction": 1,
+      "view": 2,
+      "seed": 123,
+      "arm": "retain",
+      "input_key": "chess_base",
+      "prior_key": "chess_tight",
+      "run_id": "chess_tight_metadata_fault_retain_s123"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "metadata_fault",
+      "direction": 1,
+      "view": 4,
+      "seed": 123,
+      "arm": "consensus",
+      "input_key": "fire_base",
+      "prior_key": "fire_tight",
+      "run_id": "fire_tight_metadata_fault_consensus_s123"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "metadata_fault",
+      "direction": 1,
+      "view": 0,
+      "seed": 123,
+      "arm": "retain",
+      "input_key": "heads_base",
+      "prior_key": "heads_tight",
+      "run_id": "heads_tight_metadata_fault_retain_s123"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "metadata_fault",
+      "direction": 1,
+      "view": 2,
+      "seed": 123,
+      "arm": "consensus",
+      "input_key": "chess_base",
+      "prior_key": "chess_tight",
+      "run_id": "chess_tight_metadata_fault_consensus_s123"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "metadata_fault",
+      "direction": 1,
+      "view": 4,
+      "seed": 123,
+      "arm": "adaptive",
+      "input_key": "fire_base",
+      "prior_key": "fire_tight",
+      "run_id": "fire_tight_metadata_fault_adaptive_s123"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "valid_zoom",
+      "direction": -1,
+      "view": 0,
+      "seed": 123,
+      "arm": "consensus",
+      "input_key": "heads_v0_wide",
+      "prior_key": "heads_wide",
+      "run_id": "heads_wide_valid_zoom_consensus_s123"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "valid_zoom",
+      "direction": -1,
+      "view": 2,
+      "seed": 123,
+      "arm": "adaptive",
+      "input_key": "chess_v2_wide",
+      "prior_key": "chess_wide",
+      "run_id": "chess_wide_valid_zoom_adaptive_s123"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "valid_zoom",
+      "direction": -1,
+      "view": 4,
+      "seed": 123,
+      "arm": "retain",
+      "input_key": "fire_v4_wide",
+      "prior_key": "fire_wide",
+      "run_id": "fire_wide_valid_zoom_retain_s123"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "valid_zoom",
+      "direction": -1,
+      "view": 0,
+      "seed": 123,
+      "arm": "adaptive",
+      "input_key": "heads_v0_wide",
+      "prior_key": "heads_wide",
+      "run_id": "heads_wide_valid_zoom_adaptive_s123"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "valid_zoom",
+      "direction": -1,
+      "view": 2,
+      "seed": 123,
+      "arm": "retain",
+      "input_key": "chess_v2_wide",
+      "prior_key": "chess_wide",
+      "run_id": "chess_wide_valid_zoom_retain_s123"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "valid_zoom",
+      "direction": -1,
+      "view": 4,
+      "seed": 123,
+      "arm": "consensus",
+      "input_key": "fire_v4_wide",
+      "prior_key": "fire_wide",
+      "run_id": "fire_wide_valid_zoom_consensus_s123"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "valid_zoom",
+      "direction": -1,
+      "view": 0,
+      "seed": 123,
+      "arm": "retain",
+      "input_key": "heads_v0_wide",
+      "prior_key": "heads_wide",
+      "run_id": "heads_wide_valid_zoom_retain_s123"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "valid_zoom",
+      "direction": -1,
+      "view": 2,
+      "seed": 123,
+      "arm": "consensus",
+      "input_key": "chess_v2_wide",
+      "prior_key": "chess_wide",
+      "run_id": "chess_wide_valid_zoom_consensus_s123"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "valid_zoom",
+      "direction": -1,
+      "view": 4,
+      "seed": 123,
+      "arm": "adaptive",
+      "input_key": "fire_v4_wide",
+      "prior_key": "fire_wide",
+      "run_id": "fire_wide_valid_zoom_adaptive_s123"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "valid_zoom",
+      "direction": 1,
+      "view": 0,
+      "seed": 123,
+      "arm": "consensus",
+      "input_key": "heads_v0_tight",
+      "prior_key": "heads_tight",
+      "run_id": "heads_tight_valid_zoom_consensus_s123"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "valid_zoom",
+      "direction": 1,
+      "view": 2,
+      "seed": 123,
+      "arm": "adaptive",
+      "input_key": "chess_v2_tight",
+      "prior_key": "chess_tight",
+      "run_id": "chess_tight_valid_zoom_adaptive_s123"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "valid_zoom",
+      "direction": 1,
+      "view": 4,
+      "seed": 123,
+      "arm": "retain",
+      "input_key": "fire_v4_tight",
+      "prior_key": "fire_tight",
+      "run_id": "fire_tight_valid_zoom_retain_s123"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "valid_zoom",
+      "direction": 1,
+      "view": 0,
+      "seed": 123,
+      "arm": "adaptive",
+      "input_key": "heads_v0_tight",
+      "prior_key": "heads_tight",
+      "run_id": "heads_tight_valid_zoom_adaptive_s123"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "valid_zoom",
+      "direction": 1,
+      "view": 2,
+      "seed": 123,
+      "arm": "retain",
+      "input_key": "chess_v2_tight",
+      "prior_key": "chess_tight",
+      "run_id": "chess_tight_valid_zoom_retain_s123"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "valid_zoom",
+      "direction": 1,
+      "view": 4,
+      "seed": 123,
+      "arm": "consensus",
+      "input_key": "fire_v4_tight",
+      "prior_key": "fire_tight",
+      "run_id": "fire_tight_valid_zoom_consensus_s123"
+    },
+    {
+      "scene": "heads/seq-01",
+      "case": "valid_zoom",
+      "direction": 1,
+      "view": 0,
+      "seed": 123,
+      "arm": "retain",
+      "input_key": "heads_v0_tight",
+      "prior_key": "heads_tight",
+      "run_id": "heads_tight_valid_zoom_retain_s123"
+    },
+    {
+      "scene": "chess/seq-03",
+      "case": "valid_zoom",
+      "direction": 1,
+      "view": 2,
+      "seed": 123,
+      "arm": "consensus",
+      "input_key": "chess_v2_tight",
+      "prior_key": "chess_tight",
+      "run_id": "chess_tight_valid_zoom_consensus_s123"
+    },
+    {
+      "scene": "fire/seq-03",
+      "case": "valid_zoom",
+      "direction": 1,
+      "view": 4,
+      "seed": 123,
+      "arm": "adaptive",
+      "input_key": "fire_v4_tight",
+      "prior_key": "fire_tight",
+      "run_id": "fire_tight_valid_zoom_adaptive_s123"
+    }
+  ]
+}
