@@ -89,6 +89,15 @@ def fit(arm,folds,rot,c,k,prior_params):
             validation_before=before,validation_after=after,proposed=proposed.tolist(),evals=solution.nfev)
 
 
+def apply_update(base,c,z,scale,p):
+    basis=np.clip(scale/z-1,-1,1)
+    factor=np.exp(p[:,6,None,None]+p[:,7,None,None]*basis)
+    relative=Rotation.from_rotvec(p[:,:3]).as_matrix()
+    points=np.stack([((b-center)@r.T*f[...,None]+center+scale*t).astype(np.float32)
+                     for b,center,r,f,t in zip(base,c,relative,factor,p[:,3:6])])
+    return points
+
+
 def infer():
     rows={}
     plan=read(rgb.tracks.PLAN)
@@ -123,11 +132,7 @@ def infer():
             arms={}
             for arm in ARMS:
                 p,stats=fit(arm,folds,rot,c/scale,k,target)
-                basis=np.clip(scale/z-1,-1,1)
-                factor=np.exp(p[:,6,None,None]+p[:,7,None,None]*basis)
-                relative=Rotation.from_rotvec(p[:,:3]).as_matrix()
-                points=np.stack([((b-center)@r.T*f[...,None]+center+scale*t).astype(np.float32)
-                                 for b,center,r,f,t in zip(base,c,relative,factor,p[:,3:6])])
+                points=apply_update(base,c,z,scale,p)
                 h=fusion.prior.tensor_digest(points)
                 if not stats["accepted"] and h!=source["hashes"]["joint"]: raise ValueError("Rejected update changed map")
                 fusion.prior.write_arrays(DATA/"points"/(h+".npz"),dict(points=points))
