@@ -1,14 +1,28 @@
 import os
 import time
 import unittest
+from pathlib import Path
+from tempfile import TemporaryDirectory
 from types import SimpleNamespace
 from unittest.mock import MagicMock, patch
 
-from pod_lease import pod_request, reason_to_stop
+from pod_lease import pod_request, reason_to_stop, scoped_key
 from weekly_pod_guard import watch_pod, weekly_window
 
 
 class LeaseTests(unittest.TestCase):
+    def test_minimal_ssh_environment_can_only_identify_the_same_container(self):
+        with TemporaryDirectory() as directory:
+            source = Path(directory) / "environ"
+            source.write_bytes(b"UNRELATED=unneeded\0RUNPOD_POD_ID=example1\0RUNPOD_API_KEY=example-key\0")
+            env = {}
+            self.assertEqual(scoped_key("example1", env, source), "example-key")
+            self.assertEqual(env, {"RUNPOD_POD_ID": "example1"})
+            with self.assertRaises(ValueError):
+                scoped_key("example2", {}, source)
+            with self.assertRaises(ValueError):
+                scoped_key("example1", {"RUNPOD_POD_ID": "example2"}, source)
+
     def test_expiry_and_concurrent_deadline(self):
         self.assertIsNone(reason_to_stop(119, 300, 0, 120, False))
         self.assertEqual(reason_to_stop(120, 300, 0, 120, False), "client heartbeat expired")

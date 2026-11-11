@@ -88,7 +88,9 @@ def watch_pod(args):
     ssh = ["ssh", "-p", str(args.port), *options, remote]
     subprocess.run(["scp", "-P", str(args.port), *options, str(Path(__file__).with_name("pod_lease.py")),
                     remote + ":" + program], check=True, timeout=25)
-    command = f"nohup python3 {program} --pod-id {args.pod_id} --deadline {args.deadline} --session {session} </dev/null >{program}.log 2>&1 &"
+    command = (f"interpreter=$(command -v python3 || echo /opt/conda/bin/python); "
+               f"nohup \"$interpreter\" {program} --pod-id {args.pod_id} --deadline {args.deadline} "
+               f"--session {session} </dev/null >{program}.log 2>&1 &")
     subprocess.run(ssh + [command], check=True, timeout=15)
     # A disconnected client cannot extend the two-minute lease.
     ready = f"for n in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15; do if test -f {folder}/ready && grep -Fxq {args.pod_id} {folder}/ready; then exit 0; fi; sleep 1; done; exit 1"

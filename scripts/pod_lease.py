@@ -14,6 +14,24 @@ class NoRedirect(HTTPRedirectHandler):
         return None
 
 
+def scoped_key(pod, env, provider_env=Path("/proc/1/environ")):
+    """sshd can omit container variables in noninteractive sessions."""
+    identity = env.get("RUNPOD_POD_ID")
+    if identity is not None and identity != pod:
+        raise ValueError("SSH session belongs to another Pod")
+    if identity == pod and env.get("RUNPOD_API_KEY"):
+        return env["RUNPOD_API_KEY"]
+    relevant = {}
+    for entry in provider_env.read_bytes().split(b"\0"):
+        name, _, value = entry.partition(b"=")
+        if name in (b"RUNPOD_POD_ID",b"RUNPOD_API_KEY"):
+            relevant[name] = value.decode()
+    if relevant.get(b"RUNPOD_POD_ID") != pod or not relevant.get(b"RUNPOD_API_KEY"):
+        raise ValueError("No matching provider-issued identity for this Pod")
+    env["RUNPOD_POD_ID"] = pod
+    return relevant[b"RUNPOD_API_KEY"]
+
+
 def pod_request(pod, key, stop=False):
     if not re.fullmatch(r"[a-zA-Z0-9]{4,64}", pod) or pod != os.environ.get("RUNPOD_POD_ID"):
         raise ValueError("Expected the ID of this Pod")
@@ -43,7 +61,7 @@ def main():
     args = p.parse_args()
     if not re.fullmatch(r"[0-9a-f]{32}", args.session):
         raise ValueError("Provide a unique hexadecimal session ID")
-    key = os.environ["RUNPOD_API_KEY"]
+    key = scoped_key(args.pod_id, os.environ)
     if not key or pod_request(args.pod_id, key).get("id") != args.pod_id:
         raise ValueError("Could not verify the active Pod identity with its API key")
     directory = Path("/tmp") / ("tco-lease-" + args.session)
