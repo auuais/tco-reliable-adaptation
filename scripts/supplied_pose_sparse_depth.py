@@ -65,12 +65,12 @@ def predict(assets):
     dump(target,record)
 
 
-def score():
-    seal = read(PUBLIC/'predictions.json')
+def score(public=PUBLIC, raw=RAW):
+    seal = read(public/'predictions.json')
     old = read(FIRST/'scores.json')['results']['references']
     rows = []
     with ProcessPoolExecutor(3) as pool:
-        jobs = {key: pool.submit(evaluate_points,key,set(hashes.values()),RAW) for key,hashes in seal['batches'].items()}
+        jobs = {key: pool.submit(evaluate_points,key,set(hashes.values()),raw) for key,hashes in seal['batches'].items()}
         for scene in SCENES:
             key = scene.split('/')[0]+'_base'
             _, observations = jobs[key].result()
@@ -84,7 +84,7 @@ def score():
             rows.append(dict(scene=scene,case='base',metrics=metrics))
     controls = tuple(a for a in arms if a not in HISTORICAL+('guarded',))
     result = aggregate(rows,controls+('guarded',),controls)
-    dump(PUBLIC/'scores.json',dict(seal_sha256=sha(PUBLIC/'predictions.json'),results=result))
+    dump(public/'scores.json',dict(seal_sha256=sha(public/'predictions.json'),results=result))
     print(result['checks'],result['local_gain'],flush=True)
 
 

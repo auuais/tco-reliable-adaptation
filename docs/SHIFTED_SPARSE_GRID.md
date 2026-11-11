@@ -1,0 +1,5 @@
+# Shifted sparse-grid replication
+
+Before scoring, shift every raw source sampling position from (40,30) to (20,15) relative to its cell corner. All 64 requested rays per source are disjoint from the original grid. Keep the original sources, targets, pose calibration, hyperparameters, clamping, scene gauge rule, model checkpoints and both references unchanged. Fit the gauge anew to the shifted measurements. Use the identical four supplied-pose arms and the previous full comparator panel and advancement criteria. The earlier centered supplied-pose scores are a descriptive replication comparison since they have different input samples.
+
+A passing repeat must clear all five checks, including 5% gain against the best eligible comparator. Record actual projected coverage, per-scene gains and both dense references. A pass supports a conditional transfer pilot only. This repeat tests sampling sensitivity within the same scenes, not unseen-scene generalization. A failure retains the transfer allocation.

@@ -36,13 +36,13 @@ def project_samples(mm, uv, rays, relative, target, source):
                                       uv[valid], mm[valid]])[keep]
 
 
-def packet(assets):
+def packet(assets, destination=PACKET, origin=(40, 30)):
     index = read(ROOT / 'results/source_frame_spacing/inputs.json')['frames']
     calibration = np.asarray(read(ROOT / 'manifests/sensor_frame_v14.json')['calibration'])
     native = resized_k(525, 640, 480)
     target = resized_k(525)
     target[[0, 1], [0, 1]] *= SCALE
-    u, v = np.meshgrid(np.arange(40, 640, 80), np.arange(30, 480, 60))
+    u, v = np.meshgrid(np.arange(origin[0], 640, 80), np.arange(origin[1], 480, 60))
     uv = np.column_stack([u.ravel(), v.ravel()])
     rays = np.column_stack([uv, np.ones(len(uv))]) @ np.linalg.inv(native).T
     records = {}
@@ -71,8 +71,8 @@ def packet(assets):
             for row in sorted(observed, key=lambda r: r[2]):
                 nearest.setdefault(tuple(row[:2]), row)
             records[f'{scene.split("/")[0]}_{frame}'] = np.array(list(nearest.values()))
-    PUBLIC.mkdir(parents=True, exist_ok=True)
-    write_arrays(PACKET, records)
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    write_arrays(destination, records)
 
 
 def corrections(depth, samples):
