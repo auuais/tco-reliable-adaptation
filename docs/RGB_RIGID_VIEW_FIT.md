@@ -1,0 +1,5 @@
+# Bounded RGB registration of frozen views
+
+Use only original direct-focal frozen geometry and the two existing disjoint RGB feature-track folds in each original scene. Lift matches by bilinear depth sampling. Normalize coordinates by median predicted depth and pivot rotations around each camera center. Fit on fold zero, test on fold one. Keep view zero fixed and require a connected five-view training graph. Optimize a robust soft-L1 objective with scale 0.02 median depths. Constrain each rotation vector to a 3-degree norm and each translation to 0.03 median depths (box-constrained solve then radial projection). Treat each retained feature match equally. Require at least a 1% decrease in mean robust cost on the independent match fold to apply. Preserve the identity for rejected scenes.
+
+Archive transforms, cross-fold costs and match counts. If accepted, score the sealed maps with the original whole-surface protocol on both references. Compare direct and diffusion as well as existing historical and local controls. No fitted reference alignment enters these predictions. The three scene results remain development evidence.
