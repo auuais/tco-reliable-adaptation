@@ -6,6 +6,27 @@ from supplied_pose_sparse_depth import (FIRST, METHODS, PUBLIC, RAW, SEAL, REFS,
                                        place, point_map, read, sha, tensor_digest, write_arrays, dump)
 
 
+def verify_surface_scores(public, seal):
+    obs = read(public/'surface_observations.json')
+    scores = read(public/'scores.json')
+    old = read(FIRST/'scores.json')['results']['references']
+    assert scores['seal_sha256'] == sha(public/'predictions.json')
+    rows = []
+    for scene in old[REFS[0]]['scenes']:
+        key = scene.split('/')[0]+'_base'
+        metrics = {}
+        for ref in REFS:
+            cell = {('model_pose_depth_aware' if a=='guarded' else a):v['raw'] for a,v in old[ref]['scenes'][scene].items()}
+            for arm in METHODS:
+                v = obs[key][arm][ref]
+                assert v['identity']['prediction']==seal['batches'][key][arm] and v['identity']['reference']==ref
+                cell['guarded' if arm=='guarded' else 'supplied_'+arm] = v['metrics']
+            metrics[ref] = cell
+        rows.append(dict(scene=scene,case='base',metrics=metrics))
+    controls = tuple(a for a in cell if a not in HISTORICAL+('guarded',))
+    assert aggregate(rows,controls+('guarded',),controls) == scores['results']
+
+
 def run(export=False):
     path = PUBLIC/'predictions.json'
     seal = read(path)
@@ -44,24 +65,7 @@ def run(export=False):
     if export:
         write_arrays(PUBLIC/'replay_points.npz',evidence)
         dump(PUBLIC/'surface_observations.json',observations)
-    obs = read(PUBLIC/'surface_observations.json')
-    scores = read(PUBLIC/'scores.json')
-    old = read(FIRST/'scores.json')['results']['references']
-    assert scores['seal_sha256'] == sha(path)
-    rows = []
-    for scene in old[REFS[0]]['scenes']:
-        key = scene.split('/')[0]+'_base'
-        metrics = {}
-        for ref in REFS:
-            cell = {('model_pose_depth_aware' if a=='guarded' else a):v['raw'] for a,v in old[ref]['scenes'][scene].items()}
-            for arm in METHODS:
-                v = obs[key][arm][ref]
-                assert v['identity']['prediction']==seal['batches'][key][arm] and v['identity']['reference']==ref
-                cell['guarded' if arm=='guarded' else 'supplied_'+arm] = v['metrics']
-            metrics[ref] = cell
-        rows.append(dict(scene=scene,case='base',metrics=metrics))
-    controls = tuple(a for a in cell if a not in HISTORICAL+('guarded',))
-    assert aggregate(rows,controls+('guarded',),controls) == scores['results']
+    verify_surface_scores(PUBLIC, seal)
     print('Verified 12 pose transforms, 24 surface evaluations and the full advancement decision.')
 
 

@@ -171,6 +171,7 @@ jobs:
           python scripts/profile_camera_depth.py verify
       - run: python scripts/replay_neighbor_sparse_depth.py verify
       - run: python scripts/replay_supplied_pose_sparse_depth.py
+      - run: python scripts/replay_shifted_sparse_grid.py
       - name: Refit all 12 joint RGB reprojection models from public inputs
         env:
           OPENBLAS_NUM_THREADS: '1'
