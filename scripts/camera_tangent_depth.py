@@ -100,7 +100,7 @@ def summarize(obs):
             previous=g["scenes"][scene]
             v={a:d["raw"] for a,d in previous.items()}
             v["prior_adaptive"]=v.pop("guarded")
-            v.update({a:gain_controls[key][a][ref] for a in controls.ARMS})
+            v.update({"gain_"+a:gain_controls[key][a][ref] for a in controls.ARMS})
             v.update({"surface_"+a:obs[key][a][ref] for a in ("equal","full_prior")})
             v["guarded"]=obs[key]["adaptive"][ref]
             metrics[ref]=v
