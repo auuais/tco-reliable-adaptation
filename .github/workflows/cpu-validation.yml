@@ -99,3 +99,15 @@ jobs:
           python scripts/score_dense_rgb_depth.py verify
           python scripts/dense_rgb_pixel_check.py verify
           python scripts/photometric_positive_control.py verify
+      - name: Verify visibility, depth evidence, source-quality interventions and spatial transfer
+        env:
+          OPENBLAS_NUM_THREADS: "1"
+        run: |
+          python scripts/visibility_positive_control.py verify
+          python scripts/run_visibility_model.py verify
+          python scripts/score_visibility_model.py verify
+          python scripts/depth_source_transplant.py verify
+          python scripts/depth_grid_surface.py verify
+          python scripts/spatial_depth_transfer.py verify
+          python scripts/capture_visibility_support.py verify
+          python scripts/observation_selection.py verify
