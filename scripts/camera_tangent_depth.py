@@ -17,10 +17,13 @@ RESULT = PUBLIC/"camera_tangent_scores.json"
 DESIGN = ROOT/"docs/CAMERA_TANGENT_DEPTH.md"
 
 
-def intersect(original,depth,moved,center):
+def intersect(original,depth,moved,center,normal_field=None):
     base = original[1:-1,1:-1].astype(float)
-    n = np.cross(original[1:-1,2:].astype(float)-original[1:-1,:-2],
-                 original[2:,1:-1].astype(float)-original[:-2,1:-1])
+    if normal_field is None:
+        n = np.cross(original[1:-1,2:].astype(float)-original[1:-1,:-2],
+                     original[2:,1:-1].astype(float)-original[:-2,1:-1])
+    else:
+        n = normal_field[1:-1,1:-1].copy()
     norm = np.linalg.norm(n,axis=-1)
     n /= np.maximum(norm,1e-15)[...,None]
     offset = moved[1:-1,1:-1].astype(float)-center

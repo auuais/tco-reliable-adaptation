@@ -13,7 +13,7 @@ from score_saved_geometry import read
 RESULT=PUBLIC/"prior_noise_paired.json"
 
 
-def measure(study=repeat, seeds=repeat.SEEDS):
+def measure(study=repeat, seeds=repeat.SEEDS, fixed_folder=None):
     rows=[]
     fusion=repeat.fusion
     load=fusion.depth.cross.temporal.load_points
@@ -28,7 +28,8 @@ def measure(study=repeat, seeds=repeat.SEEDS):
         ref=np.array(cameras["reference"])
         for seed in seeds:
             record=read(study.SEAL)["rows"][key][str(seed)]
-            fixed,coupled=[load(study.DATA,record["hashes"][a]) for a in ("fixed","coupled")]
+            fixed=load(fixed_folder(seed) if fixed_folder else study.DATA,record["hashes"]["fixed"])
+            coupled=load(study.DATA,record["hashes"]["coupled"])
             updated=np.stack([paired.poses.recover_pose(p,q,e) for p,q,e in zip(base,fixed,rig)])
             pose_errors={}
             target_r,target_delta=paired.poses.relative_rays(ref)
