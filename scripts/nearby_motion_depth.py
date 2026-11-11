@@ -108,10 +108,10 @@ def verify_estimates():
     return report['targets']
 
 
-def pixel_counts(start, truth, estimate, mask):
+def pixel_counts(start, truth, estimate, mask, weight=1.):
     active = np.isfinite(estimate) & mask
     modification = np.zeros_like(truth)
-    modification[active] = np.clip(np.log(estimate[active]/start[active]),-.08,.08)
+    modification[active] = weight*np.clip(np.log(estimate[active]/start[active]),-.08,.08)
     initial = np.log(start[mask]/truth[mask])
     final = initial+modification[mask]
     changed = modification[mask]!=0
