@@ -1,5 +1,6 @@
 """Freeze TUM inference timestamps and supplied poses without opening target depth images."""
 import argparse
+import json
 from pathlib import Path
 
 import numpy as np
@@ -59,7 +60,7 @@ def stage(destination):
         recorded=PUBLIC/(sequence+'_download.json')
         if not recorded.exists():
             raise FileNotFoundError('Archive validation pending for '+sequence)
-        for name,digest in __import__('json').loads(recorded.read_text())['metadata_sha256'].items():
+        for name,digest in json.loads(recorded.read_text())['metadata_sha256'].items():
             if sha(folder/name)!=digest:
                 raise ValueError('Timestamp metadata changed')
         rgb=index_file(folder/'rgb.txt')
