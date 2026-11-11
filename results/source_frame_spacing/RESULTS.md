@@ -68,3 +68,16 @@ The next local control used 60 image pairs and 120 forward/reverse DIS flow esti
 | Measured, two-sided support | 17.93% | +0.55% | 41.83% | 13.18% | 15.24% | 0.0054 |
 
 With frozen cameras, two-sided triangulation increased natural error by 7.89% on Heads, 2.32% on Chess and 1.30% on Fire. The known perturbations were easier to correct than the original model's errors. Ground-truth cameras yielded a 0.55% aggregate reduction on natural targets for the two-sided rule. The registered decision to proceed to a whole-surface redesign failed. These observations concern this motion estimator, support rule and source spacing on three previously examined scenes. [Per-target flow outcomes](nearby_motion_scores.json) · [Flow capture](nearby_rgb_flows.json) · [Sealed depth estimates](nearby_motion_estimates.json) · [Two-disk inventory](motion_archive.json)
+
+### Did motion point in the wrong direction, or was the step too large?
+
+Multiplying the bounded log-depth correction by a single scalar reduced the average error for small positive steps. At each target, the sum of squared log-depth errors is a quadratic in that scalar. Its coefficients reproduced both measured endpoints. The table gives the reduction in natural squared log-depth error against the unchanged dispersed prediction. The last column lets each target choose its own scalar using its measured depth and gives an upper bound for this class of updates.
+
+| Rig and RGB rule | Pooled optimal step | Pooled optimal gain | Gain using step from other two scenes | Per-target oracle gain |
+|---|---:|---:|---:|---:|
+| Frozen, any supported source | 0.213 | 1.65% | 1.49% | 3.13% |
+| Frozen, two-sided support | 0.296 | 0.82% | 0.79% | 1.42% |
+| Measured, any supported source | 0.247 | 2.34% | 2.20% | 4.83% |
+| Measured, two-sided support | 0.553 | 1.58% | 1.42% | 2.42% |
+
+For two-sided frozen geometry, the step learned from the other two scenes reduced error by 1.29% on Heads, 0.17% on Chess and 0.92% on Fire. There is a weak transferable direction in these development frames, and the unit step gives it too much weight. The simpler any-source rule retained more of this signal. These post-hoc depth gains do not establish a surface improvement. A single multiplier per target has little remaining headroom on this metric. [Quadratic diagnostic design](../../docs/MOTION_DEPTH_SHRINKAGE.md) · [Per-target coefficients, leave-one-scene-out fits and endpoint checks](motion_shrinkage.json)
