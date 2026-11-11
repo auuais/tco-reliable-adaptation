@@ -25,7 +25,7 @@ def weekly_window(result):
     return {"remaining_percent": 100 - used, "reset_utc_epoch": reset}
 
 
-def read_quota():
+def codex_request(method, params):
     flags = getattr(subprocess, "CREATE_NO_WINDOW", 0)
     proc = subprocess.Popen([shutil.which("codex") or "codex", "app-server", "--listen", "stdio://"],
                             stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL,
@@ -54,16 +54,18 @@ def read_quota():
                 continue
             if data.get("id") == request_id:
                 if "result" not in data:
-                    raise RuntimeError("Codex usage request was unavailable")
+                    error = data.get("error", {})
+                    raise RuntimeError(f"Codex {method}: {error.get('message', 'unavailable')}")
                 return data["result"]
         raise TimeoutError("Timed out reading Codex usage")
 
     try:
-        send(dict(id=1, method="initialize", params=dict(clientInfo=dict(name="tco-budget", version="1"))))
+        send(dict(id=1, method="initialize", params=dict(clientInfo=dict(name="tco-budget", version="1"),
+                                                        capabilities=dict(experimentalApi=True))))
         receive(1)
         send(dict(method="initialized"))
-        send(dict(id=2, method="account/rateLimits/read", params={}))
-        return weekly_window(receive(2))
+        send(dict(id=2, method=method, params=params))
+        return receive(2)
     finally:
         proc.terminate()
         try:
@@ -71,6 +73,10 @@ def read_quota():
         except subprocess.TimeoutExpired:
             proc.kill()
             proc.wait()
+
+
+def read_quota():
+    return weekly_window(codex_request("account/rateLimits/read", {}))
 
 
 def watch_pod(args):
