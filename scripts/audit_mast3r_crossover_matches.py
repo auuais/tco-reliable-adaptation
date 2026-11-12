@@ -7,7 +7,7 @@ import torch
 
 from evaluation_stability import dump
 from mast3r_crossover_cache import directed_paths
-from plan_mast3r_crossover import ROOT, PARENT, MANIFEST, read, require, sha256
+from plan_mast3r_crossover import ROOT, PARENT, MANIFEST, read, require, sha256, text_sha256
 from prepare_dense_focal_pilot import write_arrays
 
 
@@ -95,7 +95,8 @@ def run():
     require(len(seal["rows"]) == 48 and seal["manifest_sha256"] == sha256(MANIFEST), "Predictions must be sealed first")
     plan = read(MANIFEST)
     inputs = read(ROOT / "manifests/dense_focal_inputs.json")
-    report = dict(seal_sha256=sha256(PUBLIC / "predictions.json"), states={}, same_view_checks={})
+    report = dict(seal_sha256=sha256(PUBLIC / "predictions.json"), states={}, same_view_checks={},
+                  source_sha256=text_sha256(ROOT / "scripts/audit_mast3r_crossover_matches.py"))
     (PUBLIC / "match_audit").mkdir(exist_ok=True)
     for scene in plan["scenes"]:
         key = scene + "_base"
