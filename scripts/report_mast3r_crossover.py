@@ -2,6 +2,7 @@
 import csv
 from statistics import mean
 
+from evaluation_stability import dump
 from plan_mast3r_crossover import ROOT, read
 
 
@@ -24,6 +25,14 @@ def report():
     controls = [r for r in predictions["rows"] if "endpoint" in r]
     bridges = [read(PUBLIC / "cases" / r["id"] / "bridge.json") for r in controls]
     exact = sum(all(b[f]["exact"] for f in ("depth", "intrinsics", "c2w")) for b in bridges)
+    timings = {r["id"]: dict(alignment=read(PUBLIC / "cases" / r["id"] / "alignment.json"),
+                             capture=read(PUBLIC / "cases" / r["id"] / "native.json")) for r in predictions["rows"]}
+    dump(PUBLIC / "timing.json", dict(cases=timings,
+        sum_case_wall_seconds=sum(t["alignment"]["total_seconds"] for t in timings.values()),
+        sum_capture_seconds=sum(t["capture"]["seconds"] for t in timings.values()),
+        peak_allocated_mib=max(t["capture"]["peak_allocated_mib"] for t in timings.values()),
+        peak_reserved_mib=max(t["alignment"]["peak_reserved_mib"] for t in timings.values()),
+        scope="Cached alignment diagnostics including materialization. Model forwards, adaptation and descriptor matching belong to the parent input study."))
     selected = scores["selected_branch"]
     decision = "The registered rule nominates the " + selected + " branch for its specified follow-up." if selected else "Neither branch meets all registered nomination checks. The decision is a local no-go for a redesign under this protocol."
     lines = ["# MASt3R geometry and matching crossover", "", decision, "",

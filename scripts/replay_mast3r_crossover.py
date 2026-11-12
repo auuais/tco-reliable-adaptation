@@ -1,14 +1,16 @@
 """Validate portable crossover evidence, geometry, factorial contrasts and match summaries."""
+import argparse
 import itertools
 import numpy as np
 
 from audit_mast3r_crossover_matches import describe, aggregate
 from plan_mast3r_crossover import ROOT, PARENT, MANIFEST, read, require, expected_plan, sha256, text_sha256, validate_public
 from replay_mast3r_transfer import independently_resize
+from neighbor_sparse_depth import tensor_digest
 from score_mast3r_crossover import PUBLIC, summarize
 
 
-def replay():
+def replay(local=False):
     plan = read(MANIFEST)
     require(plan == expected_plan(), "Frozen protocol changed")
     validate_public(plan)
@@ -66,6 +68,13 @@ def replay():
                 points = np.stack([(pixels @ np.linalg.inv(intrinsic[i]).T * depth[i, ::9, ::9, None])
                                    @ c2w[i, :3, :3].T + c2w[i, :3, 3] for i in range(5)])
                 np.testing.assert_allclose(points, samples[tag], rtol=1e-5, atol=2e-5)
+                if local:
+                    pixels = np.stack([x, y, np.ones_like(x)], axis=-1)
+                    full = np.stack([(pixels @ np.linalg.inv(intrinsic[i]).T * depth[i, :, :, None])
+                                     @ c2w[i, :3, :3].T + c2w[i, :3, 3] for i in range(5)])
+                    with np.load(ROOT / "reports/mast3r_geometry_matching_v1/points" / (row["prediction"] + ".npz")) as saved:
+                        require(tensor_digest(saved["points"]) == row["prediction"], "Full point map changed")
+                        np.testing.assert_allclose(full, saved["points"], rtol=1e-5, atol=2e-5)
             operands[tag] = {r["forward"]: r for r in read(folder / "operands.json")["files"]}
     for row in seal["rows"]:
         base = f'{row["scene"]}_{row["grid"]}_{row["pose_packet"].removeprefix(row["scene"]+"_")}'
@@ -114,4 +123,6 @@ def replay():
 
 
 if __name__ == "__main__":
-    replay()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--local", action="store_true", help="Also independently reconstruct all pixels and verify full raw point maps.")
+    replay(parser.parse_args().local)
