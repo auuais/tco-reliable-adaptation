@@ -3,10 +3,21 @@ import unittest
 
 import numpy as np
 
-from audit_mast3r_crossover_matches import match_errors
+from audit_mast3r_crossover_matches import match_errors, reference_poses
 
 
 class MatchProjectionTest(unittest.TestCase):
+    def test_reference_camera_preserves_the_loader_transpose_convention(self):
+        original = np.eye(4)[None]
+        original[0, 0, 0] = 1.001
+        original[0, 0, 3] = .4
+        actual = reference_poses(original, np.eye(4))[0]
+        expected_c2w = np.eye(4)
+        expected_c2w[:3, :3] = original[0, :3, :3]
+        expected_c2w[:3, 3] = original[0, :3, :3] @ original[0, :3, :3].T @ original[0, :3, 3]
+        np.testing.assert_allclose(actual, np.linalg.inv(expected_c2w))
+        self.assertGreater(np.max(np.abs(actual - np.linalg.inv(original[0]))), 1e-4)
+
     def test_translation_and_invalid_pixels(self):
         intrinsic = np.array([[4., 0, 1.5], [0, 4., 1.5], [0, 0, 1.]])
         poses = np.repeat(np.eye(4)[None], 2, axis=0)

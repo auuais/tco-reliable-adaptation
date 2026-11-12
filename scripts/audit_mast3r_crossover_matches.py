@@ -1,11 +1,14 @@
 """Audit shared, gained and lost matches after the crossover predictions are sealed."""
+import argparse
 import itertools
+from pathlib import Path
 from statistics import mean
 
 import numpy as np
 import torch
 
 from evaluation_stability import dump
+from audit_sensor_frame import effective_camera
 from mast3r_crossover_cache import directed_paths
 from plan_mast3r_crossover import ROOT, PARENT, MANIFEST, read, require, sha256, text_sha256
 from prepare_dense_focal_pilot import write_arrays
@@ -90,13 +93,21 @@ def aggregate(records):
     return result
 
 
-def run():
+def reference_poses(original_c2w, calibration):
+    # Reproduce the loader's transpose-based inverse and the reference builder.
+    loader = np.repeat(np.eye(4)[None], len(original_c2w), axis=0)
+    loader[:, :3, :3] = original_c2w[:, :3, :3].transpose(0, 2, 1)
+    loader[:, :3, 3] = -np.einsum("nij,nj->ni", loader[:, :3, :3], original_c2w[:, :3, 3])
+    return np.stack([calibration @ effective_camera(pose) for pose in loader])
+
+
+def run(poses_root):
     seal = read(PUBLIC / "predictions.json")
     require(len(seal["rows"]) == 48 and seal["manifest_sha256"] == sha256(MANIFEST), "Predictions must be sealed first")
     plan = read(MANIFEST)
     inputs = read(ROOT / "manifests/dense_focal_inputs.json")
     report = dict(seal_sha256=sha256(PUBLIC / "predictions.json"), states={}, same_view_checks={},
-                  source_sha256=text_sha256(ROOT / "scripts/audit_mast3r_crossover_matches.py"))
+                  reference_cameras={}, source_sha256=text_sha256(ROOT / "scripts/audit_mast3r_crossover_matches.py"))
     (PUBLIC / "match_audit").mkdir(exist_ok=True)
     for scene in plan["scenes"]:
         key = scene + "_base"
@@ -104,8 +115,20 @@ def run():
         require(sha256(reference) == inputs["references"][key]["sha256"], "Reference changed")
         with np.load(reference) as data:
             points, masks = data["registered_rgb"].astype(float), data["valid_mask"]
+        calibration = np.asarray(read(ROOT / "manifests/sensor_frame_v14.json")["calibration"])
+        source_index = read(ROOT / "results/source_frame_spacing/inputs.json")["frames"][plan["scenes"][scene]]
+        original, hashes = [], {}
+        for frame in plan["frames"]:
+            path = poses_root / plan["scenes"][scene] / f"frame-{frame:06d}.pose.txt"
+            require(sha256(path) == source_index[str(frame)]["original"]["pose.txt"], "Original pose changed")
+            original.append(np.loadtxt(path))
+            hashes[str(frame)] = sha256(path)
+        original = np.stack(original)
         with np.load(PARENT / "pose_packets.npz") as data:
-            poses = data[scene + "_clean"]
+            np.testing.assert_allclose(calibration @ np.linalg.inv(original), data[scene + "_clean"], rtol=1e-12, atol=1e-12)
+        poses = reference_poses(original, calibration)
+        report["reference_cameras"][scene] = dict(world_to_camera=poses.tolist(), original_pose_sha256=hashes,
+             max_rotation_orthogonality_error=float(np.max(np.abs(original[:, :3, :3].transpose(0, 2, 1) @ original[:, :3, :3] - np.eye(3)))))
         intrinsic = np.asarray(plan["known_K"])
         yy, xx = np.indices(masks.shape[1:])
         expected = (np.column_stack([xx.ravel(), yy.ravel()]) + .5) * [512/masks.shape[2], 384/masks.shape[1]] - .5
@@ -144,4 +167,6 @@ def run():
 
 
 if __name__ == "__main__":
-    run()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--poses-root", type=Path, default=Path("/data/7scenes"))
+    run(parser.parse_args().poses_root)
