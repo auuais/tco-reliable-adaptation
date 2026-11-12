@@ -67,3 +67,8 @@ Full point maps and frozen model outputs are checksum-verified on separate C and
 ## November 12 joint MASt3R alignment
 
 All 21 development alignments and 42 reference evaluations ran locally. Additional RunPod compute spending was USD 0, and the calibration estimate remains USD 1.82 of its USD 3 cap. The joint increment over depth-only missed the registered resource criterion on both grids, so the USD 25 rental allocation remains reserved. Full predictions and native outputs are verified on two distinct physical disks. Network-adaptation engineering remains local. See results/mast3r_joint_priors/README.md.
+
+
+## Retained workspace decision, November 12
+
+The browser connector verified the older retained workspace is stopped, with a 20 GB volume billed at USD 0.006/hour (USD 0.144/day at that quote). All five historical reproduction/diagnostic/baseline archives were rechecked on C and E before any proposed deletion. The user explicitly chose to keep this workspace. No pod or volume was deleted or started. Treat this storage as an intentional ongoing charge within the storage reserve; do not repeat the deletion request without a material change. Other listed stopped pods displayed USD 0.00/hour. Account credit remains private and is not a total-spending measure.

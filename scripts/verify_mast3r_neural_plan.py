@@ -24,6 +24,19 @@ def verify():
     assert set(first)=={(i,j) for i in range(5) for j in range(5) if i!=j}
     assert all(first.count(pair)==2 for pair in set(first))
     assert plan['arms']==dict(D=[0.,0.],K=[.01,0.],J=[.01,.01],N=[.01,.01])
+    np.testing.assert_allclose(plan['intrinsic'],[[470.4,0,255.9],[0,470.4,191.9],[0,0,1]],atol=1e-10,rtol=0)
+    for slug in ('heads','chess','fire'):
+        assert plan['rgb_sha256'][slug]==read(ROOT/'results/mast3r_transfer'/(slug+'_base.json'))['input_sha256']
+        for grid in ('centered','shifted'):
+            jobs=[j for j in plan['jobs'] if j['scene']==slug and j['grid']==grid]
+            assert {j['arm'] for j in jobs}=={'zero','D','K','J','N'}
+            for j in jobs:
+                expected=(['KD','KDP_clean','KDP_noisy'] if j['arm']=='zero' else
+                          ['ordinary','KD','KDP_clean','KDP_noisy'] if j['arm'] in ('D','K') else
+                          ['ordinary','KD','KDP_clean'] if j['arm']=='J' else ['ordinary','KD','KDP_noisy'])
+                assert j['post']==expected
+    paths={'centered':'neighbor_sparse_depth','shifted':'shifted_sparse_grid'}
+    for grid,folder in paths.items():assert plan['packets'][grid]==sha(ROOT/'results'/folder/'measurements.npz')
     with np.load(PUBLIC/'pose_packets.npz') as z,np.load(ROOT/'results/supplied_pose_sparse_depth/supplied_poses.npz') as original:
         for slug in ('heads','chess','fire'):
             clean=z[slug+'_clean'];noisy=z[slug+'_noisy']
