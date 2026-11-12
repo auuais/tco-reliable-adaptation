@@ -46,6 +46,18 @@ def report():
               "Additional RunPod compute for this phase is USD 0. The reserved USD 25 remains available for a subsequent decision. Total alignment, materialization time and peak memory are recorded per case. These cached diagnostics cover the alignment stage. A deployable method must also account for model inference, training and matching.", "",
               "Run `python scripts/replay_mast3r_crossover.py` for the portable evidence checks. The [registered protocol](../../docs/MAST3R_GEOMETRY_MATCHING_GOAL.md), [96 scene rows](scene_metrics.csv), [metric identities](associations.json), [contrasts and decisions](scores.json), [match diagnostics](match_audit.json) and [two-drive archive](archive.json) provide the supporting records.", ""]
     (PUBLIC / "README.md").write_text("\n".join(lines), encoding="utf-8")
+    verdict = ["# MASt3R crossover verdict", "", decision, "",
+               "The experiment crossed pretrained and sparse-depth-adapted coordinates with pretrained and adapted confidence/matching inputs. It used the same five images per scene, sparse measurements, supplied calibration and alignment settings in every comparison. Heads, Chess and Fire each received equal weight.", "",
+               "| Grid and poses | Geometry-only gain | Observations-only gain | Joint gain |", "|---|---:|---:|---:|"]
+    for condition, references in scores["conditions"].items():
+        overall = references["registered_rgb"]["overall"]
+        baseline = overall["G0B0"]["score"]
+        gains = [100 * (1 - overall[cell]["score"] / baseline) for cell in ("G1B0", "G0B1", "G1B1")]
+        verdict.append(f"| {condition} | {gains[0]:+.3f}% | {gains[1]:+.3f}% | {gains[2]:+.3f}% |")
+    verdict += ["", f"All 24 endpoint controls pass tolerance, with {exact} exact reproductions. The complete tables retain both reference definitions, both distance components, each scene, the interaction contrast and the registered nomination checks. The failed initial precision attempt is preserved alongside its successful repair.", "",
+                "The follow-up rule requires consistent evidence across the four grid/pose settings and corroboration under the released reference. A nominated branch requires its prescribed prototype and fresh paired confirmation before a spending recommendation. Three previously studied scene windows provide development evidence about this pipeline. New confirmation data and appropriate official baselines would be needed to establish a broader method contribution.", "",
+                "Additional RunPod compute was USD 0. The USD 25 allocation stays reserved. The next action is the registered follow-up when nominated, or a local no-go report when neither branch qualifies. [Full evidence and replay](README.md)", ""]
+    (PUBLIC / "VERDICT.md").write_text("\n".join(verdict), encoding="utf-8")
     print(decision)
 
 

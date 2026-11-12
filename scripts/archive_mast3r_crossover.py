@@ -50,7 +50,10 @@ def archive(destination, final):
                   final=final, files=records, total_bytes=sum(r["bytes"] for r in records))
     output = PUBLIC / "archive.json" if final else ROOT / "cloud/mast3r_crossover_checkpoint.json"
     dump(output, record)
-    copy_checked(output, destination / output.relative_to(ROOT))
+    backup_output = destination / output.relative_to(ROOT)
+    if not final:
+        backup_output = backup_output.with_name("mast3r_crossover_checkpoint_" + sha256(output)[:12] + ".json")
+    copy_checked(output, backup_output)
     print(f"Verified {len(records)} files for {len(completed)} cases on two physical drives.")
 
 
