@@ -1,0 +1,11 @@
+# Full-resolution MASt3R neural-adapter feasibility probe
+
+This engineering probe follows the completed 21-case alignment comparison. Use the first two frozen Heads development images at 512 by 384, the pinned metric checkpoint, and first-image sparse measurements from the centered neighboring-depth grid. No dense target labels or reconstruction scores enter this probe.
+
+Freeze every original model parameter and buffer in evaluation mode. Insert the released TCO rank-4 LoRA layer with alpha 1 and no dropout into all decoder attention linear projections in both branches. Keep the encoder, geometry heads and descriptor heads fixed. Use non-reentrant activation checkpointing on all decoder blocks, bfloat16 autocast for the model and the model's existing float32 downstream-head path. This is a decoder-only configuration, not full-backbone TCO or Test3R reproduction.
+
+First compare every pairwise output tensor before injection with zero-update adapters under the same precision. Then take exactly one Adam update at learning rate 0.0001 from a sparse axial-depth Huber objective. Round sparse pixels using the same center-preserving 518-by-392 to 512-by-384 affine. Fix the positive initial measurement support and a median measured/predicted depth scale, using only those sparse inputs. Normalize residuals by 0.02 times the median measured depth and use Huber transition 1.
+
+Record original-state hashes before and after the update, every adapter module name, trainable count, finite gradient coverage, loss, output change, peak allocation, device and execution time. Require exact zero-update output fidelity, finite nonzero adapter gradients, finite changed point-map output after one update and an unchanged original-state hash. Do not interpret a lower fitted sparse loss as reconstruction improvement. Preserve failures under the original attempt identifier without automatic retries.
+
+Use only the local RTX 3080. A failure determines the next memory-engineering action rather than authorizing a rental. A successful pairwise backward pass does not establish five-view training memory, repeatability, dense accuracy, robustness or novelty. Full neural adaptation still requires a frozen training protocol, image/geometric consistency terms, prior-noise controls, matched-input alignment baselines and appropriate Test3R/Pow3R comparisons.
