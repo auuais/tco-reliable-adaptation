@@ -1,0 +1,11 @@
+# Exploratory canonical-depth and matching audit
+
+This diagnostic was added after the 105 predictions were sealed and before the new reconstruction-score summaries were inspected. It does not change the registered candidates, comparisons or advancement checks.
+
+The pinned [MASt3R densification code](https://github.com/naver/mast3r/blob/f5209afc300cec36239a7ac992263f36847bbba0/mast3r/cloud_opt/sparse_ga.py#L513) attaches each pixel to an 8 by 8 anchor cell. Its within-view axial depth has the form z = d_cell [1 + (r_pixel - 1) beta], with frozen canonical depth ratio r and a focal-dependent beta. Camera poses do not enter this axial-depth expression. This motivates checking whether neural adaptation changes that within-view shape family, as well as checking its final reconstruction score.
+
+The audit removes one positive least-squares depth scale and fits a relaxed family A_cell + B_cell (r - 1) independently in each cell. This is a superset of the actual depth/focal family because the coefficients are unrestricted and no longer share a global focal ratio. Residual error is therefore a conservative indication of within-view depth structure outside even that relaxed family. It is not a proof about the complete world-geometry optimization, nor a measure of correctness. A nonzero neural shape change can be harmful.
+
+Validate the derivation against all 105 views from the 21 zero-adaptation reconstructions. Their normalized residual RMS must be at most 0.000002. A failed positive control invalidates interpretation of this audit and must remain reported. Synthetic tests separately check an exactly representable field and an added local shape perturbation. Report the canonical and final-depth diagnostics, normalized update magnitude and residual-energy fractions for every neural case. Undefined fractions for zero updates remain undefined.
+
+Also compare all 20 directed correspondence files per adapted state with their zero-model counterparts using exact pixel-pair Jaccard overlap. A changed set is not evidence of more accurate matching. Directed opposite files are not independent observations. Preserve the full pair counts and intersections. This audit asks which parts of the pipeline changed; the independently sealed surface evaluation decides whether those changes helped.
