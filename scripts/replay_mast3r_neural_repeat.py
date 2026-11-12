@@ -72,6 +72,19 @@ def replay(export=False):
     if export and not (PUBLIC/'publication.json').exists():
         dump(PUBLIC/'publication.json', seal)
     assert read(PUBLIC/'publication.json') == seal
+    if (PUBLIC/'archive.json').exists():
+        archive = read(PUBLIC/'archive.json')
+        assert archive['verified_physical_drives'] == 2 and archive['reference_evaluations'] == 6
+        assert archive['repeat_result_sha256'] == sha(PUBLIC/'result.json')
+        records = archive['files']
+        assert len({r['file'] for r in records}) == len(records)
+        assert archive['total_bytes'] == sum(r['bytes'] for r in records)
+        inventory = {r['file']:r for r in records}
+        for name, digest in result['files'].items():
+            assert inventory['raw/'+name]['sha256'] == digest
+        for name, digest in metadata.items():
+            assert inventory['public/'+name]['sha256'] == digest
+        assert all(r['bytes'] > 0 and len(r['sha256']) == 64 for r in records)
     print('Replayed one fresh-process numerical repeat: 288 adapter tensors, fixed gauges/support and nine native arrays.')
     print('All native arrays exact:', result['all_native_exact'], '; within registered tolerance:', result['all_native_close'])
     print('Nonexact outputs require surface-metric comparison; this is not a population repeatability estimate.')

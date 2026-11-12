@@ -1,0 +1,31 @@
+# MASt3R analysis checkpoint
+
+Date: November 13, 2026. Finish the sealed development evaluation and numerical-repeat analysis, publish the evidence, then pause under the user's instruction. Do not start another scientific experiment or a rental from this checkpoint. The retained stopped RunPod workspace and its 20 GB volume stay intact by explicit user choice; its observed storage quote is USD 0.006/hour.
+
+## Completed engineering
+
+The original output-substitution transfer failed its aggregate criterion. The later geometric-alignment experiment improved development surface error by 7.63% and 8.66% against ordinary MASt3R, but most benefit came from depth-only alignment. The joint increment was 1.43% and 1.29%, below the frozen resource threshold. Preserve both outcomes and their original comparisons.
+
+Actual neural adaptation now runs locally: 24 independent decoder-adapter states, 40 updates each, and 105 reconstructions, with fresh float32 inference, descriptor matching and standard global alignment after adaptation. All outputs were sealed before dense-reference scoring. Training uses two ordered pairs per update, cached frozen encoder features and bfloat16 decoder computation, with float32 original heads. This is a five-image development protocol with sequential pairwise training, not simultaneous five-image rendering or the complete released TCO objective. Peak training allocation is about 4.6 GiB on the local RTX 3080. The entire registered GPU batch took about 74.7 minutes including loading and alignment; concurrent preparation prevents a controlled speed claim.
+
+The three ordinary zero-adapter reconstructions exactly reproduce their earlier native depth, calibration and camera arrays. All original network weights and buffers retain their recorded state hash. The full outputs, adapter states, gauges, matching caches and point maps have two-disk backups. Public replay checks stored evidence and coordinates; it is not an independently implemented dense evaluator or an independent researcher's reproduction.
+
+## Interpretation requirements
+
+The primary joint candidate is 0.907% worse than the strongest eligible control on centered/clean inputs, 1.088% worse on shifted/clean, 0.054% worse on centered/noisy and 0.026% worse on shifted/noisy. All four fail the registered gain, scene-regression and alternate-reference checks; component safety passes. Strong D/K controls still show a modest descriptive increment over matched frozen KDP alignment. The camera-supervised neural term has not demonstrated added value. The numerical repeat's average relative distance changes range from -0.272% to +0.266% across its six alignment/reference comparisons, without estimating variation elsewhere.
+
+Read the final tables in `results/mast3r_neural_transfer/README.md` and the one-case repeat in `results/mast3r_neural_repeat/README.md`. Preserve all four registered grid/pose-condition decisions. The reference-calibrated K, neighboring sparse ranges and benchmark poses are supplied inputs. The noisy condition changes only the pose channel: five-degree local rotations and center shifts of 2% of the trajectory diameter. It does not simulate a full noisy RGB-D or inertial sensor. Exclude unavailable clean-pose oracles from noisy comparisons.
+
+The fresh-process repeat has matching base-state hashes, initial depth gauges and support, and initial scalar loss. All 288 final adapter tensors and all nine native output arrays differ, including beyond the registered tolerance. The first gradient norms already differ slightly. Do not attribute a cause without additional diagnostics, claim identical captured RNG states, or use raw camera-matrix differences as a reconstruction-quality measure: their global gauge can change. Read the six paired surface comparisons to assess the observed effect. One repeated case cannot estimate a population failure rate or establish reliability across scenes and corruptions.
+
+The post-sealing mechanism audit finds small canonical-depth changes after removing global scale, alongside changed correspondence sets. Its relaxed per-cell depth-family fit passed its zero-adaptation positive control. This audit is exploratory; residual energy outside that family and match-set Jaccard are not accuracy measures or causal proof. Keep the original surface gates unchanged.
+
+## Possible next work after an explicit resume
+
+First consider a registered causal analysis using the existing cached outputs, rather than another broad training sweep. Cross frozen versus adapted geometric point coordinates with frozen versus adapted matching/confidence operands. Validate the unchanged/unchanged and adapted/adapted bridges against the archived reconstructions before interpreting either crossed condition. Preserve pair ordering, confidence conventions, canonical-depth construction and all alignment settings. This is a proposal only: it has not been implemented or executed.
+
+If the crossover identifies damage from matching/confidence changes, investigate an explicit constraint that preserves useful correspondence structure while adapting geometry. If geometry updates are the limiting factor, investigate the objective and its observable degrees of freedom first. Neither direction is established by the current audit. Register numerical controls, matched-information baselines, total compute accounting and stopping rules before testing a redesign. Do not select checkpoints or online acceptance rules using reference surfaces.
+
+Official Pow3R and Test3R source preparation is complete, and the official Pow3R checkpoint has been downloaded and structurally inspected. Neither has been benchmarked in this workspace. A publication claim requires appropriate matched-input comparisons, more independent executions and corruption draws, and genuinely new confirmation data. The previously evaluated 7-Scenes holdouts and TUM targets remain observed data. A LoRA port, extra camera inputs or lower training loss alone is insufficient novelty.
+
+The USD 25 transfer rental allocation remains reserved. This local stage does not establish a publishable method, a new state of the art, or completion of the overall research goal. Preserve the budget and resume only on the user's instruction after this checkpoint is paused.

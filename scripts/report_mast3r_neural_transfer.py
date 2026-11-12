@@ -56,6 +56,8 @@ def report():
     fig.tight_layout(rect=(0,.07,1,.95))
     fig.savefig(PUBLIC/'comparison.png',dpi=180)
     fig.savefig(PUBLIC/'comparison.svg')
+    svg=PUBLIC/'comparison.svg'
+    svg.write_text('\n'.join(line.rstrip() for line in svg.read_text(encoding='utf-8').splitlines())+'\n',encoding='utf-8')
     plt.close(fig)
     print('Exported all 210 distance rows and the four fixed comparison panels.')
 

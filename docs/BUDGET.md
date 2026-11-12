@@ -62,7 +62,7 @@ The subsequent focal-calibration pilot completed 72 full TCO runs on one RTX 309
 
 MASt3R inference/global alignment, the two-grid sparse-depth development studies, all 260 held-out reference evaluations, all 48 TUM surface evaluations, nine independent checks and the fresh TUM model repeat used the local machine. Their additional RunPod compute spending was zero. The calibration-stage estimate is still USD 1.82 against its USD 3 cap. The USD 25 transfer allocation and later evaluation allocations were not charged for these local runs. The candidate failed the TUM advancement checks, so those rental allocations are reserved.
 
-Full point maps and frozen model outputs are checksum-verified on separate C and E physical disks. Compact results and replay inputs are in the public GitHub repository. Account credit observations are private and are not a measure of total historical spending. The current provider pod state and storage quote await direct user confirmation because Windows Computer Use could not verify the browser URL and no authenticated RunPod CLI was available. The previous stopped-state and storage observations are historical evidence.
+Full point maps and frozen model outputs are checksum-verified on separate C and E physical disks. Compact results and replay inputs are in the public GitHub repository. Account credit observations are private and are not a measure of total historical spending. A later read-only browser audit verified the listed pods stopped and the retained workspace storage quote. The user explicitly chose to keep that workspace; see the retained-workspace decision below. No paid GPU was started.
 
 ## November 12 joint MASt3R alignment
 
@@ -72,3 +72,7 @@ All 21 development alignments and 42 reference evaluations ran locally. Addition
 ## Retained workspace decision, November 12
 
 The browser connector verified the older retained workspace is stopped, with a 20 GB volume billed at USD 0.006/hour (USD 0.144/day at that quote). All five historical reproduction/diagnostic/baseline archives were rechecked on C and E before any proposed deletion. The user explicitly chose to keep this workspace. No pod or volume was deleted or started. Treat this storage as an intentional ongoing charge within the storage reserve; do not repeat the deletion request without a material change. Other listed stopped pods displayed USD 0.00/hour. Account credit remains private and is not a total-spending measure.
+
+## November 13 neural MASt3R analysis checkpoint
+
+The complete 24-state/960-update neural batch, 105 reconstructions, 210 reference evaluations, one additional 40-update fresh-process repeat and its six reference evaluations ran locally. Additional RunPod compute cost was USD 0. The calibration-stage estimate remains USD 1.82 of its USD 3 cap; this is not total project spending. The USD 25 transfer rental allocation and later paid allocations remain reserved. All four joint-camera advancement decisions fail. Preserve the complete results and pause after this analysis at the user's request. The intentionally retained stopped workspace continues its last verified USD 0.006/hour storage charge.

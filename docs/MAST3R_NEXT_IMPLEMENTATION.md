@@ -1,5 +1,7 @@
 # MASt3R network-adaptation handoff
 
+**Superseded engineering checklist, November 13.** The multi-view neural screen has now completed. All four joint-camera advancement checks fail; the goal pauses after analysis. Read [the current analysis handoff](MAST3R_ANALYSIS_HANDOFF.md) and [results](../results/mast3r_neural_transfer/README.md) before resuming. The checklist below records the earlier preparation and must not trigger another automatic run.
+
 **Feasibility update, November 12.** One full-resolution pairwise Adam update completed locally at 3.66 GiB peak allocation. All eight zero-update outputs matched exactly, gradients were finite and nonzero, predictions changed, and original-state hashes were unchanged. The first NumPy-shape setup failure and corrected tensor-shape attempt are preserved separately. [Results](../results/mast3r_adapter_probe/README.md). Steps 1–2 below have an initial one-pair implementation; multi-view adaptation, objective design and reconstruction efficacy remain pending. Preserve all alignment advancement decisions.
 
 The completed joint-prior integration changes geometric alignment variables. It does not update neural-network weights. Its 21-case development factorial must be scored and reported before selecting the next scientific hypothesis. Keep the USD 25 rental allocation reserved unless reliable evidence and a live resource decision justify it.
