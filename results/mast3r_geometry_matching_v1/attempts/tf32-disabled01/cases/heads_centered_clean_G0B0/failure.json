@@ -1,0 +1,30 @@
+{
+  "job": {
+    "id": "heads_centered_clean_G0B0",
+    "scene": "heads",
+    "grid": "centered",
+    "pose_packet": "heads_clean",
+    "alignment": "KDP_clean",
+    "geometry": 0,
+    "bundle": 0,
+    "coordinates_from": "heads_zero",
+    "confidences_and_matches_from": "heads_zero",
+    "endpoint": {
+      "tag": "heads_zero_centered_KDP_clean",
+      "native_sha256": "30f106cdeaf7f97614818417b1fae3d7a58657fbbed4834f9fe99f2493b375d8",
+      "point_digest": "2d124f05d8da4067ec8646c9945615ee257249eb0f2d5be0ddb0a1d178af3a37"
+    }
+  },
+  "error_type": "ValueError",
+  "message": "Endpoint bridge failed: heads_centered_clean_G0B0",
+  "traceback": "Traceback (most recent call last):\n  File \"/workspace/scripts/run_mast3r_crossover.py\", line 133, in run\n    require(bridge[\"pass\"], f\"Endpoint bridge failed: {tag}\")\n  File \"/workspace/scripts/plan_mast3r_crossover.py\", line 51, in require\n    raise ValueError(message)\nValueError: Endpoint bridge failed: heads_centered_clean_G0B0\n",
+  "sources": {
+    "scripts/run_mast3r_crossover.py": "150316569491f906d4470ca48d09e30352012eecc8c569bba98c3d2aeb8ccaec",
+    "scripts/mast3r_crossover_cache.py": "9f1fe56f7bb06cd0720184f780212f75c94928bf8cfa2d3362727fd18267a856",
+    "scripts/mast3r_network_capture.py": "92e164a4adb9e52318d68cc690c68b480949b5afbdecd45be1b4097a621211a1",
+    "scripts/mast3r_alignment_hook.py": "4693f338f8364cf6d53f796257182ca618afa301243b193c55ffcfca37d24059",
+    "scripts/mast3r_calibrated_alignment.py": "bfa109edba148ef0293a750a944e1b6ea4243a24453b7aebd757f4efae8cbf1d",
+    "scripts/mast3r_joint_prior_loss.py": "de53921ffbffe70cbe44415e9dfad501ac031208d6620b900511cb6cf4a5a989"
+  },
+  "execution_commit": "238ab41ff4e160259cbbe554911aa0263c1f0513"
+}

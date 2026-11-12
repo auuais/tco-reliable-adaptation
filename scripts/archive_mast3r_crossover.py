@@ -35,8 +35,17 @@ def collect_execution():
 def copy_checked(source, target):
     digest = sha256(source)
     target.parent.mkdir(parents=True, exist_ok=True)
-    if not target.exists():
-        shutil.copyfile(source, target)
+    if target.exists() and sha256(target) != digest:
+        old_digest = sha256(target)
+        previous = target.with_name(target.name + "." + old_digest[:16] + ".previous")
+        if not previous.exists():
+            shutil.copyfile(target, previous)
+        require(sha256(previous) == old_digest, "Previous backup version differs")
+    if not target.exists() or sha256(target) != digest:
+        pending = target.with_name(target.name + ".partial")
+        shutil.copyfile(source, pending)
+        require(sha256(pending) == digest, "Incomplete backup copy")
+        pending.replace(target)
     require(sha256(target) == digest, f"Backup differs: {target}")
     return dict(file=source.relative_to(ROOT).as_posix(), bytes=source.stat().st_size, sha256=digest)
 

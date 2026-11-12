@@ -34,8 +34,9 @@ def report():
         peak_reserved_mib=max(t["alignment"]["peak_reserved_mib"] for t in timings.values()),
         scope="Cached alignment diagnostics including materialization. Model forwards, adaptation and descriptor matching belong to the parent input study."))
     selected = scores["selected_branch"]
-    decision = "The registered rule nominates the " + selected + " branch for its specified follow-up." if selected else "Neither branch meets all registered nomination checks. The decision is a local no-go for a redesign under this protocol."
-    lines = ["# MASt3R geometry and matching crossover", "", decision, "",
+    decision = "The registered rule nominates the " + selected + " branch for its specified follow-up." if selected else "Neither hybrid meets the registered nomination checks. The decision is a local no-go for the uniform freezing strategies tested here."
+    finding = "Coordinates give a larger isolated gain than the observation bundle in every aggregate setting. Full adaptation gives the lowest aggregate error in all eight grid/pose/reference comparisons. On Fire, G1B0 improves on full adaptation in all four registered-RGB settings. Heads and Chess favor full adaptation. The direction of the observation effect therefore varies by scene."
+    lines = ["# MASt3R geometry and matching crossover", "", decision, "", finding, "",
              f"All 48 alignments completed on the local RTX 3080. All {len(bridges)} archived endpoint controls pass the registered tolerance, with {exact} reproducing every depth, intrinsic and camera value exactly. The 24 crossed combinations were scored after all outputs were sealed. There are 96 reconstruction/reference associations across registered RGB and released references.", "",
              "G0B0 uses pretrained coordinates and observations. G1B1 uses both from the sparse-depth adapter. G1B0 combines adapted coordinates with pretrained observations. G0B1 combines pretrained coordinates with adapted observations. Observations include point confidences, pixel matches, matching weights and their effects on the view tree.", "",
              "Scores average accuracy and completeness after normalizing each component to ordinary MASt3R for the same scene and reference. Each scene receives equal weight. Lower scores indicate lower surface error.", "",
@@ -55,19 +56,21 @@ def report():
               "The first match audit failed its projection check because the supplied pose packet uses matrix inversion while the reference builder uses the loader's transpose-based inversion. The source rotations have small orthogonality errors. Reproducing the reference builder's camera matrices brought the same-view maximum error below 0.00006 native pixels. The diagnostic uses these archived-reference cameras. Both surface score definitions use their original frozen reference archives.", "",
               "Additional RunPod compute for this phase is USD 0. The reserved USD 25 remains available for a subsequent decision. Total alignment, materialization time and peak memory are recorded per case. These cached diagnostics cover the alignment stage. A deployable method must also account for model inference, training and matching.", "",
               "Run `python scripts/replay_mast3r_crossover.py` for the portable evidence checks. The [registered protocol](../../docs/MAST3R_GEOMETRY_MATCHING_GOAL.md), [96 scene rows](scene_metrics.csv), [metric identities](associations.json), [contrasts and decisions](scores.json), [match diagnostics](match_audit.json) and [two-drive archive](archive.json) provide the supporting records.", ""]
-    (PUBLIC / "README.md").write_text("\n".join(lines), encoding="utf-8")
+    with (PUBLIC / "README.md").open("w", encoding="utf-8", newline="\n") as stream:
+        stream.write("\n".join(lines))
     verdict = ["# MASt3R crossover verdict", "", decision, "",
                "The experiment crossed pretrained and sparse-depth-adapted coordinates with pretrained and adapted confidence/matching inputs. It used the same five images per scene, sparse measurements, supplied calibration and alignment settings in every comparison. Heads, Chess and Fire each received equal weight.", "",
-               "| Grid and poses | Geometry-only gain | Observations-only gain | Joint gain |", "|---|---:|---:|---:|"]
+               "| Grid and poses | Geometry-only gain | Observations-only gain | Both adapted |", "|---|---:|---:|---:|"]
     for condition, references in scores["conditions"].items():
         overall = references["registered_rgb"]["overall"]
         baseline = overall["G0B0"]["score"]
         gains = [100 * (1 - overall[cell]["score"] / baseline) for cell in ("G1B0", "G0B1", "G1B1")]
         verdict.append(f"| {condition} | {gains[0]:+.3f}% | {gains[1]:+.3f}% | {gains[2]:+.3f}% |")
-    verdict += ["", f"All 24 endpoint controls pass tolerance, with {exact} exact reproductions. The complete tables retain both reference definitions, both distance components, each scene, the interaction contrast and the registered nomination checks. The failed initial precision attempt is preserved alongside its successful repair.", "",
+    verdict += ["", finding, "", f"All 24 endpoint controls pass tolerance, with {exact} exact reproductions. The complete tables retain both reference definitions, both distance components, each scene, the interaction contrast and the registered nomination checks. The failed initial precision attempt is preserved alongside its successful repair.", "",
                 "The follow-up rule requires consistent evidence across the four grid/pose settings and corroboration under the released reference. A nominated branch requires its prescribed prototype and fresh paired confirmation before a spending recommendation. Three previously studied scene windows provide development evidence about this pipeline. New confirmation data and appropriate official baselines would be needed to establish a broader method contribution.", "",
-                "Additional RunPod compute was USD 0. The USD 25 allocation stays reserved. The next action is the registered follow-up when nominated, or a local no-go report when neither branch qualifies. [Full evidence and replay](README.md)", ""]
-    (PUBLIC / "VERDICT.md").write_text("\n".join(verdict), encoding="utf-8")
+                "Additional RunPod compute was USD 0. The USD 25 allocation stays reserved. The current attribution test nominates neither follow-up. [Full evidence and replay](README.md)", ""]
+    with (PUBLIC / "VERDICT.md").open("w", encoding="utf-8", newline="\n") as stream:
+        stream.write("\n".join(verdict))
     print(decision)
 
 

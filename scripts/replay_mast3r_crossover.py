@@ -3,7 +3,7 @@ import argparse
 import itertools
 import numpy as np
 
-from audit_mast3r_crossover_matches import describe, aggregate
+from audit_mast3r_crossover_matches import describe, aggregate, reference_poses
 from plan_mast3r_crossover import ROOT, PARENT, MANIFEST, read, require, expected_plan, sha256, text_sha256, validate_public
 from replay_mast3r_transfer import independently_resize
 from neighbor_sparse_depth import tensor_digest
@@ -103,6 +103,17 @@ def replay(local=False):
     require(audit["seal_sha256"] == sha256(PUBLIC / "predictions.json"), "Audit predates prediction seal")
     require(audit["source_sha256"] == text_sha256(ROOT / "scripts/audit_mast3r_crossover_matches.py"), "Audit code changed")
     require(len(audit["states"]) == 6 and set(audit["same_view_checks"]) == set(plan["scenes"]), "Audit scope incomplete")
+    calibration = np.asarray(read(ROOT / "manifests/sensor_frame_v14.json")["calibration"])
+    pose_index = read(ROOT / "results/source_frame_spacing/inputs.json")["frames"]
+    with np.load(PARENT / "pose_packets.npz") as packets:
+        for scene, sequence in plan["scenes"].items():
+            original = np.linalg.inv(np.linalg.inv(calibration) @ packets[scene + "_clean"])
+            expected_cameras = reference_poses(original, calibration)
+            record = audit["reference_cameras"][scene]
+            np.testing.assert_allclose(record["world_to_camera"], expected_cameras, rtol=1e-10, atol=1e-10)
+            require(record["original_pose_sha256"] == {str(f): pose_index[sequence][str(f)]["original"]["pose.txt"]
+                                                        for f in plan["frames"]}, "Reference pose provenance differs")
+            require(max(audit["same_view_checks"][scene]["max_native_pixel_error"]) < .01, "Reference projection check failed")
     for state, data in audit["states"].items():
         path = PUBLIC / "match_audit" / (state + ".npz")
         require(sha256(path) == data["archive_sha256"], "Match evidence changed")
