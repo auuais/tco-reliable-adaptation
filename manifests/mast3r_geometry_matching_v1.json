@@ -1,0 +1,776 @@
+{
+  "study": "mast3r_geometry_matching_v1",
+  "parent_commit": "afef4e998ac0ef3786e7a0f04844c52187a8fa07",
+  "protocol_sha256_lf": "b67e2d305817e541d34afd6f0a4ac5b4e6a75a4b11b14a66a141eff18dce7305",
+  "parent_artifact_sha256": {
+    "results/mast3r_neural_transfer/plan.json": "a1123663ea6b0421046fd9fbc5a06bfd72b1c4c16f8c247efa7fd1e3d2c65d2c",
+    "results/mast3r_neural_transfer/session.json": "4b9b06e2ff79d9a8d8f92cada9117baf5c9a6e76e9c785577dd4eec884714669",
+    "results/mast3r_neural_transfer/archive.json": "e83b3508863a2e6f91713f6cb72cb0cd0f38cc7214be003e98a4c56a39b27777",
+    "results/mast3r_neural_transfer/predictions.json": "0659408e6aebc84274ca3f5ec2957828f6a3dad8a3199ce207a0affeb8860ce5",
+    "results/mast3r_neural_transfer/observations.json": "3a24c765390ed42359c03ddf44b2e0466e30432efe112e9c2e6b8ecf3b51695f",
+    "results/mast3r_neural_transfer/metrics.json": "0d59ffee54a8bc4fd67627b23f093369819848f3d1fea2d5840cc25a662f7210",
+    "results/mast3r_neural_transfer/scores.json": "f521c7f14b89dd7c413a3bb63ddf1c534b503c332ec325043f35f6589e92a594",
+    "results/mast3r_neural_transfer/pose_packets.npz": "480423b948aaacc65ebfe66c405df1a8364fd8820d4eb5146a15b733b8ff7fbd",
+    "results/neighbor_sparse_depth/measurements.npz": "a5e7801e5a7db8e91b6ce1c1a1ec590ee4470a78128002d664aef70a9b73b7d8",
+    "results/shifted_sparse_grid/measurements.npz": "8ac5cfaaf44679ffbb7cd9940045a9779de1810ca69e0c77caae3dcb4c3725ff",
+    "manifests/dense_focal_inputs.json": "20bbc76fabc3e903b0ba904beb04bf42931e141d074291e2748a185a40befd57"
+  },
+  "upstream_commits": {
+    "mast3r": "f5209afc300cec36239a7ac992263f36847bbba0",
+    "mast3r/dust3r": "3cc8c88c413bb9e34c41db0e0eef99c2ee010b12",
+    "mast3r/dust3r/croco": "d7de0705845239092414480bd829228723bf20de"
+  },
+  "image_sha256": "sha256:74783a8eefee6daad6ff2714a51263ccdcdc5092b83cebee20515310bec46b50",
+  "checkpoint_sha256": "0a615eb05fa9db654050aa655945ee5696e7c6c1b7f93f1ee8c37249010f6feb",
+  "scenes": {
+    "heads": "heads/seq-01",
+    "chess": "chess/seq-03",
+    "fire": "fire/seq-03"
+  },
+  "frames": [
+    25,
+    225,
+    425,
+    625,
+    825
+  ],
+  "native_hw": [
+    384,
+    512
+  ],
+  "known_K": [
+    [
+      470.40000000000003,
+      0.0,
+      255.89999999999998
+    ],
+    [
+      0.0,
+      470.40000000000003,
+      191.9
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "adapted_arm": "D",
+  "references": [
+    "registered_rgb",
+    "released"
+  ],
+  "alignment": {
+    "seed": 42,
+    "subsample": 8,
+    "mode": "avg-angle",
+    "kinematic_mode": "hclust-ward",
+    "lr1": 0.07,
+    "niter1": 300,
+    "lr2": 0.01,
+    "niter2": 300,
+    "opt_depth": true,
+    "shared_intrinsics": false,
+    "matching_conf_thr": 0.0,
+    "depth_weight": 0.01,
+    "intrinsics_weight": 0.01,
+    "pose_weight": 0.01
+  },
+  "bridge_tolerance": {
+    "rtol": 1e-05,
+    "atol": 1e-06
+  },
+  "historical_best": {
+    "centered": {
+      "clean": "D_KDP_clean",
+      "noisy": "D_KDP_noisy"
+    },
+    "shifted": {
+      "clean": "K_KDP_clean",
+      "noisy": "K_KDP_noisy"
+    }
+  },
+  "branch_selection": {
+    "primary": "registered_rgb",
+    "alternate": "released",
+    "extent": "one_branch",
+    "margin_floor": 1e-06,
+    "max_replay_error_multiplier": 2,
+    "tie_break": "largest_worst_primary_relative_gain_then_geometry"
+  },
+  "repeat_design": {
+    "fresh_processes": 3,
+    "optimizer_seed": 42,
+    "scene_order": [
+      "heads",
+      "chess",
+      "fire"
+    ],
+    "original_pose_seed_base": 20261112,
+    "new_pose_seed_bases": [
+      20261130,
+      20261230
+    ],
+    "rotation_degrees": 5,
+    "translation_fraction_of_diameter": 0.02
+  },
+  "spending_rule": {
+    "min_relative_gain": 0.05,
+    "min_scene_gain": 0.0,
+    "max_component_ratio": 1.02,
+    "max_alternate_score_ratio": 1.0,
+    "positive_gain_each_paired_repeat": true,
+    "additional_runpod_compute_usd": 0,
+    "reserved_transfer_usd": 25
+  },
+  "runs": [
+    {
+      "id": "heads_centered_clean_G0B0",
+      "scene": "heads",
+      "grid": "centered",
+      "pose_packet": "heads_clean",
+      "alignment": "KDP_clean",
+      "geometry": 0,
+      "bundle": 0,
+      "coordinates_from": "heads_zero",
+      "confidences_and_matches_from": "heads_zero",
+      "endpoint": {
+        "tag": "heads_zero_centered_KDP_clean",
+        "native_sha256": "30f106cdeaf7f97614818417b1fae3d7a58657fbbed4834f9fe99f2493b375d8",
+        "point_digest": "2d124f05d8da4067ec8646c9945615ee257249eb0f2d5be0ddb0a1d178af3a37"
+      }
+    },
+    {
+      "id": "heads_centered_noisy_G0B0",
+      "scene": "heads",
+      "grid": "centered",
+      "pose_packet": "heads_noisy",
+      "alignment": "KDP_noisy",
+      "geometry": 0,
+      "bundle": 0,
+      "coordinates_from": "heads_zero",
+      "confidences_and_matches_from": "heads_zero",
+      "endpoint": {
+        "tag": "heads_zero_centered_KDP_noisy",
+        "native_sha256": "e0a94796162a7b49fca044a6f659040bbfb0c92c1821536690643e5ea85dad03",
+        "point_digest": "f1ca7ed7a07b190502e82479f603c617f520fe38effcbe6a1de972d459cfe940"
+      }
+    },
+    {
+      "id": "heads_shifted_clean_G0B0",
+      "scene": "heads",
+      "grid": "shifted",
+      "pose_packet": "heads_clean",
+      "alignment": "KDP_clean",
+      "geometry": 0,
+      "bundle": 0,
+      "coordinates_from": "heads_zero",
+      "confidences_and_matches_from": "heads_zero",
+      "endpoint": {
+        "tag": "heads_zero_shifted_KDP_clean",
+        "native_sha256": "e0b04e41436e64c836cae3c689f71d2e6fb933959a149c1e7ac9fe5d0cc10506",
+        "point_digest": "f6fde7c491720dfa3511310387ef6697efa680c4883ecec84cc2e4ba749c7a45"
+      }
+    },
+    {
+      "id": "heads_shifted_noisy_G0B0",
+      "scene": "heads",
+      "grid": "shifted",
+      "pose_packet": "heads_noisy",
+      "alignment": "KDP_noisy",
+      "geometry": 0,
+      "bundle": 0,
+      "coordinates_from": "heads_zero",
+      "confidences_and_matches_from": "heads_zero",
+      "endpoint": {
+        "tag": "heads_zero_shifted_KDP_noisy",
+        "native_sha256": "4007fcbb7b116d5ab43c6a8c08a62afcc68be51b8c4d31146b331274e0453f96",
+        "point_digest": "27926289c32e5d94ffaeb51f2634e2ec5453df0f95d00b3f4f09e9a3799c39c2"
+      }
+    },
+    {
+      "id": "chess_centered_clean_G0B0",
+      "scene": "chess",
+      "grid": "centered",
+      "pose_packet": "chess_clean",
+      "alignment": "KDP_clean",
+      "geometry": 0,
+      "bundle": 0,
+      "coordinates_from": "chess_zero",
+      "confidences_and_matches_from": "chess_zero",
+      "endpoint": {
+        "tag": "chess_zero_centered_KDP_clean",
+        "native_sha256": "2da485f0d2b58bf4212a32450a7ad71851d495bee2944bcbb018ae8ec6aebffb",
+        "point_digest": "a943f2a98a03cceabb13a688f4347d4627f20eac3e7502461df117cec43e47b2"
+      }
+    },
+    {
+      "id": "chess_centered_noisy_G0B0",
+      "scene": "chess",
+      "grid": "centered",
+      "pose_packet": "chess_noisy",
+      "alignment": "KDP_noisy",
+      "geometry": 0,
+      "bundle": 0,
+      "coordinates_from": "chess_zero",
+      "confidences_and_matches_from": "chess_zero",
+      "endpoint": {
+        "tag": "chess_zero_centered_KDP_noisy",
+        "native_sha256": "7a1a29a50478d63f6d04ba4fb825abf742a994e4358e3179549eea1d0da8e13a",
+        "point_digest": "c9b46134854257454e9b0abb282c1e0c5b001ae9a8ea106f8d0e13b524f143d7"
+      }
+    },
+    {
+      "id": "chess_shifted_clean_G0B0",
+      "scene": "chess",
+      "grid": "shifted",
+      "pose_packet": "chess_clean",
+      "alignment": "KDP_clean",
+      "geometry": 0,
+      "bundle": 0,
+      "coordinates_from": "chess_zero",
+      "confidences_and_matches_from": "chess_zero",
+      "endpoint": {
+        "tag": "chess_zero_shifted_KDP_clean",
+        "native_sha256": "c6dabb745254affb2fb5e79ecd036594dc573dda2ad2b0cd5e9206734bcd33a5",
+        "point_digest": "c7299a7cc148a9788e67d601a0b1df23cffc4d9a15aa58438ce2acc561e1fbbb"
+      }
+    },
+    {
+      "id": "chess_shifted_noisy_G0B0",
+      "scene": "chess",
+      "grid": "shifted",
+      "pose_packet": "chess_noisy",
+      "alignment": "KDP_noisy",
+      "geometry": 0,
+      "bundle": 0,
+      "coordinates_from": "chess_zero",
+      "confidences_and_matches_from": "chess_zero",
+      "endpoint": {
+        "tag": "chess_zero_shifted_KDP_noisy",
+        "native_sha256": "6de100a3009b8922d82fa2fe90230ae1c1580e391b1f564367027b5c60159d65",
+        "point_digest": "6727d2e54feb23413e14085e03ad45a2767d219b89734ec99686ec83edafa6a0"
+      }
+    },
+    {
+      "id": "fire_centered_clean_G0B0",
+      "scene": "fire",
+      "grid": "centered",
+      "pose_packet": "fire_clean",
+      "alignment": "KDP_clean",
+      "geometry": 0,
+      "bundle": 0,
+      "coordinates_from": "fire_zero",
+      "confidences_and_matches_from": "fire_zero",
+      "endpoint": {
+        "tag": "fire_zero_centered_KDP_clean",
+        "native_sha256": "a27d18d20fdb93627cf34d300f09d4d4978908144762e334b76b3c15e3884eb0",
+        "point_digest": "923d1294eb9c36e278e8ba442f23ffac30b19f10268c217e320ff821415d180a"
+      }
+    },
+    {
+      "id": "fire_centered_noisy_G0B0",
+      "scene": "fire",
+      "grid": "centered",
+      "pose_packet": "fire_noisy",
+      "alignment": "KDP_noisy",
+      "geometry": 0,
+      "bundle": 0,
+      "coordinates_from": "fire_zero",
+      "confidences_and_matches_from": "fire_zero",
+      "endpoint": {
+        "tag": "fire_zero_centered_KDP_noisy",
+        "native_sha256": "0aa94f73815215a34a5f7d6da90d1b367e146d52d518ebd1dffb9bb0c53d8b37",
+        "point_digest": "048ab3ebf4d6d8ca7f924f3bb3035a5fcc4ed8e00d8ce702480a09395d9c55fa"
+      }
+    },
+    {
+      "id": "fire_shifted_clean_G0B0",
+      "scene": "fire",
+      "grid": "shifted",
+      "pose_packet": "fire_clean",
+      "alignment": "KDP_clean",
+      "geometry": 0,
+      "bundle": 0,
+      "coordinates_from": "fire_zero",
+      "confidences_and_matches_from": "fire_zero",
+      "endpoint": {
+        "tag": "fire_zero_shifted_KDP_clean",
+        "native_sha256": "8c0cdd32ff89c1c32d00141cf85ec9caedf1851fa76cadf6832367e37f85f5ff",
+        "point_digest": "e7a53b51108eb367909504e0e8c5eda1253b72eb5a84d387fca12eae5d148876"
+      }
+    },
+    {
+      "id": "fire_shifted_noisy_G0B0",
+      "scene": "fire",
+      "grid": "shifted",
+      "pose_packet": "fire_noisy",
+      "alignment": "KDP_noisy",
+      "geometry": 0,
+      "bundle": 0,
+      "coordinates_from": "fire_zero",
+      "confidences_and_matches_from": "fire_zero",
+      "endpoint": {
+        "tag": "fire_zero_shifted_KDP_noisy",
+        "native_sha256": "d2eda600d51d535f3886095cac5e5605dbc042f91af800a78d9127141fbc18dd",
+        "point_digest": "5d7deeef999259f33b2ffd0c4ef5318a9ae88083a5ae99adaa64927f79abdce3"
+      }
+    },
+    {
+      "id": "heads_centered_clean_G1B1",
+      "scene": "heads",
+      "grid": "centered",
+      "pose_packet": "heads_clean",
+      "alignment": "KDP_clean",
+      "geometry": 1,
+      "bundle": 1,
+      "coordinates_from": "heads_centered_D",
+      "confidences_and_matches_from": "heads_centered_D",
+      "endpoint": {
+        "tag": "heads_centered_D_KDP_clean",
+        "native_sha256": "f4cd6a52cc076af6bb8627216606d695277b308898b746ddcc008558712935ab",
+        "point_digest": "6f2fd0798af19ac6f39470a85db2b771a0fd71968c17b4cc29c03eff83ac2114"
+      }
+    },
+    {
+      "id": "heads_centered_noisy_G1B1",
+      "scene": "heads",
+      "grid": "centered",
+      "pose_packet": "heads_noisy",
+      "alignment": "KDP_noisy",
+      "geometry": 1,
+      "bundle": 1,
+      "coordinates_from": "heads_centered_D",
+      "confidences_and_matches_from": "heads_centered_D",
+      "endpoint": {
+        "tag": "heads_centered_D_KDP_noisy",
+        "native_sha256": "b17e11fb3e67e2a53d626f74ae578f087e02caa078b61828f328582d73dbcd58",
+        "point_digest": "238dc1fe7f1120e4b7534bcbcaa507943279111b23c418153a443a877bce9e8f"
+      }
+    },
+    {
+      "id": "heads_shifted_clean_G1B1",
+      "scene": "heads",
+      "grid": "shifted",
+      "pose_packet": "heads_clean",
+      "alignment": "KDP_clean",
+      "geometry": 1,
+      "bundle": 1,
+      "coordinates_from": "heads_shifted_D",
+      "confidences_and_matches_from": "heads_shifted_D",
+      "endpoint": {
+        "tag": "heads_shifted_D_KDP_clean",
+        "native_sha256": "38fdaf590025ded015f249e2080d2a122ea6dbdc1a72f044ccac170f1006db20",
+        "point_digest": "743cf201f71f5d838066305f26c50eb4107bd81f56674ddf3ec0f3532fd65ec7"
+      }
+    },
+    {
+      "id": "heads_shifted_noisy_G1B1",
+      "scene": "heads",
+      "grid": "shifted",
+      "pose_packet": "heads_noisy",
+      "alignment": "KDP_noisy",
+      "geometry": 1,
+      "bundle": 1,
+      "coordinates_from": "heads_shifted_D",
+      "confidences_and_matches_from": "heads_shifted_D",
+      "endpoint": {
+        "tag": "heads_shifted_D_KDP_noisy",
+        "native_sha256": "326a25f39653f54e9982a612ced296a013a0426722947557f1561cd6e87788fc",
+        "point_digest": "76fdc2c4f3b90d101a0a25bf5271db974c8dabedc0c9dba28fd5fdec3446dc30"
+      }
+    },
+    {
+      "id": "chess_centered_clean_G1B1",
+      "scene": "chess",
+      "grid": "centered",
+      "pose_packet": "chess_clean",
+      "alignment": "KDP_clean",
+      "geometry": 1,
+      "bundle": 1,
+      "coordinates_from": "chess_centered_D",
+      "confidences_and_matches_from": "chess_centered_D",
+      "endpoint": {
+        "tag": "chess_centered_D_KDP_clean",
+        "native_sha256": "7a324d0cc0e12714ed4a57d64648cbfefabf7659f6a2f7c175e96eae221aae88",
+        "point_digest": "6c55e0d94606d988285258dacd4b31ffde7d76539a5a2a6af02bd1170b5bfe67"
+      }
+    },
+    {
+      "id": "chess_centered_noisy_G1B1",
+      "scene": "chess",
+      "grid": "centered",
+      "pose_packet": "chess_noisy",
+      "alignment": "KDP_noisy",
+      "geometry": 1,
+      "bundle": 1,
+      "coordinates_from": "chess_centered_D",
+      "confidences_and_matches_from": "chess_centered_D",
+      "endpoint": {
+        "tag": "chess_centered_D_KDP_noisy",
+        "native_sha256": "1c69340fbc97ead0e87b5333adb17695138245e1ea1d39bdf92ecf07c9e42b97",
+        "point_digest": "f71f115b011f8c576c427d8dc1cc520d16212ce80547251c4abcbd5b247e1baa"
+      }
+    },
+    {
+      "id": "chess_shifted_clean_G1B1",
+      "scene": "chess",
+      "grid": "shifted",
+      "pose_packet": "chess_clean",
+      "alignment": "KDP_clean",
+      "geometry": 1,
+      "bundle": 1,
+      "coordinates_from": "chess_shifted_D",
+      "confidences_and_matches_from": "chess_shifted_D",
+      "endpoint": {
+        "tag": "chess_shifted_D_KDP_clean",
+        "native_sha256": "c8506c1dd49156965604ab56c3e8c5ef22c528f876bcc6ca1df1fc420ca42d78",
+        "point_digest": "aa146b5223119653819e86aa2e59a51f4056bfc53164798e3a705ff34d16467e"
+      }
+    },
+    {
+      "id": "chess_shifted_noisy_G1B1",
+      "scene": "chess",
+      "grid": "shifted",
+      "pose_packet": "chess_noisy",
+      "alignment": "KDP_noisy",
+      "geometry": 1,
+      "bundle": 1,
+      "coordinates_from": "chess_shifted_D",
+      "confidences_and_matches_from": "chess_shifted_D",
+      "endpoint": {
+        "tag": "chess_shifted_D_KDP_noisy",
+        "native_sha256": "37aee91c3745e0a1d6db1bd63a1f7059762dc4da817bc39bca7b80045a6391d1",
+        "point_digest": "7afef779651fb2513f4fd525c15af8eddff46ab95960561e6af6d6ad647a07c2"
+      }
+    },
+    {
+      "id": "fire_centered_clean_G1B1",
+      "scene": "fire",
+      "grid": "centered",
+      "pose_packet": "fire_clean",
+      "alignment": "KDP_clean",
+      "geometry": 1,
+      "bundle": 1,
+      "coordinates_from": "fire_centered_D",
+      "confidences_and_matches_from": "fire_centered_D",
+      "endpoint": {
+        "tag": "fire_centered_D_KDP_clean",
+        "native_sha256": "2013cd4535b23f0e2d6ebb85a9a73fee618428efc1912e91b8d4273ee69a27ac",
+        "point_digest": "acc1cd922ccbe68f118bfce8ecbaff906b514d153173fd3e4aa13a272afdc663"
+      }
+    },
+    {
+      "id": "fire_centered_noisy_G1B1",
+      "scene": "fire",
+      "grid": "centered",
+      "pose_packet": "fire_noisy",
+      "alignment": "KDP_noisy",
+      "geometry": 1,
+      "bundle": 1,
+      "coordinates_from": "fire_centered_D",
+      "confidences_and_matches_from": "fire_centered_D",
+      "endpoint": {
+        "tag": "fire_centered_D_KDP_noisy",
+        "native_sha256": "b01e043e5a86f803b1385cdcda4692ed7fd35e437103ed02a3541e334874d8ae",
+        "point_digest": "942ab8df64ea581187faa4b6f344c21a2e93520c63f8db09534d726d8029c8bf"
+      }
+    },
+    {
+      "id": "fire_shifted_clean_G1B1",
+      "scene": "fire",
+      "grid": "shifted",
+      "pose_packet": "fire_clean",
+      "alignment": "KDP_clean",
+      "geometry": 1,
+      "bundle": 1,
+      "coordinates_from": "fire_shifted_D",
+      "confidences_and_matches_from": "fire_shifted_D",
+      "endpoint": {
+        "tag": "fire_shifted_D_KDP_clean",
+        "native_sha256": "086f280e047e0cd5cebfa3a31059af0704798f64a229c96698372ca36fa0d614",
+        "point_digest": "2755551a7c22d75fe1adda350f09607b32689885e052b586f0517a63a77d1b18"
+      }
+    },
+    {
+      "id": "fire_shifted_noisy_G1B1",
+      "scene": "fire",
+      "grid": "shifted",
+      "pose_packet": "fire_noisy",
+      "alignment": "KDP_noisy",
+      "geometry": 1,
+      "bundle": 1,
+      "coordinates_from": "fire_shifted_D",
+      "confidences_and_matches_from": "fire_shifted_D",
+      "endpoint": {
+        "tag": "fire_shifted_D_KDP_noisy",
+        "native_sha256": "09cac1cbe1b2e4bed9b7d039925d149aa1893942d095119956b000004476a94c",
+        "point_digest": "c54b4a3b1b28872073d4487bc5e0c83d3b981263e63312054f2032a6171ea43e"
+      }
+    },
+    {
+      "id": "heads_centered_clean_G1B0",
+      "scene": "heads",
+      "grid": "centered",
+      "pose_packet": "heads_clean",
+      "alignment": "KDP_clean",
+      "geometry": 1,
+      "bundle": 0,
+      "coordinates_from": "heads_centered_D",
+      "confidences_and_matches_from": "heads_zero"
+    },
+    {
+      "id": "heads_centered_noisy_G1B0",
+      "scene": "heads",
+      "grid": "centered",
+      "pose_packet": "heads_noisy",
+      "alignment": "KDP_noisy",
+      "geometry": 1,
+      "bundle": 0,
+      "coordinates_from": "heads_centered_D",
+      "confidences_and_matches_from": "heads_zero"
+    },
+    {
+      "id": "heads_shifted_clean_G1B0",
+      "scene": "heads",
+      "grid": "shifted",
+      "pose_packet": "heads_clean",
+      "alignment": "KDP_clean",
+      "geometry": 1,
+      "bundle": 0,
+      "coordinates_from": "heads_shifted_D",
+      "confidences_and_matches_from": "heads_zero"
+    },
+    {
+      "id": "heads_shifted_noisy_G1B0",
+      "scene": "heads",
+      "grid": "shifted",
+      "pose_packet": "heads_noisy",
+      "alignment": "KDP_noisy",
+      "geometry": 1,
+      "bundle": 0,
+      "coordinates_from": "heads_shifted_D",
+      "confidences_and_matches_from": "heads_zero"
+    },
+    {
+      "id": "chess_centered_clean_G1B0",
+      "scene": "chess",
+      "grid": "centered",
+      "pose_packet": "chess_clean",
+      "alignment": "KDP_clean",
+      "geometry": 1,
+      "bundle": 0,
+      "coordinates_from": "chess_centered_D",
+      "confidences_and_matches_from": "chess_zero"
+    },
+    {
+      "id": "chess_centered_noisy_G1B0",
+      "scene": "chess",
+      "grid": "centered",
+      "pose_packet": "chess_noisy",
+      "alignment": "KDP_noisy",
+      "geometry": 1,
+      "bundle": 0,
+      "coordinates_from": "chess_centered_D",
+      "confidences_and_matches_from": "chess_zero"
+    },
+    {
+      "id": "chess_shifted_clean_G1B0",
+      "scene": "chess",
+      "grid": "shifted",
+      "pose_packet": "chess_clean",
+      "alignment": "KDP_clean",
+      "geometry": 1,
+      "bundle": 0,
+      "coordinates_from": "chess_shifted_D",
+      "confidences_and_matches_from": "chess_zero"
+    },
+    {
+      "id": "chess_shifted_noisy_G1B0",
+      "scene": "chess",
+      "grid": "shifted",
+      "pose_packet": "chess_noisy",
+      "alignment": "KDP_noisy",
+      "geometry": 1,
+      "bundle": 0,
+      "coordinates_from": "chess_shifted_D",
+      "confidences_and_matches_from": "chess_zero"
+    },
+    {
+      "id": "fire_centered_clean_G1B0",
+      "scene": "fire",
+      "grid": "centered",
+      "pose_packet": "fire_clean",
+      "alignment": "KDP_clean",
+      "geometry": 1,
+      "bundle": 0,
+      "coordinates_from": "fire_centered_D",
+      "confidences_and_matches_from": "fire_zero"
+    },
+    {
+      "id": "fire_centered_noisy_G1B0",
+      "scene": "fire",
+      "grid": "centered",
+      "pose_packet": "fire_noisy",
+      "alignment": "KDP_noisy",
+      "geometry": 1,
+      "bundle": 0,
+      "coordinates_from": "fire_centered_D",
+      "confidences_and_matches_from": "fire_zero"
+    },
+    {
+      "id": "fire_shifted_clean_G1B0",
+      "scene": "fire",
+      "grid": "shifted",
+      "pose_packet": "fire_clean",
+      "alignment": "KDP_clean",
+      "geometry": 1,
+      "bundle": 0,
+      "coordinates_from": "fire_shifted_D",
+      "confidences_and_matches_from": "fire_zero"
+    },
+    {
+      "id": "fire_shifted_noisy_G1B0",
+      "scene": "fire",
+      "grid": "shifted",
+      "pose_packet": "fire_noisy",
+      "alignment": "KDP_noisy",
+      "geometry": 1,
+      "bundle": 0,
+      "coordinates_from": "fire_shifted_D",
+      "confidences_and_matches_from": "fire_zero"
+    },
+    {
+      "id": "heads_centered_clean_G0B1",
+      "scene": "heads",
+      "grid": "centered",
+      "pose_packet": "heads_clean",
+      "alignment": "KDP_clean",
+      "geometry": 0,
+      "bundle": 1,
+      "coordinates_from": "heads_zero",
+      "confidences_and_matches_from": "heads_centered_D"
+    },
+    {
+      "id": "heads_centered_noisy_G0B1",
+      "scene": "heads",
+      "grid": "centered",
+      "pose_packet": "heads_noisy",
+      "alignment": "KDP_noisy",
+      "geometry": 0,
+      "bundle": 1,
+      "coordinates_from": "heads_zero",
+      "confidences_and_matches_from": "heads_centered_D"
+    },
+    {
+      "id": "heads_shifted_clean_G0B1",
+      "scene": "heads",
+      "grid": "shifted",
+      "pose_packet": "heads_clean",
+      "alignment": "KDP_clean",
+      "geometry": 0,
+      "bundle": 1,
+      "coordinates_from": "heads_zero",
+      "confidences_and_matches_from": "heads_shifted_D"
+    },
+    {
+      "id": "heads_shifted_noisy_G0B1",
+      "scene": "heads",
+      "grid": "shifted",
+      "pose_packet": "heads_noisy",
+      "alignment": "KDP_noisy",
+      "geometry": 0,
+      "bundle": 1,
+      "coordinates_from": "heads_zero",
+      "confidences_and_matches_from": "heads_shifted_D"
+    },
+    {
+      "id": "chess_centered_clean_G0B1",
+      "scene": "chess",
+      "grid": "centered",
+      "pose_packet": "chess_clean",
+      "alignment": "KDP_clean",
+      "geometry": 0,
+      "bundle": 1,
+      "coordinates_from": "chess_zero",
+      "confidences_and_matches_from": "chess_centered_D"
+    },
+    {
+      "id": "chess_centered_noisy_G0B1",
+      "scene": "chess",
+      "grid": "centered",
+      "pose_packet": "chess_noisy",
+      "alignment": "KDP_noisy",
+      "geometry": 0,
+      "bundle": 1,
+      "coordinates_from": "chess_zero",
+      "confidences_and_matches_from": "chess_centered_D"
+    },
+    {
+      "id": "chess_shifted_clean_G0B1",
+      "scene": "chess",
+      "grid": "shifted",
+      "pose_packet": "chess_clean",
+      "alignment": "KDP_clean",
+      "geometry": 0,
+      "bundle": 1,
+      "coordinates_from": "chess_zero",
+      "confidences_and_matches_from": "chess_shifted_D"
+    },
+    {
+      "id": "chess_shifted_noisy_G0B1",
+      "scene": "chess",
+      "grid": "shifted",
+      "pose_packet": "chess_noisy",
+      "alignment": "KDP_noisy",
+      "geometry": 0,
+      "bundle": 1,
+      "coordinates_from": "chess_zero",
+      "confidences_and_matches_from": "chess_shifted_D"
+    },
+    {
+      "id": "fire_centered_clean_G0B1",
+      "scene": "fire",
+      "grid": "centered",
+      "pose_packet": "fire_clean",
+      "alignment": "KDP_clean",
+      "geometry": 0,
+      "bundle": 1,
+      "coordinates_from": "fire_zero",
+      "confidences_and_matches_from": "fire_centered_D"
+    },
+    {
+      "id": "fire_centered_noisy_G0B1",
+      "scene": "fire",
+      "grid": "centered",
+      "pose_packet": "fire_noisy",
+      "alignment": "KDP_noisy",
+      "geometry": 0,
+      "bundle": 1,
+      "coordinates_from": "fire_zero",
+      "confidences_and_matches_from": "fire_centered_D"
+    },
+    {
+      "id": "fire_shifted_clean_G0B1",
+      "scene": "fire",
+      "grid": "shifted",
+      "pose_packet": "fire_clean",
+      "alignment": "KDP_clean",
+      "geometry": 0,
+      "bundle": 1,
+      "coordinates_from": "fire_zero",
+      "confidences_and_matches_from": "fire_shifted_D"
+    },
+    {
+      "id": "fire_shifted_noisy_G0B1",
+      "scene": "fire",
+      "grid": "shifted",
+      "pose_packet": "fire_noisy",
+      "alignment": "KDP_noisy",
+      "geometry": 0,
+      "bundle": 1,
+      "coordinates_from": "fire_zero",
+      "confidences_and_matches_from": "fire_shifted_D"
+    }
+  ]
+}

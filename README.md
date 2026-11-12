@@ -4,6 +4,8 @@ An independent research workspace for reproducing [TCO](https://github.com/cvlab
 
 ## Evidence so far
 
+**Next research goal, registered November 13.** A local 48-alignment experiment will separate the effects of changing MASt3R's 3D coordinates and changing its correspondences and confidence weights. The first 24 alignments check archived controls. The other 24 cross the two sources on the same images. The USD 25 rental allocation stays reserved. [Execution handoff](docs/MAST3R_GEOMETRY_MATCHING_GOAL.md) · [Registered run list](manifests/mast3r_geometry_matching_v1.json)
+
 **MASt3R neural adaptation, November 13.** All 24 adapter states, 960 updates, 105 reconstructions and 210 reference evaluations completed on the local RTX 3080 at about 4.58 GiB peak training allocation. Joint camera-supervised candidates were 0.91%/1.09% worse than the strongest controls with clean poses, and 0.05%/0.03% worse with noisy poses. All four advancement decisions fail. A fixed fresh-process repeat also failed numerical exactness/tolerance, with small measured surface differences. The goal pauses after this analysis at the user's request; later rental funds stay reserved. [Complete results](results/mast3r_neural_transfer/README.md) · [Repeat](results/mast3r_neural_repeat/README.md) · [Resume handoff](docs/MAST3R_ANALYSIS_HANDOFF.md)
 
 **Neural-adapter feasibility, November 12.** One full-resolution MASt3R pairwise update completed on the RTX 3080 at 3.66 GiB peak allocation, with exact zero-update fidelity, finite adapter gradients and unchanged original-state hashes. This is an engineering result, not measured reconstruction improvement or complete TCO transfer. The initial input-setup failure is preserved. [Probe evidence](results/mast3r_adapter_probe/README.md)
