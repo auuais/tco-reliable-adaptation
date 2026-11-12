@@ -66,7 +66,8 @@ def replay(export=False):
     assert native == result['native_comparison']
     assert result['all_native_exact'] == all(v['exact'] for fields in native.values() for v in fields.values())
     assert result['all_native_close'] == all(v['close'] for fields in native.values() for v in fields.values())
-    metadata = {p.name:sha(p) for p in PUBLIC.glob('*.json') if p.name not in ('publication.json', 'metrics.json', 'predictions.json', 'observations.json', 'metric_comparison.json')}
+    metadata_names = ('plan.json', 'result.json', 'training.json', 'ordinary.json', 'KD.json', 'KDP_clean.json', 'KD_trace.json', 'KDP_clean_trace.json')
+    metadata = {name:sha(PUBLIC/name) for name in metadata_names}
     seal = dict(metadata_sha256=metadata, outputs=result['files'])
     if export and not (PUBLIC/'publication.json').exists():
         dump(PUBLIC/'publication.json', seal)
