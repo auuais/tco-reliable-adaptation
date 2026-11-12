@@ -18,6 +18,7 @@ def replay(export=False):
         assert hashlib.sha256((ROOT/name).read_text(encoding='utf-8').encode()).hexdigest()==digest
     assert seal['historical_scores_sha256']==sha(OLD/'scores.json')
     assert seal['historical_observations_sha256']==sha(OLD/'observations.json')
+    assert seal['scoring_source_sha256']==hashlib.sha256((ROOT/'scripts/score_mast3r_joint_priors.py').read_text(encoding='utf-8').encode()).hexdigest()
     assert read(PUBLIC/'disabled_hook_bridge.json')['pass_all']
     assert read(PUBLIC/'joint_gradient_probe.json')['gradient_and_output_check_passed']
     samples={}
@@ -44,6 +45,10 @@ def replay(export=False):
         native=PUBLIC/'native_outputs'/(case+'.npz')
         assert sha(native)==row['native_sha256']==completion['native_sha256']==capture['output_sha256']
         with np.load(native) as z:
+            if row['arm']=='standard':
+                with np.load(OLD/'native_outputs'/(key+'.npz')) as old:
+                    repeated={name:bool(np.array_equal(z[name],old[name])) for name in z}
+                assert repeated==seal['baseline_exact_repeat'][key] and all(repeated.values())
             np.testing.assert_array_equal((z['depth']<=0).sum(axis=(1,2)),capture['nonpositive_depth_pixels'])
             depth,k=independently_resize(z['depth'],z['intrinsics'])
             c2w=z['c2w'].astype(float)

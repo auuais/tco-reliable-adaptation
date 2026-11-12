@@ -1,5 +1,6 @@
 """Seal and evaluate the complete local MASt3R joint-prior factorial."""
 import argparse
+import hashlib
 from concurrent.futures import ProcessPoolExecutor
 from statistics import mean
 import shutil
@@ -29,6 +30,7 @@ def predict():
         assert done['trace_sha256']==sha(folder/'prior_trace.json')
         assert done['capture_sha256']==sha(folder/(job['scene']+'_base.json'))
     rows=[]
+    repeats={}
     for job in plan['jobs']:
         case=job['run_id']
         key=job['scene']+'_base'
@@ -39,6 +41,13 @@ def predict():
         assert sha(path)==done['native_sha256']==meta['output_sha256']
         assert meta['input_sha256']==plan['rgb_sha256'][job['scene']]
         with np.load(path) as z:
+            if job['arm']=='standard':
+                old_meta=read(OLD/(key+'.json'))
+                assert old_meta['input_sha256']==meta['input_sha256']
+                with np.load(OLD/'native_outputs'/(key+'.npz')) as old:
+                    repeats[key]={name:bool(np.array_equal(z[name],old[name])) for name in z}
+                if not all(repeats[key].values()):
+                    raise ValueError('Fresh baseline differs from historical matched-input comparator')
             depth,k=resample(z['depth'],z['intrinsics'].astype(float))
             e=np.linalg.inv(z['c2w'].astype(float))[:,:3,:]
         points=point_map(depth,k,e,np.ones(len(depth)))
@@ -53,6 +62,8 @@ def predict():
             shutil.copyfile(path,destination)
         rows.append(dict(**job,input_key=key,prediction=digest,native_sha256=sha(path)))
     seal=dict(plan_sha256=sha(PUBLIC/'alignment_plan.json'),
+              baseline_exact_repeat=repeats,
+              scoring_source_sha256=hashlib.sha256((ROOT/'scripts/score_mast3r_joint_priors.py').read_text(encoding='utf-8').encode()).hexdigest(),
               historical_scores_sha256=sha(OLD/'scores.json'),
               historical_observations_sha256=sha(OLD/'observations.json'),rows=rows)
     path=PUBLIC/'predictions.json'
