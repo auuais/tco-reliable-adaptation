@@ -64,6 +64,8 @@ def checked_forward(names, evidence):
 
 
 def run(selected):
+    # CroCo's model import enables TF32 in the parent neural runner.
+    torch.backends.cuda.matmul.allow_tf32 = True
     plan = read(MANIFEST)
     require(plan == expected_plan(), "Frozen crossover plan changed")
     inventory = {key: {r["file"]: r["sha256"] for r in rows} for key, rows in validate_public(plan).items()}
@@ -71,7 +73,9 @@ def run(selected):
     commit = subprocess.check_output(["git", "-C", str(ROOT), "rev-parse", "HEAD"], text=True).strip()
     session = dict(manifest_sha256=sha256(MANIFEST), sources=fingerprints,
                    python=platform.python_version(), torch=torch.__version__, cuda=torch.version.cuda,
-                   gpu=torch.cuda.get_device_name(), execution_commit=commit)
+                   gpu=torch.cuda.get_device_name(), execution_commit=commit,
+                   matmul_allow_tf32=torch.backends.cuda.matmul.allow_tf32,
+                   deterministic_algorithms=torch.are_deterministic_algorithms_enabled())
     if (PUBLIC / "session.json").exists():
         existing = read(PUBLIC / "session.json")
         require(all(existing[key] == session[key] for key in session if key != "execution_commit"),
