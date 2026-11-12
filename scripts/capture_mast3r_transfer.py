@@ -21,7 +21,7 @@ RAW = ROOT/'reports/mast3r_transfer'
 PUBLIC = ROOT/'results/mast3r_transfer'
 
 
-def capture(model, key):
+def capture(model, key, output_raw=RAW, output_public=PUBLIC):
     meta = read(PLAN)['inputs'][key]
     path = INPUT/meta['file']
     assert sha(path)==meta['sha256']
@@ -53,12 +53,13 @@ def capture(model, key):
     nonpositive = (depth<=0).sum(dim=(1,2)).tolist()
     torch.cuda.synchronize()
     seconds=time.perf_counter()-start
-    raw=RAW/(key+'.npz')
+    output_raw.mkdir(parents=True,exist_ok=True)
+    raw=output_raw/(key+'.npz')
     write_arrays(raw,dict(depth=depth.detach().cpu().numpy(),intrinsics=k.cpu().numpy(),c2w=c2w.cpu().numpy()))
     record=dict(input_sha256=meta['sha256'],output_sha256=sha(raw),checkpoint_sha256=WEIGHTS,source=SOURCE,
                 pairs=len(pairs),seconds=seconds,prior_cache_files=previous_files,peak_allocated_mib=torch.cuda.max_memory_allocated()/2**20,
                 nonpositive_depth_pixels=nonpositive,device=torch.cuda.get_device_name(),native_size=[384,512])
-    dump(PUBLIC/(key+'.json'),record)
+    dump(output_public/(key+'.json'),record)
     print(key,record,flush=True)
 
 
