@@ -1,0 +1,22 @@
+# MASt3R network-adaptation handoff
+
+The completed joint-prior integration changes geometric alignment variables. It does not update neural-network weights. Its 21-case development factorial must be scored and reported before selecting the next scientific hypothesis. Keep the USD 25 rental allocation reserved unless reliable evidence and a live resource decision justify it.
+
+## Required prior-work comparisons
+
+Primary sources checked on November 12, 2026:
+
+- [TCO, CVPR 2026](https://arxiv.org/abs/2604.03878) already combines self-supervised reconstruction objectives with penalties for supplied camera, calibration and depth information at test time. Adding those inputs alone is not a new contribution.
+- [Test3R](https://arxiv.org/html/2506.13750v1) already adapts reconstruction using agreement between two pairs sharing a reference image, with visual prompts, and reports application to MASt3R. Replacing its prompts with LoRA alone does not establish novelty. Use its [official implementation](https://github.com/nopQAQ/Test3R) for a controlled baseline.
+- [Pow3R, CVPR 2025](https://openaccess.thecvf.com/content/CVPR2025/papers/Jang_Pow3R_Empowering_Unconstrained_3D_Reconstruction_with_Camera_and_Scene_Priors_CVPR_2025_paper.pdf) already accepts intrinsics, relative poses and sparse or dense depth. Its [official repository](https://github.com/naver/pow3r) provides a public inference checkpoint. Include a matched-input prior-aware model before making a publication claim about adding sensor information.
+
+## Next engineering sequence
+
+1. Profile one differentiable pair at the same 512 by 384 resolution, starting from the pinned metric checkpoint and frozen development inputs. Keep all base weights frozen and record hashes. Test rank-4 decoder-attention adapters as an explicitly limited initial configuration. Record modified module names, trainable parameter count, precision, peak allocation, wall time and output fidelity at zero adapter update. A pairwise test does not establish the memory requirement of full five-view adaptation.
+2. Require a finite nonzero adapter gradient from sparse measured depth, a changed output after one optimizer update, and verified unchanged base weights. Restore initial adapter tensors and optimizer state between independent runs. Preserve failed attempts. If memory is insufficient, record the failure and prepare checkpointing/offloading locally before considering a rental.
+3. Establish the pairwise coordinate convention explicitly. MASt3R returns both image point maps in the first camera frame. For supplied camera-to-world matrices C1 and C2, let T21 = inverse(C2) C1. With a fixed positive metric gauge s estimated from first-image sparse measurements, the two camera-frame predictions are Q1 = s P1 and Q2 = R21 (s P2) + t21. Check this transformation synthetically before using it in a loss.
+4. Use measured axial depth only at the registered sparse pixels for the initial gradient probe. Full target depth remains evaluation-only. A later camera/calibration constraint may compare the projected Q_i against the known pixel grid under K_i. Such a constraint is not the released TCO camera-head loss and must be labeled as a new transfer implementation. Fix normalization, weights, masks and iteration counts before any reconstruction evaluation.
+5. Compare learned adaptation with ordinary MASt3R, the completed alignment-only depth/pose/joint arms, a frozen-output correction, and an appropriate Test3R baseline. Match input information and account for all adaptation and alignment work. Do not call output or alignment optimization a network-adaptation result.
+6. Before advancing beyond development, test physically meaningful prior noise, missing information and independent executions. Report clean oracle trajectories separately from estimated or perturbed trajectories. Select a novel robustness or efficiency mechanism only if it addresses an observed failure and improves over these controls. Include Pow3R with the same available information before a broad prior-fusion claim.
+
+No new success claim follows from adapter plumbing, a lower training objective, or transfer to another backbone. Reconstruction quality, reliability, computational cost and distinctness from existing work all require separate evidence. Previously observed held-out and TUM labels remain observed evidence; they cannot be relabeled as untouched confirmation for a redesigned method.

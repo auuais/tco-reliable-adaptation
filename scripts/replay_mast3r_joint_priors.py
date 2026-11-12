@@ -23,6 +23,7 @@ def replay(export=False):
     assert read(PUBLIC/'joint_gradient_probe.json')['gradient_and_output_check_passed']
     samples={}
     inventory={}
+    first_losses={}
     for row in seal['rows']:
         case,key=row['run_id'],row['input_key']
         folder=PUBLIC/'full'/case
@@ -35,6 +36,7 @@ def replay(export=False):
         assert capture['input_sha256']==plan['rgb_sha256'][row['scene']]
         assert capture['pairs']==20 and capture['alignment_settings']['niter1']==300 and capture['alignment_settings']['niter2']==300
         assert trace['job']==completion['job']
+        assert all(completion['job'][name]==row[name] for name in ('scene','grid','arm','run_id'))
         if row['arm']=='standard':
             assert trace['rows']==[]
         else:
@@ -42,6 +44,14 @@ def replay(export=False):
             assert min(trace['native_sample_counts'])>=8
             assert [v['iteration'] for v in trace['rows']]==list(range(300))
             assert all(v['finite_gradient'] and v['received_gradient']==1 for v in trace['rows'])
+            dw,pw=plan['weights'][row['arm']]
+            for v in trace['rows']:
+                np.testing.assert_allclose(v['weighted'],dw*v['depth']+pw*(v['rotation']+v['translation']),atol=1e-6,rtol=2e-6)
+                assert v['metric_scale']==trace['rows'][0]['metric_scale']>0
+                assert v['unit_m']==trace['rows'][0]['unit_m']>0
+            initial={name:trace['rows'][0][name] for name in ('depth','rotation','translation','metric_scale','unit_m')}
+            group=(row['scene'],row['grid'])
+            assert first_losses.setdefault(group,initial)==initial
         native=PUBLIC/'native_outputs'/(case+'.npz')
         assert sha(native)==row['native_sha256']==completion['native_sha256']==capture['output_sha256']
         with np.load(native) as z:
