@@ -38,10 +38,14 @@ class PairPriorTests(unittest.TestCase):
         poses=[torch.eye(4),torch.eye(4)]
         args=([pair,pair],[torch.tensor(1.)]*2,xy,torch.full((8,),2.),torch.tensor(2.))
         rays=torch.tensor([[[0.,0.,1.]]])
-        baseline,_=objective(*args,poses,rays,0.,0.)
         wrong=[p.clone() for p in poses];wrong[0][0,3]=5
-        altered,_=objective(*args,wrong,rays,0.,0.)
-        torch.testing.assert_close(baseline,altered,rtol=0,atol=0)
+        for intrinsic_weight in (0.,.01):
+            baseline,_=objective(*args,poses,rays,0.,intrinsic_weight)
+            altered,_=objective(*args,wrong,rays,0.,intrinsic_weight)
+            torch.testing.assert_close(baseline,altered,rtol=0,atol=0)
+            a=torch.autograd.grad(baseline,(first,other),retain_graph=True)
+            b=torch.autograd.grad(altered,(first,other),retain_graph=True)
+            for x,y in zip(a,b):torch.testing.assert_close(x,y,rtol=0,atol=0)
         joint,_=objective(*args,poses,rays,.01,.01)
         joint.backward()
         for grad in (first.grad,other.grad):
