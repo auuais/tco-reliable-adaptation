@@ -21,7 +21,7 @@ RAW = ROOT/'reports/mast3r_transfer'
 PUBLIC = ROOT/'results/mast3r_transfer'
 
 
-def capture(model, key, output_raw=RAW, output_public=PUBLIC):
+def capture(model, key, output_raw=RAW, output_public=PUBLIC, alignment_options=None):
     meta = read(PLAN)['inputs'][key]
     path = INPUT/meta['file']
     assert sha(path)==meta['sha256']
@@ -39,8 +39,10 @@ def capture(model, key, output_raw=RAW, output_public=PUBLIC):
     torch.cuda.reset_peak_memory_stats()
     torch.cuda.synchronize()
     start=time.perf_counter()
-    scene=sparse_global_alignment(names,pairs,str(cache),model,lr1=.07,niter1=300,lr2=.01,niter2=300,
-                                  device='cuda',opt_depth=True,shared_intrinsics=False,matching_conf_thr=0.)
+    settings=dict(lr1=.07,niter1=300,lr2=.01,niter2=300,opt_depth=True,shared_intrinsics=False,matching_conf_thr=0.)
+    if alignment_options:
+        settings.update(alignment_options)
+    scene=sparse_global_alignment(names,pairs,str(cache),model,device='cuda',**settings)
     points,depths,_=scene.get_dense_pts3d(clean_depth=False)
     depth=torch.stack([v.reshape(384,512) for v in depths])
     c2w=scene.cam2w.detach()
@@ -58,7 +60,7 @@ def capture(model, key, output_raw=RAW, output_public=PUBLIC):
     write_arrays(raw,dict(depth=depth.detach().cpu().numpy(),intrinsics=k.cpu().numpy(),c2w=c2w.cpu().numpy()))
     record=dict(input_sha256=meta['sha256'],output_sha256=sha(raw),checkpoint_sha256=WEIGHTS,source=SOURCE,
                 pairs=len(pairs),seconds=seconds,prior_cache_files=previous_files,peak_allocated_mib=torch.cuda.max_memory_allocated()/2**20,
-                nonpositive_depth_pixels=nonpositive,device=torch.cuda.get_device_name(),native_size=[384,512])
+                nonpositive_depth_pixels=nonpositive,device=torch.cuda.get_device_name(),native_size=[384,512],alignment_settings=settings)
     dump(output_public/(key+'.json'),record)
     print(key,record,flush=True)
 
