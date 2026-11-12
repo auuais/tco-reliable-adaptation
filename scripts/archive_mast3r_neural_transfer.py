@@ -35,7 +35,23 @@ def archive(destination,complete=False):
         cases.append(dict(case=case,files=entries,completion_sha256=sha(done_path)))
     for name in ('plan.json','pose_packets.npz','zero_adapter_bridge.json'):
         copy(PUBLIC/name,destination/'registration'/name)
-    report=dict(verified_physical_drives=2,completed_cases=cases)
+    # Preserve the actual recomputed geometry/matching operands, not only final maps.
+    caches={}
+    for c in cases:
+        job=read(PUBLIC/'cases'/c['case']/'complete.json')['job']
+        if job['case']=='two_pair_smoke':continue
+        name=job['scene']+'_zero' if job['arm']=='zero' else job['case']
+        caches[name]=RAW/'cache'/name
+    if (RAW/'bridge_cache').exists():caches['zero_adapter_bridge']=RAW/'bridge_cache'
+    cache_records={}
+    for name,folder in caches.items():
+        records=[]
+        for source in sorted(p for p in folder.rglob('*') if p.is_file()):
+            relative=source.relative_to(folder)
+            entry=copy(source,destination/'matching_cache'/name/relative)
+            entry['file']=relative.as_posix();records.append(entry)
+        cache_records[name]=records
+    report=dict(verified_physical_drives=2,completed_cases=cases,matching_caches=cache_records)
     if complete:
         plan=read(PUBLIC/'plan.json');seal=read(PUBLIC/'predictions.json')
         assert {c['case'] for c in cases}=={j['case'] for j in plan['jobs']}|{'two_pair_smoke'}
