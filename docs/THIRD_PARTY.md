@@ -3,6 +3,8 @@
 This repository contains independent experiment orchestration and aggregate evidence. Obtain upstream source, weights and datasets from their owners and follow their terms. Public availability does not imply permission to relicense those assets.
 
 - [TCO](https://github.com/cvlab-stonybrook/TCO), commit `65387333877723cf99086f7f29089379dd50c59a`: method, model wrapper, loss and evaluation functions. [Paper](https://arxiv.org/abs/2604.03878).
+- [Pow3R](https://github.com/naver/pow3r), commit `25d7bb68e01336585b5277d5d6aafadddf9e1b8d`: official prior-aware model and conditioning helpers. Its [LICENSE](https://github.com/naver/pow3r/blob/25d7bb68e01336585b5277d5d6aafadddf9e1b8d/LICENSE) contains NAVER's noncommercial terms. Source and weights are obtained separately; pinned provenance is in PRIOR_AWARE_BASELINE_PREPARATION.md.
+- [Test3R](https://github.com/nopQAQ/Test3R), commit `a2eb94bc716df27521f053d417fcf6afa9870ff5`: released prompt model and cross-pair adaptation loop. Its [LICENSE](https://github.com/nopQAQ/Test3R/blob/a2eb94bc716df27521f053d417fcf6afa9870ff5/LICENSE) carries the DUSt3R CC BY-NC-SA 4.0 notice. The external tree is not redistributed here.
 - [VGGT](https://github.com/facebookresearch/vggt): pretrained reconstruction backbone; checkpoint revision and hash are in REPRODUCTION.md.
 - [7-Scenes](https://www.microsoft.com/en-us/research/project/rgb-d-dataset-7-scenes/): public research dataset. Download separately; images, depth, poses and checkpoint weights are excluded from Git.
 - [Pi3](https://github.com/yyfz/Pi3), commit `97ce97b8e067e7bff5b5c8e507776e4e95189fac`: reference frame-sampling protocol. Our manifests preserve the selected frame IDs.
