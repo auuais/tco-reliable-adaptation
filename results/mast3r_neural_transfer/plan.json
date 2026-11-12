@@ -1,0 +1,635 @@
+{
+  "checkpoint_sha256": "0a615eb05fa9db654050aa655945ee5696e7c6c1b7f93f1ee8c37249010f6feb",
+  "sources": {
+    "scripts/run_mast3r_neural_transfer.py": "60532b3f0f997b518c84568143d44c5a37f2549f54483b7256b7bf323adafcbc",
+    "scripts/mast3r_network_priors.py": "8b8f0c5730db1ca75a4e7aace5c0e7141f534c9bbd8b75de5b7fead0fe7ca270",
+    "scripts/mast3r_network_capture.py": "92e164a4adb9e52318d68cc690c68b480949b5afbdecd45be1b4097a621211a1",
+    "scripts/mast3r_calibrated_alignment.py": "bfa109edba148ef0293a750a944e1b6ea4243a24453b7aebd757f4efae8cbf1d",
+    "scripts/mast3r_joint_prior_loss.py": "de53921ffbffe70cbe44415e9dfad501ac031208d6620b900511cb6cf4a5a989",
+    "scripts/mast3r_alignment_hook.py": "4693f338f8364cf6d53f796257182ca618afa301243b193c55ffcfca37d24059",
+    "third_party/TCO/peft/lora.py": "efa3a15890fcec03d144556de7cd319c2377b8c341159872c3d3900fa9301c36",
+    "docs/MAST3R_NEURAL_TRANSFER.md": "54889f4d8a672f06e3c2ca7c34dfa086a90f31cd19bd188553dd8fcf791197b4"
+  },
+  "rgb_sha256": {
+    "heads": "cdcf6eed07ba83824cafd8c0370eb43194be0d0cd2b8582ba1e7f5cf4824e469",
+    "chess": "3da9b2748ef9eef39e1231acdbbf552eca9bcd2d8ff468ed9eac69b981dee88c",
+    "fire": "7013237eb2aeb920374d8e422645059a267ba1c0cf18e3ddb4994db4df664c12"
+  },
+  "packets": {
+    "centered": "a5e7801e5a7db8e91b6ce1c1a1ec590ee4470a78128002d664aef70a9b73b7d8",
+    "shifted": "8ac5cfaaf44679ffbb7cd9940045a9779de1810ca69e0c77caae3dcb4c3725ff"
+  },
+  "original_poses_sha256": "0f60c878db8caa74a826b77052abe85b7496cab8000664a4461bc7ec55cf8083",
+  "pose_packets_sha256": "480423b948aaacc65ebfe66c405df1a8364fd8820d4eb5146a15b733b8ff7fbd",
+  "intrinsic": [
+    [
+      470.40000000000003,
+      0.0,
+      255.89999999999998
+    ],
+    [
+      0.0,
+      470.40000000000003,
+      191.9
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "schedule": [
+    [
+      0,
+      1,
+      2
+    ],
+    [
+      0,
+      2,
+      3
+    ],
+    [
+      0,
+      3,
+      4
+    ],
+    [
+      0,
+      4,
+      1
+    ],
+    [
+      1,
+      2,
+      3
+    ],
+    [
+      1,
+      3,
+      4
+    ],
+    [
+      1,
+      4,
+      0
+    ],
+    [
+      1,
+      0,
+      2
+    ],
+    [
+      2,
+      3,
+      4
+    ],
+    [
+      2,
+      4,
+      0
+    ],
+    [
+      2,
+      0,
+      1
+    ],
+    [
+      2,
+      1,
+      3
+    ],
+    [
+      3,
+      4,
+      0
+    ],
+    [
+      3,
+      0,
+      1
+    ],
+    [
+      3,
+      1,
+      2
+    ],
+    [
+      3,
+      2,
+      4
+    ],
+    [
+      4,
+      0,
+      1
+    ],
+    [
+      4,
+      1,
+      2
+    ],
+    [
+      4,
+      2,
+      3
+    ],
+    [
+      4,
+      3,
+      0
+    ],
+    [
+      0,
+      1,
+      2
+    ],
+    [
+      0,
+      2,
+      3
+    ],
+    [
+      0,
+      3,
+      4
+    ],
+    [
+      0,
+      4,
+      1
+    ],
+    [
+      1,
+      2,
+      3
+    ],
+    [
+      1,
+      3,
+      4
+    ],
+    [
+      1,
+      4,
+      0
+    ],
+    [
+      1,
+      0,
+      2
+    ],
+    [
+      2,
+      3,
+      4
+    ],
+    [
+      2,
+      4,
+      0
+    ],
+    [
+      2,
+      0,
+      1
+    ],
+    [
+      2,
+      1,
+      3
+    ],
+    [
+      3,
+      4,
+      0
+    ],
+    [
+      3,
+      0,
+      1
+    ],
+    [
+      3,
+      1,
+      2
+    ],
+    [
+      3,
+      2,
+      4
+    ],
+    [
+      4,
+      0,
+      1
+    ],
+    [
+      4,
+      1,
+      2
+    ],
+    [
+      4,
+      2,
+      3
+    ],
+    [
+      4,
+      3,
+      0
+    ]
+  ],
+  "arms": {
+    "D": [
+      0.0,
+      0.0
+    ],
+    "K": [
+      0.01,
+      0.0
+    ],
+    "J": [
+      0.01,
+      0.01
+    ],
+    "N": [
+      0.01,
+      0.01
+    ]
+  },
+  "jobs": [
+    {
+      "scene": "heads",
+      "grid": "none",
+      "arm": "zero",
+      "case": "heads_zero_none",
+      "post": [
+        "ordinary"
+      ]
+    },
+    {
+      "scene": "heads",
+      "grid": "centered",
+      "arm": "zero",
+      "case": "heads_zero_centered",
+      "post": [
+        "KD",
+        "KDP_clean",
+        "KDP_noisy"
+      ]
+    },
+    {
+      "scene": "heads",
+      "grid": "centered",
+      "arm": "D",
+      "case": "heads_centered_D",
+      "post": [
+        "ordinary",
+        "KD",
+        "KDP_clean",
+        "KDP_noisy"
+      ]
+    },
+    {
+      "scene": "heads",
+      "grid": "centered",
+      "arm": "K",
+      "case": "heads_centered_K",
+      "post": [
+        "ordinary",
+        "KD",
+        "KDP_clean",
+        "KDP_noisy"
+      ]
+    },
+    {
+      "scene": "heads",
+      "grid": "centered",
+      "arm": "J",
+      "case": "heads_centered_J",
+      "post": [
+        "ordinary",
+        "KD",
+        "KDP_clean"
+      ]
+    },
+    {
+      "scene": "heads",
+      "grid": "centered",
+      "arm": "N",
+      "case": "heads_centered_N",
+      "post": [
+        "ordinary",
+        "KD",
+        "KDP_noisy"
+      ]
+    },
+    {
+      "scene": "heads",
+      "grid": "shifted",
+      "arm": "zero",
+      "case": "heads_zero_shifted",
+      "post": [
+        "KD",
+        "KDP_clean",
+        "KDP_noisy"
+      ]
+    },
+    {
+      "scene": "heads",
+      "grid": "shifted",
+      "arm": "D",
+      "case": "heads_shifted_D",
+      "post": [
+        "ordinary",
+        "KD",
+        "KDP_clean",
+        "KDP_noisy"
+      ]
+    },
+    {
+      "scene": "heads",
+      "grid": "shifted",
+      "arm": "K",
+      "case": "heads_shifted_K",
+      "post": [
+        "ordinary",
+        "KD",
+        "KDP_clean",
+        "KDP_noisy"
+      ]
+    },
+    {
+      "scene": "heads",
+      "grid": "shifted",
+      "arm": "J",
+      "case": "heads_shifted_J",
+      "post": [
+        "ordinary",
+        "KD",
+        "KDP_clean"
+      ]
+    },
+    {
+      "scene": "heads",
+      "grid": "shifted",
+      "arm": "N",
+      "case": "heads_shifted_N",
+      "post": [
+        "ordinary",
+        "KD",
+        "KDP_noisy"
+      ]
+    },
+    {
+      "scene": "chess",
+      "grid": "none",
+      "arm": "zero",
+      "case": "chess_zero_none",
+      "post": [
+        "ordinary"
+      ]
+    },
+    {
+      "scene": "chess",
+      "grid": "centered",
+      "arm": "zero",
+      "case": "chess_zero_centered",
+      "post": [
+        "KD",
+        "KDP_clean",
+        "KDP_noisy"
+      ]
+    },
+    {
+      "scene": "chess",
+      "grid": "centered",
+      "arm": "D",
+      "case": "chess_centered_D",
+      "post": [
+        "ordinary",
+        "KD",
+        "KDP_clean",
+        "KDP_noisy"
+      ]
+    },
+    {
+      "scene": "chess",
+      "grid": "centered",
+      "arm": "K",
+      "case": "chess_centered_K",
+      "post": [
+        "ordinary",
+        "KD",
+        "KDP_clean",
+        "KDP_noisy"
+      ]
+    },
+    {
+      "scene": "chess",
+      "grid": "centered",
+      "arm": "J",
+      "case": "chess_centered_J",
+      "post": [
+        "ordinary",
+        "KD",
+        "KDP_clean"
+      ]
+    },
+    {
+      "scene": "chess",
+      "grid": "centered",
+      "arm": "N",
+      "case": "chess_centered_N",
+      "post": [
+        "ordinary",
+        "KD",
+        "KDP_noisy"
+      ]
+    },
+    {
+      "scene": "chess",
+      "grid": "shifted",
+      "arm": "zero",
+      "case": "chess_zero_shifted",
+      "post": [
+        "KD",
+        "KDP_clean",
+        "KDP_noisy"
+      ]
+    },
+    {
+      "scene": "chess",
+      "grid": "shifted",
+      "arm": "D",
+      "case": "chess_shifted_D",
+      "post": [
+        "ordinary",
+        "KD",
+        "KDP_clean",
+        "KDP_noisy"
+      ]
+    },
+    {
+      "scene": "chess",
+      "grid": "shifted",
+      "arm": "K",
+      "case": "chess_shifted_K",
+      "post": [
+        "ordinary",
+        "KD",
+        "KDP_clean",
+        "KDP_noisy"
+      ]
+    },
+    {
+      "scene": "chess",
+      "grid": "shifted",
+      "arm": "J",
+      "case": "chess_shifted_J",
+      "post": [
+        "ordinary",
+        "KD",
+        "KDP_clean"
+      ]
+    },
+    {
+      "scene": "chess",
+      "grid": "shifted",
+      "arm": "N",
+      "case": "chess_shifted_N",
+      "post": [
+        "ordinary",
+        "KD",
+        "KDP_noisy"
+      ]
+    },
+    {
+      "scene": "fire",
+      "grid": "none",
+      "arm": "zero",
+      "case": "fire_zero_none",
+      "post": [
+        "ordinary"
+      ]
+    },
+    {
+      "scene": "fire",
+      "grid": "centered",
+      "arm": "zero",
+      "case": "fire_zero_centered",
+      "post": [
+        "KD",
+        "KDP_clean",
+        "KDP_noisy"
+      ]
+    },
+    {
+      "scene": "fire",
+      "grid": "centered",
+      "arm": "D",
+      "case": "fire_centered_D",
+      "post": [
+        "ordinary",
+        "KD",
+        "KDP_clean",
+        "KDP_noisy"
+      ]
+    },
+    {
+      "scene": "fire",
+      "grid": "centered",
+      "arm": "K",
+      "case": "fire_centered_K",
+      "post": [
+        "ordinary",
+        "KD",
+        "KDP_clean",
+        "KDP_noisy"
+      ]
+    },
+    {
+      "scene": "fire",
+      "grid": "centered",
+      "arm": "J",
+      "case": "fire_centered_J",
+      "post": [
+        "ordinary",
+        "KD",
+        "KDP_clean"
+      ]
+    },
+    {
+      "scene": "fire",
+      "grid": "centered",
+      "arm": "N",
+      "case": "fire_centered_N",
+      "post": [
+        "ordinary",
+        "KD",
+        "KDP_noisy"
+      ]
+    },
+    {
+      "scene": "fire",
+      "grid": "shifted",
+      "arm": "zero",
+      "case": "fire_zero_shifted",
+      "post": [
+        "KD",
+        "KDP_clean",
+        "KDP_noisy"
+      ]
+    },
+    {
+      "scene": "fire",
+      "grid": "shifted",
+      "arm": "D",
+      "case": "fire_shifted_D",
+      "post": [
+        "ordinary",
+        "KD",
+        "KDP_clean",
+        "KDP_noisy"
+      ]
+    },
+    {
+      "scene": "fire",
+      "grid": "shifted",
+      "arm": "K",
+      "case": "fire_shifted_K",
+      "post": [
+        "ordinary",
+        "KD",
+        "KDP_clean",
+        "KDP_noisy"
+      ]
+    },
+    {
+      "scene": "fire",
+      "grid": "shifted",
+      "arm": "J",
+      "case": "fire_shifted_J",
+      "post": [
+        "ordinary",
+        "KD",
+        "KDP_clean"
+      ]
+    },
+    {
+      "scene": "fire",
+      "grid": "shifted",
+      "arm": "N",
+      "case": "fire_shifted_N",
+      "post": [
+        "ordinary",
+        "KD",
+        "KDP_noisy"
+      ]
+    }
+  ],
+  "reconstructions": 105,
+  "seed": 42,
+  "learning_rate": 0.0001
+}

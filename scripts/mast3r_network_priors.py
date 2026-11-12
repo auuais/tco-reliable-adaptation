@@ -20,16 +20,17 @@ def bearing(points,rays):
     return huber((direction-F.normalize(rays,dim=-1,eps=1e-6))/.02)
 
 
-def objective(outputs,scales,support,measured,unit,relatives,rays,pose_weight):
+def objective(outputs,scales,support,measured,unit,relatives,rays,pose_weight,intrinsic_weight=0.):
     x,y=support
     metric=[camera_points(a[0]['pts3d'][0],a[1]['pts3d_in_other_view'][0],r,s)
             for a,r,s in zip(outputs,relatives,scales)]
     depth=torch.stack([huber((a[y,x,2]-measured)/(.02*unit)) for a,b in metric]).mean()
     # A fixed image grid includes every pixel selected before any optimization.
     consistency=huber((metric[0][0][8::16,8::16]-metric[1][0][8::16,8::16])/(.02*unit))
-    camera=torch.stack([bearing(p[8::16,8::16],rays) for pair in metric for p in pair]).mean()
-    total=depth+.1*consistency+pose_weight*camera
-    return total,dict(depth=depth,consistency=consistency,bearing=camera)
+    intrinsic=torch.stack([bearing(a[8::16,8::16],rays) for a,b in metric]).mean()
+    camera=torch.stack([bearing(b[8::16,8::16],rays) for a,b in metric]).mean()
+    total=depth+.1*consistency+intrinsic_weight*intrinsic+pose_weight*camera
+    return total,dict(depth=depth,consistency=consistency,intrinsic=intrinsic,bearing=camera)
 
 
 def install(model,lora_path):

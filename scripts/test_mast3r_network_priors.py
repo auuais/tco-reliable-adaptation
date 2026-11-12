@@ -1,7 +1,7 @@
 """Check pairwise camera conventions, scale handling and bearing gradients."""
 import unittest
 import torch
-from mast3r_network_priors import camera_points,bearing
+from mast3r_network_priors import camera_points,bearing,objective
 
 
 class PairPriorTests(unittest.TestCase):
@@ -29,3 +29,20 @@ class PairPriorTests(unittest.TestCase):
         loss=bearing(point,torch.tensor([[.2,.1,1.]]))
         loss.backward()
         self.assertTrue(torch.isfinite(point.grad).all() and point.grad.abs().sum()>0)
+
+    def test_two_stream_gradients_and_pose_free_baseline(self):
+        first=torch.tensor([.1,0.,1.9]).expand(1,16,16,3).clone().requires_grad_()
+        other=first.detach().clone().requires_grad_()
+        pair=({'pts3d':first},{'pts3d_in_other_view':other})
+        xy=torch.zeros((2,8),dtype=torch.long)
+        poses=[torch.eye(4),torch.eye(4)]
+        args=([pair,pair],[torch.tensor(1.)]*2,xy,torch.full((8,),2.),torch.tensor(2.))
+        rays=torch.tensor([[[0.,0.,1.]]])
+        baseline,_=objective(*args,poses,rays,0.,0.)
+        wrong=[p.clone() for p in poses];wrong[0][0,3]=5
+        altered,_=objective(*args,wrong,rays,0.,0.)
+        torch.testing.assert_close(baseline,altered,rtol=0,atol=0)
+        joint,_=objective(*args,poses,rays,.01,.01)
+        joint.backward()
+        for grad in (first.grad,other.grad):
+            self.assertTrue(torch.isfinite(grad).all() and grad.abs().sum()>0)
