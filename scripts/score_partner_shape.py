@@ -156,7 +156,16 @@ if __name__ == "__main__":
     else:
         value = score()
         if args.action == "verify":
-            if value != read(PUBLIC/"scores.json"):
+            archived = read(PUBLIC/"scores.json")
+            # The native predictions and held metrics are sealed. Only fit-side
+            # losses below are recomputed with the platform's SciPy optimizer.
+            for case, data in value["cases"].items():
+                for row, old in zip(data["rows"], archived["cases"][case]["rows"]):
+                    for arm in ARMS:
+                        np.testing.assert_allclose(row["training_mae_m"][arm], old["training_mae_m"][arm],
+                                                   rtol=0., atol=1e-8)
+                    row["training_mae_m"] = old["training_mae_m"]
+            if value != archived:
                 raise ValueError("Sparse screen replay differs")
         else:
             dump(PUBLIC/"scores.json", value)
