@@ -81,6 +81,14 @@ def fit(base, design, measurement):
 
     result = minimize(objective, np.zeros(2), jac=True, bounds=[(-1., 1.)]*2, method="L-BFGS-B",
                       options={"ftol": 1e-14, "gtol": 1e-10, "maxiter": 200})
-    if not result.success or not np.isfinite(result.x).all():
-        raise ValueError(f"Shape fit failed: {result.message}")
+    def optimal(a):
+        gradient = objective(a)[1]
+        projected = a - np.clip(a-gradient, -1., 1.)
+        return np.isfinite(a).all() and np.max(np.abs(projected)) <= 2e-7
+
+    if not optimal(result.x):
+        result = minimize(objective, result.x, jac=True, bounds=[(-1., 1.)]*2, method="SLSQP",
+                          options={"ftol": 1e-14, "maxiter": 200})
+    if not optimal(result.x):
+        raise ValueError(f"Shape fit failed first-order optimality: {result.message}")
     return result.x, singular, False
