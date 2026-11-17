@@ -1,0 +1,324 @@
+{
+  "containers": [
+    {
+      "name": "tco-partner-chess-earlier-01",
+      "command": [
+        "python",
+        "scripts/train_partner_shape.py",
+        "chess",
+        "earlier"
+      ],
+      "image": "sha256:74783a8eefee6daad6ff2714a51263ccdcdc5092b83cebee20515310bec46b50",
+      "gpu": true,
+      "log_sha256": "5cbd57e037cc38ad7d03ca56545fa98091e9ee60b5f11e8e293c4441bac40e65",
+      "StartedAt": "2026-11-17T13:04:34.053848059Z",
+      "FinishedAt": "2026-11-17T13:07:04.698466383Z",
+      "ExitCode": 0,
+      "OOMKilled": false
+    },
+    {
+      "name": "tco-partner-chess-later-01",
+      "command": [
+        "python",
+        "scripts/train_partner_shape.py",
+        "chess",
+        "later"
+      ],
+      "image": "sha256:74783a8eefee6daad6ff2714a51263ccdcdc5092b83cebee20515310bec46b50",
+      "gpu": true,
+      "log_sha256": "0a04d52e7411f7be3c32aa612695e73e39188b03bc9ea6a6d37196d2e6fdd7d5",
+      "StartedAt": "2026-11-17T13:07:05.063893897Z",
+      "FinishedAt": "2026-11-17T13:09:36.836474751Z",
+      "ExitCode": 0,
+      "OOMKilled": false
+    },
+    {
+      "name": "tco-partner-extract-01",
+      "command": [
+        "python",
+        "scripts/score_partner_shape.py",
+        "extract"
+      ],
+      "image": "sha256:74783a8eefee6daad6ff2714a51263ccdcdc5092b83cebee20515310bec46b50",
+      "gpu": false,
+      "log_sha256": "7804a3d6f0462fe3d10c4c6b44f3b9b899253e7a76afeaf23e736a68ffe96460",
+      "StartedAt": "2026-11-17T13:15:01.257597143Z",
+      "FinishedAt": "2026-11-17T13:15:07.736549343Z",
+      "ExitCode": 0,
+      "OOMKilled": false
+    },
+    {
+      "name": "tco-partner-fire-earlier-01",
+      "command": [
+        "python",
+        "scripts/train_partner_shape.py",
+        "fire",
+        "earlier"
+      ],
+      "image": "sha256:74783a8eefee6daad6ff2714a51263ccdcdc5092b83cebee20515310bec46b50",
+      "gpu": true,
+      "log_sha256": "f85e97377cc822d0004afa5a190015ac9128260521c0f2aa0231ddd2962dea35",
+      "StartedAt": "2026-11-17T13:09:37.208429902Z",
+      "FinishedAt": "2026-11-17T13:12:07.225860203Z",
+      "ExitCode": 0,
+      "OOMKilled": false
+    },
+    {
+      "name": "tco-partner-fire-later-01",
+      "command": [
+        "python",
+        "scripts/train_partner_shape.py",
+        "fire",
+        "later"
+      ],
+      "image": "sha256:74783a8eefee6daad6ff2714a51263ccdcdc5092b83cebee20515310bec46b50",
+      "gpu": true,
+      "log_sha256": "6d7d5f8c3d5d1a18e12b22d7c8e9255c449dddea99cea34752b13647c42bee8c",
+      "StartedAt": "2026-11-17T13:12:07.581959274Z",
+      "FinishedAt": "2026-11-17T13:14:38.941377453Z",
+      "ExitCode": 0,
+      "OOMKilled": false
+    },
+    {
+      "name": "tco-partner-heads-earlier-01",
+      "command": [
+        "python",
+        "scripts/train_partner_shape.py",
+        "heads",
+        "earlier"
+      ],
+      "image": "sha256:74783a8eefee6daad6ff2714a51263ccdcdc5092b83cebee20515310bec46b50",
+      "gpu": true,
+      "log_sha256": "dc22e462ddc3b9ecd8c25d9f2986a9ae002ef8840702028d440b890eec2d8f46",
+      "StartedAt": "2026-11-17T12:59:15.475535492Z",
+      "FinishedAt": "2026-11-17T13:02:03.452585747Z",
+      "ExitCode": 0,
+      "OOMKilled": false
+    },
+    {
+      "name": "tco-partner-heads-later-01",
+      "command": [
+        "python",
+        "scripts/train_partner_shape.py",
+        "heads",
+        "later"
+      ],
+      "image": "sha256:74783a8eefee6daad6ff2714a51263ccdcdc5092b83cebee20515310bec46b50",
+      "gpu": true,
+      "log_sha256": "e3378501c94918d657e5640dbb192d23c3fcf862eb5f2309b55bd0aa28f56a37",
+      "StartedAt": "2026-11-17T13:02:03.840998738Z",
+      "FinishedAt": "2026-11-17T13:04:33.623788218Z",
+      "ExitCode": 0,
+      "OOMKilled": false
+    },
+    {
+      "name": "tco-partner-predict-chess-earlier-01",
+      "command": [
+        "python",
+        "scripts/predict_partner_shape.py",
+        "--case",
+        "chess",
+        "earlier"
+      ],
+      "image": "sha256:74783a8eefee6daad6ff2714a51263ccdcdc5092b83cebee20515310bec46b50",
+      "gpu": false,
+      "log_sha256": "2eb1a97a38c89853566938d8918b3a6e7ec42321fdbb6b6e2fc4ea07cb5d74a7",
+      "StartedAt": "2026-11-17T13:07:05.776884371Z",
+      "FinishedAt": "2026-11-17T13:07:17.846308608Z",
+      "ExitCode": 0,
+      "OOMKilled": false
+    },
+    {
+      "name": "tco-partner-predict-chess-later-01",
+      "command": [
+        "python",
+        "scripts/predict_partner_shape.py",
+        "--case",
+        "chess",
+        "later"
+      ],
+      "image": "sha256:74783a8eefee6daad6ff2714a51263ccdcdc5092b83cebee20515310bec46b50",
+      "gpu": false,
+      "log_sha256": "8f71af5abd39e21811e0ee60b1f377b977a67d4f88ce16db803b96470978cf79",
+      "StartedAt": "2026-11-17T13:09:40.638430326Z",
+      "FinishedAt": "2026-11-17T13:09:53.36163189Z",
+      "ExitCode": 0,
+      "OOMKilled": false
+    },
+    {
+      "name": "tco-partner-predict-fire-earlier-01",
+      "command": [
+        "python",
+        "scripts/predict_partner_shape.py",
+        "--case",
+        "fire",
+        "earlier"
+      ],
+      "image": "sha256:74783a8eefee6daad6ff2714a51263ccdcdc5092b83cebee20515310bec46b50",
+      "gpu": false,
+      "log_sha256": "bfdceb8a565c669526aa42cf251a57560c64cc01ff6fc6fdc396cd29ddd264d2",
+      "StartedAt": "2026-11-17T13:12:10.983966269Z",
+      "FinishedAt": "2026-11-17T13:12:23.419615663Z",
+      "ExitCode": 0,
+      "OOMKilled": false
+    },
+    {
+      "name": "tco-partner-predict-fire-later-01",
+      "command": [
+        "python",
+        "scripts/predict_partner_shape.py",
+        "--case",
+        "fire",
+        "later"
+      ],
+      "image": "sha256:74783a8eefee6daad6ff2714a51263ccdcdc5092b83cebee20515310bec46b50",
+      "gpu": false,
+      "log_sha256": "93bd04efc62f5622ec8a605a755e781719e0cca82568468667ee7aa4a5cf0f29",
+      "StartedAt": "2026-11-17T13:14:41.064716719Z",
+      "FinishedAt": "2026-11-17T13:14:53.000007629Z",
+      "ExitCode": 0,
+      "OOMKilled": false
+    },
+    {
+      "name": "tco-partner-predict-heads-earlier-01",
+      "command": [
+        "python",
+        "scripts/predict_partner_shape.py",
+        "--case",
+        "heads",
+        "earlier"
+      ],
+      "image": "sha256:74783a8eefee6daad6ff2714a51263ccdcdc5092b83cebee20515310bec46b50",
+      "gpu": false,
+      "log_sha256": "568c58c477171d5eaff6e0aab2d38b6726471db15515e15560407c539fef5165",
+      "StartedAt": "2026-11-17T13:02:52.49721924Z",
+      "FinishedAt": "2026-11-17T13:03:05.21332979Z",
+      "ExitCode": 0,
+      "OOMKilled": false
+    },
+    {
+      "name": "tco-partner-predict-heads-later-01",
+      "command": [
+        "python",
+        "scripts/predict_partner_shape.py",
+        "--case",
+        "heads",
+        "later"
+      ],
+      "image": "sha256:74783a8eefee6daad6ff2714a51263ccdcdc5092b83cebee20515310bec46b50",
+      "gpu": false,
+      "log_sha256": "a6e8904731144589c8dc4809876cfbf26778ed5ae2b2bccdfa124dae5a3f461c",
+      "StartedAt": "2026-11-17T13:04:34.085426167Z",
+      "FinishedAt": "2026-11-17T13:04:42.236230171Z",
+      "ExitCode": 1,
+      "OOMKilled": false
+    },
+    {
+      "name": "tco-partner-predict-heads-later-02",
+      "command": [
+        "python",
+        "scripts/predict_partner_shape.py",
+        "--case",
+        "heads",
+        "later"
+      ],
+      "image": "sha256:74783a8eefee6daad6ff2714a51263ccdcdc5092b83cebee20515310bec46b50",
+      "gpu": false,
+      "log_sha256": "db1dff3389d3baf868210de0846e286a5cf9634f92047462b06040046150b3f3",
+      "StartedAt": "2026-11-17T13:06:22.789944922Z",
+      "FinishedAt": "2026-11-17T13:06:35.555347916Z",
+      "ExitCode": 0,
+      "OOMKilled": false
+    },
+    {
+      "name": "tco-partner-score-01",
+      "command": [
+        "python",
+        "scripts/score_partner_shape.py",
+        "score"
+      ],
+      "image": "sha256:74783a8eefee6daad6ff2714a51263ccdcdc5092b83cebee20515310bec46b50",
+      "gpu": false,
+      "log_sha256": "661ac2f8a64966bfc2d8a3881d95a336adbdcecfceec8516aba701fb07491ea0",
+      "StartedAt": "2026-11-17T13:15:07.978830061Z",
+      "FinishedAt": "2026-11-17T13:15:09.379649642Z",
+      "ExitCode": 0,
+      "OOMKilled": false
+    },
+    {
+      "name": "tco-partner-seal-01",
+      "command": [
+        "python",
+        "scripts/predict_partner_shape.py"
+      ],
+      "image": "sha256:74783a8eefee6daad6ff2714a51263ccdcdc5092b83cebee20515310bec46b50",
+      "gpu": false,
+      "log_sha256": "b503a7174f43acbd0503dc6a9a0f3b51d002a0d67c18182545ee564709aa2ff1",
+      "StartedAt": "2026-11-17T13:14:53.247347773Z",
+      "FinishedAt": "2026-11-17T13:15:01.007359554Z",
+      "ExitCode": 0,
+      "OOMKilled": false
+    },
+    {
+      "name": "tco-partner-source-inputs01",
+      "command": [
+        "python",
+        "scripts/prepare_partner_sources.py",
+        "/data"
+      ],
+      "image": "sha256:74783a8eefee6daad6ff2714a51263ccdcdc5092b83cebee20515310bec46b50",
+      "gpu": false,
+      "log_sha256": "7804a3d6f0462fe3d10c4c6b44f3b9b899253e7a76afeaf23e736a68ffe96460",
+      "StartedAt": "2026-11-17T12:58:58.050227311Z",
+      "FinishedAt": "2026-11-17T12:59:01.226453393Z",
+      "ExitCode": 0,
+      "OOMKilled": false
+    },
+    {
+      "name": "tco-partner-surface-fullreplay01",
+      "command": [
+        "python",
+        "scripts/replay_partner_surface_points.py",
+        "--export"
+      ],
+      "image": "sha256:74783a8eefee6daad6ff2714a51263ccdcdc5092b83cebee20515310bec46b50",
+      "gpu": false,
+      "log_sha256": "01146e2e81b1c14c781036488b3b312525214540878ac1224506b44ed4fef675",
+      "StartedAt": "2026-11-17T14:01:17.612069665Z",
+      "FinishedAt": "2026-11-17T14:01:25.299593156Z",
+      "ExitCode": 0,
+      "OOMKilled": false
+    },
+    {
+      "name": "tco-partner-surface-predict01",
+      "command": [
+        "python",
+        "scripts/partner_bias_surface.py",
+        "predict"
+      ],
+      "image": "sha256:74783a8eefee6daad6ff2714a51263ccdcdc5092b83cebee20515310bec46b50",
+      "gpu": false,
+      "log_sha256": "44c17a66bb81f7fe191e4d9c7c5b68f414e05f212754d194c4fbf855f9d597f9",
+      "StartedAt": "2026-11-17T13:52:04.842257558Z",
+      "FinishedAt": "2026-11-17T13:52:19.175746934Z",
+      "ExitCode": 0,
+      "OOMKilled": false
+    },
+    {
+      "name": "tco-partner-surface-score01",
+      "command": [
+        "python",
+        "scripts/partner_bias_surface.py",
+        "score"
+      ],
+      "image": "sha256:74783a8eefee6daad6ff2714a51263ccdcdc5092b83cebee20515310bec46b50",
+      "gpu": false,
+      "log_sha256": "2abda8fc9997b50a1b62f93e85777e03390a3c44b1434b1a41ed0563ba8336cf",
+      "StartedAt": "2026-11-17T13:52:19.422864407Z",
+      "FinishedAt": "2026-11-17T13:59:17.113906015Z",
+      "ExitCode": 0,
+      "OOMKilled": false
+    }
+  ],
+  "additional_runpod_compute_usd": 0
+}
