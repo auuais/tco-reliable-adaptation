@@ -3,6 +3,7 @@ import numpy as np
 
 from partner_shape import fit, images, make_modes, tiles
 from score_partner_shape import disjoint_test
+from audit_partner_headroom import best_possible
 
 
 class PartnerShapeTest(unittest.TestCase):
@@ -43,6 +44,12 @@ class PartnerShapeTest(unittest.TestCase):
         self.assertEqual(excluded, 1)
         np.testing.assert_array_equal(measured, [2.,2.])
         self.assertEqual(set(map(tuple,pixels)), {(1,1), (8,8)})
+
+    def test_optimistic_headroom_respects_box(self):
+        design = np.eye(2)
+        base = np.ones(2)
+        self.assertAlmostEqual(best_possible(base, design, base+[.2, -.4]), 0.)
+        self.assertAlmostEqual(best_possible(base, design, base+[3., -2.]), 1.5)
 
 
 if __name__ == "__main__":
