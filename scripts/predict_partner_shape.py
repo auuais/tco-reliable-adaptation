@@ -83,6 +83,7 @@ def predict(scene, side):
 
 
 def seal():
+    from partner_bias_control import offsets
     records = {}
     for scene in SCENES:
         for side in SIDES:
@@ -94,6 +95,15 @@ def seal():
             records[name] = sha(p)
     if (PUBLIC/"seal.json").exists() and read(PUBLIC/"seal.json") != records:
         raise ValueError("Previous prediction seal changed")
+    values = offsets()
+    bias_seal = PUBLIC/"bias_seal.json"
+    if bias_seal.exists():
+        if read(bias_seal) != values:
+            raise ValueError("Training-only biases changed after sealing")
+    elif (PUBLIC/"scores.json").exists():
+        raise ValueError("Cannot add bias control after scoring")
+    else:
+        dump(bias_seal, values)
     dump(PUBLIC/"seal.json", records)
 
 

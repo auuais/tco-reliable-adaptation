@@ -39,6 +39,18 @@ def check_seal(local):
     for side in SIDES:
         if sha(PUBLIC/(side+".npz")) != inputs["packets"][side]:
             raise ValueError("Source packet changed")
+    # Independent bridge to the pre-existing two-source range packet.
+    parent = ROOT/"results/neighbor_sparse_depth/measurements.npz"
+    with (np.load(PUBLIC/"earlier.npz") as earlier, np.load(PUBLIC/"later.npz") as later,
+          np.load(parent) as archived):
+        expected = {f"{s}_{f}" for s in SCENES for f in FRAMES}
+        if any(set(z.files) != expected for z in (earlier, later, archived)):
+            raise ValueError("Source window identities differ")
+        for key in archived:
+            nearest = {}
+            for row in sorted([*earlier[key], *later[key]], key=lambda r:r[2]):
+                nearest.setdefault(tuple(row[:2]), row)
+            np.testing.assert_array_equal(np.stack(list(nearest.values())), archived[key])
     for name, digest in seal.items():
         directory = PUBLIC/name
         prediction = read(directory/"prediction.json")
