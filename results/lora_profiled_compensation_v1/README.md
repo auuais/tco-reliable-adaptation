@@ -13,6 +13,7 @@ The six Heads/earlier states completed with 40 optimizer updates across the five
 Use the prospectively registered score path below. It verifies all endpoints and the first-step equivalence of P3, R0 and R1 across all six scene/source conditions. It saves the global prediction seal before any held-source prediction is compared with a measurement.
 
 ```powershell
+python scripts/audit_compensation_training.py --output results/lora_profiled_compensation_v1/training_audit.json
 python scripts/score_profiled_compensation.py seal
 python scripts/score_profiled_compensation.py score
 python scripts/score_profiled_compensation.py replay
@@ -26,5 +27,6 @@ Publish the score report, independent replay receipt, and aggregate arithmetic c
 ```powershell
 python scripts/replay_compensation_published_metrics.py
 python scripts/plot_compensation_verdict.py --output results/lora_profiled_compensation_v1/held_source_gains.svg
+python scripts/write_compensation_report.py
 python scripts/archive_profiled_compensation.py copy --destination E:/ResearchData/TCO/research_results/lora_profiled_compensation_v1 --snapshot verdict-v1 --verdict --receipt results/lora_profiled_compensation_v1/verdict_backup01.json
 ```
