@@ -2,7 +2,11 @@
 
 This is the operational guide for a successor agent, including Solus. Read it with the [goal contract](CALIBRATION_AWARE_LORA_GOAL.md), [mathematical specification](FROZEN_LORA_ACCURACY_PLAN.md) and [design settings](../manifests/lora_profiled_design_v1.json). The contract defines the objective and scientific gates. This guide explains how to implement, run and verify them in the actual workspace. Use files and live process state to establish the current checkpoint before taking action.
 
-**Current checkpoint after verified D1, November 19, 2026 (Seoul)**
+**Final scientific result, November 19, 2026 (Seoul)**
+
+The one registered redesign completed all 36 states with zero numerical failures. Predictions were sealed before held-source scoring, and the source, independent sample and public aggregate replays agree that R1 missed nomination. The bounded study ends with a negative verdict. Dense confirmation, the dependent mechanism ablations, independent-scene evaluation and VGGT transfer were gated by nomination and remain unrun. Rental compute was USD 0. Consult the verdict, archive receipt and project checkpoint for verification and release status. [Research verdict](../results/lora_profiled_compensation_v1/research_verdict.md) · [C/E archive](../results/lora_profiled_compensation_v1/verdict_backup01.json) · [Checkpoint](../results/lora_profiled_v1/progress.json)
+
+**Historical checkpoint after verified D1, November 19, 2026 (Seoul)**
 
 D1 completed locally under prospective registration commit `ba722398c2d346b598f369f7ef9be6969a2cc5e3`. Its teacher matched archived rasters exactly and both folds passed metadata checks before final-factor access. The model made 40 decoder calls and no updates. The two CPU checks and verified C/E backup passed. Query loss improved in both folds and inference paths. Calibration attenuated the training-path residual change by about 29–31%, with most of the FP32 change retained. There is still no qualifying development accuracy gain. [D1 report and evidence](../results/lora_profiled_d1_v1/README.md)
 

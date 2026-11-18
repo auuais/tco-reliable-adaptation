@@ -29,7 +29,8 @@ def make_figure(report, destination):
                 if valid and control is not None and control > 0 and candidate is not None else None)
 
     with plt.rc_context({"figure.dpi": 160, "font.family": "DejaVu Sans", "svg.hashsalt": "tco-compensation"}):
-        fig, axes = plt.subplots(1, 2, figsize=(9.6, 3.7), constrained_layout=True)
+        fig, axes = plt.subplots(1, 2, figsize=(9.6, 4.1))
+        fig.subplots_adjust(left=.07, right=.975, top=.79, bottom=.23, wspace=.29)
         for ax, table, title in zip(axes, (gains, rooms),
                                    ("Directional mean against each control", "Within each room against P1")):
             ax.axvline(0, color="#49535d", lw=1)
@@ -58,9 +59,11 @@ def make_figure(report, destination):
         axes[0].set_xlim(min(lo, -.1), max(hi, 1.12))
         axes[0].plot([1, 1], [p1-.22, p1+.22], linestyle="--", lw=1.1,
                      color="#49535d", label="P1 gate (+1%)")
-        axes[0].legend(fontsize=8, loc="lower center", bbox_to_anchor=(.5, -.34), ncol=2,
-                       frameon=False)
-        fig.suptitle("MASt3R calibration compensation on held-source depth", fontsize=13, x=.04, ha="left")
+        handles, labels = axes[0].get_legend_handles_labels()
+        fig.legend(handles, labels, fontsize=8, loc="lower center", bbox_to_anchor=(.5, .04),
+                   ncol=3, frameon=False)
+        fig.suptitle("MASt3R calibration compensation on held-source depth", fontsize=13,
+                     x=.07, y=.96, ha="left")
         with destination.open("xb") as output:
             fig.savefig(output, format="svg", metadata={"Date":None})
         plt.close(fig)

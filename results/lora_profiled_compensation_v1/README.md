@@ -1,5 +1,7 @@
 # MASt3R compensation redesign
 
+The redesign completed all 36 registered runs and missed the held-source nomination gate. Against matched adaptation (P1), calibrated MAE rose by 0.192% in the earlier-direction experiment and fell by 0.012% in the later-direction experiment. Fire was the only room that improved in both directions. The full-gradient method also had higher MAE than its detached counterpart in both directions. All 18 historical controls reproduced exactly. [Research verdict](research_verdict.md) · [Score report](held_source_scores.json) · [Independent replay](independent_replay.json) · [Full C/E archive](verdict_backup01.json) · [Publication backup](publication_backup01.json)
+
 The prospective inventory contains 36 fresh states across Heads, Chess and Fire, with both temporal adaptation directions. R1 penalizes the query residual change attributable to refitting the five calibration scales. R0 applies an isotropic support penalty with matching local curvature trace. R2 uses the same R1 forward objective and detaches the scales. P0, P1 and P3 are freshly reconstructed original controls. [Design](../../docs/PROFILED_COMPENSATION_REDESIGN.md) · [Executable inventory](../../manifests/lora_profiled_compensation_execution_v1.json) · [Scoring registration](../../manifests/lora_profiled_compensation_evaluation_v1.json)
 
 The real-model bridge passed on the RTX 3080. The original teacher and zero-adapter outputs matched exactly. P3, R0 and R1 had identical loss and full 20-pair gradients at pristine initialization. The same saved nonzero adapter gave exact R1/R2 forward equality in both folds. Each arm’s two-pair retained and replayed gradients agreed exactly. All three FP32 parameter perturbations passed in each fold. The bridge used 184 decoder calls, zero optimizer updates and 5,319.49 MiB peak allocated CUDA memory. [Engineering report](engineering/bridge01/report.json) · [Verified stop receipt](launches/tco-profiled-compensation-bridge01/terminal.json)
@@ -8,7 +10,7 @@ Check the current [progress record](../lora_profiled_v1/progress.json) and local
 
 The six Heads/earlier states completed with 40 optimizer updates across the five trained states. P0, P1 and P3 reconstructed both historical endpoints byte for byte. P1 reproduced the final trained adapter and P3 reproduced every recorded adapter state. P3, R0 and R1 matched the initial loss, gradient and updated adapter bytes. R1 and R2 shared the initial forward computation, with the expected gradient difference. The six runs took about 29 minutes 37 seconds in total, with a peak of 4,722.25 MiB allocated CUDA memory. Their full evidence is verified on the second disk. The serial queue for the remaining cases has started. [First tranche evidence](heads_earlier_tranche01.json)
 
-**After all cases complete**
+**Sealing, scoring and replay commands**
 
 Use the prospectively registered score path below. It verifies all endpoints and the first-step equivalence of P3, R0 and R1 across all six scene/source conditions. The training audit also records exact endpoint, frozen-weight and adapter-update fingerprint comparisons for the 18 repeated controls against the original prediction seal. The scorer saves the new global prediction seal before any held-source prediction is compared with a measurement.
 
