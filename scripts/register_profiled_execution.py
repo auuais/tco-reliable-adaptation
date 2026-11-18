@@ -17,6 +17,7 @@ import subprocess
 import sys
 
 from prepare_profiled_inputs import ROOT, PLAN, read, sha, build_splits
+from profiled_runtime import EXPECTED_RUNTIME
 
 
 ENGINEERING = ROOT / "manifests/lora_profiled_engineering_v1.json"
@@ -25,7 +26,7 @@ INPUT_PATHS = ("manifests/lora_profiled_design_v1.json", "results/lora_profiled_
                "results/lora_profiled_v1/splits.npz", "manifests/lora_profiled_bridge_checks_v1.json")
 PREPARATION = ("results/lora_profiled_v1/environment.json", "results/lora_profiled_v1/solver_checks.json",
                "results/lora_profiled_v1/split_checks.json", "results/lora_profiled_v1/baseline_graph.json")
-SOURCES = ("scripts/register_profiled_execution.py", "scripts/prepare_profiled_inputs.py",
+SOURCES = ("scripts/register_profiled_execution.py", "scripts/prepare_profiled_inputs.py", "scripts/profiled_runtime.py",
            "scripts/profiled_calibration.py", "scripts/check_profiled_calibration.py",
            "scripts/profiled_baseline_graph.py", "scripts/profiled_network.py",
            "scripts/check_profiled_lora_bridge.py", "scripts/profiled_final_calibration.py",
@@ -110,6 +111,8 @@ def inspect_bridge(kind, environment, input_hashes):
     reasons = []
     try:
         report = read(path)
+        if report.get("runtime_policy") != EXPECTED_RUNTIME:
+            reasons.append(f"{kind}: deterministic arithmetic policy differs or is missing")
         for field in spec["checks"]:
             if report.get(field) is not True:
                 reasons.append(f"{kind}: {field} is not true")
@@ -190,6 +193,7 @@ def build_registry(phase,ready,plan,input_hashes,environment,destination=None,pr
         artifact_sha256={name:sha(relative_file(name)) for name in artifacts},
         input_sha256=input_hashes, docker_image=environment["docker_image"],
         checkpoint_sha256=environment["checkpoint_sha256"], upstream_revisions=environment["upstream_revisions"],
+        runtime_policy=EXPECTED_RUNTIME,
         study_settings=plan, states_total=36, trained_states=30, frozen_controls=6, jobs=ready["jobs"],
         endpoints=dict(primary="native KDP then common final five-scale refinement",secondary="native KDP only",
             native_coarse_iterations=300,native_fine_iterations=300,native_pose_weight=.01,
@@ -230,6 +234,8 @@ def verify_registry(path,phase):
         raise ValueError("Registry omits required source files")
     if record["input_sha256"] != inputs or record["docker_image"] != environment["docker_image"] or record["checkpoint_sha256"] != environment["checkpoint_sha256"]:
         raise ValueError("Registry input/runtime identity changed")
+    if record.get("runtime_policy") != EXPECTED_RUNTIME:
+        raise ValueError("Registry deterministic arithmetic policy differs")
     return ready
 
 

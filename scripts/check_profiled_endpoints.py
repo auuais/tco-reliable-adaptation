@@ -191,6 +191,8 @@ def differences(first, second):
 
 
 def run(weights, attempt, manifest, image):
+    from profiled_runtime import configure_runtime, verify_runtime
+    arithmetic = configure_runtime()
     from mast3r.model import AsymmetricMASt3R
     from mast3r_network_priors import digest, install
     from profiled_network import input_hashes, load_case, sha, source_hashes
@@ -225,7 +227,7 @@ def run(weights, attempt, manifest, image):
     ))
     execution_commit = subprocess.check_output(
         ["git", "-c", "safe.directory=*", "-C", str(ROOT), "rev-parse", "HEAD"], text=True).strip()
-    runtime = dict(execution_commit=execution_commit, docker_image=image,
+    runtime = dict(execution_commit=execution_commit, docker_image=image, runtime_policy=arithmetic,
                    checkpoint_sha256=checkpoint, torch=torch.__version__, cuda=torch.version.cuda,
                    source_sha256_lf=sources, input_sha256=input_hashes(),
                    engineering_manifest=manifest.relative_to(ROOT).as_posix(),
@@ -269,6 +271,7 @@ def run(weights, attempt, manifest, image):
                 raise ValueError(f"Source changed during endpoint bridge: {name}")
         if input_hashes() != runtime["input_sha256"]:
             raise ValueError("Registered inputs changed during endpoint bridge")
+        verify_runtime()
         report = dict(
             schema="profiled_endpoint_bridge_v1", attempt=attempt, scene="heads", adaptation_source="earlier",
             scope="Pristine versus zero-LoRA endpoint equivalence; no held-source or target-depth accuracy read",

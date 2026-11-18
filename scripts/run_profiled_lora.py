@@ -130,6 +130,8 @@ def run(args, checked):
         raise ValueError("Real execution needs host-inspected --image or PROFILED_DOCKER_IMAGE")
     import numpy as np
     import torch
+    from profiled_runtime import configure_runtime, verify_runtime
+    arithmetic = configure_runtime()
     from mast3r.model import AsymmetricMASt3R
     from mast3r_network_priors import digest, install
     from check_profiled_endpoints import capture_endpoint
@@ -157,7 +159,7 @@ def run(args, checked):
         execution_commit=execution_commit, registry_execution_commit=registry["execution_commit"],
         manifest=manifest.relative_to(ROOT).as_posix(), manifest_sha256=sha(manifest),
         source_sha256_lf=registry["source_sha256_lf"], artifact_sha256=registry["artifact_sha256"],
-        input_sha256=input_hashes(), docker_image=image,
+        input_sha256=input_hashes(), docker_image=image, runtime_policy=arithmetic,
         image_identity_supplied_by="--image" if args.image else "PROFILED_DOCKER_IMAGE",
         checkpoint_sha256=checkpoint, torch=torch.__version__, cuda=torch.version.cuda,
         device=torch.cuda.get_device_name(), seed=42, allow_tf32=True,
@@ -345,6 +347,7 @@ def run(args, checked):
                     raise ValueError(f"Registered artifact changed during execution: {name}")
             if input_hashes() != runtime["input_sha256"] or sha(manifest) != runtime["manifest_sha256"]:
                 raise ValueError("Registered inputs or scientific manifest changed during execution")
+            verify_runtime()
             summary = dict(**runtime, status="predictions_sealed_without_accuracy_scoring",
                 completed_at_utc=datetime.now(timezone.utc).isoformat(),
                 original_state_sha256=original_hash, pre_endpoint_original_state_sha256=before_endpoint_hash,

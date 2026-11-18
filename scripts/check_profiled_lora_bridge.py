@@ -71,6 +71,8 @@ def compare_gradients(first, second):
 
 
 def run(args, attempt):
+    from profiled_runtime import configure_runtime, verify_runtime
+    arithmetic = configure_runtime()
     spec = json.loads(SETTINGS.read_text())
     verify_registry(args.manifest, "engineering")
     environment = json.loads((PUBLIC / "environment.json").read_text())
@@ -124,7 +126,7 @@ def run(args, attempt):
     model.zero_grad(set_to_none=True)
     print("Real-model retained/replay gradients verified", flush=True)
 
-    torch.backends.cuda.matmul.allow_tf32 = False
+    configure_runtime(allow_tf32=False)
     _, analytical = retained_gradient(model, features, pristine, prepared, varying, "float32")
     gradient_summary(analytical)
     selected = max(analytical, key=lambda name:float(analytical[name].abs().max()))
@@ -160,7 +162,7 @@ def run(args, attempt):
         raise ValueError("Real LoRA directional finite differences failed the declared tolerances")
     print("Real LoRA directional derivative verified", flush=True)
 
-    torch.backends.cuda.matmul.allow_tf32 = True
+    configure_runtime()
     model.zero_grad(set_to_none=True)
     parameters = [p for p in model.parameters() if p.requires_grad]
     before_adapters = [p.detach().cpu().clone() for p in parameters]
@@ -187,7 +189,9 @@ def run(args, attempt):
         raise ValueError("Original model state changed during LoRA diagnostics")
     if sources != source_hashes(("scripts/check_profiled_lora_bridge.py",)) or inputs != input_hashes():
         raise ValueError("Source or inputs changed during the gradient bridge")
+    verify_runtime()
     report = dict(pass_all=True, scope="Engineering model-gradient bridge; no reconstruction accuracy conclusion",
+        runtime_policy=arithmetic, finite_difference_matmul_and_cudnn_tf32=False,
         original_state_unchanged=True, zero_adapter_pass=zero_exact, replay_gradient_pass=True,
         finite_difference_pass=finite_pass, full_macro_step_pass=True,
         original_state_sha256=original_hash, final_original_state_sha256=final_hash,

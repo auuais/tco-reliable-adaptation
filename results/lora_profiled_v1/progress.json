@@ -2,7 +2,7 @@
   "goal": "Calibration-aware predictive LoRA accuracy investigation",
   "checkpoint_date": "2026-11-18",
   "status": "active",
-  "current_phase": "engineering diagnosis required after real-model replay-gradient mismatch",
+  "current_phase": "replay discrepancy resolved by deterministic runtime; formal acceptance rerun pending",
   "completed_milestone_weight_percent": 0,
   "percentage_rule": "Conservative whole-milestone credit; completed subchecks are listed separately and are not accuracy evidence",
   "milestones": {
@@ -17,7 +17,9 @@
         "Native remap/dedup, source/cell grouping and split replay",
         "60 sealed pretrained matching cache files and 30 unordered graph edges"
       ],
-      "remaining": ["Preserve engineering v1 and register current source as a new engineering version after diagnosis; scientific registration follows M1"]
+      "remaining": [
+        "Preserve engineering v1 and register current source as a new engineering version after diagnosis; scientific registration follows M1"
+      ]
     },
     "M1": {
       "weight": 20,
@@ -27,7 +29,8 @@
         "Full/detached forward equality and synthetic autograd/finite-difference agreement",
         "Frozen observations, coordinate rows, invalid-input handling and rank checks",
         "Pristine versus zero-LoRA equality for all 20 directed pair outputs in gradient01 before its later failure",
-        "CPU final-calibration identity, unit/origin invariance and invalid-observation fixtures"
+        "CPU final-calibration identity, unit/origin invariance and invalid-observation fixtures",
+        "Strict deterministic no-update model diagnostic: exact retained/replay/repeated gradients in BF16 and FP32; original and adapter hashes unchanged"
       ],
       "remaining": [
         "Completed real-model original-state hash checks; gradient01 stopped before final digest",
@@ -37,11 +40,30 @@
         "Native and final-calibration endpoint bridges"
       ]
     },
-    "M2": {"weight": 25, "status": "not_started", "trained_states_completed": 0, "trained_states_planned": 30, "frozen_controls_completed": 0, "frozen_controls_planned": 6},
-    "M3": {"weight": 15, "status": "not_started"},
-    "M4": {"weight": 10, "status": "conditional_not_started"},
-    "M5": {"weight": 15, "status": "conditional_not_started"},
-    "M6": {"weight": 10, "status": "not_started"}
+    "M2": {
+      "weight": 25,
+      "status": "not_started",
+      "trained_states_completed": 0,
+      "trained_states_planned": 30,
+      "frozen_controls_completed": 0,
+      "frozen_controls_planned": 6
+    },
+    "M3": {
+      "weight": 15,
+      "status": "not_started"
+    },
+    "M4": {
+      "weight": 10,
+      "status": "conditional_not_started"
+    },
+    "M5": {
+      "weight": 15,
+      "status": "conditional_not_started"
+    },
+    "M6": {
+      "weight": 10,
+      "status": "not_started"
+    }
   },
   "evidence": {
     "runtime": "results/lora_profiled_v1/environment.json",
@@ -52,7 +74,9 @@
     "solver_checks": "results/lora_profiled_v1/solver_checks.json",
     "engineering_failures": "results/lora_profiled_v1/engineering_failures.json",
     "failed_replay_comparison": "results/lora_profiled_v1/engineering/gradient01/replay_failure.json",
-    "evaluation_rules": "manifests/lora_profiled_evaluation_v1.json"
+    "evaluation_rules": "manifests/lora_profiled_evaluation_v1.json",
+    "deterministic_replay": "results/lora_profiled_v1/engineering/replay_deterministic01/report.json",
+    "diagnosis": "docs/PROFILED_LORA_ENGINEERING_DIAGNOSIS.md"
   },
   "accuracy_improvement_established": false,
   "nomination": null,
@@ -63,19 +87,16 @@
   "redesigns_executed": 0,
   "redesign_limit": 1,
   "research_gpu_job_at_checkpoint": {
-    "container": "tco-profiled-gradient01",
-    "execution_commit": "8e33ba3",
-    "attempt": "gradient01",
-    "manifest": "manifests/lora_profiled_engineering_v1.json",
+    "container": "tco-profiled-replay-deterministic01",
+    "execution_commit": "d68b68b",
+    "attempt": "replay_deterministic01",
     "last_authoritative_state": "exited",
-    "exit_code": 1,
-    "oom_killed": false,
-    "finished_at_utc": "2026-11-18T09:35:37.784819278Z",
-    "instruction": "Failure preserved. No research GPU container was running at checkpoint; recheck live state before a new unique diagnostic attempt"
+    "exit_code": 0,
+    "instruction": "No research GPU job running at checkpoint; recheck before the formal gradient02 acceptance run"
   },
   "implementation_state": {
     "network_and_gradient_bridge": "implemented; first real-model gradient comparison failed",
-    "arithmetic_diagnostic": "implemented; syntax and CPU harness checked; actual GPU diagnostic pending",
+    "arithmetic_diagnostic": "completed; deterministic runtime eliminates observed backward discrepancy; formal acceptance remains pending",
     "final_calibration": "implemented; CPU fixtures pass",
     "endpoint_bridge": "implemented; GPU execution pending",
     "single_case_runner": "implemented; syntax/import and missing-manifest refusal checked; GPU execution pending",
@@ -84,8 +105,13 @@
     "scientific_registry": "not created; both model acceptance reports missing",
     "engineering_v1": "historical source snapshot; intentionally fails current-source verification after registry changes"
   },
-  "last_observed_ci": {"commit": "8e33ba3839338daf9944939834c2834ee4f9d2d4", "run_id": 44277204188, "conclusion": "success", "scope": "CPU workflow; does not establish GPU bridge or accuracy"},
-  "next_command": "docker ps --format '{{.Names}} {{.Status}}'",
-  "next_implementation_action": "Follow the handoff's Immediate diagnostic and release commands: local no-update replay arithmetic diagnostic, diagnose/fix, preserve v1 and register new engineering version, pass gradient and endpoint bridges, then scientific registration",
+  "last_observed_ci": {
+    "commit": "47e162a6e71fdafd2595b163661f0b0793d1b7bc",
+    "run_id": 44280072300,
+    "conclusion": "success",
+    "scope": "CPU workflow; not GPU acceptance"
+  },
+  "next_command": "python scripts/register_profiled_execution.py --prepare --phase engineering --output manifests/lora_profiled_engineering_v2.json --supersedes manifests/lora_profiled_engineering_v1.json",
+  "next_implementation_action": "Commit deterministic runtime and new engineering registration, then run gradient02 against unchanged thresholds; endpoint bridge follows only after pass",
   "handoff": "docs/CALIBRATION_AWARE_LORA_HANDOFF.md"
 }

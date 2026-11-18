@@ -195,7 +195,7 @@ def replay_backward(model, features, adjoints, precision="bfloat16"):
 
 
 def source_hashes(extra=()):
-    names = ("scripts/profiled_network.py", "scripts/profiled_calibration.py", "scripts/profiled_baseline_graph.py",
+    names = ("scripts/profiled_network.py", "scripts/profiled_runtime.py", "scripts/profiled_calibration.py", "scripts/profiled_baseline_graph.py",
              "scripts/mast3r_network_capture.py", "scripts/mast3r_network_priors.py",
              "scripts/run_mast3r_neural_transfer.py", "third_party/TCO/peft/lora.py", *extra)
     return {name:sha(ROOT/name, text=True) for name in names}
