@@ -6,6 +6,8 @@ The user's current goal request authorizes this investigation. Historical pause-
 
 **Read these first**
 
+The [successor execution handoff](CALIBRATION_AWARE_LORA_HANDOFF.md) gives exact workspace paths, preparation commands, tensor schemas, module responsibilities, gradient-replay pseudocode and recovery rules. Read its current checkpoint before attempting a new run.
+
 The working repository is `C:/SVNProjects/Research/tco-research`, with public remote `https://github.com/auuais/tco-reliable-adaptation`. The mathematical specification is [FROZEN_LORA_ACCURACY_PLAN.md](FROZEN_LORA_ACCURACY_PLAN.md), and fixed initial settings are in [lora_profiled_design_v1.json](../manifests/lora_profiled_design_v1.json). Baseline evidence is in [mast3r_partner_shape](../results/mast3r_partner_shape/README.md), [geometry and matching separation](../results/mast3r_geometry_matching_v1/README.md), and [the synthetic derivative check](../results/lora_profiled_design/README.md). The design commit is `3ff7fe876278b4b19728de1ab950ad66432fd3af`; its complete CPU workflow passed. The current goal adds an execution contract and corrects the development-versus-test terminology before model execution.
 
 Read [BUDGET.md](BUDGET.md) for historical spending and the retained-workspace decision. Its old pause statements and completed-stage caps remain historical. This goal's conditional transfer allocation is part of the existing reserve. Do not count it as another USD 25 on top of that reserve.

@@ -1,0 +1,43 @@
+{
+  "portable": {
+    "registered": {
+      "input_registration_sha256": "7e0600f470698e336af3b44a788b44cfea45ec043dd785b03cdf5b3839526fa8",
+      "splits_binary_sha256": "12d688e181f89ef90738350f23959d7bb0813b0a605cadcee1fb05d5b1bd9ace",
+      "splits_semantic_sha256": "0fa08a2e65e4fd1edd31874420f298968a8e979a8f3077be857161503592d960",
+      "scene_side_cases": 6,
+      "views": 30,
+      "observations": 1225,
+      "minimum_fold_observations": 11,
+      "all_source_and_anchor_intersections_zero": true
+    },
+    "fixtures": {
+      "transitive_component_observations": 4,
+      "expected_components": 5,
+      "view_specific_cells_pass": true,
+      "permutation_checks": 3,
+      "provenance_to_fold_invariant": true,
+      "isolated_leakage_cases_rejected": [
+        "source_only",
+        "cell_only"
+      ]
+    }
+  },
+  "optional_at_registration": {
+    "clean_poses": {
+      "convention": "world_to_RGB_camera = depth_to_RGB_calibration @ inv(original_camera_to_world_pose)",
+      "checked_poses": 15,
+      "maximum_absolute_errors": {
+        "heads": 0.0,
+        "chess": 0.0,
+        "fire": 0.0
+      },
+      "tolerance_absolute": 1e-12,
+      "target_depth_files_opened": 0
+    },
+    "native_samples": {
+      "packet_views_checked": 30,
+      "native_samples_agreement": true
+    }
+  },
+  "pass_all": true
+}

@@ -2,7 +2,7 @@
 
 An independent research workspace for reproducing [TCO](https://github.com/cvlab-stonybrook/TCO) and studying when camera priors help or harm test-time adaptation. This is an exploratory study, not an official implementation or a claim of a new state of the art.
 
-**Research direction registered November 18.** The next study tests calibration-aware predictive LoRA with frozen original weights, beginning on local MASt3R. The goal defines implementation checks, a 30-adapter/six-control development screen, surface confirmation, bounded redesign and conditional VGGT/generalization work. The synthetic derivative check passes; model accuracy experiments remain pending. [Goal and execution gates](docs/CALIBRATION_AWARE_LORA_GOAL.md) · [Mathematical plan](docs/FROZEN_LORA_ACCURACY_PLAN.md) · [Experiment settings](manifests/lora_profiled_design_v1.json)
+**Research direction registered November 18.** The next study tests calibration-aware predictive LoRA with frozen original weights, beginning on local MASt3R. The goal defines implementation checks, a 30-adapter/six-control development screen, surface confirmation, bounded redesign and conditional VGGT/generalization work. Input provenance, grouped folds, the local runtime and production geometry calculus are verified; real model gradient integration and accuracy experiments remain pending. [Successor execution handoff](docs/CALIBRATION_AWARE_LORA_HANDOFF.md) · [Current checkpoint](results/lora_profiled_v1/README.md) · [Goal and execution gates](docs/CALIBRATION_AWARE_LORA_GOAL.md) · [Mathematical plan](docs/FROZEN_LORA_ACCURACY_PLAN.md)
 
 ## Evidence so far
 

@@ -1,0 +1,65 @@
+{
+  "goal": "Calibration-aware predictive LoRA accuracy investigation",
+  "checkpoint_date": "2026-11-18",
+  "status": "active",
+  "current_phase": "local preparation verified; production model gradient integration next",
+  "completed_milestone_weight_percent": 0,
+  "percentage_rule": "Conservative whole-milestone credit; completed subchecks are listed separately and are not accuracy evidence",
+  "milestones": {
+    "M0": {
+      "weight": 5,
+      "status": "in_progress",
+      "verified": [
+        "Pinned local image, current checkpoint and upstream blob contents",
+        "CUDA float64 Cholesky on the RTX 3080",
+        "75 original source files and exact reconstruction of 30 sparse packets",
+        "1225 provenance-tracked observations, minimum fold size 11",
+        "Native remap/dedup, source/cell grouping and split replay",
+        "60 sealed pretrained matching cache files and 30 unordered graph edges"
+      ],
+      "remaining": ["Executable model-run manifest and tested model-launch commands"]
+    },
+    "M1": {
+      "weight": 20,
+      "status": "in_progress",
+      "verified": [
+        "Production PyTorch calibration layer and upstream canonical fusion",
+        "Full/detached forward equality and synthetic autograd/finite-difference agreement",
+        "Frozen observations, coordinate rows, invalid-input handling and rank checks"
+      ],
+      "remaining": [
+        "Real LoRA zero-update and original-state checks",
+        "Real-model retained-graph versus output-adjoint replay",
+        "Real adapter-direction finite differences",
+        "Full 20-pair macro-step and memory/runtime measurement",
+        "Native and final-calibration endpoint bridges"
+      ]
+    },
+    "M2": {"weight": 25, "status": "not_started", "trained_states_completed": 0, "trained_states_planned": 30, "frozen_controls_completed": 0, "frozen_controls_planned": 6},
+    "M3": {"weight": 15, "status": "not_started"},
+    "M4": {"weight": 10, "status": "conditional_not_started"},
+    "M5": {"weight": 15, "status": "conditional_not_started"},
+    "M6": {"weight": 10, "status": "not_started"}
+  },
+  "evidence": {
+    "runtime": "results/lora_profiled_v1/environment.json",
+    "inputs": "results/lora_profiled_v1/inputs.json",
+    "splits": "results/lora_profiled_v1/splits.npz",
+    "split_checks": "results/lora_profiled_v1/split_checks.json",
+    "baseline_matches": "results/lora_profiled_v1/baseline_graph.json",
+    "solver_checks": "results/lora_profiled_v1/solver_checks.json",
+    "engineering_failures": "results/lora_profiled_v1/engineering_failures.json"
+  },
+  "accuracy_improvement_established": false,
+  "nomination": null,
+  "rental_gate_passed": false,
+  "rental_compute_usd_this_goal": 0,
+  "conditional_existing_reserve_usd": 25,
+  "retained_cloud_storage": "Keep workspace per user instruction; historical storage quote is not a live billing audit",
+  "redesigns_executed": 0,
+  "redesign_limit": 1,
+  "research_gpu_job_at_checkpoint": null,
+  "next_command": "python scripts/prepare_profiled_inputs.py --verify",
+  "next_implementation_action": "Implement scripts/profiled_network.py and scripts/check_profiled_lora_bridge.py using the exact two-pass gradient and diagnostic sequence in the handoff",
+  "handoff": "docs/CALIBRATION_AWARE_LORA_HANDOFF.md"
+}

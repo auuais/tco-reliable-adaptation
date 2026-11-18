@@ -15,6 +15,11 @@ jobs:
           repository: cvlab-stonybrook/TCO
           ref: 65387333877723cf99086f7f29089379dd50c59a
           path: third_party/TCO
+      - uses: actions/checkout@v4
+        with:
+          repository: naver/mast3r
+          ref: f5209afc300cec36239a7ac992263f36847bbba0
+          path: third_party/mast3r
       - name: Install CPU loss-test dependencies
         run: |
           python -m pip install torch==2.7.1 --index-url https://download.pytorch.org/whl/cpu
@@ -189,6 +194,11 @@ jobs:
           python scripts/replay_partner_surface_points.py
       - name: Check profiled LoRA mathematical design
         run: python scripts/check_lora_profiled_gradient.py --verify
+      - name: Verify profiled LoRA inputs and production geometry
+        run: |
+          python scripts/prepare_profiled_inputs.py --verify
+          python scripts/check_profiled_splits.py --verify
+          python scripts/check_profiled_calibration.py --verify
       - run: python scripts/score_mast3r_neural_repeat.py verify
       - run: python scripts/replay_heldout_sparse_depth.py
       - run: python scripts/verify_tum_sparse_inputs.py

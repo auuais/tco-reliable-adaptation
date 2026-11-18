@@ -1,0 +1,262 @@
+{
+  "scope": "CPU production-layer validation on synthetic geometry. No model adapter update or accuracy measurement.",
+  "torch_version": "2.6.0+cu124",
+  "device": "cpu",
+  "dtype": "float64 solve / float32 canonical bridge",
+  "upstream_source_sha256": "d811614a10fe7920fb41285c3b8b9162b38a5e1ea68823f76383a2f209d3a49f",
+  "upstream_canonical_values_exact": true,
+  "upstream_canonical_gradient_exact": true,
+  "confidence_gradient_blocked": true,
+  "full_detached_forward_exact": true,
+  "implicit_gradient": -0.06936212097565764,
+  "detached_gradient": -0.497390559551123,
+  "analytical_gradient": -0.06936212097565825,
+  "finite_difference_gradient": -0.06936211989494456,
+  "finite_difference_absolute_error": 1.080713074586015e-09,
+  "normal_equation_max_residual": 1.3003053495053152e-13,
+  "exact_plane_row_error": 1.3877787807814457e-16,
+  "view_permutation_pass": true,
+  "frozen_state_mutation_pass": true,
+  "ridge_sensor_only_pass": true,
+  "unrelated_negative_pixel_permitted": true,
+  "invalid_confidence_filtered": true,
+  "initial_nonpositive_match_filtered": true,
+  "rank_deficiency_detected_despite_positive_ridge": true,
+  "diagnostics": {
+    "singular_values": [
+      26.48537565823286,
+      26.266337512363435,
+      24.08781176713642,
+      23.882092170443133,
+      22.382713909553527
+    ],
+    "data_rank": 5,
+    "singular_ratio": 0.8450970904992983,
+    "support_counts": [
+      12,
+      12,
+      12,
+      12,
+      12
+    ],
+    "every_view_supported": true,
+    "graph_components": [
+      [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    ],
+    "graph_connected": true,
+    "ridge": 0.4897287808554863,
+    "positive_scales": true,
+    "scales": [
+      0.9903379363017808,
+      0.9877352784061579,
+      0.9887032253660523,
+      0.9898128692373847,
+      0.9870034772412916
+    ],
+    "graph_filtering": [
+      {
+        "i": 0,
+        "j": 1,
+        "initial_count": 27,
+        "retained_count": 27,
+        "invalid_confidence": 0,
+        "nonpositive_depth": 0
+      },
+      {
+        "i": 1,
+        "j": 2,
+        "initial_count": 27,
+        "retained_count": 27,
+        "invalid_confidence": 0,
+        "nonpositive_depth": 0
+      },
+      {
+        "i": 2,
+        "j": 3,
+        "initial_count": 27,
+        "retained_count": 27,
+        "invalid_confidence": 0,
+        "nonpositive_depth": 0
+      },
+      {
+        "i": 3,
+        "j": 4,
+        "initial_count": 27,
+        "retained_count": 27,
+        "invalid_confidence": 0,
+        "nonpositive_depth": 0
+      },
+      {
+        "i": 0,
+        "j": 4,
+        "initial_count": 18,
+        "retained_count": 18,
+        "invalid_confidence": 0,
+        "nonpositive_depth": 0
+      }
+    ],
+    "rejected_graph_confidences": 0
+  },
+  "disconnected_diagnostics": {
+    "singular_values": [
+      27.58565846496769,
+      25.98660208096541,
+      24.140763759257656,
+      22.18326196801412,
+      22.11057725875935
+    ],
+    "data_rank": 5,
+    "singular_ratio": 0.8015243604512323,
+    "support_counts": [
+      12,
+      12,
+      12,
+      12,
+      12
+    ],
+    "every_view_supported": true,
+    "graph_components": [
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "graph_connected": false,
+    "ridge": 0.4897287808554863,
+    "positive_scales": true,
+    "scales": [
+      0.9998633588802944,
+      0.9973971715272428,
+      0.9979776040161682,
+      0.9998205208938633,
+      0.9971765733196482
+    ],
+    "graph_filtering": [
+      {
+        "i": 0,
+        "j": 1,
+        "initial_count": 27,
+        "retained_count": 27,
+        "invalid_confidence": 0,
+        "nonpositive_depth": 0
+      },
+      {
+        "i": 1,
+        "j": 2,
+        "initial_count": 27,
+        "retained_count": 27,
+        "invalid_confidence": 0,
+        "nonpositive_depth": 0
+      },
+      {
+        "i": 3,
+        "j": 4,
+        "initial_count": 27,
+        "retained_count": 27,
+        "invalid_confidence": 0,
+        "nonpositive_depth": 0
+      }
+    ],
+    "rejected_graph_confidences": 0
+  },
+  "rank_deficient_diagnostics": {
+    "singular_values": [
+      26.269601503168797,
+      25.438526687469533,
+      23.88732447537134,
+      22.915809178965226,
+      2.941013168128319e-17
+    ],
+    "data_rank": 4,
+    "singular_ratio": 1.1195499740540624e-18,
+    "support_counts": [
+      12,
+      12,
+      12,
+      12,
+      12
+    ],
+    "every_view_supported": true,
+    "graph_components": [
+      [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    ],
+    "graph_connected": true,
+    "ridge": 0.4897287808554863,
+    "positive_scales": true,
+    "scales": [
+      0.9811998099270794,
+      0.8954296986803109,
+      1.0,
+      0.8989852928433659,
+      0.9779146192621729
+    ],
+    "graph_filtering": [
+      {
+        "i": 0,
+        "j": 1,
+        "initial_count": 27,
+        "retained_count": 27,
+        "invalid_confidence": 0,
+        "nonpositive_depth": 0
+      },
+      {
+        "i": 1,
+        "j": 2,
+        "initial_count": 27,
+        "retained_count": 27,
+        "invalid_confidence": 0,
+        "nonpositive_depth": 0
+      },
+      {
+        "i": 2,
+        "j": 3,
+        "initial_count": 27,
+        "retained_count": 27,
+        "invalid_confidence": 0,
+        "nonpositive_depth": 0
+      },
+      {
+        "i": 3,
+        "j": 4,
+        "initial_count": 27,
+        "retained_count": 27,
+        "invalid_confidence": 0,
+        "nonpositive_depth": 0
+      },
+      {
+        "i": 0,
+        "j": 4,
+        "initial_count": 18,
+        "retained_count": 18,
+        "invalid_confidence": 0,
+        "nonpositive_depth": 0
+      }
+    ],
+    "rejected_graph_confidences": 0
+  },
+  "expected_failures": {
+    "missing_support": "Insufficient samples or incompatible observation depth shape",
+    "negative_scale": "Invalid unconstrained calibration scales: [-0.998001998001998, -0.998001998001998, -0.998001998001998, -0.998001998001998, -0.998001998001998]",
+    "query_support_overlap": "Support/query native pixel overlap",
+    "initial_negative_support_depth": "Initial support prediction must be positive before metric conversion",
+    "out_of_bounds_query": "Native pixel outside depth raster"
+  },
+  "pass_all": true
+}

@@ -1,0 +1,14 @@
+{
+  "scope": "Preparation failures, not accuracy experiments",
+  "attempts": [
+    {
+      "id": "environment01",
+      "container": "tco-profiled-environment01",
+      "exit_code": 1,
+      "reason": "Linux Git saw Windows CRLF checkouts as tracked modifications",
+      "resolution": "Compare every tracked blob to its pinned Git object; allow only explicitly recorded CRLF-to-LF equivalence; never rewrite upstream files",
+      "replacement_attempt": "tco-profiled-environment02",
+      "rental_compute_usd": 0
+    }
+  ]
+}
