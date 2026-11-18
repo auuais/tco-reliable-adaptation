@@ -1,10 +1,10 @@
 {
   "goal": "Calibration-aware predictive LoRA accuracy investigation",
   "checkpoint_date": "2026-11-19",
-  "status": "active",
-  "current_phase": "Registered scientific work completed with an archived negative development verdict. Final public CI pending.",
-  "completed_milestone_weight_percent": 65,
-  "percentage_rule": "Conservative whole-milestone credit; completed subchecks are listed separately and are not accuracy evidence",
+  "status": "complete_bounded_negative",
+  "current_phase": "The bounded calibration-aware LoRA study is complete. The registered redesign missed nomination.",
+  "completed_milestone_weight_percent": 75,
+  "percentage_rule": "Completed experimental milestones account for 75% of the initial weights. M4 and M5 are conditional branches that did not open. The bounded negative branch is complete.",
   "milestones": {
     "M0": {
       "weight": 5,
@@ -70,7 +70,7 @@
     },
     "M6": {
       "weight": 10,
-      "status": "final_package_verified_locally_ci_pending",
+      "status": "complete",
       "verified_so_far": [
         "M2 official score replay",
         "Independent420-field180-row compact arithmetic replay",
@@ -84,11 +84,10 @@
         "All 18 repeated controls exactly match the historical endpoints, frozen weights and adapter states.",
         "36-state seal was written before access to either held-source measurement packet.",
         "Source-backed replay, independent 180-view sample replay and public aggregate replay give the same negative result.",
-        "Full redesign evidence verified across 2607 files on separate C and E disks. The report and inspected figure are separately archived."
+        "Full redesign evidence verified across 2607 files on separate C and E disks. The report and inspected figure are separately archived.",
+        "The public research release passed GitHub CI, including the 180-view aggregate verdict replay. The isolated public check reproduced the verdict and all 21 publication archive file hashes match Git."
       ],
-      "pending": [
-        "GitHub Actions on the public research release commit"
-      ]
+      "pending": []
     }
   },
   "evidence": {
@@ -260,13 +259,14 @@
     "m3_preparation": "202 combined CPU fixtures pass. Static registry and completed-attempt byte audit implemented, including exact fitting-count checks. Reference-free converter/replay and pure reference semantics pass 17 pinned CPU fixtures. All24 real fitting-case reports exactly reproduce in pinned image. M3 actual registry/release controller, model acceptance, stage seals, scorer and scientific execution remain pending; no reuse approved."
   },
   "last_observed_ci": {
-    "commit": "b1042cd2ae94ef6138f6b67e09a89f209760c236",
-    "run_id": 44372714619,
+    "commit": "54abf8c70252f965bc813dae329e74bab05a8965",
+    "run_id": 44375055868,
     "conclusion": "success",
-    "scope": "Full CPU validation of the 35-state pre-scoring checkpoint"
+    "url": "https://github.com/auuais/tco-reliable-adaptation/actions/runs/44375055868",
+    "scope": "Full CPU validation on the final research release, including the published compensation verdict replay"
   },
-  "next_command": "gh run list --limit 2 --workflow cpu-validation.yml",
-  "next_implementation_action": "Verify the public research release CI, then record final completion of the bounded branch.",
+  "next_command": "python scripts/replay_compensation_published_metrics.py",
+  "next_implementation_action": "The registered negative branch is complete. No additional experiment is prescribed by this goal.",
   "handoff": "docs/CALIBRATION_AWARE_LORA_HANDOFF.md",
   "weekly_usage_checkpoint": {
     "used_percent": 23,
@@ -275,9 +275,9 @@
     "observation": "2026-11-18T18:42:09.799Z",
     "note": "Observed via native usage tool; shared counter can change"
   },
-  "validated_code_commit": "b1042cd2ae94ef6138f6b67e09a89f209760c236",
-  "last_goal_turn_classification": "progress: all 36 cases completed, were sealed before scoring and reproduced independently. No eligible redesign candidate. Verified full and publication C/E archives. Awaiting final research release CI.",
-  "checkpoint_observed_at_utc": "2026-11-18T18:55:25.973078+00:00",
+  "validated_code_commit": "54abf8c70252f965bc813dae329e74bab05a8965",
+  "last_goal_turn_classification": "progress: final negative verdict, 36 states and 240 updates verified. Source and independent replays agree. Full C/E evidence and publication assets verified. Final public research release CI passed.",
+  "checkpoint_observed_at_utc": "2026-11-18T19:01:35.699058+00:00",
   "screen_result": {
     "nominee": null,
     "all_primary_cases_valid": true,
