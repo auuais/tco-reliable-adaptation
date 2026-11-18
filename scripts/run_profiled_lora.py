@@ -6,6 +6,7 @@ Real runs require --image (or PROFILED_DOCKER_IMAGE) supplied by the launcher.
 """
 import argparse
 from contextlib import contextmanager
+from datetime import datetime, timezone
 import hashlib
 import json
 import os
@@ -197,6 +198,7 @@ def run(args, checked):
         public.mkdir(parents=True, exist_ok=False)
         raw.mkdir(parents=True, exist_ok=False)
         started = time.perf_counter()
+        runtime["started_at_utc"] = datetime.now(timezone.utc).isoformat()
         steps = []
         original_hash = None
         optimizer_updates = 0
@@ -344,6 +346,7 @@ def run(args, checked):
             if input_hashes() != runtime["input_sha256"] or sha(manifest) != runtime["manifest_sha256"]:
                 raise ValueError("Registered inputs or scientific manifest changed during execution")
             summary = dict(**runtime, status="predictions_sealed_without_accuracy_scoring",
+                completed_at_utc=datetime.now(timezone.utc).isoformat(),
                 original_state_sha256=original_hash, pre_endpoint_original_state_sha256=before_endpoint_hash,
                 final_original_state_sha256=after_hash, original_state_unchanged=True,
                 adapter_module_count=len(modules), trainable_parameters=sum(p.numel() for _, p in named_adapters),
@@ -371,6 +374,7 @@ def run(args, checked):
             return summary
         except Exception as error:
             dump_new(public / "failure.json", dict(**runtime, error_type=type(error).__name__,
+                failed_at_utc=datetime.now(timezone.utc).isoformat(),
                 message=str(error), traceback=traceback.format_exc(), original_state_sha256=original_hash,
                 optimizer_updates_completed=optimizer_updates, sealed_step_count=len(steps),
                 seconds=time.perf_counter()-started, pass_all=False,

@@ -120,6 +120,10 @@ def run(args):
     target.mkdir(parents=True,exist_ok=False)
     start = time.perf_counter()
     environment = json.loads((ROOT/"results/lora_profiled_v1/environment.json").read_text())
+    if args.deterministic:
+        torch.use_deterministic_algorithms(True)
+        torch.backends.cudnn.benchmark = False
+        torch.backends.cudnn.deterministic = True
     if args.image != environment["docker_image"] or sha(args.weights/"model.safetensors") != WEIGHTS:
         raise ValueError("Runtime image or checkpoint differs")
     sources = source_hashes(("scripts/check_profiled_lora_bridge.py", "scripts/diagnose_profiled_replay.py"))
@@ -139,6 +143,8 @@ def run(args):
     prepared = prepare_training(case,initial,confidence)
     varying = [(0,1),(0,2)]
     report = dict(scope="Arithmetic diagnostic only; no parameter update or acceptance-threshold change",
+                  deterministic_algorithms=torch.are_deterministic_algorithms_enabled(),
+                  cudnn_deterministic=torch.backends.cudnn.deterministic,
                   source_sha256_lf=sources,input_sha256=inputs,comparisons={},
                   initial_teacher=dict(precision="bfloat16 decoder / float32 heads",allow_tf32=True,collections=1),
                   rope=dict(module=type(model.dec_blocks[0].attn.rope).__module__,
@@ -197,6 +203,7 @@ if __name__ == "__main__":
     parser.add_argument("--attempt",required=True)
     parser.add_argument("--weights",type=Path,default=Path("/weights"))
     parser.add_argument("--image",required=True)
+    parser.add_argument("--deterministic",action="store_true",help="Strict deterministic algorithms; launch with CUBLAS_WORKSPACE_CONFIG=:4096:8")
     args=parser.parse_args()
     if not re.fullmatch(r"[a-zA-Z0-9_-]+",args.attempt):
         parser.error("Invalid attempt ID")
