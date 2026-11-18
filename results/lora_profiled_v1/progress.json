@@ -2,7 +2,7 @@
   "goal": "Calibration-aware predictive LoRA accuracy investigation",
   "checkpoint_date": "2026-11-19",
   "status": "active",
-  "current_phase": "Nine of 36 redesign states verified. The registered serial queue is running Heads/later R0.",
+  "current_phase": "Ten of 36 redesign states verified. The registered serial queue is running Heads/later R1.",
   "completed_milestone_weight_percent": 50,
   "percentage_rule": "Conservative whole-milestone credit; completed subchecks are listed separately and are not accuracy evidence",
   "milestones": {
@@ -50,7 +50,7 @@
     },
     "M3": {
       "weight": 15,
-      "status": "diagnosis_in_progress",
+      "status": "redesign_in_progress",
       "preparation": "202 combined CPU fixtures pass. Static registry and completed-attempt byte audit implemented, including exact fitting-count checks. Reference-free converter/replay and pure reference semantics pass 17 pinned CPU fixtures. All24 real fitting-case reports exactly reproduce in pinned image. M3 actual registry/release controller, model acceptance, stage seals, scorer and scientific execution remain pending; no reuse approved.",
       "initial_confirmation": "not_run_due_to_no_eligible_M2_nominee",
       "diagnosis_design": "manifests/lora_profiled_diagnosis_design_v1.json",
@@ -167,10 +167,11 @@
     "compensation_first_tranche": "results/lora_profiled_compensation_v1/heads_earlier_tranche01.json",
     "compensation_tranche_redesign_backup": "results/lora_profiled_compensation_v1/heads_earlier_redesign_backup01.json",
     "compensation_public_metric_replay": "scripts/replay_compensation_published_metrics.py",
-    "compensation_training_audit_checkpoint": "results/lora_profiled_compensation_v1/training_audit_checkpoint04.json",
+    "compensation_training_audit_checkpoint": "results/lora_profiled_compensation_v1/training_audit_checkpoint05.json",
     "compensation_heads_later_p0_p1_reproduction": "results/lora_profiled_compensation_v1/heads_later_original_control_reproduction.json",
     "compensation_heads_later_p3_reproduction": "results/lora_profiled_compensation_v1/heads_later_profiled_control_reproduction.json",
-    "compensation_pipeline_fixture": "scripts/test_compensation_verdict_pipeline.py"
+    "compensation_pipeline_fixture": "scripts/test_compensation_verdict_pipeline.py",
+    "compensation_heads_later_r0_backup": "results/lora_profiled_compensation_v1/heads_later_R0_backup01.json"
   },
   "accuracy_improvement_established": false,
   "nomination": null,
@@ -181,8 +182,8 @@
   "redesigns_executed": 1,
   "redesign_limit": 1,
   "research_gpu_job_at_checkpoint": {
-    "container": "tco-profiled-compensation-heads-later-r0",
-    "container_id": "a9ca6a8fbc1567a317d7121eb3da2225395eabf9317ecc609da613d810c0db14",
+    "container": "tco-profiled-compensation-heads-later-r1",
+    "container_id": "d2403aab44b89d2f91e699505c67452342005c140b99410cce67cf8e6d097ebd",
     "observed_state": {
       "Status": "running",
       "Running": true,
@@ -190,10 +191,10 @@
       "Restarting": false,
       "OOMKilled": false,
       "Dead": false,
-      "Pid": 27701,
+      "Pid": 27945,
       "ExitCode": 0,
       "Error": "",
-      "StartedAt": "2026-11-18T16:32:20.636094258Z",
+      "StartedAt": "2026-11-18T16:37:31.060205726Z",
       "FinishedAt": "0001-01-01T00:00:00Z"
     },
     "source": "local Docker Desktop named pipe",
@@ -219,19 +220,19 @@
     "conclusion": "success",
     "scope": "Full CPU validation of the eight-state checkpoint and associated code"
   },
-  "next_command": "docker --host npipe:////./pipe/dockerDesktopLinuxEngine inspect tco-profiled-compensation-heads-later-r0",
+  "next_command": "docker --host npipe:////./pipe/dockerDesktopLinuxEngine inspect tco-profiled-compensation-heads-later-r1",
   "next_implementation_action": "Observe exec session 49837 and local Docker before acting. Existing serial queue owns remaining 30 states. On terminal success, verify all 36 and seal, score, replay original arrays, independently replay samples, publish aggregate check, figure and verified C/E verdict. Stop after an attempt failure and preserve partial state; do not start a duplicate queue.",
   "handoff": "docs/CALIBRATION_AWARE_LORA_HANDOFF.md",
   "weekly_usage_checkpoint": {
     "used_percent": 22,
     "remaining_percent": 78,
     "pause_threshold_remaining_percent": 5,
-    "observation": "2026-11-18T16:28:34.909704+00:00",
+    "observation": "2026-11-19T01:38:51.503389+09:00",
     "note": "Observed via native usage tool; shared counter can change"
   },
   "validated_code_commit": "6afb03a57426c43068f7c29bce2e8319dc07d2f7",
-  "last_goal_turn_classification": "progress: fresh Heads/later P3 exactly reproduced all adapter updates and both historical endpoints, archived and independently audited nine cases; tested end-to-end evaluator and independent replay on synthetic positive and one-direction-failure cases",
-  "checkpoint_observed_at_utc": "2026-11-18T16:34:11.962809+00:00",
+  "last_goal_turn_classification": "progress: Heads/later R0 completed, matched the initial P3 optimizer update, and was backed up on C/E; independent unscored training audit now verifies ten cases",
+  "checkpoint_observed_at_utc": "2026-11-18T16:38:51.503389+00:00",
   "screen_result": {
     "nominee": null,
     "all_primary_cases_valid": true,
@@ -331,7 +332,7 @@
     "status": "running_remaining_serial_queue",
     "cases_required": 36,
     "trained_cases_required": 30,
-    "verified_completed_at_checkpoint": 9,
+    "verified_completed_at_checkpoint": 10,
     "completed": [
       {
         "run_id": "heads_earlier_P0",
@@ -440,6 +441,18 @@
         "optimizer_updates": 8,
         "peak_allocated_mib": 4720.7509765625,
         "peak_reserved_mib": 5238.0
+      },
+      {
+        "run_id": "heads_later_R0",
+        "report": "results/lora_profiled_compensation_v1/cases/heads_later_R0/screen01/complete.json",
+        "report_sha256": "245a5400f794f0b641f1dd9a710231c22602a47df6a3c5ecec6bd7053aaa8876",
+        "terminal": "results/lora_profiled_compensation_v1/launches/tco-profiled-compensation-heads-later-r0/terminal.json",
+        "terminal_sha256": "1bd173668873222d0661a045d3576d9b3611f74056e22d768ec7da0a9f4ebcd5",
+        "model_seconds": 276.8628005880164,
+        "local_wall_seconds": 309.530999999959,
+        "optimizer_updates": 8,
+        "peak_allocated_mib": 4720.7509765625,
+        "peak_reserved_mib": 5026.0
       }
     ],
     "engineering_passed": true,
