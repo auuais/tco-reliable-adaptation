@@ -2,7 +2,7 @@
   "goal": "Calibration-aware predictive LoRA accuracy investigation",
   "checkpoint_date": "2026-11-18",
   "status": "active",
-  "current_phase": "M2 complete: no eligible nominee; bounded CPU-only D0 diagnosis pending",
+  "current_phase": "M2 negative; D0 implemented and prospectively registered, production diagnostic pending",
   "completed_milestone_weight_percent": 50,
   "percentage_rule": "Conservative whole-milestone credit; completed subchecks are listed separately and are not accuracy evidence",
   "milestones": {
@@ -124,7 +124,10 @@
     "independent_replay_preparation": "results/lora_profiled_v1/independent_replay_preparation01.json",
     "m2_backup": "results/lora_profiled_v1/backups/m2-20261118-verified01.json",
     "m2_score_backup": "results/lora_profiled_v1/backups/m2-scores-20261118-verified01.json",
-    "diagnosis_design": "manifests/lora_profiled_diagnosis_design_v1.json"
+    "diagnosis_design": "manifests/lora_profiled_diagnosis_design_v1.json",
+    "d0_execution_registration": "manifests/lora_profiled_diagnosis_execution_v1.json",
+    "d0_synthetic_acceptance": "results/lora_profiled_d0_v1/synthetic_checks02.json",
+    "d0_source_layout": "results/lora_profiled_d0_v1/source_layout.json"
   },
   "accuracy_improvement_established": false,
   "nomination": null,
@@ -156,24 +159,24 @@
     "m3_preparation": "202 combined CPU fixtures pass. Static registry and completed-attempt byte audit implemented, including exact fitting-count checks. Reference-free converter/replay and pure reference semantics pass 17 pinned CPU fixtures. All24 real fitting-case reports exactly reproduce in pinned image. M3 actual registry/release controller, model acceptance, stage seals, scorer and scientific execution remain pending; no reuse approved."
   },
   "last_observed_ci": {
-    "commit": "3255e937019542213df466dfb008352580f0a6c1",
-    "run_id": 44313491690,
+    "commit": "f1b4f17dd6daa809031dc7c8871276b37c5eb049",
+    "run_id": 44317619910,
     "conclusion": "success",
-    "scope": "Full CPU workflow including202 M3 tests and21 independent replay tests, before final study-result publication checkpoint"
+    "scope": "Complete CPU workflow and independent actual M2 compact replay"
   },
-  "next_command": "Get-Content docs/CALIBRATION_AWARE_LORA_HANDOFF.md -Encoding utf8",
-  "next_implementation_action": "Read immediate D0 work package and source map; implement synthetic math/strict artifact allowlist, then freeze executable registration before diagnostic tensor access. No optimizer/model forward/rental. Use one bounded no-update D1 only if needed and at most one evidence-supported redesign.",
+  "next_command": "python scripts/run_profiled_d0_local.py run --name tco-m3-d0-run01 --attempt d0_01",
+  "next_implementation_action": "After this registration/source commit, run CPU-only D0 once, inspect all fixed diagnostics, replay into a fresh receipt and decide whether one bounded no-update D1 is necessary. No model forward, optimizer update or rental.",
   "handoff": "docs/CALIBRATION_AWARE_LORA_HANDOFF.md",
   "weekly_usage_checkpoint": {
-    "used_percent": 8,
-    "remaining_percent": 92,
+    "used_percent": 10,
+    "remaining_percent": 90,
     "pause_threshold_remaining_percent": 5,
-    "observation": "2026-11-18T13:46:44.945675+00:00",
-    "note": "Observed via native usage tool during documentation checkpoint; shared counter can change."
+    "observation": "2026-11-18 at the start of D0 continuation; exact observation timestamp was not recorded",
+    "note": "Observed at start of D0 continuation via native tool; shared counter can change"
   },
-  "validated_code_commit": "3255e937019542213df466dfb008352580f0a6c1",
-  "last_goal_turn_classification": "progress: finished negative M2 evidence and documented actionable D0-to-redesign handoff; diagnosis not yet executed",
-  "checkpoint_observed_at_utc": "2026-11-18T13:46:44.945675+00:00",
+  "validated_code_commit": "f1b4f17dd6daa809031dc7c8871276b37c5eb049",
+  "last_goal_turn_classification": "progress: implemented and tested D0 diagnosis,66 pinned CPU tests pass; byte-only registration prepared with verified local container exit; no production diagnostic arrays decoded yet",
+  "checkpoint_observed_at_utc": "2026-11-18T14:12:17.851971+00:00",
   "screen_result": {
     "nominee": null,
     "all_primary_cases_valid": true,
