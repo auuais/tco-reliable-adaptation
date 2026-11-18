@@ -2,7 +2,7 @@
   "goal": "Calibration-aware predictive LoRA accuracy investigation",
   "checkpoint_date": "2026-11-19",
   "status": "active",
-  "current_phase": "Thirteen of 36 redesign states verified. Both Heads directions are complete. The serial queue is running Chess/earlier P1.",
+  "current_phase": "Fourteen of 36 redesign states verified. The serial queue is running Chess/earlier P3.",
   "completed_milestone_weight_percent": 50,
   "percentage_rule": "Conservative whole-milestone credit; completed subchecks are listed separately and are not accuracy evidence",
   "milestones": {
@@ -167,7 +167,7 @@
     "compensation_first_tranche": "results/lora_profiled_compensation_v1/heads_earlier_tranche01.json",
     "compensation_tranche_redesign_backup": "results/lora_profiled_compensation_v1/heads_earlier_redesign_backup01.json",
     "compensation_public_metric_replay": "scripts/replay_compensation_published_metrics.py",
-    "compensation_training_audit_checkpoint": "results/lora_profiled_compensation_v1/training_audit_checkpoint08.json",
+    "compensation_training_audit_checkpoint": "results/lora_profiled_compensation_v1/training_audit_checkpoint09.json",
     "compensation_heads_later_p0_p1_reproduction": "results/lora_profiled_compensation_v1/heads_later_original_control_reproduction.json",
     "compensation_heads_later_p3_reproduction": "results/lora_profiled_compensation_v1/heads_later_profiled_control_reproduction.json",
     "compensation_pipeline_fixture": "scripts/test_compensation_verdict_pipeline.py",
@@ -176,7 +176,8 @@
     "compensation_complete_heads_audit": "results/lora_profiled_compensation_v1/training_audit_checkpoint07.json",
     "compensation_heads_later_r2_backup": "results/lora_profiled_compensation_v1/heads_later_R2_backup01.json",
     "compensation_chess_earlier_p0_backup": "results/lora_profiled_compensation_v1/chess_earlier_P0_backup01.json",
-    "compensation_chess_earlier_p0_reproduction": "results/lora_profiled_compensation_v1/chess_earlier_frozen_control_reproduction.json"
+    "compensation_chess_earlier_p0_reproduction": "results/lora_profiled_compensation_v1/chess_earlier_frozen_control_reproduction.json",
+    "compensation_chess_earlier_p1_backup": "results/lora_profiled_compensation_v1/chess_earlier_P1_backup01.json"
   },
   "accuracy_improvement_established": false,
   "nomination": null,
@@ -187,8 +188,8 @@
   "redesigns_executed": 1,
   "redesign_limit": 1,
   "research_gpu_job_at_checkpoint": {
-    "container": "tco-profiled-compensation-chess-earlier-p1",
-    "container_id": "6acda8d30f18894b6152020123985fd623129ccdbe99914164a466679061c435",
+    "container": "tco-profiled-compensation-chess-earlier-p3",
+    "container_id": "065f69f91652b696320ad1f6d232b35c6780d2571b3d2068f7cf8564859ba063",
     "observed_state": {
       "Status": "running",
       "Running": true,
@@ -196,10 +197,10 @@
       "Restarting": false,
       "OOMKilled": false,
       "Dead": false,
-      "Pid": 28610,
+      "Pid": 28822,
       "ExitCode": 0,
       "Error": "",
-      "StartedAt": "2026-11-18T16:49:49.208754111Z",
+      "StartedAt": "2026-11-18T16:55:19.409557296Z",
       "FinishedAt": "0001-01-01T00:00:00Z"
     },
     "source": "local Docker Desktop named pipe",
@@ -225,19 +226,19 @@
     "conclusion": "success",
     "scope": "Full CPU validation of the eleven-state checkpoint"
   },
-  "next_command": "docker --host npipe:////./pipe/dockerDesktopLinuxEngine inspect tco-profiled-compensation-chess-earlier-p1",
+  "next_command": "docker --host npipe:////./pipe/dockerDesktopLinuxEngine inspect tco-profiled-compensation-chess-earlier-p3",
   "next_implementation_action": "Observe exec session 49837 and local Docker before acting. Existing serial queue owns remaining 30 states. On terminal success, verify all 36 and seal, score, replay original arrays, independently replay samples, publish aggregate check, figure and verified C/E verdict. Stop after an attempt failure and preserve partial state; do not start a duplicate queue.",
   "handoff": "docs/CALIBRATION_AWARE_LORA_HANDOFF.md",
   "weekly_usage_checkpoint": {
     "used_percent": 22,
     "remaining_percent": 78,
     "pause_threshold_remaining_percent": 5,
-    "observation": "2026-11-18T16:50:48.231Z",
+    "observation": "2026-11-18T16:56:32.585Z",
     "note": "Observed via native usage tool; shared counter can change"
   },
   "validated_code_commit": "3c93e3e6a7e4db2f0ad57b64d7309c408b1160c4",
-  "last_goal_turn_classification": "progress: reverse Heads R2 and Chess/earlier P0 completed and were independently audited and archived on C/E. P3/R0/R1 shared the first full update and R1/R2 shared the first forward with distinct gradients in both Heads conditions. Chess/earlier P0 exact reproduction: True.",
-  "checkpoint_observed_at_utc": "2026-11-18T16:51:19.101250+00:00",
+  "last_goal_turn_classification": "progress: Chess/earlier P1 completed, matched all historical fingerprints and was verified on C/E. The expanded training audit compares all 18 planned repeat controls against the original M2 seal, reports 8 exact so far, and detected an intentionally changed in-memory update fingerprint.",
+  "checkpoint_observed_at_utc": "2026-11-18T16:56:54.948950+00:00",
   "screen_result": {
     "nominee": null,
     "all_primary_cases_valid": true,
@@ -337,7 +338,7 @@
     "status": "running_remaining_serial_queue",
     "cases_required": 36,
     "trained_cases_required": 30,
-    "verified_completed_at_checkpoint": 13,
+    "verified_completed_at_checkpoint": 14,
     "completed": [
       {
         "run_id": "heads_earlier_P0",
@@ -494,6 +495,18 @@
         "optimizer_updates": 0,
         "peak_allocated_mib": 3666.69287109375,
         "peak_reserved_mib": 4734.0
+      },
+      {
+        "run_id": "chess_earlier_P1",
+        "report": "results/lora_profiled_compensation_v1/cases/chess_earlier_P1/screen01/complete.json",
+        "report_sha256": "ac5882403efd4a31008b5cb07dc045d250272f0fb515afaa4471aaafa0b8fe71",
+        "terminal": "results/lora_profiled_compensation_v1/launches/tco-profiled-compensation-chess-earlier-p1/terminal.json",
+        "terminal_sha256": "ab1df9c40a780221da8bfd90c43bd48eaf9b6e0d8a44e88f467131832aa53e8d",
+        "model_seconds": 295.4105337150395,
+        "local_wall_seconds": 329.3279999997467,
+        "optimizer_updates": 8,
+        "peak_allocated_mib": 4357.19140625,
+        "peak_reserved_mib": 4782.0
       }
     ],
     "engineering_passed": true,
@@ -506,6 +519,11 @@
     "rental_compute_usd": 0,
     "closed_tranche_session_id": 23437,
     "closed_tranche_exit_code": 0,
-    "remaining_queue_command": "python scripts/run_profiled_compensation_batch.py --execute --limit 30"
+    "remaining_queue_command": "python scripts/run_profiled_compensation_batch.py --execute --limit 30",
+    "historical_control_fingerprints": {
+      "expected": 18,
+      "checked": 8,
+      "exact": 8
+    }
   }
 }

@@ -111,6 +111,7 @@ def document(score, initial, audit):
         reasons = "none"
     common = ", ".join(s.title() for s in verdict["same_scenes_improving_over_p1"]) or "none"
     hours = audit["total_local_wall_seconds"]/3600
+    reproduction = audit["historical_control_reproduction"]
     return f"""# Calibration-aware predictive LoRA in MASt3R
 
 {recommendation}
@@ -145,7 +146,7 @@ The held-source measurement covers sparse depth on three development rooms. Both
 
 ## Mechanism, repeatability and cost
 
-The shared first full-gradient step matched exactly across P3, R0 and R1 in all six conditions. R1 and R2 shared their first forward computation. The output-adjoint replay and parameter finite differences passed the real-model engineering check. The fresh P0, P1 and P3 controls on Heads reproduced both historical endpoints exactly in each direction. [Training audit](training_audit.json) · [Engineering bridge](engineering/bridge01/report.json) · [Heads earlier](heads_earlier_tranche01.json) · [Heads later P0 and P1](heads_later_original_control_reproduction.json) · [Heads later P3](heads_later_profiled_control_reproduction.json)
+The shared first full-gradient step matched exactly across P3, R0 and R1 in all six conditions. R1 and R2 shared their first forward computation. The output-adjoint replay and parameter finite differences passed the real-model engineering check. Across {reproduction['checked']} fresh P0, P1 and P3 controls, {reproduction['exact']} matched both historical reconstruction endpoints, the frozen backbone fingerprint and each recorded adapter update exactly. The audit records every comparison against the original prediction seal. [Training audit](training_audit.json) · [Engineering bridge](engineering/bridge01/report.json)
 
 The compensation norm below is the training residual change associated with re-fitting scale. The fold 0 value is measured before macro-step index 6 and the fold 1 value before macro-step index 7. Both use the last recorded pre-update loss for that fold. These are adaptation diagnostics and use the allowed packet.
 
@@ -190,6 +191,8 @@ def main():
     require(audit["pass_all"] and audit["complete_count"] == seal["completed_states"] == 36
             and audit["total_optimizer_updates"] == 240 and seal["pass_all"],
             "Expected all 36 audited redesign states and 240 updates")
+    history = audit["historical_control_reproduction"]
+    require(history["checked"] == history["expected"] == 18, "Expected all 18 historical control comparisons")
     require({row["run_id"]: row["report"]["sha256"] for row in audit["cases"]}
             == {row["run_id"]: row["selected"]["report_sha256"] for row in seal["cases"]},
             "Training audit and sealed prediction reports differ")

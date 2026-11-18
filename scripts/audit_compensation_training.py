@@ -13,6 +13,8 @@ from score_profiled_compensation import ATTEMPT
 
 INITIAL_FIELDS = ("loss_before_update", "gradient_sha256_unclipped", "adapter_state_sha256")
 FORWARD_FIELDS = ("loss_before_update", "scales_before_update", "compensation_terms")
+ORIGINAL_SEAL = "results/lora_profiled_v1/prediction_seal.json"
+REPEATED_ARMS = {"P0", "P1", "P3"}
 
 
 def close(first, second):
@@ -75,8 +77,37 @@ def condition_checks(grouped):
     return result
 
 
+def historical_control_checks(registry, complete):
+    """Compare fresh fingerprints with the sealed M2 controls without loading arrays."""
+    seal = read(ROOT / ORIGINAL_SEAL)
+    require(seal["pass_all"] and seal["completed_states"] == 36, "Original prediction seal is incomplete")
+    originals = {case["run_id"]: case["selected"] for case in seal["cases"]
+                 if case["arm"] in REPEATED_ARMS}
+    expected = {job["run_id"] for job in registry["jobs"] if job["arm"] in REPEATED_ARMS}
+    require(originals.keys() == expected and len(expected) == 18, "Original and fresh controls differ")
+    rows = []
+    for run, fresh in complete.items():
+        if run not in originals:
+            continue
+        bound = originals[run]
+        identity = file_identity(bound["report"])
+        require(identity["sha256"] == bound["report_sha256"], "Original control report changed: " + run)
+        original = read(ROOT / bound["report"])
+        require(original["run_id"] == run and original["optimizer_updates"] == fresh["optimizer_updates"],
+                "Original and fresh control schedules differ: " + run)
+        matches = {key: bound[key] == fresh["endpoint"][key] for key in ("native_sha256", "final_sha256")}
+        matches["original_state_sha256"] = bound["original_state_sha256"] == fresh["original_state_sha256"]
+        matches["all_adapter_update_hashes"] = (
+            [step["adapter_state_sha256"] for step in original["steps"]]
+            == [step["adapter_state_sha256"] for step in fresh["steps"]])
+        rows.append(dict(run_id=run, historical_report=identity, matches=matches,
+                         all_fingerprints_equal=all(matches.values())))
+    return dict(prediction_seal=file_identity(ORIGINAL_SEAL), expected=len(expected), checked=len(rows),
+                exact=sum(row["all_fingerprints_equal"] for row in rows), cases=rows)
+
+
 def build(registry, *, complete_only=True):
-    cases, grouped, pending = [], {}, []
+    cases, grouped, completed_reports, pending = [], {}, {}, []
     manifest = ROOT / EXECUTION
     for job in registry["jobs"]:
         run = job["run_id"]
@@ -97,6 +128,7 @@ def build(registry, *, complete_only=True):
         for index, row in enumerate(steps):
             check_trace(job["arm"], row, index)
         grouped.setdefault(f"{job['scene']}_{job['adaptation_source']}", {})[job["arm"]] = report
+        completed_reports[run] = report
         entry = dict(run_id=run, scene=job["scene"], side=job["adaptation_source"], arm=job["arm"],
                      report=file_identity(completed["complete"]), terminal=file_identity(term),
                      model_seconds=report["seconds"], local_wall_seconds=terminal["wall_seconds"],
@@ -122,6 +154,7 @@ def build(registry, *, complete_only=True):
                 scope="Training traces and resource summaries. Report excludes held-source scores.",
                 verified_at_utc=now(), cases=cases, complete_count=len(cases), pending=pending,
                 conditions=conditions, by_arm=totals,
+                historical_control_reproduction=historical_control_checks(registry, completed_reports),
                 total_optimizer_updates=sum(row["optimizer_updates"] for row in cases),
                 total_local_wall_seconds=math.fsum(row["local_wall_seconds"] for row in cases),
                 peak_allocated_mib=max(row["peak_allocated_mib"] for row in cases),

@@ -10,7 +10,7 @@ The six Heads/earlier states completed with 40 optimizer updates across the five
 
 **After all cases complete**
 
-Use the prospectively registered score path below. It verifies all endpoints and the first-step equivalence of P3, R0 and R1 across all six scene/source conditions. It saves the global prediction seal before any held-source prediction is compared with a measurement.
+Use the prospectively registered score path below. It verifies all endpoints and the first-step equivalence of P3, R0 and R1 across all six scene/source conditions. The training audit also records exact endpoint, frozen-weight and adapter-update fingerprint comparisons for the 18 repeated controls against the original prediction seal. The scorer saves the new global prediction seal before any held-source prediction is compared with a measurement.
 
 ```powershell
 python scripts/audit_compensation_training.py --output results/lora_profiled_compensation_v1/training_audit.json
