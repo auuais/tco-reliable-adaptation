@@ -27,6 +27,7 @@ The two asymmetric candidates did change aligned depth. On selector pixels their
 ## Verification and local resources
 
 - All six cases scored all nine distinct candidates. Each fixed held view retained 53–64 measurements. Choices were sealed before held scoring. The independent replay verified 270 public held-view rows and 540 private selector and held-view rows, including their gauge and overlap mask.
+- All five protocol fixtures passed inside the pinned image. GitHub's CPU workflow runs the four portable fixtures and the public replay. The real factor assignment fixture imports the full MASt3R runtime and runs in the pinned image.
 - The first bridge case matched all four historical reconstructions, selector scores, and gauges exactly. The additional full-step repeat had zero difference across the metric-depth raster and the same held-view scores.
 - The RTX 3080 rendered 34 candidates and one repeat locally. The other 20 endpoints were reused after verifying snapshot, model, trace and output digests. The six launches took 38.0 minutes total, including 28.8 minutes in fresh endpoint rendering and its checks. Peak allocation for a fresh endpoint was 3.62 GiB. All six containers stopped successfully on the first attempt. Local working evidence used 5.39 GB including matching caches. RunPod compute cost was **USD 0**.
 - The verified second-disk snapshot includes the compact private evidence for replay. The public repository carries the registration, scores, and receipts. [CPU replay](independent_replay.json) · [Backup receipt](archive_receipt.json)
