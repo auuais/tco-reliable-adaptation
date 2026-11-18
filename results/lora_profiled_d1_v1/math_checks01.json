@@ -1,0 +1,51 @@
+{
+  "schema": "profiled_d1_math_preparation_v1",
+  "pass_all": true,
+  "tests_run": 32,
+  "skipped": [],
+  "seconds": 0.11778273503296077,
+  "source_sha256_lf": {
+    "scripts/profiled_d1_math.py": "85e31bd808a4514bf7ac83a986509f879e262ab4a22f02c6d8dccef4578ba2e8",
+    "scripts/test_profiled_d1_math.py": "fc51ced9490bbe829e3ce85e3e48f044599aa2ce32c20782f9744d010ed9f095"
+  },
+  "python": "3.11.13",
+  "numpy": "2.1.2",
+  "tolerances": {
+    "arithmetic": "numpy_float64",
+    "columns": 5,
+    "identity_rtol": 1e-10,
+    "identity_atol": 1e-10,
+    "stationarity_relative_backward_error_max": 1e-12,
+    "finite_difference_steps": [
+      0.01,
+      0.003,
+      0.001
+    ],
+    "finite_difference_rtol": 1e-05,
+    "finite_difference_atol": 1e-08,
+    "finite_difference_minimum_passes": 2,
+    "finite_difference_smallest_step_must_pass": true,
+    "finite_difference_rule": "Both residual-vector and scalar-loss checks must pass per step",
+    "query_loss_resolution": {
+      "atol": 1e-10,
+      "rtol": 1e-10,
+      "formula": "atol+rtol*max(abs(J0),abs(J1))",
+      "resolved_rule": "abs(J0-J1) must be strictly greater than the floor"
+    },
+    "compensation_norm_resolution": {
+      "atol": 1e-10,
+      "rtol": 1e-10,
+      "formula": "atol+rtol*max(norm(t),norm(c),norm(t+c))",
+      "attenuation_rule": "opposing nonzero t,c AND norm(t)-norm(t+c) strictly exceeds floor"
+    },
+    "interpretation_scope": "Float64 arithmetic resolution only; not statistical significance or accuracy",
+    "zero_denominator": "undefined/null; never add epsilon or discard a row",
+    "scale_policy": "All five fitted scales, including both FD perturbations, must be finite and positive",
+    "zero_ridge": "Allowed only with full support-column rank; production wrapper requires its registered positive ridge"
+  },
+  "production_tensors_decoded": false,
+  "model_forward_calls": 0,
+  "optimizer_updates": 0,
+  "rental_usd": 0,
+  "execution_ready": false
+}

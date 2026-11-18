@@ -1,6 +1,56 @@
 # Conditional diagnosis of surrogate-to-native disagreement
 
-The M2 inventory, global seal and registered scoring are now complete with no eligible nominee. This guide supplies the mathematics for the bounded failure diagnosis; it is not evidence that a cause has been observed. Start with the CPU-only D0 design and executable-registration requirements in the [current handoff](CALIBRATION_AWARE_LORA_HANDOFF.md). The broader diagnostic options below are conditional D1 choices, not permission to load additional tensors or launch them all. Preserve the completed screen and its frozen sources. After its verdict, use this guide with the [mathematical plan](FROZEN_LORA_ACCURACY_PLAN.md), [goal contract](CALIBRATION_AWARE_LORA_GOAL.md) and [failure policy](PROFILED_LORA_TERMINAL_FAILURE_POLICY.md). All diagnostic measurements below use model outputs, recorded correspondence identities and the permitted adaptation packet only; support **and** query are training observations.
+The M2 inventory, global seal and registered scoring are now complete with no eligible nominee. This guide supplies the mathematics for the bounded failure diagnosis; it is not evidence that a cause has been observed. D0 is now complete with an exact replay; start the selected D1 work package below and read the [current handoff](CALIBRATION_AWARE_LORA_HANDOFF.md). The broader diagnostic options below are conditional D1 choices, not permission to load additional tensors or launch them all. Preserve the completed screen and its frozen sources. After its verdict, use this guide with the [mathematical plan](FROZEN_LORA_ACCURACY_PLAN.md), [goal contract](CALIBRATION_AWARE_LORA_GOAL.md) and [failure policy](PROFILED_LORA_TERMINAL_FAILURE_POLICY.md). All diagnostic measurements below use model outputs, recorded correspondence identities and the permitted adaptation packet only; support **and** query are training observations.
+
+**Selected D1 work package after verified D0**
+
+D0 found a nonzero P3 raw-depth change with 68.47% mean per-pair non-scalar energy. It does not establish whether that change is useful or survives fusion/calibration. The [prospective D1 design](../manifests/lora_profiled_d1_design_v1.json) therefore selects one paired inference/calibration-response probe, emphasizing preservation of learned shape rather than assuming scale absorption. D1 has not accessed production arrays or run a model. Its [pure math preparation](../results/lora_profiled_d1_v1/math_checks01.json) passes 32 pinned CPU tests; that is not production acceptance.
+
+Implement the missing layers without changing the design:
+
+| Component | Required behavior |
+|---|---|
+| Strict D1 inputs and byte registry | Exact member allowlists, checkpoint/config, parent-seal links, selected teacher/adapter/cache hashes, unchanged source and runtime |
+| Model capture | One pristine model; five encoder-feature computations; 20 pristine teacher pairs; then seed42/install LoRA/load saved P3 factors; 20 final pairs on the same features; no optimizer/backward |
+| Common fusion | Same pinned canonical_depth, ascending partner order, FP32 XYZ/confidence on the same CUDA device, autocast disabled, pristine BF16 confidence for all four states; only then promote depth to float64 |
+| Sensor-only P3 preparation | Both spatial folds built once from B0, graph weight zero, fixed B0 gauges/normalizers/Huber factors/ridge; prove equivalence without unused graph tensors |
+| Matrix bridge | Exact A,b from assemble_system and explicit Q,d from query_residual's formula; verify Q@s-d agrees with the existing query-residual function |
+| Controller and reports | Prospective executable registration and numerical limits; actual call/state/memory/time checks; teacher acceptance before further comparisons; immutable failures; CPU replay and backups |
+
+The production sequence mirrors the original runner. Construct the **unwrapped pristine model**, extract its five frozen BF16 encoder features, and collect the 20 BF16-decoder/FP32-head teacher pairs. Reproduce the archived fused teacher depth/confidence and both fold gauges, normalizers, ridge and support/query counts. Stop on mismatch. Only afterward install the 144 LoRA modules using Torch seed42, verify the original initial adapter digest, freeze all parameters again, load the saved final P3 factors, verify their digest, and collect the second 20 pairs using the same feature objects. Keep original tensor references and verify their digest before/after; no optimizer is constructed and no network backward call is allowed.
+
+Historical per-partner teacher confidence was not saved. Its reconstruction is checked through pinned deterministic source/runtime and the archived fused outputs; do not claim a historical per-partner byte match. Freeze this reconstructed confidence for all B0/B1/F0/F1 fusions. Read the existing FP32 P0/P3 raw first-camera XYZ caches after teacher acceptance; no new FP32 decoder forward is needed. D0's depth-only loader cannot supply exact XYZ fusion and must not be silently reused for this purpose.
+
+The four states are pristine/final under the original training path (B0/B1) and saved fresh FP32 inference (F0/F1). Primary adaptation comparisons are B0→B1 and F0→F1. Secondary inference shifts are B0→F0 and B1→F1. Report per-partner and per-view fused changes on D0's same fixed 768-pixel grid and separate adaptation coordinates. Keep both spatial folds separate; do not select a favorable fold, confidence variant or pair.
+
+Allowed archive members are explicit:
+
+- Selected RGB input archive: `images` only.
+- Earlier packet: `heads_25`, `heads_225`, `heads_425`, `heads_625`, `heads_825`, selected by registered `__rows`; column2 is axial depth and source frame must equal target−4.
+- Split archive: only the corresponding `heads_earlier_FRAME__rows`, `__xy`, `__fold` members.
+- Supplied pose archive: `heads_clean` only. Preserve the original `intrinsic()` function, including its 1.12 focal multiplier and pixel-center resizing.
+- Selected P3 teacher NPZ: `depth`, `confidence`; selected P3 adapter: the 288 established factor members.
+- P0/P3 raw forward caches: all 20 ordered pairs each; first-camera XYZ only for fusion.
+
+Do not call `prepare_training()` wholesale: it also opens unused matching caches and prepares P1-only fields. P3's graph weight is zero. Use `partition` and `prepare_calibration(..., matches=[], ...)`, then test equality of sensor A,b,ridge and queries with the full preparation at graph weight zero. Match archived teacher sensor fields; do not claim to reproduce unused graph-filtering metadata.
+
+For each fold and each inference path, refit s0/s1 using exactly the same frozen preparation. The finite decomposition is exact:
+
+```text
+s_k = solve(A_k^T A_k + lambda I, A_k^T b + lambda*1)
+e_k = Q_k s_k - d
+t = (Q1-Q0) s0
+c = Q1 (s1-s0)
+e1-e0 = t+c
+```
+
+Report all vectors, losses, norms, cosine, survival ratio, identity residuals and conditioning. Zero denominators are undefined. Opposing compensation is attenuation only if the surviving norm is smaller beyond the prospectively fixed arithmetic floor; overshoot can amplify the change. The direct term is a frozen-s0 counterfactual, not a forward-identical detached-gradient arm.
+
+At final B1, use the output-space direction v=z_B1−z_B0 and the exact derivative below. Refit scales at every float64 perturbation z_B1±h*v. The pure math module retains all three fixed h values (0.01,0.003,0.001); its prospective numerical acceptance requires at least two passing, including the smallest, with residual-vector, loss and stationarity checks. This remains an output-space derivative, not a network parameter Jacobian. Fixed loss/norm resolution floors classify arithmetic changes only; they do not establish significance or accuracy.
+
+Interpretation must follow both folds. If no resolved BF16 adaptation benefit exists in both, the premise that useful training geometry was lost downstream is unsupported. Benefit in BF16 that disappears/reverses in FP32 with common fusion supports a mismatch at this defined boundary. Surviving benefit in both paths leaves overfitting, matching and native alignment unresolved. Compensation along the observed direction does not itself prove it is harmful. A mixed fold result stays mixed. No outcome alone releases redesigned training or rentals.
+
+Resource limits are 40 new decoder calls, five encoder-feature computations, no network backward/optimizer, one local job, at most60 minutes model work plus30 minutes CPU analysis. The design fixes 8192MiB allocated/9216MiB reserved CUDA ceilings and an8GiB host container cap. Freeze exact enforcement, source/runtime identities, teacher-comparison tolerances and commands in a separate executable registration before new access. Preserve the current-config/historical-M2-config distinction. A failed engineering check stops interpretation; do not quietly expand the probe.
 
 **The exact derivative we need to diagnose**
 

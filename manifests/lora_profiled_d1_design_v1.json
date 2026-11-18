@@ -1,0 +1,221 @@
+{
+  "schema": "profiled_lora_d1_design_v1",
+  "prepared_at_utc": "2026-11-18T14:25:43.264455+00:00",
+  "execution_ready": false,
+  "scientific_redesigns_consumed": 0,
+  "scientific_redesign_limit": 1,
+  "trigger": {
+    "d0_report": {
+      "file": "results/lora_profiled_d0_v1/attempts/d0_01/report.json",
+      "sha256": "06fc6afaefe87350489cddaa13cf644fa9c58c33296eba2eedae8d882bbe4422"
+    },
+    "d0_execution": {
+      "file": "manifests/lora_profiled_diagnosis_execution_v1.json",
+      "sha256": "7a488019dfd412732bcee360d5d773d701f72da8119085321d429dbb03e758e7"
+    },
+    "finding": "P3 has measurable raw change with68.47% mean per-pair non-scalar energy; actual fusion/calibration/inference-path preservation remains unresolved",
+    "exact_d0_replay_required_before_d1_execution": true
+  },
+  "question": "Does the observed P3 shape change survive fixed confidence fusion, support-fitted calibration and the change from training inference to saved fresh FP32 inference?",
+  "stage": "D1_single_paired_inference_and_calibration_response_probe_without_updates",
+  "scope": {
+    "scene": "heads",
+    "adaptation_source": "earlier",
+    "frames": [
+      25,
+      225,
+      425,
+      625,
+      825
+    ],
+    "trained_state": "heads_earlier_P3",
+    "frozen_state": "heads_earlier_P0",
+    "selection_rule": "Same prospectively selected D0 case and smaller full-gradient arm; no best-scene or best-fold selection",
+    "directed_pairs": 20,
+    "support_folds": [
+      0,
+      1
+    ],
+    "graph_weight": 0,
+    "inference_states": [
+      "B0_pristine_training_path",
+      "B1_final_P3_training_path",
+      "F0_saved_pristine_FP32",
+      "F1_saved_final_P3_FP32"
+    ],
+    "confidence_policy": "Pristine unwrapped model first, reproducing20 BF16 teacher pairs; same reconstructed per-partner confidences for fusion of all four states",
+    "measured_depth_role": "Both spatial folds are permitted adaptation observations, never final test data",
+    "fusion_policy": {
+      "operation": "Pinned profiled_network.fuse / profiled_calibration.canonical_depth",
+      "partner_order": "ascending j excluding first-view i",
+      "point_dtype": "float32",
+      "confidence_dtype": "float32",
+      "device": "same local CUDA device for all four states",
+      "autocast": false,
+      "promote_to_float64": "Only after identical FP32 fusion",
+      "historical_confidence_limit": "No historical per-partner confidence bytes were archived; validate deterministic reconstruction against sealed fused depth/confidence"
+    },
+    "calibration_preparation": "Construct both support states once from B0 only, preserving its gauges, sensor normalizers, robust factors and ridge for B0/B1/F0/F1; do not initialize separately from FP32 outputs",
+    "graph_zero_policy": "Use matches=[] and graph_weight=0; prove sensor-only A,b,ridge/query equivalence in synthetic tests instead of loading unused correspondence caches via prepare_training",
+    "comparisons": {
+      "primary": [
+        "B0_to_B1",
+        "F0_to_F1"
+      ],
+      "secondary_inference_shift": [
+        "B0_to_F0",
+        "B1_to_F1"
+      ],
+      "derivative": "B1 only along B1-B0 output-space direction",
+      "fold_aggregation": "None; retain both folds and identify disagreement"
+    },
+    "functional_statistics": {
+      "coordinates": "Same fixed native768-pixel grid and separate allowed earlier adaptation coordinates as D0",
+      "per_partner": true,
+      "per_view_fused": true,
+      "grid": {
+        "native_shape": [
+          384,
+          512
+        ],
+        "x_start": 8,
+        "y_start": 8,
+        "stride": 16,
+        "points_per_view": 768
+      },
+      "no_candidate_dependent_filtering": true
+    }
+  },
+  "resources": {
+    "rental_usd": 0,
+    "local_gpu_only": true,
+    "max_concurrent_jobs": 1,
+    "max_local_model_wall_minutes": 60,
+    "max_cpu_analysis_wall_minutes": 30,
+    "frozen_encoder_feature_computations": 5,
+    "pristine_training_path_decoder_calls": 20,
+    "final_training_path_decoder_calls": 20,
+    "total_new_decoder_calls": 40,
+    "new_FP32_decoder_calls": 0,
+    "network_backward_calls": 0,
+    "optimizer_updates": 0,
+    "rule": "Prepare locally, stop on failure/cap; no retry with changed scientific settings",
+    "max_cuda_allocated_mib": 8192,
+    "max_cuda_reserved_mib": 9216,
+    "max_container_host_memory_gib": 8,
+    "outer_local_model_deadline_seconds": 3650,
+    "outer_cpu_analysis_deadline_seconds": 1850
+  },
+  "immutable_model": {
+    "checkpoint": {
+      "file": "model.safetensors",
+      "sha256": "0a615eb05fa9db654050aa655945ee5696e7c6c1b7f93f1ee8c37249010f6feb",
+      "bytes": 2754661648
+    },
+    "config": {
+      "file": "config.json",
+      "sha256": "718eb93dc4f9e4332b60cc0041af962d712cbd346d7770ce35c5b22cff68eae4",
+      "bytes": 546
+    },
+    "config_hash_is_historical_M2_proof": false,
+    "original_parameters_and_buffers_frozen": true,
+    "adapter": {
+      "run_id": "heads_earlier_P3",
+      "file": "reports/lora_profiled_v1/cases/heads_earlier_P3/screen02/adapters.npz",
+      "sha256": "137473197908048eb68051c16c5950a72e677646646350c12e2d7b75a7ac8a9d"
+    }
+  },
+  "required_sequence": [
+    "Implement and test member-level allowlists, same-fusion semantics and float64 response identities before real extra arrays",
+    "Freeze executable source/runtime/input/call inventory, numerical tolerances and exact commands; commit before D1 access",
+    "Construct one pristine unwrapped frozen model and reproduce five cached encoder features exactly as historical P3 did",
+    "Collect20 pristine BF16 decoder/FP32-head pairs before installing LoRA; freeze their per-partner confidences",
+    "Fuse B0 using pinned CUDA FP32 canonical_depth, verify sealed teacher depth/confidence and both fold gauges/normalizers/ridge/counts, and stop before final-adapter/FP32 comparison access on mismatch",
+    "Reset Torch seed42, install exact144 LoRA modules, verify initial adapter digest, freeze all factors again, load only saved final P3 factors, verify its digest, and collect20 pairs on the same features; original state must remain unchanged",
+    "Read existing FP32 P0/P3 first-camera pointmaps, fuse all four states with the same reproduced pristine confidences",
+    "Report per-partner and per-view fused changes without adding another confidence variant",
+    "Apply the two original frozen support preparations to all states, refit scales, and retain both folds separately",
+    "Compute finite calibration decomposition and final-state output-space directional derivative, validate fixed finite differences",
+    "Seal outputs before interpretation, retain all failures, independently replay CPU arithmetic, back up and commit"
+  ],
+  "finite_response": {
+    "definitions": "s_k=solve(A_k^T A_k+lambda I,A_k^T b+lambda*1), e_k=Q_k s_k-d",
+    "direct": "t=(Q1-Q0)*s0",
+    "compensation": "c=Q1*(s1-s0)",
+    "identity": "e1-e0=t+c",
+    "metrics": [
+      "norm_t",
+      "norm_c",
+      "cosine_t_c",
+      "norm_t_plus_c_over_norm_t",
+      "identity_residual",
+      "J0",
+      "J1",
+      "J0_minus_J1",
+      "support_stationarity",
+      "H_condition",
+      "lambda"
+    ],
+    "interpretation": "Exact finite response along observed output change; t is a fixed-s0 counterfactual, not a forward-identical detached-gradient arm",
+    "zero_policy": "Zero direct norm or either zero cosine norm yields undefined ratio/cosine; never add epsilon or drop a fold to manufacture a value",
+    "attenuation_rule": "Negative compensation cosine alone is insufficient: surviving norm must also be below direct norm beyond the frozen numerical tolerance; otherwise report amplification or unresolved change"
+  },
+  "derivative": {
+    "state": "final P3 training-path fused depth z_B1",
+    "direction": "v=z_B1-z_B0 in output space",
+    "equations": [
+      "H=A^T A+lambda I; r=A*s-b; e=Q*s-d",
+      "tS=dot(A)*s; tQ=dot(Q)*s",
+      "dot(s)=-solve(H,A^T*tS+dot(A)^T*r)",
+      "dot(e)=tQ+Q*dot(s)",
+      "full=e^T*dot(e); detached_at_same_state=e^T*tQ"
+    ],
+    "finite_difference_steps": [
+      0.01,
+      0.003,
+      0.001
+    ],
+    "refit_scales_at_both_perturbations": true,
+    "tolerances": "Must be fixed from synthetic float64 fixtures in the executable registration before D1 data access",
+    "no_network_jacobian_claim": true
+  },
+  "input_boundary": {
+    "permitted": [
+      "Only images member from selected RGB archive",
+      "Only Heads/earlier adaptation coordinates/depths and both original spatial-fold assignments",
+      "Only the original supplied camera calibration needed by the frozen training preparation",
+      "Selected sealed P3 teacher and final adapter artifacts",
+      "Selected P0/P3 raw FP32 first-camera pointmaps",
+      "Checkpoint/config and source/registration metadata"
+    ],
+    "forbidden": [
+      "Opposite-source measurement packet",
+      "Dense target/reference arrays",
+      "Native/final endpoint arrays",
+      "Additional scenes or final P2/P4/P5 adapters",
+      "Fresh matching or native reconstruction",
+      "New confidence-weight variants",
+      "LoRA updates or rank/learning-rate/step searches",
+      "Rental GPU"
+    ],
+    "preserve_supplied_intrinsic": "Use the historical intrinsic() including1.12 focal multiplier and pixel-center resize; do not correct supplied calibration in this diagnostic"
+  },
+  "stop_on": [
+    "Teacher replay mismatch",
+    "Provenance or state-integrity mismatch",
+    "Invalid required geometry",
+    "Numerical identity/finite-difference failure",
+    "Call/time/memory cap",
+    "Weekly reserve threshold"
+  ],
+  "interpretation_rules": [
+    "No resolved BF16 query-residual benefit in both folds: useful training change lost downstream is not established",
+    "Benefit in both BF16 folds disappearing or reversing in FP32 under same fusion: defined inference-path mismatch is supported",
+    "Opposing measured calibration response attenuates the change: compensation in this output-space direction is supported; harmfulness and parameter-space generality are not",
+    "Benefit survives both inference paths: these stages do not explain failed held-source accuracy; overfitting/matching/native effects remain unresolved",
+    "Fold disagreement is mixed/inconclusive, never select the favorable fold",
+    "No diagnostic outcome alone releases a redesign, M3 or rental; choose at most one evidence-supported scientific redesign afterward"
+  ],
+  "interpretation_numeric_floor": "Executable registration must fix loss/ratio resolution floors from synthetic float64 arithmetic before D1 access; no post-result threshold tuning or statistical-significance claim",
+  "preparation_clarification": "Source review confirmed the historical pristine-teacher-before-LoRA order and common CUDA FP32 fusion. These clarifications precede all D1 production-array access and do not change the40-call/no-update scope."
+}

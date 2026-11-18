@@ -2,7 +2,7 @@
   "goal": "Calibration-aware predictive LoRA accuracy investigation",
   "checkpoint_date": "2026-11-18",
   "status": "active",
-  "current_phase": "M2 negative; D0 implemented and prospectively registered, production diagnostic pending",
+  "current_phase": "D0 complete with exact replay; selected D1 strict inputs/model capture/executable registration pending",
   "completed_milestone_weight_percent": 50,
   "percentage_rule": "Conservative whole-milestone credit; completed subchecks are listed separately and are not accuracy evidence",
   "milestones": {
@@ -50,10 +50,11 @@
     },
     "M3": {
       "weight": 15,
-      "status": "diagnosis_pending",
+      "status": "diagnosis_in_progress",
       "preparation": "202 combined CPU fixtures pass. Static registry and completed-attempt byte audit implemented, including exact fitting-count checks. Reference-free converter/replay and pure reference semantics pass 17 pinned CPU fixtures. All24 real fitting-case reports exactly reproduce in pinned image. M3 actual registry/release controller, model acceptance, stage seals, scorer and scientific execution remain pending; no reuse approved.",
       "initial_confirmation": "not_run_due_to_no_eligible_M2_nominee",
-      "diagnosis_design": "manifests/lora_profiled_diagnosis_design_v1.json"
+      "diagnosis_design": "manifests/lora_profiled_diagnosis_design_v1.json",
+      "diagnosis": "D0 completed,66 pinned CPU tests and independent representative checks pass; exact full diagnostic replay verification02 passes. D1 pure mathematics passes32 pinned CPU tests. No D1 production tensors/model calls; no scientific redesign yet."
     },
     "M4": {
       "weight": 10,
@@ -70,7 +71,9 @@
         "M2 official score replay",
         "Independent420-field180-row compact arithmetic replay",
         "Full2281-file M2 archive verified on distinct C/E physical disks",
-        "Compact M2 scores/replay and detailed successor documentation:21 files,1639507 bytes verified against C:/E: physical disks"
+        "Compact M2 scores/replay and detailed successor documentation:21 files,1639507 bytes verified against C:/E: physical disks",
+        "D0 original production report and exact diagnostic replay",
+        "Independent D0 representative direct-BA and least-squares checks"
       ]
     }
   },
@@ -127,7 +130,13 @@
     "diagnosis_design": "manifests/lora_profiled_diagnosis_design_v1.json",
     "d0_execution_registration": "manifests/lora_profiled_diagnosis_execution_v1.json",
     "d0_synthetic_acceptance": "results/lora_profiled_d0_v1/synthetic_checks02.json",
-    "d0_source_layout": "results/lora_profiled_d0_v1/source_layout.json"
+    "d0_source_layout": "results/lora_profiled_d0_v1/source_layout.json",
+    "d0_report": "results/lora_profiled_d0_v1/attempts/d0_01/report.json",
+    "d1_design": "manifests/lora_profiled_d1_design_v1.json",
+    "d0_exact_replay": "results/lora_profiled_d0_v1/verification02.json",
+    "d0_interruption": "results/lora_profiled_d0_v1/interruption01.json",
+    "d0_backup": "results/lora_profiled_d0_v1/backup01.json",
+    "d1_math_preparation": "results/lora_profiled_d1_v1/math_checks01.json"
   },
   "accuracy_improvement_established": false,
   "nomination": null,
@@ -159,24 +168,24 @@
     "m3_preparation": "202 combined CPU fixtures pass. Static registry and completed-attempt byte audit implemented, including exact fitting-count checks. Reference-free converter/replay and pure reference semantics pass 17 pinned CPU fixtures. All24 real fitting-case reports exactly reproduce in pinned image. M3 actual registry/release controller, model acceptance, stage seals, scorer and scientific execution remain pending; no reuse approved."
   },
   "last_observed_ci": {
-    "commit": "f1b4f17dd6daa809031dc7c8871276b37c5eb049",
-    "run_id": 44317619910,
+    "commit": "9e059a48293dc3aee692e470be7a8a8e768d17a7",
+    "run_id": 44321791727,
     "conclusion": "success",
-    "scope": "Complete CPU workflow and independent actual M2 compact replay"
+    "scope": "Full CPU workflow including66 new D0 fixtures"
   },
-  "next_command": "python scripts/run_profiled_d0_local.py run --name tco-m3-d0-run01 --attempt d0_01",
-  "next_implementation_action": "After this registration/source commit, run CPU-only D0 once, inspect all fixed diagnostics, replay into a fresh receipt and decide whether one bounded no-update D1 is necessary. No model forward, optimizer update or rental.",
+  "next_command": "Get-Content manifests/lora_profiled_d1_design_v1.json -Encoding utf8",
+  "next_implementation_action": "Implement strict D1 member allowlists, sensor-only graph0/query-matrix bridge, pristine-teacher-before-LoRA40-call capture and bounded controller; test with mocks/synthetic inputs, freeze executable registration before any extra production array/model access. Use tested pure math with both folds and common CUDA FP32 fusion. No optimizer/rental or redesigned training is released.",
   "handoff": "docs/CALIBRATION_AWARE_LORA_HANDOFF.md",
   "weekly_usage_checkpoint": {
-    "used_percent": 10,
-    "remaining_percent": 90,
+    "used_percent": 16,
+    "remaining_percent": 84,
     "pause_threshold_remaining_percent": 5,
-    "observation": "2026-11-18 at the start of D0 continuation; exact observation timestamp was not recorded",
-    "note": "Observed at start of D0 continuation via native tool; shared counter can change"
+    "observation": "2026-11-18T14:43:03Z",
+    "note": "Observed via native usage tool; shared counter can change"
   },
   "validated_code_commit": "f1b4f17dd6daa809031dc7c8871276b37c5eb049",
-  "last_goal_turn_classification": "progress: implemented and tested D0 diagnosis,66 pinned CPU tests pass; byte-only registration prepared with verified local container exit; no production diagnostic arrays decoded yet",
-  "checkpoint_observed_at_utc": "2026-11-18T14:12:17.851971+00:00",
+  "last_goal_turn_classification": "progress: D0 implemented/registered/ran and exact replaypassed; pause/resume interruption preserved; prepared and independently reviewed32-test D1 mathematics and precise bounded design",
+  "checkpoint_observed_at_utc": "2026-11-18T14:44:29.822366+00:00",
   "screen_result": {
     "nominee": null,
     "all_primary_cases_valid": true,
@@ -205,7 +214,43 @@
     "status": "complete",
     "entrypoint": "docs/CALIBRATION_AWARE_LORA_HANDOFF.md",
     "review": "Independent read-only review: no blocking scope/science contradiction; exact cache-name digest clarified",
-    "next_experiment": "D0 not implemented or executed; registration required before tensor decode",
+    "next_experiment": "D1 design and pure mathematics prepared; data/model/controller execution not released",
     "local_research_gpu_running": false
+  },
+  "research_cpu_job_at_checkpoint": {
+    "container": null,
+    "last_completed_container": "tco-m3-d0-verify02",
+    "observed_state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-18T14:29:22.082453239Z",
+      "FinishedAt": "2026-11-18T14:37:25.172328164Z"
+    },
+    "session_id": 8990,
+    "session_terminal": true,
+    "stopped_verified": true,
+    "instruction": "No running research CPU job. Do not rerun completed D0; prepare D1 locally under its separate release conditions."
+  },
+  "d0_status": {
+    "production_run": "complete",
+    "exact_replay": "passed_verification02",
+    "report_sha256": "06fc6afaefe87350489cddaa13cf644fa9c58c33296eba2eedae8d882bbe4422",
+    "provisional_interpretation": "Nonzero raw geometry change with substantial non-scalar component; accuracy improvement and actual calibration absorption remain unestablished",
+    "source_commit": "9e059a48293dc3aee692e470be7a8a8e768d17a7",
+    "results_publication": "Result/checkpoint paths recorded; use Git history and CI for publication revision",
+    "backup_receipt": "results/lora_profiled_d0_v1/backup01.json"
+  },
+  "pause_history": {
+    "paused_after": "D0 production completion",
+    "interrupted_verification": "tco-m3-d0-verify01",
+    "stopped_verified": true,
+    "resumed_by_user": true
   }
 }
