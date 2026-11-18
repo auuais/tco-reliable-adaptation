@@ -63,7 +63,7 @@ s^*=H^{-1}(A^Tb+\lambda\bar s).
 
 Use a float64 Cholesky solve and set the prior center to ones. Set lambda to 0.001 times trace(A_D0^T A_D0)/5 using the initial sensor-only matrix, identically across arms for each spatial fold. Freeze it through training. A ridge prior supplies numerical stability. Data singular values, per-view sensor support and graph connectivity separately describe how much the observations constrain the solution. A disconnected graph can still yield individually identifiable sensor scales. Report both facts. Negative scales invalidate the unconstrained pilot and require a separately tested positive-scale solver.
 
-The pilot uses robust weights computed once from the pretrained support residuals, with the same weights across methods. This keeps the exact derivative unambiguous. A later IRLS version must distinguish differentiation through its iterations from an approximation that freezes its weights.
+The pilot uses robust weights computed once from the pretrained support residuals, with the same weights across methods. This keeps the exact derivative unambiguous. All new calibration medians use the midpoint convention (`torch.quantile(values, 0.5)`); P1 deliberately keeps the legacy lower-middle `torch.median` gauge. Initial graph endpoints with invalid confidence or nonpositive pretrained depth are filtered once with counts recorded; this fixed teacher mask is not recomputed from candidate errors. Sensor fitting observations are not dropped because a candidate predicts them poorly. A later IRLS version must distinguish differentiation through its iterations from an approximation that freezes its weights.
 
 Now evaluate different sensor observations Q using this fitted geometry,
 
@@ -233,3 +233,9 @@ For rental advancement retain the 5% primary surface gain target against the str
 | Failed-run/storage contingency | Included inside the remaining allocation | Up to USD 5 |
 
 The conditional rental total is capped at the existing USD 25 reserve. Current balance and hourly rates must be checked when scheduling. Estimate cost from a measured smoke run and set a provider-side stop before the paid batch. Stage data and dependencies locally first. The prior stopped workspace is retained under the user's instruction. Respect the user's 5% weekly usage reserve. The plan commits to reporting a negative result when a candidate fails. A successful mathematical identity is insufficient to claim an accuracy improvement.
+
+**Execution clarifications before the scientific screen**
+
+Read the [current handoff](CALIBRATION_AWARE_LORA_HANDOFF.md) and [evaluation rules](../manifests/lora_profiled_evaluation_v1.json) alongside these equations. They specify P3/P4 candidate eligibility, fixed opposite-source overlap exclusion, exact aggregation/ties, mandatory control pool and eight separate dense gate cells. These are prospective rules, not evidence of an improvement. Final g0 uses every permitted fitting observation: any nonfinite or nonpositive candidate depth at those observations fails the attempt, rather than creating a smaller candidate-specific set of "valid" ratios. Final refinement calls the all-observation inner solve, not the training support/query objective, and the returned final depth already includes both g0 and its fitted relative scale.
+
+The first real-model engineering attempt (`gradient01`) passed zero-LoRA output equality but failed retained-versus-replayed gradient agreement. Its equal forward losses do not establish correct backward propagation. The handoff gives the diagnostic, versioned-registration and acceptance sequence required before accuracy experiments. CPU derivatives, syntax checks and a green CPU workflow cannot substitute for these model checks.

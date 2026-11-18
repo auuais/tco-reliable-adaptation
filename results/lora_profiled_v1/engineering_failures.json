@@ -1,5 +1,5 @@
 {
-  "scope": "Preparation failures, not accuracy experiments",
+  "scope": "Preparation and real-model engineering failures, not accuracy experiments",
   "attempts": [
     {
       "id": "environment01",
@@ -8,6 +8,25 @@
       "reason": "Linux Git saw Windows CRLF checkouts as tracked modifications",
       "resolution": "Compare every tracked blob to its pinned Git object; allow only explicitly recorded CRLF-to-LF equivalence; never rewrite upstream files",
       "replacement_attempt": "tco-profiled-environment02",
+      "rental_compute_usd": 0
+    },
+    {
+      "id": "gradient01",
+      "container": "tco-profiled-gradient01",
+      "execution_commit": "8e33ba3839338daf9944939834c2834ee4f9d2d4",
+      "engineering_manifest": "manifests/lora_profiled_engineering_v1.json",
+      "exit_code": 1,
+      "oom_killed": false,
+      "reason": "Equal forward losses but retained-graph and replayed LoRA gradients exceed the registered discrepancy tolerance",
+      "relative_gradient_l2": 0.0058830234318835144,
+      "required_max_relative_gradient_l2": 0.0001,
+      "gradient_cosine": 0.9999827114918957,
+      "required_min_gradient_cosine": 0.99999,
+      "loss_both": 25.951331333991202,
+      "passed_before_failure": "Pristine versus zero-LoRA outputs for all 20 directed pairs",
+      "not_reached": ["adapter finite differences", "full macro-step", "final original-state hash"],
+      "resolution": "Unresolved; run the component and precision diagnostic before changing production arithmetic. Preserve thresholds and failed attempt",
+      "evidence": "results/lora_profiled_v1/engineering/gradient01/replay_failure.json",
       "rental_compute_usd": 0
     }
   ]

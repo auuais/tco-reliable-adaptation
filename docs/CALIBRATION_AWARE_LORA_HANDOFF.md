@@ -6,7 +6,11 @@ This is the operational guide for a successor agent, including Solus. Read it wi
 
 The objective is to determine whether differentiating calibration while training only LoRA improves reconstructed geometry. MASt3R is the first model because its existing decoder adaptation fits this machine. VGGT transfer is conditional on a useful, repeatable MASt3R result. The original encoder, decoder and task-head parameters remain frozen; only newly installed LoRA factors are trainable.
 
-At this handoff, the mathematical solver, input preparation and local environment checks exist. The real-model gradient bridge, complete experimental runner, final calibration integration and new accuracy experiments remain to implement. A passed CPU derivative check establishes the solver calculus. It does not establish propagation into real LoRA weights or an accuracy improvement. Consult [progress.json](../results/lora_profiled_v1/progress.json) for milestone state and the next action. Do not inherit completion claims from an older handoff.
+Checkpoint refreshed November 18, 2026, after engineering attempt `gradient01`. Preparation and CPU calculus checks pass. The real-model bridge, final calibration, endpoint bridge and single-case runner have now been implemented, but the GPU acceptance checks have **not** passed. The first local model run passed pristine-versus-zero-LoRA output equality and then failed retained-versus-replayed gradient agreement. No scientific adapter run, accuracy improvement or rental qualification exists yet. Consult [progress.json](../results/lora_profiled_v1/progress.json) for the live checkpoint; a file's existence does not establish that its experiment passed.
+
+The successor's first task is to diagnose this engineering discrepancy, not invent another method or start the 36-state screen. At execution commit `8e33ba3839338daf9944939834c2834ee4f9d2d4`, both losses were `25.951331333991202`, but gradient relative L2 error was `0.0058830234318835144` (about 0.588%) and cosine was `0.9999827114918957`. The registered limits are relative L2 <= `1e-4` and cosine >= `0.99999`. Identical losses do not imply identical derivatives. See [failed comparison](../results/lora_profiled_v1/engineering/gradient01/replay_failure.json) and [failure traceback](../results/lora_profiled_v1/engineering/gradient01/failure.json). The container `tco-profiled-gradient01` exited with code 1, without an OOM; no research container was running at this checkpoint. Inspect live state again on resume.
+
+Read in this order: this operational checkpoint, the goal contract, the mathematical specification, the design and bridge-threshold manifests, then the referenced implementation. User instructions take precedence. The contract defines the scientific decisions; the manifests freeze settings; actual reports establish completion. A conflict between prose, settings and code is an engineering issue to resolve explicitly before execution. Never silently substitute a setting or promote an old successful report across changed source hashes.
 
 The user has authorized research execution, Git commits and publication of permitted code/results. Continue useful local work without repeatedly asking permission. The user allows best judgment for routine preferences unanswered after ten minutes. This does not waive monetary caps, access requirements or an explicit prohibition. Do not pause for a model switch unless the user requests it. The active goal remains active until its completion, blocking or user-requested pause conditions are met.
 
@@ -59,6 +63,7 @@ These commands are existing preparation/verifier entry points. They do not train
 python scripts/prepare_profiled_inputs.py --verify
 python scripts/check_profiled_splits.py --verify
 python scripts/check_profiled_calibration.py --verify
+python scripts/check_profiled_final_calibration.py --verify
 python scripts/check_lora_profiled_gradient.py --verify
 python scripts/profiled_baseline_graph.py --verify
 ```
@@ -82,7 +87,7 @@ $profiledAttempt = 'tco-profiled-solver-' + (Get-Date -Format yyyyMMdd-HHmmss)
 docker run --name $profiledAttempt --mount type=bind,source=C:/SVNProjects/Research/tco-research,target=/workspace --workdir /workspace sha256:74783a8eefee6daad6ff2714a51263ccdcdc5092b83cebee20515310bec46b50 python scripts/check_profiled_calibration.py --verify
 ```
 
-Model jobs add `--gpus all` and the read-only checkpoint mount `--mount type=bind,source=E:/ResearchData/TCO/checkpoints/MASt3R/hf,target=/weights,readonly`. The image already sets the MASt3R import path. Do not start a second GPU experiment while the first is active. The commands for the future model runner must be written and tested when that runner exists; do not infer that a planned filename is executable now.
+Model jobs add `--gpus all` and the read-only checkpoint mount `--mount type=bind,source=E:/ResearchData/TCO/checkpoints/MASt3R/hf,target=/weights,readonly`. The image already sets the MASt3R import path. Do not start a second GPU experiment while the first is active. The runner CLI now exists and its missing-manifest refusal has been checked; its actual training and endpoint execution remain unverified.
 
 **Data roles and exact schema**
 
@@ -117,6 +122,13 @@ Support and query both train LoRA. Opposite-source scores may nominate a method 
 | `scripts/check_profiled_calibration.py` | Production-solver CPU checks |
 | `scripts/check_profiled_environment.py` | Pinned image/checkpoint/source and CUDA verification |
 | `scripts/profiled_baseline_graph.py` | Sealed pretrained correspondence graph and audit; confirm current CLI before use |
+| `scripts/profiled_network.py` | Case loading, fixed teacher, two spatial states, arm losses, output adjoints and pair replay |
+| `scripts/check_profiled_lora_bridge.py` | Registered real-model gradient/finite-difference/full-macro-step acceptance; first attempt failed |
+| `scripts/diagnose_profiled_replay.py` | Arithmetic diagnostic without an optimizer update; implemented, real-model run pending |
+| `scripts/profiled_final_calibration.py` | Common final gauge, native camera convention and five-scale refinement |
+| `scripts/check_profiled_endpoints.py` | Pristine/zero-adapter endpoint acceptance and reusable fresh capture; GPU check pending |
+| `scripts/register_profiled_execution.py` | Versioned immutable engineering/scientific registration and fail-closed source verification |
+| `scripts/run_profiled_lora.py` | One registered case, eight macro-steps or P0, fresh endpoints and sealed attempt evidence; GPU run pending |
 | `scripts/mast3r_network_priors.py` | LoRA installation, state digest, native sample mapping and original D objective |
 | `scripts/mast3r_network_capture.py` | Image preprocessing, frozen features, pair decoder, native capture |
 | `scripts/run_mast3r_neural_transfer.py` | Native intrinsics, original triplet schedule and historical training |
@@ -147,15 +159,15 @@ Read the module docstrings and current implementation before calling it. Fixed o
 
 Initial invalid matched endpoints are filtered using the frozen teacher and their counts are recorded. Nonpositive support predictions require a prospective engineering decision preserving split integrity. Do not silently remove support after looking at query error. Nonpositive fitted scales invalidate the unconstrained solve. Record that failure and test a positive-scale formulation separately before a scientific batch.
 
-**Implementation order for the remaining model code**
+All new calibration medians use the midpoint convention, `torch.quantile(values, 0.5)`, including support gauges, sensor normalizers and final g0. P1 preserves its legacy `torch.median` lower-middle convention for an even number of samples. Do not homogenize these helpers while claiming to preserve the existing D comparator.
 
-The following filenames are proposed responsibilities, not claims of existing working runners. Confirm filesystem state before creating them.
+**Remaining work, in dependency order**
 
-1. Implement `scripts/profiled_network.py`. Reuse image preprocessing and frozen encoder features. Collect first-view pointmaps for every directed pair. For target i, fuse its four first-view outputs using pretrained confidence through `canonical_depth`. Use `canon[...,2]`, never `canon2` or second-view points in another camera frame. Prepare separate frozen geometric states for each spatial support fold at the pretrained model.
-2. Implement `scripts/check_profiled_lora_bridge.py`. First compare zero-LoRA outputs with pristine outputs at identical precision and cached features. Check canonical fusion against pinned upstream code. Build the real five-view loss with two varying pair outputs and the other outputs fixed; compare retained-graph gradients with exact output-adjoint replay. Then perform a numerical adapter-direction check and one full 20-pair macro-step. Record actual module gradients, original state hashes, memory and calls.
-3. Implement `scripts/run_profiled_lora.py`. Load one case and one arm, verify immutable inputs and the execution manifest, reset adapters/optimizer, run eight steps, capture adapters and all traces, then perform fresh final inference/matching. Use a unique attempt directory and refuse to overwrite an existing result or failure. Add a prepare/dry-run mode that enumerates all 36 states without training. Commit that runner and its frozen execution manifest before the scientific batch.
-4. Implement `scripts/profiled_final_calibration.py`. Preserve both the native KDP output and the final five-scale refinement, with exactly the frame/gauge convention below. Provide a zero-adapter comparison for both endpoints.
-5. Implement `scripts/score_profiled_lora.py`. Require a global prediction seal before reading opposite-source scores. Recompute the primary metric with explicit sample masks and counts; report all arms, per-scene values, both directions, failures and the deterministic nomination rule. Dense evaluation follows the existing registered conventions and matched input controls.
+1. Run the new arithmetic diagnostic described below. It compares graph-cut values, loss adjoints, individual pair VJPs, accumulation, repeated backward passes and FP32/BF16 behavior. Establish the cause of `gradient01` before changing production code. No accuracy label is needed.
+2. Repair and re-register the engineering implementation where the evidence requires it. Re-run zero-LoRA equality, retained/replay agreement, the real adapter finite differences, frozen-state hashes and the full 20-pair macro-step. Keep the failed attempt. The finite-difference and macro-step checks were not reached in `gradient01`.
+3. Run the existing endpoint bridge with fresh pristine and zero-adapter caches. Require separate native and final-calibrated equality, finite alignment callbacks, matching provenance and unchanged model/adapter state. The CPU final-calibration fixture alone does not establish this real endpoint bridge.
+4. Review and exercise the existing `run_profiled_lora.py` after both bridges pass. Register the scientific manifest against the finished source and passed reports. Its dry-run verifies one case; the registration tool enumerates the complete 36-case inventory. Check one complete local scientific state before proceeding serially through the registered inventory, without opening opposite-source scores. A completed first state can count toward the screen only if its settings and code are unchanged.
+5. Implement the still-missing `scripts/score_profiled_lora.py` and its global seal/nomination checks from the contract below before opening scores. Dense evaluation follows the existing registered conventions and matched input controls. Do not reuse the old scorer unchanged: it expects historical `zero/real/shuffled` shape experiments, not the six new neural arms.
 6. Add compact replay/CI entry points as meaningful evidence becomes available. Keep numerical fixtures separate from GPU-dependent checks. Publish all planned runs, including failures, and record why conditional experiments were not run.
 
 **Exact gradient replay algorithm**
@@ -165,6 +177,87 @@ Keep one adapter state fixed for an entire macro-step. In the first pass, run ea
 No optimizer step may occur between replayed pairs. Do not retain 20 full decoder graphs just because the output tensors fit. Freeze confidence/matching selection in the training objective and maintain the same decoder-call schedule in all neural arms. Features can be cached because the encoder is frozen. P1 reuses its two output branches and the arithmetic mean over `schedule(20)`; repeated use of a pair contributes summed adjoints. P2–P5 use the fused self-depth objective. One factor's initial zero gradient is expected when the opposite LoRA factor is zero; the active factor must receive finite useful gradients.
 
 Reduced precision can make tiny finite differences meaningless. Run the numerical direction check with an fp32 decoder and TF32 disabled if necessary, with fixed features and several prespecified perturbation sizes. Record arithmetic settings and tolerances before opening accuracy results. A gradient check must cover the implementation actually claimed; a diagnostic of a different precision path cannot prove every reduced-precision detail.
+
+**Immediate diagnostic and release commands**
+
+The following commands are entry points, not claims that these runs have passed. Start with the inspection commands above, check free disk space and weekly allowance, and commit the exact diagnostic source before running it. Use an unused attempt/container name; the scripts intentionally refuse to overwrite an attempt. No paid GPU is involved.
+
+```powershell
+$profiledImage = 'sha256:74783a8eefee6daad6ff2714a51263ccdcdc5092b83cebee20515310bec46b50'
+$profiledAttempt = 'replaydiag-' + (Get-Date -Format yyyyMMdd-HHmmss)
+$profiledContainer = 'tco-profiled-' + $profiledAttempt
+docker run --name $profiledContainer --gpus all --mount type=bind,source=C:/SVNProjects/Research/tco-research,target=/workspace --mount type=bind,source=E:/ResearchData/TCO/checkpoints/MASt3R/hf,target=/weights,readonly --workdir /workspace $profiledImage python scripts/diagnose_profiled_replay.py --attempt $profiledAttempt --weights /weights --image $profiledImage
+```
+
+Read `results/lora_profiled_v1/engineering/ATTEMPT/report.json`, or its `failure.json` and partial precision reports. This diagnostic makes no optimizer update. It records the actual RoPE implementation; the first run used the slow PyTorch fallback, so do not assume a compiled extension caused the mismatch. Its current checks distinguish the following possibilities:
+
+| Evidence | Next decision |
+|---|---|
+| Forward outputs differ between graph-free and gradient-enabled recomputation | Inspect autocast, features, random state, buffers and execution paths before reasoning about accumulation |
+| Outputs agree but graph-cut loss adjoints differ | Inspect canonical fusion, detached state, objective construction and tensor aliasing |
+| Outputs/adjoints agree but individual pair VJPs differ | Inspect backward kernels, tensor mutation and precision; preserve supplied-adjoint mutation checks |
+| Individual pair VJPs agree but joint backward differs | Examine accumulation/cast placement and repeated-run variation; do not call this exact retained-graph agreement |
+| FP32 agrees but BF16 fails | A precision cause is supported only after the component comparisons agree; revise arithmetic consistently across all neural arms and re-register if necessary |
+| Both precisions fail or finite differences fail | Treat as an unresolved implementation/math error; no scientific launch |
+| All relevant comparisons pass after a fix | Run the registered acceptance bridge, including finite differences and the full macro-step; the diagnostic is not a substitute |
+
+Retain the original thresholds and failed evidence. If a tolerance revision is scientifically justified by measured numerical repeatability, document that as a new prospective engineering protocol with independent review; never edit the archived threshold manifest to turn a failed run into a pass. Prefer repairing the computation or using a common more accurate arithmetic path.
+
+After diagnosis and any source fix, preserve `lora_profiled_engineering_v1.json` and create a new version. V1 is a valid historical snapshot and is expected to reject the changed current source. It must not be overwritten or hand-edited.
+
+```powershell
+python scripts/register_profiled_execution.py --prepare --phase engineering --output manifests/lora_profiled_engineering_v2.json --supersedes manifests/lora_profiled_engineering_v1.json
+python scripts/register_profiled_execution.py --verify --phase engineering --manifest manifests/lora_profiled_engineering_v2.json
+```
+
+Commit the revised source and new registry, then run these **sequentially**, using new names if any already exist. Do not start the endpoint job if the gradient job fails.
+
+```powershell
+docker run --name tco-profiled-gradient02 --gpus all --mount type=bind,source=C:/SVNProjects/Research/tco-research,target=/workspace --mount type=bind,source=E:/ResearchData/TCO/checkpoints/MASt3R/hf,target=/weights,readonly --workdir /workspace $profiledImage python scripts/check_profiled_lora_bridge.py --weights /weights --manifest manifests/lora_profiled_engineering_v2.json --attempt gradient02 --image $profiledImage
+if ($LASTEXITCODE -ne 0) { throw 'Gradient bridge failed; endpoint launch blocked' }
+$profiledGradientReport = Get-Content results/lora_profiled_v1/gradient_bridge.json -Raw -ErrorAction Stop | ConvertFrom-Json
+if ($profiledGradientReport.pass_all -ne $true) { throw 'Gradient report is not passing; endpoint launch blocked' }
+docker run --name tco-profiled-endpoint01 --gpus all --mount type=bind,source=C:/SVNProjects/Research/tco-research,target=/workspace --mount type=bind,source=E:/ResearchData/TCO/checkpoints/MASt3R/hf,target=/weights,readonly --workdir /workspace $profiledImage python scripts/check_profiled_endpoints.py --weights /weights --manifest manifests/lora_profiled_engineering_v2.json --attempt endpoint01 --image $profiledImage
+if ($LASTEXITCODE -ne 0) { throw 'Endpoint bridge failed; scientific registration blocked' }
+```
+
+Only passed reports at `results/lora_profiled_v1/gradient_bridge.json` and `endpoint_bridge.json`, bound to current sources/inputs/runtime, release scientific registration. A report with a stale source hash is not a pass for the new implementation. Reuse of a successful evidence filename after a scientific code change requires preserving/versioning the old report and updating its registry references; never delete the old report to bypass the guard.
+
+```powershell
+python scripts/register_profiled_execution.py --prepare --phase scientific
+python scripts/register_profiled_execution.py --verify --phase scientific --manifest manifests/lora_profiled_execution_v1.json
+python scripts/run_profiled_lora.py --run-id heads_earlier_P4 --manifest manifests/lora_profiled_execution_v1.json --attempt screen01 --weights /weights --dry-run
+```
+
+At the present checkpoint the first two commands cannot succeed because both bridges are missing; the runner also refuses a missing scientific manifest. Commit the scientific manifest before a real job. Real jobs require the explicit inspected image ID (`--image`, or `PROFILED_DOCKER_IMAGE`); the registry's `planned_argv` is a template that the launcher must complete with this identity.
+
+```powershell
+docker run --name tco-profiled-heads-earlier-p4-screen01 --gpus all --mount type=bind,source=C:/SVNProjects/Research/tco-research,target=/workspace --mount type=bind,source=E:/ResearchData/TCO/checkpoints/MASt3R/hf,target=/weights,readonly --workdir /workspace $profiledImage python scripts/run_profiled_lora.py --run-id heads_earlier_P4 --manifest manifests/lora_profiled_execution_v1.json --attempt screen01 --weights /weights --image $profiledImage
+```
+
+**Scheduling, recovery and evidence ownership**
+
+The registry enumerates 3 scenes x 2 adaptation sources x 6 arms = 36 states, ordered by scene, source and P0 through P5. Thirty trained states require 240 total optimizer updates; six P0 controls require none. Each trained state uses 20 teacher calls and eight steps of 20 graph-free plus 20 differentiable calls, followed by separately counted fresh reconstruction calls. The single-case runner does not schedule this factorial. Validate one complete neural path and one P0 path before scheduling the remainder, without viewing development accuracy.
+
+An eventual launcher must run one GPU job at a time, require a successful exit and valid `complete.json`, and stop on engineering failures. Before skipping a completed case, recompute its manifest, source, input and output hashes. The presence of a folder or adapter file is insufficient. Choose the first valid completed attempt under the same frozen protocol; never choose a rerun by accuracy. Partial runs are preserved and restarted from pretrained weights with a fresh attempt ID because mid-step resume is not implemented. Diagnose repeat failures; do not run an unlimited retry loop. The `scientific_gpu.lock` protects only this runner, so inspect other containers/processes as well. Remove a stale lock only after proving its owner process/container ended and preserving its contents.
+
+Public attempt evidence belongs in `results/lora_profiled_v1/cases/RUN_ID/ATTEMPT/`; large arrays and fresh caches belong in the corresponding `reports` path. Required outputs include source/manifest/input hashes, original-state hashes, initial/final adapter hashes, eight per-step reports for trained cases, actual call counts, finite gradient checks, timing/memory, native/final endpoint identities, and the completion/failure record. The runner's 1 GiB free-space guard is a minimum, not a 36-case storage estimate. Measure the first complete case's bytes and reserve enough local disk for the remaining cases and both physical backups before batching. Never place pretrained weights or complete restricted datasets in Git.
+
+**Scoring and selection contract to implement**
+
+The rules are frozen separately in [lora_profiled_evaluation_v1.json](../manifests/lora_profiled_evaluation_v1.json). The scientific registry binds that specification; an evaluation-execution manifest must additionally bind the final scorer source and its fixture results before accessing opposite-source scores. Neither a per-case completion record nor a registry flag implements a global prediction seal.
+
+Create a global seal with exactly the 36 registered run IDs, one valid attempt per ID, common scientific-registry hash, completion-report hashes, adapter identities, and native/final endpoint hashes. Verify all referenced bytes, model/input identities and complete status. Reject missing/duplicate cases, mixed registrations, partial attempts and changed predictions. Seal all predictions before loading the opposite-source evaluation packet into the scoring process. An unrecoverable case must remain a reported failure under a prospectively amended termination protocol; it cannot disappear from the denominator or yield a qualifying nominee.
+
+Reuse the *mapping and overlap logic* of `score_partner_shape.disjoint_test`, not its historical scorer. For each target, map/deduplicate the opposite packet with the registered native-pixel rule and exclude pixels used by the entire allowed adaptation packet (both spatial folds). Exclusion is determined only by input identity, never candidate error/confidence. Keep the same evaluation observations for every arm. For arm a, scene s, side t and view v, compute `MAE[a,s,t,v] = mean(abs(predicted_final_depth - measured_opposite_depth))` in meters over those fixed points. Average equally over five views, then equally over three scenes, keeping earlier/later directions separate. Define directional gain as `1 - mean_MAE[a,t] / mean_MAE[P1,t]`, not the mean of per-point percentage changes. Fail on empty views or nonfinite predictions; count nonpositive predictions and disqualify affected candidates rather than excluding their pixels.
+
+Only P3 and P4 are candidates for the initial implicit-gradient hypothesis. P0, P1, P2 and P5 are controls. A detached arm winning is useful evidence against the mechanism, not permission to rename it a successful full-gradient method. Nominate at most one candidate with >=1% directional gain in each direction, improvement on at least two of the same three scenes in both directions, and no numerical failures. Maximize the smaller directional gain. Compare gains rounded to 12 decimal places for ties, then lower measured total runtime across its six cases, then smaller numeric arm ID. Always publish all six arms and the P3/P2 and P4/P5 contrasts. Do not use native-only results to select when the final-refined primary result fails.
+
+The scorer needs meaningful fixtures for a missing/tampered seal, a mixed-registry case, overlap exclusion, unequal observation counts, invalid predictions, the two-same-scenes rule, tie handling and a deliberately wrong endpoint. Fixtures must pass before study labels are scored. Publish compact per-view predictions/observations sufficient for independent CPU replay where the dataset terms permit.
+
+For M3, freeze a separate executable dense-evaluation manifest before its scores are read. Use `registered_rgb` as the primary surface reference and `released` as alternate, with the pinned similarity-plus-ICP evaluator and fixed reference masks. For each scene/condition/reference, let A be mean accuracy distance and C mean completeness distance in meters. Normalize each component by the same-condition P0 component and set `surface_score = 0.5*(A/A_P0 + C/C_P0)`; aggregate equally by scene. Compare the nominee against the lowest aggregate primary score among the predeclared eligible same-input controls, minimally P0/P1/P2/P5, with smaller arm ID breaking exact ties. Freeze the eligible pool before dense scoring; add compatible established baselines only after documenting their exact inputs. Historical runs with two-source data or a different final calibration cannot replace these controls. Use that same selected control for per-scene, component and alternate-reference checks; report raw meter-valued distances as well.
+
+The M3 manifest must enumerate both temporal directions, centered/shifted grids and clean/noisy supplied-pose conditions: eight gate cells, each with three scenes and matched controls. Apply all rental criteria separately to every cell; do not pool away a failed direction or stress condition. Shifted-source packets and spatial splits need their own verified preparation. Specify camera-noise seeds, masks, grid construction, native evaluator revision and all runtime commands before opening these scores. Initially preserve the established pose-only stress channel; any physical sensor-projection corruption is a separate registered test. Perform three fresh-process paired confirmations with the same optimizer seed and predeclared corruption draws, reporting deterministic execution variation separately from input perturbation. The old manifest is a source of conventions, not authority to reuse unmatched old predictions.
 
 **Final reconstruction convention**
 
@@ -189,6 +282,8 @@ final_depth = scales[:, None, None] * g0 * native_depth
 
 Compute g0 with the conventional midpoint median, matching `torch.quantile(values, 0.5)` on positive finite ratios. This final all-observation fit has no support/query split and does not call `profiled_objective` or `query_residual`. Both of those require disjoint adaptation folds and serve training. Reconstruct the world points using `final_depth`, `metric_c2w` and native K, with no additional scale multiplication.
 
+Every permitted final fitting observation must have finite, positive predicted depth. If any fails, reject the attempt; do not interpret "valid ratios" as permission for a candidate-dependent subset. Negative predictions outside fitting observations remain in the saved depth map and are counted. The final graph's frozen initial validity filtering is recorded separately; it must not be confused with permission to drop difficult sensor observations.
+
 Every comparator gets the same final intervention. A baseline without final calibration cannot isolate the neural objective. Both endpoint outputs and the evaluator's actual input hashes must be saved.
 
 **Decisions and reporting**
@@ -207,4 +302,4 @@ Prepare data, wheels, code and manifests locally. Start a single paid job stream
 
 **First actions for the successor**
 
-Read the live progress file, inspect actual jobs and replay the existing input/solver checks. Read `profiled_calibration.py` and its tests. Complete the production LoRA bridge and freeze the model-run manifest. Measure one full local macro-step before scheduling the factorial. Keep this handoff and progress checkpoint current as actual milestones finish. The next agent should be able to identify the last verified artifact, any running handle and the exact next safe command without reconstructing this conversation.
+Read the live progress file, inspect actual jobs, and replay preparation only when files/runtime changed or their validity is uncertain. First diagnose `gradient01` using the commands above. Do not claim its finite differences, full macro-step or endpoint checks passed. Complete the production bridges and freeze the scientific manifest before scheduling the factorial. After each meaningful result, update the evidence paths, job state, next command, run counts, costs and Git/CI state. The next agent should be able to resume from these files without reconstructing this conversation.

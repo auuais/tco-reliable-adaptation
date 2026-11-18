@@ -2,7 +2,7 @@
   "goal": "Calibration-aware predictive LoRA accuracy investigation",
   "checkpoint_date": "2026-11-18",
   "status": "active",
-  "current_phase": "local preparation verified; production model gradient integration next",
+  "current_phase": "engineering diagnosis required after real-model replay-gradient mismatch",
   "completed_milestone_weight_percent": 0,
   "percentage_rule": "Conservative whole-milestone credit; completed subchecks are listed separately and are not accuracy evidence",
   "milestones": {
@@ -17,7 +17,7 @@
         "Native remap/dedup, source/cell grouping and split replay",
         "60 sealed pretrained matching cache files and 30 unordered graph edges"
       ],
-      "remaining": ["Executable model-run manifest and tested model-launch commands"]
+      "remaining": ["Preserve engineering v1 and register current source as a new engineering version after diagnosis; scientific registration follows M1"]
     },
     "M1": {
       "weight": 20,
@@ -25,10 +25,12 @@
       "verified": [
         "Production PyTorch calibration layer and upstream canonical fusion",
         "Full/detached forward equality and synthetic autograd/finite-difference agreement",
-        "Frozen observations, coordinate rows, invalid-input handling and rank checks"
+        "Frozen observations, coordinate rows, invalid-input handling and rank checks",
+        "Pristine versus zero-LoRA equality for all 20 directed pair outputs in gradient01 before its later failure",
+        "CPU final-calibration identity, unit/origin invariance and invalid-observation fixtures"
       ],
       "remaining": [
-        "Real LoRA zero-update and original-state checks",
+        "Completed real-model original-state hash checks; gradient01 stopped before final digest",
         "Real-model retained-graph versus output-adjoint replay",
         "Real adapter-direction finite differences",
         "Full 20-pair macro-step and memory/runtime measurement",
@@ -48,7 +50,9 @@
     "split_checks": "results/lora_profiled_v1/split_checks.json",
     "baseline_matches": "results/lora_profiled_v1/baseline_graph.json",
     "solver_checks": "results/lora_profiled_v1/solver_checks.json",
-    "engineering_failures": "results/lora_profiled_v1/engineering_failures.json"
+    "engineering_failures": "results/lora_profiled_v1/engineering_failures.json",
+    "failed_replay_comparison": "results/lora_profiled_v1/engineering/gradient01/replay_failure.json",
+    "evaluation_rules": "manifests/lora_profiled_evaluation_v1.json"
   },
   "accuracy_improvement_established": false,
   "nomination": null,
@@ -58,8 +62,30 @@
   "retained_cloud_storage": "Keep workspace per user instruction; historical storage quote is not a live billing audit",
   "redesigns_executed": 0,
   "redesign_limit": 1,
-  "research_gpu_job_at_checkpoint": null,
-  "next_command": "python scripts/prepare_profiled_inputs.py --verify",
-  "next_implementation_action": "Implement scripts/profiled_network.py and scripts/check_profiled_lora_bridge.py using the exact two-pass gradient and diagnostic sequence in the handoff",
+  "research_gpu_job_at_checkpoint": {
+    "container": "tco-profiled-gradient01",
+    "execution_commit": "8e33ba3",
+    "attempt": "gradient01",
+    "manifest": "manifests/lora_profiled_engineering_v1.json",
+    "last_authoritative_state": "exited",
+    "exit_code": 1,
+    "oom_killed": false,
+    "finished_at_utc": "2026-11-18T09:35:37.784819278Z",
+    "instruction": "Failure preserved. No research GPU container was running at checkpoint; recheck live state before a new unique diagnostic attempt"
+  },
+  "implementation_state": {
+    "network_and_gradient_bridge": "implemented; first real-model gradient comparison failed",
+    "arithmetic_diagnostic": "implemented; syntax and CPU harness checked; actual GPU diagnostic pending",
+    "final_calibration": "implemented; CPU fixtures pass",
+    "endpoint_bridge": "implemented; GPU execution pending",
+    "single_case_runner": "implemented; syntax/import and missing-manifest refusal checked; GPU execution pending",
+    "batch_launcher": "not implemented",
+    "global_seal_and_scorer": "not implemented; prospective rules documented and bound for future scientific registration",
+    "scientific_registry": "not created; both model acceptance reports missing",
+    "engineering_v1": "historical source snapshot; intentionally fails current-source verification after registry changes"
+  },
+  "last_observed_ci": {"commit": "8e33ba3839338daf9944939834c2834ee4f9d2d4", "run_id": 44277204188, "conclusion": "success", "scope": "CPU workflow; does not establish GPU bridge or accuracy"},
+  "next_command": "docker ps --format '{{.Names}} {{.Status}}'",
+  "next_implementation_action": "Follow the handoff's Immediate diagnostic and release commands: local no-update replay arithmetic diagnostic, diagnose/fix, preserve v1 and register new engineering version, pass gradient and endpoint bridges, then scientific registration",
   "handoff": "docs/CALIBRATION_AWARE_LORA_HANDOFF.md"
 }

@@ -3,6 +3,12 @@
 Engineering registration pins available bridge source before its GPU checks.
 Scientific registration additionally requires a runner and passing gradient and
 endpoint bridges bound to the current source, inputs, image and checkpoint.
+
+Preserve earlier registrations after engineering fixes. Use --prepare --output
+manifests/lora_profiled_engineering_v2.json --supersedes
+manifests/lora_profiled_engineering_v1.json, then --verify --manifest with the new
+path. Historical manifests retain their original source hashes and are expected
+to fail current-source verification after those sources change.
 """
 import argparse
 import json
@@ -28,6 +34,7 @@ SOURCES = ("scripts/register_profiled_execution.py", "scripts/prepare_profiled_i
            "scripts/run_mast3r_neural_transfer.py", "scripts/mast3r_calibrated_alignment.py",
            "scripts/mast3r_alignment_hook.py", "third_party/TCO/peft/lora.py")
 RUNNER = "scripts/run_profiled_lora.py"
+EVALUATION = "manifests/lora_profiled_evaluation_v1.json"
 BRIDGES = {
     "gradient": dict(path="results/lora_profiled_v1/gradient_bridge.json",
         checks=("pass_all", "original_state_unchanged", "zero_adapter_pass", "replay_gradient_pass",
@@ -55,7 +62,17 @@ def relative_file(name):
     return path
 
 
-def jobs(plan):
+def manifest_path(value, default):
+    path = default if value is None else value
+    path = path if path.is_absolute() else ROOT/path
+    path = path.resolve()
+    if path.parent != (ROOT/"manifests").resolve() or path.suffix != ".json":
+        raise ValueError("Registry path must be a JSON file directly inside the repository manifests directory")
+    return path
+
+
+def jobs(plan, scientific_manifest=None):
+    launch_manifest = (SCIENTIFIC if scientific_manifest is None else scientific_manifest).resolve().relative_to(ROOT.resolve()).as_posix()
     arms = plan["arms"]
     if [a["id"] for a in arms] != [f"P{i}" for i in range(6)]:
         raise ValueError("This execution registry requires the declared six-arm factorial")
@@ -75,7 +92,7 @@ def jobs(plan):
                     raw_attempt_parent=f"reports/lora_profiled_v1/cases/{name}",
                     public_attempt_parent=f"results/lora_profiled_v1/cases/{name}",
                     planned_argv=["python",RUNNER,"--run-id",name,"--manifest",
-                        "manifests/lora_profiled_execution_v1.json","--attempt","FRESH_ATTEMPT_ID","--weights","/weights"],
+                        launch_manifest,"--attempt","FRESH_ATTEMPT_ID","--weights","/weights"],
                     argv_validation="planned; runner CLI must be tested before launch"))
     trained = [job for job in result if job["adapt_lora"]]
     if len(result)!=36 or len(trained)!=30 or any(job["optimizer_steps"]!=8 for job in trained):
@@ -119,11 +136,11 @@ def inspect_bridge(kind, environment, input_hashes):
     return dict(ready=not reasons, reasons=reasons, artifact=spec["path"], sha256=sha(path))
 
 
-def inspect(phase):
+def inspect(phase, scientific_manifest=None):
     plan = read(PLAN)
-    inventory = jobs(plan)
+    inventory = jobs(plan, scientific_manifest)
     required_sources = list(SOURCES) + ([RUNNER] if phase=="scientific" else [])
-    required_artifacts = list(INPUT_PATHS)+list(PREPARATION)
+    required_artifacts = list(INPUT_PATHS)+list(PREPARATION)+([EVALUATION] if phase=="scientific" else [])
     missing = [name for name in required_sources+required_artifacts if not (ROOT/name).is_file()]
     preparation_errors = []
     for name in PREPARATION:
@@ -143,7 +160,7 @@ def inspect(phase):
     return readiness,plan,input_hashes,environment
 
 
-def build_registry(phase,ready,plan,input_hashes,environment):
+def build_registry(phase,ready,plan,input_hashes,environment,destination=None,predecessor=None):
     # Recompute actual registered splits; existence or old pass_all flags alone
     # do not authorize a registration against changed immutable inputs.
     _, current, _ = build_splits()
@@ -153,8 +170,19 @@ def build_registry(phase,ready,plan,input_hashes,environment):
     sources = list(SOURCES)+([RUNNER] if phase=="scientific" else [])
     artifacts = list(INPUT_PATHS)+list(PREPARATION)
     if phase=="scientific":
-        artifacts += [spec["path"] for spec in BRIDGES.values()]
+        artifacts += [EVALUATION]+[spec["path"] for spec in BRIDGES.values()]
+    history = None
+    if predecessor is not None:
+        previous = read(predecessor)
+        if previous.get("phase") != phase:
+            raise ValueError("Predecessor registry has a different phase")
+        if destination is not None and predecessor.resolve()==destination.resolve():
+            raise ValueError("A new registry must not overwrite its predecessor")
+        history = dict(path=predecessor.relative_to(ROOT.resolve()).as_posix(),sha256=sha(predecessor),
+            role="Historical source snapshot preserved; current-source validity is evaluated separately")
     return dict(schema=f"profiled_{phase}_v1", phase=phase,
+        registry_id=None if destination is None else destination.stem,
+        predecessor=history,
         purpose="Freeze engineering source and the prospective factorial" if phase=="engineering" else "Frozen scientific execution registry",
         evidence_scope="Registration only; this artifact is not a passed model experiment",
         execution_commit=subprocess.check_output(["git","-C",str(ROOT),"rev-parse","HEAD"],text=True).strip(),
@@ -177,16 +205,22 @@ def build_registry(phase,ready,plan,input_hashes,environment):
 
 
 def verify_registry(path,phase):
+    path = manifest_path(Path(path), ENGINEERING if phase=="engineering" else SCIENTIFIC)
     record = read(path)
     if record.get("phase") != phase or record.get("schema") != f"profiled_{phase}_v1":
         raise ValueError("Registry phase/schema differs")
     for name,expected in record["source_sha256_lf"].items():
         if sha(relative_file(name),text=True) != expected:
-            raise ValueError(f"Registered source changed: {name}")
+            raise ValueError(f"Registered source changed: {name}; preserve this historical registry and use a new version for revised source")
     for name,expected in record["artifact_sha256"].items():
         if sha(relative_file(name)) != expected:
             raise ValueError(f"Registered artifact changed: {name}")
-    ready,plan,inputs,environment = inspect(phase)
+    if phase=="scientific" and EVALUATION not in record["artifact_sha256"]:
+        raise ValueError("Scientific registry omits the prospective evaluation rules")
+    predecessor = record.get("predecessor")
+    if predecessor is not None and sha(relative_file(predecessor["path"])) != predecessor["sha256"]:
+        raise ValueError("Historical predecessor registry bytes changed")
+    ready,plan,inputs,environment = inspect(phase,path if phase=="scientific" else None)
     if not ready["registration_ready"]:
         raise ValueError(json.dumps(ready,sort_keys=True))
     if record["jobs"] != ready["jobs"] or record["study_settings"] != plan:
@@ -207,18 +241,31 @@ def main():
     action.add_argument("--dry-run",action="store_true")
     parser.add_argument("--phase",choices=("engineering","scientific"),default="engineering")
     parser.add_argument("--scientific",action="store_true",help="Alias for --phase scientific; enforce scientific readiness")
+    parser.add_argument("--output",type=Path,help="New immutable registry path for --prepare; must not exist")
+    parser.add_argument("--manifest",type=Path,help="Registry path to inspect with --verify")
+    parser.add_argument("--supersedes",type=Path,help="Preserved same-phase predecessor to hash-link when preparing a new version")
     args = parser.parse_args()
+    if args.output is not None and not args.prepare:
+        parser.error("--output is only valid with --prepare")
+    if args.manifest is not None and not args.verify:
+        parser.error("--manifest is only valid with --verify")
+    if args.supersedes is not None and not args.prepare:
+        parser.error("--supersedes is only valid with --prepare")
     phase = "scientific" if args.scientific else args.phase
-    destination = SCIENTIFIC if phase=="scientific" else ENGINEERING
+    default = SCIENTIFIC if phase=="scientific" else ENGINEERING
+    destination = manifest_path(args.manifest if args.verify else args.output,default)
+    predecessor = None if args.supersedes is None else manifest_path(args.supersedes,default)
     if args.verify:
         ready = verify_registry(destination,phase)
     else:
-        ready,plan,inputs,environment = inspect(phase)
+        ready,plan,inputs,environment = inspect(phase,destination if phase=="scientific" else None)
         if args.prepare:
+            if destination.exists():
+                parser.exit(2,"Preserve the existing registry. Use --verify or choose a new --output version.\n")
             if not ready["registration_ready"]:
                 print(json.dumps(ready,indent=2))
                 parser.exit(2,"Registration prerequisites are incomplete; no manifest written.\n")
-            report = build_registry(phase,ready,plan,inputs,environment)
+            report = build_registry(phase,ready,plan,inputs,environment,destination,predecessor)
             with destination.open("x",encoding="utf-8",newline="\n") as stream:
                 json.dump(report,stream,indent=2,allow_nan=False)
                 stream.write("\n")
