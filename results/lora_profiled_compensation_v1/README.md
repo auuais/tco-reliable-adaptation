@@ -18,3 +18,11 @@ python scripts/verify_compensation_public_scores.py --output results/lora_profil
 ```
 
 Only R1 is eligible, with at least 1% lower held-source MAE than P1 in each temporal direction, at least two common improving scenes, and lower directional means than P3, R0 and R2 in both directions. A nomination would move the method to the registered surface and repeatability checks. The rental gate remains tied to those later checks.
+
+Publish the score report, independent replay receipt, and aggregate arithmetic check. Keep the sampled measurement and prediction vectors and full endpoint arrays in the noncommercial local evidence archives. The public arithmetic check starts from the 180 reported view means and verifies the paired-room and directional nomination without those arrays. [Related work and comparison scope](../../docs/PROFILED_COMPENSATION_RELATED_WORK.md)
+
+```powershell
+python scripts/replay_compensation_published_metrics.py
+python scripts/plot_compensation_verdict.py --output results/lora_profiled_compensation_v1/held_source_gains.svg
+python scripts/archive_profiled_compensation.py copy --destination E:/ResearchData/TCO/research_results/lora_profiled_compensation_v1 --snapshot verdict-v1 --verdict --receipt results/lora_profiled_compensation_v1/verdict_backup01.json
+```

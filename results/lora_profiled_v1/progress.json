@@ -160,7 +160,10 @@
     "compensation_release_backup": "results/lora_profiled_compensation_v1/release_backup01.json",
     "compensation_first_frozen_backup": "results/lora_profiled_compensation_v1/first_frozen_backup01.json",
     "compensation_first_trained_reconstruction": "results/lora_profiled_compensation_v1/first_trained_reconstruction.json",
-    "compensation_first_trained_backup": "results/lora_profiled_compensation_v1/first_trained_backup01.json"
+    "compensation_first_trained_backup": "results/lora_profiled_compensation_v1/first_trained_backup01.json",
+    "compensation_profiled_control_reproduction": "results/lora_profiled_compensation_v1/profiled_control_reproduction.json",
+    "compensation_profiled_control_backup": "results/lora_profiled_compensation_v1/heads_earlier_P3_backup01.json",
+    "compensation_related_work": "docs/PROFILED_COMPENSATION_RELATED_WORK.md"
   },
   "accuracy_improvement_established": false,
   "nomination": null,
@@ -171,8 +174,8 @@
   "redesigns_executed": 1,
   "redesign_limit": 1,
   "research_gpu_job_at_checkpoint": {
-    "container": "tco-profiled-compensation-heads-earlier-p3",
-    "container_id": "c745a84dc8c65669877fcbbfd17453b73cbda70d3a7cd89b8171d0de26da2aa6",
+    "container": "tco-profiled-compensation-heads-earlier-r0",
+    "container_id": "4a37ecfde4663ce764ac6ba64766f46bea5d1f5e1b3bf4cdabac03ca512ec5ad",
     "observed_state": {
       "Status": "running",
       "Running": true,
@@ -180,10 +183,10 @@
       "Restarting": false,
       "OOMKilled": false,
       "Dead": false,
-      "Pid": 26138,
+      "Pid": 26351,
       "ExitCode": 0,
       "Error": "",
-      "StartedAt": "2026-11-18T15:56:34.738736964Z",
+      "StartedAt": "2026-11-18T16:02:16.779748746Z",
       "FinishedAt": "0001-01-01T00:00:00Z"
     },
     "source": "local Docker Desktop named pipe",
@@ -204,24 +207,24 @@
     "m3_preparation": "202 combined CPU fixtures pass. Static registry and completed-attempt byte audit implemented, including exact fitting-count checks. Reference-free converter/replay and pure reference semantics pass 17 pinned CPU fixtures. All24 real fitting-case reports exactly reproduce in pinned image. M3 actual registry/release controller, model acceptance, stage seals, scorer and scientific execution remain pending; no reuse approved."
   },
   "last_observed_ci": {
-    "commit": "b75e187410866807c8b00ffcab74cddd3bdadc81",
-    "run_id": 44339894960,
+    "commit": "aa9f31546bc4614f322bebcb0d6fe39ac8904973",
+    "run_id": 44341635484,
     "conclusion": "success",
-    "scope": "Full CPU validation of the compensation science and score registration code"
+    "scope": "Registered code and reproduced P0/P1 evidence"
   },
-  "next_command": "docker --host npipe:////./pipe/dockerDesktopLinuxEngine inspect tco-profiled-compensation-heads-earlier-p3",
+  "next_command": "docker --host npipe:////./pipe/dockerDesktopLinuxEngine inspect tco-profiled-compensation-heads-earlier-r0",
   "next_implementation_action": "Observe launcher session 23437 and actual Docker state. Do not start another queue while it is running. Once it exits successfully, verify existing cases, check weekly usage and launch the next tranche with the same registered attempt via python scripts/run_profiled_compensation_batch.py --execute --limit 6. On failure preserve logs and partial evidence. Seal all 36 endpoints before scoring or nomination.",
   "handoff": "docs/CALIBRATION_AWARE_LORA_HANDOFF.md",
   "weekly_usage_checkpoint": {
     "used_percent": 21,
     "remaining_percent": 79,
     "pause_threshold_remaining_percent": 5,
-    "observation": "2026-11-18T15:54:12.978924+00:00",
+    "observation": "2026-11-18T16:05:17.742001+00:00",
     "note": "Observed via native usage tool; shared counter can change"
   },
-  "validated_code_commit": "b75e187410866807c8b00ffcab74cddd3bdadc81",
-  "last_goal_turn_classification": "progress: real compensation bridge passed in both folds, registered executable/scorer 36 states, launched first tranche and verified first frozen reconstruction plus real scientific optimizer updates, backed up release and first case",
-  "checkpoint_observed_at_utc": "2026-11-18T15:57:41.415904+00:00",
+  "validated_code_commit": "aa9f31546bc4614f322bebcb0d6fe39ac8904973",
+  "last_goal_turn_classification": "progress: fresh P3 exact control reproduction and verified archive, R0 running with observed penalty; reusable archives and scoped score release prepared",
+  "checkpoint_observed_at_utc": "2026-11-18T16:05:17.740962+00:00",
   "screen_result": {
     "nominee": null,
     "all_primary_cases_valid": true,
@@ -321,7 +324,7 @@
     "status": "running_first_tranche",
     "cases_required": 36,
     "trained_cases_required": 30,
-    "verified_completed_at_checkpoint": 2,
+    "verified_completed_at_checkpoint": 3,
     "completed": [
       {
         "run_id": "heads_earlier_P0",
@@ -334,6 +337,12 @@
         "report": "results/lora_profiled_compensation_v1/cases/heads_earlier_P1/screen01/complete.json",
         "report_sha256": "8c30f5b01209190e361ce07e2bc703b3ee606beacc7ce7f5ae1cce27c77e1905",
         "terminal": "results/lora_profiled_compensation_v1/launches/tco-profiled-compensation-heads-earlier-p1/terminal.json"
+      },
+      {
+        "run_id": "heads_earlier_P3",
+        "report": "results/lora_profiled_compensation_v1/cases/heads_earlier_P3/screen01/complete.json",
+        "report_sha256": "ebc821f86018dda2a1e7b646b49a9890c82a4ef3b4f16513f83abcf659fcb0c8",
+        "terminal": "results/lora_profiled_compensation_v1/launches/tco-profiled-compensation-heads-earlier-p3/terminal.json"
       }
     ],
     "engineering_passed": true,
