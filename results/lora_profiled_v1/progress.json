@@ -2,7 +2,7 @@
   "goal": "Calibration-aware predictive LoRA accuracy investigation",
   "checkpoint_date": "2026-11-18",
   "status": "active",
-  "current_phase": "M2 scientific v2: 18 states verified; tco-profiled-screen02-chess-later-p0 running",
+  "current_phase": "M2 scientific v2: 20 states verified; tco-profiled-screen02-chess-later-p2 running",
   "completed_milestone_weight_percent": 25,
   "percentage_rule": "Conservative whole-milestone credit; completed subchecks are listed separately and are not accuracy evidence",
   "milestones": {
@@ -40,9 +40,9 @@
     "M2": {
       "weight": 25,
       "status": "in_progress",
-      "trained_states_completed": 15,
+      "trained_states_completed": 16,
       "trained_states_planned": 30,
-      "frozen_controls_completed": 3,
+      "frozen_controls_completed": 4,
       "frozen_controls_planned": 6,
       "retired_protocol_states": 1,
       "note": "Counts from launcher verified receipts with matching completion-file hashes; no accuracy scores accessed. Full queue remains active."
@@ -107,7 +107,7 @@
   "redesigns_executed": 0,
   "redesign_limit": 1,
   "research_gpu_job_at_checkpoint": {
-    "container": "tco-profiled-screen02-chess-later-p0",
+    "container": "tco-profiled-screen02-chess-later-p2",
     "last_authoritative_state": "running",
     "batch_session_id": 27750,
     "batch_invocation": "20261118T104117Z_ede54062",
@@ -127,21 +127,21 @@
     "m3_preparation": "Signed-only inputs and fixed poses prepared; 20 input checks, 24 actual CPU cases, 78 unit tests, 19 pinned-container converter tests, and exact synthetic dense repeatability in two fresh CPU processes passed. Real M3 execution and dense wrapper remain pending."
   },
   "last_observed_ci": {
-    "commit": "9ba1a70f50f6450a50ef24fb0ee70739d4bbd7ec",
-    "run_id": 44295575875,
+    "commit": "8f65e389508bad08ac778b2b18a08f6141259edd",
+    "run_id": 44299863487,
     "conclusion": "success",
-    "scope": "Full CPU workflow on the last committed checkpoint; new converter/inventory code separately passed 78 combined unit tests and awaits its commit CI"
+    "scope": "Full CPU workflow, including all 78 M3 unit tests and source-preparation / actual CPU case verification; synthetic Open3D runtime separately accepted in pinned Docker"
   },
   "next_command": "Poll batch session 27750 and inspect live Docker state; after all 36 complete, verify the global seal and run the registered scorer as the handoff specifies",
   "next_implementation_action": "Monitor the same local M2 batch through Chess and Fire. Global seal then registered scoring only after all 36 states. M3 preparation is validated; no M3 model run before nomination and execution registration.",
   "handoff": "docs/CALIBRATION_AWARE_LORA_HANDOFF.md",
   "weekly_usage_checkpoint": {
-    "used_percent": 84,
-    "remaining_percent": 16,
+    "used_percent": 85,
+    "remaining_percent": 15,
     "pause_threshold_remaining_percent": 5,
-    "observation": "2026-11-18T11:53Z"
+    "observation": "2026-11-18T12:02Z"
   },
-  "validated_code_commit": "afb2876dd76d9d2dbba65efeada55b27be8dba2a",
+  "validated_code_commit": "8f65e389508bad08ac778b2b18a08f6141259edd",
   "last_goal_turn_classification": "progress: fresh M2 states; completed synthetic converter, inventory and pinned CPU runtime acceptance; detailed successor handoff corrected and extended; no study accuracy access",
-  "checkpoint_observed_at_utc": "2026-11-18T11:59:14.500625+00:00"
+  "checkpoint_observed_at_utc": "2026-11-18T12:06:11.229183+00:00"
 }
