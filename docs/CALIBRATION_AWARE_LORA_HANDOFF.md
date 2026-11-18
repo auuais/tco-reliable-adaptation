@@ -4,15 +4,13 @@ This is the operational guide for a successor agent, including Solus. Read it wi
 
 **Objective and current checkpoint**
 
-**Scientific release update:** both model bridges passed. The initial scientific-v1 P0 completed but its host verifier rejected Linux colon versus Windows U+F03A cache names. The narrow shared filename codec now verifies the same bytes. That unscored P0 is preserved in the C:/E: archive; use scientific v2 and evaluator execution v2 for the full 36-state screen. See the live progress file for actual running handles. Historical v1 commands and failed attempts below are retained for audit, not instructions to restart an obsolete run.
+**Current checkpoint, November 18, 2026:** both real-model bridges passed. Scientific registration is [lora_profiled_execution_v2.json](../manifests/lora_profiled_execution_v2.json); the frozen scorer registration is [lora_profiled_evaluation_execution_v2.json](../manifests/lora_profiled_evaluation_execution_v2.json). At commit `7815a7c`, the local `screen02` launcher started its first P0/P1 validation pair with `--limit 2 --max-wall-hours 1`. The invocation is `20261118T103337Z_7333c162`, with observation session `55290`. Inspect [progress.json](../results/lora_profiled_v1/progress.json), the invocation's `terminal.json`, and actual Docker state before acting: these names identify a launched operation, not a claim that both states finished. Do not launch another queue while it is active. After both states complete and their hashes verify, continue the same prefix through the full 36-state inventory using the commands below. No study accuracy scores have been accessed; no accuracy or rental gate has passed.
 
-**Latest verified update:** deterministic execution resolved the earlier discrepancy. `gradient02`, under engineering v2 at commit `8c3de74`, passed exact retained/replay agreement, all three finite-difference perturbations, original-state integrity and a complete 20-pair macro-step (23.85 seconds; 4825.71 MiB peak allocated). `endpoint01` was launched next; inspect [progress.json](../results/lora_profiled_v1/progress.json) for its live/terminal state. Do not repeat the diagnosis below merely because it is retained as history. Scientific registration still requires the endpoint report. See [the engineering diagnosis](PROFILED_LORA_ENGINEERING_DIAGNOSIS.md) and [formal gradient evidence](../results/lora_profiled_v1/gradient_bridge.json).
+`gradient02`, under engineering v2 at commit `8c3de74`, passed exact retained/replay agreement, all three finite-difference perturbations, original-state integrity and a complete 20-pair macro-step (23.85 seconds; 4825.71 MiB peak allocated). `endpoint01` passed exact pristine/zero-LoRA native and final endpoint equality, matching/confidence equality and unchanged original/adapter states. Preserve these reports and verify their registered hashes; do not repeat them without a relevant source/runtime change. See [the engineering diagnosis](PROFILED_LORA_ENGINEERING_DIAGNOSIS.md), [gradient evidence](../results/lora_profiled_v1/gradient_bridge.json) and [endpoint evidence](../results/lora_profiled_v1/endpoint_bridge.json).
 
 The objective is to determine whether differentiating calibration while training only LoRA improves reconstructed geometry. MASt3R is the first model because its existing decoder adaptation fits this machine. VGGT transfer is conditional on a useful, repeatable MASt3R result. The original encoder, decoder and task-head parameters remain frozen; only newly installed LoRA factors are trainable.
 
-Historical checkpoint immediately after `gradient01` (superseded by the update above): Preparation and CPU calculus checks pass. The real-model bridge, final calibration, endpoint bridge and single-case runner have now been implemented, but the GPU acceptance checks have **not** passed. The first local model run passed pristine-versus-zero-LoRA output equality and then failed retained-versus-replayed gradient agreement. No scientific adapter run, accuracy improvement or rental qualification exists yet. Consult [progress.json](../results/lora_profiled_v1/progress.json) for the live checkpoint; a file's existence does not establish that its experiment passed.
-
-The original blocker was to diagnose this engineering discrepancy. That diagnosis and the repaired gradient acceptance are now complete; continue from the live checkpoint. At execution commit `8e33ba3839338daf9944939834c2834ee4f9d2d4`, both losses were `25.951331333991202`, but gradient relative L2 error was `0.0058830234318835144` (about 0.588%) and cosine was `0.9999827114918957`. The registered limits are relative L2 <= `1e-4` and cosine >= `0.99999`. Identical losses do not imply identical derivatives. See [failed comparison](../results/lora_profiled_v1/engineering/gradient01/replay_failure.json) and [failure traceback](../results/lora_profiled_v1/engineering/gradient01/failure.json). The container `tco-profiled-gradient01` exited with code 1, without an OOM; no research container was running at this checkpoint. Inspect live state again on resume.
+**Preserved history, not pending work:** `gradient01` at commit `8e33ba3839338daf9944939834c2834ee4f9d2d4` passed zero-adapter prediction equality but failed retained/replayed derivatives: relative L2 `0.0058830234318835144` and cosine `0.9999827114918957`, against unchanged limits `1e-4` and `0.99999`. Strict deterministic arithmetic resolved the discrepancy. See its [failed comparison](../results/lora_profiled_v1/engineering/gradient01/replay_failure.json) and [traceback](../results/lora_profiled_v1/engineering/gradient01/failure.json). The scientific-v1 `screen01` P0 subsequently completed in 89.29 seconds with exit code 0 and unchanged original weights, but its host verifier rejected five Linux colon/Windows U+F03A cache names. The narrow filename codec now verifies all original bytes. That unscored case is archived on C: and E: with [its archive receipt](../results/lora_profiled_v1/archived_cases/scientific_v1_heads_earlier_P0_screen01.json); it does not count toward scientific v2. Neither historical failure should be rerun under its old attempt name.
 
 Read in this order: this operational checkpoint, the goal contract, the mathematical specification, the design and bridge-threshold manifests, then the referenced implementation. User instructions take precedence. The contract defines the scientific decisions; the manifests freeze settings; actual reports establish completion. A conflict between prose, settings and code is an engineering issue to resolve explicitly before execution. Never silently substitute a setting or promote an old successful report across changed source hashes.
 
@@ -91,7 +89,7 @@ $profiledAttempt = 'tco-profiled-solver-' + (Get-Date -Format yyyyMMdd-HHmmss)
 docker run --name $profiledAttempt --mount type=bind,source=C:/SVNProjects/Research/tco-research,target=/workspace --workdir /workspace sha256:74783a8eefee6daad6ff2714a51263ccdcdc5092b83cebee20515310bec46b50 python scripts/check_profiled_calibration.py --verify
 ```
 
-Model jobs add `--gpus all` and the read-only checkpoint mount `--mount type=bind,source=E:/ResearchData/TCO/checkpoints/MASt3R/hf,target=/weights,readonly`. The image already sets the MASt3R import path. Do not start a second GPU experiment while the first is active. The runner CLI now exists and its missing-manifest refusal has been checked; its actual training and endpoint execution remain unverified.
+Model jobs add `--gpus all`, `--env CUBLAS_WORKSPACE_CONFIG=:4096:8`, and the read-only checkpoint mount `--mount type=bind,source=E:/ResearchData/TCO/checkpoints/MASt3R/hf,target=/weights,readonly`. The image already sets the MASt3R import path. The registered batch launcher supplies these arguments and pins the local Docker engine. Use it for scientific states. Both production bridges passed; the current P0/P1 validation invocation determines readiness to run the remaining scientific states. Do not start a second GPU experiment while the first is active.
 
 **Data roles and exact schema**
 
@@ -127,12 +125,16 @@ Support and query both train LoRA. Opposite-source scores may nominate a method 
 | `scripts/check_profiled_environment.py` | Pinned image/checkpoint/source and CUDA verification |
 | `scripts/profiled_baseline_graph.py` | Sealed pretrained correspondence graph and audit; confirm current CLI before use |
 | `scripts/profiled_network.py` | Case loading, fixed teacher, two spatial states, arm losses, output adjoints and pair replay |
-| `scripts/check_profiled_lora_bridge.py` | Registered real-model gradient/finite-difference/full-macro-step acceptance; first attempt failed |
-| `scripts/diagnose_profiled_replay.py` | Arithmetic diagnostic without an optimizer update; implemented, real-model run pending |
+| `scripts/check_profiled_lora_bridge.py` | Registered real-model gradient/finite-difference/full-macro-step acceptance; gradient02 passed |
+| `scripts/diagnose_profiled_replay.py` | Completed no-update arithmetic diagnosis; retained as an engineering tool |
 | `scripts/profiled_final_calibration.py` | Common final gauge, native camera convention and five-scale refinement |
-| `scripts/check_profiled_endpoints.py` | Pristine/zero-adapter endpoint acceptance and reusable fresh capture; GPU check pending |
+| `scripts/check_profiled_endpoints.py` | Passed pristine/zero-adapter endpoint acceptance and reusable fresh capture |
 | `scripts/register_profiled_execution.py` | Versioned immutable engineering/scientific registration and fail-closed source verification |
-| `scripts/run_profiled_lora.py` | One registered case, eight macro-steps or P0, fresh endpoints and sealed attempt evidence; GPU run pending |
+| `scripts/run_profiled_lora.py` | One registered case, eight macro-steps or P0, fresh endpoints and sealed attempt evidence |
+| `scripts/run_profiled_batch.py` | Serial local Docker queue, validated skips, per-invocation timeout and durable exit evidence |
+| `scripts/profiled_artifacts.py` | Narrow logical filename codec for byte-identical Linux/Windows cache verification |
+| `scripts/seal_profiled_predictions.py` | Global 36-state seal, complete byte audit and prospective failure classification |
+| `scripts/score_profiled_lora.py` | Frozen held-source scorer, nomination rule and independent replay output |
 | `scripts/mast3r_network_priors.py` | LoRA installation, state digest, native sample mapping and original D objective |
 | `scripts/mast3r_network_capture.py` | Image preprocessing, frozen features, pair decoder, native capture |
 | `scripts/run_mast3r_neural_transfer.py` | Native intrinsics, original triplet schedule and historical training |
@@ -167,12 +169,12 @@ All new calibration medians use the midpoint convention, `torch.quantile(values,
 
 **Remaining work, in dependency order**
 
-1. Completed: run the arithmetic diagnostic described below. It compares graph-cut values, loss adjoints, individual pair VJPs, accumulation, repeated backward passes and FP32/BF16 behavior. Establish the cause of `gradient01` before changing production code. No accuracy label is needed.
-2. Completed for engineering v2: repair and re-register the deterministic implementation. Re-run zero-LoRA equality, retained/replay agreement, the real adapter finite differences, frozen-state hashes and the full 20-pair macro-step. Keep the failed attempt. The finite-difference and macro-step checks were not reached in `gradient01`.
-3. Run the existing endpoint bridge with fresh pristine and zero-adapter caches. Require separate native and final-calibrated equality, finite alignment callbacks, matching provenance and unchanged model/adapter state. The CPU final-calibration fixture alone does not establish this real endpoint bridge.
-4. Review and exercise the existing `run_profiled_lora.py` after both bridges pass. Register the scientific manifest against the finished source and passed reports. Its dry-run verifies one case; the registration tool enumerates the complete 36-case inventory. Check one complete local scientific state before proceeding serially through the registered inventory, without opening opposite-source scores. A completed first state can count toward the screen only if its settings and code are unchanged.
-5. Implement the still-missing `scripts/score_profiled_lora.py` and its global seal/nomination checks from the contract below before opening scores. Dense evaluation follows the existing registered conventions and matched input controls. Do not reuse the old scorer unchanged: it expects historical `zero/real/shuffled` shape experiments, not the six new neural arms.
-6. Add compact replay/CI entry points as meaningful evidence becomes available. Keep numerical fixtures separate from GPU-dependent checks. Publish all planned runs, including failures, and record why conditional experiments were not run.
+1. Completed: deterministic arithmetic diagnosis, both real-model acceptance bridges, scientific v2 registration and scorer v2 registration. The scorer's 62 synthetic fixtures and the batch/filename helper's 21 CPU fixtures passed before release. Preserve the failed attempts and old registrations.
+2. Observe the existing `screen02` P0/P1 invocation to completion. Require both model exit codes, valid completion seals and successful launcher terminal status. No study accuracy labels are needed for this check.
+3. Continue the same frozen v2 inventory serially with the same `screen02` prefix. The launcher rechecks completed hashes before skipping them. Seal all 36 states before scoring; do not edit registered source or inputs during the screen.
+4. Create and verify the global seal, score with the already registered evaluator, and independently replay the result. Apply the declared nomination rule. A passing derivative test, smaller training loss or isolated good scene cannot substitute for this gate.
+5. If a candidate qualifies, prepare the still-pending dense evaluation with the prescribed matched controls and eight gate cells before opening dense scores. Otherwise diagnose failure and use at most the one targeted local redesign allowed by the contract. No rental allocation is released by a failed gate.
+6. Publish planned runs including failures, verified backups, compact replay evidence and CI results; record why conditional stages did not run.
 
 **Exact gradient replay algorithm**
 
@@ -182,74 +184,67 @@ No optimizer step may occur between replayed pairs. Do not retain 20 full decode
 
 Reduced precision can make tiny finite differences meaningless. Run the numerical direction check with an fp32 decoder and TF32 disabled if necessary, with fixed features and several prespecified perturbation sizes. Record arithmetic settings and tolerances before opening accuracy results. A gradient check must cover the implementation actually claimed; a diagnostic of a different precision path cannot prove every reduced-precision detail.
 
-**Immediate diagnostic and release commands**
+**Current v2 inspection and resume commands**
 
-The following commands are entry points, not claims that these runs have passed. Start with the inspection commands above, check free disk space and weekly allowance, and commit the exact diagnostic source before running it. Use an unused attempt/container name; the scripts intentionally refuse to overwrite an attempt. No paid GPU is involved.
-
-```powershell
-$profiledImage = 'sha256:74783a8eefee6daad6ff2714a51263ccdcdc5092b83cebee20515310bec46b50'
-$profiledAttempt = 'replaydiag-' + (Get-Date -Format yyyyMMdd-HHmmss)
-$profiledContainer = 'tco-profiled-' + $profiledAttempt
-docker run --name $profiledContainer --gpus all --mount type=bind,source=C:/SVNProjects/Research/tco-research,target=/workspace --mount type=bind,source=E:/ResearchData/TCO/checkpoints/MASt3R/hf,target=/weights,readonly --workdir /workspace $profiledImage python scripts/diagnose_profiled_replay.py --attempt $profiledAttempt --weights /weights --image $profiledImage
-```
-
-Read `results/lora_profiled_v1/engineering/ATTEMPT/report.json`, or its `failure.json` and partial precision reports. This diagnostic makes no optimizer update. It records the actual RoPE implementation; the first run used the slow PyTorch fallback, so do not assume a compiled extension caused the mismatch. Its current checks distinguish the following possibilities:
-
-| Evidence | Next decision |
-|---|---|
-| Forward outputs differ between graph-free and gradient-enabled recomputation | Inspect autocast, features, random state, buffers and execution paths before reasoning about accumulation |
-| Outputs agree but graph-cut loss adjoints differ | Inspect canonical fusion, detached state, objective construction and tensor aliasing |
-| Outputs/adjoints agree but individual pair VJPs differ | Inspect backward kernels, tensor mutation and precision; preserve supplied-adjoint mutation checks |
-| Individual pair VJPs agree but joint backward differs | Examine accumulation/cast placement and repeated-run variation; do not call this exact retained-graph agreement |
-| FP32 agrees but BF16 fails | A precision cause is supported only after the component comparisons agree; revise arithmetic consistently across all neural arms and re-register if necessary |
-| Both precisions fail or finite differences fail | Treat as an unresolved implementation/math error; no scientific launch |
-| All relevant comparisons pass after a fix | Run the registered acceptance bridge, including finite differences and the full macro-step; the diagnostic is not a substitute |
-
-Retain the original thresholds and failed evidence. If a tolerance revision is scientifically justified by measured numerical repeatability, document that as a new prospective engineering protocol with independent review; never edit the archived threshold manifest to turn a failed run into a pass. Prefer repairing the computation or using a common more accurate arithmetic path.
-
-After diagnosis and any source fix, preserve `lora_profiled_engineering_v1.json` and create a new version. V1 is a valid historical snapshot and is expected to reject the changed current source. It must not be overwritten or hand-edited.
+First inspect the existing operation. Poll its observation session while available. Docker state, the batch lock, per-job exit records and the invocation terminal record remain durable references if that session disappears. A missing `terminal.json` means the launcher has not recorded a terminal result; it does not authorize a duplicate.
 
 ```powershell
-python scripts/register_profiled_execution.py --prepare --phase engineering --output manifests/lora_profiled_engineering_v2.json --supersedes manifests/lora_profiled_engineering_v1.json
-python scripts/register_profiled_execution.py --verify --phase engineering --manifest manifests/lora_profiled_engineering_v2.json
+docker ps --format '{{.Names}} {{.Status}}'
+Get-Content reports/lora_profiled_v1/batch.lock -ErrorAction SilentlyContinue
+Get-Content results/lora_profiled_v1/batches/screen02/invocations/20261118T103337Z_7333c162/terminal.json -ErrorAction SilentlyContinue
+Get-ChildItem reports/lora_profiled_v1/batches/screen02/invocations/20261118T103337Z_7333c162/*.log
 ```
 
-Commit the revised source and new registry, then run these **sequentially**, using new names if any already exist. Do not start the endpoint job if the gradient job fails.
+Wait for the first invocation to record `status="success"`, `selected_jobs_verified=2`, with P0 and P1 completion seals, and confirm its containers are stopped. Inspect `*.exit.json` and individual completion records if it fails. Then run these commands sequentially; each failure blocks the next command:
 
 ```powershell
-docker run --name tco-profiled-gradient02 --gpus all --mount type=bind,source=C:/SVNProjects/Research/tco-research,target=/workspace --mount type=bind,source=E:/ResearchData/TCO/checkpoints/MASt3R/hf,target=/weights,readonly --workdir /workspace $profiledImage python scripts/check_profiled_lora_bridge.py --weights /weights --manifest manifests/lora_profiled_engineering_v2.json --attempt gradient02 --image $profiledImage
-if ($LASTEXITCODE -ne 0) { throw 'Gradient bridge failed; endpoint launch blocked' }
-$profiledGradientReport = Get-Content results/lora_profiled_v1/gradient_bridge.json -Raw -ErrorAction Stop | ConvertFrom-Json
-if ($profiledGradientReport.pass_all -ne $true) { throw 'Gradient report is not passing; endpoint launch blocked' }
-docker run --name tco-profiled-endpoint01 --gpus all --mount type=bind,source=C:/SVNProjects/Research/tco-research,target=/workspace --mount type=bind,source=E:/ResearchData/TCO/checkpoints/MASt3R/hf,target=/weights,readonly --workdir /workspace $profiledImage python scripts/check_profiled_endpoints.py --weights /weights --manifest manifests/lora_profiled_engineering_v2.json --attempt endpoint01 --image $profiledImage
-if ($LASTEXITCODE -ne 0) { throw 'Endpoint bridge failed; scientific registration blocked' }
+python scripts/register_profiled_execution.py --verify --phase scientific --manifest manifests/lora_profiled_execution_v2.json
+if ($LASTEXITCODE -ne 0) { throw 'Scientific v2 verification failed' }
+python scripts/score_profiled_lora.py verify-registration --registration manifests/lora_profiled_evaluation_execution_v2.json
+if ($LASTEXITCODE -ne 0) { throw 'Evaluator v2 verification failed' }
+python scripts/run_profiled_batch.py --manifest manifests/lora_profiled_execution_v2.json --attempt-prefix screen02 --dry-run
+if ($LASTEXITCODE -ne 0) { throw 'Batch preflight failed; preserve and investigate' }
+python scripts/run_profiled_batch.py --manifest manifests/lora_profiled_execution_v2.json --attempt-prefix screen02 --execute --max-wall-hours 6 --min-free-gib 20
+if ($LASTEXITCODE -ne 0) { throw 'Batch stopped; inspect its terminal and per-job exit records before recovery' }
 ```
 
-Only passed reports at `results/lora_profiled_v1/gradient_bridge.json` and `endpoint_bridge.json`, bound to current sources/inputs/runtime, release scientific registration. A report with a stale source hash is not a pass for the new implementation. Reuse of a successful evidence filename after a scientific code change requires preserving/versioning the old report and updating its registry references; never delete the old report to bypass the guard.
+The last command verifies and skips completed states under the same prefix, then runs the remaining manifest-ordered states. It does not restart the first P0/P1 pair or select attempts by accuracy. The wall-clock bound applies to this local invocation and does not authorize a rental. The user's 5% weekly reserve still applies. The launcher pins the local Docker named pipe, exact image and mounts, deterministic cuBLAS environment and one job at a time. On timeout/interruption it stops only its own labeled container. No automatic retries occur.
+
+After all 36 predictions have individual completion seals, create and verify the global seal. These commands audit byte hashes without deserializing scientific predictions or accessing held-source accuracy:
 
 ```powershell
-python scripts/register_profiled_execution.py --prepare --phase scientific
-python scripts/register_profiled_execution.py --verify --phase scientific --manifest manifests/lora_profiled_execution_v1.json
-python scripts/run_profiled_lora.py --run-id heads_earlier_P4 --manifest manifests/lora_profiled_execution_v1.json --attempt screen01 --weights /weights --dry-run
+python scripts/seal_profiled_predictions.py prepare --manifest manifests/lora_profiled_execution_v2.json --evaluation manifests/lora_profiled_evaluation_execution_v2.json
+if ($LASTEXITCODE -ne 0) { throw 'Global prediction seal failed' }
+python scripts/seal_profiled_predictions.py verify --manifest manifests/lora_profiled_execution_v2.json --evaluation manifests/lora_profiled_evaluation_execution_v2.json
+if ($LASTEXITCODE -ne 0) { throw 'Global prediction seal verification failed' }
 ```
 
-At the present checkpoint the first two commands cannot succeed because both bridges are missing; the runner also refuses a missing scientific manifest. Commit the scientific manifest before a real job. Real jobs require the explicit inspected image ID (`--image`, or `PROFILED_DOCKER_IMAGE`); the registry's `planned_argv` is a template that the launcher must complete with this identity.
+Require 36 states and `failure_review_required=false` before scoring. If the seal already exists, use `verify`; `prepare` refuses to overwrite it. The following is the first planned release of study labels, followed by independent recomputation from the sealed predictions:
 
 ```powershell
-docker run --name tco-profiled-heads-earlier-p4-screen01 --gpus all --mount type=bind,source=C:/SVNProjects/Research/tco-research,target=/workspace --mount type=bind,source=E:/ResearchData/TCO/checkpoints/MASt3R/hf,target=/weights,readonly --workdir /workspace $profiledImage python scripts/run_profiled_lora.py --run-id heads_earlier_P4 --manifest manifests/lora_profiled_execution_v1.json --attempt screen01 --weights /weights --image $profiledImage
+python scripts/score_profiled_lora.py score --registration manifests/lora_profiled_evaluation_execution_v2.json
+if ($LASTEXITCODE -ne 0) { throw 'Scoring failed; preserve all partial evidence' }
+python scripts/score_profiled_lora.py verify --registration manifests/lora_profiled_evaluation_execution_v2.json
+if ($LASTEXITCODE -ne 0) { throw 'Score replay disagreed' }
 ```
+
+If scores already exist, use `verify`, never another `score` call to overwrite them. Registrations, successful bridge names and historical attempts are immutable. A relevant source change needs a new registration and an explicit scientific protocol decision; do not promote old results to a changed source hash. The completed engineering commands and failure diagnosis are preserved in `PROFILED_LORA_ENGINEERING_DIAGNOSIS.md` and archived reports, rather than being next actions for this successor.
 
 **Scheduling, recovery and evidence ownership**
 
 The registry enumerates 3 scenes x 2 adaptation sources x 6 arms = 36 states, ordered by scene, source and P0 through P5. Thirty trained states require 240 total optimizer updates; six P0 controls require none. Each trained state uses 20 teacher calls and eight steps of 20 graph-free plus 20 differentiable calls, followed by separately counted fresh reconstruction calls. The single-case runner does not schedule this factorial. Validate one complete neural path and one P0 path before scheduling the remainder, without viewing development accuracy.
 
-An eventual launcher must run one GPU job at a time, require a successful exit and valid `complete.json`, and stop on engineering failures. Before skipping a completed case, recompute its manifest, source, input and output hashes. The presence of a folder or adapter file is insufficient. Choose the first valid completed attempt under the same frozen protocol; never choose a rerun by accuracy. Partial runs are preserved and restarted from pretrained weights with a fresh attempt ID because mid-step resume is not implemented. Diagnose repeat failures; do not run an unlimited retry loop. The `scientific_gpu.lock` protects only this runner, so inspect other containers/processes as well. Remove a stale lock only after proving its owner process/container ended and preserving its contents.
+The implemented launcher runs one GPU job at a time, requires a successful exit and valid `complete.json`, and stops on engineering failures. Before skipping a completed case, it recomputes manifest, source, input and output hashes; a folder or adapter file is insufficient. The same-prefix resume selects only its own verified completions. The global sealer separately audits every discovered attempt under the same frozen protocol and selects the earliest valid completion by completion time, then attempt ID; never select a rerun by accuracy. Partial runs are preserved and restarted from pretrained weights with a fresh prefix because mid-step resume is not implemented. A new prefix runs a new inventory; it does not automatically reuse another prefix's successes. A timeout can leave a stale `scientific_gpu.lock`; remove it only after proving its owner process/container ended and preserving its contents. Do not run an unlimited retry loop or mix scientific-v1 attempts into v2's active case directories.
+
+There is currently no automatic continuation path past a failed case: same-prefix preflight rejects its partial/failure record, and a new prefix starts from the first registered job. The sealer can classify a recorded `FloatingPointError`, but it still requires a valid completed attempt for every run ID; classification alone does not authorize dropping that state. If an arm deterministically fails numerically, stop, preserve evidence and register an explicit failure/termination amendment before accessing scores or changing execution. Such an amendment must specify which unrun cases continue, how terminal failures appear in the full denominator, candidate disqualification and global-seal handling. Do not retry a known deterministic failure, hand-select later jobs to evade the stop, or edit bound code during another active job. This is an unresolved recovery capability, not evidence that a current arm has failed.
+
+The [prospective terminal-failure policy](PROFILED_LORA_TERMINAL_FAILURE_POLICY.md) specifies that conditional amendment, classification audit, unchanged remaining inventory, unavailable metrics and required new evaluator fixtures. It is not implemented or activated; the current batch continues unchanged unless a qualifying failure occurs.
 
 Public attempt evidence belongs in `results/lora_profiled_v1/cases/RUN_ID/ATTEMPT/`; large arrays and fresh caches belong in the corresponding `reports` path. Required outputs include source/manifest/input hashes, original-state hashes, initial/final adapter hashes, eight per-step reports for trained cases, actual call counts, finite gradient checks, timing/memory, native/final endpoint identities, and the completion/failure record. The runner's 1 GiB free-space guard is a minimum, not a 36-case storage estimate. Measure the first complete case's bytes and reserve enough local disk for the remaining cases and both physical backups before batching. Never place pretrained weights or complete restricted datasets in Git.
 
-**Scoring and selection contract to implement**
+**Implemented scoring and selection contract**
 
-The rules are frozen separately in [lora_profiled_evaluation_v2.json](../manifests/lora_profiled_evaluation_v2.json). The scientific registry binds that specification; an evaluation-execution manifest must additionally bind the final scorer source and its fixture results before accessing opposite-source scores. Neither a per-case completion record nor a registry flag implements a global prediction seal.
+The rules are frozen separately in [lora_profiled_evaluation_v2.json](../manifests/lora_profiled_evaluation_v2.json). Scientific v2 binds that specification, and [evaluation execution v2](../manifests/lora_profiled_evaluation_execution_v2.json) binds the scorer source and passed fixture evidence. The implemented sealer provides the required global prediction gate; a per-case completion record or registry flag alone cannot release scoring.
 
 Create a global seal with exactly the 36 registered run IDs, one valid attempt per ID, common scientific-registry hash, completion-report hashes, adapter identities, and native/final endpoint hashes. Verify all referenced bytes, model/input identities and complete status. Reject missing/duplicate cases, mixed registrations, partial attempts and changed predictions. Seal all predictions before loading the opposite-source evaluation packet into the scoring process. An unrecoverable case must remain a reported failure under a prospectively amended termination protocol; it cannot disappear from the denominator or yield a qualifying nominee.
 
@@ -257,9 +252,11 @@ Reuse the *mapping and overlap logic* of `score_partner_shape.disjoint_test`, no
 
 Only P3 and P4 are candidates for the initial implicit-gradient hypothesis. P0, P1, P2 and P5 are controls. A detached arm winning is useful evidence against the mechanism, not permission to rename it a successful full-gradient method. Nominate at most one candidate with >=1% directional gain in each direction, improvement on at least two of the same three scenes in both directions, and no numerical failures. Maximize the smaller directional gain. Compare gains rounded to 12 decimal places for ties, then lower measured total runtime across its six cases, then smaller numeric arm ID. Always publish all six arms and the P3/P2 and P4/P5 contrasts. Do not use native-only results to select when the final-refined primary result fails.
 
-The scorer needs meaningful fixtures for a missing/tampered seal, a mixed-registry case, overlap exclusion, unequal observation counts, invalid predictions, the two-same-scenes rule, tie handling and a deliberately wrong endpoint. Fixtures must pass before study labels are scored. Publish compact per-view predictions/observations sufficient for independent CPU replay where the dataset terms permit.
+The registered scorer fixtures cover missing/tampered seals, mixed registrations, overlap exclusion, unequal observation counts, invalid predictions, the two-same-scenes rule, tie handling, endpoint/gauge errors and the filename codec. Re-run them when relevant source changes require new evaluator registration. Publish compact per-view predictions/observations sufficient for independent CPU replay where the dataset terms permit.
 
 For M3, freeze a separate executable dense-evaluation manifest before its scores are read. Use `registered_rgb` as the primary surface reference and `released` as alternate, with the pinned similarity-plus-ICP evaluator and fixed reference masks. For each scene/condition/reference, let A be mean accuracy distance and C mean completeness distance in meters. Normalize each component by the same-condition P0 component and set `surface_score = 0.5*(A/A_P0 + C/C_P0)`; aggregate equally by scene. Compare the nominee against the lowest aggregate primary score among the predeclared eligible same-input controls, minimally P0/P1/P2/P5, with smaller arm ID breaking exact ties. Freeze the eligible pool before dense scoring; add compatible established baselines only after documenting their exact inputs. Historical runs with two-source data or a different final calibration cannot replace these controls. Use that same selected control for per-scene, component and alternate-reference checks; report raw meter-valued distances as well.
+
+The [M3 preparation contract](PROFILED_LORA_M3_PREPARATION.md) resolves the implementation choices before M2 score access: signed-only shifted packets, identical supplied-pose perturbations across three total fresh-process repeats, repetition-zero control selection retained across repeats, fixed-mask validity handling and an explicit full-versus-detached execution-variation test. Implement and register that contract rather than reusing historical two-direction packets or choosing thresholds after evaluation.
 
 The M3 manifest must enumerate both temporal directions, centered/shifted grids and clean/noisy supplied-pose conditions: eight gate cells, each with three scenes and matched controls. Apply all rental criteria separately to every cell; do not pool away a failed direction or stress condition. Shifted-source packets and spatial splits need their own verified preparation. Specify camera-noise seeds, masks, grid construction, native evaluator revision and all runtime commands before opening these scores. Initially preserve the established pose-only stress channel; any physical sensor-projection corruption is a separate registered test. Perform three fresh-process paired confirmations with the same optimizer seed and predeclared corruption draws, reporting deterministic execution variation separately from input perturbation. The old manifest is a source of conventions, not authority to reuse unmatched old predictions.
 
@@ -290,11 +287,13 @@ Every permitted final fitting observation must have finite, positive predicted d
 
 Every comparator gets the same final intervention. A baseline without final calibration cannot isolate the neural objective. Both endpoint outputs and the evaluator's actual input hashes must be saved.
 
-For the secondary axial-depth score, convert the saved native depth to meters with the same sealed adaptation-only global g0: `native_metric_depth = float64(native_depth) * g0`. Do not multiply by the five fitted relative scales. Raw native depth can have an arbitrary gauge and must not be labeled a meter-valued prediction. The scorer checks positive finite g0/scales and the full saved relationship `final_depth = scales * g0 * native_depth` before comparison. Evaluation rules v2 preserve v1 and clarify this unit convention before scientific execution; the primary endpoint and all advancement thresholds are unchanged.
+For the secondary axial-depth score, convert the saved native depth to meters with the same sealed adaptation-only global g0: `native_metric_depth = float64(native_depth) * g0`. Do not multiply by the five fitted relative scales. Raw native depth can have an arbitrary gauge and must not be labeled a meter-valued prediction. The scorer checks positive finite g0/scales and the full saved relationship `final_depth = scales * g0 * native_depth` before comparison. Evaluation rules v2 preserve v1 and clarify this unit convention; the primary endpoint and all advancement thresholds are unchanged.
+
+**Narrow chronology erratum:** the v2 clarification and filename-verification repair followed completion of the subsequently retired scientific-v1 P0. They preceded every development-accuracy score and the fresh scientific-v2 screen. Any preserved manifest reason describing the change as before all scientific execution is too broad: it was before v2 execution and before scoring, not before that retired P0. Keep the immutable manifest bytes and this correction together; do not edit a bound manifest during execution. All 36 states are run fresh under scientific v2, and the retired v1 P0 is excluded from that inventory.
 
 **Decisions and reporting**
 
-The exact six-arm design, 1% nomination gate, 5% surface rental gate, tie rule, repeatability requirement and bounded redesign are in the goal contract. Implement those rules once in a scorer and verify them on a small meaningful fixture. Do not choose the best endpoint after seeing scores. Report the full-versus-detached contrasts even when another baseline gives a larger apparent improvement.
+The exact six-arm design, 1% nomination gate, 5% surface rental gate, tie rule, repeatability requirement and bounded redesign are in the goal contract. Use their registered scorer implementation and passed fixtures. Do not choose the best endpoint after seeing scores. Report the full-versus-detached contrasts even when another baseline gives a larger apparent improvement.
 
 If the full-gradient arm ties its detached control within repeat variation, the proposed mechanism is unsupported. If the surrogate improves while the native surface worsens, investigate solver absorption and the reconstruction mismatch. If engineering checks fail, fix implementation before interpreting accuracy. If a sound method fails, retain that evidence and register the single permitted targeted local redesign. Do not automatically spend the transfer reserve after failure.
 
@@ -308,4 +307,6 @@ Prepare data, wheels, code and manifests locally. Start a single paid job stream
 
 **First actions for the successor**
 
-Read the live progress file, inspect actual jobs, and replay preparation only when files/runtime changed or their validity is uncertain. The preserved `gradient01` failure remains historical. Use the passed `gradient02` evidence for gradient/finite-difference/full-step acceptance, and verify the current endpoint state before proceeding. Complete the production bridges and freeze the scientific manifest before scheduling the factorial. After each meaningful result, update the evidence paths, job state, next command, run counts, costs and Git/CI state. The next agent should be able to resume from these files without reconstructing this conversation.
+The immutable M1 backup is verified on a second physical disk: `E:/ResearchData/TCO/research_results/lora_profiled_v1/snapshots/m1-20261118-verified01`. Its [public receipt](../results/lora_profiled_v1/backups/m1-20261118-verified01.json) records 136 files and 315,628,130 bytes. Verify it with `python scripts/archive_profiled_evidence.py verify --destination E:/ResearchData/TCO/research_results/lora_profiled_v1 --snapshot m1-20261118-verified01 --check-source`. Do not rerun copy with that existing snapshot ID. After the complete M2 prediction seal exists, use a fresh snapshot ID and `copy --seal results/lora_profiled_v1/prediction_seal.json` with the same destination, then `verify --check-source`; require successful exits from both commands. The archiver never decodes predictions, overwrites snapshots or copies mutable progress/logs. Failed copies remain preserved for diagnosis.
+
+Read the live progress file and inspect the existing `screen02` operation. Replay preparation only when files/runtime changed or their validity is uncertain. Both production bridges and the scientific/scorer v2 registrations are complete. After verified P0/P1 completion, use the same-prefix continuation commands above, then the global seal and registered scorer. Preserve the historical `gradient01` and retired v1 P0 evidence. After each meaningful result, update evidence paths, job state, next command, run counts, costs and Git/CI state. No scientific NPZ or held-source score was opened while updating this handoff.
