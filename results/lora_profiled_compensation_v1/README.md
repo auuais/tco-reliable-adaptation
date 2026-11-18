@@ -6,6 +6,8 @@ The real-model bridge passed on the RTX 3080. The original teacher and zero-adap
 
 Check the current [progress record](../lora_profiled_v1/progress.json) and local container state before resuming the queue. Completed cases are checked against their byte inventories and skipped automatically. The batch runner stops on a failed or partial case and retains its evidence. Use the same registered attempt rather than creating duplicates without diagnosis. All local compute uses the existing RTX 3080 and costs USD 0 in rental compute.
 
+The six Heads/earlier states completed with 40 optimizer updates across the five trained states. P0, P1 and P3 reconstructed both historical endpoints byte for byte. P1 reproduced the final trained adapter and P3 reproduced every recorded adapter state. P3, R0 and R1 matched the initial loss, gradient and updated adapter bytes. R1 and R2 shared the initial forward computation, with the expected gradient difference. The six runs took about 29 minutes 37 seconds in total, with a peak of 4,722.25 MiB allocated CUDA memory. Their full evidence is verified on the second disk. The serial queue for the remaining cases has started. [First tranche evidence](heads_earlier_tranche01.json)
+
 **After all cases complete**
 
 Use the prospectively registered score path below. It verifies all endpoints and the first-step equivalence of P3, R0 and R1 across all six scene/source conditions. It saves the global prediction seal before any held-source prediction is compared with a measurement.

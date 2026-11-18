@@ -2,7 +2,7 @@
   "goal": "Calibration-aware predictive LoRA accuracy investigation",
   "checkpoint_date": "2026-11-19",
   "status": "active",
-  "current_phase": "Compensation redesign scientific screen running locally. First six registered cases in a bounded serial tranche.",
+  "current_phase": "All six Heads/earlier states verified. Remaining 30 states running serially in the same registered screen.",
   "completed_milestone_weight_percent": 50,
   "percentage_rule": "Conservative whole-milestone credit; completed subchecks are listed separately and are not accuracy evidence",
   "milestones": {
@@ -163,7 +163,10 @@
     "compensation_first_trained_backup": "results/lora_profiled_compensation_v1/first_trained_backup01.json",
     "compensation_profiled_control_reproduction": "results/lora_profiled_compensation_v1/profiled_control_reproduction.json",
     "compensation_profiled_control_backup": "results/lora_profiled_compensation_v1/heads_earlier_P3_backup01.json",
-    "compensation_related_work": "docs/PROFILED_COMPENSATION_RELATED_WORK.md"
+    "compensation_related_work": "docs/PROFILED_COMPENSATION_RELATED_WORK.md",
+    "compensation_first_tranche": "results/lora_profiled_compensation_v1/heads_earlier_tranche01.json",
+    "compensation_tranche_redesign_backup": "results/lora_profiled_compensation_v1/heads_earlier_redesign_backup01.json",
+    "compensation_public_metric_replay": "scripts/replay_compensation_published_metrics.py"
   },
   "accuracy_improvement_established": false,
   "nomination": null,
@@ -174,8 +177,8 @@
   "redesigns_executed": 1,
   "redesign_limit": 1,
   "research_gpu_job_at_checkpoint": {
-    "container": "tco-profiled-compensation-heads-earlier-r0",
-    "container_id": "4a37ecfde4663ce764ac6ba64766f46bea5d1f5e1b3bf4cdabac03ca512ec5ad",
+    "container": "tco-profiled-compensation-heads-later-p0",
+    "container_id": "6f2249735a4a2dbfb84145ed19e0b93e4ebe8f8a51bc4516ec30573d845e2a18",
     "observed_state": {
       "Status": "running",
       "Running": true,
@@ -183,14 +186,14 @@
       "Restarting": false,
       "OOMKilled": false,
       "Dead": false,
-      "Pid": 26351,
+      "Pid": 27021,
       "ExitCode": 0,
       "Error": "",
-      "StartedAt": "2026-11-18T16:02:16.779748746Z",
+      "StartedAt": "2026-11-18T16:18:58.961833032Z",
       "FinishedAt": "0001-01-01T00:00:00Z"
     },
     "source": "local Docker Desktop named pipe",
-    "queue_session_id": 23437,
+    "queue_session_id": 49837,
     "stopped_verified": false
   },
   "implementation_state": {
@@ -207,24 +210,24 @@
     "m3_preparation": "202 combined CPU fixtures pass. Static registry and completed-attempt byte audit implemented, including exact fitting-count checks. Reference-free converter/replay and pure reference semantics pass 17 pinned CPU fixtures. All24 real fitting-case reports exactly reproduce in pinned image. M3 actual registry/release controller, model acceptance, stage seals, scorer and scientific execution remain pending; no reuse approved."
   },
   "last_observed_ci": {
-    "commit": "aa9f31546bc4614f322bebcb0d6fe39ac8904973",
-    "run_id": 44341635484,
+    "commit": "6524172bce02ece5e51e3ef1fc41e613b70d4761",
+    "run_id": 44343332739,
     "conclusion": "success",
-    "scope": "Registered code and reproduced P0/P1 evidence"
+    "scope": "Published original-control reproductions and prepared archive/report/plot tools"
   },
-  "next_command": "docker --host npipe:////./pipe/dockerDesktopLinuxEngine inspect tco-profiled-compensation-heads-earlier-r0",
-  "next_implementation_action": "Observe launcher session 23437 and actual Docker state. Do not start another queue while it is running. Once it exits successfully, verify existing cases, check weekly usage and launch the next tranche with the same registered attempt via python scripts/run_profiled_compensation_batch.py --execute --limit 6. On failure preserve logs and partial evidence. Seal all 36 endpoints before scoring or nomination.",
+  "next_command": "docker --host npipe:////./pipe/dockerDesktopLinuxEngine inspect tco-profiled-compensation-heads-later-p0",
+  "next_implementation_action": "Observe exec session 49837 and local Docker before acting. Existing serial queue owns remaining 30 states. On terminal success, verify all 36 and seal, score, replay original arrays, independently replay samples, publish aggregate check, figure and verified C/E verdict. Stop after an attempt failure and preserve partial state; do not start a duplicate queue.",
   "handoff": "docs/CALIBRATION_AWARE_LORA_HANDOFF.md",
   "weekly_usage_checkpoint": {
     "used_percent": 21,
     "remaining_percent": 79,
     "pause_threshold_remaining_percent": 5,
-    "observation": "2026-11-18T16:05:17.742001+00:00",
+    "observation": "2026-11-18T16:19:56.822986+00:00",
     "note": "Observed via native usage tool; shared counter can change"
   },
-  "validated_code_commit": "aa9f31546bc4614f322bebcb0d6fe39ac8904973",
-  "last_goal_turn_classification": "progress: fresh P3 exact control reproduction and verified archive, R0 running with observed penalty; reusable archives and scoped score release prepared",
-  "checkpoint_observed_at_utc": "2026-11-18T16:05:17.740962+00:00",
+  "validated_code_commit": "6524172bce02ece5e51e3ef1fc41e613b70d4761",
+  "last_goal_turn_classification": "progress: all six first-tranche controls/candidates verified on C/E with exact first-step and detachment evidence, remaining 30 queue launched, aggregate replay and figure generation tested, related work documented",
+  "checkpoint_observed_at_utc": "2026-11-18T16:19:56.822986+00:00",
   "screen_result": {
     "nominee": null,
     "all_primary_cases_valid": true,
@@ -253,7 +256,7 @@
     "status": "complete",
     "entrypoint": "docs/CALIBRATION_AWARE_LORA_HANDOFF.md",
     "review": "Independent read-only review found no concrete blocker in handoff, D1 artifact, calibration bridge, capture and preprocessing helpers",
-    "next_experiment": "Observe running compensation tranche, verify each terminal completion and resume the registered queue after it stops",
+    "next_experiment": "Observe the running serial queue for the other 30 states. Seal and score when all 36 succeed.",
     "local_research_gpu_running": true
   },
   "research_cpu_job_at_checkpoint": {
@@ -321,37 +324,94 @@
     }
   },
   "compensation_screen": {
-    "status": "running_first_tranche",
+    "status": "running_remaining_serial_queue",
     "cases_required": 36,
     "trained_cases_required": 30,
-    "verified_completed_at_checkpoint": 3,
+    "verified_completed_at_checkpoint": 6,
     "completed": [
       {
         "run_id": "heads_earlier_P0",
         "report": "results/lora_profiled_compensation_v1/cases/heads_earlier_P0/screen01/complete.json",
         "report_sha256": "d8a01a567e39fea4408cf102e2cb88db9fe565e97a26d714abe53a978cd80c04",
-        "terminal": "results/lora_profiled_compensation_v1/launches/tco-profiled-compensation-heads-earlier-p0/terminal.json"
+        "terminal": "results/lora_profiled_compensation_v1/launches/tco-profiled-compensation-heads-earlier-p0/terminal.json",
+        "terminal_sha256": "720a8bc738544dd2af9315762d0bedf100aa69f859644ae9e230ba95322797d0",
+        "model_seconds": 84.95543654297944,
+        "local_wall_seconds": 117.8289999999106,
+        "optimizer_updates": 0,
+        "peak_allocated_mib": 3666.7685546875,
+        "peak_reserved_mib": 5200.0
       },
       {
         "run_id": "heads_earlier_P1",
         "report": "results/lora_profiled_compensation_v1/cases/heads_earlier_P1/screen01/complete.json",
         "report_sha256": "8c30f5b01209190e361ce07e2bc703b3ee606beacc7ce7f5ae1cce27c77e1905",
-        "terminal": "results/lora_profiled_compensation_v1/launches/tco-profiled-compensation-heads-earlier-p1/terminal.json"
+        "terminal": "results/lora_profiled_compensation_v1/launches/tco-profiled-compensation-heads-earlier-p1/terminal.json",
+        "terminal_sha256": "3a0a2ac42cbef5091c348967a87f0c50e937bb1fe6528bd1fbf00e5986db9869",
+        "model_seconds": 308.77636544103734,
+        "local_wall_seconds": 343.71799999987707,
+        "optimizer_updates": 8,
+        "peak_allocated_mib": 4350.94873046875,
+        "peak_reserved_mib": 5236.0
       },
       {
         "run_id": "heads_earlier_P3",
         "report": "results/lora_profiled_compensation_v1/cases/heads_earlier_P3/screen01/complete.json",
         "report_sha256": "ebc821f86018dda2a1e7b646b49a9890c82a4ef3b4f16513f83abcf659fcb0c8",
-        "terminal": "results/lora_profiled_compensation_v1/launches/tco-profiled-compensation-heads-earlier-p3/terminal.json"
+        "terminal": "results/lora_profiled_compensation_v1/launches/tco-profiled-compensation-heads-earlier-p3/terminal.json",
+        "terminal_sha256": "32a92da6d8a9a4796ba62db57d15c9f7c9e6422e9f1e4d00f575f56e7b4cb078",
+        "model_seconds": 305.1621936140582,
+        "local_wall_seconds": 341.1100000003353,
+        "optimizer_updates": 8,
+        "peak_allocated_mib": 4720.74951171875,
+        "peak_reserved_mib": 5026.0
+      },
+      {
+        "run_id": "heads_earlier_R0",
+        "report": "results/lora_profiled_compensation_v1/cases/heads_earlier_R0/screen01/complete.json",
+        "report_sha256": "439849ba8b117cb571e3010ca2f97d9cf1c86bdd494806bf9d616c68f931abb1",
+        "terminal": "results/lora_profiled_compensation_v1/launches/tco-profiled-compensation-heads-earlier-r0/terminal.json",
+        "terminal_sha256": "f6100f8d08b7286cc8d2d705dfa4745d89fc032ec5cd7d5e89885194bfd74667",
+        "model_seconds": 299.614450699999,
+        "local_wall_seconds": 334.73400000017136,
+        "optimizer_updates": 8,
+        "peak_allocated_mib": 4720.74951171875,
+        "peak_reserved_mib": 5026.0
+      },
+      {
+        "run_id": "heads_earlier_R1",
+        "report": "results/lora_profiled_compensation_v1/cases/heads_earlier_R1/screen01/complete.json",
+        "report_sha256": "12a65308c72e029074f347bedb04e8e3df88af5fc65173fe9a20e027769a1517",
+        "terminal": "results/lora_profiled_compensation_v1/launches/tco-profiled-compensation-heads-earlier-r1/terminal.json",
+        "terminal_sha256": "0970a637a31dcb5805e231b4663d5c98fa9027a5d7dd1ee74a3a23a27b3a6c54",
+        "model_seconds": 285.9494890701026,
+        "local_wall_seconds": 320.03200000012293,
+        "optimizer_updates": 8,
+        "peak_allocated_mib": 4720.74951171875,
+        "peak_reserved_mib": 5026.0
+      },
+      {
+        "run_id": "heads_earlier_R2",
+        "report": "results/lora_profiled_compensation_v1/cases/heads_earlier_R2/screen01/complete.json",
+        "report_sha256": "f4081e1af29033023a306284558a85aa8849c31c9558a0a7718b56513a49b21e",
+        "terminal": "results/lora_profiled_compensation_v1/launches/tco-profiled-compensation-heads-earlier-r2/terminal.json",
+        "terminal_sha256": "0c7251ab0086debd50917c81bda3c477efd5d26314e2973160c68c4dd3432603",
+        "model_seconds": 286.10543002700433,
+        "local_wall_seconds": 319.530999999959,
+        "optimizer_updates": 8,
+        "peak_allocated_mib": 4722.24951171875,
+        "peak_reserved_mib": 5026.0
       }
     ],
     "engineering_passed": true,
     "screen_has_taken_optimizer_steps": true,
     "attempt": "screen01",
-    "launcher_session_id": 23437,
-    "tranche_fresh_case_limit": 6,
+    "launcher_session_id": 49837,
+    "tranche_fresh_case_limit": 30,
     "first_tranche_command": "python scripts/run_profiled_compensation_batch.py --execute --limit 6",
     "scoring_access_started": false,
-    "rental_compute_usd": 0
+    "rental_compute_usd": 0,
+    "closed_tranche_session_id": 23437,
+    "closed_tranche_exit_code": 0,
+    "remaining_queue_command": "python scripts/run_profiled_compensation_batch.py --execute --limit 30"
   }
 }
