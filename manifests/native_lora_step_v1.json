@@ -1,0 +1,630 @@
+{
+  "schema": "native_lora_step_v1",
+  "source": "https://graphics.stanford.edu/projects/reloc/",
+  "reserved_environment": "office1",
+  "rooms": {
+    "apt1": "apt1/living",
+    "apt2": "apt2/kitchen",
+    "office2": "office2/5b"
+  },
+  "cases": [
+    [
+      "apt1",
+      "earlier"
+    ],
+    [
+      "apt1",
+      "later"
+    ],
+    [
+      "apt2",
+      "earlier"
+    ],
+    [
+      "apt2",
+      "later"
+    ],
+    [
+      "office2",
+      "earlier"
+    ],
+    [
+      "office2",
+      "later"
+    ]
+  ],
+  "states": {
+    "zero": 0.0,
+    "quarter": 0.25,
+    "half": 0.5,
+    "full": 1.0
+  },
+  "input_sha256": "3b730e95eca6af0e3c3cccb32082cbf4a35d79f0f6a5cc9e82d433258b80517f",
+  "inputs": {
+    "environments": {
+      "apt1": {
+        "room": "apt1/living",
+        "capture": "sequence0",
+        "stride": 4,
+        "baseline_m": 0.08397860565263045,
+        "target_frames": [
+          1,
+          5,
+          9,
+          13,
+          17
+        ],
+        "archive_sha256": "75ca0a122af26b4b23064d4ab901fa46b95d37f4baa1c6b7c16c1a6ee53b3c27",
+        "archive_bytes": 1489122810,
+        "image_sha256": "ef078e0b9a2adeab7fedba58256c82b7d584cf1113c86f90e70f0d8e94d872d4",
+        "packets": {
+          "earlier": {
+            "sha256": "60821501519a2207dbf199e2e8dbc3c60ea990a603897ed2a984cfa64f177cad",
+            "source_frames": [
+              0,
+              4,
+              8,
+              12,
+              16
+            ],
+            "counts": [
+              [
+                20,
+                21,
+                20,
+                21,
+                21
+              ],
+              [
+                21,
+                21,
+                19,
+                21,
+                20
+              ],
+              [
+                13,
+                13,
+                14,
+                14,
+                14
+              ]
+            ],
+            "held_coverage": [
+              {
+                "view": 0,
+                "count": 58,
+                "excluded": 0,
+                "xy_sha256": "835e92b59a7ca43e553ad6a12aa315df7f92f4046de23d06bcae56a7caa99b8b"
+              },
+              {
+                "view": 1,
+                "count": 56,
+                "excluded": 0,
+                "xy_sha256": "afaa8d88de51ac50d9538be76cd11a33b3ab9eb98490bb382a8dc1c4ce9b1447"
+              },
+              {
+                "view": 2,
+                "count": 58,
+                "excluded": 0,
+                "xy_sha256": "cf8f06030cd664d9695ff553960bb7aa34b9b619be5b0e4626f3aaee3a7735f0"
+              },
+              {
+                "view": 3,
+                "count": 58,
+                "excluded": 0,
+                "xy_sha256": "ffe774d365b6af282b16be5651bc6a5e43a5cad524c3dbdf94c385c2c91c3795"
+              },
+              {
+                "view": 4,
+                "count": 56,
+                "excluded": 0,
+                "xy_sha256": "0ba38859e461af10c0c961d5840ac55c4122af51c5ff3794d3662ad7b5d5c8ec"
+              }
+            ]
+          },
+          "later": {
+            "sha256": "e4472f6d71a7eb393e01ae4ef89a8377982bddf878a53ce6cb0be409ce39aa88",
+            "source_frames": [
+              2,
+              6,
+              10,
+              14,
+              18
+            ],
+            "counts": [
+              [
+                21,
+                21,
+                22,
+                22,
+                21
+              ],
+              [
+                22,
+                21,
+                21,
+                21,
+                21
+              ],
+              [
+                15,
+                14,
+                15,
+                15,
+                14
+              ]
+            ],
+            "held_coverage": [
+              {
+                "view": 0,
+                "count": 54,
+                "excluded": 0,
+                "xy_sha256": "df2a06d0ccea4518eecda80065f1f1456a60549e4495b3cf28da9779560d984a"
+              },
+              {
+                "view": 1,
+                "count": 55,
+                "excluded": 0,
+                "xy_sha256": "cfe0d9d89c0b7307a028d5c3c1bd97982ff7c59efef035d155bef9dfbeebb808"
+              },
+              {
+                "view": 2,
+                "count": 53,
+                "excluded": 0,
+                "xy_sha256": "781f59a6ba4e0e010f66ef9d75135f7fff33ac5ddf924d89483a10829db9dd52"
+              },
+              {
+                "view": 3,
+                "count": 56,
+                "excluded": 0,
+                "xy_sha256": "9243b3aac41505346bbf9c41a70ad8cd904e8b7cdfcaca34ed0679369373f6a0"
+              },
+              {
+                "view": 4,
+                "count": 55,
+                "excluded": 0,
+                "xy_sha256": "4ac9e545b0ef772f4b8486a144757127072b0ff298216cfbe93406fa204ec250"
+              }
+            ]
+          }
+        },
+        "source_files": {
+          "apt1/living/data/frame-000001.color.jpg": "55c244fcc720297e94a84befc267439052144f042d18f9dfc337746be1debe6c",
+          "apt1/living/data/frame-000005.color.jpg": "fb964f0050edd9ce20fb15a4917d6a0c4c3c630139d64f461509c2e64ae8630e",
+          "apt1/living/data/frame-000009.color.jpg": "ab7c2e3a42c5e31f9de4e7068ada480cbe268eceaeb1c6774ce68a3dd77a103d",
+          "apt1/living/data/frame-000013.color.jpg": "56a6a3f621700263af148e8792db5533e5b8c0dfd4ee6ac4c711e05192a029cb",
+          "apt1/living/data/frame-000017.color.jpg": "404dd50dc34dbd45a70065b3e285fd6ec74465ca3bebb3e4bff2848f69f90e9b",
+          "apt1/living/data/frame-000000.pose.txt": "29879fe99d6019b515352aff30bc3e7cc90e4544ccd5bd9cba4399153f8aaaaf",
+          "apt1/living/data/frame-000001.pose.txt": "1a7c07ef6d78a457e6091d49ce222ca7c9aa70e3f23c33da629bc73ba6d90422",
+          "apt1/living/data/frame-000002.pose.txt": "f1d838013e4c51c68d28f8a3be2ae5f122e73bec500652d971d5b85a39652d6e",
+          "apt1/living/data/frame-000004.pose.txt": "bdde21e772dfc9069b83609ac89975620f65b210524a7547a9cc66c9f4f69942",
+          "apt1/living/data/frame-000005.pose.txt": "0e0a7b5ab3d812bf2c37e2ee8c699743b80bcc44d1b3dc7871146542b8291d58",
+          "apt1/living/data/frame-000006.pose.txt": "246895be4d6083db7ae2e993196cb67c0be914db6530f563bfbb1313cf71c078",
+          "apt1/living/data/frame-000008.pose.txt": "f341c27c09be28f2ced3e9d2547b512728a2314faef9b529e7121b340a95d47a",
+          "apt1/living/data/frame-000009.pose.txt": "1416574e80b9018d18d3fe0a690b302aa2f7f2b3306cbea945f9d1dd1c3f9ca9",
+          "apt1/living/data/frame-000010.pose.txt": "592c1d99268012a45956512fc37a826f40997fbde998e37a533bbe0770b7b88a",
+          "apt1/living/data/frame-000012.pose.txt": "827831164d9fe53ef0213de3a3a86772312a1556dec46f970016e0ed9e35b470",
+          "apt1/living/data/frame-000013.pose.txt": "b75e7252a3fd1a5b77620dbc814f2f5523bd41ffe23a0923e95092ad2f411f4e",
+          "apt1/living/data/frame-000014.pose.txt": "7f73df392c71fbf639cca102abba873c2cc026b953dc894ae1aa115e87d5f5a1",
+          "apt1/living/data/frame-000016.pose.txt": "92d60cf03edafa86e4fd586a1d295c023c41fbd1881cf12999626793db5328ca",
+          "apt1/living/data/frame-000017.pose.txt": "d909d60f17414d883abf581cf4e3ab770d7a5e0e8628259dd092024536b24505",
+          "apt1/living/data/frame-000018.pose.txt": "f8b61a59ad369bacec40eb6cc06464c4e75d0e9c20c76424c9bf7db2485953db",
+          "apt1/living/data/frame-000000.depth.png": "fb2bee2740832460fc00835503a674daf39d91f010198fb1967f17bdf2542433",
+          "apt1/living/data/frame-000004.depth.png": "2da061b40450d533a7a42f65927e8d5ef53d54154cf61b5e3b906741e32bdb94",
+          "apt1/living/data/frame-000008.depth.png": "ca5a38eb305fc17665a113a8d6c59807b55af40dbcea42f522104e3c79026bbe",
+          "apt1/living/data/frame-000012.depth.png": "0dc3bf1732bb3b70d1e7f600e5aa6344aab86b94e3b9b07748377ccccfc2f5ec",
+          "apt1/living/data/frame-000016.depth.png": "ab4ef5180d12544775d366b34aebb6be6acdf97477dcdc7c1dcbc921ffbef279",
+          "apt1/living/data/frame-000002.depth.png": "9d2c902317e3180089b8d9b602ee9e76210b5f2092390a58d59d107f51501573",
+          "apt1/living/data/frame-000006.depth.png": "62618495d7fbf25f18934558bc8d1125900d1fcb23045279eb52e80ba54d92b2",
+          "apt1/living/data/frame-000010.depth.png": "4b0be0907330ac351b8b4ee8a17c345cac22f956ae6f3a6d543b647ff5d8fe37",
+          "apt1/living/data/frame-000014.depth.png": "2df7a30bbcea2a50f649965beec752eb902629f6a03b8489e9e8a795ecbfbd1d",
+          "apt1/living/data/frame-000018.depth.png": "b32a7c71aa805cc31d7f18d179cdec2e34ec6b4d5cf2e4cab62e402c237f7d18",
+          "apt1/living/info.txt": "2a713ac7e6e204557844719c15b0c758ca2074ffedc24b839c5df191b8adf1b6",
+          "apt1/living/split.txt": "d1aa0c45689c99239d0a17fcdf10f5862aa513349ffaa153369207e762511efa"
+        }
+      },
+      "apt2": {
+        "room": "apt2/kitchen",
+        "capture": "sequence0",
+        "stride": 4,
+        "baseline_m": 0.10756034018633452,
+        "target_frames": [
+          11,
+          15,
+          19,
+          23,
+          27
+        ],
+        "archive_sha256": "9c5d574f66a142ea551f77172ed1838e9e15b2b012af8f4b31428054d627ee1f",
+        "archive_bytes": 3001378406,
+        "image_sha256": "e4b892452662303be11877713d3390dde676f7da02b1e86fc82129fe7892de1a",
+        "packets": {
+          "earlier": {
+            "sha256": "b94ec6f4fc6e5e5caa83915d6827428ed9edf59a850b3dd7b12e9ba90305c772",
+            "source_frames": [
+              10,
+              14,
+              18,
+              22,
+              26
+            ],
+            "counts": [
+              [
+                21,
+                22,
+                21,
+                21,
+                21
+              ],
+              [
+                21,
+                21,
+                21,
+                20,
+                21
+              ],
+              [
+                14,
+                14,
+                14,
+                14,
+                14
+              ]
+            ],
+            "held_coverage": [
+              {
+                "view": 0,
+                "count": 63,
+                "excluded": 0,
+                "xy_sha256": "017f5ec3558b49a1576ee6e71fd470413749d958deeb80d1a7a9070778164326"
+              },
+              {
+                "view": 1,
+                "count": 64,
+                "excluded": 0,
+                "xy_sha256": "ccdcc802a4c24d824fb6d5fc21c4a73937156de9a65458b570b0551e915e6fac"
+              },
+              {
+                "view": 2,
+                "count": 64,
+                "excluded": 0,
+                "xy_sha256": "0d1b1f91f466b9b24c434be1c5d9045f44b1bb621a1904d3fd3c30c978c51770"
+              },
+              {
+                "view": 3,
+                "count": 63,
+                "excluded": 0,
+                "xy_sha256": "49a0ca807fd713b6b6162545af1c05e746894258fafbfa527eb700c111c69c55"
+              },
+              {
+                "view": 4,
+                "count": 61,
+                "excluded": 0,
+                "xy_sha256": "a8287a6ccf1c06e0a476c8d0a9bee3246a188cea35351dbad6384a5f8c538b54"
+              }
+            ]
+          },
+          "later": {
+            "sha256": "ad9f0929612318a9d674409928da98b8293996bc6b29b8b8604efd38818f6937",
+            "source_frames": [
+              12,
+              16,
+              20,
+              24,
+              28
+            ],
+            "counts": [
+              [
+                24,
+                24,
+                24,
+                24,
+                23
+              ],
+              [
+                24,
+                24,
+                24,
+                23,
+                23
+              ],
+              [
+                15,
+                16,
+                16,
+                16,
+                15
+              ]
+            ],
+            "held_coverage": [
+              {
+                "view": 0,
+                "count": 56,
+                "excluded": 0,
+                "xy_sha256": "3d17a7a4fcd1f55dbad06484f6b346c021515195985c287ca10d8ddab6290d8b"
+              },
+              {
+                "view": 1,
+                "count": 57,
+                "excluded": 0,
+                "xy_sha256": "685b966df07d8b852d08b2aef5fbed56e85b9a3cb91991bf03db01bb31a2d076"
+              },
+              {
+                "view": 2,
+                "count": 56,
+                "excluded": 0,
+                "xy_sha256": "b3970daa1e2c3bc8b74cee724a5702b73e215c763c27d09cea35de34795c0df6"
+              },
+              {
+                "view": 3,
+                "count": 55,
+                "excluded": 0,
+                "xy_sha256": "277df428949d1334fd7fd7175c46bf14af3853c88b56de6b3bc390b7f3ad5587"
+              },
+              {
+                "view": 4,
+                "count": 56,
+                "excluded": 0,
+                "xy_sha256": "3c3cfefdd1df68a88b8dcb2233cd4b000576915d6c14046ce6d455455ea5fb20"
+              }
+            ]
+          }
+        },
+        "source_files": {
+          "apt2/kitchen/data/frame-000011.color.jpg": "b3c168387a43d6ac212b6bfee02daa0ebd107a72c5e19a0e535f0ed12ec51932",
+          "apt2/kitchen/data/frame-000015.color.jpg": "d03c7ab49d342d8daf19074e1e0895991413334df22db5860e42a961c5433f8a",
+          "apt2/kitchen/data/frame-000019.color.jpg": "092e562a8454e3341fac229fb124e2340ad732f6537dc66d965ceb18d39c3f8e",
+          "apt2/kitchen/data/frame-000023.color.jpg": "2ca672dc0fd3f83467cf67ffbf0995ac0291620c282533ce066b5f9bb9b87acf",
+          "apt2/kitchen/data/frame-000027.color.jpg": "9c9360f69d25723f6ef9a7cbb9a3155a104237f66d2701c5d01ab0b3d3f28597",
+          "apt2/kitchen/data/frame-000010.pose.txt": "6c3780a9962f193a65ea53f4fe213379273495d462e75299f3839f262fe0bc62",
+          "apt2/kitchen/data/frame-000011.pose.txt": "f18c704253f5123212f8bc38f880dbc05bb4d9f8b7c0b24c80465cf98f1ae877",
+          "apt2/kitchen/data/frame-000012.pose.txt": "d2c331a6e227e5cf83404d547b3c996a477e8ce7d9a77ff6f264f71c8dc048a5",
+          "apt2/kitchen/data/frame-000014.pose.txt": "cedc9eca2d78399ebd253e502701312614e8eb94a375d64c56634355613400b0",
+          "apt2/kitchen/data/frame-000015.pose.txt": "34f08e8426d43662945656bdf037709719478622a5140a65995f4a28debb4b0f",
+          "apt2/kitchen/data/frame-000016.pose.txt": "519855163e02bd9e524c6512d4a0efd4e4ada72ef2cc804e964a9b384b84dff4",
+          "apt2/kitchen/data/frame-000018.pose.txt": "59ee5f431765843634e45cb3442e3b74cb3830ab598ba5d2b2dd8ed227ea2c65",
+          "apt2/kitchen/data/frame-000019.pose.txt": "b98ed127fe241ac05553e175c4433aefc8bda12cbf72af63f213630a741f4a5f",
+          "apt2/kitchen/data/frame-000020.pose.txt": "d1cfd1d9634adff85d8dc08a524b2c0cc1c9ad086933535b84351d0ec455e110",
+          "apt2/kitchen/data/frame-000022.pose.txt": "b7770fde8d95f47e2152473d01555cd6ab6f923a1747142d71fd04c76908b00e",
+          "apt2/kitchen/data/frame-000023.pose.txt": "bbdc4c964bef7ce754ec263ca10feac19dc92b0f917ea6293c89009cba796858",
+          "apt2/kitchen/data/frame-000024.pose.txt": "cfa29492e69c27e604f24839c1fa2cf2f26b2945f134b0ac66ec7acb2c6f97f4",
+          "apt2/kitchen/data/frame-000026.pose.txt": "6aee23fdf42da80f7d79a4a2794c849bdf041824774811b5c6ec0c2c5ad21a6d",
+          "apt2/kitchen/data/frame-000027.pose.txt": "779b2b47caa66184a10759066f35f231d06f5118eb1fa420d19355bbcf426821",
+          "apt2/kitchen/data/frame-000028.pose.txt": "df1d5c20ea5ff23902d17df80354182820bcdf8e021d1b565060832613cd0860",
+          "apt2/kitchen/data/frame-000010.depth.png": "2a018b15c14d971042c08a79b41cf9a0a29e384d64d2a79268ee52ebd0a9e294",
+          "apt2/kitchen/data/frame-000014.depth.png": "484cbd53194bba13d07788044da554d5be31162efebaa74cd36821724e4da5ae",
+          "apt2/kitchen/data/frame-000018.depth.png": "4372333598464cab612888cf62885a7801d22e1fb1f330ff75883fa08d9f287e",
+          "apt2/kitchen/data/frame-000022.depth.png": "e63036e2c394d13f7edbf16e6f244816d7fbc848b6df9039ad1e0c4bac570651",
+          "apt2/kitchen/data/frame-000026.depth.png": "feb8bf55f2f251e31d2d79fda2bd75b378bbcf8f260a26fd30bef7d291a77b7f",
+          "apt2/kitchen/data/frame-000012.depth.png": "c7f7066171612cc9395d444333749f9473a2399dcdadbc01e128dab81bbc6462",
+          "apt2/kitchen/data/frame-000016.depth.png": "b93c4faec434b4536580a15188b1dfd9f92fb59ca0a9efb52df85c2bc6001744",
+          "apt2/kitchen/data/frame-000020.depth.png": "b897f0614ee24d0719c2d67863d6d12e8be516d2b55e20b922a11982c617641e",
+          "apt2/kitchen/data/frame-000024.depth.png": "546b2a725a9dec6327c601028698f3164bbecc3a12c3619a0ade867c5c1e6c37",
+          "apt2/kitchen/data/frame-000028.depth.png": "edff04c46c0e2234ba7b30e19ce37b91a2b5834b279abaf3e70c22eb73356c63",
+          "apt2/kitchen/info.txt": "5a70f239c1ade7dca1cb16fe46f6abab6529ba867c0c54c6e571f6ec2d69f550",
+          "apt2/kitchen/split.txt": "6f5de0c77285a37e1c2dc2e617dab5d4a7c6aaef572405bd2b3bff7575fb4bcb"
+        }
+      },
+      "office2": {
+        "room": "office2/5b",
+        "capture": "sequence0",
+        "stride": 4,
+        "baseline_m": 0.39540314897076884,
+        "target_frames": [
+          11,
+          15,
+          19,
+          23,
+          27
+        ],
+        "archive_sha256": "c38479aab5fa4b22301a8600ce54621218826323bf01aa8bdbe449177d3ac640",
+        "archive_bytes": 1849269665,
+        "image_sha256": "1fc822ee8e693a96820171faa611c44fcc5e24271e950fc5db3c689c664015bf",
+        "packets": {
+          "earlier": {
+            "sha256": "e2fa064722aee21524bda66e6b08fddd7138470b8e64c2525877e12d4c086c09",
+            "source_frames": [
+              10,
+              14,
+              18,
+              22,
+              26
+            ],
+            "counts": [
+              [
+                23,
+                23,
+                23,
+                21,
+                21
+              ],
+              [
+                23,
+                23,
+                23,
+                21,
+                20
+              ],
+              [
+                15,
+                15,
+                15,
+                14,
+                14
+              ]
+            ],
+            "held_coverage": [
+              {
+                "view": 0,
+                "count": 63,
+                "excluded": 0,
+                "xy_sha256": "6c32cd812db0f1079ef4d63c548c69a03e2cb007781aa864395535b7fe76c959"
+              },
+              {
+                "view": 1,
+                "count": 63,
+                "excluded": 0,
+                "xy_sha256": "f66ba5861a27dae8fc955e99e9242f95663b9a863c411d4659b323b2aba575a9"
+              },
+              {
+                "view": 2,
+                "count": 64,
+                "excluded": 0,
+                "xy_sha256": "a83f2511c798913036a1307248d9afe8d1ecc19cb305a1b1a38a205f8f12be94"
+              },
+              {
+                "view": 3,
+                "count": 64,
+                "excluded": 0,
+                "xy_sha256": "6360e20009cf4587b4575e90ad8de56cc7e1083a4626a6e75e1642379f3be497"
+              },
+              {
+                "view": 4,
+                "count": 64,
+                "excluded": 0,
+                "xy_sha256": "5c0878c74bae68eeef3879b73eb4b096837bf6fe79471be6d5f52abcd6698ff9"
+              }
+            ]
+          },
+          "later": {
+            "sha256": "f9775bac8122287c77d3e1e7c9c30a57386e7026dc299bd75af512513bc88121",
+            "source_frames": [
+              12,
+              16,
+              20,
+              24,
+              28
+            ],
+            "counts": [
+              [
+                23,
+                24,
+                24,
+                24,
+                24
+              ],
+              [
+                24,
+                23,
+                24,
+                24,
+                24
+              ],
+              [
+                16,
+                16,
+                16,
+                16,
+                16
+              ]
+            ],
+            "held_coverage": [
+              {
+                "view": 0,
+                "count": 61,
+                "excluded": 0,
+                "xy_sha256": "cc649a32a4e169035447c020fe2760e054f76a580947831d43e17c3cb5412771"
+              },
+              {
+                "view": 1,
+                "count": 61,
+                "excluded": 0,
+                "xy_sha256": "8c6d28087a5a09827c20865d60622ab39a3813acd881963ff212f16748b8f0d2"
+              },
+              {
+                "view": 2,
+                "count": 61,
+                "excluded": 0,
+                "xy_sha256": "a960cf09650bcdc0628ac71c586e18d4c9416e1eef155f5ce4733c983bcb791d"
+              },
+              {
+                "view": 3,
+                "count": 56,
+                "excluded": 0,
+                "xy_sha256": "5364010c3732ab07cde80a1007fedd723568ccb7299b0fd3abc77fca8852aeee"
+              },
+              {
+                "view": 4,
+                "count": 55,
+                "excluded": 0,
+                "xy_sha256": "0470b8d04747e6828e6388207b79762a8ab82760e94554bef02a855b85eae7ed"
+              }
+            ]
+          }
+        },
+        "source_files": {
+          "office2/5b/data/frame-000011.color.jpg": "88696af3385d1e12e8ce0185e47fa444a1a53020b952632075ee40498df290cf",
+          "office2/5b/data/frame-000015.color.jpg": "be046946e5c594a2ed72cfcb87a53fc293d8b891e507c29065746d41d316d578",
+          "office2/5b/data/frame-000019.color.jpg": "8d2ee1a5e74ae6d1a0fb563a1cdb157214d9bd383619ff77032065ca0595c66c",
+          "office2/5b/data/frame-000023.color.jpg": "bfa46d40a86127fd47613a5ede78c8263ccc4e2031396d9c326f37c9b3b2731a",
+          "office2/5b/data/frame-000027.color.jpg": "5023b8ba120b755b5455eb85313768a6158551131e016c9864834ac498da433d",
+          "office2/5b/data/frame-000010.pose.txt": "f0730ba79965ba32c80cae1104de767440067757bf5d996938b0079613dbad86",
+          "office2/5b/data/frame-000011.pose.txt": "8ece2505bccfe771f37d15263f01735af8a13f0d59393f55a799b107fe65e0f3",
+          "office2/5b/data/frame-000012.pose.txt": "6e31de985baedfa363eab768cd7928d63484d25c8b6f039354321b08acbe9da3",
+          "office2/5b/data/frame-000014.pose.txt": "bdeaf11c650d423f399ecc7b4a5d1222367a1dfd0e653b1fb5d381a6771ac64b",
+          "office2/5b/data/frame-000015.pose.txt": "d7a86878b0c8e45a3fe8c6c97b7e794fe370d241640d5592998d041995c3a8cc",
+          "office2/5b/data/frame-000016.pose.txt": "38435767e5f3b2b40ef0ffd882e881464dc6d8745f12eb5062ba38019f2b1bbe",
+          "office2/5b/data/frame-000018.pose.txt": "3ee23eb979f3c2a405838cf0673cbd26696a8831ddde5682b6ff620892ecf1d9",
+          "office2/5b/data/frame-000019.pose.txt": "99789678b2aa740eb3686d95eb375217c1259cc8c742285f4ebaa4d9d2d2b864",
+          "office2/5b/data/frame-000020.pose.txt": "24a9c255a4e36d64f63a748ed79f7f36d61f0e34f4f80653343fc38989bb9095",
+          "office2/5b/data/frame-000022.pose.txt": "e2d62e004d864bdb8a1590c1d642bcd4fc72750937911e32ba4986ed1e7abe9c",
+          "office2/5b/data/frame-000023.pose.txt": "b3d675be79fe15a6109094da242dc5f79579a8814d012d3a421fd26d5f148e37",
+          "office2/5b/data/frame-000024.pose.txt": "387c025021427274e82ede74ab0365ca8b132222eec581e5af7f6109f5423eef",
+          "office2/5b/data/frame-000026.pose.txt": "6c6050d4e6db46bc8510601cbfe3fc3b7d69db92d5b39e5a033365f0a9297fde",
+          "office2/5b/data/frame-000027.pose.txt": "2b56b7a778d974a6f1e6a17256c7787232d94df3abc3cf9e9589993c8bc46232",
+          "office2/5b/data/frame-000028.pose.txt": "c0db6f409c2b0b7ca487b3c76933323a2a01cd91c38ef172ab31d38c3abbf53f",
+          "office2/5b/data/frame-000010.depth.png": "4792ca6a02b03fb9000b11ea1259969eadf4f7289ae1c54bf9b18283525d4e0a",
+          "office2/5b/data/frame-000014.depth.png": "6895f6931beffd6813a8050d6fef059fd08a5e3bc80e12579d835819e1caf057",
+          "office2/5b/data/frame-000018.depth.png": "5fcec49c6acb3ab05e68d1cefcd10574b45220327cf499e9493ef2a807755a82",
+          "office2/5b/data/frame-000022.depth.png": "c9124dac59a4b575c92e678b0e748c298e992b8d76f40cbd2e4245640fefeba8",
+          "office2/5b/data/frame-000026.depth.png": "b96efc55550622f0808de6416f03c6086f3bdf70664e5ac747df66719fa5f35a",
+          "office2/5b/data/frame-000012.depth.png": "b541dd1310203ff9ce59290b61479b845a36c2cc405e65ca5e012e8e36ce4700",
+          "office2/5b/data/frame-000016.depth.png": "6090abbc25dcc0a211d481b0972e790bc97816d462612b0399021d4aff1a6b85",
+          "office2/5b/data/frame-000020.depth.png": "92cca95849a7fd7b99845e0b24954d43b92de3cf79b9ff39e2f1deeb0edef995",
+          "office2/5b/data/frame-000024.depth.png": "604a8aa39e4a6e403b04ba90df9f9b6a66386c646a0cc5e3e6a91daf8ec31f30",
+          "office2/5b/data/frame-000028.depth.png": "d59a235c0cf2d6132be2cc82f8453d5a7d350445470902e7f7c10cb46b6f832d",
+          "office2/5b/info.txt": "a3451208d4492aec842fa564d16c9c7091c411173aa0ad19b6e8087947652c4c",
+          "office2/5b/split.txt": "14efaba0fb884ae90b9b978899c8d538495e7c12fa65c1cce9ef995ebbd5410b"
+        }
+      }
+    },
+    "preflight": "counts and coordinate hashes only"
+  },
+  "source_sha256_lf": {
+    "scripts/native_lora_step_inputs.py": "3ee7fd58ba0b933b3e2bca5eefc696e64bea4c2b787c0287fda4dac50f2599db",
+    "scripts/run_native_lora_step.py": "c71fdf077427c69c059db8e9c0929e69008f7625d8203dd520f86c7dc28eb9c0",
+    "scripts/run_native_lora_step_local.py": "11341959fe5417178b3f00c5a067d349b0a4d262e5f9b06118f2be80dad6cc54",
+    "scripts/score_native_lora_step.py": "aaa6fa28a482c0e4e54bf9f1d6242edc74a597f0eb60da6f19c740c8d8f90b9c",
+    "scripts/replay_native_lora_step.py": "ecf5e446fd35d0bbcac7ff9d0b221bbc255e9f40cbc0cd95fc723e8959296e02",
+    "scripts/test_native_lora_step.py": "129484c5ab9156375c9f2bb6aee95d1bbb594261a236e81f261c79c54c6e0d9c",
+    "scripts/run_native_lora_direction.py": "d9ec8c8a916dea5436411fd5321563cb0343f06490dca96f09db56d60611a126",
+    "scripts/native_lora_direction_inputs.py": "070b67efea6249b18ace24911b4b842dd6069ce9b6c5d2cfad00cd6560cdf50d",
+    "scripts/score_native_lora_direction.py": "46a91298b925f9b8c1ff1a782f72db0668ea126f2c3943bb498c13393f09cc80",
+    "scripts/prepare_profiled_inputs.py": "c85600d5825435d836d70365293012237af7bca823971461f7e8850f45b6395c",
+    "scripts/profiled_network.py": "6b904c9d9a93ada96cc5332943bffc25147c9e3ce7bc24916c4f6a40e6b8101a",
+    "scripts/profiled_calibration.py": "f3c77e8271ffaa44494f5298cb7b7a428913ada04bd60ff92d1d4d0f25675ab6",
+    "scripts/profiled_runtime.py": "07b6b42bb1e77afb316633ec930fe6f8379f0fb8d1039921bc8882db734a4fa6",
+    "scripts/mast3r_network_capture.py": "92e164a4adb9e52318d68cc690c68b480949b5afbdecd45be1b4097a621211a1",
+    "scripts/mast3r_network_priors.py": "8b8f0c5730db1ca75a4e7aace5c0e7141f534c9bbd8b75de5b7fead0fe7ca270",
+    "scripts/check_profiled_endpoints.py": "2be86f8fa406196ad7630bc7070f3e3c07b679bcc82f64f72e9e99218d952491",
+    "scripts/mast3r_joint_prior_loss.py": "de53921ffbffe70cbe44415e9dfad501ac031208d6620b900511cb6cf4a5a989",
+    "scripts/mast3r_calibrated_alignment.py": "bfa109edba148ef0293a750a944e1b6ea4243a24453b7aebd757f4efae8cbf1d",
+    "scripts/mast3r_alignment_hook.py": "4693f338f8364cf6d53f796257182ca618afa301243b193c55ffcfca37d24059",
+    "scripts/run_profiled_lora.py": "9a656dc15df70a62f3bb3920214ace8d3007fedc8e9987839cdec7e0bd134d5c",
+    "scripts/run_profiled_d0_local.py": "d443c92e5d8b78fc679756274749b2dcb926be8da76f998d4389a2394ea4a3d7",
+    "scripts/run_profiled_d1_local.py": "e62f4f5a67e1e080e017758fd1b58fe5abb40453c30279fd013dd888e20581e0",
+    "third_party/TCO/peft/lora.py": "efa3a15890fcec03d144556de7cd319c2377b8c341159872c3d3900fa9301c36",
+    "third_party/mast3r/mast3r/cloud_opt/sparse_ga.py": "d811614a10fe7920fb41285c3b8b9162b38a5e1ea68823f76383a2f209d3a49f",
+    "docs/NATIVE_LORA_STEP_SELECTION.md": "5171fa72133946a933f48993ad55a198de2920c7056f1bd8306de6eee2029833"
+  },
+  "image": "sha256:74783a8eefee6daad6ff2714a51263ccdcdc5092b83cebee20515310bec46b50",
+  "checkpoint_sha256": "0a615eb05fa9db654050aa655945ee5696e7c6c1b7f93f1ee8c37249010f6feb",
+  "config_sha256": "718eb93dc4f9e4332b60cc0041af962d712cbd346d7770ce35c5b22cff68eae4",
+  "runtime_sha256_lf": "e7946d4672b81774cd937a49659d217d370ed53c54c573b5173b110a26a7cd45",
+  "selection_tolerance_mm": 0.05,
+  "consistency_relative": 0.01,
+  "rental_compute_usd": 0,
+  "min_held": 16,
+  "min_partition": 8
+}

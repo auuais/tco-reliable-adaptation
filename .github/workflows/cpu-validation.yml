@@ -212,6 +212,9 @@ jobs:
       - name: Replay the native LoRA directional test from view aggregates
         if: ${{ hashFiles('results/native_lora_direction_v1/held_source_scores.json') != '' }}
         run: python scripts/replay_native_lora_direction.py
+      - name: Replay fresh-room LoRA step selection from view aggregates
+        if: ${{ hashFiles('results/native_lora_step_v1/held_scores.json') != '' }}
+        run: python scripts/replay_native_lora_step.py
       - name: Exercise immutable profiled evidence backup fixtures
         run: python scripts/test_archive_profiled_evidence.py
       - name: Verify prospective M3 fitting inputs without loading predictions
