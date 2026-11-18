@@ -49,7 +49,7 @@ preprocessing. No other archive member is required or opened by this function.
 
 
 @contextmanager
-def counted_method(model, name, maximum, guard):
+def counted_method(model, name, maximum, guard, observe=None):
     """Count actual calls, reject excess before execution, restore even on failure."""
     original = getattr(model, name)
     previous = model.__dict__.get(name)
@@ -60,6 +60,8 @@ def counted_method(model, name, maximum, guard):
         guard()
         require(counts["calls"] < maximum, "D1 call cap exceeded: " + name)
         counts["calls"] += 1
+        if observe is not None:
+            observe(counts["calls"])
         result = original(*args, **kwargs)
         guard()
         return result
@@ -80,11 +82,14 @@ def _ordered_capture(ops, views, load_adapter, teacher_gate, guard, progress):
     ops.require_frozen()
     original_state = ops.original_state()
     require(ops.digest(original_state) == ORIGINAL, "Unexpected pristine model state")
-    with counted_method(ops.model, "_encode_image", 5, guard) as enc:
+    def observer(stage):
+        return lambda count: progress(stage, {"calls_entered": count})
+
+    with counted_method(ops.model, "_encode_image", 5, guard, observer("encoder")) as enc:
         features = ops.features(views)
     require(enc["calls"] == 5 and len(features) == 5, "Expected five encoder calls/features")
     feature_hash = ops.feature_digest(features)
-    with counted_method(ops.model, "_decoder", 20, guard) as before:
+    with counted_method(ops.model, "_decoder", 20, guard, observer("pristine_decoder")) as before:
         points0, confidence = ops.collect(features)
     require(before["calls"] == 20, "Expected twenty pristine decoder calls")
     depth0, fused_confidence = ops.fuse(points0, confidence)
@@ -106,7 +111,7 @@ def _ordered_capture(ops, views, load_adapter, teacher_gate, guard, progress):
     # This is the first access to final factors, after the persisted teacher gate.
     ops.assign(named, load_adapter())
     require(ops.digest(named) == FINAL, "Unexpected final P3 adapter state")
-    with counted_method(ops.model, "_decoder", 20, guard) as after:
+    with counted_method(ops.model, "_decoder", 20, guard, observer("final_decoder")) as after:
         points1, discarded_confidence = ops.collect(features)
     del discarded_confidence
     require(after["calls"] == 20, "Expected twenty final-state decoder calls")
