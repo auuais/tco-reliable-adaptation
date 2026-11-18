@@ -2,7 +2,7 @@
   "goal": "Calibration-aware predictive LoRA accuracy investigation",
   "checkpoint_date": "2026-11-19",
   "status": "active",
-  "current_phase": "D0 verified/published; D1 helpers and byte inventory prepared; executable release controller, model probe and replay pending",
+  "current_phase": "D1 completed and independently verified; single compensation redesign design and differentiable loss tested on fixtures; executable redesign training pending",
   "completed_milestone_weight_percent": 50,
   "percentage_rule": "Conservative whole-milestone credit; completed subchecks are listed separately and are not accuracy evidence",
   "milestones": {
@@ -54,7 +54,8 @@
       "preparation": "202 combined CPU fixtures pass. Static registry and completed-attempt byte audit implemented, including exact fitting-count checks. Reference-free converter/replay and pure reference semantics pass 17 pinned CPU fixtures. All24 real fitting-case reports exactly reproduce in pinned image. M3 actual registry/release controller, model acceptance, stage seals, scorer and scientific execution remain pending; no reuse approved.",
       "initial_confirmation": "not_run_due_to_no_eligible_M2_nominee",
       "diagnosis_design": "manifests/lora_profiled_diagnosis_design_v1.json",
-      "diagnosis": "D0 complete and exactly replayed. D1 mathematical, artifact, sensor-bridge and capture helpers pass84 pinned CPU fixtures; selected actual input byte/provenance inventory passes. No D1 production tensor decoding/model calls, no scientific redesign."
+      "diagnosis": "D0 and D1 passed. D1 model matched historical teacher and retained both folds, four contrasts and all finite differences. Exact CPU and independent scalar replay passed; one compensation redesign specified.",
+      "redesign_status": "design_and_loss_module_only_no_scientific_updates"
     },
     "M4": {
       "weight": 10,
@@ -73,7 +74,8 @@
         "Full2281-file M2 archive verified on distinct C/E physical disks",
         "Compact M2 scores/replay and detailed successor documentation:21 files,1639507 bytes verified against C:/E: physical disks",
         "D0 original production report and exact diagnostic replay",
-        "Independent D0 representative direct-BA and least-squares checks"
+        "Independent D0 representative direct-BA and least-squares checks",
+        "D1 sealed output exact CPU replay and independent diagonal ridge arithmetic, including both same-state derivatives. Verified C/E archive of 161 files."
       ]
     }
   },
@@ -140,7 +142,15 @@
     "d1_helper_preparation": "results/lora_profiled_d1_v1/preparation01.json",
     "d1_input_preparation": "results/lora_profiled_d1_v1/inputs_preparation01.json",
     "d1_input_checks": "results/lora_profiled_d1_v1/inventory_checks01.json",
-    "d1_preparation_backup": "results/lora_profiled_d1_v1/preparation_backup01.json"
+    "d1_preparation_backup": "results/lora_profiled_d1_v1/preparation_backup01.json",
+    "d1_execution": "manifests/lora_profiled_d1_execution_v1.json",
+    "d1_model_seal": "results/lora_profiled_d1_v1/attempts/d1_01/model_seal.json",
+    "d1_report": "results/lora_profiled_d1_v1/attempts/d1_01/report.json",
+    "d1_replay": "results/lora_profiled_d1_v1/attempts/d1_01/replay.json",
+    "d1_independent_replay": "results/lora_profiled_d1_v1/attempts/d1_01/independent_arithmetic.json",
+    "d1_execution_backup": "results/lora_profiled_d1_v1/execution_backup01.json",
+    "compensation_redesign": "manifests/lora_profiled_compensation_design_v1.json",
+    "d1_publication_backup": "results/lora_profiled_d1_v1/publication_backup01.json"
   },
   "accuracy_improvement_established": false,
   "nomination": null,
@@ -152,11 +162,21 @@
   "redesign_limit": 1,
   "research_gpu_job_at_checkpoint": {
     "container": null,
-    "last_authoritative_state": "no_running_local_research_GPU_container",
-    "batch_session_id": 27750,
-    "batch_invocation": "20261118T104117Z_ede54062",
-    "terminal": "results/lora_profiled_v1/batches/screen02/invocations/20261118T104117Z_ede54062/terminal.json",
-    "instruction": "Finished successfully. Do not resume or duplicate M2. D0 design permits CPU-only saved-artifact diagnostics after executable registration."
+    "last_completed_container": "tco-profiled-d1-model-d1-01",
+    "observed_state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-18T15:18:48.459281773Z",
+      "FinishedAt": "2026-11-18T15:24:37.401085806Z"
+    },
+    "stopped_verified": true
   },
   "implementation_state": {
     "network_and_gradient_bridge": "formal real-model acceptance passed with deterministic arithmetic; original threshold limits preserved",
@@ -172,24 +192,24 @@
     "m3_preparation": "202 combined CPU fixtures pass. Static registry and completed-attempt byte audit implemented, including exact fitting-count checks. Reference-free converter/replay and pure reference semantics pass 17 pinned CPU fixtures. All24 real fitting-case reports exactly reproduce in pinned image. M3 actual registry/release controller, model acceptance, stage seals, scorer and scientific execution remain pending; no reuse approved."
   },
   "last_observed_ci": {
-    "commit": "fe880ae3c8a4cff50a56dea28fff09c563444dd8",
-    "run_id": 44328473605,
+    "commit": "ba722398c2d346b598f369f7ef9be6969a2cc5e3",
+    "run_id": 44334236868,
     "conclusion": "success",
-    "scope": "Full CPU workflow for published verified D0 checkpoint and initial D1 math"
+    "scope": "Full CPU validation for the committed D1 executable registration"
   },
-  "next_command": "Get-Content docs/CALIBRATION_AWARE_LORA_HANDOFF.md -Encoding utf8",
-  "next_implementation_action": "Reuse the84-test D1 helpers and prepared byte inventory. Implement/test bounded local release/run/replay controller, immutable stage outputs and full source/runtime/input registration; commit before production decoding. Teacher-gate must precede final-factor/FP32 comparisons. Then run the fixed40-call local probe, retain both folds/contrasts and independently replay sealed matrices. No redesigned training or rental released.",
+  "next_command": "python -m unittest discover -s scripts -p test_profiled_compensation_penalty.py",
+  "next_implementation_action": "Integrate the differentiable compensation loss with a versioned two-pass LoRA runner. Verify forward matching, finite differences and unchanged frozen parameters in engineering acceptance. Register the exact 36-state inventory and evaluator before scientific optimization. No rental authorization.",
   "handoff": "docs/CALIBRATION_AWARE_LORA_HANDOFF.md",
   "weekly_usage_checkpoint": {
     "used_percent": 20,
     "remaining_percent": 80,
     "pause_threshold_remaining_percent": 5,
-    "observation": "2026-11-18T15:03:26.544266+00:00",
+    "observation": "2026-11-18T15:32:24.882950+00:00",
     "note": "Observed via native usage tool; shared counter can change"
   },
-  "validated_code_commit": "fe880ae3c8a4cff50a56dea28fff09c563444dd8",
-  "last_goal_turn_classification": "progress: verified takeover, backed up/published D0 with passing CI; implemented D1 strict input, calibration bridge and teacher-first capture helpers;84 pinned CPU tests and selected real byte-only inventory preparation passed",
-  "checkpoint_observed_at_utc": "2026-11-18T15:02:48.481037+00:00",
+  "validated_code_commit": "ba722398c2d346b598f369f7ef9be6969a2cc5e3",
+  "last_goal_turn_classification": "progress: prospective D1 registered and completed on RTX 3080, exact and independent CPU replays passed, C/E backup verified, one evidence-based compensation redesign specified and loss fixtures passed",
+  "checkpoint_observed_at_utc": "2026-11-18T15:32:24.881949+00:00",
   "screen_result": {
     "nominee": null,
     "all_primary_cases_valid": true,
@@ -218,12 +238,12 @@
     "status": "complete",
     "entrypoint": "docs/CALIBRATION_AWARE_LORA_HANDOFF.md",
     "review": "Independent read-only review found no concrete blocker in handoff, D1 artifact, calibration bridge, capture and preprocessing helpers",
-    "next_experiment": "D1 helpers and byte inventory prepared; execution controller/registration and actual40-call model probe pending",
+    "next_experiment": "Compensation redesign engineering and prospective evaluation registration",
     "local_research_gpu_running": false
   },
   "research_cpu_job_at_checkpoint": {
     "container": null,
-    "last_completed_container": "tco-m3-d0-d1inventory01",
+    "last_completed_container": "tco-profiled-d1-replay-d1-01",
     "observed_state": {
       "Status": "exited",
       "Running": false,
@@ -234,13 +254,10 @@
       "Pid": 0,
       "ExitCode": 0,
       "Error": "",
-      "StartedAt": "2026-11-18T15:01:26.08575843Z",
-      "FinishedAt": "2026-11-18T15:01:58.438716423Z"
+      "StartedAt": "2026-11-18T15:24:51.095811594Z",
+      "FinishedAt": "2026-11-18T15:25:01.983343919Z"
     },
-    "session_id": 87932,
-    "session_terminal": true,
-    "stopped_verified": true,
-    "instruction": "Both D1 preparation CPU containers exited0 and are verified stopped. Do not rerun completed preparation unless relevant source/input/runtime changes. No actual D1 model run exists yet."
+    "stopped_verified": true
   },
   "d0_status": {
     "production_run": "complete",
@@ -258,21 +275,34 @@
     "resumed_by_user": true
   },
   "d1_status": {
-    "helpers": "implemented_and_synthetic_CPU_validated",
-    "tests_run": 84,
-    "selected_input_byte_inventory": "passed_without_array_decode",
-    "execution_registry": "not_created",
-    "production_tensors_decoded": false,
-    "model_forward_calls": 0,
-    "scientific_redesigns_consumed": 0,
+    "status": "completed_verified",
+    "actual_attempt": "d1_01",
+    "decoder_calls": 40,
+    "encoder_calls": 5,
+    "optimizer_updates": 0,
     "rental_usd": 0,
-    "remaining": [
-      "release/run/replay controller with partial actual-call telemetry on failure",
-      "bounded D1 launcher",
-      "prospective executable registration",
-      "actual40-call model probe",
-      "saved-matrix replay",
-      "diagnostic interpretation before redesign"
-    ]
+    "exact_teacher_match": true,
+    "exact_cpu_replay": true,
+    "independent_diagonal_replay": true,
+    "query_loss_reduction_percent_by_fold": {
+      "BF16_path": [
+        0.9993651314074148,
+        0.00977007263085472
+      ],
+      "FP32_path": [
+        6.2091699843262464,
+        0.9685894216747368
+      ]
+    },
+    "calibration_change_survival_ratio": {
+      "BF16_path": [
+        0.7113674811472944,
+        0.6877273356222054
+      ],
+      "FP32_path": [
+        0.9884063892109537,
+        0.9776130355344453
+      ]
+    }
   }
 }

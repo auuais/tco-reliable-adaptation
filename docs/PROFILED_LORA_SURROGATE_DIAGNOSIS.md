@@ -1,5 +1,7 @@
 # Conditional diagnosis of surrogate-to-native disagreement
 
+D0 and D1 are complete. The verified D1 report records query-loss reductions on both inference paths and attenuation on the training path. The chosen follow-up is calibration compensation regularization with a trace-matched damping comparator. The preparation requirements below are retained for reproduction. [D1 report](../results/lora_profiled_d1_v1/README.md) · [Redesign](PROFILED_COMPENSATION_REDESIGN.md)
+
 The M2 inventory, global seal and registered scoring are now complete with no eligible nominee. This guide supplies the mathematics for the bounded failure diagnosis; it is not evidence that a cause has been observed. D0 is now complete with an exact replay; start the selected D1 work package below and read the [current handoff](CALIBRATION_AWARE_LORA_HANDOFF.md). The broader diagnostic options below are conditional D1 choices, not permission to load additional tensors or launch them all. Preserve the completed screen and its frozen sources. After its verdict, use this guide with the [mathematical plan](FROZEN_LORA_ACCURACY_PLAN.md), [goal contract](CALIBRATION_AWARE_LORA_GOAL.md) and [failure policy](PROFILED_LORA_TERMINAL_FAILURE_POLICY.md). All diagnostic measurements below use model outputs, recorded correspondence identities and the permitted adaptation packet only; support **and** query are training observations.
 
 **Selected D1 work package after verified D0**

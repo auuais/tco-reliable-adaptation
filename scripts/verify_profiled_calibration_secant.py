@@ -38,11 +38,12 @@ def verify_matrix(a):
         raise ValueError("Expected finite rows supported on one camera column")
 
 
-def independent_replay(attempt):
+def independent_replay(attempt, *, verify_only=False):
     if not re.fullmatch(r"d1_[0-9]{2}", attempt):
         raise ValueError("Invalid attempt ID")
     public = ROOT / "results/lora_profiled_d1_v1/attempts" / attempt
-    matrix = ROOT / "reports/lora_profiled_d1_v1/attempts" / attempt / "matrices.npz"
+    private_matrix = ROOT / "reports/lora_profiled_d1_v1/attempts" / attempt / "matrices.npz"
+    matrix = public / "matrices_replay.npz" if verify_only else private_matrix
     report_path = public / "report.json"
     report_hash = sha(report_path)
     seal_path = public / "model_seal.json"
@@ -51,7 +52,7 @@ def independent_replay(attempt):
             and replay["model_seal_sha256"] == report["model_seal_sha256"] == sha(seal_path)):
         raise ValueError("Required exact CPU replay and seal do not agree")
     bound = seal["arrays"][0]
-    if bound["file"] != matrix.relative_to(ROOT).as_posix() or sha(matrix) != bound["sha256"]:
+    if bound["file"] != private_matrix.relative_to(ROOT).as_posix() or sha(matrix) != bound["sha256"]:
         raise ValueError("Matrix bundle changed")
     with np.load(matrix, allow_pickle=False) as archive:
         arrays = {name: archive[name] for name in archive.files}
@@ -108,11 +109,20 @@ def independent_replay(attempt):
                    report_sha256=report_hash, matrices_sha256=bound["sha256"], checks=checks,
                    method="Diagonal ridge solve and quotient-rule derivative with scalar compensated sums",
                    tolerances=dict(rtol=RTOL, atol=ATOL), verified_at_utc=now(), rental_usd=0)
-    write_new(public / "independent_arithmetic.json", receipt)
+    receipt_path = public / "independent_arithmetic.json"
+    if verify_only:
+        earlier = read(receipt_path)
+        fields = set(receipt) - {"verified_at_utc", "checks"}
+        if any(earlier[field] != receipt[field] for field in fields):
+            raise ValueError("Published independent receipt describes different evidence")
+    else:
+        write_new(receipt_path, receipt)
     print(json.dumps({k: v for k, v in receipt.items() if k != "checks"}))
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--attempt", required=True)
-    independent_replay(parser.parse_args().attempt)
+    parser.add_argument("--verify-only", action="store_true", help="Replay the published compact matrix bundle")
+    args = parser.parse_args()
+    independent_replay(args.attempt, verify_only=args.verify_only)

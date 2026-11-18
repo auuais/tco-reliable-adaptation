@@ -1,0 +1,108 @@
+{
+  "schema": "profiled_compensation_design_v1",
+  "execution_ready": false,
+  "created_at_utc": "2026-11-18T15:32:24.876230+00:00",
+  "motivation": [
+    {
+      "file": "results/lora_profiled_d1_v1/attempts/d1_01/report.json",
+      "sha256": "e582741dd2f911b36beb186fc542532e4e9c68104a133179ed4eeb58aae2a4f5"
+    },
+    {
+      "file": "results/lora_profiled_d1_v1/attempts/d1_01/replay.json",
+      "sha256": "e123105d7c189ce0baa81b39018eeed8ef35ab9b3500169da0ae19838fbb2b62"
+    },
+    {
+      "file": "results/lora_profiled_d1_v1/attempts/d1_01/independent_arithmetic.json",
+      "sha256": "ddf1b23a4c4331de29661e820ceff25e1f980870c9de145b98b94b56d314fbd3"
+    }
+  ],
+  "specification": {
+    "file": "docs/PROFILED_COMPENSATION_REDESIGN.md",
+    "sha256": "e147c8925f49c841aaeedf317443c2a7d6d3ef554d9e7fa9a8b0faf7525e981a"
+  },
+  "method_source": {
+    "file": "scripts/profiled_compensation_penalty.py",
+    "sha256": "041144b477b2c59c01fd15fd1435b0f97ba76e5cd6039023d8837d4faf59bca0"
+  },
+  "fixture_source": {
+    "file": "scripts/test_profiled_compensation_penalty.py",
+    "sha256": "b35e7a63fd8e31fff2b61e2763a7719654de8fe78f6e867d91f012bfb55701eb"
+  },
+  "scientific_redesigns_consumed": 0,
+  "prospective_maximum_redesigns": 1,
+  "arms": [
+    {
+      "arm": "P0",
+      "adapt_lora": false,
+      "objective": "frozen"
+    },
+    {
+      "arm": "P1",
+      "adapt_lora": true,
+      "objective": "matched_D"
+    },
+    {
+      "arm": "P3",
+      "adapt_lora": true,
+      "objective": "profiled_query_graph_zero_full"
+    },
+    {
+      "arm": "R0",
+      "adapt_lora": true,
+      "objective": "profiled_query_plus_trace_matched_isotropic_support_penalty"
+    },
+    {
+      "arm": "R1",
+      "adapt_lora": true,
+      "objective": "profiled_query_plus_query_space_calibration_compensation_full"
+    },
+    {
+      "arm": "R2",
+      "adapt_lora": true,
+      "objective": "profiled_query_plus_query_space_calibration_compensation_detached_scales"
+    }
+  ],
+  "scenes": [
+    "heads",
+    "chess",
+    "fire"
+  ],
+  "adaptation_sources": [
+    "earlier",
+    "later"
+  ],
+  "fresh_states": 36,
+  "fresh_trained_states": 30,
+  "theta_math": {
+    "ridge_and_base": "Original graph-zero P3 solver except P1 preserves matched D",
+    "penalty_strength": 1.0,
+    "fold_reference": "Fixed pristine per-fold s0 and locally trace-matched damping",
+    "forward_matched_pair": [
+      "R1",
+      "R2"
+    ]
+  },
+  "source_schedule": {
+    "file": "manifests/lora_profiled_design_v1.json",
+    "sha256": "5bce05491f2910eb83fd45fb80a23b762b096d9b086a88da82329759c1021e7b"
+  },
+  "comparison": {
+    "eligible_nominee": "R1",
+    "minimum_gain_over_P1_percent_both_directions": 1.0,
+    "minimum_same_scenes_improved_both_directions_over_P1": 2,
+    "must_beat_both_directional_means": [
+      "P3",
+      "R0",
+      "R2"
+    ],
+    "numerical_failures_allowed": 0,
+    "endpoint": "fresh native FP32 KDP plus common final calibration",
+    "seal_before_scoring": true
+  },
+  "rental_compute_usd": 0,
+  "required_before_scientific_training": [
+    "Versioned two-pass training controller",
+    "Real no-update/engineering checks for forward match, parameter finite differences and frozen state",
+    "Prospectively committed executable and scorer manifests"
+  ]
+}

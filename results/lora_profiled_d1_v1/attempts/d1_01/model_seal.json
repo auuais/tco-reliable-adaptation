@@ -1,0 +1,62 @@
+{
+  "schema": "profiled_d1_model_seal_v1",
+  "pass_all": true,
+  "execution": {
+    "file": "manifests/lora_profiled_d1_execution_v1.json",
+    "sha256": "868e42d874098cc855aa1c0450d8e54546680e3aab94882990c319aad51ee7d2"
+  },
+  "execution_commit": "ba722398c2d346b598f369f7ef9be6969a2cc5e3",
+  "runtime": {
+    "python": "3.11.13",
+    "numpy": "2.1.2",
+    "torch": "2.7.1+cu128",
+    "cuda": "12.8",
+    "device": "NVIDIA GeForce RTX 3080",
+    "torch_threads": 4,
+    "arithmetic": {
+      "deterministic_algorithms": true,
+      "deterministic_warn_only": false,
+      "cudnn_benchmark": false,
+      "cudnn_deterministic": true,
+      "cuda_matmul_allow_tf32": true,
+      "cudnn_allow_tf32": true,
+      "cublas_workspace_config": ":4096:8"
+    }
+  },
+  "capture": {
+    "encoder_calls": 5,
+    "pristine_decoder_calls": 20,
+    "final_decoder_calls": 20,
+    "decoder_calls": 40,
+    "backward_calls": 0,
+    "optimizer_updates": 0,
+    "original_state_sha256": "5d5ff52b270319abac6d3e202deec09d24e6b9013769147b167df2e87d93c69f",
+    "initial_adapter_sha256": "0ba2991166e023174d2dccfb5ea5fb749689501c3ce161f478c0baa88b8643ad",
+    "final_adapter_sha256": "e9f9f52fd89ad49b5457517c0d08afe2864f37b0dfe92245988a8358bcd84d12",
+    "feature_sha256": "614a32d2d60cd6f1e1b0b88ffc07976d313f5fb5bda55afd1d0d8025835a800b",
+    "final_confidence_discarded": true,
+    "teacher_verified_before_adapter_access": true,
+    "rental_usd": 0,
+    "seconds": 50.35123087791726,
+    "peak_allocated_mib": 3788.33740234375,
+    "peak_reserved_mib": 4136.0
+  },
+  "teacher": {
+    "file": "results/lora_profiled_d1_v1/attempts/d1_01/teacher_gate.json",
+    "sha256": "8fe2346ad1ea5d556046c72d4ecde44a0bc2d611be09158ef189595b2b3070e2"
+  },
+  "arrays": [
+    {
+      "file": "reports/lora_profiled_d1_v1/attempts/d1_01/matrices.npz",
+      "sha256": "7bd3e9027524cfcd4d8a8545698b104e4dac8e34a5767aed7422a76111080baa"
+    },
+    {
+      "file": "reports/lora_profiled_d1_v1/attempts/d1_01/depths.npz",
+      "sha256": "da82d400f3b66d166c6bfca896a1f44779bd1a458b3ce0e26a88bb97cfb4e0fc"
+    }
+  ],
+  "elapsed_seconds": 347.3684796009911,
+  "cuda_allocated_mib": 3788.33740234375,
+  "cuda_reserved_mib": 4136.0,
+  "rental_usd": 0
+}
