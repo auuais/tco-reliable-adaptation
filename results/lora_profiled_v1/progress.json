@@ -2,7 +2,7 @@
   "goal": "Calibration-aware predictive LoRA accuracy investigation",
   "checkpoint_date": "2026-11-19",
   "status": "active",
-  "current_phase": "Twenty-one of 36 redesign states verified. The serial queue is running Chess/later R0.",
+  "current_phase": "Twenty-three of 36 redesign states verified. The serial queue is running Chess/later R2.",
   "completed_milestone_weight_percent": 50,
   "percentage_rule": "Conservative whole-milestone credit; completed subchecks are listed separately and are not accuracy evidence",
   "milestones": {
@@ -167,7 +167,7 @@
     "compensation_first_tranche": "results/lora_profiled_compensation_v1/heads_earlier_tranche01.json",
     "compensation_tranche_redesign_backup": "results/lora_profiled_compensation_v1/heads_earlier_redesign_backup01.json",
     "compensation_public_metric_replay": "scripts/replay_compensation_published_metrics.py",
-    "compensation_training_audit_checkpoint": "results/lora_profiled_compensation_v1/training_audit_checkpoint16.json",
+    "compensation_training_audit_checkpoint": "results/lora_profiled_compensation_v1/training_audit_checkpoint18.json",
     "compensation_heads_later_p0_p1_reproduction": "results/lora_profiled_compensation_v1/heads_later_original_control_reproduction.json",
     "compensation_heads_later_p3_reproduction": "results/lora_profiled_compensation_v1/heads_later_profiled_control_reproduction.json",
     "compensation_pipeline_fixture": "scripts/test_compensation_verdict_pipeline.py",
@@ -184,7 +184,9 @@
     "compensation_chess_earlier_r2_backup": "results/lora_profiled_compensation_v1/chess_earlier_R2_backup01.json",
     "compensation_chess_later_p0_backup": "results/lora_profiled_compensation_v1/chess_later_P0_backup01.json",
     "compensation_chess_later_p1_backup": "results/lora_profiled_compensation_v1/chess_later_P1_backup01.json",
-    "compensation_chess_later_p3_backup": "results/lora_profiled_compensation_v1/chess_later_P3_backup01.json"
+    "compensation_chess_later_p3_backup": "results/lora_profiled_compensation_v1/chess_later_P3_backup01.json",
+    "compensation_chess_later_r0_backup": "results/lora_profiled_compensation_v1/chess_later_R0_backup01.json",
+    "compensation_chess_later_r1_backup": "results/lora_profiled_compensation_v1/chess_later_R1_backup01.json"
   },
   "accuracy_improvement_established": false,
   "nomination": null,
@@ -195,8 +197,8 @@
   "redesigns_executed": 1,
   "redesign_limit": 1,
   "research_gpu_job_at_checkpoint": {
-    "container": "tco-profiled-compensation-chess-later-r0",
-    "container_id": "ebafc65aa70e207b89501c09e7056a8a869775ece7c81f2442edf5ece547741d",
+    "container": "tco-profiled-compensation-chess-later-r2",
+    "container_id": "80939b835cd178b93da4a6fd85c36b5c3957d16d55b4b65d38e24ca4761ec346",
     "observed_state": {
       "Status": "running",
       "Running": true,
@@ -204,10 +206,10 @@
       "Restarting": false,
       "OOMKilled": false,
       "Dead": false,
-      "Pid": 30360,
+      "Pid": 30812,
       "ExitCode": 0,
       "Error": "",
-      "StartedAt": "2026-11-18T17:30:14.844054036Z",
+      "StartedAt": "2026-11-18T17:41:06.013144152Z",
       "FinishedAt": "0001-01-01T00:00:00Z"
     },
     "source": "local Docker Desktop named pipe",
@@ -228,24 +230,24 @@
     "m3_preparation": "202 combined CPU fixtures pass. Static registry and completed-attempt byte audit implemented, including exact fitting-count checks. Reference-free converter/replay and pure reference semantics pass 17 pinned CPU fixtures. All24 real fitting-case reports exactly reproduce in pinned image. M3 actual registry/release controller, model acceptance, stage seals, scorer and scientific execution remain pending; no reuse approved."
   },
   "last_observed_ci": {
-    "commit": "6debeaa43947d7db19398d49adf2c1dc24d8b694",
-    "run_id": 44357520431,
+    "commit": "1c2298cac8c24cecec4ce26128a75f2b8368dab1",
+    "run_id": 44359655697,
     "conclusion": "success",
-    "scope": "Full CPU validation of the nineteen-state checkpoint"
+    "scope": "Full CPU validation of the twenty-one-state checkpoint"
   },
-  "next_command": "docker --host npipe:////./pipe/dockerDesktopLinuxEngine inspect tco-profiled-compensation-chess-later-r0",
+  "next_command": "docker --host npipe:////./pipe/dockerDesktopLinuxEngine inspect tco-profiled-compensation-chess-later-r2",
   "next_implementation_action": "Observe exec session 49837 and local Docker before acting. Existing serial queue owns remaining 30 states. On terminal success, verify all 36 and seal, score, replay original arrays, independently replay samples, publish aggregate check, figure and verified C/E verdict. Stop after an attempt failure and preserve partial state; do not start a duplicate queue.",
   "handoff": "docs/CALIBRATION_AWARE_LORA_HANDOFF.md",
   "weekly_usage_checkpoint": {
-    "used_percent": 22,
-    "remaining_percent": 78,
+    "used_percent": 23,
+    "remaining_percent": 77,
     "pause_threshold_remaining_percent": 5,
-    "observation": "2026-11-18T17:31:02.146Z",
+    "observation": "2026-11-18T17:41:39.534Z",
     "note": "Observed via native usage tool; shared counter can change"
   },
-  "validated_code_commit": "6debeaa43947d7db19398d49adf2c1dc24d8b694",
-  "last_goal_turn_classification": "progress: reverse Chess P1 and P3 completed and were verified on C/E. Both controls exactly reproduced their original frozen backbone, native and calibrated reconstruction outputs and every recorded update. The training audit verifies 21 states, 136 updates and 12 exact historical control pairs. Scoring remains sealed off.",
-  "checkpoint_observed_at_utc": "2026-11-18T17:31:25.594980+00:00",
+  "validated_code_commit": "1c2298cac8c24cecec4ce26128a75f2b8368dab1",
+  "last_goal_turn_classification": "progress: reverse Chess R0 and R1 completed and were verified on C/E. P3, R0 and R1 now reproduce the first full optimizer step exactly in all four Heads and Chess directions. In reverse Chess the last recorded R1 compensation norm is lower in fold 0 and higher in fold 1 compared with R0. 23 states and 152 updates passed audit without held-source score access.",
+  "checkpoint_observed_at_utc": "2026-11-18T17:42:12.652352+00:00",
   "screen_result": {
     "nominee": null,
     "all_primary_cases_valid": true,
@@ -345,7 +347,7 @@
     "status": "running_remaining_serial_queue",
     "cases_required": 36,
     "trained_cases_required": 30,
-    "verified_completed_at_checkpoint": 21,
+    "verified_completed_at_checkpoint": 23,
     "completed": [
       {
         "run_id": "heads_earlier_P0",
@@ -598,6 +600,30 @@
         "optimizer_updates": 8,
         "peak_allocated_mib": 4726.9912109375,
         "peak_reserved_mib": 5032.0
+      },
+      {
+        "run_id": "chess_later_R0",
+        "report": "results/lora_profiled_compensation_v1/cases/chess_later_R0/screen01/complete.json",
+        "report_sha256": "be9eecbf0acc8281e3e9a203587ad01070c76068ab18ff7f5f073fb5f609a08e",
+        "terminal": "results/lora_profiled_compensation_v1/launches/tco-profiled-compensation-chess-later-r0/terminal.json",
+        "terminal_sha256": "72a0124ded88bb09408bd0bacc01a645109777750391dd23b684927db59704e0",
+        "model_seconds": 287.8732588229468,
+        "local_wall_seconds": 321.56300000008196,
+        "optimizer_updates": 8,
+        "peak_allocated_mib": 4726.9912109375,
+        "peak_reserved_mib": 5032.0
+      },
+      {
+        "run_id": "chess_later_R1",
+        "report": "results/lora_profiled_compensation_v1/cases/chess_later_R1/screen01/complete.json",
+        "report_sha256": "0f712b3024785f1bef829507cab3aacbf07e37a24c1c6c967b71cdacedeaebfd",
+        "terminal": "results/lora_profiled_compensation_v1/launches/tco-profiled-compensation-chess-later-r1/terminal.json",
+        "terminal_sha256": "34dff4bfa3cdc12924397a6c60580c93471b38b15e2902986f73bca2208da8d1",
+        "model_seconds": 294.26969282201026,
+        "local_wall_seconds": 327.84299999987707,
+        "optimizer_updates": 8,
+        "peak_allocated_mib": 4726.9912109375,
+        "peak_reserved_mib": 5046.0
       }
     ],
     "engineering_passed": true,
