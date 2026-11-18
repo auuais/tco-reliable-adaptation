@@ -2,7 +2,7 @@
   "goal": "Calibration-aware predictive LoRA accuracy investigation",
   "checkpoint_date": "2026-11-18",
   "status": "active",
-  "current_phase": "M2 scientific v2: 24 states verified; tco-profiled-screen02-fire-earlier-p0 running",
+  "current_phase": "M2 scientific v2: 34 states verified; tco-profiled-screen02-fire-later-p4",
   "completed_milestone_weight_percent": 25,
   "percentage_rule": "Conservative whole-milestone credit; completed subchecks are listed separately and are not accuracy evidence",
   "milestones": {
@@ -40,9 +40,9 @@
     "M2": {
       "weight": 25,
       "status": "in_progress",
-      "trained_states_completed": 24,
+      "trained_states_completed": 28,
       "trained_states_planned": 30,
-      "frozen_controls_completed": 5,
+      "frozen_controls_completed": 6,
       "frozen_controls_planned": 6,
       "retired_protocol_states": 1,
       "note": "Completion hashes verified against launcher receipts. No study accuracy scores accessed."
@@ -50,7 +50,7 @@
     "M3": {
       "weight": 15,
       "status": "not_started",
-      "preparation": "165 CPU fixtures pass; real pinned CPU audit shows exact fitting values in all six centered/clean cases, including original prior rows. Fresh-model core implemented with checkpoint/config/RGB byte checks; real model acceptance, stage controller/registration and scientific M3 execution remain pending. M2 reuse is not authorized."
+      "preparation": "202 combined CPU fixtures pass. Static registry and completed-attempt byte audit implemented, including exact fitting-count checks. Reference-free converter/replay and pure reference semantics pass 17 pinned CPU fixtures. All24 real fitting-case reports exactly reproduce in pinned image. M3 actual registry/release controller, model acceptance, stage seals, scorer and scientific execution remain pending; no reuse approved."
     },
     "M4": {
       "weight": 10,
@@ -104,7 +104,11 @@
     "m3_evaluator_backup": "results/lora_profiled_m3_v1/dense_evaluator_backup.json",
     "m3_fitting_equivalence": "results/lora_profiled_m3_v1/reuse_input_checks/reuse01.json",
     "m3_model_preparation": "results/lora_profiled_m3_v1/model_preparation_checks01.json",
-    "m3_model_preparation_backup": "results/lora_profiled_m3_v1/model_preparation_backup02.json"
+    "m3_model_preparation_backup": "results/lora_profiled_m3_v1/model_preparation_backup02.json",
+    "m3_controller_preparation": "results/lora_profiled_m3_v1/controller_unit_checks01.json",
+    "m3_io_semantics": "results/lora_profiled_m3_v1/io_semantics_checks01.json",
+    "m3_pinned_case_bridge": "results/lora_profiled_m3_v1/tensor_bridge_pinned01_container.json",
+    "m3_controller_backup": "results/lora_profiled_m3_v1/controller_preparation_backup01.json"
   },
   "accuracy_improvement_established": false,
   "nomination": null,
@@ -115,7 +119,7 @@
   "redesigns_executed": 0,
   "redesign_limit": 1,
   "research_gpu_job_at_checkpoint": {
-    "container": "tco-profiled-screen02-fire-earlier-p5",
+    "container": "tco-profiled-screen02-fire-later-p4",
     "last_authoritative_state": "running",
     "batch_session_id": 27750,
     "batch_invocation": "20261118T104117Z_ede54062",
@@ -132,26 +136,24 @@
     "scientific_registry": "v2 and evaluation v2 verified, committed and pushed at 7815a7c; no study scores read",
     "engineering_v1": "historical source snapshot; intentionally fails current-source verification after registry changes",
     "evidence_archiver": "24 synthetic fixtures pass; real M1 archive copied and verified on distinct C/E disks (136 files, 315628130 bytes)",
-    "m3_preparation": "165 CPU fixtures pass; real pinned CPU audit shows exact fitting values in all six centered/clean cases, including original prior rows. Fresh-model core implemented with checkpoint/config/RGB byte checks; real model acceptance, stage controller/registration and scientific M3 execution remain pending. M2 reuse is not authorized."
+    "m3_preparation": "202 combined CPU fixtures pass. Static registry and completed-attempt byte audit implemented, including exact fitting-count checks. Reference-free converter/replay and pure reference semantics pass 17 pinned CPU fixtures. All24 real fitting-case reports exactly reproduce in pinned image. M3 actual registry/release controller, model acceptance, stage seals, scorer and scientific execution remain pending; no reuse approved."
   },
   "last_observed_ci": {
-    "commit": "b6ee1ab7ff187003da6ea86b2c3ead64786baff2",
-    "run_id": 44304282717,
+    "commit": "f50bfffd86bfe6355119cb0a10ceb192e31dd9ba",
+    "run_id": 44307849404,
     "conclusion": "success",
-    "scope": "Full public CPU evidence workflow before the current uncommitted model core/handoff additions"
+    "scope": "Full public CPU workflow on prior model-core/handoff commit; newer controller components passed202 local fixtures, pending next CI"
   },
   "next_command": "Poll batch session 27750 and inspect live Docker state; after all 36 complete, verify the global seal and run the registered scorer as the handoff specifies",
   "next_implementation_action": "After unchanged M2 all36 seal/scoring/replay, follow nominee/no-nominee branch. M3 core exists; implement versioned byte-verifying stage controller, registration and scorer wrapper, then real endpoint acceptance. Resolve config provenance before accepting any M2 reuse.",
   "handoff": "docs/CALIBRATION_AWARE_LORA_HANDOFF.md",
   "weekly_usage_checkpoint": {
-    "used_percent": 0,
-    "remaining_percent": 100,
+    "used_percent": 6,
+    "remaining_percent": 94,
     "pause_threshold_remaining_percent": 5,
-    "observation": "2026-11-18T12:49:06.866316+00:00",
-    "reset_observed": true
+    "observation": "2026-11-18T13:13Z"
   },
-  "validated_code_commit": "629522b23e14e868089950a06059cbffd093a438",
-  "last_goal_turn_classification": "progress: additional verified M2 states; real fitting-equivalence audit, tested fresh-model core and precise successor/controller handoff; no study accuracy access",
-  "checkpoint_observed_at_utc": "2026-11-18T12:50:43.931452+00:00",
-  "phase": "M2 scientific v2: 29 states verified; tco-profiled-screen02-fire-earlier-p5"
+  "validated_code_commit": "f50bfffd86bfe6355119cb0a10ceb192e31dd9ba",
+  "last_goal_turn_classification": "progress: additional verified M2 runs, 202-test controller preparation,17 pinned IO/reference semantic fixtures, exact24-case fitting bridge; no study accuracy access",
+  "checkpoint_observed_at_utc": "2026-11-18T13:15:41.619450+00:00"
 }
