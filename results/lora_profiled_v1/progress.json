@@ -2,7 +2,7 @@
   "goal": "Calibration-aware predictive LoRA accuracy investigation",
   "checkpoint_date": "2026-11-19",
   "status": "active",
-  "current_phase": "Fifteen of 36 redesign states verified. The serial queue is running Chess/earlier R0.",
+  "current_phase": "Seventeen of 36 redesign states verified. The serial queue is running Chess/earlier R2.",
   "completed_milestone_weight_percent": 50,
   "percentage_rule": "Conservative whole-milestone credit; completed subchecks are listed separately and are not accuracy evidence",
   "milestones": {
@@ -167,7 +167,7 @@
     "compensation_first_tranche": "results/lora_profiled_compensation_v1/heads_earlier_tranche01.json",
     "compensation_tranche_redesign_backup": "results/lora_profiled_compensation_v1/heads_earlier_redesign_backup01.json",
     "compensation_public_metric_replay": "scripts/replay_compensation_published_metrics.py",
-    "compensation_training_audit_checkpoint": "results/lora_profiled_compensation_v1/training_audit_checkpoint10.json",
+    "compensation_training_audit_checkpoint": "results/lora_profiled_compensation_v1/training_audit_checkpoint12.json",
     "compensation_heads_later_p0_p1_reproduction": "results/lora_profiled_compensation_v1/heads_later_original_control_reproduction.json",
     "compensation_heads_later_p3_reproduction": "results/lora_profiled_compensation_v1/heads_later_profiled_control_reproduction.json",
     "compensation_pipeline_fixture": "scripts/test_compensation_verdict_pipeline.py",
@@ -178,7 +178,9 @@
     "compensation_chess_earlier_p0_backup": "results/lora_profiled_compensation_v1/chess_earlier_P0_backup01.json",
     "compensation_chess_earlier_p0_reproduction": "results/lora_profiled_compensation_v1/chess_earlier_frozen_control_reproduction.json",
     "compensation_chess_earlier_p1_backup": "results/lora_profiled_compensation_v1/chess_earlier_P1_backup01.json",
-    "compensation_chess_earlier_p3_backup": "results/lora_profiled_compensation_v1/chess_earlier_P3_backup01.json"
+    "compensation_chess_earlier_p3_backup": "results/lora_profiled_compensation_v1/chess_earlier_P3_backup01.json",
+    "compensation_chess_earlier_r0_backup": "results/lora_profiled_compensation_v1/chess_earlier_R0_backup01.json",
+    "compensation_chess_earlier_r1_backup": "results/lora_profiled_compensation_v1/chess_earlier_R1_backup01.json"
   },
   "accuracy_improvement_established": false,
   "nomination": null,
@@ -189,8 +191,8 @@
   "redesigns_executed": 1,
   "redesign_limit": 1,
   "research_gpu_job_at_checkpoint": {
-    "container": "tco-profiled-compensation-chess-earlier-r0",
-    "container_id": "0ddf920b3ae6606219b24375d91d3bef6bc938fa32a36b67fd2cf86d55ab6699",
+    "container": "tco-profiled-compensation-chess-earlier-r2",
+    "container_id": "e93c01f85e94f4bbd981cf3746930a102bebd3067e562ea6f851d96263778c9a",
     "observed_state": {
       "Status": "running",
       "Running": true,
@@ -198,10 +200,10 @@
       "Restarting": false,
       "OOMKilled": false,
       "Dead": false,
-      "Pid": 29033,
+      "Pid": 29486,
       "ExitCode": 0,
       "Error": "",
-      "StartedAt": "2026-11-18T17:00:33.488444463Z",
+      "StartedAt": "2026-11-18T17:11:09.601586076Z",
       "FinishedAt": "0001-01-01T00:00:00Z"
     },
     "source": "local Docker Desktop named pipe",
@@ -222,24 +224,24 @@
     "m3_preparation": "202 combined CPU fixtures pass. Static registry and completed-attempt byte audit implemented, including exact fitting-count checks. Reference-free converter/replay and pure reference semantics pass 17 pinned CPU fixtures. All24 real fitting-case reports exactly reproduce in pinned image. M3 actual registry/release controller, model acceptance, stage seals, scorer and scientific execution remain pending; no reuse approved."
   },
   "last_observed_ci": {
-    "commit": "80dc22c7b90b125a5d68f354b14547edf8c81858",
-    "run_id": 44352066355,
+    "commit": "a7466066d1d8aa2268de9af8b6492ff526d1a980",
+    "run_id": 44354099731,
     "conclusion": "success",
-    "scope": "Full CPU validation of the thirteen-state checkpoint"
+    "scope": "Full CPU validation of the fifteen-state checkpoint"
   },
-  "next_command": "docker --host npipe:////./pipe/dockerDesktopLinuxEngine inspect tco-profiled-compensation-chess-earlier-r0",
+  "next_command": "docker --host npipe:////./pipe/dockerDesktopLinuxEngine inspect tco-profiled-compensation-chess-earlier-r2",
   "next_implementation_action": "Observe exec session 49837 and local Docker before acting. Existing serial queue owns remaining 30 states. On terminal success, verify all 36 and seal, score, replay original arrays, independently replay samples, publish aggregate check, figure and verified C/E verdict. Stop after an attempt failure and preserve partial state; do not start a duplicate queue.",
   "handoff": "docs/CALIBRATION_AWARE_LORA_HANDOFF.md",
   "weekly_usage_checkpoint": {
     "used_percent": 22,
     "remaining_percent": 78,
     "pause_threshold_remaining_percent": 5,
-    "observation": "2026-11-18T17:01:42.889Z",
+    "observation": "2026-11-18T17:11:51.217Z",
     "note": "Observed via native usage tool; shared counter can change"
   },
-  "validated_code_commit": "80dc22c7b90b125a5d68f354b14547edf8c81858",
-  "last_goal_turn_classification": "progress: Chess/earlier P3 completed with exact historical reconstruction endpoints and all eight adapter state fingerprints. Full case evidence verified on C/E. The final result figure rendered successfully with synthetic inputs while held-source scoring remains sealed off.",
-  "checkpoint_observed_at_utc": "2026-11-18T17:02:07.369426+00:00",
+  "validated_code_commit": "a7466066d1d8aa2268de9af8b6492ff526d1a980",
+  "last_goal_turn_classification": "progress: Chess/earlier R0 and R1 completed and were verified on C/E. Their first loss, gradient and post-update adapter all match P3 exactly. The independent training audit verifies 17 states and 112 updates. In Chess/earlier, R1's final logged compensation norm is lower than R0 in fold 1 and higher in fold 0. No held-source scoring has occurred.",
+  "checkpoint_observed_at_utc": "2026-11-18T17:12:25.666677+00:00",
   "screen_result": {
     "nominee": null,
     "all_primary_cases_valid": true,
@@ -339,7 +341,7 @@
     "status": "running_remaining_serial_queue",
     "cases_required": 36,
     "trained_cases_required": 30,
-    "verified_completed_at_checkpoint": 15,
+    "verified_completed_at_checkpoint": 17,
     "completed": [
       {
         "run_id": "heads_earlier_P0",
@@ -517,6 +519,30 @@
         "terminal_sha256": "f225d24e528a3d542d9c0a29222d997048375fa81f3d0d96fa9d7d229632effe",
         "model_seconds": 280.77411415206734,
         "local_wall_seconds": 313.18800000008196,
+        "optimizer_updates": 8,
+        "peak_allocated_mib": 4726.9921875,
+        "peak_reserved_mib": 5032.0
+      },
+      {
+        "run_id": "chess_earlier_R0",
+        "report": "results/lora_profiled_compensation_v1/cases/chess_earlier_R0/screen01/complete.json",
+        "report_sha256": "0cd14c161253f4b065afcec8ab00e80c682ecd3e61449fcb6d1d42aa9b0a0c04",
+        "terminal": "results/lora_profiled_compensation_v1/launches/tco-profiled-compensation-chess-earlier-r0/terminal.json",
+        "terminal_sha256": "1c1df0d2ae6d6f0f7963227279c40c93e452dc4af04b6c113cedcadd40a57c07",
+        "model_seconds": 277.4620553670684,
+        "local_wall_seconds": 309.875,
+        "optimizer_updates": 8,
+        "peak_allocated_mib": 4726.9921875,
+        "peak_reserved_mib": 5032.0
+      },
+      {
+        "run_id": "chess_earlier_R1",
+        "report": "results/lora_profiled_compensation_v1/cases/chess_earlier_R1/screen01/complete.json",
+        "report_sha256": "738729792dd855c128149219f334e9bec2eaa8fbed98db0e5f3f8305386522f9",
+        "terminal": "results/lora_profiled_compensation_v1/launches/tco-profiled-compensation-chess-earlier-r1/terminal.json",
+        "terminal_sha256": "4ce86f562ad7faa15dd4a515d4f8e42b56d8f2e31ee64c18cc8f28025c0547c6",
+        "model_seconds": 291.1411946739536,
+        "local_wall_seconds": 324.375,
         "optimizer_updates": 8,
         "peak_allocated_mib": 4726.9921875,
         "peak_reserved_mib": 5032.0
