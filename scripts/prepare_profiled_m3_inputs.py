@@ -1,0 +1,512 @@
+"""Prepare signed-only shifted M3 inputs, never labels or model predictions.
+
+The plan command enumerates and cross-checks allowed source identities without
+opening original assets. Each prepare command opens only one temporal side.
+Existing centered packets and folds are read-only and are never regenerated.
+"""
+import argparse
+from datetime import datetime, timezone
+import hashlib
+import io
+import json
+from pathlib import Path, PurePosixPath
+import re
+import sys
+
+import numpy as np
+
+from prepare_profiled_inputs import (array_hash, grouped_folds, native_selection,
+                                    resized_k, sha, verify_grouping)
+
+
+ROOT = Path(__file__).resolve().parents[1]
+PLAN = ROOT / "manifests/lora_profiled_m3_inputs_v2.json"
+PUBLIC = ROOT / "results/lora_profiled_m3_v1"
+SIDES = {"earlier": -4, "later": 4}
+SCENES = ("heads", "chess", "fire")
+FRAMES = (25, 225, 425, 625, 825)
+SOURCE_INDEX = "results/source_frame_spacing/inputs.json"
+CENTERED_META = "results/mast3r_partner_shape/inputs.json"
+M2_META = "results/lora_profiled_v1/inputs.json"
+POSE_INPUT = "results/mast3r_neural_transfer/pose_packets.npz"
+CODE = ("scripts/prepare_profiled_m3_inputs.py", "scripts/prepare_profiled_inputs.py",
+        "scripts/neighbor_sparse_depth.py", "scripts/prepare_partner_sources.py")
+
+
+def read(path):
+    return json.loads(Path(path).read_text(encoding="utf-8"))
+
+
+def dump_new(path, data):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("x", encoding="utf-8", newline="\n") as stream:
+        json.dump(data, stream, indent=2, allow_nan=False)
+        stream.write("\n")
+
+
+def write_arrays_new(path, arrays):
+    with path.open("xb") as stream:
+        np.savez_compressed(stream, **arrays)
+
+
+def source_names(folders, side):
+    """Return exact allowed original files, independent of available directory contents."""
+    if side not in SIDES:
+        raise ValueError("Unknown temporal side")
+    files = {}
+    for slug in SCENES:
+        folder = folders[slug]
+        for target in FRAMES:
+            source = target + SIDES[side]
+            for frame, suffix, role in ((target, "pose.txt", "target_pose"),
+                                        (source, "pose.txt", "source_pose"),
+                                        (source, "depth.proj.png", "source_depth")):
+                if suffix == "depth.proj.png" and frame in FRAMES:
+                    raise ValueError("Target depth is prohibited")
+                name = f"{folder}/frame-{frame:06d}.{suffix}"
+                files[name] = dict(scene=slug, frame=frame, suffix=suffix, role=role)
+    return dict(sorted(files.items()))
+
+
+def make_plan(root=ROOT):
+    """Read provenance metadata only; no original asset or NPZ arrays are opened."""
+    design_path = "manifests/lora_profiled_design_v1.json"
+    design = read(root / design_path)
+    runtime_path = design["runtime_reference"]
+    runtime = read(root / runtime_path)
+    m2, origin = read(root / M2_META), read(root / CENTERED_META)
+    index = read(root / SOURCE_INDEX)["frames"]
+    registration = m2["registration"]
+    if design["scenes"] != list(SCENES) or design["target_frames"] != list(FRAMES):
+        raise ValueError("Parent scene/frame inventory changed")
+    if design["spatial_fold_seed"] != 20261118:
+        raise ValueError("Parent spatial-fold seed changed")
+    if any(design[key] != 8 for key in ("minimum_support_per_view", "minimum_query_per_view")):
+        raise ValueError("Parent minimum sample contract changed")
+    folders = {slug: runtime["scenes"][slug] for slug in SCENES}
+    allowed = {}
+    for side in SIDES:
+        allowed[side] = {}
+        for name, record in source_names(folders, side).items():
+            expected = index[folders[record["scene"]]][str(record["frame"])]["original"][record["suffix"]]
+            if expected != origin["source_files"].get(name) or expected != registration["source_files"].get(name):
+                raise ValueError(f"Original source provenance disagrees: {name}")
+            allowed[side][name] = dict(record, sha256=expected)
+    immutable = dict(registration["immutable_sha256"])
+    immutable.update({M2_META: sha(root / M2_META), CENTERED_META: sha(root / CENTERED_META),
+                      SOURCE_INDEX: sha(root / SOURCE_INDEX)})
+    immutable["results/lora_profiled_v1/splits.npz"] = m2["splits_binary_sha256"]
+    for side, expected in registration["packet_sha256"].items():
+        immutable[f"results/mast3r_partner_shape/{side}.npz"] = expected
+    for name, expected in immutable.items():
+        if sha(root / name) != expected:
+            raise ValueError(f"Registered parent identity changed: {name}")
+    return dict(schema="profiled_m3_input_plan_v1", preparation_revision=2,date="2026-11-18",
+        purpose="Prospective CPU preparation only; no held-source or dense accuracy access",
+        method_unchanged=True, scenes=list(SCENES), folders=folders, target_frames=list(FRAMES),
+        temporal_offsets=SIDES, sensor_wh=[640,480], sensor_focal=525.,
+        sensor_origins=dict(centered=[40,30], shifted=[20,15]), sensor_stride=[80,60],
+        intermediate_wh=[518,392], native_wh=[512,384], target_focal_multiplier=1.12,
+        valid_source_range_mm=[1,10000], spatial_fold_seed=20261118,
+        shifted_case_key="{scene}_{side}_shifted", minimum_per_fold_per_view=8,
+        centered_policy="Reuse existing packet and split bytes; do not regenerate",
+        camera_validation="Finite homogeneous invertible right-handed matrices; report imperfect orthogonality without modifying pinned source rotations",
+        pose_policy=dict(seed_base=20261112, scene_order=list(SCENES), rotation_degrees=5.,
+            translation_diameter_fraction=.02, anchor_view=0, repetitions=[0,1,2], optimizer_seed=42,
+            repeat_policy="Identical clean and noisy matrices across every repetition; no new draws",
+            noise_channel="Supplied target camera priors only; sparse measurements use clean projection"),
+        allowed_original_files=allowed, original_files_per_side={s:len(v) for s,v in allowed.items()},
+        metadata_sha256=immutable,
+        source_sha256_lf={name:sha(root/name,text=True) for name in CODE},
+        protocol_sha256_lf=sha(root/"docs/PROFILED_LORA_M3_PREPARATION.md",text=True),
+        prohibited="All target depth, opposite-source depth in a side command, prediction arrays and accuracy reports",
+        original_asset_files_opened=0, target_depth_files_opened=0)
+
+
+def verify_plan(path):
+    plan = read(path)
+    if plan != make_plan():
+        raise ValueError("Preparation plan, source code, protocol or parent provenance changed")
+    return plan
+
+
+class AllowedReader:
+    """Read only the prospective whitelist and verify bytes before any decoding."""
+    def __init__(self, assets, folders, side, allowed):
+        self.assets = Path(assets).resolve()
+        expected_names = source_names(folders, side)
+        if set(expected_names) != set(allowed):
+            raise ValueError("Allowed inventory must match the exact selected temporal side")
+        for name, expected in expected_names.items():
+            if any(allowed[name].get(key) != value for key,value in expected.items()):
+                raise ValueError("Whitelist role, scene, source or suffix differs")
+            if not re.fullmatch("[0-9a-f]{64}", allowed[name].get("sha256", "")):
+                raise ValueError("Missing source digest")
+        self.allowed, self.cache, self.access, self.pose_geometry = allowed, {}, [], {}
+
+    def bytes(self, name):
+        pure = PurePosixPath(name)
+        if pure.is_absolute() or ".." in pure.parts or name not in self.allowed:
+            raise ValueError(f"Prohibited original source read: {name}")
+        if name not in self.cache:
+            path = (self.assets / name).resolve()
+            if not path.is_relative_to(self.assets):
+                raise ValueError("Source path escapes the asset root")
+            data = path.read_bytes()
+            digest = hashlib.sha256(data).hexdigest()
+            if digest != self.allowed[name]["sha256"]:
+                raise ValueError(f"Source bytes changed: {name}")
+            self.cache[name] = data
+            self.access.append(name)
+        return self.cache[name]
+
+    def preflight(self):
+        # Validate every allowed file before decoding any pose or depth image.
+        for name in self.allowed:
+            self.bytes(name)
+
+    def pose(self, name):
+        if self.allowed.get(name, {}).get("suffix") != "pose.txt":
+            raise ValueError("Pose decoder requested a non-pose file")
+        value = np.loadtxt(io.BytesIO(self.bytes(name)))
+        self.pose_geometry[name] = validate_c2w(value[None])
+        return value
+
+    def depth(self, name, uv):
+        from PIL import Image
+        if self.allowed.get(name, {}).get("role") != "source_depth":
+            raise ValueError("Depth decoder requested a forbidden file")
+        with Image.open(io.BytesIO(self.bytes(name))) as image:
+            if image.size != (640,480):
+                raise ValueError("Unexpected original sensor size")
+            return np.asarray(image)[uv[:,1],uv[:,0]].copy()
+
+
+def sensor_grid(origin):
+    u,v = np.meshgrid(np.arange(origin[0],640,80),np.arange(origin[1],480,60))
+    return np.column_stack([u.ravel(),v.ravel()])
+
+
+def project_samples(mm, uv, rays, relative, target, source):
+    """Same pure projection as neighbor_sparse_depth.project_samples; no model imports.
+
+    The independent CPU fixture compares this isolated arithmetic against that
+    pinned function, including invalid ranges, projections and provenance.
+    """
+    xyz = (rays * (mm/1000.)[:,None]) @ relative[:3,:3].T + relative[:3,3]
+    valid = (mm>0) & (mm<=10000) & (xyz[:,2]>0)
+    xy = (xyz[valid] @ target.T)[:,:2] / xyz[valid,2:3]
+    pixel = np.rint(xy).astype(int)
+    keep = ((pixel>=0)&(pixel<[518,392])).all(axis=1)
+    return np.column_stack([pixel,xyz[valid,2],np.full(len(pixel),source),uv[valid],mm[valid]])[keep]
+
+
+def extract_packets(reader, folders, side, calibration, origin):
+    uv = sensor_grid(origin)
+    rays = np.column_stack([uv,np.ones(len(uv))]) @ np.linalg.inv(resized_k(525,640,480)).T
+    target_k = resized_k(525,518,392)
+    target_k[[0,1],[0,1]] *= 1.12
+    records, stats = {}, {}
+    for slug in SCENES:
+        folder = folders[slug]
+        def camera(frame):
+            return calibration @ np.linalg.inv(reader.pose(f"{folder}/frame-{frame:06d}.pose.txt"))
+        for target in FRAMES:
+            source = target + SIDES[side]
+            relative = camera(target) @ np.linalg.inv(camera(source))
+            mm = reader.depth(f"{folder}/frame-{source:06d}.depth.proj.png",uv)
+            projected = project_samples(mm,uv,rays,relative,target_k,source)
+            nearest = {}
+            for row in sorted(projected,key=lambda value:value[2]):
+                nearest.setdefault(tuple(row[:2]),row)
+            if not nearest:
+                raise ValueError(f"No projected source samples for {slug}/{target}")
+            key = f"{slug}_{target}"
+            records[key] = np.stack(list(nearest.values()))
+            stats[key] = dict(sensor_sites=len(uv), valid_sensor_sites=int(((mm>0)&(mm<=10000)).sum()),
+                              projected_in_raster=len(projected), intermediate_collisions=len(projected)-len(nearest),
+                              packet_rows=len(nearest), source_frame=source)
+    return records, stats
+
+
+def build_shifted_splits(records, side, seed=20261118, minimum=8):
+    if side not in SIDES or seed != 20261118 or minimum != 8:
+        raise ValueError("Shifted fold contract differs; no seed search is permitted")
+    expected_keys = {f"{scene}_{frame}" for scene in SCENES for frame in FRAMES}
+    if set(records) != expected_keys:
+        raise ValueError("Shifted packet inventory differs")
+    arrays, cases = {}, {}
+    for scene in SCENES:
+        views = []
+        for frame in FRAMES:
+            data = records[f"{scene}_{frame}"]
+            if data.ndim != 2 or data.shape[1] != 7 or not np.isfinite(data).all():
+                raise ValueError("Invalid seven-column packet")
+            integers = data[:,[0,1,3,4,5,6]]
+            if not np.array_equal(integers,np.rint(integers)) or not (data[:,2]>0).all():
+                raise ValueError("Invalid pixel/provenance/depth values")
+            if not (data[:,3] == frame+SIDES[side]).all():
+                raise ValueError("Wrong temporal source identity")
+            if not (((data[:,4]-20)%80==0)&((data[:,5]-15)%60==0)).all():
+                raise ValueError("Wrong shifted source grid")
+            if not ((data[:,:2]>=0)&(data[:,:2]<[518,392])).all():
+                raise ValueError("Intermediate pixel out of bounds")
+            if not ((data[:,4:6]>=0)&(data[:,4:6]<[640,480])).all():
+                raise ValueError("Original sensor pixel out of bounds")
+            if not ((data[:,6]>0)&(data[:,6]<=10000)).all():
+                raise ValueError("Original sensor range invalid")
+            rows,xy,outside,duplicates = native_selection(data)
+            if len(rows)<2*minimum:
+                raise ValueError("Insufficient native samples before grouped splitting")
+            views.append(dict(rows=rows,xy=xy,source_ids=data[rows,3:6].astype(np.int64),frame=frame,
+                              original_rows=len(data),outside=outside,duplicates=duplicates))
+        key = f"{scene}_{side}_shifted"
+        labels,summary = grouped_folds(views,seed,key)
+        verify_grouping(views,labels)
+        summary["views"] = []
+        for view,(groups,folds) in zip(views,labels):
+            counts = np.bincount(folds,minlength=2)
+            if counts.min()<minimum:
+                raise ValueError(f"Insufficient grouped support/query in {key}/{view['frame']}: {counts.tolist()}")
+            prefix = f"{key}_{view['frame']}"
+            for field,value in (("rows",view["rows"]),("xy",view["xy"]),("source_ids",view["source_ids"]),
+                                ("group",groups),("fold",folds)):
+                arrays[f"{prefix}__{field}"] = value
+            summary["views"].append(dict(frame=view["frame"],prefix=prefix,packet_key=f"{scene}_{view['frame']}",
+                packet_rows=view["original_rows"],retained_rows=len(folds),fold_counts=counts.tolist(),
+                outside_native=view["outside"],native_collisions=view["duplicates"]))
+        summary["source_id_intersection"] = summary["anchor_cell_intersection"] = 0
+        cases[key] = summary
+    return arrays,cases
+
+
+def validate_c2w(cameras):
+    if cameras.ndim!=3 or cameras.shape[1:]!=(4,4) or not np.isfinite(cameras).all():
+        raise ValueError("Invalid camera matrix shape or values")
+    np.testing.assert_allclose(cameras[:,3,:],np.tile([0,0,0,1],(len(cameras),1)),atol=1e-7,rtol=0)
+    rotation = cameras[:,:3,:3]
+    determinant = np.linalg.det(rotation)
+    condition = np.linalg.cond(rotation)
+    if not (determinant>0).all() or not np.isfinite(condition).all():
+        raise ValueError("Camera matrices must be invertible and right-handed")
+    # The pinned 7-Scenes matrices are not exact SO(3) matrices. Orthogonalizing
+    # them, or imposing an ideal-rotation tolerance, would alter/reject the very
+    # inputs used by M2. Byte identity is checked separately; expose this defect.
+    return dict(max_rotation_orthogonality_error=float(np.max(np.abs(rotation.transpose(0,2,1)@rotation-np.eye(3)))),
+                min_rotation_determinant=float(determinant.min()),max_rotation_determinant=float(determinant.max()),
+                max_rotation_condition_number=float(condition.max()),rotation_modified=False)
+
+
+def fixed_noisy_w2c(clean_w2c, scene_index):
+    from scipy.spatial.transform import Rotation
+    clean_w2c = np.asarray(clean_w2c,dtype=np.float64)
+    if clean_w2c.shape!=(5,4,4) or scene_index not in range(3):
+        raise ValueError("Unexpected fixed pose case")
+    c2w = np.linalg.inv(clean_w2c)
+    validate_c2w(c2w)
+    noisy = c2w.copy()
+    diameter = np.linalg.norm(c2w[:,None,:3,3]-c2w[None,:,:3,3],axis=-1).max()
+    if not diameter>0:
+        raise ValueError("Zero camera diameter cannot define registered translation stress")
+    rng = np.random.default_rng(20261112+scene_index)
+    for view in range(1,5):
+        axis = rng.normal(size=3); axis /= np.linalg.norm(axis)
+        direction = rng.normal(size=3); direction /= np.linalg.norm(direction)
+        noisy[view,:3,:3] = c2w[view,:3,:3] @ Rotation.from_rotvec(axis*np.deg2rad(5.)).as_matrix()
+        noisy[view,:3,3] += .02*diameter*direction
+    validate_c2w(noisy)
+    return np.linalg.inv(noisy)
+
+
+def reserve(plan_path,attempt,part,plan):
+    if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_-]{0,63}",attempt):
+        raise ValueError("Invalid attempt identifier")
+    destination = PUBLIC/"input_attempts"/attempt/part
+    if destination.exists():
+        raise FileExistsError("Preserve attempts; use a new attempt name")
+    destination.mkdir(parents=True)
+    dump_new(destination/"start.json",dict(plan=plan_path.relative_to(ROOT).as_posix(),plan_sha256=sha(plan_path),
+        attempt=attempt,part=part,started_at=datetime.now(timezone.utc).isoformat(),
+        source_sha256_lf=plan["source_sha256_lf"],numpy=np.__version__,python=sys.version.split()[0],
+        target_depth_files_opened=0,accuracy_arrays_opened=0))
+    return destination
+
+
+def prepare_side(plan_path,assets,side,attempt):
+    plan = verify_plan(plan_path)
+    destination = reserve(plan_path,attempt,side,plan)
+    reader = None
+    try:
+        # Save the exact permitted inventory before the first original-file read.
+        dump_new(destination/"permitted_reads.json",dict(side=side,files=plan["allowed_original_files"][side],
+            count=plan["original_files_per_side"][side],target_depth_files_opened=0))
+        reader = AllowedReader(assets,plan["folders"],side,plan["allowed_original_files"][side])
+        reader.preflight()
+        calibration = np.asarray(read(ROOT/"manifests/sensor_frame_v14.json")["calibration"])
+        # Read only this side's existing centered packet, and prove the shared
+        # geometry reconstructs it exactly before using the shifted grid.
+        centered,centered_stats = extract_packets(reader,plan["folders"],side,calibration,(40,30))
+        with np.load(ROOT/f"results/mast3r_partner_shape/{side}.npz",allow_pickle=False) as old:
+            if set(old.files)!=set(centered):
+                raise ValueError("Centered inventory differs")
+            for key,value in centered.items():
+                np.testing.assert_array_equal(value,old[key])
+        packets,projection = extract_packets(reader,plan["folders"],side,calibration,(20,15))
+        arrays,cases = build_shifted_splits(packets,side)
+        # Existing centered bytes and sealed folds must still be unchanged.
+        for name,expected in plan["metadata_sha256"].items():
+            if sha(ROOT/name)!=expected:
+                raise ValueError(f"Parent file changed during preparation: {name}")
+        write_arrays_new(destination/"shifted_packet.npz",packets)
+        write_arrays_new(destination/"shifted_splits.npz",arrays)
+        report = dict(schema="profiled_m3_signed_input_v1",pass_all=True,side=side,grid="shifted",
+            plan_sha256=sha(plan_path),source_sha256_lf=plan["source_sha256_lf"],
+            packet_sha256=sha(destination/"shifted_packet.npz"),packet_semantic_sha256=array_hash(packets),
+            splits_sha256=sha(destination/"shifted_splits.npz"),splits_semantic_sha256=array_hash(arrays),
+            projection=projection,cases=cases,selected=sum(len(v) for k,v in arrays.items() if k.endswith("__rows")),
+            minimum_fold_count=min(min(v["fold_counts"]) for c in cases.values() for v in c["views"]),
+            original_files_checked=len(reader.access),original_files_read=reader.access,
+            source_pose_geometry=reader.pose_geometry,
+            centered_reconstruction_exact=True,centered_packets_reconstructed=len(centered),centered_bytes_unchanged=True,
+            centered_reconstruction_stats=centered_stats,opposite_source_depth_files_opened=0,
+            target_depth_files_opened=0,accuracy_arrays_opened=0,seed_search_performed=False,
+            completed_at=datetime.now(timezone.utc).isoformat())
+        dump_new(destination/"complete.json",report)
+        return report
+    except Exception as error:
+        dump_new(destination/"failure.json",dict(error_type=type(error).__name__,message=str(error),
+            original_files_read=[] if reader is None else reader.access,target_depth_files_opened=0,accuracy_arrays_opened=0))
+        raise
+
+
+def prepare_poses(plan_path,attempt):
+    plan = verify_plan(plan_path)
+    destination = reserve(plan_path,attempt,"poses",plan)
+    dump_new(destination/"permitted_reads.json",dict(files={POSE_INPUT:plan["metadata_sha256"][POSE_INPUT]},
+        allowed_array_keys=[s+"_clean" for s in SCENES],original_assets_read=False,target_depth_files_opened=0))
+    try:
+        arrays,repeat_maps,geometry = {}, {}, {}
+        with np.load(ROOT/POSE_INPUT,allow_pickle=False) as original:
+            for index,scene in enumerate(SCENES):
+                clean = original[scene+"_clean"].copy()
+                noisy = fixed_noisy_w2c(clean,index)
+                arrays[scene+"_clean"] = clean
+                arrays[scene+"_noisy"] = noisy
+                geometry[scene] = {condition:validate_c2w(np.linalg.inv(arrays[scene+"_"+condition]))
+                                   for condition in ("clean","noisy")}
+                repeat_maps[scene] = {condition:{str(r):array_hash({"w2c":arrays[scene+"_"+condition]}) for r in (0,1,2)}
+                                      for condition in ("clean","noisy")}
+        write_arrays_new(destination/"pose_packets.npz",arrays)
+        import scipy
+        report = dict(schema="profiled_m3_fixed_pose_v1",pass_all=True,plan_sha256=sha(plan_path),
+            source_sha256_lf=plan["source_sha256_lf"],source_pose_sha256=sha(ROOT/POSE_INPUT),
+            pose_sha256=sha(destination/"pose_packets.npz"),pose_semantic_sha256=array_hash(arrays),
+            pose_policy=plan["pose_policy"],repeat_matrix_sha256=repeat_maps,clean_matrices_exactly_preserved=True,
+            pose_geometry=geometry,
+            numpy=np.__version__,scipy=scipy.__version__,original_asset_files_opened=0,target_depth_files_opened=0,
+            accuracy_arrays_opened=0,completed_at=datetime.now(timezone.utc).isoformat())
+        dump_new(destination/"complete.json",report)
+        return report
+    except Exception as error:
+        dump_new(destination/"failure.json",dict(error_type=type(error).__name__,message=str(error)))
+        raise
+
+
+def load_prepared_case(plan_path,attempt,scene,side,grid,pose_condition):
+    """Return one permitted case as CPU NumPy values, never opposite-source arrays.
+
+    original_samples keeps selected original seven-column rows for the common
+    KDP callback; samples contains the exactly matching native pixels/depths.
+    This helper does not certify an executable M3 scientific registry.
+    """
+    plan_path = Path(plan_path).resolve()
+    plan = verify_plan(plan_path)
+    if scene not in SCENES or side not in SIDES or grid not in ("centered","shifted") or pose_condition not in ("clean","noisy"):
+        raise ValueError("Unknown prepared case")
+    if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_-]{0,63}",attempt):
+        raise ValueError("Invalid input preparation attempt")
+    base = PUBLIC/"input_attempts"/attempt
+    if grid=="centered":
+        packet_path = ROOT/f"results/mast3r_partner_shape/{side}.npz"
+        split_path = ROOT/"results/lora_profiled_v1/splits.npz"
+        expected_packet = plan["metadata_sha256"][packet_path.relative_to(ROOT).as_posix()]
+        expected_split = plan["metadata_sha256"][split_path.relative_to(ROOT).as_posix()]
+        case_key = f"{scene}_{side}"
+        side_receipt = ROOT/M2_META
+    else:
+        side_receipt = base/side/"complete.json"
+        receipt = read(side_receipt)
+        if receipt.get("pass_all") is not True or receipt["plan_sha256"]!=sha(plan_path) or receipt["side"]!=side:
+            raise ValueError("Shifted preparation receipt differs")
+        if receipt["source_sha256_lf"]!=plan["source_sha256_lf"]:
+            raise ValueError("Shifted preparation source identity differs")
+        packet_path,split_path = base/side/"shifted_packet.npz",base/side/"shifted_splits.npz"
+        expected_packet,expected_split = receipt["packet_sha256"],receipt["splits_sha256"]
+        case_key = f"{scene}_{side}_shifted"
+    pose_receipt = base/"poses"/"complete.json"
+    pose_meta = read(pose_receipt)
+    pose_path = base/"poses"/"pose_packets.npz"
+    if (pose_meta.get("pass_all") is not True or pose_meta["plan_sha256"]!=sha(plan_path)
+            or pose_meta["source_sha256_lf"]!=plan["source_sha256_lf"]):
+        raise ValueError("Fixed-pose preparation receipt differs")
+    if sha(packet_path)!=expected_packet or sha(split_path)!=expected_split or sha(pose_path)!=pose_meta["pose_sha256"]:
+        raise ValueError("Prepared input bytes changed")
+    samples,folds,original_samples = [],[],[]
+    with np.load(packet_path,allow_pickle=False) as packet,np.load(split_path,allow_pickle=False) as split:
+        for frame in FRAMES:
+            prefix = f"{case_key}_{frame}"
+            values = packet[f"{scene}_{frame}"][split[prefix+"__rows"]].copy()
+            xy = split[prefix+"__xy"].copy()
+            fold = split[prefix+"__fold"].copy()
+            rows,remap,excluded,duplicates = native_selection(values)
+            if excluded or duplicates or len(rows)!=len(values) or not np.array_equal(remap,xy):
+                raise ValueError("Selected original rows no longer match native observations")
+            if not np.array_equal(rows,np.arange(len(values))):
+                raise ValueError("Selected original row order changed")
+            if not np.isin(fold,[0,1]).all() or np.bincount(fold,minlength=2).min()<8:
+                raise ValueError("Invalid prepared fold")
+            samples.append(dict(xy=xy,depth=values[:,2].copy()))
+            folds.append(fold)
+            original_samples.append(values)
+    with np.load(pose_path,allow_pickle=False) as archive:
+        w2c = archive[scene+"_"+pose_condition].copy()
+    digest = array_hash({"w2c":w2c})
+    if any(value!=digest for value in pose_meta["repeat_matrix_sha256"][scene][pose_condition].values()):
+        raise ValueError("Pose matrix repeat identities differ")
+    runtime = read(ROOT/read(ROOT/"manifests/lora_profiled_design_v1.json")["runtime_reference"])
+    return dict(scene=scene,side=side,grid=grid,pose_condition=pose_condition,samples=samples,folds=folds,
+        original_samples=original_samples,K=np.asarray(runtime["known_K"],dtype=np.float64),
+        w2c=w2c,c2w=np.linalg.inv(w2c),packet_sha256=expected_packet,splits_sha256=expected_split,
+        input_semantic_sha256=dict(pose_matrices=digest),
+        input_sha256={path.relative_to(ROOT).as_posix():sha(path) for path in
+            (plan_path,packet_path,split_path,pose_path,side_receipt,pose_receipt)})
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    sub = parser.add_subparsers(dest="command",required=True)
+    planning = sub.add_parser("plan")
+    planning.add_argument("--output",type=Path,default=PLAN)
+    for name in ("prepare-side","prepare-poses"):
+        command = sub.add_parser(name)
+        command.add_argument("--plan",type=Path,default=PLAN)
+        command.add_argument("--attempt",required=True)
+        if name=="prepare-side":
+            command.add_argument("--side",choices=tuple(SIDES),required=True)
+            command.add_argument("--assets",type=Path,required=True)
+    args = parser.parse_args()
+    if args.command=="plan":
+        report = make_plan()
+        dump_new(args.output,report)
+        summary = dict(plan=str(args.output),allowed_files=report["original_files_per_side"],original_asset_files_opened=0)
+    elif args.command=="prepare-side":
+        report = prepare_side(args.plan.resolve(),args.assets,args.side,args.attempt)
+        summary = {k:report[k] for k in ("pass_all","side","selected","minimum_fold_count","original_files_checked","target_depth_files_opened")}
+    else:
+        report = prepare_poses(args.plan.resolve(),args.attempt)
+        summary = dict(pass_all=report["pass_all"],same_matrices_across_repeats=True,target_depth_files_opened=0)
+    print(json.dumps(summary))
+
+
+if __name__=="__main__":
+    main()

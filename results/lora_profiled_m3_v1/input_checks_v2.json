@@ -1,0 +1,37 @@
+{
+  "schema": "profiled_m3_input_checks_v1",
+  "pass_all": true,
+  "checks": {
+    "projection_exact_pinned_arithmetic_and_provenance": true,
+    "independent_pixel_center_identity_and_metric_units": true,
+    "grouped_folds_deterministic_and_packet_order_independent": true,
+    "later_packet_prepared_independently": true,
+    "opposite_source_rejected": true,
+    "centered_source_coordinate_rejected": true,
+    "insufficient_support_fails_without_seed_search": true,
+    "changed_split_seed_rejected": true,
+    "large_leakage_group_minimum_rejected": true,
+    "target_depth_read_rejected_before_open": true,
+    "opposite_depth_read_rejected_before_open": true,
+    "path_escape_rejected_before_open": true,
+    "exact_selected_side_whitelist": true,
+    "broadened_whitelist_rejected": true,
+    "source_hash_mismatch_rejected_before_decode": true,
+    "fixed_pose_repeats_exact_and_clean_input_unchanged": true,
+    "independent_pose_angle_translation_anchor_and_scene_seed": true,
+    "pinned_approximate_rotations_preserved_and_diagnosed": true,
+    "left_handed_camera_rejected": true,
+    "zero_camera_diameter_rejected": true
+  },
+  "fixture_scope": "Synthetic CPU geometry, grouped splits, strict reads and fixed pose construction only",
+  "real_dataset_arrays_opened": 0,
+  "target_depth_files_opened": 0,
+  "model_experiments_run": 0,
+  "source_sha256_lf": {
+    "scripts/check_profiled_m3_inputs.py": "cd3cbe7663d3a1bcc43e9898ca55483e24712e8f5fe9843ff251ce978005874b",
+    "scripts/prepare_profiled_m3_inputs.py": "e2198e40fbc38e595e339b62d7c51e7c6810fcd3a6e8ac4888b329bbd0ecaf7d",
+    "scripts/prepare_profiled_inputs.py": "c85600d5825435d836d70365293012237af7bca823971461f7e8850f45b6395c",
+    "scripts/neighbor_sparse_depth.py": "555934d6b0be5d4962b3a9acf4255d3466d74a7d6c435dd00567b27725f3d908"
+  },
+  "numpy": "1.25.2"
+}

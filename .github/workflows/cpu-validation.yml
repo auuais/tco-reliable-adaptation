@@ -204,6 +204,10 @@ jobs:
         run: python scripts/test_profiled_scoring.py
       - name: Exercise immutable profiled evidence backup fixtures
         run: python scripts/test_archive_profiled_evidence.py
+      - name: Verify prospective M3 fitting inputs without loading predictions
+        run: |
+          python scripts/check_profiled_m3_inputs.py
+          python scripts/check_profiled_m3_network.py
       - run: python scripts/score_mast3r_neural_repeat.py verify
       - run: python scripts/replay_heldout_sparse_depth.py
       - run: python scripts/verify_tum_sparse_inputs.py

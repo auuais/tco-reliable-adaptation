@@ -1,0 +1,128 @@
+{
+  "schema": "profiled_m3_fixed_pose_v1",
+  "pass_all": true,
+  "plan_sha256": "2a4c8241e669d678a1edb1ad999f8aca4050ddaba6c3e7ad638e4900a40b0a4d",
+  "source_sha256_lf": {
+    "scripts/prepare_profiled_m3_inputs.py": "e2198e40fbc38e595e339b62d7c51e7c6810fcd3a6e8ac4888b329bbd0ecaf7d",
+    "scripts/prepare_profiled_inputs.py": "c85600d5825435d836d70365293012237af7bca823971461f7e8850f45b6395c",
+    "scripts/neighbor_sparse_depth.py": "555934d6b0be5d4962b3a9acf4255d3466d74a7d6c435dd00567b27725f3d908",
+    "scripts/prepare_partner_sources.py": "2a9117275c609033b550a3ffe8217a8af55d38a88704903f9f18cbf043dc72f2"
+  },
+  "source_pose_sha256": "480423b948aaacc65ebfe66c405df1a8364fd8820d4eb5146a15b733b8ff7fbd",
+  "pose_sha256": "b91a3ec08b58a7da67a897eea1aa9e93f7e2ec91e7357afdfc5311b23b859a61",
+  "pose_semantic_sha256": "42eb9ecedec3048cd5a10042f876c453521d6c7a13022929b013b71a374b3153",
+  "pose_policy": {
+    "seed_base": 20261112,
+    "scene_order": [
+      "heads",
+      "chess",
+      "fire"
+    ],
+    "rotation_degrees": 5.0,
+    "translation_diameter_fraction": 0.02,
+    "anchor_view": 0,
+    "repetitions": [
+      0,
+      1,
+      2
+    ],
+    "optimizer_seed": 42,
+    "repeat_policy": "Identical clean and noisy matrices across every repetition; no new draws",
+    "noise_channel": "Supplied target camera priors only; sparse measurements use clean projection"
+  },
+  "repeat_matrix_sha256": {
+    "heads": {
+      "clean": {
+        "0": "4da7582bc4468e4a43387f49091b46eefbbfb522d8193860de4e4d97a2809fb6",
+        "1": "4da7582bc4468e4a43387f49091b46eefbbfb522d8193860de4e4d97a2809fb6",
+        "2": "4da7582bc4468e4a43387f49091b46eefbbfb522d8193860de4e4d97a2809fb6"
+      },
+      "noisy": {
+        "0": "2fdc51220019c827b4908a53438cfde4702e1d9d28c1db22c5e8b2fa0c2486d4",
+        "1": "2fdc51220019c827b4908a53438cfde4702e1d9d28c1db22c5e8b2fa0c2486d4",
+        "2": "2fdc51220019c827b4908a53438cfde4702e1d9d28c1db22c5e8b2fa0c2486d4"
+      }
+    },
+    "chess": {
+      "clean": {
+        "0": "10e6a9546b7d432cf0b7cc3e933b74d3f68f50b0ff951fb8c97c8c1b75cb997a",
+        "1": "10e6a9546b7d432cf0b7cc3e933b74d3f68f50b0ff951fb8c97c8c1b75cb997a",
+        "2": "10e6a9546b7d432cf0b7cc3e933b74d3f68f50b0ff951fb8c97c8c1b75cb997a"
+      },
+      "noisy": {
+        "0": "a83832d370965372eacae5833031da99d6fa6c6816832b3477975b54aaea5fd2",
+        "1": "a83832d370965372eacae5833031da99d6fa6c6816832b3477975b54aaea5fd2",
+        "2": "a83832d370965372eacae5833031da99d6fa6c6816832b3477975b54aaea5fd2"
+      }
+    },
+    "fire": {
+      "clean": {
+        "0": "9e56e10e09f62c4541a1b9043690a91d5bd9d64c6376bca1948ee9a2920a289a",
+        "1": "9e56e10e09f62c4541a1b9043690a91d5bd9d64c6376bca1948ee9a2920a289a",
+        "2": "9e56e10e09f62c4541a1b9043690a91d5bd9d64c6376bca1948ee9a2920a289a"
+      },
+      "noisy": {
+        "0": "34eec375c27cbd8ddc30cc79dfaaacad768e9764c1ca7b45525da20b87cbfd58",
+        "1": "34eec375c27cbd8ddc30cc79dfaaacad768e9764c1ca7b45525da20b87cbfd58",
+        "2": "34eec375c27cbd8ddc30cc79dfaaacad768e9764c1ca7b45525da20b87cbfd58"
+      }
+    }
+  },
+  "clean_matrices_exactly_preserved": true,
+  "pose_geometry": {
+    "heads": {
+      "clean": {
+        "max_rotation_orthogonality_error": 0.0006669274695547678,
+        "min_rotation_determinant": 0.9990659716161884,
+        "max_rotation_determinant": 0.9992569612932123,
+        "max_rotation_condition_number": 1.0000717497961906,
+        "rotation_modified": false
+      },
+      "noisy": {
+        "max_rotation_orthogonality_error": 0.0006664344753779528,
+        "min_rotation_determinant": 0.999065971616189,
+        "max_rotation_determinant": 0.9992569612932122,
+        "max_rotation_condition_number": 1.0000717497961908,
+        "rotation_modified": false
+      }
+    },
+    "chess": {
+      "clean": {
+        "max_rotation_orthogonality_error": 0.00019922047011922128,
+        "min_rotation_determinant": 0.9997223247035949,
+        "max_rotation_determinant": 0.9999386513390802,
+        "max_rotation_condition_number": 1.000019338228388,
+        "rotation_modified": false
+      },
+      "noisy": {
+        "max_rotation_orthogonality_error": 0.00019733482851858053,
+        "min_rotation_determinant": 0.9997223247035951,
+        "max_rotation_determinant": 0.9999386513390803,
+        "max_rotation_condition_number": 1.0000193382283884,
+        "rotation_modified": false
+      }
+    },
+    "fire": {
+      "clean": {
+        "max_rotation_orthogonality_error": 0.0001867607346344169,
+        "min_rotation_determinant": 0.999738578946732,
+        "max_rotation_determinant": 0.9999432383864574,
+        "max_rotation_condition_number": 1.0000160624297807,
+        "rotation_modified": false
+      },
+      "noisy": {
+        "max_rotation_orthogonality_error": 0.00018574457109166165,
+        "min_rotation_determinant": 0.9997385789467326,
+        "max_rotation_determinant": 0.9999432383864574,
+        "max_rotation_condition_number": 1.0000160624297805,
+        "rotation_modified": false
+      }
+    }
+  },
+  "numpy": "1.25.2",
+  "scipy": "1.11.2",
+  "original_asset_files_opened": 0,
+  "target_depth_files_opened": 0,
+  "accuracy_arrays_opened": 0,
+  "completed_at": "2026-11-18T11:05:04.963489+00:00"
+}

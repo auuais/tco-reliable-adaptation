@@ -1,0 +1,744 @@
+{
+  "schema": "profiled_m3_input_plan_v1",
+  "date": "2026-11-18",
+  "purpose": "Prospective CPU preparation only; no held-source or dense accuracy access",
+  "method_unchanged": true,
+  "scenes": [
+    "heads",
+    "chess",
+    "fire"
+  ],
+  "folders": {
+    "heads": "heads/seq-01",
+    "chess": "chess/seq-03",
+    "fire": "fire/seq-03"
+  },
+  "target_frames": [
+    25,
+    225,
+    425,
+    625,
+    825
+  ],
+  "temporal_offsets": {
+    "earlier": -4,
+    "later": 4
+  },
+  "sensor_wh": [
+    640,
+    480
+  ],
+  "sensor_focal": 525.0,
+  "sensor_origins": {
+    "centered": [
+      40,
+      30
+    ],
+    "shifted": [
+      20,
+      15
+    ]
+  },
+  "sensor_stride": [
+    80,
+    60
+  ],
+  "intermediate_wh": [
+    518,
+    392
+  ],
+  "native_wh": [
+    512,
+    384
+  ],
+  "target_focal_multiplier": 1.12,
+  "valid_source_range_mm": [
+    1,
+    10000
+  ],
+  "spatial_fold_seed": 20261118,
+  "shifted_case_key": "{scene}_{side}_shifted",
+  "minimum_per_fold_per_view": 8,
+  "centered_policy": "Reuse existing packet and split bytes; do not regenerate",
+  "pose_policy": {
+    "seed_base": 20261112,
+    "scene_order": [
+      "heads",
+      "chess",
+      "fire"
+    ],
+    "rotation_degrees": 5.0,
+    "translation_diameter_fraction": 0.02,
+    "anchor_view": 0,
+    "repetitions": [
+      0,
+      1,
+      2
+    ],
+    "optimizer_seed": 42,
+    "repeat_policy": "Identical clean and noisy matrices across every repetition; no new draws",
+    "noise_channel": "Supplied target camera priors only; sparse measurements use clean projection"
+  },
+  "allowed_original_files": {
+    "earlier": {
+      "chess/seq-03/frame-000021.depth.proj.png": {
+        "scene": "chess",
+        "frame": 21,
+        "suffix": "depth.proj.png",
+        "role": "source_depth",
+        "sha256": "7975bbc3426f7680601b6291d929e7486e793119b7de5f2ae3cccaab10d29916"
+      },
+      "chess/seq-03/frame-000021.pose.txt": {
+        "scene": "chess",
+        "frame": 21,
+        "suffix": "pose.txt",
+        "role": "source_pose",
+        "sha256": "a5d9e8e81b34c319a6784df332a48872836ac249d029a657d31cc4e0342d7209"
+      },
+      "chess/seq-03/frame-000025.pose.txt": {
+        "scene": "chess",
+        "frame": 25,
+        "suffix": "pose.txt",
+        "role": "target_pose",
+        "sha256": "9aaee2935f1f02014b89c3c0dc986804618c9a73d0197c38f75d71146c4c796e"
+      },
+      "chess/seq-03/frame-000221.depth.proj.png": {
+        "scene": "chess",
+        "frame": 221,
+        "suffix": "depth.proj.png",
+        "role": "source_depth",
+        "sha256": "8d87bfdb8722ee407c1575d919a32412dbfa33c317ab3b360fb98e6d15475293"
+      },
+      "chess/seq-03/frame-000221.pose.txt": {
+        "scene": "chess",
+        "frame": 221,
+        "suffix": "pose.txt",
+        "role": "source_pose",
+        "sha256": "bf98296ee830174389a4d0e52384ac60bff45608125602993f0d547d24619ba3"
+      },
+      "chess/seq-03/frame-000225.pose.txt": {
+        "scene": "chess",
+        "frame": 225,
+        "suffix": "pose.txt",
+        "role": "target_pose",
+        "sha256": "d850e5931835657cf8d95d13d51b450e49e57f7bd68fda316b525697b48cef94"
+      },
+      "chess/seq-03/frame-000421.depth.proj.png": {
+        "scene": "chess",
+        "frame": 421,
+        "suffix": "depth.proj.png",
+        "role": "source_depth",
+        "sha256": "91b31c5994bd23672a85c425589b53756ce91e525e550d8eea2e5fd874dc73c4"
+      },
+      "chess/seq-03/frame-000421.pose.txt": {
+        "scene": "chess",
+        "frame": 421,
+        "suffix": "pose.txt",
+        "role": "source_pose",
+        "sha256": "7717782063165f1ef452336cbf352442b6da17b9cca0fbf1386ed3184ac77f3f"
+      },
+      "chess/seq-03/frame-000425.pose.txt": {
+        "scene": "chess",
+        "frame": 425,
+        "suffix": "pose.txt",
+        "role": "target_pose",
+        "sha256": "648cc4ec6455cb83adb93aa847fe0ea80af40d034ea67270a1626a6044eaa35e"
+      },
+      "chess/seq-03/frame-000621.depth.proj.png": {
+        "scene": "chess",
+        "frame": 621,
+        "suffix": "depth.proj.png",
+        "role": "source_depth",
+        "sha256": "f455e1bd72b992d59782b80fe449346c71a1a04b0bba58f3897fa6ab49d87d49"
+      },
+      "chess/seq-03/frame-000621.pose.txt": {
+        "scene": "chess",
+        "frame": 621,
+        "suffix": "pose.txt",
+        "role": "source_pose",
+        "sha256": "111aa2c40341e31744021dfe4ce65e42ab708185eed8f4e60edbe8211f216dac"
+      },
+      "chess/seq-03/frame-000625.pose.txt": {
+        "scene": "chess",
+        "frame": 625,
+        "suffix": "pose.txt",
+        "role": "target_pose",
+        "sha256": "57eed227dbb12ba3a812b28965d2f8cc138e671c4c387caebc1f51738fafdb0e"
+      },
+      "chess/seq-03/frame-000821.depth.proj.png": {
+        "scene": "chess",
+        "frame": 821,
+        "suffix": "depth.proj.png",
+        "role": "source_depth",
+        "sha256": "b068d1e7660d945ed8e7d48289a3e999d9566eed2ed366c102d344b5d16198df"
+      },
+      "chess/seq-03/frame-000821.pose.txt": {
+        "scene": "chess",
+        "frame": 821,
+        "suffix": "pose.txt",
+        "role": "source_pose",
+        "sha256": "b90d390dd338e86b9a7d5d04a156c2274c99964b50639ea8dcf6a85113420a80"
+      },
+      "chess/seq-03/frame-000825.pose.txt": {
+        "scene": "chess",
+        "frame": 825,
+        "suffix": "pose.txt",
+        "role": "target_pose",
+        "sha256": "6aa3170f2034b367657ae17a5956e4b5bb479ad833352a005cba81db0a4422ba"
+      },
+      "fire/seq-03/frame-000021.depth.proj.png": {
+        "scene": "fire",
+        "frame": 21,
+        "suffix": "depth.proj.png",
+        "role": "source_depth",
+        "sha256": "a4d7e37a0e1354a28d8808adabdff207a23fa2b57761bb3ed4e6fc5fc7cd5f6e"
+      },
+      "fire/seq-03/frame-000021.pose.txt": {
+        "scene": "fire",
+        "frame": 21,
+        "suffix": "pose.txt",
+        "role": "source_pose",
+        "sha256": "ce887e7d79991f73921b0f715c8337589dc75ed04918de4e3c98953310f08cfe"
+      },
+      "fire/seq-03/frame-000025.pose.txt": {
+        "scene": "fire",
+        "frame": 25,
+        "suffix": "pose.txt",
+        "role": "target_pose",
+        "sha256": "9d8eb28cbae33c642bd37499d1806c5be09a65c160df13aca2d69dca89bc745b"
+      },
+      "fire/seq-03/frame-000221.depth.proj.png": {
+        "scene": "fire",
+        "frame": 221,
+        "suffix": "depth.proj.png",
+        "role": "source_depth",
+        "sha256": "016dc69243afce0a7df172172d6071ad2fa891872355265ef0259afdb777ec6a"
+      },
+      "fire/seq-03/frame-000221.pose.txt": {
+        "scene": "fire",
+        "frame": 221,
+        "suffix": "pose.txt",
+        "role": "source_pose",
+        "sha256": "2edda0035ced3b11d7ab96769d30aca8d56aea63439bc366321b887e41b054c0"
+      },
+      "fire/seq-03/frame-000225.pose.txt": {
+        "scene": "fire",
+        "frame": 225,
+        "suffix": "pose.txt",
+        "role": "target_pose",
+        "sha256": "6ed26d5120c18508c178167e5506b7bdc82cb76e80bc15e9728165050fb8ac18"
+      },
+      "fire/seq-03/frame-000421.depth.proj.png": {
+        "scene": "fire",
+        "frame": 421,
+        "suffix": "depth.proj.png",
+        "role": "source_depth",
+        "sha256": "5706cfb38c455d96f77a61eb1c2ef340cb57ba4533c8e405f053cd503f4ea4df"
+      },
+      "fire/seq-03/frame-000421.pose.txt": {
+        "scene": "fire",
+        "frame": 421,
+        "suffix": "pose.txt",
+        "role": "source_pose",
+        "sha256": "84376eaed2f6c5fd5f86334564db67d916500592b9c1e078c08e749a8430f7f6"
+      },
+      "fire/seq-03/frame-000425.pose.txt": {
+        "scene": "fire",
+        "frame": 425,
+        "suffix": "pose.txt",
+        "role": "target_pose",
+        "sha256": "1d50df8d3da3f1435cb1a99ea08c7e57c9abe4eb7fc76ee2ad33eb1d91303932"
+      },
+      "fire/seq-03/frame-000621.depth.proj.png": {
+        "scene": "fire",
+        "frame": 621,
+        "suffix": "depth.proj.png",
+        "role": "source_depth",
+        "sha256": "60cca3684035e439c286dca717255a15a36ae31a666cc32f7b32d54314759f7d"
+      },
+      "fire/seq-03/frame-000621.pose.txt": {
+        "scene": "fire",
+        "frame": 621,
+        "suffix": "pose.txt",
+        "role": "source_pose",
+        "sha256": "429e933e9793c9aa30db88f18b2def0eb86bd30f1aa5a4ebbd7efffe535cc883"
+      },
+      "fire/seq-03/frame-000625.pose.txt": {
+        "scene": "fire",
+        "frame": 625,
+        "suffix": "pose.txt",
+        "role": "target_pose",
+        "sha256": "60b42fa997d10b38f51524a4595a725ec539cdd7471269e02148570c1c955cce"
+      },
+      "fire/seq-03/frame-000821.depth.proj.png": {
+        "scene": "fire",
+        "frame": 821,
+        "suffix": "depth.proj.png",
+        "role": "source_depth",
+        "sha256": "65844e37ac4c4037cc0ccacd2a9494b84e9e6fa78683134419c344dd93e53bbb"
+      },
+      "fire/seq-03/frame-000821.pose.txt": {
+        "scene": "fire",
+        "frame": 821,
+        "suffix": "pose.txt",
+        "role": "source_pose",
+        "sha256": "a0ad874dbed75c5fe40d3694cbfae35580ccfabbbde23cc3b28d3141e68a40a8"
+      },
+      "fire/seq-03/frame-000825.pose.txt": {
+        "scene": "fire",
+        "frame": 825,
+        "suffix": "pose.txt",
+        "role": "target_pose",
+        "sha256": "ea9c22062aeb02a7b35e94caf7ddd5d5cc770ffc775be05ca5ef862bb27dd7b9"
+      },
+      "heads/seq-01/frame-000021.depth.proj.png": {
+        "scene": "heads",
+        "frame": 21,
+        "suffix": "depth.proj.png",
+        "role": "source_depth",
+        "sha256": "1546e81cdda6f63b45604e5c5bcbd1ee5194c603e4ea351174988b9959851d7d"
+      },
+      "heads/seq-01/frame-000021.pose.txt": {
+        "scene": "heads",
+        "frame": 21,
+        "suffix": "pose.txt",
+        "role": "source_pose",
+        "sha256": "c83d6e7dce252f4763979ea284a482e2868f07a0d39734e49c0ddcbe811797cb"
+      },
+      "heads/seq-01/frame-000025.pose.txt": {
+        "scene": "heads",
+        "frame": 25,
+        "suffix": "pose.txt",
+        "role": "target_pose",
+        "sha256": "7a669445123268246c44a8b10cd80587144ce1a731b045a51746b2f073e82ffb"
+      },
+      "heads/seq-01/frame-000221.depth.proj.png": {
+        "scene": "heads",
+        "frame": 221,
+        "suffix": "depth.proj.png",
+        "role": "source_depth",
+        "sha256": "92294a0e041ecbb3f10e1410412262d6d5c7f2e2ac207ff3f2f3edc324211455"
+      },
+      "heads/seq-01/frame-000221.pose.txt": {
+        "scene": "heads",
+        "frame": 221,
+        "suffix": "pose.txt",
+        "role": "source_pose",
+        "sha256": "2d22563255020336cbbf32fd7deb2f04248962919a3b38a565bf3c01ed321e3f"
+      },
+      "heads/seq-01/frame-000225.pose.txt": {
+        "scene": "heads",
+        "frame": 225,
+        "suffix": "pose.txt",
+        "role": "target_pose",
+        "sha256": "d835e6f7a086ead904fd4a1637f46f80c863258e56600d6ab129ffc86585ce02"
+      },
+      "heads/seq-01/frame-000421.depth.proj.png": {
+        "scene": "heads",
+        "frame": 421,
+        "suffix": "depth.proj.png",
+        "role": "source_depth",
+        "sha256": "ce959dc2cbc9683610faedfb888df543e993871352b7253f1a0e019203a48e16"
+      },
+      "heads/seq-01/frame-000421.pose.txt": {
+        "scene": "heads",
+        "frame": 421,
+        "suffix": "pose.txt",
+        "role": "source_pose",
+        "sha256": "68545f6fe73ea64282d39f06a10d1e9186ee135a7e25898174065aa648b0f7db"
+      },
+      "heads/seq-01/frame-000425.pose.txt": {
+        "scene": "heads",
+        "frame": 425,
+        "suffix": "pose.txt",
+        "role": "target_pose",
+        "sha256": "d2c3addff24cf5ba140b5b2d632ab6edb262b76667c90932b964312686e23af5"
+      },
+      "heads/seq-01/frame-000621.depth.proj.png": {
+        "scene": "heads",
+        "frame": 621,
+        "suffix": "depth.proj.png",
+        "role": "source_depth",
+        "sha256": "1beb59806def39dc1a343e658de544beb67fb5b65e5682366eea0288800206d9"
+      },
+      "heads/seq-01/frame-000621.pose.txt": {
+        "scene": "heads",
+        "frame": 621,
+        "suffix": "pose.txt",
+        "role": "source_pose",
+        "sha256": "0ea9bda9a2983cc14c539e3a9522846a9db86eccec36b433a98ef887b1f9258f"
+      },
+      "heads/seq-01/frame-000625.pose.txt": {
+        "scene": "heads",
+        "frame": 625,
+        "suffix": "pose.txt",
+        "role": "target_pose",
+        "sha256": "41cb00ad884c8efe0ed924fe85293527f374eccdf53060edc9eeac0f099ff653"
+      },
+      "heads/seq-01/frame-000821.depth.proj.png": {
+        "scene": "heads",
+        "frame": 821,
+        "suffix": "depth.proj.png",
+        "role": "source_depth",
+        "sha256": "a54ee4ce9c1903fdab390f9058adfb5d5eeca73e018032c000d3397bae941cbf"
+      },
+      "heads/seq-01/frame-000821.pose.txt": {
+        "scene": "heads",
+        "frame": 821,
+        "suffix": "pose.txt",
+        "role": "source_pose",
+        "sha256": "306952db87987e553abadad5b061501d56749a81d75d729c633522bb9497aca5"
+      },
+      "heads/seq-01/frame-000825.pose.txt": {
+        "scene": "heads",
+        "frame": 825,
+        "suffix": "pose.txt",
+        "role": "target_pose",
+        "sha256": "5b6abdb2ff5ae42941f240ed103a3a3810150f3202ec91c88039c08f4c17ecf0"
+      }
+    },
+    "later": {
+      "chess/seq-03/frame-000025.pose.txt": {
+        "scene": "chess",
+        "frame": 25,
+        "suffix": "pose.txt",
+        "role": "target_pose",
+        "sha256": "9aaee2935f1f02014b89c3c0dc986804618c9a73d0197c38f75d71146c4c796e"
+      },
+      "chess/seq-03/frame-000029.depth.proj.png": {
+        "scene": "chess",
+        "frame": 29,
+        "suffix": "depth.proj.png",
+        "role": "source_depth",
+        "sha256": "6bf74c776d90589d29084a8592e4e70d9317e35e5ae96f727dbb328ea2254ac0"
+      },
+      "chess/seq-03/frame-000029.pose.txt": {
+        "scene": "chess",
+        "frame": 29,
+        "suffix": "pose.txt",
+        "role": "source_pose",
+        "sha256": "e27f466785e3e898f1998642893c48f696f7090714b34261599a569f125bee38"
+      },
+      "chess/seq-03/frame-000225.pose.txt": {
+        "scene": "chess",
+        "frame": 225,
+        "suffix": "pose.txt",
+        "role": "target_pose",
+        "sha256": "d850e5931835657cf8d95d13d51b450e49e57f7bd68fda316b525697b48cef94"
+      },
+      "chess/seq-03/frame-000229.depth.proj.png": {
+        "scene": "chess",
+        "frame": 229,
+        "suffix": "depth.proj.png",
+        "role": "source_depth",
+        "sha256": "1d5be70810b1a963cc54c7a6d88d4e0164e00ddd5e54486b22e6bc92cca7c6b7"
+      },
+      "chess/seq-03/frame-000229.pose.txt": {
+        "scene": "chess",
+        "frame": 229,
+        "suffix": "pose.txt",
+        "role": "source_pose",
+        "sha256": "02fa7496a129c5c3d06407226077b8642b2abbac3004e9550a710852c1b2e54f"
+      },
+      "chess/seq-03/frame-000425.pose.txt": {
+        "scene": "chess",
+        "frame": 425,
+        "suffix": "pose.txt",
+        "role": "target_pose",
+        "sha256": "648cc4ec6455cb83adb93aa847fe0ea80af40d034ea67270a1626a6044eaa35e"
+      },
+      "chess/seq-03/frame-000429.depth.proj.png": {
+        "scene": "chess",
+        "frame": 429,
+        "suffix": "depth.proj.png",
+        "role": "source_depth",
+        "sha256": "54fafc7abd53a20befb2b7cf977e07673f771cc3d51b0e9d1ac19df8e6223fc6"
+      },
+      "chess/seq-03/frame-000429.pose.txt": {
+        "scene": "chess",
+        "frame": 429,
+        "suffix": "pose.txt",
+        "role": "source_pose",
+        "sha256": "549eda0e0d1276c00f6c5eba8d9f8869ab6f32846c816c0dacb843af3e6741e2"
+      },
+      "chess/seq-03/frame-000625.pose.txt": {
+        "scene": "chess",
+        "frame": 625,
+        "suffix": "pose.txt",
+        "role": "target_pose",
+        "sha256": "57eed227dbb12ba3a812b28965d2f8cc138e671c4c387caebc1f51738fafdb0e"
+      },
+      "chess/seq-03/frame-000629.depth.proj.png": {
+        "scene": "chess",
+        "frame": 629,
+        "suffix": "depth.proj.png",
+        "role": "source_depth",
+        "sha256": "574814b82afc71977247e1af3d8f2aeba6800a84b31fee45ddaa3ca6ada546da"
+      },
+      "chess/seq-03/frame-000629.pose.txt": {
+        "scene": "chess",
+        "frame": 629,
+        "suffix": "pose.txt",
+        "role": "source_pose",
+        "sha256": "776d77324125b1a3de19dc4ee8fa27eb791307c5baaa2c891f24af8c3fbd15b3"
+      },
+      "chess/seq-03/frame-000825.pose.txt": {
+        "scene": "chess",
+        "frame": 825,
+        "suffix": "pose.txt",
+        "role": "target_pose",
+        "sha256": "6aa3170f2034b367657ae17a5956e4b5bb479ad833352a005cba81db0a4422ba"
+      },
+      "chess/seq-03/frame-000829.depth.proj.png": {
+        "scene": "chess",
+        "frame": 829,
+        "suffix": "depth.proj.png",
+        "role": "source_depth",
+        "sha256": "0dac44e9a8b8e7f04a0a28db13107b9fb97a67db452155ff9f90bcd7b0a89f2c"
+      },
+      "chess/seq-03/frame-000829.pose.txt": {
+        "scene": "chess",
+        "frame": 829,
+        "suffix": "pose.txt",
+        "role": "source_pose",
+        "sha256": "0b82660229a4fc8cc83198ebb9168f6e573c68575ac42ea4223a620319bf02f2"
+      },
+      "fire/seq-03/frame-000025.pose.txt": {
+        "scene": "fire",
+        "frame": 25,
+        "suffix": "pose.txt",
+        "role": "target_pose",
+        "sha256": "9d8eb28cbae33c642bd37499d1806c5be09a65c160df13aca2d69dca89bc745b"
+      },
+      "fire/seq-03/frame-000029.depth.proj.png": {
+        "scene": "fire",
+        "frame": 29,
+        "suffix": "depth.proj.png",
+        "role": "source_depth",
+        "sha256": "baa58201dd7e4f19cd35884902bdcd5d0cc5c3557746f76b01d7a1b37c83bf6a"
+      },
+      "fire/seq-03/frame-000029.pose.txt": {
+        "scene": "fire",
+        "frame": 29,
+        "suffix": "pose.txt",
+        "role": "source_pose",
+        "sha256": "ff5bbf6d1652d2050fcf6eb0de2ba137dd24df213bb506f6277375a5f893e728"
+      },
+      "fire/seq-03/frame-000225.pose.txt": {
+        "scene": "fire",
+        "frame": 225,
+        "suffix": "pose.txt",
+        "role": "target_pose",
+        "sha256": "6ed26d5120c18508c178167e5506b7bdc82cb76e80bc15e9728165050fb8ac18"
+      },
+      "fire/seq-03/frame-000229.depth.proj.png": {
+        "scene": "fire",
+        "frame": 229,
+        "suffix": "depth.proj.png",
+        "role": "source_depth",
+        "sha256": "1c5bc080339d9f1b8402f7845c35952fb25dbdd9e1b0c85fdefb83bd509a0ab6"
+      },
+      "fire/seq-03/frame-000229.pose.txt": {
+        "scene": "fire",
+        "frame": 229,
+        "suffix": "pose.txt",
+        "role": "source_pose",
+        "sha256": "c5a266e26a869eaea8ca9d8cc86bdd6bbd513ad5cf555c2f427165cb37a9bdb8"
+      },
+      "fire/seq-03/frame-000425.pose.txt": {
+        "scene": "fire",
+        "frame": 425,
+        "suffix": "pose.txt",
+        "role": "target_pose",
+        "sha256": "1d50df8d3da3f1435cb1a99ea08c7e57c9abe4eb7fc76ee2ad33eb1d91303932"
+      },
+      "fire/seq-03/frame-000429.depth.proj.png": {
+        "scene": "fire",
+        "frame": 429,
+        "suffix": "depth.proj.png",
+        "role": "source_depth",
+        "sha256": "9a3bae571a67e4f104e12819348acc67349d4d73a51f11ab2552849ae8e69413"
+      },
+      "fire/seq-03/frame-000429.pose.txt": {
+        "scene": "fire",
+        "frame": 429,
+        "suffix": "pose.txt",
+        "role": "source_pose",
+        "sha256": "99d3bacca88480f7ace6934e76189d223a006f20a92f64527d33e6215ad0fee7"
+      },
+      "fire/seq-03/frame-000625.pose.txt": {
+        "scene": "fire",
+        "frame": 625,
+        "suffix": "pose.txt",
+        "role": "target_pose",
+        "sha256": "60b42fa997d10b38f51524a4595a725ec539cdd7471269e02148570c1c955cce"
+      },
+      "fire/seq-03/frame-000629.depth.proj.png": {
+        "scene": "fire",
+        "frame": 629,
+        "suffix": "depth.proj.png",
+        "role": "source_depth",
+        "sha256": "33e003e3535d8b41e198f118b596fac9149ad4d5ba9e72eace1fc4a11c253d0c"
+      },
+      "fire/seq-03/frame-000629.pose.txt": {
+        "scene": "fire",
+        "frame": 629,
+        "suffix": "pose.txt",
+        "role": "source_pose",
+        "sha256": "f916b707eb2516d694e257ec8d3bad94a2383b2080cf0a6ec4269534376fe731"
+      },
+      "fire/seq-03/frame-000825.pose.txt": {
+        "scene": "fire",
+        "frame": 825,
+        "suffix": "pose.txt",
+        "role": "target_pose",
+        "sha256": "ea9c22062aeb02a7b35e94caf7ddd5d5cc770ffc775be05ca5ef862bb27dd7b9"
+      },
+      "fire/seq-03/frame-000829.depth.proj.png": {
+        "scene": "fire",
+        "frame": 829,
+        "suffix": "depth.proj.png",
+        "role": "source_depth",
+        "sha256": "56e14638907667ff4881b7ff7482d5c019925030bf26a8fbdcd03c8001855f2e"
+      },
+      "fire/seq-03/frame-000829.pose.txt": {
+        "scene": "fire",
+        "frame": 829,
+        "suffix": "pose.txt",
+        "role": "source_pose",
+        "sha256": "fb0bc60bdf656b890508bfb86d2cb29d617219bedb502203e65b9d32108a2994"
+      },
+      "heads/seq-01/frame-000025.pose.txt": {
+        "scene": "heads",
+        "frame": 25,
+        "suffix": "pose.txt",
+        "role": "target_pose",
+        "sha256": "7a669445123268246c44a8b10cd80587144ce1a731b045a51746b2f073e82ffb"
+      },
+      "heads/seq-01/frame-000029.depth.proj.png": {
+        "scene": "heads",
+        "frame": 29,
+        "suffix": "depth.proj.png",
+        "role": "source_depth",
+        "sha256": "581679e89f86ac6b2874a5e5dd81d8f3f1eb58256250eff15987942e0afdb536"
+      },
+      "heads/seq-01/frame-000029.pose.txt": {
+        "scene": "heads",
+        "frame": 29,
+        "suffix": "pose.txt",
+        "role": "source_pose",
+        "sha256": "1a30ec34fe0e3fcb210d16cc0e14558268843f2efae3dc9474a3df98cca2a0a2"
+      },
+      "heads/seq-01/frame-000225.pose.txt": {
+        "scene": "heads",
+        "frame": 225,
+        "suffix": "pose.txt",
+        "role": "target_pose",
+        "sha256": "d835e6f7a086ead904fd4a1637f46f80c863258e56600d6ab129ffc86585ce02"
+      },
+      "heads/seq-01/frame-000229.depth.proj.png": {
+        "scene": "heads",
+        "frame": 229,
+        "suffix": "depth.proj.png",
+        "role": "source_depth",
+        "sha256": "bb5bbf7a1c1d0cb8c5ba3a1e622a1a711012029b474a83549652c6b85c6125f3"
+      },
+      "heads/seq-01/frame-000229.pose.txt": {
+        "scene": "heads",
+        "frame": 229,
+        "suffix": "pose.txt",
+        "role": "source_pose",
+        "sha256": "31620329bfabef597026d08cf20fc8aae42b9c9aa72932781de945c6382c5058"
+      },
+      "heads/seq-01/frame-000425.pose.txt": {
+        "scene": "heads",
+        "frame": 425,
+        "suffix": "pose.txt",
+        "role": "target_pose",
+        "sha256": "d2c3addff24cf5ba140b5b2d632ab6edb262b76667c90932b964312686e23af5"
+      },
+      "heads/seq-01/frame-000429.depth.proj.png": {
+        "scene": "heads",
+        "frame": 429,
+        "suffix": "depth.proj.png",
+        "role": "source_depth",
+        "sha256": "6edb69de2014384901275d3d1e741b1c491c41a48172b98c51d70e1ffaa90c79"
+      },
+      "heads/seq-01/frame-000429.pose.txt": {
+        "scene": "heads",
+        "frame": 429,
+        "suffix": "pose.txt",
+        "role": "source_pose",
+        "sha256": "52bcb652c280a6a0be9e399dfd58da1e4c626e2363e45329dbf55f8e65f30dbe"
+      },
+      "heads/seq-01/frame-000625.pose.txt": {
+        "scene": "heads",
+        "frame": 625,
+        "suffix": "pose.txt",
+        "role": "target_pose",
+        "sha256": "41cb00ad884c8efe0ed924fe85293527f374eccdf53060edc9eeac0f099ff653"
+      },
+      "heads/seq-01/frame-000629.depth.proj.png": {
+        "scene": "heads",
+        "frame": 629,
+        "suffix": "depth.proj.png",
+        "role": "source_depth",
+        "sha256": "d61046d907aa14f711724bf94882c3422d323d3a975dc9be5ed5d3a708034166"
+      },
+      "heads/seq-01/frame-000629.pose.txt": {
+        "scene": "heads",
+        "frame": 629,
+        "suffix": "pose.txt",
+        "role": "source_pose",
+        "sha256": "cb8bc6a5bbe9143c37eefe36c6481bfe40bbf1fcb112e5432381cfbf42592957"
+      },
+      "heads/seq-01/frame-000825.pose.txt": {
+        "scene": "heads",
+        "frame": 825,
+        "suffix": "pose.txt",
+        "role": "target_pose",
+        "sha256": "5b6abdb2ff5ae42941f240ed103a3a3810150f3202ec91c88039c08f4c17ecf0"
+      },
+      "heads/seq-01/frame-000829.depth.proj.png": {
+        "scene": "heads",
+        "frame": 829,
+        "suffix": "depth.proj.png",
+        "role": "source_depth",
+        "sha256": "2ecf3fb0d87a6e0eab32cdd826a25e724533c65bb99e0b54c63b31e0d5990176"
+      },
+      "heads/seq-01/frame-000829.pose.txt": {
+        "scene": "heads",
+        "frame": 829,
+        "suffix": "pose.txt",
+        "role": "source_pose",
+        "sha256": "c519311913e44d222a5f88c5ac1d158bd88a9e818e3d1675189d93d627e6628e"
+      }
+    }
+  },
+  "original_files_per_side": {
+    "earlier": 45,
+    "later": 45
+  },
+  "metadata_sha256": {
+    "manifests/lora_profiled_design_v1.json": "5bce05491f2910eb83fd45fb80a23b762b096d9b086a88da82329759c1021e7b",
+    "manifests/mast3r_geometry_matching_v1.json": "aaa2a2d508eb3421b652e99a0820067e43ffa3c2692334ed7791df21d2f9c0d3",
+    "manifests/sensor_frame_v14.json": "ea2ee65dca80dff8c942f5482efa23baa4dab5c0b18272ac20f011f3450c7100",
+    "results/mast3r_partner_shape/inputs.json": "98649a8a11afaea4f092e9aa3847d8467244397ac84b14cc80a5ef764da52501",
+    "results/source_frame_spacing/inputs.json": "1b154f1640b7eb5f514c8346fa28a921284e30692574ce97e24d41e09b5ffa2e",
+    "results/mast3r_neural_transfer/pose_packets.npz": "480423b948aaacc65ebfe66c405df1a8364fd8820d4eb5146a15b733b8ff7fbd",
+    "results/lora_profiled_v1/inputs.json": "7e0600f470698e336af3b44a788b44cfea45ec043dd785b03cdf5b3839526fa8",
+    "results/lora_profiled_v1/splits.npz": "12d688e181f89ef90738350f23959d7bb0813b0a605cadcee1fb05d5b1bd9ace",
+    "results/mast3r_partner_shape/earlier.npz": "891d5e0a659a750c407529390ff2a22039be88b8f80a4170a8c74dbf959ed834",
+    "results/mast3r_partner_shape/later.npz": "d933e7364ea28a827c6e7ad9d0c11240fb9e2b8e3ac19001cb2b3d3520199d16"
+  },
+  "source_sha256_lf": {
+    "scripts/prepare_profiled_m3_inputs.py": "80c4fa8d2c4ad94fef5d7a62029222ed7c3c44480e4c1027c8e38cf5bf823c8d",
+    "scripts/prepare_profiled_inputs.py": "c85600d5825435d836d70365293012237af7bca823971461f7e8850f45b6395c",
+    "scripts/neighbor_sparse_depth.py": "555934d6b0be5d4962b3a9acf4255d3466d74a7d6c435dd00567b27725f3d908",
+    "scripts/prepare_partner_sources.py": "2a9117275c609033b550a3ffe8217a8af55d38a88704903f9f18cbf043dc72f2"
+  },
+  "protocol_sha256_lf": "61c08dc57a925ffe6f05944e7d8fcefd60386fbf4dba09d2e9b1b8109ec865c1",
+  "prohibited": "All target depth, opposite-source depth in a side command, prediction arrays and accuracy reports",
+  "original_asset_files_opened": 0,
+  "target_depth_files_opened": 0
+}
