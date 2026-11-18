@@ -1,0 +1,42 @@
+{
+  "schema": "profiled_evaluation_execution_v1",
+  "prepared_at_utc": "2026-11-18T10:19:49.515655+00:00",
+  "scope": "Executable scorer frozen after synthetic fixtures; no study arrays or scores accessed",
+  "rules": "manifests/lora_profiled_evaluation_v2.json",
+  "rules_sha256": "43d798e6fac9d8dbe3c8d9b4bcdd7b68d16cf81dde59cf58567cc25131870d94",
+  "source_sha256_lf": {
+    "scripts/seal_profiled_predictions.py": "5c90a13183aac4838458535160f39dcfe3678d0bb01f5e898b2425eaa898b7fe",
+    "scripts/score_profiled_lora.py": "684fa50b06c1f09f30422e5445097c7b00a24822d85eafe079e40c7eaa989a5f",
+    "scripts/test_profiled_scoring.py": "37a7e1b78846a1e1eb66f7d6f4136b57710bd8cdae9878a19a9c04010545f3f5",
+    "scripts/register_profiled_execution.py": "eccfe12348b9e85aa8db1aa5f137accfda819e05005ee0e9db29513b1edc5ee8",
+    "scripts/prepare_profiled_inputs.py": "c85600d5825435d836d70365293012237af7bca823971461f7e8850f45b6395c",
+    "scripts/partner_shape.py": "a7fa474664820c6f68b3b44e42163cacddd9af6f4890aaa8487c6e5844569748",
+    "scripts/score_partner_shape.py": "dc226071e2ed4a6523eb46c04e07931cd14376bc33efde41db5a53cf2115380b"
+  },
+  "failure_policy": {
+    "automatic_numerical_error_types": [
+      "FloatingPointError"
+    ],
+    "unclassified_errors": "block all study-score release pending engineering review",
+    "infrastructure_errors": "no automatic negative scientific verdict; any disposition must be frozen before scores"
+  },
+  "dependencies": {
+    "python_major_minor": "3.9",
+    "numpy": "1.25.2"
+  },
+  "input_sha256": {
+    "manifests/lora_profiled_design_v1.json": "5bce05491f2910eb83fd45fb80a23b762b096d9b086a88da82329759c1021e7b",
+    "results/lora_profiled_v1/inputs.json": "7e0600f470698e336af3b44a788b44cfea45ec043dd785b03cdf5b3839526fa8",
+    "results/lora_profiled_v1/splits.npz": "12d688e181f89ef90738350f23959d7bb0813b0a605cadcee1fb05d5b1bd9ace"
+  },
+  "packet_sha256": {
+    "results/mast3r_partner_shape/earlier.npz": "891d5e0a659a750c407529390ff2a22039be88b8f80a4170a8c74dbf959ed834",
+    "results/mast3r_partner_shape/later.npz": "d933e7364ea28a827c6e7ad9d0c11240fb9e2b8e3ac19001cb2b3d3520199d16"
+  },
+  "fixtures": "results/lora_profiled_v1/scoring_fixtures.json",
+  "fixtures_sha256": "067ede797b1504595fbc6f2138f3b194ed3586f137536b6a27f1f009c73a1a59",
+  "synthetic_fixtures_pass": true,
+  "study_arrays_loaded": false,
+  "study_scores_read": false,
+  "rental_compute_usd": 0
+}
