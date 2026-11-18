@@ -206,6 +206,9 @@ jobs:
         run: python scripts/replay_profiled_public_scores.py --output reports/ci/profiled_public_replay.json
       - name: Independently check the MASt3R calibration response from sealed matrices
         run: python scripts/verify_profiled_calibration_secant.py --attempt d1_01 --verify-only
+      - name: Replay the published compensation verdict from view aggregates
+        if: ${{ hashFiles('results/lora_profiled_compensation_v1/held_source_scores.json') != '' }}
+        run: python scripts/replay_compensation_published_metrics.py
       - name: Exercise immutable profiled evidence backup fixtures
         run: python scripts/test_archive_profiled_evidence.py
       - name: Verify prospective M3 fitting inputs without loading predictions

@@ -1,0 +1,490 @@
+{
+  "schema": "profiled_compensation_training_audit_v1",
+  "pass_all": true,
+  "scope": "Training traces and resource summaries. Report excludes held-source scores.",
+  "verified_at_utc": "2026-11-18T16:33:27.529354+00:00",
+  "cases": [
+    {
+      "run_id": "heads_earlier_P0",
+      "scene": "heads",
+      "side": "earlier",
+      "arm": "P0",
+      "report": {
+        "file": "results/lora_profiled_compensation_v1/cases/heads_earlier_P0/screen01/complete.json",
+        "sha256": "d8a01a567e39fea4408cf102e2cb88db9fe565e97a26d714abe53a978cd80c04"
+      },
+      "terminal": {
+        "file": "results/lora_profiled_compensation_v1/launches/tco-profiled-compensation-heads-earlier-p0/terminal.json",
+        "sha256": "720a8bc738544dd2af9315762d0bedf100aa69f859644ae9e230ba95322797d0"
+      },
+      "model_seconds": 84.95543654297944,
+      "local_wall_seconds": 117.8289999999106,
+      "peak_allocated_mib": 3666.7685546875,
+      "peak_reserved_mib": 5200.0,
+      "optimizer_updates": 0,
+      "original_state_unchanged": true,
+      "training_decoder_calls": 0,
+      "last_observed_before_update_by_fold": {}
+    },
+    {
+      "run_id": "heads_earlier_P1",
+      "scene": "heads",
+      "side": "earlier",
+      "arm": "P1",
+      "report": {
+        "file": "results/lora_profiled_compensation_v1/cases/heads_earlier_P1/screen01/complete.json",
+        "sha256": "8c30f5b01209190e361ce07e2bc703b3ee606beacc7ce7f5ae1cce27c77e1905"
+      },
+      "terminal": {
+        "file": "results/lora_profiled_compensation_v1/launches/tco-profiled-compensation-heads-earlier-p1/terminal.json",
+        "sha256": "3a0a2ac42cbef5091c348967a87f0c50e937bb1fe6528bd1fbf00e5986db9869"
+      },
+      "model_seconds": 308.77636544103734,
+      "local_wall_seconds": 343.71799999987707,
+      "peak_allocated_mib": 4350.94873046875,
+      "peak_reserved_mib": 5236.0,
+      "optimizer_updates": 8,
+      "original_state_unchanged": true,
+      "training_decoder_calls": 320,
+      "last_observed_before_update_by_fold": {}
+    },
+    {
+      "run_id": "heads_earlier_P3",
+      "scene": "heads",
+      "side": "earlier",
+      "arm": "P3",
+      "report": {
+        "file": "results/lora_profiled_compensation_v1/cases/heads_earlier_P3/screen01/complete.json",
+        "sha256": "ebc821f86018dda2a1e7b646b49a9890c82a4ef3b4f16513f83abcf659fcb0c8"
+      },
+      "terminal": {
+        "file": "results/lora_profiled_compensation_v1/launches/tco-profiled-compensation-heads-earlier-p3/terminal.json",
+        "sha256": "32a92da6d8a9a4796ba62db57d15c9f7c9e6422e9f1e4d00f575f56e7b4cb078"
+      },
+      "model_seconds": 305.1621936140582,
+      "local_wall_seconds": 341.1100000003353,
+      "peak_allocated_mib": 4720.74951171875,
+      "peak_reserved_mib": 5026.0,
+      "optimizer_updates": 8,
+      "original_state_unchanged": true,
+      "training_decoder_calls": 320,
+      "last_observed_before_update_by_fold": {
+        "0": {
+          "step": 6,
+          "base": 25.81271815646352,
+          "penalty": 0.0,
+          "compensation_l2_by_view": [
+            0.015233079561671348,
+            0.008242620750981327,
+            0.01755640131571501,
+            0.012980303654833972,
+            0.021242740153393655
+          ],
+          "compensation_l2": 0.03504221781125527,
+          "matched_support_penalty_by_view": [
+            2.3026795025905928e-05,
+            4.706419207262235e-05,
+            1.0342031654244523e-05,
+            8.638912743952382e-06,
+            3.281538891696782e-05
+          ]
+        },
+        "1": {
+          "step": 7,
+          "base": 40.79699788484776,
+          "penalty": 0.0,
+          "compensation_l2_by_view": [
+            0.04471346360194037,
+            0.008205001364617907,
+            0.03882805506705375,
+            0.02290026233627235,
+            0.0014282498095945144
+          ],
+          "compensation_l2": 0.06403667423870706,
+          "matched_support_penalty_by_view": [
+            9.967815155467696e-05,
+            1.7582154585422054e-05,
+            5.989842385176027e-05,
+            1.718060333075999e-05,
+            1.5248338088462459e-05
+          ]
+        }
+      }
+    },
+    {
+      "run_id": "heads_earlier_R0",
+      "scene": "heads",
+      "side": "earlier",
+      "arm": "R0",
+      "report": {
+        "file": "results/lora_profiled_compensation_v1/cases/heads_earlier_R0/screen01/complete.json",
+        "sha256": "439849ba8b117cb571e3010ca2f97d9cf1c86bdd494806bf9d616c68f931abb1"
+      },
+      "terminal": {
+        "file": "results/lora_profiled_compensation_v1/launches/tco-profiled-compensation-heads-earlier-r0/terminal.json",
+        "sha256": "f6100f8d08b7286cc8d2d705dfa4745d89fc032ec5cd7d5e89885194bfd74667"
+      },
+      "model_seconds": 299.614450699999,
+      "local_wall_seconds": 334.73400000017136,
+      "peak_allocated_mib": 4720.74951171875,
+      "peak_reserved_mib": 5026.0,
+      "optimizer_updates": 8,
+      "original_state_unchanged": true,
+      "training_decoder_calls": 320,
+      "last_observed_before_update_by_fold": {
+        "0": {
+          "step": 6,
+          "base": 25.59001306671907,
+          "penalty": 0.0004811956296238186,
+          "compensation_l2_by_view": [
+            0.0625473850897853,
+            0.02065497670664082,
+            0.0690897449615616,
+            0.001790087091530392,
+            0.030923783568578042
+          ],
+          "compensation_l2": 0.10035776554490898,
+          "matched_support_penalty_by_view": [
+            0.00022094588387321342,
+            6.521953901547071e-05,
+            0.00015135672490463963,
+            9.959688494011374e-06,
+            3.371379333648348e-05
+          ]
+        },
+        "1": {
+          "step": 7,
+          "base": 40.71678030377844,
+          "penalty": 0.00019902641749020922,
+          "compensation_l2_by_view": [
+            0.03889898620688529,
+            0.0412498496270288,
+            0.020561557728507613,
+            0.019063814979202322,
+            0.04411646643719066
+          ],
+          "compensation_l2": 0.07711777052575963,
+          "matched_support_penalty_by_view": [
+            7.55467826570416e-05,
+            4.42615425895393e-05,
+            1.4333240372329747e-05,
+            1.2920607313549307e-05,
+            5.196424455774929e-05
+          ]
+        }
+      }
+    },
+    {
+      "run_id": "heads_earlier_R1",
+      "scene": "heads",
+      "side": "earlier",
+      "arm": "R1",
+      "report": {
+        "file": "results/lora_profiled_compensation_v1/cases/heads_earlier_R1/screen01/complete.json",
+        "sha256": "12a65308c72e029074f347bedb04e8e3df88af5fc65173fe9a20e027769a1517"
+      },
+      "terminal": {
+        "file": "results/lora_profiled_compensation_v1/launches/tco-profiled-compensation-heads-earlier-r1/terminal.json",
+        "sha256": "0970a637a31dcb5805e231b4663d5c98fa9027a5d7dd1ee74a3a23a27b3a6c54"
+      },
+      "model_seconds": 285.9494890701026,
+      "local_wall_seconds": 320.03200000012293,
+      "peak_allocated_mib": 4720.74951171875,
+      "peak_reserved_mib": 5026.0,
+      "optimizer_updates": 8,
+      "original_state_unchanged": true,
+      "training_decoder_calls": 320,
+      "last_observed_before_update_by_fold": {
+        "0": {
+          "step": 6,
+          "base": 25.905358200085338,
+          "penalty": 0.0012932861708124957,
+          "compensation_l2_by_view": [
+            0.02762105072732864,
+            0.021100186684889735,
+            0.0008765665080716192,
+            0.023088182010156284,
+            0.02906199413028903
+          ],
+          "compensation_l2": 0.050858355671659215,
+          "matched_support_penalty_by_view": [
+            5.3529196959235476e-05,
+            7.435355246599903e-05,
+            1.4170896080310481e-05,
+            1.8836740071989274e-05,
+            2.5334351788962058e-05
+          ]
+        },
+        "1": {
+          "step": 7,
+          "base": 40.8478409422242,
+          "penalty": 0.001819541981049701,
+          "compensation_l2_by_view": [
+            0.025250180325372646,
+            0.052797805760854404,
+            0.008354223049716803,
+            0.009726159877840626,
+            0.0070365356348787884
+          ],
+          "compensation_l2": 0.06032482044813231,
+          "matched_support_penalty_by_view": [
+            3.627429389612847e-05,
+            0.00010320050441441023,
+            5.366587246275305e-06,
+            4.445209147366117e-06,
+            1.4638719842049312e-05
+          ]
+        }
+      }
+    },
+    {
+      "run_id": "heads_earlier_R2",
+      "scene": "heads",
+      "side": "earlier",
+      "arm": "R2",
+      "report": {
+        "file": "results/lora_profiled_compensation_v1/cases/heads_earlier_R2/screen01/complete.json",
+        "sha256": "f4081e1af29033023a306284558a85aa8849c31c9558a0a7718b56513a49b21e"
+      },
+      "terminal": {
+        "file": "results/lora_profiled_compensation_v1/launches/tco-profiled-compensation-heads-earlier-r2/terminal.json",
+        "sha256": "0c7251ab0086debd50917c81bda3c477efd5d26314e2973160c68c4dd3432603"
+      },
+      "model_seconds": 286.10543002700433,
+      "local_wall_seconds": 319.530999999959,
+      "peak_allocated_mib": 4722.24951171875,
+      "peak_reserved_mib": 5026.0,
+      "optimizer_updates": 8,
+      "original_state_unchanged": true,
+      "training_decoder_calls": 320,
+      "last_observed_before_update_by_fold": {
+        "0": {
+          "step": 6,
+          "base": 25.85528384837209,
+          "penalty": 0.002503599800765044,
+          "compensation_l2_by_view": [
+            0.05332787348589725,
+            0.01501688327502323,
+            0.03865276579394023,
+            0.014446423989132508,
+            0.015332816378981831
+          ],
+          "compensation_l2": 0.07076156867629553,
+          "matched_support_penalty_by_view": [
+            0.00016257817913464587,
+            4.4145052624253674e-05,
+            8.362657631360109e-05,
+            6.975158954919133e-06,
+            1.848417593193554e-05
+          ]
+        },
+        "1": {
+          "step": 7,
+          "base": 40.747116587428266,
+          "penalty": 0.005738295196863155,
+          "compensation_l2_by_view": [
+            0.08938543134676728,
+            0.04893058558130493,
+            0.020108629375658313,
+            0.026118046561615677,
+            0.0024745746678861463
+          ],
+          "compensation_l2": 0.10712884949315152,
+          "matched_support_penalty_by_view": [
+            0.00037067359629927533,
+            5.9000857955503534e-05,
+            1.526561112876528e-05,
+            2.267115140149639e-05,
+            1.1435885520207886e-05
+          ]
+        }
+      }
+    },
+    {
+      "run_id": "heads_later_P0",
+      "scene": "heads",
+      "side": "later",
+      "arm": "P0",
+      "report": {
+        "file": "results/lora_profiled_compensation_v1/cases/heads_later_P0/screen01/complete.json",
+        "sha256": "4fdb97caf45bd895bbee6dba8ad78cab00f2893fe8a7aed62128ac9c25e1193f"
+      },
+      "terminal": {
+        "file": "results/lora_profiled_compensation_v1/launches/tco-profiled-compensation-heads-later-p0/terminal.json",
+        "sha256": "b6c91d50967fce706961ab9856c89378d88c3a8f3b78adf7c0c59a00418108d8"
+      },
+      "model_seconds": 88.54126302199438,
+      "local_wall_seconds": 123.51599999982864,
+      "peak_allocated_mib": 3666.7685546875,
+      "peak_reserved_mib": 5200.0,
+      "optimizer_updates": 0,
+      "original_state_unchanged": true,
+      "training_decoder_calls": 0,
+      "last_observed_before_update_by_fold": {}
+    },
+    {
+      "run_id": "heads_later_P1",
+      "scene": "heads",
+      "side": "later",
+      "arm": "P1",
+      "report": {
+        "file": "results/lora_profiled_compensation_v1/cases/heads_later_P1/screen01/complete.json",
+        "sha256": "81789690ce6adf6c7f3ff0d331f09e439d7752891f0c584a730b981b5ed8cc39"
+      },
+      "terminal": {
+        "file": "results/lora_profiled_compensation_v1/launches/tco-profiled-compensation-heads-later-p1/terminal.json",
+        "sha256": "8715ca7d16dce5e2693ac7d26f89c5a7741f582ae276bedd96fc65f315db7ff3"
+      },
+      "model_seconds": 322.4327617849922,
+      "local_wall_seconds": 356.0,
+      "peak_allocated_mib": 4350.9501953125,
+      "peak_reserved_mib": 4986.0,
+      "optimizer_updates": 8,
+      "original_state_unchanged": true,
+      "training_decoder_calls": 320,
+      "last_observed_before_update_by_fold": {}
+    },
+    {
+      "run_id": "heads_later_P3",
+      "scene": "heads",
+      "side": "later",
+      "arm": "P3",
+      "report": {
+        "file": "results/lora_profiled_compensation_v1/cases/heads_later_P3/screen01/complete.json",
+        "sha256": "c864bdd8c242c70347a1b6e9fed7429f9c98e38d7c91625058a2597e0a75d555"
+      },
+      "terminal": {
+        "file": "results/lora_profiled_compensation_v1/launches/tco-profiled-compensation-heads-later-p3/terminal.json",
+        "sha256": "0c11407dcfe7c99bde7c8b9d0561105665f4106e44f5964c415d168e15344f7b"
+      },
+      "model_seconds": 284.216317479033,
+      "local_wall_seconds": 319.57800000021234,
+      "peak_allocated_mib": 4720.7509765625,
+      "peak_reserved_mib": 5238.0,
+      "optimizer_updates": 8,
+      "original_state_unchanged": true,
+      "training_decoder_calls": 320,
+      "last_observed_before_update_by_fold": {
+        "0": {
+          "step": 6,
+          "base": 28.044460617594225,
+          "penalty": 0.0,
+          "compensation_l2_by_view": [
+            0.061340396303484035,
+            0.08242254927554077,
+            0.011584992823586972,
+            0.012696550469996898,
+            0.023846143192092707
+          ],
+          "compensation_l2": 0.10686521344874092,
+          "matched_support_penalty_by_view": [
+            0.00011709920518108328,
+            0.00020385566497657827,
+            5.9862816859880505e-06,
+            8.08572625401102e-06,
+            3.932201328223686e-05
+          ]
+        },
+        "1": {
+          "step": 7,
+          "base": 19.853406719443267,
+          "penalty": 0.0,
+          "compensation_l2_by_view": [
+            0.038885962935835315,
+            0.00944510262051735,
+            0.03788714782722003,
+            0.00439203776544878,
+            0.020204004752367995
+          ],
+          "compensation_l2": 0.05885792938260505,
+          "matched_support_penalty_by_view": [
+            4.430743005554327e-05,
+            2.6397959740453378e-05,
+            4.354703755580737e-05,
+            1.1961692194986425e-06,
+            5.9607278909400045e-05
+          ]
+        }
+      }
+    }
+  ],
+  "complete_count": 9,
+  "pending": [
+    "heads_later_R0",
+    "heads_later_R1",
+    "heads_later_R2",
+    "chess_earlier_P0",
+    "chess_earlier_P1",
+    "chess_earlier_P3",
+    "chess_earlier_R0",
+    "chess_earlier_R1",
+    "chess_earlier_R2",
+    "chess_later_P0",
+    "chess_later_P1",
+    "chess_later_P3",
+    "chess_later_R0",
+    "chess_later_R1",
+    "chess_later_R2",
+    "fire_earlier_P0",
+    "fire_earlier_P1",
+    "fire_earlier_P3",
+    "fire_earlier_R0",
+    "fire_earlier_R1",
+    "fire_earlier_R2",
+    "fire_later_P0",
+    "fire_later_P1",
+    "fire_later_P3",
+    "fire_later_R0",
+    "fire_later_R1",
+    "fire_later_R2"
+  ],
+  "conditions": {
+    "heads_earlier": {
+      "p3_r0_r1_first_full_step_exact": true,
+      "r1_r2_first_forward_exact": true,
+      "r1_r2_first_gradient_differs": true
+    },
+    "heads_later": {
+      "p3_r0_r1_first_full_step_exact": null,
+      "r1_r2_first_forward_exact": null,
+      "r1_r2_first_gradient_differs": null
+    }
+  },
+  "by_arm": {
+    "P0": {
+      "cases": 2,
+      "median_local_wall_seconds": 120.67249999986961,
+      "peak_allocated_mib": 3666.7685546875
+    },
+    "P1": {
+      "cases": 2,
+      "median_local_wall_seconds": 349.85899999993853,
+      "peak_allocated_mib": 4350.9501953125
+    },
+    "P3": {
+      "cases": 2,
+      "median_local_wall_seconds": 330.3440000002738,
+      "peak_allocated_mib": 4720.7509765625
+    },
+    "R0": {
+      "cases": 1,
+      "median_local_wall_seconds": 334.73400000017136,
+      "peak_allocated_mib": 4720.74951171875
+    },
+    "R1": {
+      "cases": 1,
+      "median_local_wall_seconds": 320.03200000012293,
+      "peak_allocated_mib": 4720.74951171875
+    },
+    "R2": {
+      "cases": 1,
+      "median_local_wall_seconds": 319.530999999959,
+      "peak_allocated_mib": 4722.24951171875
+    }
+  },
+  "total_optimizer_updates": 56,
+  "total_local_wall_seconds": 2576.0480000004172,
+  "peak_allocated_mib": 4722.24951171875,
+  "peak_reserved_mib": 5238.0,
+  "rental_compute_usd": 0
+}
