@@ -2,6 +2,8 @@
 
 An independent research workspace for reproducing [TCO](https://github.com/cvlab-stonybrook/TCO) and studying when camera priors help or harm test-time adaptation. This is an exploratory study, not an official implementation or a claim of a new state of the art.
 
+**Research direction registered November 18.** The next study tests calibration-aware predictive LoRA with frozen original weights, beginning on local MASt3R. The goal defines implementation checks, a 30-adapter/six-control development screen, surface confirmation, bounded redesign and conditional VGGT/generalization work. The synthetic derivative check passes; model accuracy experiments remain pending. [Goal and execution gates](docs/CALIBRATION_AWARE_LORA_GOAL.md) · [Mathematical plan](docs/FROZEN_LORA_ACCURACY_PLAN.md) · [Experiment settings](manifests/lora_profiled_design_v1.json)
+
 ## Evidence so far
 
 **MASt3R sparse-source verification, November 17.** Six fresh adapters tested whether partner disagreement could recover local surface shape. The correction passed both temporal directions on Fire alone. A separate per-view scale control reduced dense metric depth error by 6.60% and 4.74% in the two folds, while registered surface error fell by 1.24% and 0.81%. The additive alternative missed its advancement rule against scale. Additional rental compute was USD 0. [Results, failure record and CPU replay](results/mast3r_partner_shape/README.md)
