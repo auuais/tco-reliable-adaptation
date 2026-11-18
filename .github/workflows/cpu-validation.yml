@@ -187,6 +187,8 @@ jobs:
           python scripts/audit_partner_headroom.py --verify
           python scripts/partner_bias_surface.py verify
           python scripts/replay_partner_surface_points.py
+      - name: Check profiled LoRA mathematical design
+        run: python scripts/check_lora_profiled_gradient.py --verify
       - run: python scripts/score_mast3r_neural_repeat.py verify
       - run: python scripts/replay_heldout_sparse_depth.py
       - run: python scripts/verify_tum_sparse_inputs.py
