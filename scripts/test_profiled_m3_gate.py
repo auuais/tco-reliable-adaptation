@@ -29,7 +29,7 @@ def synthetic(nominee="P3"):
                 for field in ("packet_sha256","folds_sha256","native_rows_sha256")}
         for reference in gate.REFERENCES:
             key=scene+"/"+reference
-            registration["references"][key]=dict(reference_sha256=h(key+"/archive"),mask_sha256=h(key+"/mask"),
+            registration["references"][key]=dict(reference_sha256=h(key+"/archive"),mask_sha256=h(scene+"/shared_mask"),
                                                   mask_count=(1,100,10000)[index])
     rows=[]
     arms=gate.CONTROLS+(nominee,)
@@ -227,11 +227,14 @@ class M3GateFixtures(unittest.TestCase):
     def test_candidate_nonpositive_main_disqualifies_without_mask_shrink(self):
         registration,packet=synthetic()
         row=first_row(packet,arm="P3",repeat=2,reference="released")
-        row["validity"]["main_nonpositive_depth"]=1
+        for item in packet["rows"]:
+            if item["state_id"]==row["state_id"]:
+                item["validity"]["main_nonpositive_depth"]=1
         result=gate.evaluate(registration,packet)
         self.assertFalse(result["pass_all"])
         self.assertEqual(len(result["raw_metric_rows"]),720)
-        self.assertEqual(sum(row["validity"]["main_nonpositive_depth"] for row in result["raw_metric_rows"]),1)
+        # Two reference rows describe the same one invalid output pixel.
+        self.assertEqual(sum(row["validity"]["main_nonpositive_depth"] for row in result["raw_metric_rows"]),2)
         row["validity"]["evaluated_mask_count"]-=1
         with self.assertRaisesRegex(ValueError,"mask.*filtered"):
             gate.evaluate(registration,packet)
@@ -239,7 +242,9 @@ class M3GateFixtures(unittest.TestCase):
     def test_native_invalid_counts_reported_without_substituting_gate_endpoint(self):
         registration,packet=synthetic()
         row=first_row(packet,arm="P3")
-        row["validity"]["native_nonpositive_depth"]=1
+        for item in packet["rows"]:
+            if item["state_id"]==row["state_id"]:
+                item["validity"]["native_nonpositive_depth"]=1
         row["native"]=dict(accuracy=1000,completeness=1000)
         result=gate.evaluate(registration,packet)
         self.assertTrue(result["pass_all"])
@@ -249,13 +254,44 @@ class M3GateFixtures(unittest.TestCase):
     def test_all_control_invalid_counts_retained_and_nonfinite_fields_fail(self):
         registration,packet=synthetic()
         row=first_row(packet,arm="P0")
-        row["validity"]["main_nonpositive_depth"]=1
+        pair=[item for item in packet["rows"] if item["state_id"]==row["state_id"]]
+        for item in pair:
+            item["validity"]["main_nonpositive_depth"]=1
         result=gate.evaluate(registration,packet)
         self.assertTrue(result["pass_all"])
-        pair=[item for item in packet["rows"] if item["state_id"]==row["state_id"]]
         for item in pair:
             item["validity"]["main_nonfinite_fields"]=1
         self.assertFalse(gate.evaluate(registration,packet)["pass_all"])
+
+    def test_reference_specific_masks_rejected_even_when_each_label_is_internally_consistent(self):
+        for field,value in (("mask_sha256",h("independent released mask")),("mask_count",2)):
+            registration,packet=synthetic()
+            registration["references"]["heads/released"][field]=value
+            for row in packet["rows"]:
+                if row["scene"]=="heads" and row["reference"]=="released":
+                    if field=="mask_sha256":
+                        row["identity"][field]=value
+                    else:
+                        row["validity"]["mask_count"]=value
+                        row["validity"]["evaluated_mask_count"]=value
+            packet["registration_sha256"]=gate.canonical_sha256(registration)
+            with self.assertRaisesRegex(ValueError,"same archived scene mask"):
+                gate.evaluate(registration,packet)
+
+    def test_every_validity_count_is_shared_across_reference_labels(self):
+        for field in gate.VALIDITY:
+            with self.subTest(field=field):
+                registration,packet=synthetic()
+                row=first_row(packet,arm="P3",reference="released")
+                row["validity"][field]+=1
+                with self.assertRaises(ValueError):
+                    gate.evaluate(registration,packet)
+
+    def test_unpaired_native_positive_count_cannot_pass_as_secondary_diagnostic(self):
+        registration,packet=synthetic()
+        first_row(packet,arm="P3",reference="released")["validity"]["native_nonpositive_depth"]=1
+        with self.assertRaisesRegex(ValueError,"Shared-mask validity counts"):
+            gate.evaluate(registration,packet)
 
     def test_missing_duplicate_extra_or_unexpected_inventory_rejected(self):
         for mutation in (lambda p:p["rows"].pop(),lambda p:p["rows"].append(deepcopy(p["rows"][0])),

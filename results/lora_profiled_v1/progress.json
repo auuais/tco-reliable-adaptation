@@ -2,7 +2,7 @@
   "goal": "Calibration-aware predictive LoRA accuracy investigation",
   "checkpoint_date": "2026-11-18",
   "status": "active",
-  "current_phase": "M2 scientific v2: 20 states verified; tco-profiled-screen02-chess-later-p2 running",
+  "current_phase": "M2 scientific v2: 23 states verified; tco-profiled-screen02-chess-later-p5 running",
   "completed_milestone_weight_percent": 25,
   "percentage_rule": "Conservative whole-milestone credit; completed subchecks are listed separately and are not accuracy evidence",
   "milestones": {
@@ -40,7 +40,7 @@
     "M2": {
       "weight": 25,
       "status": "in_progress",
-      "trained_states_completed": 16,
+      "trained_states_completed": 19,
       "trained_states_planned": 30,
       "frozen_controls_completed": 4,
       "frozen_controls_planned": 6,
@@ -50,7 +50,7 @@
     "M3": {
       "weight": 15,
       "status": "not_started",
-      "preparation": "Signed-only inputs and fixed poses prepared; 20 input checks, 24 actual CPU cases, 78 unit tests, 19 pinned-container converter tests, and exact synthetic dense repeatability in two fresh CPU processes passed. Real M3 execution and dense wrapper remain pending."
+      "preparation": "150 CPU fixtures pass; signed inputs and 24 actual CPU cases verified. Dense leaf exactly bridges legacy evaluator and production-raster conversion/diagnostics repeat exactly in fresh pinned CPU processes. Reference archive bytes and 15pose camera algebra verified without archive decoding. Early-cell gate implemented. Real M3 runner, byte-sealed wrapper/registration and model execution remain pending."
     },
     "M4": {
       "weight": 10,
@@ -96,7 +96,12 @@
     "m3_kernel_audit": "docs/PROFILED_LORA_M3_KERNEL_AUDIT.md",
     "m3_converter": "results/lora_profiled_m3_v1/points_cpu_checks.json",
     "m3_synthetic_runtime": "results/lora_profiled_m3_v1/runtime_checks/comparison02.json",
-    "m3_synthetic_backup": "results/lora_profiled_m3_v1/synthetic_kernel_backup.json"
+    "m3_synthetic_backup": "results/lora_profiled_m3_v1/synthetic_kernel_backup.json",
+    "m3_reference_preparation": "manifests/lora_profiled_m3_references_v1.json",
+    "m3_dense_leaf": "results/lora_profiled_m3_v1/dense_leaf_checks/comparison01.json",
+    "m3_dense_integration": "results/lora_profiled_m3_v1/dense_integration_checks/comparison01.json",
+    "m3_evaluator_unit_checks": "results/lora_profiled_m3_v1/evaluator_unit_checks.json",
+    "m3_evaluator_backup": "results/lora_profiled_m3_v1/dense_evaluator_backup.json"
   },
   "accuracy_improvement_established": false,
   "nomination": null,
@@ -107,7 +112,7 @@
   "redesigns_executed": 0,
   "redesign_limit": 1,
   "research_gpu_job_at_checkpoint": {
-    "container": "tco-profiled-screen02-chess-later-p2",
+    "container": "tco-profiled-screen02-chess-later-p5",
     "last_authoritative_state": "running",
     "batch_session_id": 27750,
     "batch_invocation": "20261118T104117Z_ede54062",
@@ -124,24 +129,24 @@
     "scientific_registry": "v2 and evaluation v2 verified, committed and pushed at 7815a7c; no study scores read",
     "engineering_v1": "historical source snapshot; intentionally fails current-source verification after registry changes",
     "evidence_archiver": "24 synthetic fixtures pass; real M1 archive copied and verified on distinct C/E disks (136 files, 315628130 bytes)",
-    "m3_preparation": "Signed-only inputs and fixed poses prepared; 20 input checks, 24 actual CPU cases, 78 unit tests, 19 pinned-container converter tests, and exact synthetic dense repeatability in two fresh CPU processes passed. Real M3 execution and dense wrapper remain pending."
+    "m3_preparation": "150 CPU fixtures pass; signed inputs and 24 actual CPU cases verified. Dense leaf exactly bridges legacy evaluator and production-raster conversion/diagnostics repeat exactly in fresh pinned CPU processes. Reference archive bytes and 15pose camera algebra verified without archive decoding. Early-cell gate implemented. Real M3 runner, byte-sealed wrapper/registration and model execution remain pending."
   },
   "last_observed_ci": {
-    "commit": "8f65e389508bad08ac778b2b18a08f6141259edd",
-    "run_id": 44299863487,
+    "commit": "0f82442edfad7af58f6805faa81ab628905ef0c3",
+    "run_id": 44300732125,
     "conclusion": "success",
-    "scope": "Full CPU workflow, including all 78 M3 unit tests and source-preparation / actual CPU case verification; synthetic Open3D runtime separately accepted in pinned Docker"
+    "scope": "Full CPU workflow at prior evidence checkpoint; new evaluator components separately passed 150 unit tests plus pinned CPU acceptance, awaiting commit CI"
   },
   "next_command": "Poll batch session 27750 and inspect live Docker state; after all 36 complete, verify the global seal and run the registered scorer as the handoff specifies",
-  "next_implementation_action": "Monitor the same local M2 batch through Chess and Fire. Global seal then registered scoring only after all 36 states. M3 preparation is validated; no M3 model run before nomination and execution registration.",
+  "next_implementation_action": "Observe unchanged M2 through Chess/Fire; global seal and registered scoring only after all36. If nominated, implement real M3 runner, stage byte seals/controller and evaluator wrapper with tested leaves and early predicate; then prospectively register before label access.",
   "handoff": "docs/CALIBRATION_AWARE_LORA_HANDOFF.md",
   "weekly_usage_checkpoint": {
-    "used_percent": 85,
-    "remaining_percent": 15,
+    "used_percent": 87,
+    "remaining_percent": 13,
     "pause_threshold_remaining_percent": 5,
-    "observation": "2026-11-18T12:02Z"
+    "observation": "2026-11-18T12:16Z"
   },
   "validated_code_commit": "8f65e389508bad08ac778b2b18a08f6141259edd",
-  "last_goal_turn_classification": "progress: fresh M2 states; completed synthetic converter, inventory and pinned CPU runtime acceptance; detailed successor handoff corrected and extended; no study accuracy access",
-  "checkpoint_observed_at_utc": "2026-11-18T12:06:11.229183+00:00"
+  "last_goal_turn_classification": "progress: additional fresh M2 runs, exact legacy dense bridge and integrated repeatability, source-bound reference preparation, validated early-cell gate and verified C/E evaluator/reference backup; no study accuracy access",
+  "checkpoint_observed_at_utc": "2026-11-18T12:22:43.706266+00:00"
 }

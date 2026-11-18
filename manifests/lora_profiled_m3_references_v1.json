@@ -1,0 +1,623 @@
+{
+  "schema": "profiled_m3_reference_preparation_v1",
+  "scenes": {
+    "heads": {
+      "sequence": "heads/seq-01",
+      "frames": [
+        25,
+        225,
+        425,
+        625,
+        825
+      ],
+      "rgb": {
+        "file": "reports/dense_focal_pilot/inference/heads_base_rgb.npz",
+        "sha256": "cdcf6eed07ba83824cafd8c0370eb43194be0d0cd2b8582ba1e7f5cf4824e469",
+        "bytes": 8951678,
+        "decoded": false
+      },
+      "reference": {
+        "file": "reports/dense_focal_pilot/evaluation/heads_base.npz",
+        "sha256": "8e7ed56e208d65c0236f16326d999e079ffcbbfc8f0a45a6987916f51fa6df3e",
+        "bytes": 17528843,
+        "decoded": false
+      },
+      "reference_fields": [
+        "registered_rgb",
+        "released",
+        "valid_mask"
+      ],
+      "fixed_mask": {
+        "shape": [
+          5,
+          392,
+          518
+        ],
+        "dtype": "bool",
+        "declared_count": 811621,
+        "shared_between_references": true,
+        "tensor_sha256": null,
+        "semantic_validation": "pending_authorized_decode_after_stage_seal"
+      },
+      "primary_axial_camera": {
+        "reference": "registered_rgb",
+        "world_to_camera": [
+          [
+            [
+              0.9660956422130086,
+              0.13318906857714383,
+              0.22239128835292774,
+              0.20828229331321152
+            ],
+            [
+              -0.061129938154251,
+              0.9509628131133664,
+              -0.30390742481109223,
+              0.20135244151496082
+            ],
+            [
+              -0.25190333787966424,
+              0.27990465669062253,
+              0.9266715860457628,
+              -0.26617550206604934
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          [
+            [
+              0.6429133697262807,
+              0.23871318500879896,
+              -0.7281866527614328,
+              -0.12220521482679977
+            ],
+            [
+              -0.3802036320925678,
+              0.9245789609243819,
+              -0.032604665224451435,
+              0.2518462175339605
+            ],
+            [
+              0.6653408359499442,
+              0.29770782167011745,
+              0.6850202401686323,
+              -0.2892056057265651
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          [
+            [
+              0.9822092580915911,
+              0.11853646519444885,
+              -0.1477253750738232,
+              -0.46241490623247755
+            ],
+            [
+              -0.14876619129882138,
+              0.9656036773667473,
+              -0.21441467273290893,
+              0.3526998136208162
+            ],
+            [
+              0.11720607359209816,
+              0.23247166653979917,
+              0.9658235462463663,
+              0.12024251156177682
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          [
+            [
+              0.9983215334519695,
+              -0.05815823614433349,
+              0.024592160185317246,
+              0.12593977850137347
+            ],
+            [
+              0.05786780520447043,
+              0.9985034115913765,
+              0.012800190215686959,
+              -0.3201554125113371
+            ],
+            [
+              -0.025294959750933658,
+              -0.011400084100658965,
+              0.9999234402634598,
+              0.09701576951815301
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          [
+            [
+              0.9384697829178626,
+              0.0970631275270149,
+              -0.332446369471661,
+              0.1846470212760432
+            ],
+            [
+              -0.10001975107483685,
+              0.9952292421588192,
+              0.008183915355499883,
+              0.05889991792022845
+            ],
+            [
+              0.33156476345249397,
+              0.02551553257015319,
+              0.9434318943751654,
+              -0.23286222448952368
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        ],
+        "tensor_sha256": "cb72d5e912b1979cf787bb6cf838a0c4484dc87c47773bd1655847554bccc4e5",
+        "dtype": "<f8",
+        "shape": [
+          5,
+          4,
+          4
+        ],
+        "source_pose_sha256": {
+          "heads/seq-01/frame-000025.pose.txt": "7a669445123268246c44a8b10cd80587144ce1a731b045a51746b2f073e82ffb",
+          "heads/seq-01/frame-000225.pose.txt": "d835e6f7a086ead904fd4a1637f46f80c863258e56600d6ab129ffc86585ce02",
+          "heads/seq-01/frame-000425.pose.txt": "d2c3addff24cf5ba140b5b2d632ab6edb262b76667c90932b964312686e23af5",
+          "heads/seq-01/frame-000625.pose.txt": "41cb00ad884c8efe0ed924fe85293527f374eccdf53060edc9eeac0f099ff653",
+          "heads/seq-01/frame-000825.pose.txt": "5b6abdb2ff5ae42941f240ed103a3a3810150f3202ec91c88039c08f4c17ecf0"
+        },
+        "historical_agreement_rtol": 1e-12,
+        "historical_agreement_atol": 1e-12,
+        "historical_camera_reproduction_passed": true,
+        "canonical_values": "archived_camera_metadata",
+        "matrices_orthogonalized": false,
+        "convention": "calibration @ effective_camera(loader_transpose_inverse(original_c2w))",
+        "current_reference_projection_check": "not_run_no_reference_decode"
+      },
+      "alternate_axial_camera": {
+        "reference": "released",
+        "status": "unsupported_not_registered"
+      }
+    },
+    "chess": {
+      "sequence": "chess/seq-03",
+      "frames": [
+        25,
+        225,
+        425,
+        625,
+        825
+      ],
+      "rgb": {
+        "file": "reports/dense_focal_pilot/inference/chess_base_rgb.npz",
+        "sha256": "3da9b2748ef9eef39e1231acdbbf552eca9bcd2d8ff468ed9eac69b981dee88c",
+        "bytes": 9476890,
+        "decoded": false
+      },
+      "reference": {
+        "file": "reports/dense_focal_pilot/evaluation/chess_base.npz",
+        "sha256": "2c5f30d93b7ea6b15696f986a11f3724e379f07739f8a01d2d93889502372d24",
+        "bytes": 19461563,
+        "decoded": false
+      },
+      "reference_fields": [
+        "registered_rgb",
+        "released",
+        "valid_mask"
+      ],
+      "fixed_mask": {
+        "shape": [
+          5,
+          392,
+          518
+        ],
+        "dtype": "bool",
+        "declared_count": 885247,
+        "shared_between_references": true,
+        "tensor_sha256": null,
+        "semantic_validation": "pending_authorized_decode_after_stage_seal"
+      },
+      "primary_axial_camera": {
+        "reference": "registered_rgb",
+        "world_to_camera": [
+          [
+            [
+              0.9838571278933452,
+              -0.08539017154670513,
+              0.15739129870230867,
+              -0.024573954231831972
+            ],
+            [
+              0.1415296318747037,
+              0.9093008935074443,
+              -0.39137785822591664,
+              0.5759687727949424
+            ],
+            [
+              -0.10969557666752199,
+              0.40732736923331253,
+              0.9066974514347386,
+              0.7099485778508478
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          [
+            [
+              -0.013929731496120618,
+              -0.29844086683749743,
+              0.9543623664011823,
+              -1.2446439917416077
+            ],
+            [
+              0.5153338956986449,
+              0.8157954322040927,
+              0.26263174970896663,
+              -0.1563710448232408
+            ],
+            [
+              -0.8569274825001245,
+              0.49545561857504966,
+              0.14242684712186743,
+              1.2776680460128007
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          [
+            [
+              0.9551342245727626,
+              -0.060133602493301054,
+              -0.29019668941816473,
+              0.3620223169513255
+            ],
+            [
+              -0.21442038295414387,
+              0.5357703942381917,
+              -0.8167532751923663,
+              0.9201371692688431
+            ],
+            [
+              0.2045878184514132,
+              0.8422875337452184,
+              0.4988260260553923,
+              0.9151780407084762
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          [
+            [
+              0.8236894145195018,
+              -0.044308674292212254,
+              0.5654381473024741,
+              -1.1820083609565173
+            ],
+            [
+              0.29588457957593556,
+              0.884163170337648,
+              -0.3617361496134334,
+              0.7116352618066597
+            ],
+            [
+              -0.48388450234646563,
+              0.4652205615898941,
+              0.7413454251576528,
+              0.15042212613118283
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          [
+            [
+              0.9956962402164348,
+              0.07283229905132986,
+              -0.05886379654051667,
+              -0.19005017719732853
+            ],
+            [
+              -0.09297086053068135,
+              0.8440786889322094,
+              -0.5282644337762199,
+              1.1376636920885368
+            ],
+            [
+              0.011212390497510374,
+              0.531409019034666,
+              0.8471587792073568,
+              -0.6638924689878292
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        ],
+        "tensor_sha256": "2ad39678710d646a65f8888ef109ae7978b391480721105d340ec2b50e53a0be",
+        "dtype": "<f8",
+        "shape": [
+          5,
+          4,
+          4
+        ],
+        "source_pose_sha256": {
+          "chess/seq-03/frame-000025.pose.txt": "9aaee2935f1f02014b89c3c0dc986804618c9a73d0197c38f75d71146c4c796e",
+          "chess/seq-03/frame-000225.pose.txt": "d850e5931835657cf8d95d13d51b450e49e57f7bd68fda316b525697b48cef94",
+          "chess/seq-03/frame-000425.pose.txt": "648cc4ec6455cb83adb93aa847fe0ea80af40d034ea67270a1626a6044eaa35e",
+          "chess/seq-03/frame-000625.pose.txt": "57eed227dbb12ba3a812b28965d2f8cc138e671c4c387caebc1f51738fafdb0e",
+          "chess/seq-03/frame-000825.pose.txt": "6aa3170f2034b367657ae17a5956e4b5bb479ad833352a005cba81db0a4422ba"
+        },
+        "historical_agreement_rtol": 1e-12,
+        "historical_agreement_atol": 1e-12,
+        "historical_camera_reproduction_passed": true,
+        "canonical_values": "archived_camera_metadata",
+        "matrices_orthogonalized": false,
+        "convention": "calibration @ effective_camera(loader_transpose_inverse(original_c2w))",
+        "current_reference_projection_check": "not_run_no_reference_decode"
+      },
+      "alternate_axial_camera": {
+        "reference": "released",
+        "status": "unsupported_not_registered"
+      }
+    },
+    "fire": {
+      "sequence": "fire/seq-03",
+      "frames": [
+        25,
+        225,
+        425,
+        625,
+        825
+      ],
+      "rgb": {
+        "file": "reports/dense_focal_pilot/inference/fire_base_rgb.npz",
+        "sha256": "7013237eb2aeb920374d8e422645059a267ba1c0cf18e3ddb4994db4df664c12",
+        "bytes": 9434716,
+        "decoded": false
+      },
+      "reference": {
+        "file": "reports/dense_focal_pilot/evaluation/fire_base.npz",
+        "sha256": "655950e9421f1a76ba487b376a4fa2d3bd0c3da6ef195d8d3509259aaa843225",
+        "bytes": 19181431,
+        "decoded": false
+      },
+      "reference_fields": [
+        "registered_rgb",
+        "released",
+        "valid_mask"
+      ],
+      "fixed_mask": {
+        "shape": [
+          5,
+          392,
+          518
+        ],
+        "dtype": "bool",
+        "declared_count": 874944,
+        "shared_between_references": true,
+        "tensor_sha256": null,
+        "semantic_validation": "pending_authorized_decode_after_stage_seal"
+      },
+      "primary_axial_camera": {
+        "reference": "registered_rgb",
+        "world_to_camera": [
+          [
+            [
+              0.9769038918889531,
+              0.14651458649507831,
+              -0.15565132699001608,
+              0.016128447888214666
+            ],
+            [
+              -0.1917365544204831,
+              0.9225114164299444,
+              -0.3350343782997161,
+              0.4938480951109611
+            ],
+            [
+              0.09449997372006892,
+              0.357132762670653,
+              0.929282597158384,
+              -0.1492386467197369
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          [
+            [
+              0.6018263201193259,
+              -0.15769670835034758,
+              0.7829452566940936,
+              -1.3274465733189393
+            ],
+            [
+              0.5399839293426055,
+              0.8026689117552227,
+              -0.25339826150340866,
+              0.5306518217546404
+            ],
+            [
+              -0.5884681670186083,
+              0.5752608576345719,
+              0.5682009328924913,
+              0.020246825535335942
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          [
+            [
+              0.9906871697054607,
+              0.017202661563981498,
+              -0.13541976588468976,
+              0.8600277718695581
+            ],
+            [
+              -0.11098584879906764,
+              0.6790996219551214,
+              -0.7256798337692877,
+              1.0517637471965837
+            ],
+            [
+              0.07947459900655995,
+              0.7339169135406363,
+              0.6746570207541296,
+              0.5951711028701742
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          [
+            [
+              0.9831908865824384,
+              -0.007538038605268977,
+              0.1827496252922017,
+              -0.7188005136327756
+            ],
+            [
+              0.11281578544968732,
+              0.8115062372997287,
+              -0.5734660611978222,
+              1.1087459274716815
+            ],
+            [
+              -0.1439747853139008,
+              0.5844075235041781,
+              0.7986741734114177,
+              -0.21651613646046583
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          [
+            [
+              0.7740325748320618,
+              0.17721694663923468,
+              -0.6079704684344944,
+              1.3252774431257222
+            ],
+            [
+              -0.39886339940985704,
+              0.8821870985617742,
+              -0.25065855016318783,
+              0.29187335488257526
+            ],
+            [
+              0.49188855007597326,
+              0.43647408798378884,
+              0.7534738353321876,
+              -0.6765458889985146
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        ],
+        "tensor_sha256": "53477021a2a663419cf770ed43ba840cedda872b098e76848d1ac03886dea0a8",
+        "dtype": "<f8",
+        "shape": [
+          5,
+          4,
+          4
+        ],
+        "source_pose_sha256": {
+          "fire/seq-03/frame-000025.pose.txt": "9d8eb28cbae33c642bd37499d1806c5be09a65c160df13aca2d69dca89bc745b",
+          "fire/seq-03/frame-000225.pose.txt": "6ed26d5120c18508c178167e5506b7bdc82cb76e80bc15e9728165050fb8ac18",
+          "fire/seq-03/frame-000425.pose.txt": "1d50df8d3da3f1435cb1a99ea08c7e57c9abe4eb7fc76ee2ad33eb1d91303932",
+          "fire/seq-03/frame-000625.pose.txt": "60b42fa997d10b38f51524a4595a725ec539cdd7471269e02148570c1c955cce",
+          "fire/seq-03/frame-000825.pose.txt": "ea9c22062aeb02a7b35e94caf7ddd5d5cc770ffc775be05ca5ef862bb27dd7b9"
+        },
+        "historical_agreement_rtol": 1e-12,
+        "historical_agreement_atol": 1e-12,
+        "historical_camera_reproduction_passed": true,
+        "canonical_values": "archived_camera_metadata",
+        "matrices_orthogonalized": false,
+        "convention": "calibration @ effective_camera(loader_transpose_inverse(original_c2w))",
+        "current_reference_projection_check": "not_run_no_reference_decode"
+      },
+      "alternate_axial_camera": {
+        "reference": "released",
+        "status": "unsupported_not_registered"
+      }
+    }
+  },
+  "metadata_sha256": {
+    "manifests/dense_focal_inputs.json": "20bbc76fabc3e903b0ba904beb04bf42931e141d074291e2748a185a40befd57",
+    "results/source_frame_spacing/inputs.json": "1b154f1640b7eb5f514c8346fa28a921284e30692574ce97e24d41e09b5ffa2e",
+    "results/mast3r_geometry_matching_v1/match_audit.json": "07fdb68487cff400c39397e1deb91a15a27673d4a3f55b08a8bdcc06e7157cc1",
+    "manifests/sensor_frame_v14.json": "ea2ee65dca80dff8c942f5482efa23baa4dab5c0b18272ac20f011f3450c7100",
+    "manifests/mast3r_geometry_matching_v1.json": "aaa2a2d508eb3421b652e99a0820067e43ffa3c2692334ed7791df21d2f9c0d3"
+  },
+  "source_sha256_lf": {
+    "scripts/prepare_profiled_m3_references.py": "8033e65a77e9b7c9da0aa39fa1fe2b40756f12326cf12b16bdbbee430de2506f",
+    "scripts/prepare_dense_focal_pilot.py": "6b4ee083c91ac0eecc62bb3fb35ed3bd53aed6b3ccf2eff742795257ccc347a4",
+    "scripts/zoom_dense_reference.py": "caf6590197cb64e875e70251ee1ebb302204c470811089efa5cab77576467898",
+    "scripts/calibration_audit.py": "361ce37d003e48387923c962f232aa6a5d8bf797544d7069dca3462c6a43607d",
+    "scripts/audit_mast3r_crossover_matches.py": "32b70d68dec6ded2f587a3b972f58cdced1a4680fd0cbd9be5224f48282e35c4",
+    "scripts/audit_sensor_frame.py": "c56b4289afdc6e2d9fce275e98b8f48552dad4dfd7e857cd8101c1d144b0d943"
+  },
+  "original_pose_text_files_read": 15,
+  "image_depth_prediction_reference_archives_decoded": 0,
+  "accuracy_scoring_performed": false,
+  "execution_registration": false,
+  "release_authorized": false,
+  "limitation": "Byte identity and reference-camera algebra only. Mask semantics, current reprojection and dense metric evaluation remain gated. References are two conventions of shared data, not independent datasets."
+}

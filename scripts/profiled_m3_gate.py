@@ -14,6 +14,7 @@ initialization contract); the fixed ``policy()``; ``scenes`` (RGB/clean/noisy po
 hashes and noise seed); ``observations`` keyed scene/side/grid (packet/folds/native
 rows hashes); and ``references`` keyed scene/reference (archive/mask hashes and
 positive mask count). The future wrapper must bind this exact registration.
+Both reference labels share the same archived mask hash and count per scene.
 
 Packet schema ``profiled_m3_scene_metrics_v1`` binds its canonical registration
 SHA256 and contains 720 rows: eight cells * three repeats * three scenes * five
@@ -164,6 +165,10 @@ def validate_registration(registration):
         for field in ("reference_sha256","mask_sha256"):
             digest(spec[field],key+"/"+field)
         require(count(spec["mask_count"],key)>0,"Empty scene reference mask: "+key)
+    for scene in SCENES:
+        first,second=(references[scene+"/"+reference] for reference in REFERENCES)
+        require(first["mask_sha256"]==second["mask_sha256"] and first["mask_count"]==second["mask_count"],
+                "Both reference conventions must use the same archived scene mask: "+scene)
     return registration["nominee"]
 
 
@@ -223,12 +228,12 @@ def validate_packet(registration,packet):
                 number(value,sid+"/"+kind+"/"+field)
         index[key]=row
     require(set(index)==expected and len(states)==360,"Missing paired M3 state")
-    # Both references describe the same saved artifacts, so field-finiteness is identical.
+    # Both labels use the same output and shared mask, so every validity count
+    # (including depth positivity) must be identical, not merely finiteness.
     for sid in states:
         pair=[row for row in rows if row["state_id"]==sid]
-        require(all(pair[0]["validity"][field]==pair[1]["validity"][field]
-                    for field in ("main_nonfinite_fields","native_nonfinite_fields")),
-                "Artifact-finiteness reports disagree across references: "+sid)
+        require(pair[0]["validity"]==pair[1]["validity"],
+                "Shared-mask validity counts differ across references: "+sid)
     return nominee,arms,index
 
 
