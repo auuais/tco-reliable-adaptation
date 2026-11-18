@@ -1,0 +1,177 @@
+"""Synthetic-only CPU acceptance probe for the unchanged dense metric kernel.
+
+This entry point accepts no study data or prediction path. Run it in two fresh
+CPU-only containers from the pinned image before registering a dense evaluator.
+It is not a study scorer or an authorization to read evaluation references.
+"""
+import argparse
+import ast
+import hashlib
+import importlib.util
+import json
+import os
+from pathlib import Path
+import platform
+import tempfile
+from types import SimpleNamespace
+
+import cv2
+import numpy as np
+import open3d as o3d
+import scipy
+from scipy.spatial import _ckdtree
+import torch
+
+ROOT = Path(__file__).resolve().parents[1]
+IMAGE = "sha256:74783a8eefee6daad6ff2714a51263ccdcdc5092b83cebee20515310bec46b50"
+
+
+def sha(path, text=False):
+    digest = hashlib.sha256()
+    if text:
+        return hashlib.sha256(path.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
+    with path.open("rb") as stream:
+        for block in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def tensor_hash(array):
+    array = np.ascontiguousarray(array)
+    digest = hashlib.sha256(json.dumps([list(array.shape), array.dtype.str]).encode())
+    digest.update(array.tobytes())
+    return digest.hexdigest()
+
+
+def inspect_runtime():
+    versions = dict(python=platform.python_version(), torch=torch.__version__, numpy=np.__version__,
+                    scipy=scipy.__version__, opencv=cv2.__version__, open3d=o3d.__version__)
+    expected = dict(python="3.11.13", torch="2.7.1+cu128", numpy="2.1.2", scipy="1.15.2",
+                    opencv="4.11.0", open3d="0.19.0")
+    if versions != expected or torch.cuda.is_available() or os.environ.get("CUDA_VISIBLE_DEVICES") != "":
+        raise ValueError("Use the pinned, CPU-only Docker runtime; this is not a host-runtime probe")
+    env = {key: os.environ.get(key) for key in
+           ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS", "NUMEXPR_NUM_THREADS")}
+    if any(value != "1" for value in env.values()):
+        raise ValueError("Declared OMP/BLAS environment must be set before interpreter startup")
+    torch.set_num_threads(2)
+    torch.set_num_interop_threads(1)
+    cv2.setNumThreads(1)
+    from threadpoolctl import threadpool_info
+    pools = sorted(threadpool_info(), key=lambda row: row.get("filepath", ""))
+    binaries = {Path(_ckdtree.__file__), Path(np._core._multiarray_umath.__file__),
+                Path(np.linalg._umath_linalg.__file__), Path(o3d.cpu.pybind.__file__),
+                Path(torch.__file__).parent / "lib/libtorch_cpu.so"}
+    binaries.update(Path(cv2.__file__).parent.glob("cv2*.so"))
+    binaries.update(Path(row["filepath"]) for row in pools if row.get("filepath"))
+    cpuinfo = Path("/proc/cpuinfo").read_text()
+    model = next((line.split(":", 1)[1].strip() for line in cpuinfo.splitlines()
+                  if line.startswith("model name")), "unavailable")
+    flags = next((line.split(":", 1)[1].strip() for line in cpuinfo.splitlines()
+                  if line.startswith("flags")), "unavailable")
+    cgroups = {}
+    for name in ("cpu.max", "cpuset.cpus.effective", "memory.max"):
+        path = Path("/sys/fs/cgroup") / name
+        cgroups[name] = path.read_text().strip() if path.is_file() else None
+    return dict(versions=versions, expected_image=IMAGE, machine=platform.machine(), cpu_model=model,
+                cpu_flags_sha256=hashlib.sha256(flags.encode()).hexdigest(), cpu_count=os.cpu_count(),
+                cpu_affinity=sorted(os.sched_getaffinity(0)), cgroups=cgroups, environment=env,
+                torch_threads=torch.get_num_threads(), torch_interop_threads=torch.get_num_interop_threads(),
+                opencv_threads=cv2.getNumThreads(), threadpools=pools,
+                binary_sha256={str(path): sha(path) for path in sorted(binaries)},
+                kdtree_workers=-1, scoring_parallelism="one case at a time",
+                icp_defaults=repr(o3d.pipelines.registration.ICPConvergenceCriteria()),
+                normals="KNN30, fast_normal_computation=True; unsigned nearest-neighbor comparison")
+
+
+def synthetic_cloud():
+    generator = np.random.default_rng(42)
+    x, y = np.meshgrid(np.linspace(-.7, .7, 12), np.linspace(-.4, .4, 10))
+    reference = np.stack([np.stack([x + .04 * i, y + .06 * i,
+                           1.5 + .1 * np.sin(4*x) + .08 * np.cos(3*y) + .07 * i], axis=-1)
+                          for i in range(3)]).astype(np.float32)
+    angle = .19
+    rotation = np.array([[np.cos(angle), -np.sin(angle), 0],
+                         [np.sin(angle), np.cos(angle), 0], [0, 0, 1]])
+    prediction = ((reference - [.04, -.02, .07]) @ rotation / 1.08
+                  + generator.normal(0, .006, reference.shape)).astype(np.float32)
+    prediction[1, 4, 5] += np.array([.24, -.15, .18], dtype=np.float32)
+    prediction[2, 3, 4] = prediction[2, 3, 3]
+    reference[2, 3, 4] = reference[2, 3, 3]
+    mask = np.ones(reference.shape[:-1], dtype=bool)
+    mask[:, 0, :2] = False
+    return prediction, reference, mask
+
+
+def probe(prediction, reference, mask):
+    """Execute the original evaluate body with recording-only Open3D delegates."""
+    spec = importlib.util.spec_from_file_location("pinned_tco_dense_metrics",
+                                                 ROOT / "third_party/TCO/evaluation/mv_recon/utils.py")
+    metrics = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(metrics)
+    clouds, registrations = [], []
+
+    def point_cloud():
+        cloud = o3d.geometry.PointCloud()
+        clouds.append(cloud)
+        return cloud
+
+    def icp(*args, **kwargs):
+        result = o3d.pipelines.registration.registration_icp(*args, **kwargs)
+        registrations.append(result)
+        return result
+
+    recorder = SimpleNamespace(geometry=SimpleNamespace(PointCloud=point_cloud), utility=o3d.utility,
+                               pipelines=SimpleNamespace(registration=SimpleNamespace(
+                                   registration_icp=icp, TransformationEstimationPointToPoint=
+                                   o3d.pipelines.registration.TransformationEstimationPointToPoint)))
+    source = ROOT / "scripts/run_repeat_calibration.py"
+    tree = ast.parse(source.read_text(encoding="utf-8"))
+    node = next(n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name == "evaluate")
+    namespace = dict(np=np, o3d=recorder, umeyama=metrics.umeyama, accuracy=metrics.accuracy,
+                     completion=metrics.completion,
+                     dump=lambda path, value: path.write_text(json.dumps(value, allow_nan=False)))
+    exec(compile(ast.Module(body=[node], type_ignores=[]), str(source), "exec"), namespace)
+    np.random.seed(42)
+    torch.manual_seed(42)
+    o3d.utility.random.seed(42)
+    with tempfile.TemporaryDirectory(prefix="m3_synthetic_dense_") as temporary:
+        result = namespace["evaluate"](prediction.copy(), dict(pointclouds=reference.copy(),
+                    valid_mask=mask.copy(), images=torch.zeros((3, 3, 10, 12))), Path(temporary))
+    if len(clouds) != 2 or len(registrations) != 1 or result["valid_points"] != int(mask.sum()):
+        raise ValueError("Synthetic probe changed the expected common point inventory")
+    tensors = dict(aligned_points=np.asarray(clouds[0].points), reference_points=np.asarray(clouds[1].points),
+                   prediction_normals=np.asarray(clouds[0].normals), reference_normals=np.asarray(clouds[1].normals),
+                   icp_correspondences=np.asarray(registrations[0].correspondence_set))
+    if any(not np.isfinite(value).all() for value in tensors.values()):
+        raise ValueError("Synthetic dense evaluation produced nonfinite values")
+    return dict(metrics=result, icp_fitness=float(registrations[0].fitness),
+                icp_inlier_rmse=float(registrations[0].inlier_rmse),
+                icp_correspondence_count=len(tensors["icp_correspondences"]),
+                tensor_sha256={name: tensor_hash(value) for name, value in tensors.items()},
+                shapes={name: list(value.shape) for name, value in tensors.items()})
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--output", type=Path, required=True)
+    args = parser.parse_args()
+    if args.output.exists():
+        raise FileExistsError("Preserve existing probe evidence; select a fresh output")
+    runtime = inspect_runtime()
+    pred, ref, mask = synthetic_cloud()
+    inputs = {name: tensor_hash(value) for name, value in dict(prediction=pred, reference=ref, mask=mask).items()}
+    cases = {"float32_reference": probe(pred, ref, mask), "float64_reference": probe(pred, ref.astype(np.float64), mask)}
+    sources = ("scripts/check_profiled_m3_dense_runtime.py", "scripts/run_repeat_calibration.py",
+               "third_party/TCO/evaluation/mv_recon/utils.py")
+    report = dict(schema="profiled_m3_synthetic_dense_runtime_v1", synthetic_only=True, pass_all=True,
+                  source_sha256_lf={name: sha(ROOT / name, text=True) for name in sources}, runtime=runtime,
+                  synthetic_input_sha256=inputs, probes=cases, study_arrays_opened=False,
+                  scientific_accuracy_scoring_performed=False, release_authorized=False,
+                  limitation="A separate receipt must compare fresh processes; this does not validate study geometry")
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    with args.output.open("x", encoding="utf-8", newline="\n") as stream:
+        json.dump(report, stream, indent=2, allow_nan=False)
+        stream.write("\n")
+    print(json.dumps(dict(synthetic_only=True, pass_all=True, study_arrays_opened=False,
+                         cases=len(cases), output=str(args.output))))

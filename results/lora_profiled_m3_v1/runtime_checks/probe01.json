@@ -1,0 +1,331 @@
+{
+  "schema": "profiled_m3_synthetic_dense_runtime_v1",
+  "synthetic_only": true,
+  "pass_all": true,
+  "source_sha256_lf": {
+    "scripts/check_profiled_m3_dense_runtime.py": "618955dacd7337a9d11168987eef73a3eed3dcf320e5ce742c605dbbb524d0af",
+    "scripts/run_repeat_calibration.py": "1ed51eba0b12ed7160bea9e15c02f0c2e9d41acc562cb00d2b0bf998de5e102f",
+    "third_party/TCO/evaluation/mv_recon/utils.py": "b7d4a3dfc1f6b7742c6d55ad1464d27df342ed4f1be0296cd15ab6d179eb38d6"
+  },
+  "runtime": {
+    "versions": {
+      "python": "3.11.13",
+      "torch": "2.7.1+cu128",
+      "numpy": "2.1.2",
+      "scipy": "1.15.2",
+      "opencv": "4.11.0",
+      "open3d": "0.19.0"
+    },
+    "expected_image": "sha256:74783a8eefee6daad6ff2714a51263ccdcdc5092b83cebee20515310bec46b50",
+    "machine": "x86_64",
+    "cpu_model": "Intel(R) Core(TM) i5-10400F CPU @ 2.90GHz",
+    "cpu_flags_sha256": "7bcae9f00ad7d606e7cecc855ff8354d667cc230dc4207ee2cd49437df40434c",
+    "cpu_count": 12,
+    "cpu_affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "cgroups": {
+      "cpu.max": "max 100000",
+      "cpuset.cpus.effective": "0-11",
+      "memory.max": "max"
+    },
+    "environment": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "torch_threads": 2,
+    "torch_interop_threads": 1,
+    "opencv_threads": 1,
+    "threadpools": [
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "num_threads": 2,
+        "prefix": "libgomp",
+        "filepath": "/opt/conda/lib/libgomp.so.1.0.0",
+        "version": null
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libscipy_openblas",
+        "filepath": "/opt/conda/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-ff651d7f.so",
+        "version": "0.3.27",
+        "threading_layer": "pthreads",
+        "architecture": "Haswell"
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "filepath": "/opt/conda/lib/python3.11/site-packages/opencv_python.libs/libopenblas-r0-f650aae0.3.3.so",
+        "version": null,
+        "threading_layer": "disabled",
+        "architecture": "Prescott"
+      },
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "num_threads": 1,
+        "prefix": "libgomp",
+        "filepath": "/opt/conda/lib/python3.11/site-packages/scikit_learn.libs/libgomp-e985bcbb.so.1.0.0",
+        "version": null
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libscipy_openblas",
+        "filepath": "/opt/conda/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+        "version": "0.3.28",
+        "threading_layer": "pthreads",
+        "architecture": "Haswell"
+      }
+    ],
+    "binary_sha256": {
+      "/opt/conda/lib/libgomp.so.1.0.0": "f6ee90d37b996872e83b8a5de233309af6e467765822759140d341779e1c1e8c",
+      "/opt/conda/lib/python3.11/site-packages/cv2/cv2.abi3.so": "188d38ace4716a74534ddf4dd4f7d77a06641bd0908bf12eb218a3c2fef35f38",
+      "/opt/conda/lib/python3.11/site-packages/numpy/_core/_multiarray_umath.cpython-311-x86_64-linux-gnu.so": "fc30bdf6199a1ffa6772deb5f364d616066a72f8537d494e7676594b1432f145",
+      "/opt/conda/lib/python3.11/site-packages/numpy/linalg/_umath_linalg.cpython-311-x86_64-linux-gnu.so": "a63a7e6c2d77299767693a26f303e1b55f817d72fff70beea51dee2660dc4d55",
+      "/opt/conda/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-ff651d7f.so": "189a83ef383c24ecbcd28555a9e249ffeb0d3eb7d209373b4ae527d9104e43d0",
+      "/opt/conda/lib/python3.11/site-packages/open3d/cpu/pybind.cpython-311-x86_64-linux-gnu.so": "85edd3cd33396d3ecf0e963b5ec8f4ff83eea1e8e1ae40672fd050f11534c168",
+      "/opt/conda/lib/python3.11/site-packages/opencv_python.libs/libopenblas-r0-f650aae0.3.3.so": "79ec02b53f573cd7116a89f04c397473018e7fda05720b354d43505c19d47958",
+      "/opt/conda/lib/python3.11/site-packages/scikit_learn.libs/libgomp-e985bcbb.so.1.0.0": "a43904e4fa297301d4640dc1bb3c8a3480b406f99e498eba9b1914b68aab604a",
+      "/opt/conda/lib/python3.11/site-packages/scipy/spatial/_ckdtree.cpython-311-x86_64-linux-gnu.so": "ba08244fb8c815a53360f04d75b38e81af47cc2311576eb33d34dcdf44c444d3",
+      "/opt/conda/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-68440149.so": "3e739a2435af49d2d938749f316aa338c65f41c9ae6615406e7cf83feb662f46",
+      "/opt/conda/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so": "3bdc786fb31bb73e6f06e9e82b166286e4fd088ba679f46f97a652deacdd78e6"
+    },
+    "kdtree_workers": -1,
+    "scoring_parallelism": "one case at a time",
+    "icp_defaults": "ICPConvergenceCriteria(relative_fitness=1.000000e-06, relative_rmse=1.000000e-06, max_iteration=30)",
+    "normals": "KNN30, fast_normal_computation=True; unsigned nearest-neighbor comparison"
+  },
+  "synthetic_input_sha256": {
+    "prediction": "e12be2d0208efe00770ac9a81d6576ee136ab23a4eec8cc96dec08224a021d41",
+    "reference": "9ac7a1557c855f1db47d088c05e7287c2d5ea02726f97e2b3feb13138e0ba699",
+    "mask": "16e470799130bf983b2ad38b696771253aaa3f4725fadfb6204eb929e060b7c6"
+  },
+  "probes": {
+    "float32_reference": {
+      "metrics": {
+        "accuracy_mean_m": 0.010147488839954158,
+        "accuracy_median_m": 0.009459204699779894,
+        "completeness_mean_m": 0.010265324157215282,
+        "completeness_median_m": 0.009459204699779894,
+        "normal_consistency_mean": 0.9952756777476784,
+        "normal_consistency_median": 0.9985134239961422,
+        "nc1_mean": 0.9952782730389714,
+        "nc2_mean": 0.9952730824563855,
+        "valid_points": 354,
+        "similarity_scale": 1.0781821017434667,
+        "similarity_rotation": [
+          [
+            0.9820042582886338,
+            -0.18885795156363064,
+            -0.0005438478827702042
+          ],
+          [
+            0.1888567169757026,
+            0.9820030083405844,
+            -0.0018008892324609949
+          ],
+          [
+            0.0008741726548764372,
+            0.0016657708880939426,
+            0.9999982259739435
+          ]
+        ],
+        "similarity_translation": [
+          [
+            0.039936378382862125
+          ],
+          [
+            -0.016582307886359657
+          ],
+          [
+            0.07228032185807098
+          ]
+        ],
+        "icp_transformation": [
+          [
+            0.9999999240356151,
+            -0.0002480489241081597,
+            0.00030066675249884606,
+            0.00035857077225363165
+          ],
+          [
+            0.0002480391351975912,
+            0.9999999687071025,
+            3.259419417153686e-05,
+            -0.0003983196699404029
+          ],
+          [
+            -0.000300674828044717,
+            -3.251961457425431e-05,
+            0.9999999542685608,
+            0.00043457932882984295
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+      },
+      "icp_fitness": 1.0,
+      "icp_inlier_rmse": 0.011200898110514777,
+      "icp_correspondence_count": 354,
+      "tensor_sha256": {
+        "aligned_points": "8bb3603823f515dd5ff52820ba02da5d6e551392e312bd6919877ff7bede727c",
+        "reference_points": "1be2d4842f5ed7bf57233c6bf497ef9103aa8135a8fa518af8d5ef4e38994920",
+        "prediction_normals": "d8c7d2697cdf85f5d62178e9a5ba24c50f0a5166d2a0cf2f6ba53ea4655f03a9",
+        "reference_normals": "9e15dc6da6991c5dce144d8295ec774e7f2e9f41d3f07b4f021184a819cf9002",
+        "icp_correspondences": "660817cf30292cbcc76220fb8915e7d8c783b17a864ce98b40cfd2da8f3bd160"
+      },
+      "shapes": {
+        "aligned_points": [
+          354,
+          3
+        ],
+        "reference_points": [
+          354,
+          3
+        ],
+        "prediction_normals": [
+          354,
+          3
+        ],
+        "reference_normals": [
+          354,
+          3
+        ],
+        "icp_correspondences": [
+          354,
+          2
+        ]
+      }
+    },
+    "float64_reference": {
+      "metrics": {
+        "accuracy_mean_m": 0.010147489923440296,
+        "accuracy_median_m": 0.00945920751045981,
+        "completeness_mean_m": 0.010265325252433415,
+        "completeness_median_m": 0.00945920751045981,
+        "normal_consistency_mean": 0.9952756776647651,
+        "normal_consistency_median": 0.9985134239634353,
+        "nc1_mean": 0.9952782729561718,
+        "nc2_mean": 0.9952730823733585,
+        "valid_points": 354,
+        "similarity_scale": 1.0781820525847379,
+        "similarity_rotation": [
+          [
+            0.9820042638852517,
+            -0.18885796233392543,
+            -0.0005438513227365275
+          ],
+          [
+            0.18885672220541683,
+            0.9820030016327775,
+            -0.0018009058945662783
+          ],
+          [
+            0.0008741790489720478,
+            0.0016657872891408581,
+            0.9999982304802832
+          ]
+        ],
+        "similarity_translation": [
+          [
+            0.039936377902745325
+          ],
+          [
+            -0.01658226910743997
+          ],
+          [
+            0.07227929797377497
+          ]
+        ],
+        "icp_transformation": [
+          [
+            0.9999999240366293,
+            -0.0002480414339738161,
+            0.00030066955751142927,
+            0.00035857307976240593
+          ],
+          [
+            0.00024803163958840574,
+            0.9999999687083786,
+            3.261209816293048e-05,
+            -0.0003983570541363917
+          ],
+          [
+            -0.0003006776372545818,
+            -3.253752012222913e-05,
+            0.9999999542671333,
+            0.00043566702021480296
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+      },
+      "icp_fitness": 1.0,
+      "icp_inlier_rmse": 0.011200899188848099,
+      "icp_correspondence_count": 354,
+      "tensor_sha256": {
+        "aligned_points": "c8bb00e67cb5801c782af3aa153f25efc073b29840c6a553053c36d37a0f72fc",
+        "reference_points": "1be2d4842f5ed7bf57233c6bf497ef9103aa8135a8fa518af8d5ef4e38994920",
+        "prediction_normals": "edf6f460611914fd6722d2c52936c8a06e6c9d768beac9f138fc905de4661731",
+        "reference_normals": "9e15dc6da6991c5dce144d8295ec774e7f2e9f41d3f07b4f021184a819cf9002",
+        "icp_correspondences": "ffc84e3944650776fec21af01a0fdeaf28dd1e805cbd398e7c9f14de9f48f694"
+      },
+      "shapes": {
+        "aligned_points": [
+          354,
+          3
+        ],
+        "reference_points": [
+          354,
+          3
+        ],
+        "prediction_normals": [
+          354,
+          3
+        ],
+        "reference_normals": [
+          354,
+          3
+        ],
+        "icp_correspondences": [
+          354,
+          2
+        ]
+      }
+    }
+  },
+  "study_arrays_opened": false,
+  "scientific_accuracy_scoring_performed": false,
+  "release_authorized": false,
+  "limitation": "A separate receipt must compare fresh processes; this does not validate study geometry"
+}

@@ -1,0 +1,15 @@
+{
+  "schema": "profiled_m3_runtime_thread_diagnostic_v1",
+  "registered_before_runs": [
+    "probe03",
+    "probe04"
+  ],
+  "change": "Torch intraop threads 2 to 1 only; preserve metric kernel, defaults, input construction and KDTree workers=-1",
+  "reason": "Shared OpenMP runtime reports two threads; prior synthetic differences arise after identical Sim3 alignment",
+  "require_observed_openmp_blas_threads": 1,
+  "acceptance": "Both fresh processes must have equal source, runtime, synthetic inputs, all probe metrics and all tensor hashes; preserve failure otherwise",
+  "previous_comparison": "results/lora_profiled_m3_v1/runtime_checks/comparison01.json",
+  "study_scores_accessed": false,
+  "scientific_thresholds_changed": false,
+  "scientific_redesigns_consumed": 0
+}

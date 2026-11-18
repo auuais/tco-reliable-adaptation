@@ -1,0 +1,28 @@
+{
+  "scope": "CPU runtime inspection only; not an evaluation registration",
+  "python": "3.11.13",
+  "torch": "2.7.1+cu128",
+  "numpy": "2.1.2",
+  "scipy": "1.15.2",
+  "opencv": "4.11.0",
+  "open3d": "0.19.0",
+  "cuda_available": false,
+  "torch_threads": 2,
+  "torch_interop_threads": 1,
+  "opencv_threads": 1,
+  "omp_environment": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1"
+  },
+  "icp_defaults": "ICPConvergenceCriteria(relative_fitness=1.000000e-06, relative_rmse=1.000000e-06, max_iteration=30)",
+  "normal_defaults": "KDTreeSearchParamKNN(knn=30)",
+  "normal_signature": "estimate_normals(self: open3d.cpu.pybind.geometry.PointCloud, search_param: open3d.cpu.pybind.geometry.KDTreeSearchParam = KDTreeSearchParamKNN(knn=30), fast_normal_computation: bool = True) -> None",
+  "container": "tco-m3-cpu-runtime01",
+  "docker_image": "sha256:74783a8eefee6daad6ff2714a51263ccdcdc5092b83cebee20515310bec46b50",
+  "network": "none",
+  "gpu_requested": false,
+  "arrays_loaded": false,
+  "accuracy_scoring_performed": false
+}

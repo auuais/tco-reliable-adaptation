@@ -1,0 +1,24 @@
+{
+  "schema": "profiled_m3_synthetic_runtime_repeatability_v1",
+  "synthetic_only": true,
+  "pass_all": true,
+  "checks": {
+    "source_sha256_lf": true,
+    "runtime": true,
+    "synthetic_input_sha256": true,
+    "probes": true,
+    "all_observed_pools_single_thread": true,
+    "unique_fresh_successful_cpu_containers": true
+  },
+  "fresh_cpu_processes": 2,
+  "files": {
+    "probe03.json": "93e2d9fbd053b64a150a52da7d25fb8730c68ec74d04bd69cc911a89f5c89db7",
+    "probe04.json": "93e2d9fbd053b64a150a52da7d25fb8730c68ec74d04bd69cc911a89f5c89db7",
+    "container_receipts_03_04.json": "49881f8f545c1200cf6793793d10d46d6e72ffae91846cd85508b7f4c657c0ee",
+    "thread_diagnostic_plan.json": "0ec6bab8d37172a752648eb87285cf1c24cae3cc4ec0a470b6b89249a6606a71"
+  },
+  "study_arrays_opened": false,
+  "scientific_accuracy_scoring_performed": false,
+  "release_authorized": false,
+  "scope": "Exact synthetic Sim3/ICP transforms, fitness/RMSE/correspondences, final points, normals and directional metrics in two fresh CPU processes; not study accuracy or cross-machine equivalence"
+}
