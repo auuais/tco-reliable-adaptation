@@ -215,6 +215,9 @@ jobs:
       - name: Replay fresh-room LoRA step selection from view aggregates
         if: ${{ hashFiles('results/native_lora_step_v1/held_scores.json') != '' }}
         run: python scripts/replay_native_lora_step.py
+      - name: Replay matched MASt3R decoder group selection and development gate
+        if: ${{ hashFiles('results/native_lora_decoder_groups_v1/held_scores.json') != '' }}
+        run: python scripts/replay_native_lora_decoder_groups.py
       - name: Exercise immutable profiled evidence backup fixtures
         run: python scripts/test_archive_profiled_evidence.py
       - name: Verify prospective M3 fitting inputs without loading predictions
