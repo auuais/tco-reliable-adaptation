@@ -1,0 +1,22 @@
+{
+  "scope": "Engineering acceptance before any accuracy-score inspection",
+  "scene": "heads",
+  "adaptation_source": "earlier",
+  "gradient_objective": "P4",
+  "varying_pairs": [[0, 1], [0, 2]],
+  "zero_adapter_exact": true,
+  "replay_precision": "bfloat16 decoder with float32 heads",
+  "replay_relative_gradient_l2_max": 0.0001,
+  "replay_cosine_min": 0.99999,
+  "finite_difference_precision": "float32 decoder and heads, TF32 disabled, fixed cached encoder features",
+  "finite_difference_direction": "single LoRA coordinate with maximum absolute analytical gradient in the two-pair objective",
+  "finite_difference_steps": [0.03, 0.01, 0.003],
+  "finite_difference_relative_tolerance": 0.03,
+  "finite_difference_absolute_tolerance": 0.00001,
+  "finite_difference_minimum_passes": 2,
+  "finite_difference_smallest_step_must_pass": true,
+  "full_macro_step": {"arm": "P4", "pairs": 20, "optimizer_steps": 1, "learning_rate": 0.0001, "gradient_clip_norm": 1},
+  "endpoint_comparison": "pristine and zero-LoRA fresh KDP captures and shared final metric refinement",
+  "endpoint_exact_required": true,
+  "rental_compute_usd": 0
+}

@@ -1,0 +1,291 @@
+{
+  "scope": "CPU synthetic endpoint validation only; no model inference, adapter training, or held-source accuracy scores.",
+  "torch_version": "2.6.0+cu124",
+  "device": "cpu",
+  "dtype": "float64",
+  "identity_depth_max_error": 1.3322676295501878e-15,
+  "identical_native_inputs_equal_outputs": true,
+  "native_inputs_unmodified": true,
+  "global_metric_gain": 4.0,
+  "world_point_max_error": 1.5543122344752192e-15,
+  "nonunit_scale_world_point_max_error": 1.1102230246251565e-15,
+  "wrong_center_scaling_negative_control_error": 0.045149185674152936,
+  "native_units_and_origin_invariant": true,
+  "native_rotations_preserved": true,
+  "pooled_midpoint_median": 21.5,
+  "candidate_specific_sample_exclusions": 0,
+  "nonpositive_outside_fit_preserved": true,
+  "outputs_detached": true,
+  "expected_failures": {
+    "nonpositive_fit_prediction": "Nonpositive native predictions at allowed fitting samples: counts_by_view=[0, 0, 1, 0, 0]; no candidate-specific exclusion is permitted",
+    "invalid_measurement": "Measured axial depth must be finite and positive",
+    "insufficient_view_coverage": "Insufficient samples or incompatible observation depth shape"
+  },
+  "identity_diagnostics": {
+    "singular_values": [
+      26.431215678464934,
+      26.373724271343935,
+      24.04408239876941,
+      23.977313976984117,
+      22.404345304752106
+    ],
+    "data_rank": 5,
+    "singular_ratio": 0.8476471751167406,
+    "support_counts": [
+      12,
+      12,
+      12,
+      12,
+      12
+    ],
+    "every_view_supported": true,
+    "graph_components": [
+      [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    ],
+    "graph_connected": true,
+    "ridge": 0.49999999999999983,
+    "positive_scales": true,
+    "scales": [
+      1.0000000000000007,
+      1.0000000000000007,
+      1.0,
+      1.0,
+      1.0000000000000002
+    ],
+    "graph_filtering": [
+      {
+        "i": 0,
+        "j": 1,
+        "initial_count": 27,
+        "retained_count": 27,
+        "invalid_confidence": 0,
+        "nonpositive_depth": 0
+      },
+      {
+        "i": 1,
+        "j": 2,
+        "initial_count": 27,
+        "retained_count": 27,
+        "invalid_confidence": 0,
+        "nonpositive_depth": 0
+      },
+      {
+        "i": 2,
+        "j": 3,
+        "initial_count": 27,
+        "retained_count": 27,
+        "invalid_confidence": 0,
+        "nonpositive_depth": 0
+      },
+      {
+        "i": 3,
+        "j": 4,
+        "initial_count": 27,
+        "retained_count": 27,
+        "invalid_confidence": 0,
+        "nonpositive_depth": 0
+      },
+      {
+        "i": 0,
+        "j": 4,
+        "initial_count": 18,
+        "retained_count": 18,
+        "invalid_confidence": 0,
+        "nonpositive_depth": 0
+      }
+    ],
+    "rejected_graph_confidences": 0,
+    "endpoint": "native KDP followed by all-allowed-observation five-scale refinement",
+    "g0": 1.0,
+    "metric_scales": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "gauge_estimator": "pooled positive measured/native ratios; midpoint median",
+    "gauge_ratio_count": 60,
+    "sample_counts": [
+      12,
+      12,
+      12,
+      12,
+      12
+    ],
+    "sample_exclusions": 0,
+    "nonpositive_fit_predictions": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "nonpositive_dense_pixels": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "graph_weight": 0.1,
+    "native_origin": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "sensor_normalizers": [
+      0.04,
+      0.04,
+      0.04,
+      0.04,
+      0.04
+    ],
+    "weighted_fit_before": 2.7386723809186494e-31,
+    "weighted_fit_after": 2.7480259806818898e-28,
+    "ridge_penalty_after": 2.341930812374878e-31,
+    "penalized_fit_after": 2.7503679114942646e-28,
+    "normal_equation_max_residual": 3.801975621962144e-13,
+    "fit_is_accuracy_metric": false
+  },
+  "distorted_diagnostics": {
+    "singular_values": [
+      22.916579143365933,
+      17.75656216691453,
+      13.396279975959482,
+      11.265910660192926,
+      9.98764310828584
+    ],
+    "data_rank": 5,
+    "singular_ratio": 0.43582609104976905,
+    "support_counts": [
+      12,
+      12,
+      12,
+      12,
+      12
+    ],
+    "every_view_supported": true,
+    "graph_components": [
+      [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    ],
+    "graph_connected": true,
+    "ridge": 0.22537692307692286,
+    "positive_scales": true,
+    "scales": [
+      0.9627076027709935,
+      1.1060899674578741,
+      0.9999812300582873,
+      1.0831578195163534,
+      0.9283912849192508
+    ],
+    "graph_filtering": [
+      {
+        "i": 0,
+        "j": 1,
+        "initial_count": 27,
+        "retained_count": 27,
+        "invalid_confidence": 0,
+        "nonpositive_depth": 0
+      },
+      {
+        "i": 1,
+        "j": 2,
+        "initial_count": 27,
+        "retained_count": 27,
+        "invalid_confidence": 0,
+        "nonpositive_depth": 0
+      },
+      {
+        "i": 2,
+        "j": 3,
+        "initial_count": 27,
+        "retained_count": 27,
+        "invalid_confidence": 0,
+        "nonpositive_depth": 0
+      },
+      {
+        "i": 3,
+        "j": 4,
+        "initial_count": 27,
+        "retained_count": 27,
+        "invalid_confidence": 0,
+        "nonpositive_depth": 0
+      },
+      {
+        "i": 0,
+        "j": 4,
+        "initial_count": 18,
+        "retained_count": 18,
+        "invalid_confidence": 0,
+        "nonpositive_depth": 0
+      }
+    ],
+    "rejected_graph_confidences": 0,
+    "endpoint": "native KDP followed by all-allowed-observation five-scale refinement",
+    "g0": 3.846153846153846,
+    "metric_scales": [
+      3.846153846153846,
+      3.846153846153846,
+      3.846153846153846,
+      3.846153846153846,
+      3.846153846153846
+    ],
+    "gauge_estimator": "pooled positive measured/native ratios; midpoint median",
+    "gauge_ratio_count": 60,
+    "sample_counts": [
+      12,
+      12,
+      12,
+      12,
+      12
+    ],
+    "sample_exclusions": 0,
+    "nonpositive_fit_predictions": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "nonpositive_dense_pixels": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "graph_weight": 0.1,
+    "native_origin": [
+      3.0,
+      -2.0,
+      1.0
+    ],
+    "sensor_normalizers": [
+      0.04,
+      0.04,
+      0.04,
+      0.04,
+      0.04
+    ],
+    "weighted_fit_before": 1.7105724665687077,
+    "weighted_fit_after": 0.0024734566334701875,
+    "ridge_penalty_after": 0.002782146885258252,
+    "penalized_fit_after": 0.00525560351872844,
+    "normal_equation_max_residual": 1.8627621536595638e-13,
+    "fit_is_accuracy_metric": false
+  },
+  "pass_all": true
+}
