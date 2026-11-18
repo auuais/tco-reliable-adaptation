@@ -94,12 +94,20 @@ def document(score, initial, audit):
         decision = ("R1 missed the prospective development gate. "
                     "Dense confirmation, conditional mechanism ablations, independent-scene testing and VGGT transfer remain unrun. "
                     "The single local redesign has been used.")
+        next_study = ("A separate study could test whether the five-scale surrogate and native alignment "
+                      "favor different adapter updates. Measure directional agreement using finite differences "
+                      "of native-aligned depth error on fresh development scenes. If they disagree consistently, "
+                      "compare a differentiated version of the same native alignment with its forward-identical "
+                      "detached control at matched inputs and compute. Confirm any gain on independent surfaces.")
         reasons = ", ".join(verdict["rejection_reasons"])
     else:
         recommendation = ("R1 qualified for dense confirmation on the observed development scenes. "
                           "Publication readiness still requires evaluation of previously unscored scenes and repeatability.")
         decision = ("R1 passed the held-source gate. The next conditional stage is matched dense surface evaluation "
                     "and the three fresh-process repeats. The rental threshold remains separate.")
+        next_study = ("Use the registered confirmation to test whether gains carry through native alignment to dense "
+                      "surfaces and exceed repeat variation with the detached control. Any generalization claim "
+                      "requires a frozen method and previously unscored scenes.")
         reasons = "none"
     common = ", ".join(s.title() for s in verdict["same_scenes_improving_over_p1"]) or "none"
     hours = audit["total_local_wall_seconds"]/3600
@@ -131,11 +139,13 @@ Common rooms improving against P1 in both directions were {common}. The register
 
 {decision}
 
+The held-source measurement covers sparse depth on three development rooms. Both directions reuse those rooms. The mask and balanced averaging limit overlap and frame-count bias. Surface accuracy, completeness and cross-scene transfer require separate measurements.
+
 ![Directional and paired-room MAE reductions](held_source_gains.svg)
 
 ## Mechanism, repeatability and cost
 
-The shared first full-gradient step matched exactly across P3, R0 and R1 in all six conditions. R1 and R2 shared their first forward computation. The output-adjoint replay and parameter finite differences passed the real-model engineering check. The fresh P0, P1 and P3 controls on Heads/earlier reproduced both historical endpoints exactly. [Training audit](training_audit.json) · [Engineering bridge](engineering/bridge01/report.json) · [Fresh control reproduction](heads_earlier_tranche01.json)
+The shared first full-gradient step matched exactly across P3, R0 and R1 in all six conditions. R1 and R2 shared their first forward computation. The output-adjoint replay and parameter finite differences passed the real-model engineering check. The fresh P0, P1 and P3 controls on Heads reproduced both historical endpoints exactly in each direction. [Training audit](training_audit.json) · [Engineering bridge](engineering/bridge01/report.json) · [Heads earlier](heads_earlier_tranche01.json) · [Heads later P0 and P1](heads_later_original_control_reproduction.json) · [Heads later P3](heads_later_profiled_control_reproduction.json)
 
 The compensation norm below is the training residual change associated with re-fitting scale. The fold 0 value is measured before macro-step index 6 and the fold 1 value before macro-step index 7. Both use the last recorded pre-update loss for that fold. These are adaptation diagnostics and use the allowed packet.
 
@@ -146,6 +156,10 @@ The full versus detached held-source contrast measures performance on this devel
 {resource_table(audit)}
 
 The 36 frozen or trained redesign states used {hours:.2f} summed local container hours and {audit['total_optimizer_updates']} optimizer updates. Peak CUDA allocation was {audit['peak_allocated_mib']:.1f} MiB and peak reservation was {audit['peak_reserved_mib']:.1f} MiB. Per-case wall times include model setup and launcher overhead. Rental compute cost attributable to the study is USD {audit['rental_compute_usd']:.2f}. [Budget ledger](../../docs/BUDGET.md)
+
+## Next research question
+
+{next_study}
 
 ## Reproduction
 
