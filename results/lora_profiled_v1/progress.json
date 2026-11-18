@@ -2,7 +2,7 @@
   "goal": "Calibration-aware predictive LoRA accuracy investigation",
   "checkpoint_date": "2026-11-19",
   "status": "active",
-  "current_phase": "Twenty-five of 36 redesign states verified. Heads and Chess are complete. The serial queue is running Fire/earlier P1.",
+  "current_phase": "Twenty-seven of 36 redesign states verified. The serial queue is running Fire/earlier R0.",
   "completed_milestone_weight_percent": 50,
   "percentage_rule": "Conservative whole-milestone credit; completed subchecks are listed separately and are not accuracy evidence",
   "milestones": {
@@ -167,7 +167,7 @@
     "compensation_first_tranche": "results/lora_profiled_compensation_v1/heads_earlier_tranche01.json",
     "compensation_tranche_redesign_backup": "results/lora_profiled_compensation_v1/heads_earlier_redesign_backup01.json",
     "compensation_public_metric_replay": "scripts/replay_compensation_published_metrics.py",
-    "compensation_training_audit_checkpoint": "results/lora_profiled_compensation_v1/training_audit_checkpoint20.json",
+    "compensation_training_audit_checkpoint": "results/lora_profiled_compensation_v1/training_audit_checkpoint22.json",
     "compensation_heads_later_p0_p1_reproduction": "results/lora_profiled_compensation_v1/heads_later_original_control_reproduction.json",
     "compensation_heads_later_p3_reproduction": "results/lora_profiled_compensation_v1/heads_later_profiled_control_reproduction.json",
     "compensation_pipeline_fixture": "scripts/test_compensation_verdict_pipeline.py",
@@ -188,7 +188,9 @@
     "compensation_chess_later_r0_backup": "results/lora_profiled_compensation_v1/chess_later_R0_backup01.json",
     "compensation_chess_later_r1_backup": "results/lora_profiled_compensation_v1/chess_later_R1_backup01.json",
     "compensation_chess_later_r2_backup": "results/lora_profiled_compensation_v1/chess_later_R2_backup01.json",
-    "compensation_fire_earlier_p0_backup": "results/lora_profiled_compensation_v1/fire_earlier_P0_backup01.json"
+    "compensation_fire_earlier_p0_backup": "results/lora_profiled_compensation_v1/fire_earlier_P0_backup01.json",
+    "compensation_fire_earlier_p1_backup": "results/lora_profiled_compensation_v1/fire_earlier_P1_backup01.json",
+    "compensation_fire_earlier_p3_backup": "results/lora_profiled_compensation_v1/fire_earlier_P3_backup01.json"
   },
   "accuracy_improvement_established": false,
   "nomination": null,
@@ -199,8 +201,8 @@
   "redesigns_executed": 1,
   "redesign_limit": 1,
   "research_gpu_job_at_checkpoint": {
-    "container": "tco-profiled-compensation-fire-earlier-p1",
-    "container_id": "afde3364e611c71168523baa8860c3d0ea53ea53d6dcdd6d00c2ca70e8c37072",
+    "container": "tco-profiled-compensation-fire-earlier-r0",
+    "container_id": "a0096c7d9cb22ad4a684194f2e2ad17f067a218b5dad87a090391ea2bd7cdab0",
     "observed_state": {
       "Status": "running",
       "Running": true,
@@ -208,10 +210,10 @@
       "Restarting": false,
       "OOMKilled": false,
       "Dead": false,
-      "Pid": 31235,
+      "Pid": 31687,
       "ExitCode": 0,
       "Error": "",
-      "StartedAt": "2026-11-18T17:49:05.743995176Z",
+      "StartedAt": "2026-11-18T18:01:15.366341358Z",
       "FinishedAt": "0001-01-01T00:00:00Z"
     },
     "source": "local Docker Desktop named pipe",
@@ -232,24 +234,24 @@
     "m3_preparation": "202 combined CPU fixtures pass. Static registry and completed-attempt byte audit implemented, including exact fitting-count checks. Reference-free converter/replay and pure reference semantics pass 17 pinned CPU fixtures. All24 real fitting-case reports exactly reproduce in pinned image. M3 actual registry/release controller, model acceptance, stage seals, scorer and scientific execution remain pending; no reuse approved."
   },
   "last_observed_ci": {
-    "commit": "440b7387ab1ef2f95750e043361c860b1d6f8efb",
-    "run_id": 44361625733,
+    "commit": "e4cd9d226744c72a9b81890891e4c299b77350a9",
+    "run_id": 44363135106,
     "conclusion": "success",
-    "scope": "Full CPU validation of the twenty-three-state checkpoint"
+    "scope": "Full CPU validation of the twenty-five-state checkpoint"
   },
-  "next_command": "docker --host npipe:////./pipe/dockerDesktopLinuxEngine inspect tco-profiled-compensation-fire-earlier-p1",
+  "next_command": "docker --host npipe:////./pipe/dockerDesktopLinuxEngine inspect tco-profiled-compensation-fire-earlier-r0",
   "next_implementation_action": "Observe exec session 49837 and local Docker before acting. Existing serial queue owns remaining 30 states. On terminal success, verify all 36 and seal, score, replay original arrays, independently replay samples, publish aggregate check, figure and verified C/E verdict. Stop after an attempt failure and preserve partial state; do not start a duplicate queue.",
   "handoff": "docs/CALIBRATION_AWARE_LORA_HANDOFF.md",
   "weekly_usage_checkpoint": {
     "used_percent": 23,
     "remaining_percent": 77,
     "pause_threshold_remaining_percent": 5,
-    "observation": "2026-11-18T17:49:52.829Z",
+    "observation": "2026-11-18T18:01:40.022Z",
     "note": "Observed via native usage tool; shared counter can change"
   },
-  "validated_code_commit": "440b7387ab1ef2f95750e043361c860b1d6f8efb",
-  "last_goal_turn_classification": "progress: the last Chess control and first Fire frozen repeat completed and were verified on C/E. Both Heads and Chess conditions reproduce the registered matched first-step and detached-forward comparisons. The Fire frozen repeat exactly reproduced both original endpoints. 25 runs, 160 updates and 13 historical control pairs passed audit.",
-  "checkpoint_observed_at_utc": "2026-11-18T17:50:26.305390+00:00",
+  "validated_code_commit": "e4cd9d226744c72a9b81890891e4c299b77350a9",
+  "last_goal_turn_classification": "progress: Fire/earlier P1 and P3 completed and were verified on C/E. They exactly reproduced both historical outputs, the frozen backbone and every adapter state update. 27 states, 176 updates and 15 historical control pairs passed audit. Held-source scoring remains sealed off.",
+  "checkpoint_observed_at_utc": "2026-11-18T18:02:06.422623+00:00",
   "screen_result": {
     "nominee": null,
     "all_primary_cases_valid": true,
@@ -349,7 +351,7 @@
     "status": "running_remaining_serial_queue",
     "cases_required": 36,
     "trained_cases_required": 30,
-    "verified_completed_at_checkpoint": 25,
+    "verified_completed_at_checkpoint": 27,
     "completed": [
       {
         "run_id": "heads_earlier_P0",
@@ -650,6 +652,30 @@
         "optimizer_updates": 0,
         "peak_allocated_mib": 3666.8115234375,
         "peak_reserved_mib": 5006.0
+      },
+      {
+        "run_id": "fire_earlier_P1",
+        "report": "results/lora_profiled_compensation_v1/cases/fire_earlier_P1/screen01/complete.json",
+        "report_sha256": "719fa02b719a6d3deb8422a76cf6125ce5cf2db098ada94d12950e61b122e2b8",
+        "terminal": "results/lora_profiled_compensation_v1/launches/tco-profiled-compensation-fire-earlier-p1/terminal.json",
+        "terminal_sha256": "a2775c0fbfe936ed285df622b52875aad2f26d354919665d911eee949544a191",
+        "model_seconds": 335.2648687090259,
+        "local_wall_seconds": 371.31300000008196,
+        "optimizer_updates": 8,
+        "peak_allocated_mib": 4358.74365234375,
+        "peak_reserved_mib": 4798.0
+      },
+      {
+        "run_id": "fire_earlier_P3",
+        "report": "results/lora_profiled_compensation_v1/cases/fire_earlier_P3/screen01/complete.json",
+        "report_sha256": "63dbcc918d64761f25e2dccc883ab41b2e9b109f92745c09bba55d441cbef1af",
+        "terminal": "results/lora_profiled_compensation_v1/launches/tco-profiled-compensation-fire-earlier-p3/terminal.json",
+        "terminal_sha256": "b739dd15cfdcbaebacd9cecd6ca77d5659249b533f4607efb11c0181965d9c6d",
+        "model_seconds": 315.32634750090074,
+        "local_wall_seconds": 356.25,
+        "optimizer_updates": 8,
+        "peak_allocated_mib": 4728.54443359375,
+        "peak_reserved_mib": 5034.0
       }
     ],
     "engineering_passed": true,
@@ -665,8 +691,8 @@
     "remaining_queue_command": "python scripts/run_profiled_compensation_batch.py --execute --limit 30",
     "historical_control_fingerprints": {
       "expected": 18,
-      "checked": 13,
-      "exact": 13
+      "checked": 15,
+      "exact": 15
     }
   }
 }
