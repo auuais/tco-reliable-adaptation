@@ -1,0 +1,229 @@
+{
+  "schema": "profiled_compensation_bridge_v1",
+  "pass_all": true,
+  "execution_commit": "65470fbe1d034bcc325277cf4905521e9efaad83",
+  "engineering": {
+    "file": "manifests/lora_profiled_compensation_engineering_v1.json",
+    "sha256": "728771deb9a89559cacf7825808c0c36466c420af8fd75230600c2e601cd63be"
+  },
+  "runtime": {
+    "python": "3.11.13",
+    "numpy": "2.1.2",
+    "torch": "2.7.1+cu128",
+    "cuda": "12.8",
+    "device": "NVIDIA GeForce RTX 3080",
+    "torch_threads": 4,
+    "arithmetic": {
+      "deterministic_algorithms": true,
+      "deterministic_warn_only": false,
+      "cudnn_benchmark": false,
+      "cudnn_deterministic": true,
+      "cuda_matmul_allow_tf32": true,
+      "cudnn_allow_tf32": true,
+      "cublas_workspace_config": ":4096:8"
+    }
+  },
+  "original_state_unchanged": true,
+  "zero_adapter_exact": true,
+  "nonzero_state_restored": true,
+  "zero_initial_full_gradient_match": [
+    {
+      "arm": "P3",
+      "loss": 25.878427094729133,
+      "gradient_sha256": "062526e59391036ea8ffb606054343e0461a5e3e1ee726987577339bc9ee4d72"
+    },
+    {
+      "arm": "R0",
+      "loss": 25.878427094729133,
+      "gradient_sha256": "062526e59391036ea8ffb606054343e0461a5e3e1ee726987577339bc9ee4d72"
+    },
+    {
+      "arm": "R1",
+      "loss": 25.878427094729133,
+      "gradient_sha256": "062526e59391036ea8ffb606054343e0461a5e3e1ee726987577339bc9ee4d72"
+    }
+  ],
+  "forward_matched": [
+    {
+      "fold": 0,
+      "loss": 25.622237097036397,
+      "scales": [
+        1.0005923004568937,
+        0.9939169642896405,
+        1.0020941738410492,
+        0.9988742176570123,
+        0.9968453059632202
+      ],
+      "terms": {
+        "base": 25.61980711778773,
+        "penalty": 0.0024299792486666225,
+        "compensation_l2_by_view": [
+          0.0348437659772141,
+          0.04158946637904949,
+          0.02451402166329442,
+          0.0361811078066814,
+          0.0024853442291007974
+        ],
+        "compensation_l2": 0.06971340256602919,
+        "matched_support_penalty_by_view": [
+          8.465949697490232e-05,
+          5.644105664471007e-05,
+          2.0377904410055996e-05,
+          4.759285105819309e-05,
+          9.290103562468818e-06
+        ]
+      },
+      "exact": true
+    },
+    {
+      "fold": 1,
+      "loss": 40.655251601114124,
+      "scales": [
+        0.9976861121570336,
+        0.9957878245337068,
+        1.0000657760652454,
+        1.004007058636002,
+        0.9975736793998399
+      ],
+      "terms": {
+        "base": 40.653502695034916,
+        "penalty": 0.0017489060792104127,
+        "compensation_l2_by_view": [
+          0.025457577358034524,
+          0.04028337667234613,
+          0.021206427214605646,
+          0.027342866735329627,
+          0.005443212364039263
+        ],
+        "compensation_l2": 0.0591423043042865,
+        "matched_support_penalty_by_view": [
+          3.9949525232182596e-05,
+          4.584873156062913e-05,
+          1.5434265955106426e-05,
+          2.7694350224944057e-05,
+          1.675411440849384e-05
+        ]
+      },
+      "exact": true
+    }
+  ],
+  "retained_replay": [
+    {
+      "fold": 0,
+      "arm": "R1",
+      "retained_loss": 25.622237097036397,
+      "replay_loss": 25.622237097036397,
+      "relative_l2": 0.0,
+      "cosine": 1.0,
+      "max_absolute": 0.0
+    },
+    {
+      "fold": 0,
+      "arm": "R2",
+      "retained_loss": 25.622237097036397,
+      "replay_loss": 25.622237097036397,
+      "relative_l2": 0.0,
+      "cosine": 1.0,
+      "max_absolute": 0.0
+    },
+    {
+      "fold": 1,
+      "arm": "R1",
+      "retained_loss": 40.655251601114124,
+      "replay_loss": 40.655251601114124,
+      "relative_l2": 0.0,
+      "cosine": 1.0,
+      "max_absolute": 0.0
+    },
+    {
+      "fold": 1,
+      "arm": "R2",
+      "retained_loss": 40.655251601114124,
+      "replay_loss": 40.655251601114124,
+      "relative_l2": 0.0,
+      "cosine": 1.0,
+      "max_absolute": 0.0
+    }
+  ],
+  "parameter_finite_differences": [
+    {
+      "fold": 0,
+      "parameter": "dec_blocks.0.cross_attn.proj.lora_B",
+      "flat_index": 475,
+      "derivative": 0.00485202856361866,
+      "rows": [
+        {
+          "epsilon": 0.03,
+          "minus": 24.436122729742863,
+          "plus": 24.436413351242173,
+          "finite_difference": 0.004843691655172696,
+          "absolute_error": 8.3369084459637e-06,
+          "tolerance": 0.0001555608569085598,
+          "pass_check": true
+        },
+        {
+          "epsilon": 0.01,
+          "minus": 24.43621916129426,
+          "plus": 24.436316744159924,
+          "finite_difference": 0.00487914328317629,
+          "absolute_error": 2.711471955763045e-05,
+          "tolerance": 0.0001555608569085598,
+          "pass_check": true
+        },
+        {
+          "epsilon": 0.003,
+          "minus": 24.436252536958335,
+          "plus": 24.436282276335092,
+          "finite_difference": 0.004956562792794254,
+          "absolute_error": 0.00010453422917559418,
+          "tolerance": 0.0001555608569085598,
+          "pass_check": true
+        }
+      ],
+      "pass_check": true
+    },
+    {
+      "fold": 1,
+      "parameter": "dec_blocks.5.attn.qkv.lora_B",
+      "flat_index": 8098,
+      "derivative": -0.019505489617586136,
+      "rows": [
+        {
+          "epsilon": 0.03,
+          "minus": 40.33533941332322,
+          "plus": 40.33416463231828,
+          "finite_difference": -0.019579683415689907,
+          "absolute_error": 7.419379810377075e-05,
+          "tolerance": 0.000595164688527584,
+          "pass_check": true
+        },
+        {
+          "epsilon": 0.01,
+          "minus": 40.334946073619655,
+          "plus": 40.33455755889601,
+          "finite_difference": -0.019425736182299147,
+          "absolute_error": 7.975343528698886e-05,
+          "tolerance": 0.000595164688527584,
+          "pass_check": true
+        },
+        {
+          "epsilon": 0.003,
+          "minus": 40.33481074005289,
+          "plus": 40.33469547255029,
+          "finite_difference": -0.019211250433433708,
+          "absolute_error": 0.00029423918415242764,
+          "tolerance": 0.000595164688527584,
+          "pass_check": true
+        }
+      ],
+      "pass_check": true
+    }
+  ],
+  "decoder_calls": 184,
+  "optimizer_updates": 0,
+  "accuracy_scoring_performed": false,
+  "rental_compute_usd": 0,
+  "elapsed_seconds": 172.28355620102957,
+  "peak_allocated_mib": 5319.48876953125,
+  "peak_reserved_mib": 5528.0
+}

@@ -1,0 +1,38 @@
+{
+  "schema": "profiled_compensation_evaluation_v1",
+  "execution": {
+    "file": "manifests/lora_profiled_compensation_execution_v1.json",
+    "sha256": "3eb1d32f259baaef6afc4cc8ce719557d0f5173d7606f7ade0b0cde0a665850a"
+  },
+  "parent_rules": {
+    "file": "manifests/lora_profiled_evaluation_v2.json",
+    "sha256": "43d798e6fac9d8dbe3c8d9b4bcdd7b68d16cf81dde59cf58567cc25131870d94"
+  },
+  "comparison": {
+    "eligible_nominee": "R1",
+    "minimum_gain_over_P1_percent_both_directions": 1.0,
+    "minimum_same_scenes_improved_both_directions_over_P1": 2,
+    "must_beat_both_directional_means": [
+      "P3",
+      "R0",
+      "R2"
+    ],
+    "numerical_failures_allowed": 0,
+    "endpoint": "fresh native FP32 KDP plus common final calibration",
+    "seal_before_scoring": true
+  },
+  "scoring_runtime": {
+    "python": "3.9.6",
+    "numpy": "1.25.2"
+  },
+  "created_at_utc": "2026-11-18T15:48:10.654041+00:00",
+  "synthetic_acceptance": {
+    "pass_all": true,
+    "test_count": 5,
+    "test_source": {
+      "file": "scripts/test_profiled_compensation_protocol.py",
+      "sha256": "c2e093a801275219c36650eb603e925315c7bdc3ea9473318af67d6cb1d2b36b"
+    }
+  },
+  "first_access_after_global_seal": true
+}
