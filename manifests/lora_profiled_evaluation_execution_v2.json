@@ -1,0 +1,43 @@
+{
+  "schema": "profiled_evaluation_execution_v1",
+  "prepared_at_utc": "2026-11-18T10:30:05.618900+00:00",
+  "scope": "Executable scorer frozen after synthetic fixtures; no study arrays or scores accessed",
+  "rules": "manifests/lora_profiled_evaluation_v2.json",
+  "rules_sha256": "43d798e6fac9d8dbe3c8d9b4bcdd7b68d16cf81dde59cf58567cc25131870d94",
+  "source_sha256_lf": {
+    "scripts/seal_profiled_predictions.py": "f7b928834c358308257018e735dd076aaa46e806cada17660c96a945baacc4ba",
+    "scripts/score_profiled_lora.py": "33e05ccde539e029165757574bc3329e73625cd3e0a06fc63f5530243dc18a16",
+    "scripts/profiled_artifacts.py": "57980e51ef9b4164abd4324fd2757e8f70b708676bebb94358ded08667b4b9ff",
+    "scripts/test_profiled_scoring.py": "ab880bd30c0318fb9f5883c56089943ef0d19d0bc83562f89558a91e65713f76",
+    "scripts/register_profiled_execution.py": "f8e833700c8419e4b4abd9d0be22304332a5b7214de9fc694395b084a0fd7d07",
+    "scripts/prepare_profiled_inputs.py": "c85600d5825435d836d70365293012237af7bca823971461f7e8850f45b6395c",
+    "scripts/partner_shape.py": "a7fa474664820c6f68b3b44e42163cacddd9af6f4890aaa8487c6e5844569748",
+    "scripts/score_partner_shape.py": "dc226071e2ed4a6523eb46c04e07931cd14376bc33efde41db5a53cf2115380b"
+  },
+  "failure_policy": {
+    "automatic_numerical_error_types": [
+      "FloatingPointError"
+    ],
+    "unclassified_errors": "block all study-score release pending engineering review",
+    "infrastructure_errors": "no automatic negative scientific verdict; any disposition must be frozen before scores"
+  },
+  "dependencies": {
+    "python_major_minor": "3.9",
+    "numpy": "1.25.2"
+  },
+  "input_sha256": {
+    "manifests/lora_profiled_design_v1.json": "5bce05491f2910eb83fd45fb80a23b762b096d9b086a88da82329759c1021e7b",
+    "results/lora_profiled_v1/inputs.json": "7e0600f470698e336af3b44a788b44cfea45ec043dd785b03cdf5b3839526fa8",
+    "results/lora_profiled_v1/splits.npz": "12d688e181f89ef90738350f23959d7bb0813b0a605cadcee1fb05d5b1bd9ace"
+  },
+  "packet_sha256": {
+    "results/mast3r_partner_shape/earlier.npz": "891d5e0a659a750c407529390ff2a22039be88b8f80a4170a8c74dbf959ed834",
+    "results/mast3r_partner_shape/later.npz": "d933e7364ea28a827c6e7ad9d0c11240fb9e2b8e3ac19001cb2b3d3520199d16"
+  },
+  "fixtures": "results/lora_profiled_v1/scoring_fixtures_v2.json",
+  "fixtures_sha256": "67d6f5b46b49dca6b2ddd467eb9c486332cfb7e9ec384f378cdd2a2f5a0ccee4",
+  "synthetic_fixtures_pass": true,
+  "study_arrays_loaded": false,
+  "study_scores_read": false,
+  "rental_compute_usd": 0
+}
