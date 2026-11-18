@@ -209,6 +209,9 @@ jobs:
       - name: Replay the published compensation verdict from view aggregates
         if: ${{ hashFiles('results/lora_profiled_compensation_v1/held_source_scores.json') != '' }}
         run: python scripts/replay_compensation_published_metrics.py
+      - name: Replay the native LoRA directional test from view aggregates
+        if: ${{ hashFiles('results/native_lora_direction_v1/held_source_scores.json') != '' }}
+        run: python scripts/replay_native_lora_direction.py
       - name: Exercise immutable profiled evidence backup fixtures
         run: python scripts/test_archive_profiled_evidence.py
       - name: Verify prospective M3 fitting inputs without loading predictions
