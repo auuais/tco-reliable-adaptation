@@ -4,11 +4,13 @@ This is the operational guide for a successor agent, including Solus. Read it wi
 
 **Objective and current checkpoint**
 
-**Operational checkpoint, November 18, 2026, 12:45 UTC:** both real-model bridges and the first P0/P1 scientific validation pair passed. The full local `screen02` queue is active under invocation `20261118T104117Z_ede54062`; its observation session is `27750`. At this observation, 28 of 36 states had completed and verified, and `tco-profiled-screen02-fire-earlier-p4` was running. This count is a timestamped checkpoint, not a live assertion. Read [progress.json](../results/lora_profiled_v1/progress.json), the latest invocation receipts and actual Docker state before acting. Observation handles may not survive a model/session switch; their absence never authorizes a duplicate queue.
+**Operational checkpoint, November 18, 2026:** the scientific-v2 `screen02` queue completed all 36 states successfully. Invocation `20261118T104117Z_ede54062` and observation session `27750` are terminal history, not work to resume. The global prediction seal passed before scoring. Registered score replay and independent compact arithmetic replay both confirmed **no eligible nominee**. No research GPU container remained running after the queue. Read [progress.json](../results/lora_profiled_v1/progress.json) and actual process state on resume; do not restart the completed screen.
 
-Scientific registration is [lora_profiled_execution_v2.json](../manifests/lora_profiled_execution_v2.json); scorer registration is [lora_profiled_evaluation_execution_v2.json](../manifests/lora_profiled_evaluation_execution_v2.json). The first two-state invocation `20261118T103337Z_7333c162` finished with `status=success` and `selected_jobs_verified=2`; it is history, not the operation to resume. Keep the current queue running without changing its bound sources or inputs. No study accuracy scores have been accessed; no accuracy or rental gate has passed. Whole-milestone progress remains 25% (M0 and M1). Rental compute for this goal remains USD 0.
+Scientific registration is [lora_profiled_execution_v2.json](../manifests/lora_profiled_execution_v2.json); scorer registration is [lora_profiled_evaluation_execution_v2.json](../manifests/lora_profiled_evaluation_execution_v2.json). Preserve both and all completed artifacts. P3 gained only +0.1112% over P1 in the earlier direction and -0.0575% in the later direction. P4 gained -0.3637% and -0.1436%. Both failed the frozen >=1% gain requirement in each direction; the full/detached contrasts also reverse sign between directions. See the [complete result table](../results/lora_profiled_v1/README.md), [scores](../results/lora_profiled_v1/held_source_scores.json) and [independent replay](../results/lora_profiled_v1/independent_public_replay.json). M0/M1/M2 are scientifically complete; whole-milestone progress is 50%; publication/CI state is recorded in the live checkpoint. No qualifying accuracy improvement or rental gate has passed. Rental compute for this goal remains USD 0.
 
-**Successor's immediate task:** observe the existing queue, finish the unbound M3 CPU infrastructure where useful, then seal all 36 predictions and use the already registered M2 scorer. Do not redesign the objective, spend on transfer, or open a convenient subset of scores while waiting. The later M3 implementation map and decision table identify exactly what remains.
+**Successor's immediate task:** follow the negative-screen branch. Verify the final archive/publication checkpoint, then implement and register the bounded, zero-update local diagnostic described below before reading additional cache/adaptor arrays for that diagnosis. Determine whether effective LoRA changes are tiny, dominated by removable scale, or lost downstream before selecting the one permitted scientific redesign. The detailed M3 infrastructure is retained as conditional work; do not finish or launch its 360-state study solely because the code exists. No paid transfer or parameter sweep is released.
+
+The [D0 diagnostic design](../manifests/lora_profiled_diagnosis_design_v1.json) fixes a CPU-only saved-artifact probe: effective BA weight changes for all 30 adapters, and raw forward-output changes for the first registered scene/source (Heads/earlier) with P0/P1/P2/P3. A source-verified P0/later raw-forward cache may provide a same-RGB/model comparator; its different native alignment is not a repeat control. The fixed native grid begins at (8,8), stride 16; permitted adaptation coordinates are reported separately. Scalar-versus-shape decomposition uses model outputs only and cannot alter accuracy predictions. No target-depth/reference arrays, opposite-source measurements, optimizer update or new model forward is allowed in D0. The design is not executable registration: implement/test its loader/math, bind actual sources/runtime/artifact identities and commit that registration before decoding additional diagnostic tensors. This consumes zero scientific redesigns; the single redesign must follow evidence.
 
 `gradient02`, under engineering v2 at commit `8c3de74`, passed exact retained/replay agreement, all three finite-difference perturbations, original-state integrity and a complete 20-pair macro-step (23.85 seconds; 4825.71 MiB peak allocated). `endpoint01` passed exact pristine/zero-LoRA native and final endpoint equality, matching/confidence equality and unchanged original/adapter states. Preserve these reports and verify their registered hashes; do not repeat them without a relevant source/runtime change. See [the engineering diagnosis](PROFILED_LORA_ENGINEERING_DIAGNOSIS.md), [gradient evidence](../results/lora_profiled_v1/gradient_bridge.json) and [endpoint evidence](../results/lora_profiled_v1/endpoint_bridge.json).
 
@@ -19,6 +21,112 @@ The objective is to determine whether differentiating calibration while training
 Read in this order: this operational checkpoint, the goal contract, the mathematical specification, the design and bridge-threshold manifests, then the referenced implementation. User instructions take precedence. The contract defines the scientific decisions; the manifests freeze settings; actual reports establish completion. A conflict between prose, settings and code is an engineering issue to resolve explicitly before execution. Never silently substitute a setting or promote an old successful report across changed source hashes.
 
 The user has authorized research execution, Git commits and publication of permitted code/results. Continue useful local work without repeatedly asking permission. The user allows best judgment for routine preferences unanswered after ten minutes. This does not waive monetary caps, access requirements or an explicit prohibition. Do not pause for a model switch unless the user requests it. The active goal remains active until its completion, blocking or user-requested pause conditions are met.
+
+**Reading order and current work board**
+
+This handoff lets a successor execute the research without reconstructing the conversation. The goal is an evaluated accuracy improvement, or an honestly bounded negative investigation; writing another plan is not scientific completion. Original parameters and buffers remain frozen. Only LoRA factors may be trained after a prospective protocol is released.
+
+Read this checkpoint and immediate D0 work package first, followed by [live progress](../results/lora_profiled_v1/progress.json), the [completed result](../results/lora_profiled_v1/README.md) and the [goal contract](CALIBRATION_AWARE_LORA_GOAL.md). Then read the [D0 design](../manifests/lora_profiled_diagnosis_design_v1.json) and [diagnosis mathematics](PROFILED_LORA_SURROGATE_DIAGNOSIS.md). The full [mathematical plan](FROZEN_LORA_ACCURACY_PLAN.md) supplies background; the long M3 appendix is conditional infrastructure.
+
+The native goal's final sentence, "Start with M0", records its original launch instruction. M0/M1/M2 are now complete. Do not replace the active goal, reset its budget, or restart a completed milestone because an older summary was not rewritten. The user's current instructions govern; immutable registrations govern their experiments. If code, JSON and prose disagree, reconcile the actual evidence before taking the affected action. Never rewrite a sealed record to make it agree with newer prose.
+
+| Work class | Current action |
+|---|---|
+| Do now | Verify the publication checkpoint; implement, test, register and run D0 |
+| Already complete | M0; M1 real-model bridges; 36 M2 states; global seal; official and independent compact score replay |
+| Conditional after diagnosis | One focused no-update D1 if needed; at most one scientific redesign with a new frozen protocol |
+| Conditional after a qualifying method | Dense surface confirmation, mechanism/repeatability checks, new scenes and VGGT transfer |
+| Do not launch | Completed M2 queue; old failed/retired attempts; original no-nominee M3 study; ungated rentals |
+
+**Immediate work package D0**
+
+D0 is a CPU-only diagnosis of saved artifacts, with no optimizer, no new model forward and no rental allocation. It does not make another accuracy comparison. The design is fixed but `execution_ready` is false: the code and executable registration below still have to be created. These proposed filenames and interfaces are an implementation specification, not tools that already exist.
+
+| Deliverable to implement | Responsibility |
+|---|---|
+| `scripts/profiled_d0_math.py` | Pure float64 effective-weight norms, fixed-coordinate changes and scalar/shape decomposition; no I/O or model access |
+| `scripts/profiled_d0_artifacts.py` | Resolve selected attempts from the global seal, verify bytes/field mappings, and stream CPU tensors |
+| `scripts/run_profiled_d0.py` | Separate prepare, verify-registration, run and verify modes; exclusive outputs; measured resources; no training path |
+| `scripts/test_profiled_d0_math.py`, `scripts/test_profiled_d0_artifacts.py` | Synthetic numerical and malformed-artifact tests; no real diagnostic tensors |
+| `manifests/lora_profiled_diagnosis_execution_v1.json` | Prospective code/runtime/input/output contract committed before diagnostic decoding |
+| `results/lora_profiled_d0_v1/source_layout.json` | Source-only writer/reader audit and exact field/frame/shape mapping |
+| `results/lora_profiled_d0_v1/attempts/ATTEMPT/report.json` | All declared statistics, provenance, failures and resource counts |
+| `results/lora_profiled_d0_v1/README.md` | Evidence table, interpretation limits and one explicit next decision |
+
+Implement in this order:
+
+1. **Audit sources without loading tensors.** Read the sealed runner/capture/LoRA writers and JSON inventories. Resolve the selected attempt from the global seal, never the newest directory. Source bytes must match the recorded revision. Reuse `profiled_artifacts.resolve_logical` for Windows filename handling. Do not rename evidence or infer missing arrays from another endpoint.
+2. **Implement pure mathematics and fixtures.** For each adapted matrix compute `DeltaW=(alpha/r) B_L A_L`, alpha=1, r=4. Use `||B_L A_L||_F^2=tr((B_L^T B_L)(A_L A_L^T))`; validate against direct products. Divide by the corresponding frozen matrix norm. Aggregate with the square root of the sum of squared norms, over adapted matrices only. A zero denominator is undefined. Initial zero B implies zero initial effective update; factor norms are not a functional distance.
+3. **Implement fixed-input comparisons.** Use exactly Heads/earlier P0/P1/P2/P3, all 20 directed pairs, the declared 768-pixel grid, and a separate table for allowed earlier adaptation coordinates. Retain per-pair statistics. With `delta=d1-d0`, compute `a=(d0^T delta)/(d0^T d0)` and `delta_shape=delta-a*d0`. Report total/scalar/remaining-shape change and fixed quantiles. This is an unlabeled diagnostic, not a recalibration of scored predictions. Keep invalid counts and mark undefined statistics; never shrink the coordinate set by candidate validity.
+4. **Check the optional same-state comparator.** Heads/later P0 is allowed only for raw forward tensors proven to use identical RGB/model/runtime before prior-dependent optimization. Its native endpoint is not a repeat control. If equivalence cannot be established, record that the comparator is unavailable. One such comparison is not a general uncertainty estimate.
+5. **Freeze executable registration.** Bind design and trigger score/seal/replay hashes; selected attempts and exact allowed file hashes; code/writer/runtime identities; checkpoint and current config; factor/field/frame mappings; coordinate members; formulas, aggregation and tolerances; failure policy; resource limits; exact commands and output roots. Preparation hashes bytes without deserializing tensors. Current config identity is prospective, not historical M2 proof. Keep the design unchanged; readiness belongs to the new verified registration. Commit before `run` decodes tensors.
+6. **Execute once with a fresh attempt ID.** Verify bindings before decoding; map tensors to CPU and stream files. Honor the 30-minute wall cap and single-job limit, with elapsed checks between artifacts plus an outer process/container deadline. Preserve partial outputs on failure/timeout. Recheck inputs afterward. Record actual host memory/time, zero model forwards, zero optimizer updates and zero rental use.
+7. **Interpret and preserve.** Independently recompute a representative statistic, archive source/report/bindings on C: and E:, add CPU fixtures to CI, and update progress and next command. Large caches/checkpoints stay out of Git. D0 does not consume a scientific redesign or establish accuracy.
+
+Required synthetic checks: rectangular factor orientation; zero B; wrong shapes; NaN/Inf; non-unit alpha/r; invariance under `A_L -> c A_L, B_L -> B_L/c`; Gram/direct-product agreement; zero-denominator handling; exact scalar-only, orthogonal and mixed output changes; reconstruction identity; grid size/bounds and (x,y) indexing; invalid values retained; equal-pair aggregation; missing/extra/changed files; wrong source/checkpoint hashes; first-camera versus second-branch selection; denied access to measurement/reference arrays; and refusal to overwrite an attempt. Set numeric tolerances from fixtures before real decoding.
+
+**Source map for D0 without broad loaders**
+
+The source-only audit establishes the intended schema; runtime dtype/shape/finiteness remains to be checked during registered decoding.
+
+| Item | Source and interpretation |
+|---|---|
+| Final adapter | Global seal `cases[*].selected.adapter.file` and SHA; writer `run_profiled_lora.py` saves named `.lora_A`/`.lora_B` parameters |
+| Factor orientation | `third_party/TCO/peft/lora.py`: A `[4,in_features]`, B `[out_features,4]`; expect 144 modules and 288 arrays |
+| Base matrix | Original checkpoint `MODULE.weight`; wrapped runtime name `MODULE.original_layer.weight`; verify exact key/shape, never infer a transpose |
+| Cache identity | Selected completion and registry determine raw attempt root; `selected.raw_files` binds logical file names and digests |
+| Pair path | `endpoint_cache/forward/md5(instance_i)/md5(instance_j).pth`; `sparse_ga.py` writes `(X_ii,C_ii,X_ji,C_ji)` |
+| Self-camera depth | `tuple[0][...,2]`, expected `[384,512]`; XYZ `[384,512,3]`, confidence `[384,512]`. `tuple[2]` is partner points in the first camera and is not the partner's self-camera depth |
+| Instance names | `mast3r_network_capture.py`: `f'{key}_{meta["sha256"][:12]}_{i}'`, with `key=scene+"_base"`, i=0..4. The hash is the complete input archive SHA, available from JSON metadata; it is not a decoded RGB-only digest |
+| Coordinates | Only five authorized `heads_earlier_FRAME__xy` members of hash-bound `splits.npz`, plus the fixed image grid |
+| P0 comparator | `sparse_global_alignment` calls `forward_mast3r` before native optimization; the prior hook changes `sparse_scene_optimizer`, not that raw forward |
+
+Do not call `profiled_network.load_case` or `views_for` to get names/coordinates: they decode broader measurement/RGB archives, and RGB archives also contain reference fields. Load only declared NPZ members with `allow_pickle=False`, and hash-verified forward tuples with `torch.load(map_location='cpu', weights_only=True)`. Stream selected frozen checkpoint matrices without constructing MASt3R. D0 does not authorize canonical/native/final tensor inspection merely because those files were sealed.
+
+Use these CLI semantics when implementing the runner:
+
+```text
+prepare              JSON/source/byte inventory; no tensor decode; exclusive registration
+verify-registration  Verify bound bytes/runtime; no tensor decode
+run                  Verify; read only declared tensors; write fresh report/receipt
+verify               Recompute statistics into a fresh verification receipt
+```
+
+These are not shell commands yet. When the entry point exists, place exact working commands in its registration and the live progress file. Never substitute a placeholder command or invented receipt for release.
+
+**From diagnosis to the one redesigned method**
+
+Create an evidence table answering: actual effective weight change; raw functional change versus any valid same-state comparator; scalar versus shape component; evidence for calibrated-response cancellation; and unresolved downstream mismatch. For each, cite an artifact, mark supported/unsupported/unresolved, and name the smallest discriminating test. A large scalar secant does not prove the solver cancelled an actual parameter update.
+
+If D0 cannot discriminate causes, register one focused D1 no-update probe first. Fix its parameter state, inference precision, tensor access, perturbations, tolerances and maximum calls before execution. Use the same selected scene/source and only its allowed adaptation packet. Choose one question: an exact solver-response check at a fixed state, or a paired replay isolating one training-to-endpoint operation. D1 has no optimizer update and zero rental spend. Cap it prospectively at 60 minutes of local model execution plus 30 minutes CPU analysis, one job at a time. If that bound cannot resolve the cause, report inconclusive evidence rather than silently expanding the search.
+
+Preserve the exact calibration derivative. At fixed weights, define `H=A^T A+lambda I`, `r=A s-b`, `e=Q s-d`, `t_S=dot(A) s`, `t_Q=dot(Q) s`:
+
+```text
+dot(s) = -solve(H, A^T t_S + dot(A)^T r)
+dot(e) = t_Q + Q dot(s)
+outer directional derivative = e^T dot(e)
+detached comparator at the SAME parameter state = e^T t_Q
+```
+
+The residual-response term is required. Ridge response `I-A H^-1 A^T` is generally not an orthogonal projector. Different final P3/P2 states do not isolate this local derivative. A network direction needs a real parameter derivative or registered parameter finite differences; retain the output-space label for an output-space probe.
+
+| Supported diagnosis | Candidate for the single redesign | Required control |
+|---|---|---|
+| Software/precision/gradient fault | Engineering repair before scientific interpretation | Zero-adapter equality, frozen state and numerical derivatives; do not call a repair a scientific contribution |
+| Direct change is cancelled by fitted calibration | A damped update in directions that preserve predictive geometry after calibration, using the full query response | Ordinary damping on the same objective at matched compute; full/detached response; exact derivatives/gauges |
+| Useful surrogate change is lost at a specific native operation | Differentiate a fixed declared number of refinement steps, with fixed matches and explicit gauge | Forward-identical detached refinement, matched D and original profiled method; both endpoints |
+| Positive effect exists but overshoots | Measured one-dimensional update sizing | Full/half steps and ordinary backtracking including extra forward cost |
+| Coherent source-calibration error dominates | Correlated observation-noise model | Diagonal covariance with identical marginals and allowed inputs |
+| Tiny changes or no identified cause | Resolve the measured numerical/gradient boundary within D1, or report inconclusive/negative evidence | No automatic learning-rate/rank/step sweep |
+
+Choose one row only when its measurable prediction is supported. These options are conditional, not a menu to execute. Their mathematical tools are established; the contribution needs a specific mechanism and independent reconstruction gains.
+
+Before redesigned training, write a versioned method specification and execution/evaluation manifests covering the observed failure, falsifiable remedy, exact equations, coordinate/gauge conventions, single changed mechanism, adapter placement/rank, optimizer/precision, matched controls, full scene/source inventory, common final endpoint, selection/failure/stopping rules, storage/runtime and cost. Use both directions of all three observed development scenes. Retain the 1% nomination and 5% surface gates. Explicitly name new eligible candidates and controls; do not apply the original P3/P4-only selector to unnamed replacement arms.
+
+Default to rank 4, alpha 1, eight macro-steps and 20-pair accumulation unless the hypothesis specifically justifies another prospectively fixed schedule. Every comparator must share changed schedule and permitted information. A differentiated-refinement claim needs a forward-identical detached control; other mechanisms need the table's matched control. Keep P0, matched D and the original failed mechanism visible, with fresh runs unless a complete reuse audit proves equivalence. Historical config identity remains unproven; do not inherit an old success flag or M3 acceptance. Set `redesigns_executed=1` when this scientific redesign starts. Engineering retries remain visible and do not authorize a second method.
+
+A qualifying redesigned method requires its own updated, registered confirmation path. Reuse audited M3 components only after dependency/acceptance checks; preserve the original no-nominee result. If the redesign fails, complete the negative evidence package and mark later stages not run. The broader accuracy-improvement ambition remains unmet.
 
 **Workspace and tools**
 
@@ -49,13 +157,13 @@ In PowerShell, use the repository as the working directory. Inspect current stat
 Set-Location C:/SVNProjects/Research/tco-research
 git status --short
 git log -3 --oneline
-docker ps --format '{{.Names}} {{.Status}} {{.Image}}'
-docker image inspect tco-mast3r:pilot --format '{{.Id}}'
+docker --host npipe:////./pipe/dockerDesktopLinuxEngine ps --format '{{.Names}} {{.Status}} {{.Image}}'
+docker --host npipe:////./pipe/dockerDesktopLinuxEngine image inspect tco-mast3r:pilot --format '{{.Id}}'
 nvidia-smi --query-gpu=name,memory.total,memory.used,utilization.gpu --format=csv
 Get-Content results/lora_profiled_v1/progress.json
 ```
 
-Read the native active-goal state and weekly usage counter using the available tools. If a recorded local job might still be running, inspect that exact container with `docker inspect NAME --format '{{json .State}}'` and `docker logs --tail 30 NAME`. A stale status file or observation timeout does not prove the job stopped. Reattach or poll the live handle; never start a duplicate merely because a previous observation timed out.
+Read the native active-goal state and weekly usage counter using the available tools. If a recorded local job might still be running, inspect that exact container with `docker --host npipe:////./pipe/dockerDesktopLinuxEngine inspect NAME --format '{{json .State}}'` and its logs with the same explicit host. A stale status file or observation timeout does not prove the job stopped. Reattach or poll the live handle; never start a duplicate merely because a previous observation timed out.
 
 Require the current image ID to equal the pinned value in the table before using the tag. An old environment report cannot prove that a mutable tag still names the same image. Launch by the full inspected image ID when practical.
 
@@ -90,10 +198,10 @@ For a new container operation, choose a fresh descriptive attempt name and keep 
 
 ```powershell
 $profiledAttempt = 'tco-profiled-solver-' + (Get-Date -Format yyyyMMdd-HHmmss)
-docker run --name $profiledAttempt --mount type=bind,source=C:/SVNProjects/Research/tco-research,target=/workspace --workdir /workspace sha256:74783a8eefee6daad6ff2714a51263ccdcdc5092b83cebee20515310bec46b50 python scripts/check_profiled_calibration.py --verify
+docker --host npipe:////./pipe/dockerDesktopLinuxEngine run --name $profiledAttempt --mount type=bind,source=C:/SVNProjects/Research/tco-research,target=/workspace --workdir /workspace sha256:74783a8eefee6daad6ff2714a51263ccdcdc5092b83cebee20515310bec46b50 python scripts/check_profiled_calibration.py --verify
 ```
 
-Model jobs add `--gpus all`, `--env CUBLAS_WORKSPACE_CONFIG=:4096:8`, and the read-only checkpoint mount `--mount type=bind,source=E:/ResearchData/TCO/checkpoints/MASt3R/hf,target=/weights,readonly`. The image already sets the MASt3R import path. The registered batch launcher supplies these arguments and pins the local Docker engine. Use it for scientific states. Both production bridges and the first P0/P1 invocation passed; the full scientific queue is now active. Do not start a second GPU experiment while it is active. CPU-only M3 probes use names beginning `tco-m3-`, no `--gpus`, and `CUDA_VISIBLE_DEVICES=`; the M2 launcher deliberately treats `tco-profiled-` containers as possible competing jobs.
+Model jobs add `--gpus all`, `--env CUBLAS_WORKSPACE_CONFIG=:4096:8`, and the read-only checkpoint mount `--mount type=bind,source=E:/ResearchData/TCO/checkpoints/MASt3R/hf,target=/weights,readonly`. The image already sets the MASt3R import path. The completed registered batch launcher supplies these arguments and pins the local Docker engine. Never run two research GPU experiments concurrently. The v2 scientific queue has finished and must not be relaunched as a new study. CPU-only probes use names beginning `tco-m3-`, no `--gpus`, and `CUDA_VISIBLE_DEVICES=`; the original M2 launcher treats `tco-profiled-` containers as possible competing jobs.
 
 **Data roles and exact schema**
 
@@ -175,9 +283,9 @@ All new calibration medians use the midpoint convention, `torch.quantile(values,
 
 1. Completed: deterministic arithmetic diagnosis, both real-model acceptance bridges, scientific v2 registration and scorer v2 registration. The scorer's 62 synthetic fixtures and the batch/filename helper's 21 CPU fixtures passed before release. Preserve the failed attempts and old registrations.
 2. Completed: the initial `screen02` P0/P1 validation invocation, successful exits, valid completion seals and successful launcher terminal record. Do not repeat it.
-3. Observe the active full `screen02` queue. Resume only after establishing that its launcher and owned container have ended and classifying any failure. The launcher rechecks completed hashes before skipping them. Seal all 36 states before scoring; do not edit registered source or inputs during the screen.
-4. Create and verify the global seal, score with the already registered evaluator, and independently replay the result. Apply the declared nomination rule. A passing derivative test, smaller training loss or isolated good scene cannot substitute for this gate.
-5. If a candidate qualifies, prepare the still-pending dense evaluation with the prescribed matched controls and eight gate cells before opening dense scores. Otherwise diagnose failure and use at most the one targeted local redesign allowed by the contract. No rental allocation is released by a failed gate.
+3. Completed: all 36 `screen02` states, successful queue terminal record and no numerical failures. Preserve the finished queue; do not repeat it.
+4. Completed: global seal prepared/verified before score access, official score/replay and independent compact arithmetic replay. No P3/P4 candidate qualified. Smaller training loss or an isolated good scene cannot substitute for the gate.
+5. Current branch: diagnose failure locally and use at most the one targeted scientific redesign allowed by the contract. A redesigned method needs prospective registration and its own confirmation; it cannot inherit a nonexistent P3/P4 nomination. No rental allocation is released by this failed gate.
 6. Publish planned runs including failures, verified backups, compact replay evidence and CI results; record why conditional stages did not run.
 
 **Exact gradient replay algorithm**
@@ -188,18 +296,18 @@ No optimizer step may occur between replayed pairs. Do not retain 20 full decode
 
 Reduced precision can make tiny finite differences meaningless. Run the numerical direction check with an fp32 decoder and TF32 disabled if necessary, with fixed features and several prespecified perturbation sizes. Record arithmetic settings and tolerances before opening accuracy results. A gradient check must cover the implementation actually claimed; a diagnostic of a different precision path cannot prove every reduced-precision detail.
 
-**Current v2 inspection and resume commands**
+**Historical v2 execution and replay commands**
 
-First inspect the existing operation. Poll its observation session while available. Docker state, the batch lock, per-job exit records and the invocation terminal record remain durable references if that session disappears. A missing `terminal.json` means the launcher has not recorded a terminal result; it does not authorize a duplicate.
+The following commands document how the completed screen was run. Its successful terminal record, global seal and scores now exist. Do not execute its training/resume or creation commands again. Use verification-only commands when an integrity concern warrants replay. For any future registered job, Docker state, its lock, per-job exits and terminal record determine whether an owner is still alive; an observation timeout never authorizes a duplicate.
 
 ```powershell
-docker ps --format '{{.Names}} {{.Status}}'
+docker --host npipe:////./pipe/dockerDesktopLinuxEngine ps --format '{{.Names}} {{.Status}}'
 Get-Content reports/lora_profiled_v1/batch.lock -ErrorAction SilentlyContinue
 Get-Content results/lora_profiled_v1/batches/screen02/invocations/20261118T104117Z_ede54062/terminal.json -ErrorAction SilentlyContinue
 Get-ChildItem reports/lora_profiled_v1/batches/screen02/invocations/20261118T104117Z_ede54062/*.log
 ```
 
-The first two-state invocation already passed. While the full invocation is active, observe it rather than executing this resume block. If it finishes successfully with all 36 verified states, proceed directly to the global seal. If a later continuation is necessary, first inspect `*.exit.json`, individual completion records, lock owner and actual container state; preserve and classify the interruption. Only after proving there is no live owner and resolving the interruption, run this block sequentially. Each failure blocks the next command:
+This resume block is retained for reproducibility/history, not as the current next action. It was used only after checking ownership and classifying interruptions. Each failure blocked the next command:
 
 ```powershell
 python scripts/register_profiled_execution.py --verify --phase scientific --manifest manifests/lora_profiled_execution_v2.json
@@ -214,7 +322,7 @@ if ($LASTEXITCODE -ne 0) { throw 'Batch stopped; inspect its terminal and per-jo
 
 The last command verifies and skips completed states under the same prefix, then runs the remaining manifest-ordered states. It does not restart the first P0/P1 pair or select attempts by accuracy. The wall-clock bound applies to this local invocation and does not authorize a rental. The user's 5% weekly reserve still applies. The launcher pins the local Docker named pipe, exact image and mounts, deterministic cuBLAS environment and one job at a time. On timeout/interruption it stops only its own labeled container. No automatic retries occur.
 
-After all 36 predictions have individual completion seals, create and verify the global seal. These commands audit byte hashes without deserializing scientific predictions or accessing held-source accuracy:
+The following seal commands have already succeeded. The existing immutable seal must not be overwritten; `prepare` is historical and `verify` is the replay entry point. They audit byte hashes without deserializing scientific predictions or accessing held-source accuracy:
 
 ```powershell
 python scripts/seal_profiled_predictions.py prepare --manifest manifests/lora_profiled_execution_v2.json --evaluation manifests/lora_profiled_evaluation_execution_v2.json
@@ -242,7 +350,7 @@ The implemented launcher runs one GPU job at a time, requires a successful exit 
 
 There is currently no automatic continuation path past a failed case: same-prefix preflight rejects its partial/failure record, and a new prefix starts from the first registered job. The sealer can classify a recorded `FloatingPointError`, but it still requires a valid completed attempt for every run ID; classification alone does not authorize dropping that state. If an arm deterministically fails numerically, stop, preserve evidence and register an explicit failure/termination amendment before accessing scores or changing execution. Such an amendment must specify which unrun cases continue, how terminal failures appear in the full denominator, candidate disqualification and global-seal handling. Do not retry a known deterministic failure, hand-select later jobs to evade the stop, or edit bound code during another active job. This is an unresolved recovery capability, not evidence that a current arm has failed.
 
-The [prospective terminal-failure policy](PROFILED_LORA_TERMINAL_FAILURE_POLICY.md) specifies that conditional amendment, classification audit, unchanged remaining inventory, unavailable metrics and required new evaluator fixtures. It is not implemented or activated; the current batch continues unchanged unless a qualifying failure occurs.
+The [prospective terminal-failure policy](PROFILED_LORA_TERMINAL_FAILURE_POLICY.md) specifies that conditional amendment, classification audit, unchanged remaining inventory, unavailable metrics and required new evaluator fixtures. It was not activated: this completed screen had no numerical failure. Its unimplemented recovery path must not be mistaken for an observed scientific failure.
 
 Public attempt evidence belongs in `results/lora_profiled_v1/cases/RUN_ID/ATTEMPT/`; large arrays and fresh caches belong in the corresponding `reports` path. Required outputs include source/manifest/input hashes, original-state hashes, initial/final adapter hashes, eight per-step reports for trained cases, actual call counts, finite gradient checks, timing/memory, native/final endpoint identities, and the completion/failure record. The runner's 1 GiB free-space guard is a minimum, not a 36-case storage estimate. Measure the first complete case's bytes and reserve enough local disk for the remaining cases and both physical backups before batching. Never place pretrained weights or complete restricted datasets in Git.
 
@@ -293,7 +401,7 @@ The earlier 150-test suite is preserved in `results/lora_profiled_m3_v1/evaluato
 
 Accepted **CPU dense evaluation** settings are the pinned image, Torch intraop/interops 1/1, OpenCV threads 1, and `OMP_NUM_THREADS`, `OPENBLAS_NUM_THREADS`, `MKL_NUM_THREADS`, `NUMEXPR_NUM_THREADS` all 1 before Python starts. Preserve the existing cKDTree `workers=-1`. The earlier two-thread probes showed approximately machine-precision ICP differences; their reports and exact old source remain archived. The accepted one-thread setting affects this future CPU evaluator only; do not alter registered M2/model training. Never call historical `evaluate_points`, which sets Torch threads to two and uses insufficient cache identities.
 
-Implement the following in order if M2 nominates P3 or P4. Pure synthetic preparation can proceed while M2 runs, but actual study arrays and GPU work remain behind their release conditions:
+The following is the preserved initial M3 implementation route. M2 has now nominated neither P3 nor P4, so this route is not released. A qualifying redesign would require its own method-specific registration before these components are used:
 
 1. **Dense leaf kernel and camera/boundary adapter: synthetic acceptance complete.** Use the modules and evidence above; do not rewrite the audited scene-wide similarity-plus-rigid-ICP kernel. The remaining production wrapper must preserve transforms, fixed-mask validity, ICP fitness/RMSE/counts, raw meter-valued components, native/final endpoint identities and reference-specific boundary diagnostics. Axial metric-depth error uses unaligned metric depth and the registered-RGB reference's own pinned cameras. Alternate axial error remains unsupported until its distinct camera convention is verified. After authorized reference decode, verify all five views are nonempty, shared masks are identical, and reference projection agrees with its pinned camera convention. Do not copy historical caches or per-view alignment.
 2. **Byte-verifying registration and controller.** Resolve actual nominee from verified M2 seal and replayed scores. Bind every source, checkpoint, input/split/noise packet, runtime, RGB/reference archive and fixed mask. `build_plan` consumes these identities but cannot verify their truth. Enforce one shared bool mask across both references and all arms, not merely equal point counts or separate per-reference hashes. Make fresh cache identities include all these dependencies. Preserve failures; never create invented receipts to satisfy the pure planner.
@@ -306,7 +414,7 @@ The full-versus-detached contrast for P3 uses P2; for P4 it uses P5. They must r
 
 **Implementing the remaining controller without guessing**
 
-The following are required interfaces for new code, not commands that already exist. Keep them in separate M3 files; do not retrofit the running M2 launcher or alter its frozen release policy. The public model entry point is `profiled_m3_model.execute(ModelContext(...))`. Read the dataclass and its binding verifier before constructing a context. It accepts no public injected backend, makes one fresh model attempt per process, and writes only unused M3 case/attempt directories. Tests use a private mock backend; never use that path for scientific execution.
+The following are required interfaces for new code, not commands that already exist. Keep them in separate M3 files; do not retrofit the completed M2 launcher or alter its frozen release policy. The public model entry point is `profiled_m3_model.execute(ModelContext(...))`. Read the dataclass and its binding verifier before constructing a context. It accepts no public injected backend, makes one fresh model attempt per process, and writes only unused M3 case/attempt directories. Tests use a private mock backend; never use that path for scientific execution.
 
 The prospective execution registry must use `schema="profiled_m3_execution_v1"`, contain the complete exact `jobs` inventory, and provide `model_core` with `input_plan`, `input_attempt`, `source_sha256_lf`, `artifact_sha256`, `docker_image`, `checkpoint_sha256`, `checkpoint_config_sha256`, `original_state_sha256`, `runtime_identity`, and `cases`. Each `cases[case_id]` contains actual `input_sha256` and `case_input_digest`. The pure planner accepts an opaque input identity; the implemented static execution registry now explicitly defines `inventory.inputs.case_input_sha256` and each job's `input_identity_sha256` as that case's CPU-bridge fitting-tensor `input_digest`. It checks equality with `model_core.cases[case_id].case_input_digest`; do not substitute a metadata-descriptor hash. Context additionally supplies the exact job, fresh attempt, registry path/hash, weights path and actual execution commit. Bind all required imported sources, pinned upstream Git blobs and model-loading configuration files. The core checks its mandatory subset; it cannot prove that a caller supplied a complete study registry or authorized stage.
 
@@ -402,12 +510,25 @@ Initial work is local and adds USD 0 rental compute. The existing conditional US
 
 Prepare data, wheels, code and manifests locally. Start a single paid job stream only after its evidence gate, with the tested provider-side deadline and heartbeat/lease. A shell timeout does not stop billing. On success, failure or weekly reserve threshold, preserve outputs, stop the paid pod and verify provider state. The retained workspace `749tvrn5gwvuel` and its 20 GB volume must not be deleted. Do not request deletion again without a material change.
 
+**Portable verification and reporting boundary**
+
+A public checkout can replay compact M2 arithmetic using the existing command below. Use a fresh receipt path; the default receipt already exists and is intentionally immutable.
+
+```powershell
+$profiledReplayReceipt = 'reports/ci/profiled_public_replay_' + (Get-Date -Format yyyyMMdd-HHmmss) + '.json'
+python scripts/replay_profiled_public_scores.py --output $profiledReplayReceipt
+```
+
+This checks the 420-field compact evidence, 180 metric rows, recorded provenance linkage and nomination. It does not reconstruct raw overlap masks, repeat model inference or prove physical ground truth. Full local seal/archive verification additionally requires the retained caches, checkpoint and C:/E: evidence. Report these scopes separately. Never stop unrelated `hbbs`/`hbbr` Docker containers.
+
+The native goal stays active unless the user pauses it or the standing weekly reserve rule triggers. Documenting the handoff does not satisfy the remaining research. Update `progress.json` after a real checkpoint with evidence paths, running/terminal job state, next executable action, redesign count, dollar ledger and observed CI. Keep milestone progress separate from accuracy: 50% currently reflects M0+M1+M2 completion, while qualifying accuracy improvement is false.
+
 **First actions for the successor**
 
-The immutable M1 backup is verified on a second physical disk: `E:/ResearchData/TCO/research_results/lora_profiled_v1/snapshots/m1-20261118-verified01`. Its [public receipt](../results/lora_profiled_v1/backups/m1-20261118-verified01.json) records 136 files and 315,628,130 bytes. Verify it with `python scripts/archive_profiled_evidence.py verify --destination E:/ResearchData/TCO/research_results/lora_profiled_v1 --snapshot m1-20261118-verified01 --check-source`. Do not rerun copy with that existing snapshot ID. After the complete M2 prediction seal exists, use a fresh snapshot ID and `copy --seal results/lora_profiled_v1/prediction_seal.json` with the same destination, then `verify --check-source`; require successful exits from both commands. The archiver never decodes predictions, overwrites snapshots or copies mutable progress/logs. Failed copies remain preserved for diagnosis.
+The immutable M1 backup is verified on a second physical disk: `E:/ResearchData/TCO/research_results/lora_profiled_v1/snapshots/m1-20261118-verified01`. Its [public receipt](../results/lora_profiled_v1/backups/m1-20261118-verified01.json) records 136 files and 315,628,130 bytes. The complete M2 prediction archive is also copied and independently verified against current source bytes: `E:/ResearchData/TCO/research_results/lora_profiled_v1/snapshots/m2-20261118-verified01`, 2,281 files and 6,059,018,880 bytes; see its [receipt](../results/lora_profiled_v1/backups/m2-20261118-verified01.json). Both disks are physically distinct. Do not rerun copy using either existing snapshot ID. An integrity replay uses `python scripts/archive_profiled_evidence.py verify --destination E:/ResearchData/TCO/research_results/lora_profiled_v1 --snapshot m2-20261118-verified01 --check-source`. Compact scores/replay/code have a separate [score-evidence backup](../results/lora_profiled_v1/backups/m2-scores-20261118-verified01.json). Failed attempts and historical snapshots remain preserved.
 
-Read the live progress file and inspect the active full `screen02` operation. Replay preparation only when files/runtime changed or their validity is uncertain. Both production bridges, the first P0/P1 validation and the scientific/scorer v2 registrations are complete. Observe the current queue; use the continuation block only after an interruption has been classified and no owner remains alive. After all 36 states verify, create/verify the global seal, then score and replay. Preserve the historical `gradient01` and retired v1 P0 evidence. After each meaningful result, update evidence paths, job state, next command, run counts, costs and Git/CI state. No scientific NPZ or held-source score was opened while updating this handoff.
+Read the live progress file, the full M2 result table and the verified score/replay receipts. Preserve the completed `screen02`, historical `gradient01`, and retired v1 P0 evidence. The current task is the bounded local failure diagnosis, followed by at most one registered redesign if justified. Re-run completed preparation only if relevant files/runtime changed or integrity is uncertain. After meaningful results, update evidence paths, job state, next command, costs and Git/CI state. Held-source development scores are now known; those scenes cannot become unseen final tests later.
 
 **Copyable instruction for a successor**
 
-> Continue the existing active research goal in `C:/SVNProjects/Research/tco-research`. First read `docs/CALIBRATION_AWARE_LORA_HANDOFF.md`, the goal contract, mathematical specification and `results/lora_profiled_v1/progress.json`. Verify actual live process state before acting; do not start a duplicate queue or create a replacement goal. Follow the frozen v2 M2 protocol through all 36 predictions, global sealing, registered scoring and score replay. No accuracy improvement is established yet. Continue conditional M3 or the single registered local redesign according to the verified outcome. Keep original model weights frozen and train only LoRA. Public datasets only; local preparation and development add no rental compute. The existing USD 25 reserve is conditional and cumulative, not a fresh allocation. Preserve the retained RunPod workspace and unrelated local edits. At 5% weekly allowance remaining, checkpoint, stop and verify any paid research pod, then pause under the standing instruction. Commit permitted code/results, verify backups and CI, and report completed evidence separately from planned work. A plan, partial inventory or passing synthetic test does not complete this goal.
+> Continue the existing active research goal in `C:/SVNProjects/Research/tco-research`. Read `docs/CALIBRATION_AWARE_LORA_HANDOFF.md`, the goal contract, mathematical specification, `results/lora_profiled_v1/README.md` and `progress.json` in that result directory. M2 is finished: all 36 states, global seal, official replay and independent arithmetic agree that neither P3 nor P4 qualifies. Do not rerun the screen or launch the conditional 360-state M3 study. Implement/register the bounded zero-update local diagnosis, inspect its evidence, and select at most one targeted scientific redesign across all failure branches. No qualifying accuracy gain or rental authorization exists. Keep original weights frozen; train only LoRA when a new protocol is registered. Public datasets only; existing USD 25 reserve remains conditional and cumulative. Preserve retained RunPod workspace and unrelated edits. At 5% weekly allowance remaining, checkpoint, stop/verify paid research pods and pause under standing instruction. Commit permitted code/results and verify backups/CI. The goal remains active; the broader accuracy-improvement ambition is unmet.

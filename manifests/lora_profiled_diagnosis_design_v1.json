@@ -1,0 +1,150 @@
+{
+  "schema": "profiled_lora_diagnosis_design_v1",
+  "prepared_at_utc": "2026-11-18T13:36:10.764109+00:00",
+  "trigger": {
+    "result": "no_eligible_M2_nominee",
+    "score_file": "results/lora_profiled_v1/held_source_scores.json",
+    "score_sha256": "967fb21212ac878474050dd8e332cd4ca9ed80b6aad28ad34df6700e123d5b2d",
+    "prediction_seal_sha256": "db127c4bfbfa2a277a46d2664ac1cb2f6f7ddd2a6085292be8bda3c4bb393a34",
+    "independent_replay_sha256": "0af88b5a3e77312078f4f1c2fb49cb1297d9f745b0cf5c36baa5d3265e4c1506"
+  },
+  "scientific_redesigns_consumed": 0,
+  "scientific_redesign_limit": 1,
+  "execution_ready": false,
+  "requires_before_execution": [
+    "Implement source-only cache/layout inspection and CPU diagnostic code",
+    "Synthetic numerical checks, exact factor/gauge semantics and memory-bounded loading",
+    "Freeze a separate executable diagnostic registration binding code/runtime/checkpoint/config/selected artifact bytes",
+    "Commit before decoding additional adapter/cache tensors for this diagnostic"
+  ],
+  "hypothesis_questions": [
+    "Are LoRA factor changes producing measurable weight/function changes?",
+    "How much fixed-input self-camera axial-depth change is a per-view or per-pair scalar component?",
+    "Do saved raw network changes survive canonical/native/final processing? D0 only quantifies available components; it cannot prove the full training-surrogate response."
+  ],
+  "stage": "D0_saved_artifact_diagnosis_without_updates",
+  "resources": {
+    "rental_usd": 0,
+    "gpu_requested": false,
+    "model_forward_calls": 0,
+    "optimizer_updates": 0,
+    "max_cpu_wall_minutes": 30,
+    "max_concurrent_jobs": 1,
+    "stream_cache_files": true
+  },
+  "immutable_model": {
+    "checkpoint_sha256": "0a615eb05fa9db654050aa655945ee5696e7c6c1b7f93f1ee8c37249010f6feb",
+    "prospective_current_config_sha256": "718eb93dc4f9e4332b60cc0041af962d712cbd346d7770ce35c5b22cff68eae4",
+    "config_hash_is_historical_M2_proof": false,
+    "rank": 4,
+    "alpha": 1,
+    "effective_update": "DeltaW=(alpha/r)*B@A; original zero-B initialization means initial DeltaW=0"
+  },
+  "adapter_norm_scope": {
+    "run_ids": [
+      "heads_earlier_P1",
+      "heads_earlier_P2",
+      "heads_earlier_P3",
+      "heads_earlier_P4",
+      "heads_earlier_P5",
+      "heads_later_P1",
+      "heads_later_P2",
+      "heads_later_P3",
+      "heads_later_P4",
+      "heads_later_P5",
+      "chess_earlier_P1",
+      "chess_earlier_P2",
+      "chess_earlier_P3",
+      "chess_earlier_P4",
+      "chess_earlier_P5",
+      "chess_later_P1",
+      "chess_later_P2",
+      "chess_later_P3",
+      "chess_later_P4",
+      "chess_later_P5",
+      "fire_earlier_P1",
+      "fire_earlier_P2",
+      "fire_earlier_P3",
+      "fire_earlier_P4",
+      "fire_earlier_P5",
+      "fire_later_P1",
+      "fire_later_P2",
+      "fire_later_P3",
+      "fire_later_P4",
+      "fire_later_P5"
+    ],
+    "expected_adapters": 30,
+    "expected_modules_per_adapter": 144,
+    "expected_factor_arrays_per_adapter": 288,
+    "report": [
+      "per-layer effective DeltaW Frobenius norm",
+      "relative norm against corresponding frozen base weight",
+      "aggregate norm over adapted matrices only",
+      "matrix shapes/rank/scaling and finite-field checks"
+    ],
+    "formula": "||BA||_F^2=tr((B^T B)(A A^T)); validate against directly materialized products on synthetic fixtures; preserve undefined zero-denominator cases"
+  },
+  "functional_scope": {
+    "selection_rule": "first scene and source in frozen M2 registration, smaller numeric full-gradient arm; no selection by score",
+    "scene": "heads",
+    "adaptation_source": "earlier",
+    "run_ids": [
+      "heads_earlier_P0",
+      "heads_earlier_P1",
+      "heads_earlier_P2",
+      "heads_earlier_P3"
+    ],
+    "same_state_forward_comparator": "heads_later_P0",
+    "same_state_comparator_condition": "Prove from bound writer source that these cache tensors depend only on identical RGB/model inputs before any supplied-prior/native optimization; compare raw forward tensors only, not native endpoints.",
+    "frames": [
+      25,
+      225,
+      425,
+      625,
+      825
+    ],
+    "directed_pairs": 20,
+    "outputs": "self-camera axial depth from saved fresh-FP32 raw forward outputs; exact field and shape mapping must be source-verified before execution registration",
+    "grid": {
+      "native_shape": [
+        384,
+        512
+      ],
+      "x_start": 8,
+      "y_start": 8,
+      "stride": 16,
+      "points_per_view": 768
+    },
+    "additional_coordinates": "all permitted earlier-source adaptation pixels, kept separate from the fixed image grid; no opposite-source measurements",
+    "quantiles": [
+      0,
+      0.25,
+      0.5,
+      0.75,
+      0.9,
+      0.99,
+      1
+    ],
+    "aggregation": "retain each directed-pair/view result; aggregate equally across directed pairs, never choose a best pair",
+    "scalar_decomposition": "delta=d1-d0; a=(d0^T delta)/(d0^T d0); delta_shape=delta-a*d0 on exactly the declared coordinate set",
+    "interpretation": "Unlabeled diagnostic decomposition only; never replace an evaluated prediction, refit an accuracy metric or treat the secant as a LoRA Jacobian.",
+    "invalid_policy": "count and preserve nonfinite/nonpositive values; do not shrink coordinate sets; undefined denominator remains undefined"
+  },
+  "forbidden": [
+    "No target-depth/reference arrays",
+    "No opposite-source measurement packet for the selected functional case",
+    "No adapter updates or optimizer",
+    "No new GPU model forwards in D0",
+    "No learning-rate/rank/step sweep",
+    "No M3 or paid transfer release",
+    "No replacing the failed screen or reclassifying development scenes as final tests"
+  ],
+  "output_requirements": [
+    "Source/input/checkpoint/config hashes and completion-seal linkage",
+    "All declared adapter and fixed-case statistics including failures",
+    "Recorded CPU time/peak host memory and zero GPU/rental use",
+    "A reasoned diagnosis distinguishing weight-space norm, raw-function change, scalar component and unresolved downstream effects",
+    "If more evidence is needed, prospectively specify a bounded no-update D1 probe; do not silently enlarge D0",
+    "Choose and register at most one targeted redesign only after diagnostic evidence; preserve initial negative result"
+  ]
+}

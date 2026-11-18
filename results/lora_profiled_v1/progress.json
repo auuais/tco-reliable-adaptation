@@ -2,8 +2,8 @@
   "goal": "Calibration-aware predictive LoRA accuracy investigation",
   "checkpoint_date": "2026-11-18",
   "status": "active",
-  "current_phase": "M2 scientific v2: 34 states verified; tco-profiled-screen02-fire-later-p4",
-  "completed_milestone_weight_percent": 25,
+  "current_phase": "M2 complete: no eligible nominee; bounded CPU-only D0 diagnosis pending",
+  "completed_milestone_weight_percent": 50,
   "percentage_rule": "Conservative whole-milestone credit; completed subchecks are listed separately and are not accuracy evidence",
   "milestones": {
     "M0": {
@@ -39,18 +39,21 @@
     },
     "M2": {
       "weight": 25,
-      "status": "in_progress",
-      "trained_states_completed": 28,
+      "status": "complete",
+      "trained_states_completed": 30,
       "trained_states_planned": 30,
       "frozen_controls_completed": 6,
       "frozen_controls_planned": 6,
       "retired_protocol_states": 1,
-      "note": "Completion hashes verified against launcher receipts. No study accuracy scores accessed."
+      "note": "All36 states globally sealed before scoring. Official replay and independent compact arithmetic agree: no eligible P3/P4 nominee. No numerical failures.",
+      "result": "negative_registered_development_screen"
     },
     "M3": {
       "weight": 15,
-      "status": "not_started",
-      "preparation": "202 combined CPU fixtures pass. Static registry and completed-attempt byte audit implemented, including exact fitting-count checks. Reference-free converter/replay and pure reference semantics pass 17 pinned CPU fixtures. All24 real fitting-case reports exactly reproduce in pinned image. M3 actual registry/release controller, model acceptance, stage seals, scorer and scientific execution remain pending; no reuse approved."
+      "status": "diagnosis_pending",
+      "preparation": "202 combined CPU fixtures pass. Static registry and completed-attempt byte audit implemented, including exact fitting-count checks. Reference-free converter/replay and pure reference semantics pass 17 pinned CPU fixtures. All24 real fitting-case reports exactly reproduce in pinned image. M3 actual registry/release controller, model acceptance, stage seals, scorer and scientific execution remain pending; no reuse approved.",
+      "initial_confirmation": "not_run_due_to_no_eligible_M2_nominee",
+      "diagnosis_design": "manifests/lora_profiled_diagnosis_design_v1.json"
     },
     "M4": {
       "weight": 10,
@@ -62,7 +65,13 @@
     },
     "M6": {
       "weight": 10,
-      "status": "not_started"
+      "status": "partial_verification_only",
+      "verified_so_far": [
+        "M2 official score replay",
+        "Independent420-field180-row compact arithmetic replay",
+        "Full2281-file M2 archive verified on distinct C/E physical disks",
+        "Compact M2 scores/replay and detailed successor documentation:21 files,1639507 bytes verified against C:/E: physical disks"
+      ]
     }
   },
   "evidence": {
@@ -108,7 +117,14 @@
     "m3_controller_preparation": "results/lora_profiled_m3_v1/controller_unit_checks01.json",
     "m3_io_semantics": "results/lora_profiled_m3_v1/io_semantics_checks01.json",
     "m3_pinned_case_bridge": "results/lora_profiled_m3_v1/tensor_bridge_pinned01_container.json",
-    "m3_controller_backup": "results/lora_profiled_m3_v1/controller_preparation_backup01.json"
+    "m3_controller_backup": "results/lora_profiled_m3_v1/controller_preparation_backup01.json",
+    "prediction_seal": "results/lora_profiled_v1/prediction_seal.json",
+    "held_source_scores": "results/lora_profiled_v1/held_source_scores.json",
+    "independent_public_replay": "results/lora_profiled_v1/independent_public_replay.json",
+    "independent_replay_preparation": "results/lora_profiled_v1/independent_replay_preparation01.json",
+    "m2_backup": "results/lora_profiled_v1/backups/m2-20261118-verified01.json",
+    "m2_score_backup": "results/lora_profiled_v1/backups/m2-scores-20261118-verified01.json",
+    "diagnosis_design": "manifests/lora_profiled_diagnosis_design_v1.json"
   },
   "accuracy_improvement_established": false,
   "nomination": null,
@@ -119,11 +135,12 @@
   "redesigns_executed": 0,
   "redesign_limit": 1,
   "research_gpu_job_at_checkpoint": {
-    "container": "tco-profiled-screen02-fire-later-p4",
-    "last_authoritative_state": "running",
+    "container": null,
+    "last_authoritative_state": "no_running_local_research_GPU_container",
     "batch_session_id": 27750,
     "batch_invocation": "20261118T104117Z_ede54062",
-    "instruction": "Serial queue is running the remaining registered cases under a six-hour invocation bound. Poll the existing session; never launch a duplicate queue."
+    "terminal": "results/lora_profiled_v1/batches/screen02/invocations/20261118T104117Z_ede54062/terminal.json",
+    "instruction": "Finished successfully. Do not resume or duplicate M2. D0 design permits CPU-only saved-artifact diagnostics after executable registration."
   },
   "implementation_state": {
     "network_and_gradient_bridge": "formal real-model acceptance passed with deterministic arithmetic; original threshold limits preserved",
@@ -132,28 +149,60 @@
     "endpoint_bridge": "passed fresh native and final calibration equivalence",
     "single_case_runner": "v2 P0 and eight-step P1 completed with exact original-state integrity; expected 20 teacher, 160 collection, 160 replay and 20 endpoint decoder calls confirmed for P1",
     "batch_launcher": "21 CPU fixtures pass; historical P0 all bytes verify through explicit Windows filename codec",
-    "global_seal_and_scorer": "62 synthetic fixtures pass; corrected metric native gauge; no real scores accessed",
-    "scientific_registry": "v2 and evaluation v2 verified, committed and pushed at 7815a7c; no study scores read",
+    "global_seal_and_scorer": "62 synthetic fixtures passed before release; all36 real states globally sealed, scored and officially replayed; no eligible nominee",
+    "scientific_registry": "v2 and evaluation v2 registered before scientific-v2 execution; complete score/seal preserved; no protocol change",
     "engineering_v1": "historical source snapshot; intentionally fails current-source verification after registry changes",
-    "evidence_archiver": "24 synthetic fixtures pass; real M1 archive copied and verified on distinct C/E disks (136 files, 315628130 bytes)",
+    "evidence_archiver": "24 synthetic fixtures pass; full M1 and M2 archives copied and verified on distinct C/E disks; M2 has2281 files and6059018880 bytes",
     "m3_preparation": "202 combined CPU fixtures pass. Static registry and completed-attempt byte audit implemented, including exact fitting-count checks. Reference-free converter/replay and pure reference semantics pass 17 pinned CPU fixtures. All24 real fitting-case reports exactly reproduce in pinned image. M3 actual registry/release controller, model acceptance, stage seals, scorer and scientific execution remain pending; no reuse approved."
   },
   "last_observed_ci": {
-    "commit": "f50bfffd86bfe6355119cb0a10ceb192e31dd9ba",
-    "run_id": 44307849404,
+    "commit": "3255e937019542213df466dfb008352580f0a6c1",
+    "run_id": 44313491690,
     "conclusion": "success",
-    "scope": "Full public CPU workflow on prior model-core/handoff commit; newer controller components passed202 local fixtures, pending next CI"
+    "scope": "Full CPU workflow including202 M3 tests and21 independent replay tests, before final study-result publication checkpoint"
   },
-  "next_command": "Poll batch session 27750 and inspect live Docker state; after all 36 complete, verify the global seal and run the registered scorer as the handoff specifies",
-  "next_implementation_action": "After unchanged M2 all36 seal/scoring/replay, follow nominee/no-nominee branch. M3 core exists; implement versioned byte-verifying stage controller, registration and scorer wrapper, then real endpoint acceptance. Resolve config provenance before accepting any M2 reuse.",
+  "next_command": "Get-Content docs/CALIBRATION_AWARE_LORA_HANDOFF.md -Encoding utf8",
+  "next_implementation_action": "Read immediate D0 work package and source map; implement synthetic math/strict artifact allowlist, then freeze executable registration before diagnostic tensor access. No optimizer/model forward/rental. Use one bounded no-update D1 only if needed and at most one evidence-supported redesign.",
   "handoff": "docs/CALIBRATION_AWARE_LORA_HANDOFF.md",
   "weekly_usage_checkpoint": {
-    "used_percent": 6,
-    "remaining_percent": 94,
+    "used_percent": 8,
+    "remaining_percent": 92,
     "pause_threshold_remaining_percent": 5,
-    "observation": "2026-11-18T13:13Z"
+    "observation": "2026-11-18T13:46:44.945675+00:00",
+    "note": "Observed via native usage tool during documentation checkpoint; shared counter can change."
   },
-  "validated_code_commit": "f50bfffd86bfe6355119cb0a10ceb192e31dd9ba",
-  "last_goal_turn_classification": "progress: additional verified M2 runs, 202-test controller preparation,17 pinned IO/reference semantic fixtures, exact24-case fitting bridge; no study accuracy access",
-  "checkpoint_observed_at_utc": "2026-11-18T13:15:41.619450+00:00"
+  "validated_code_commit": "3255e937019542213df466dfb008352580f0a6c1",
+  "last_goal_turn_classification": "progress: finished negative M2 evidence and documented actionable D0-to-redesign handoff; diagnosis not yet executed",
+  "checkpoint_observed_at_utc": "2026-11-18T13:46:44.945675+00:00",
+  "screen_result": {
+    "nominee": null,
+    "all_primary_cases_valid": true,
+    "numerical_failed_attempts": 0,
+    "primary_gain_vs_P1_percent": {
+      "P3": {
+        "earlier": 0.11118093272797225,
+        "later": -0.05750602435663499
+      },
+      "P4": {
+        "earlier": -0.36365213238751526,
+        "later": -0.14355976172637508
+      }
+    },
+    "same_scenes_improving_both": {
+      "P3": [
+        "chess",
+        "fire"
+      ],
+      "P4": [
+        "chess"
+      ]
+    }
+  },
+  "documentation_checkpoint": {
+    "status": "complete",
+    "entrypoint": "docs/CALIBRATION_AWARE_LORA_HANDOFF.md",
+    "review": "Independent read-only review: no blocking scope/science contradiction; exact cache-name digest clarified",
+    "next_experiment": "D0 not implemented or executed; registration required before tensor decode",
+    "local_research_gpu_running": false
+  }
 }

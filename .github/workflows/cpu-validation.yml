@@ -202,6 +202,8 @@ jobs:
           python scripts/check_profiled_final_calibration.py --verify
       - name: Exercise profiled prediction sealing and metric selection fixtures
         run: python scripts/test_profiled_scoring.py
+      - name: Independently replay the completed profiled LoRA development screen
+        run: python scripts/replay_profiled_public_scores.py --output reports/ci/profiled_public_replay.json
       - name: Exercise immutable profiled evidence backup fixtures
         run: python scripts/test_archive_profiled_evidence.py
       - name: Verify prospective M3 fitting inputs without loading predictions
