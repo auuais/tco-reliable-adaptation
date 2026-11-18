@@ -4,9 +4,9 @@ The M2 inventory, global seal and registered scoring are now complete with no el
 
 **Selected D1 work package after verified D0**
 
-D0 found a nonzero P3 raw-depth change with 68.47% mean per-pair non-scalar energy. It does not establish whether that change is useful or survives fusion/calibration. The [prospective D1 design](../manifests/lora_profiled_d1_design_v1.json) therefore selects one paired inference/calibration-response probe, emphasizing preservation of learned shape rather than assuming scale absorption. D1 has not accessed production arrays or run a model. Its [pure math preparation](../results/lora_profiled_d1_v1/math_checks01.json) passes 32 pinned CPU tests; that is not production acceptance.
+D0 found a nonzero P3 raw-depth change with 68.47% mean per-pair non-scalar energy. It does not establish whether that change is useful or survives fusion/calibration. The [prospective D1 design](../manifests/lora_profiled_d1_design_v1.json) therefore selects one paired inference/calibration-response probe, emphasizing preservation of learned shape rather than assuming scale absorption. D1 has not accessed production arrays or run a model. The [combined helper preparation](../results/lora_profiled_d1_v1/preparation01.json) passes84 pinned CPU tests:32 math,16 artifact-boundary,16 sensor-bridge and20 capture/preprocessing fixtures. Actual D1 production acceptance remains pending.
 
-Implement the missing layers without changing the design:
+Use the implemented helpers described in the [handoff](CALIBRATION_AWARE_LORA_HANDOFF.md), and complete the remaining controller/registration layers without changing the design:
 
 | Component | Required behavior |
 |---|---|

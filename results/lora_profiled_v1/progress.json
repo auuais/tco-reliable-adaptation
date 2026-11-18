@@ -1,8 +1,8 @@
 {
   "goal": "Calibration-aware predictive LoRA accuracy investigation",
-  "checkpoint_date": "2026-11-18",
+  "checkpoint_date": "2026-11-19",
   "status": "active",
-  "current_phase": "D0 complete with exact replay; selected D1 strict inputs/model capture/executable registration pending",
+  "current_phase": "D0 verified/published; D1 helpers and byte inventory prepared; executable release controller, model probe and replay pending",
   "completed_milestone_weight_percent": 50,
   "percentage_rule": "Conservative whole-milestone credit; completed subchecks are listed separately and are not accuracy evidence",
   "milestones": {
@@ -54,7 +54,7 @@
       "preparation": "202 combined CPU fixtures pass. Static registry and completed-attempt byte audit implemented, including exact fitting-count checks. Reference-free converter/replay and pure reference semantics pass 17 pinned CPU fixtures. All24 real fitting-case reports exactly reproduce in pinned image. M3 actual registry/release controller, model acceptance, stage seals, scorer and scientific execution remain pending; no reuse approved.",
       "initial_confirmation": "not_run_due_to_no_eligible_M2_nominee",
       "diagnosis_design": "manifests/lora_profiled_diagnosis_design_v1.json",
-      "diagnosis": "D0 completed,66 pinned CPU tests and independent representative checks pass; exact full diagnostic replay verification02 passes. D1 pure mathematics passes32 pinned CPU tests. No D1 production tensors/model calls; no scientific redesign yet."
+      "diagnosis": "D0 complete and exactly replayed. D1 mathematical, artifact, sensor-bridge and capture helpers pass84 pinned CPU fixtures; selected actual input byte/provenance inventory passes. No D1 production tensor decoding/model calls, no scientific redesign."
     },
     "M4": {
       "weight": 10,
@@ -136,7 +136,11 @@
     "d0_exact_replay": "results/lora_profiled_d0_v1/verification02.json",
     "d0_interruption": "results/lora_profiled_d0_v1/interruption01.json",
     "d0_backup": "results/lora_profiled_d0_v1/backup01.json",
-    "d1_math_preparation": "results/lora_profiled_d1_v1/math_checks01.json"
+    "d1_math_preparation": "results/lora_profiled_d1_v1/math_checks01.json",
+    "d1_helper_preparation": "results/lora_profiled_d1_v1/preparation01.json",
+    "d1_input_preparation": "results/lora_profiled_d1_v1/inputs_preparation01.json",
+    "d1_input_checks": "results/lora_profiled_d1_v1/inventory_checks01.json",
+    "d1_preparation_backup": "results/lora_profiled_d1_v1/preparation_backup01.json"
   },
   "accuracy_improvement_established": false,
   "nomination": null,
@@ -168,24 +172,24 @@
     "m3_preparation": "202 combined CPU fixtures pass. Static registry and completed-attempt byte audit implemented, including exact fitting-count checks. Reference-free converter/replay and pure reference semantics pass 17 pinned CPU fixtures. All24 real fitting-case reports exactly reproduce in pinned image. M3 actual registry/release controller, model acceptance, stage seals, scorer and scientific execution remain pending; no reuse approved."
   },
   "last_observed_ci": {
-    "commit": "9e059a48293dc3aee692e470be7a8a8e768d17a7",
-    "run_id": 44321791727,
+    "commit": "fe880ae3c8a4cff50a56dea28fff09c563444dd8",
+    "run_id": 44328473605,
     "conclusion": "success",
-    "scope": "Full CPU workflow including66 new D0 fixtures"
+    "scope": "Full CPU workflow for published verified D0 checkpoint and initial D1 math"
   },
-  "next_command": "Get-Content manifests/lora_profiled_d1_design_v1.json -Encoding utf8",
-  "next_implementation_action": "Implement strict D1 member allowlists, sensor-only graph0/query-matrix bridge, pristine-teacher-before-LoRA40-call capture and bounded controller; test with mocks/synthetic inputs, freeze executable registration before any extra production array/model access. Use tested pure math with both folds and common CUDA FP32 fusion. No optimizer/rental or redesigned training is released.",
+  "next_command": "Get-Content docs/CALIBRATION_AWARE_LORA_HANDOFF.md -Encoding utf8",
+  "next_implementation_action": "Reuse the84-test D1 helpers and prepared byte inventory. Implement/test bounded local release/run/replay controller, immutable stage outputs and full source/runtime/input registration; commit before production decoding. Teacher-gate must precede final-factor/FP32 comparisons. Then run the fixed40-call local probe, retain both folds/contrasts and independently replay sealed matrices. No redesigned training or rental released.",
   "handoff": "docs/CALIBRATION_AWARE_LORA_HANDOFF.md",
   "weekly_usage_checkpoint": {
-    "used_percent": 16,
-    "remaining_percent": 84,
+    "used_percent": 20,
+    "remaining_percent": 80,
     "pause_threshold_remaining_percent": 5,
-    "observation": "2026-11-18T14:43:03Z",
+    "observation": "2026-11-18T15:03:26.544266+00:00",
     "note": "Observed via native usage tool; shared counter can change"
   },
-  "validated_code_commit": "f1b4f17dd6daa809031dc7c8871276b37c5eb049",
-  "last_goal_turn_classification": "progress: D0 implemented/registered/ran and exact replaypassed; pause/resume interruption preserved; prepared and independently reviewed32-test D1 mathematics and precise bounded design",
-  "checkpoint_observed_at_utc": "2026-11-18T14:44:29.822366+00:00",
+  "validated_code_commit": "fe880ae3c8a4cff50a56dea28fff09c563444dd8",
+  "last_goal_turn_classification": "progress: verified takeover, backed up/published D0 with passing CI; implemented D1 strict input, calibration bridge and teacher-first capture helpers;84 pinned CPU tests and selected real byte-only inventory preparation passed",
+  "checkpoint_observed_at_utc": "2026-11-18T15:02:48.481037+00:00",
   "screen_result": {
     "nominee": null,
     "all_primary_cases_valid": true,
@@ -213,13 +217,13 @@
   "documentation_checkpoint": {
     "status": "complete",
     "entrypoint": "docs/CALIBRATION_AWARE_LORA_HANDOFF.md",
-    "review": "Independent read-only review: no blocking scope/science contradiction; exact cache-name digest clarified",
-    "next_experiment": "D1 design and pure mathematics prepared; data/model/controller execution not released",
+    "review": "Independent read-only review found no concrete blocker in handoff, D1 artifact, calibration bridge, capture and preprocessing helpers",
+    "next_experiment": "D1 helpers and byte inventory prepared; execution controller/registration and actual40-call model probe pending",
     "local_research_gpu_running": false
   },
   "research_cpu_job_at_checkpoint": {
     "container": null,
-    "last_completed_container": "tco-m3-d0-verify02",
+    "last_completed_container": "tco-m3-d0-d1inventory01",
     "observed_state": {
       "Status": "exited",
       "Running": false,
@@ -230,13 +234,13 @@
       "Pid": 0,
       "ExitCode": 0,
       "Error": "",
-      "StartedAt": "2026-11-18T14:29:22.082453239Z",
-      "FinishedAt": "2026-11-18T14:37:25.172328164Z"
+      "StartedAt": "2026-11-18T15:01:26.08575843Z",
+      "FinishedAt": "2026-11-18T15:01:58.438716423Z"
     },
-    "session_id": 8990,
+    "session_id": 87932,
     "session_terminal": true,
     "stopped_verified": true,
-    "instruction": "No running research CPU job. Do not rerun completed D0; prepare D1 locally under its separate release conditions."
+    "instruction": "Both D1 preparation CPU containers exited0 and are verified stopped. Do not rerun completed preparation unless relevant source/input/runtime changes. No actual D1 model run exists yet."
   },
   "d0_status": {
     "production_run": "complete",
@@ -252,5 +256,23 @@
     "interrupted_verification": "tco-m3-d0-verify01",
     "stopped_verified": true,
     "resumed_by_user": true
+  },
+  "d1_status": {
+    "helpers": "implemented_and_synthetic_CPU_validated",
+    "tests_run": 84,
+    "selected_input_byte_inventory": "passed_without_array_decode",
+    "execution_registry": "not_created",
+    "production_tensors_decoded": false,
+    "model_forward_calls": 0,
+    "scientific_redesigns_consumed": 0,
+    "rental_usd": 0,
+    "remaining": [
+      "release/run/replay controller with partial actual-call telemetry on failure",
+      "bounded D1 launcher",
+      "prospective executable registration",
+      "actual40-call model probe",
+      "saved-matrix replay",
+      "diagnostic interpretation before redesign"
+    ]
   }
 }
