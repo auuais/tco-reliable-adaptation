@@ -17,7 +17,7 @@ The [active goal](../../docs/CALIBRATION_AWARE_LORA_GOAL.md) and [successor hand
 
 The first environment attempt rejected Windows CRLF checkout differences. The replacement verified exact Git-object content with explicit newline equivalence; upstream files were preserved. See [failure record](engineering_failures.json) and [environment evidence](environment.json).
 
-The no-update arithmetic diagnostic and single-case runner are implemented but unverified on actual execution. Engineering v1 remains immutable; after diagnosing the [failed replay comparison](engineering/gradient01/replay_failure.json), register revised source in a new version and pass both model bridges before scientific release. The [evaluation specification](../../manifests/lora_profiled_evaluation_v1.json) freezes masks, candidate eligibility and decision rules before scores; the global seal/scorer still needs implementation.
+The no-update arithmetic diagnostic and single-case runner are implemented but unverified on actual execution. Engineering v1 remains immutable; after diagnosing the [failed replay comparison](engineering/gradient01/replay_failure.json), register revised source in a new version and pass both model bridges before scientific release. The [evaluation specification](../../manifests/lora_profiled_evaluation_v2.json) freezes masks, candidate eligibility and decision rules before scores; the global seal/scorer still needs implementation.
 
 Portable CPU checks:
 

@@ -1,0 +1,132 @@
+{
+  "schema": "profiled_evaluation_rules_v1",
+  "date": "2026-11-18",
+  "status": "prospective_rules_before_scientific_runs_or_scores",
+  "purpose": "Resolve evaluation and nomination details before the 36-state development screen; this is not an executed scorer or result",
+  "training_design": "manifests/lora_profiled_design_v1.json",
+  "candidate_arms": [
+    "P3",
+    "P4"
+  ],
+  "control_arms": [
+    "P0",
+    "P1",
+    "P2",
+    "P5"
+  ],
+  "global_prediction_seal": {
+    "required_states": 36,
+    "one_completed_attempt_per_registered_run_id": true,
+    "attempt_selection": "first valid completed attempt under the same frozen protocol; never choose by accuracy",
+    "required_hashes": [
+      "common_scientific_registry",
+      "complete_report",
+      "native_endpoint",
+      "final_endpoint",
+      "adapter_or_explicit_frozen_P0_identity",
+      "permitted_inputs"
+    ],
+    "reject": [
+      "missing_or_duplicate_run",
+      "mixed_registration",
+      "changed_bytes",
+      "partial_attempt",
+      "unreported_failure"
+    ],
+    "score_access": "no opposite-source scoring before all registered predictions are sealed",
+    "evaluation_execution_registration": "freeze scorer source hashes, dependency revisions and passed fixtures before accessing study scores"
+  },
+  "held_source_metric": {
+    "units": "meters",
+    "primary_endpoint": "final depth after native KDP and common five-scale refinement",
+    "secondary_endpoint": "native KDP depth multiplied by its sealed adaptation-only global g0, without fitted per-view scales",
+    "pixel_mapping": "existing registered half-pixel resize, rounding and nearest-depth duplicate selection",
+    "overlap_exclusion": "exclude opposite-source observations at native pixels used by any allowed adaptation observation, including both spatial folds",
+    "reference_implementation_for_overlap_only": "scripts/score_partner_shape.py:disjoint_test",
+    "candidate_independent_mask": true,
+    "aggregation": "mean absolute axial error over fixed points per view; equal mean over five views; equal mean over three scenes; directions separate",
+    "directional_gain": "1 - mean_MAE_candidate / mean_MAE_P1",
+    "invalid_predictions": "never remove candidate-dependent pixels; nonfinite or nonpositive held predictions disqualify a candidate; record counts and finite errors",
+    "empty_view": "evaluation failure; no automatic denominator change",
+    "native_metric_conversion": "native_metric_depth = float64(native_depth) * scalar_positive_finite_g0_from_final_archive",
+    "endpoint_consistency": "validate positive finite g0 and five relative scales; final_depth agrees with scales[:,None,None] * g0 * float64(native_depth) within stated arithmetic tolerance; no candidate-dependent pixel exclusions"
+  },
+  "nomination": {
+    "max_candidates": 1,
+    "minimum_directional_gain_each": 0.01,
+    "minimum_same_scenes_improving_both_directions": 2,
+    "numerical_failures_allowed": 0,
+    "ranking": "largest minimum directional gain, rounded to 12 decimal places; then lower total measured runtime across six cases; then smaller numeric arm ID",
+    "mandatory_mechanism_contrasts": [
+      "P3 versus P2",
+      "P4 versus P5"
+    ],
+    "detached_arm_wins": "negative evidence for the implicit-gradient hypothesis; a new method claim requires the bounded redesign protocol"
+  },
+  "surface_confirmation": {
+    "requires_separate_executable_manifest_before_scores": true,
+    "primary_reference": "registered_rgb",
+    "alternate_reference": "released",
+    "alignment": "pinned existing similarity-plus-ICP evaluation; fixed reference masks",
+    "components": [
+      "accuracy_mean_m",
+      "completeness_mean_m"
+    ],
+    "per_scene_score": "0.5*(accuracy_mean_m / same_condition_P0_accuracy_mean_m + completeness_mean_m / same_condition_P0_completeness_mean_m)",
+    "aggregation": "equal scenes within each direction/grid/pose condition",
+    "mandatory_control_pool": [
+      "P0",
+      "P1",
+      "P2",
+      "P5"
+    ],
+    "additional_baselines": "freeze eligible same-input pool before dense scoring; unmatched historical methods are contextual only",
+    "selected_control": "lowest aggregate primary score in the frozen eligible pool; smaller numeric arm ID breaks exact ties among P arms; same control for scene/component/alternate checks",
+    "gate_inventory": {
+      "temporal_sources": [
+        "earlier",
+        "later"
+      ],
+      "grids": [
+        "centered",
+        "shifted"
+      ],
+      "supplied_pose_conditions": [
+        "clean",
+        "noisy"
+      ],
+      "cells": 8,
+      "scenes_per_cell": 3,
+      "rule": "every cell must satisfy every rental gate; do not average across a failed condition",
+      "pending_registration": [
+        "verified shifted-source packets and splits",
+        "grid construction",
+        "noise seeds and pose channel",
+        "evaluator source hashes",
+        "exact executable run inventory"
+      ]
+    },
+    "minimum_surface_gain": 0.05,
+    "minimum_scene_gain": 0.0,
+    "maximum_aggregate_distance_component_ratio": 1.02,
+    "maximum_alternate_reference_score_ratio": 1.0,
+    "fresh_paired_confirmations": 3,
+    "repeat_requirement": "positive aggregate paired gain in each repeat and gate cell; disclose same-input execution variation separately from predeclared changed-corruption draws",
+    "mechanism_requirement": "full-gradient benefit over matched detached control beyond repeat variation; a tie invokes the diagnosis/redesign rule"
+  },
+  "safety_and_scope": {
+    "accuracy_established": false,
+    "engineering_gates_waived": false,
+    "rental_compute_authorized_by_this_file": false,
+    "initial_rental_compute_usd": 0,
+    "existing_conditional_reserve_usd": 25,
+    "maximum_targeted_local_redesigns": 1,
+    "publication_test": "new scenes and second public dataset, prospectively frozen after development; temporal directions are not independent scenes"
+  },
+  "rules_version": 2,
+  "supersedes": {
+    "path": "manifests/lora_profiled_evaluation_v1.json",
+    "sha256": "126b033b665a1cc9ba1d332eae72e11731ae4949e7237ea33af7ea02cdcee4a4",
+    "reason": "Clarify metric units of the secondary native endpoint before any scientific run or score; primary metric and gates unchanged"
+  }
+}

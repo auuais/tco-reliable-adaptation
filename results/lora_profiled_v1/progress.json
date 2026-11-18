@@ -2,43 +2,40 @@
   "goal": "Calibration-aware predictive LoRA accuracy investigation",
   "checkpoint_date": "2026-11-18",
   "status": "active",
-  "current_phase": "replay discrepancy resolved by deterministic runtime; formal acceptance rerun pending",
-  "completed_milestone_weight_percent": 0,
+  "current_phase": "model engineering complete; scientific launcher and scorer preparation",
+  "completed_milestone_weight_percent": 25,
   "percentage_rule": "Conservative whole-milestone credit; completed subchecks are listed separately and are not accuracy evidence",
   "milestones": {
     "M0": {
       "weight": 5,
-      "status": "in_progress",
+      "status": "complete",
       "verified": [
         "Pinned local image, current checkpoint and upstream blob contents",
         "CUDA float64 Cholesky on the RTX 3080",
         "75 original source files and exact reconstruction of 30 sparse packets",
         "1225 provenance-tracked observations, minimum fold size 11",
         "Native remap/dedup, source/cell grouping and split replay",
-        "60 sealed pretrained matching cache files and 30 unordered graph edges"
+        "60 sealed pretrained matching cache files and 30 unordered graph edges",
+        "Engineering v2 source/runtime/input registration verified and committed before gradient02 launch; 36 prospective states enumerated"
       ],
-      "remaining": [
-        "Preserve engineering v1 and register current source as a new engineering version after diagnosis; scientific registration follows M1"
-      ]
+      "remaining": []
     },
     "M1": {
       "weight": 20,
-      "status": "in_progress",
+      "status": "complete",
       "verified": [
         "Production PyTorch calibration layer and upstream canonical fusion",
         "Full/detached forward equality and synthetic autograd/finite-difference agreement",
         "Frozen observations, coordinate rows, invalid-input handling and rank checks",
         "Pristine versus zero-LoRA equality for all 20 directed pair outputs in gradient01 before its later failure",
         "CPU final-calibration identity, unit/origin invariance and invalid-observation fixtures",
-        "Strict deterministic no-update model diagnostic: exact retained/replay/repeated gradients in BF16 and FP32; original and adapter hashes unchanged"
+        "Strict deterministic no-update model diagnostic: exact retained/replay/repeated gradients in BF16 and FP32; original and adapter hashes unchanged",
+        "gradient02: exact retained/replay agreement under deterministic BF16",
+        "gradient02: all three real adapter finite-difference perturbations pass with matmul and cuDNN TF32 disabled",
+        "gradient02: full 20-pair macro-step and one optimizer update; unchanged original weights/buffers; 23.85 seconds and 4825.71 MiB peak allocated",
+        "endpoint01: fresh pristine and zero-LoRA native/final outputs, matches and confidences exactly equal; original and adapter states unchanged"
       ],
-      "remaining": [
-        "Completed real-model original-state hash checks; gradient01 stopped before final digest",
-        "Real-model retained-graph versus output-adjoint replay",
-        "Real adapter-direction finite differences",
-        "Full 20-pair macro-step and memory/runtime measurement",
-        "Native and final-calibration endpoint bridges"
-      ]
+      "remaining": []
     },
     "M2": {
       "weight": 25,
@@ -74,9 +71,12 @@
     "solver_checks": "results/lora_profiled_v1/solver_checks.json",
     "engineering_failures": "results/lora_profiled_v1/engineering_failures.json",
     "failed_replay_comparison": "results/lora_profiled_v1/engineering/gradient01/replay_failure.json",
-    "evaluation_rules": "manifests/lora_profiled_evaluation_v1.json",
+    "evaluation_rules": "manifests/lora_profiled_evaluation_v2.json",
     "deterministic_replay": "results/lora_profiled_v1/engineering/replay_deterministic01/report.json",
-    "diagnosis": "docs/PROFILED_LORA_ENGINEERING_DIAGNOSIS.md"
+    "diagnosis": "docs/PROFILED_LORA_ENGINEERING_DIAGNOSIS.md",
+    "engineering_registration": "manifests/lora_profiled_engineering_v2.json",
+    "gradient_bridge": "results/lora_profiled_v1/gradient_bridge.json",
+    "endpoint_bridge": "results/lora_profiled_v1/endpoint_bridge.json"
   },
   "accuracy_improvement_established": false,
   "nomination": null,
@@ -87,31 +87,33 @@
   "redesigns_executed": 0,
   "redesign_limit": 1,
   "research_gpu_job_at_checkpoint": {
-    "container": "tco-profiled-replay-deterministic01",
-    "execution_commit": "d68b68b",
-    "attempt": "replay_deterministic01",
+    "container": "tco-profiled-endpoint01",
+    "execution_commit": "8c3de744a5c4f59aa2d16c11815b5bebda6ecb78",
+    "attempt": "endpoint01",
+    "manifest": "manifests/lora_profiled_engineering_v2.json",
     "last_authoritative_state": "exited",
     "exit_code": 0,
-    "instruction": "No research GPU job running at checkpoint; recheck before the formal gradient02 acceptance run"
+    "finished_at_utc": "2026-11-18T10:10:04.161839508Z",
+    "instruction": "No research GPU job running at checkpoint; recheck before first scientific jobs"
   },
   "implementation_state": {
-    "network_and_gradient_bridge": "implemented; first real-model gradient comparison failed",
+    "network_and_gradient_bridge": "formal real-model acceptance passed with deterministic arithmetic; original threshold limits preserved",
     "arithmetic_diagnostic": "completed; deterministic runtime eliminates observed backward discrepancy; formal acceptance remains pending",
     "final_calibration": "implemented; CPU fixtures pass",
-    "endpoint_bridge": "implemented; GPU execution pending",
+    "endpoint_bridge": "passed fresh native and final calibration equivalence",
     "single_case_runner": "implemented; syntax/import and missing-manifest refusal checked; GPU execution pending",
-    "batch_launcher": "not implemented",
-    "global_seal_and_scorer": "not implemented; prospective rules documented and bound for future scientific registration",
-    "scientific_registry": "not created; both model acceptance reports missing",
+    "batch_launcher": "implemented; synthetic checks/review in progress",
+    "global_seal_and_scorer": "implemented; synthetic checks/review in progress; no real scores accessed",
+    "scientific_registry": "not created; both bridges now pass, pending frozen launcher and reviewed source",
     "engineering_v1": "historical source snapshot; intentionally fails current-source verification after registry changes"
   },
   "last_observed_ci": {
-    "commit": "47e162a6e71fdafd2595b163661f0b0793d1b7bc",
-    "run_id": 44280072300,
+    "commit": "8c3de744a5c4f59aa2d16c11815b5bebda6ecb78",
+    "run_id": 44281898120,
     "conclusion": "success",
-    "scope": "CPU workflow; not GPU acceptance"
+    "scope": "CPU workflow"
   },
-  "next_command": "python scripts/register_profiled_execution.py --prepare --phase engineering --output manifests/lora_profiled_engineering_v2.json --supersedes manifests/lora_profiled_engineering_v1.json",
-  "next_implementation_action": "Commit deterministic runtime and new engineering registration, then run gradient02 against unchanged thresholds; endpoint bridge follows only after pass",
+  "next_command": "python scripts/register_profiled_execution.py --dry-run --phase scientific",
+  "next_implementation_action": "Finish synthetic-only launcher/scorer checks; freeze evaluator registration and scientific registry; run first P0/P1 states locally before remainder",
   "handoff": "docs/CALIBRATION_AWARE_LORA_HANDOFF.md"
 }

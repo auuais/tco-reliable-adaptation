@@ -35,7 +35,8 @@ SOURCES = ("scripts/register_profiled_execution.py", "scripts/prepare_profiled_i
            "scripts/run_mast3r_neural_transfer.py", "scripts/mast3r_calibrated_alignment.py",
            "scripts/mast3r_alignment_hook.py", "third_party/TCO/peft/lora.py")
 RUNNER = "scripts/run_profiled_lora.py"
-EVALUATION = "manifests/lora_profiled_evaluation_v1.json"
+SCIENTIFIC_SOURCES = (RUNNER, "scripts/run_profiled_batch.py")
+EVALUATION = "manifests/lora_profiled_evaluation_v2.json"
 BRIDGES = {
     "gradient": dict(path="results/lora_profiled_v1/gradient_bridge.json",
         checks=("pass_all", "original_state_unchanged", "zero_adapter_pass", "replay_gradient_pass",
@@ -142,7 +143,7 @@ def inspect_bridge(kind, environment, input_hashes):
 def inspect(phase, scientific_manifest=None):
     plan = read(PLAN)
     inventory = jobs(plan, scientific_manifest)
-    required_sources = list(SOURCES) + ([RUNNER] if phase=="scientific" else [])
+    required_sources = list(SOURCES) + (list(SCIENTIFIC_SOURCES) if phase=="scientific" else [])
     required_artifacts = list(INPUT_PATHS)+list(PREPARATION)+([EVALUATION] if phase=="scientific" else [])
     missing = [name for name in required_sources+required_artifacts if not (ROOT/name).is_file()]
     preparation_errors = []
@@ -170,7 +171,7 @@ def build_registry(phase,ready,plan,input_hashes,environment,destination=None,pr
     prepared = read(ROOT/"results/lora_profiled_v1/inputs.json")
     if current != prepared["registration"] or sha(ROOT/"results/lora_profiled_v1/splits.npz") != prepared["splits_binary_sha256"]:
         raise ValueError("Prepared inputs or split archive changed")
-    sources = list(SOURCES)+([RUNNER] if phase=="scientific" else [])
+    sources = list(SOURCES)+(list(SCIENTIFIC_SOURCES) if phase=="scientific" else [])
     artifacts = list(INPUT_PATHS)+list(PREPARATION)
     if phase=="scientific":
         artifacts += [EVALUATION]+[spec["path"] for spec in BRIDGES.values()]
@@ -229,7 +230,7 @@ def verify_registry(path,phase):
         raise ValueError(json.dumps(ready,sort_keys=True))
     if record["jobs"] != ready["jobs"] or record["study_settings"] != plan:
         raise ValueError("Registered settings or inventory changed")
-    expected_sources = set(SOURCES)|({RUNNER} if phase=="scientific" else set())
+    expected_sources = set(SOURCES)|(set(SCIENTIFIC_SOURCES) if phase=="scientific" else set())
     if not expected_sources.issubset(record["source_sha256_lf"]):
         raise ValueError("Registry omits required source files")
     if record["input_sha256"] != inputs or record["docker_image"] != environment["docker_image"] or record["checkpoint_sha256"] != environment["checkpoint_sha256"]:

@@ -1,0 +1,533 @@
+{
+  "schema": "profiled_endpoint_bridge_v1",
+  "attempt": "endpoint01",
+  "scene": "heads",
+  "adaptation_source": "earlier",
+  "scope": "Pristine versus zero-LoRA endpoint equivalence; no held-source or target-depth accuracy read",
+  "execution_commit": "8c3de744a5c4f59aa2d16c11815b5bebda6ecb78",
+  "docker_image": "sha256:74783a8eefee6daad6ff2714a51263ccdcdc5092b83cebee20515310bec46b50",
+  "runtime_policy": {
+    "deterministic_algorithms": true,
+    "deterministic_warn_only": false,
+    "cudnn_benchmark": false,
+    "cudnn_deterministic": true,
+    "cuda_matmul_allow_tf32": true,
+    "cudnn_allow_tf32": true,
+    "cublas_workspace_config": ":4096:8"
+  },
+  "checkpoint_sha256": "0a615eb05fa9db654050aa655945ee5696e7c6c1b7f93f1ee8c37249010f6feb",
+  "torch": "2.7.1+cu128",
+  "cuda": "12.8",
+  "source_sha256_lf": {
+    "scripts/profiled_network.py": "6b904c9d9a93ada96cc5332943bffc25147c9e3ce7bc24916c4f6a40e6b8101a",
+    "scripts/profiled_runtime.py": "07b6b42bb1e77afb316633ec930fe6f8379f0fb8d1039921bc8882db734a4fa6",
+    "scripts/profiled_calibration.py": "f3c77e8271ffaa44494f5298cb7b7a428913ada04bd60ff92d1d4d0f25675ab6",
+    "scripts/profiled_baseline_graph.py": "dac363e4950c4d2fc506c06aa69f38690a14824e2de748d2a30b3d750145c139",
+    "scripts/mast3r_network_capture.py": "92e164a4adb9e52318d68cc690c68b480949b5afbdecd45be1b4097a621211a1",
+    "scripts/mast3r_network_priors.py": "8b8f0c5730db1ca75a4e7aace5c0e7141f534c9bbd8b75de5b7fead0fe7ca270",
+    "scripts/run_mast3r_neural_transfer.py": "60532b3f0f997b518c84568143d44c5a37f2549f54483b7256b7bf323adafcbc",
+    "third_party/TCO/peft/lora.py": "efa3a15890fcec03d144556de7cd319c2377b8c341159872c3d3900fa9301c36",
+    "scripts/check_profiled_endpoints.py": "2be86f8fa406196ad7630bc7070f3e3c07b679bcc82f64f72e9e99218d952491",
+    "scripts/profiled_final_calibration.py": "f3f99e3451942e4c83a9da1bb20a0dad12fb407980904e7cc7ffc2db98c8a252",
+    "scripts/mast3r_calibrated_alignment.py": "bfa109edba148ef0293a750a944e1b6ea4243a24453b7aebd757f4efae8cbf1d",
+    "scripts/mast3r_alignment_hook.py": "4693f338f8364cf6d53f796257182ca618afa301243b193c55ffcfca37d24059",
+    "scripts/mast3r_joint_prior_loss.py": "de53921ffbffe70cbe44415e9dfad501ac031208d6620b900511cb6cf4a5a989",
+    "scripts/prepare_profiled_inputs.py": "c85600d5825435d836d70365293012237af7bca823971461f7e8850f45b6395c",
+    "third_party/mast3r/mast3r/cloud_opt/sparse_ga.py": "d811614a10fe7920fb41285c3b8b9162b38a5e1ea68823f76383a2f209d3a49f",
+    "third_party/mast3r/dust3r/dust3r/image_pairs.py": "b0b28df0868c0663b1dccb0396391efe7b9b0711fab09c1bb57fd129847310a5"
+  },
+  "input_sha256": {
+    "manifests/lora_profiled_design_v1.json": "5bce05491f2910eb83fd45fb80a23b762b096d9b086a88da82329759c1021e7b",
+    "results/lora_profiled_v1/inputs.json": "7e0600f470698e336af3b44a788b44cfea45ec043dd785b03cdf5b3839526fa8",
+    "results/lora_profiled_v1/splits.npz": "12d688e181f89ef90738350f23959d7bb0813b0a605cadcee1fb05d5b1bd9ace",
+    "results/lora_profiled_v1/baseline_graph.json": "67ee85adf121f7e3e31fe0877399b1612f9b32d560247fdb797529346ec76ad1",
+    "manifests/lora_profiled_bridge_checks_v1.json": "06777f8d55aca4cf6bfc3c5fa39dd3301b008f2ad5d42a0365363d6997517633"
+  },
+  "engineering_manifest": "manifests/lora_profiled_engineering_v2.json",
+  "engineering_manifest_sha256": "a143e68bdc9d4c19df0188bfae98dc92490fd606272c3e326204e05c2281f89e",
+  "device": "NVIDIA GeForce RTX 3080",
+  "allow_tf32": true,
+  "seed": 42,
+  "inference_precision": "float32",
+  "final_precision_device": "float64 CPU",
+  "coarse_iterations": 300,
+  "fine_iterations": 300,
+  "pose_weight": 0.01,
+  "final_graph_weight": 0.1,
+  "adapter_module_count": 144,
+  "original_state_sha256": "5d5ff52b270319abac6d3e202deec09d24e6b9013769147b167df2e87d93c69f",
+  "final_original_state_sha256": "5d5ff52b270319abac6d3e202deec09d24e6b9013769147b167df2e87d93c69f",
+  "original_state_unchanged": true,
+  "adapter_state_unchanged": true,
+  "native_endpoint_pass": true,
+  "final_endpoint_pass": true,
+  "fresh_matching_exact": true,
+  "fresh_fused_confidence_exact": true,
+  "native_difference": {
+    "depth": {
+      "exact": true,
+      "max_absolute_difference": 0.0
+    },
+    "intrinsics": {
+      "exact": true,
+      "max_absolute_difference": 0.0
+    },
+    "c2w": {
+      "exact": true,
+      "max_absolute_difference": 0.0
+    }
+  },
+  "final_difference": {
+    "depth": {
+      "exact": true,
+      "max_absolute_difference": 0.0
+    },
+    "intrinsics": {
+      "exact": true,
+      "max_absolute_difference": 0.0
+    },
+    "c2w": {
+      "exact": true,
+      "max_absolute_difference": 0.0
+    },
+    "scales": {
+      "exact": true,
+      "max_absolute_difference": 0.0
+    },
+    "g0": {
+      "exact": true,
+      "max_absolute_difference": 0.0
+    }
+  },
+  "captures": {
+    "pristine": {
+      "capture": {
+        "input_sha256": "cdcf6eed07ba83824cafd8c0370eb43194be0d0cd2b8582ba1e7f5cf4824e469",
+        "output_sha256": "4dbf75a2f159168bf83dcf0ed2db6f7e13054857be8821e79f1816d401f5911f",
+        "pairs": 20,
+        "prior_cache_files": 0,
+        "seconds": 47.79555336001795,
+        "peak_allocated_mib": 3666.7685546875,
+        "nonpositive_depth_pixels": [
+          0,
+          0,
+          0,
+          0,
+          26
+        ],
+        "native_size": [
+          384,
+          512
+        ],
+        "device": "NVIDIA GeForce RTX 3080",
+        "inference_precision": "float32",
+        "coarse_iterations": 300,
+        "fine_iterations": 300
+      },
+      "final": {
+        "singular_values": [
+          27.155608986651913,
+          24.753993652457098,
+          24.14030392692912,
+          23.674383118571605,
+          22.026070268544267
+        ],
+        "data_rank": 5,
+        "singular_ratio": 0.811105738021599,
+        "support_counts": [
+          23,
+          47,
+          37,
+          35,
+          45
+        ],
+        "every_view_supported": true,
+        "graph_components": [
+          [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        ],
+        "graph_connected": true,
+        "ridge": 0.513853402304525,
+        "positive_scales": true,
+        "scales": [
+          0.9948351953519482,
+          0.9960448756240452,
+          0.9965680834510882,
+          0.9969869822021745,
+          0.9913415707525557
+        ],
+        "graph_filtering": [
+          {
+            "i": 0,
+            "j": 1,
+            "initial_count": 18,
+            "retained_count": 18,
+            "invalid_confidence": 0,
+            "nonpositive_depth": 0
+          },
+          {
+            "i": 0,
+            "j": 2,
+            "initial_count": 106,
+            "retained_count": 106,
+            "invalid_confidence": 0,
+            "nonpositive_depth": 0
+          },
+          {
+            "i": 0,
+            "j": 3,
+            "initial_count": 4027,
+            "retained_count": 4027,
+            "invalid_confidence": 0,
+            "nonpositive_depth": 0
+          },
+          {
+            "i": 0,
+            "j": 4,
+            "initial_count": 1688,
+            "retained_count": 1688,
+            "invalid_confidence": 0,
+            "nonpositive_depth": 0
+          },
+          {
+            "i": 1,
+            "j": 2,
+            "initial_count": 5452,
+            "retained_count": 5452,
+            "invalid_confidence": 0,
+            "nonpositive_depth": 0
+          },
+          {
+            "i": 1,
+            "j": 3,
+            "initial_count": 48,
+            "retained_count": 48,
+            "invalid_confidence": 0,
+            "nonpositive_depth": 0
+          },
+          {
+            "i": 1,
+            "j": 4,
+            "initial_count": 537,
+            "retained_count": 537,
+            "invalid_confidence": 0,
+            "nonpositive_depth": 0
+          },
+          {
+            "i": 2,
+            "j": 3,
+            "initial_count": 891,
+            "retained_count": 891,
+            "invalid_confidence": 0,
+            "nonpositive_depth": 0
+          },
+          {
+            "i": 2,
+            "j": 4,
+            "initial_count": 5323,
+            "retained_count": 5323,
+            "invalid_confidence": 0,
+            "nonpositive_depth": 0
+          },
+          {
+            "i": 3,
+            "j": 4,
+            "initial_count": 2696,
+            "retained_count": 2696,
+            "invalid_confidence": 0,
+            "nonpositive_depth": 0
+          }
+        ],
+        "rejected_graph_confidences": 0,
+        "endpoint": "native KDP followed by all-allowed-observation five-scale refinement",
+        "g0": 0.6919208104839784,
+        "metric_scales": [
+          0.6919208104839784,
+          0.6919208104839784,
+          0.6919208104839784,
+          0.6919208104839784,
+          0.6919208104839784
+        ],
+        "gauge_estimator": "pooled positive measured/native ratios; midpoint median",
+        "gauge_ratio_count": 187,
+        "sample_counts": [
+          23,
+          47,
+          37,
+          35,
+          45
+        ],
+        "sample_exclusions": 0,
+        "nonpositive_fit_predictions": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonpositive_dense_pixels": [
+          0,
+          0,
+          0,
+          0,
+          26
+        ],
+        "graph_weight": 0.1,
+        "native_origin": [
+          -0.3916109502315521,
+          0.3513841927051544,
+          -0.6768770217895508
+        ],
+        "sensor_normalizers": [
+          0.01255013524989255,
+          0.013514558890658277,
+          0.020963202172833865,
+          0.02293856004184892,
+          0.01304468062213025
+        ],
+        "weighted_fit_before": 1.2225714304090245,
+        "weighted_fit_after": 1.1882171664596217,
+        "ridge_penalty_after": 3.549260995507201e-05,
+        "penalized_fit_after": 1.1882526590695768,
+        "normal_equation_max_residual": 5.024251414215142e-12,
+        "fit_is_accuracy_metric": false
+      },
+      "sample_counts": [
+        23,
+        47,
+        37,
+        35,
+        45
+      ],
+      "original_prior_rows_preserved": true,
+      "final_compute": "CPU float64",
+      "native_file": "reports/lora_profiled_v1/endpoint_attempts/endpoint01/pristine/native.npz",
+      "native_sha256": "4dbf75a2f159168bf83dcf0ed2db6f7e13054857be8821e79f1816d401f5911f",
+      "final_file": "reports/lora_profiled_v1/endpoint_attempts/endpoint01/pristine/final.npz",
+      "final_sha256": "820d3dd0302958a53d7e4cef4d98878249e6fdec8eaa7cfa380a53b8c988a471",
+      "graph_file": "results/lora_profiled_v1/endpoint_attempts/endpoint01/pristine/native_graph.json",
+      "graph_sha256": "fac205a0f5263e382dfd3b4fbe0672e66ebbe866dac1ae7d9af08d1c53ab70a3"
+    },
+    "zero_lora": {
+      "capture": {
+        "input_sha256": "cdcf6eed07ba83824cafd8c0370eb43194be0d0cd2b8582ba1e7f5cf4824e469",
+        "output_sha256": "4dbf75a2f159168bf83dcf0ed2db6f7e13054857be8821e79f1816d401f5911f",
+        "pairs": 20,
+        "prior_cache_files": 0,
+        "seconds": 48.859895796049386,
+        "peak_allocated_mib": 3706.7109375,
+        "nonpositive_depth_pixels": [
+          0,
+          0,
+          0,
+          0,
+          26
+        ],
+        "native_size": [
+          384,
+          512
+        ],
+        "device": "NVIDIA GeForce RTX 3080",
+        "inference_precision": "float32",
+        "coarse_iterations": 300,
+        "fine_iterations": 300
+      },
+      "final": {
+        "singular_values": [
+          27.155608986651913,
+          24.753993652457098,
+          24.14030392692912,
+          23.674383118571605,
+          22.026070268544267
+        ],
+        "data_rank": 5,
+        "singular_ratio": 0.811105738021599,
+        "support_counts": [
+          23,
+          47,
+          37,
+          35,
+          45
+        ],
+        "every_view_supported": true,
+        "graph_components": [
+          [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        ],
+        "graph_connected": true,
+        "ridge": 0.513853402304525,
+        "positive_scales": true,
+        "scales": [
+          0.9948351953519482,
+          0.9960448756240452,
+          0.9965680834510882,
+          0.9969869822021745,
+          0.9913415707525557
+        ],
+        "graph_filtering": [
+          {
+            "i": 0,
+            "j": 1,
+            "initial_count": 18,
+            "retained_count": 18,
+            "invalid_confidence": 0,
+            "nonpositive_depth": 0
+          },
+          {
+            "i": 0,
+            "j": 2,
+            "initial_count": 106,
+            "retained_count": 106,
+            "invalid_confidence": 0,
+            "nonpositive_depth": 0
+          },
+          {
+            "i": 0,
+            "j": 3,
+            "initial_count": 4027,
+            "retained_count": 4027,
+            "invalid_confidence": 0,
+            "nonpositive_depth": 0
+          },
+          {
+            "i": 0,
+            "j": 4,
+            "initial_count": 1688,
+            "retained_count": 1688,
+            "invalid_confidence": 0,
+            "nonpositive_depth": 0
+          },
+          {
+            "i": 1,
+            "j": 2,
+            "initial_count": 5452,
+            "retained_count": 5452,
+            "invalid_confidence": 0,
+            "nonpositive_depth": 0
+          },
+          {
+            "i": 1,
+            "j": 3,
+            "initial_count": 48,
+            "retained_count": 48,
+            "invalid_confidence": 0,
+            "nonpositive_depth": 0
+          },
+          {
+            "i": 1,
+            "j": 4,
+            "initial_count": 537,
+            "retained_count": 537,
+            "invalid_confidence": 0,
+            "nonpositive_depth": 0
+          },
+          {
+            "i": 2,
+            "j": 3,
+            "initial_count": 891,
+            "retained_count": 891,
+            "invalid_confidence": 0,
+            "nonpositive_depth": 0
+          },
+          {
+            "i": 2,
+            "j": 4,
+            "initial_count": 5323,
+            "retained_count": 5323,
+            "invalid_confidence": 0,
+            "nonpositive_depth": 0
+          },
+          {
+            "i": 3,
+            "j": 4,
+            "initial_count": 2696,
+            "retained_count": 2696,
+            "invalid_confidence": 0,
+            "nonpositive_depth": 0
+          }
+        ],
+        "rejected_graph_confidences": 0,
+        "endpoint": "native KDP followed by all-allowed-observation five-scale refinement",
+        "g0": 0.6919208104839784,
+        "metric_scales": [
+          0.6919208104839784,
+          0.6919208104839784,
+          0.6919208104839784,
+          0.6919208104839784,
+          0.6919208104839784
+        ],
+        "gauge_estimator": "pooled positive measured/native ratios; midpoint median",
+        "gauge_ratio_count": 187,
+        "sample_counts": [
+          23,
+          47,
+          37,
+          35,
+          45
+        ],
+        "sample_exclusions": 0,
+        "nonpositive_fit_predictions": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nonpositive_dense_pixels": [
+          0,
+          0,
+          0,
+          0,
+          26
+        ],
+        "graph_weight": 0.1,
+        "native_origin": [
+          -0.3916109502315521,
+          0.3513841927051544,
+          -0.6768770217895508
+        ],
+        "sensor_normalizers": [
+          0.01255013524989255,
+          0.013514558890658277,
+          0.020963202172833865,
+          0.02293856004184892,
+          0.01304468062213025
+        ],
+        "weighted_fit_before": 1.2225714304090245,
+        "weighted_fit_after": 1.1882171664596217,
+        "ridge_penalty_after": 3.549260995507201e-05,
+        "penalized_fit_after": 1.1882526590695768,
+        "normal_equation_max_residual": 5.024251414215142e-12,
+        "fit_is_accuracy_metric": false
+      },
+      "sample_counts": [
+        23,
+        47,
+        37,
+        35,
+        45
+      ],
+      "original_prior_rows_preserved": true,
+      "final_compute": "CPU float64",
+      "native_file": "reports/lora_profiled_v1/endpoint_attempts/endpoint01/zero/native.npz",
+      "native_sha256": "4dbf75a2f159168bf83dcf0ed2db6f7e13054857be8821e79f1816d401f5911f",
+      "final_file": "reports/lora_profiled_v1/endpoint_attempts/endpoint01/zero/final.npz",
+      "final_sha256": "820d3dd0302958a53d7e4cef4d98878249e6fdec8eaa7cfa380a53b8c988a471",
+      "graph_file": "results/lora_profiled_v1/endpoint_attempts/endpoint01/zero/native_graph.json",
+      "graph_sha256": "361234a220914b4a6efe1dec7ccee5a2ed7ad260059e265ccd85b13814b7d8ef"
+    }
+  },
+  "seconds": 137.8168736610096,
+  "rental_compute_usd": 0,
+  "pass_all": true
+}
