@@ -35,7 +35,7 @@ SOURCES = ("scripts/register_profiled_execution.py", "scripts/prepare_profiled_i
            "scripts/run_mast3r_neural_transfer.py", "scripts/mast3r_calibrated_alignment.py",
            "scripts/mast3r_alignment_hook.py", "third_party/TCO/peft/lora.py")
 RUNNER = "scripts/run_profiled_lora.py"
-SCIENTIFIC_SOURCES = (RUNNER, "scripts/run_profiled_batch.py")
+SCIENTIFIC_SOURCES = (RUNNER, "scripts/run_profiled_batch.py", "scripts/profiled_artifacts.py")
 EVALUATION = "manifests/lora_profiled_evaluation_v2.json"
 BRIDGES = {
     "gradient": dict(path="results/lora_profiled_v1/gradient_bridge.json",

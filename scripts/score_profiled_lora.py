@@ -21,6 +21,7 @@ from seal_profiled_predictions import (ROOT, SCENES, SIDES, ARMS, RULES, FAILURE
 
 FRAMES = (25, 225, 425, 625, 825)
 SOURCES = ("scripts/seal_profiled_predictions.py", "scripts/score_profiled_lora.py",
+           "scripts/profiled_artifacts.py",
            "scripts/test_profiled_scoring.py", "scripts/register_profiled_execution.py",
            "scripts/prepare_profiled_inputs.py", "scripts/partner_shape.py",
            "scripts/score_partner_shape.py")
@@ -363,8 +364,8 @@ def calculate_scores(root, seal):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("action", choices=("prepare", "verify-registration", "score", "verify"))
-    parser.add_argument("--registration", default="manifests/lora_profiled_evaluation_execution_v1.json")
-    parser.add_argument("--fixtures", default="results/lora_profiled_v1/scoring_fixtures.json")
+    parser.add_argument("--registration", default="manifests/lora_profiled_evaluation_execution_v2.json")
+    parser.add_argument("--fixtures", default="results/lora_profiled_v1/scoring_fixtures_v2.json")
     parser.add_argument("--seal", default="results/lora_profiled_v1/prediction_seal.json")
     parser.add_argument("--output", default="results/lora_profiled_v1/held_source_scores.json")
     parser.add_argument("--samples", default="results/lora_profiled_v1/held_source_score_samples.npz")

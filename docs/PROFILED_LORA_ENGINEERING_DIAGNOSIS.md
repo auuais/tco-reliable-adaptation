@@ -21,3 +21,11 @@ Evidence:
 - `results/lora_profiled_v1/engineering/gradient01/`
 - `results/lora_profiled_v1/engineering/replay_precision01/`
 - `results/lora_profiled_v1/engineering/replay_deterministic01/`
+
+**Formal acceptance and Windows artifact boundary**
+
+Engineering v2 passed `gradient02`: exact retained/replay agreement, all three finite-difference steps, unchanged original state and a full 20-pair optimizer step. The macro-step used 4825.71 MiB peak allocated and took 23.85 seconds. `endpoint01` then passed exact pristine/zero-adapter native and final-refined geometry, matching and confidence equality, with unchanged original and adapter hashes.
+
+The first scientific-v1 P0 run also completed successfully, with no adapter and no accuracy scoring. Its host queue verifier then stopped because Docker's five canonical-cache filenames contain ASCII colons, exposed on this Windows bind mount as U+F03A. Counts were equal (47 files); names differed. This was not a model or numerical failure. The shared artifact helper now applies only that Windows logical-name mapping, rejects collisions/path escape, and verifies the unchanged bytes. The preserved P0 audit passes all 47 raw and six public files, including the completion report.
+
+To keep the study under one execution registration, that unscored P0 is archived and excluded from the new scientific-v2 inventory. Its raw/public files were copied to E: and hash-verified before moving the C: copies into the archive. The public [archive record](../results/lora_profiled_v1/archived_cases/scientific_v1_heads_earlier_P0_screen01.json) gives original and archived paths plus every checksum. All 36 states will run under scientific v2; the mathematical design and model source remain unchanged. This is an execution repair, not the one allowed scientific redesign.

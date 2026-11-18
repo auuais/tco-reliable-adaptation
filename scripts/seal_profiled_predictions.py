@@ -11,6 +11,8 @@ import json
 import math
 from pathlib import Path
 
+from profiled_artifacts import logical_inventory, resolve_logical
+
 
 ROOT = Path(__file__).resolve().parents[1]
 SCENES = ("heads", "chess", "fire")
@@ -44,11 +46,7 @@ def sha(path, text=False):
 
 
 def relative(root, name):
-    require(isinstance(name, str) and not Path(name).is_absolute() and "\\" not in name,
-            f"Expected repository-relative POSIX path: {name}")
-    path = (root / name).resolve()
-    require(path.is_relative_to(root.resolve()), f"Path escapes repository: {name}")
-    return path
+    return resolve_logical(root, name)
 
 
 def dump_new(path, value):
@@ -67,9 +65,7 @@ def timestamp(value):
 
 
 def inventory(directory, exclude=()):
-    return {path.relative_to(directory).as_posix(): sha(path)
-            for path in sorted(directory.rglob("*")) if path.is_file()
-            and path.relative_to(directory).as_posix() not in exclude}
+    return {name: sha(path) for name, path in logical_inventory(directory).items() if name not in exclude}
 
 
 def check_map(root, mapping, text=False):
@@ -246,8 +242,8 @@ def verify_seal(root, seal_name, evaluation_identity):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("action", choices=("prepare", "verify"))
-    parser.add_argument("--manifest", default="manifests/lora_profiled_execution_v1.json")
-    parser.add_argument("--evaluation", default="manifests/lora_profiled_evaluation_execution_v1.json")
+    parser.add_argument("--manifest", default="manifests/lora_profiled_execution_v2.json")
+    parser.add_argument("--evaluation", default="manifests/lora_profiled_evaluation_execution_v2.json")
     parser.add_argument("--seal", default="results/lora_profiled_v1/prediction_seal.json")
     args = parser.parse_args()
     from register_profiled_execution import verify_registry

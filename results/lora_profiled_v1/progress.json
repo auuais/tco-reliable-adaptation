@@ -2,7 +2,7 @@
   "goal": "Calibration-aware predictive LoRA accuracy investigation",
   "checkpoint_date": "2026-11-18",
   "status": "active",
-  "current_phase": "model engineering complete; scientific launcher and scorer preparation",
+  "current_phase": "portable filename verification passed; scientific v2 registration pending",
   "completed_milestone_weight_percent": 25,
   "percentage_rule": "Conservative whole-milestone credit; completed subchecks are listed separately and are not accuracy evidence",
   "milestones": {
@@ -39,11 +39,13 @@
     },
     "M2": {
       "weight": 25,
-      "status": "not_started",
+      "status": "in_progress",
       "trained_states_completed": 0,
       "trained_states_planned": 30,
       "frozen_controls_completed": 0,
-      "frozen_controls_planned": 6
+      "frozen_controls_planned": 6,
+      "retired_protocol_states": 1,
+      "note": "P0 screen01 model completion passed, but host filename codec mismatch stopped batch. Preserve as protocol-v1 engineering evidence; rerun under revised scientific registration before counting M2 states."
     },
     "M3": {
       "weight": 15,
@@ -76,7 +78,8 @@
     "diagnosis": "docs/PROFILED_LORA_ENGINEERING_DIAGNOSIS.md",
     "engineering_registration": "manifests/lora_profiled_engineering_v2.json",
     "gradient_bridge": "results/lora_profiled_v1/gradient_bridge.json",
-    "endpoint_bridge": "results/lora_profiled_v1/endpoint_bridge.json"
+    "endpoint_bridge": "results/lora_profiled_v1/endpoint_bridge.json",
+    "archived_first_p0": "results/lora_profiled_v1/archived_cases/scientific_v1_heads_earlier_P0_screen01.json"
   },
   "accuracy_improvement_established": false,
   "nomination": null,
@@ -87,14 +90,12 @@
   "redesigns_executed": 0,
   "redesign_limit": 1,
   "research_gpu_job_at_checkpoint": {
-    "container": "tco-profiled-endpoint01",
-    "execution_commit": "8c3de744a5c4f59aa2d16c11815b5bebda6ecb78",
-    "attempt": "endpoint01",
-    "manifest": "manifests/lora_profiled_engineering_v2.json",
+    "container": "tco-profiled-screen01-heads-earlier-p0",
     "last_authoritative_state": "exited",
     "exit_code": 0,
-    "finished_at_utc": "2026-11-18T10:10:04.161839508Z",
-    "instruction": "No research GPU job running at checkpoint; recheck before first scientific jobs"
+    "batch_session_exit_code": 1,
+    "finished_at_utc": "2026-11-18T10:19:34.120625147Z",
+    "instruction": "No research GPU job running. Container succeeded; host verifier failed due colon filename encoding only."
   },
   "implementation_state": {
     "network_and_gradient_bridge": "formal real-model acceptance passed with deterministic arithmetic; original threshold limits preserved",
@@ -102,9 +103,9 @@
     "final_calibration": "implemented; CPU fixtures pass",
     "endpoint_bridge": "passed fresh native and final calibration equivalence",
     "single_case_runner": "implemented; syntax/import and missing-manifest refusal checked; GPU execution pending",
-    "batch_launcher": "implemented; synthetic checks/review in progress",
-    "global_seal_and_scorer": "implemented; synthetic checks/review in progress; no real scores accessed",
-    "scientific_registry": "not created; both bridges now pass, pending frozen launcher and reviewed source",
+    "batch_launcher": "21 CPU fixtures pass; historical P0 all bytes verify through explicit Windows filename codec",
+    "global_seal_and_scorer": "62 synthetic fixtures pass; corrected metric native gauge; no real scores accessed",
+    "scientific_registry": "v1 preserved; v2 pending after filename verification repair",
     "engineering_v1": "historical source snapshot; intentionally fails current-source verification after registry changes"
   },
   "last_observed_ci": {
@@ -113,7 +114,7 @@
     "conclusion": "success",
     "scope": "CPU workflow"
   },
-  "next_command": "python scripts/register_profiled_execution.py --dry-run --phase scientific",
-  "next_implementation_action": "Finish synthetic-only launcher/scorer checks; freeze evaluator registration and scientific registry; run first P0/P1 states locally before remainder",
+  "next_command": "python scripts/register_profiled_execution.py --prepare --phase scientific --output manifests/lora_profiled_execution_v2.json --supersedes manifests/lora_profiled_execution_v1.json",
+  "next_implementation_action": "Commit corrected verification; freeze scientific and evaluator v2; execute screen02 first P0/P1 then continue one registered36stateinventory",
   "handoff": "docs/CALIBRATION_AWARE_LORA_HANDOFF.md"
 }

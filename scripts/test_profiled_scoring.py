@@ -14,6 +14,8 @@ import tempfile
 
 import numpy as np
 
+from profiled_artifacts import logical_inventory, resolve_logical
+
 from seal_profiled_predictions import (SCENES, SIDES, ARMS, RULES, FAILURE_POLICY, build_seal,
     dump_new, inventory, read, sha, verify_seal)
 from score_profiled_lora import (ACCESS, FRAMES, INPUTS, SOURCES, calculate_scores, dependencies, held_mask,
@@ -157,6 +159,20 @@ def run_fixtures():
 
     with tempfile.TemporaryDirectory(prefix="profiled-scoring-fixture-") as temporary:
         root = Path(temporary).resolve()
+        codec = root / "codec"
+        codec.mkdir()
+        encoded = codec / "canonical\uf03acache.pth"
+        encoded.write_bytes(b"unchanged canonical cache payload")
+        mapped = logical_inventory(codec, windows=True)
+        passed("Windows_cache_codec_preserves_logical_name_and_bytes", set(mapped) == {"canonical:cache.pth"}
+               and mapped["canonical:cache.pth"].read_bytes() == b"unchanged canonical cache payload")
+        passed("logical_cache_resolver_opens_encoded_physical_file", resolve_logical(codec,"canonical:cache.pth",
+               windows=True,must_exist=True) == encoded.resolve())
+        passed("Linux_inventory_preserves_literal_Unicode_filename", set(logical_inventory(codec,windows=False)) == {"canonical\uf03acache.pth"})
+        passed("logical_resolver_allows_fresh_output_without_writing", resolve_logical(codec,"new/output.json",windows=True)
+               == codec / "new/output.json" and not (codec / "new").exists())
+        rejects("encoded_Unicode_is_not_a_second_Windows_logical_alias", lambda: resolve_logical(codec,"canonical\uf03acache.pth",windows=True))
+        rejects("logical_cache_path_traversal_rejected", lambda: resolve_logical(codec,"../escape.pth",windows=True))
         registry, evaluation = fixture_tree(root)
         seal = lambda: build_seal(root, "registry.json", evaluation)
         baseline = seal()

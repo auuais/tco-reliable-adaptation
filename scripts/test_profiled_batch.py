@@ -6,13 +6,14 @@ Run: python scripts/test_profiled_batch.py
 import contextlib
 import io
 import json
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 import tempfile
 import types
 import unittest
 from unittest.mock import Mock, patch
 
 import run_profiled_batch as batch
+import profiled_artifacts as artifacts
 
 
 def job(arm="P0"):
@@ -102,6 +103,86 @@ class SealedAttemptTests(unittest.TestCase):
         self.raw.mkdir(parents=True)
         with self.assertRaises(ValueError):
             batch.relative_file(self.raw, "../../../../outside.txt")
+
+    def test_windows_colon_cache_matches_linux_seal_without_changing_bytes(self):
+        record = self.seal()
+        physical = self.raw / "canon_mode\uf03a avg.pth"
+        physical.write_bytes(b"unchanged artifact bytes")
+        digest = batch.sha(physical)
+        record["raw_files"]["canon_mode: avg.pth"] = digest
+        (self.public / "complete.json").write_text(json.dumps(record), encoding="utf-8")
+        with patch.object(batch, "logical_inventory", side_effect=lambda root: artifacts.logical_inventory(root, windows=True)), \
+                patch.object(batch, "resolve_logical", side_effect=lambda root, name, **kw: artifacts.resolve_logical(root, name, windows=True, **kw)):
+            self.assertEqual(self.verify()["raw_files_verified"], 2)
+        self.assertEqual(batch.sha(physical), digest)
+
+
+class LogicalArtifactTests(unittest.TestCase):
+    def test_windows_mapping_roundtrip_preserves_other_unicode_and_bytes(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            folder = root / "folder\uf03a 한글"
+            folder.mkdir()
+            physical = folder / "mode\uf03a é_e\u0301_\uf022.pth"
+            physical.write_bytes(b"unchanged")
+            logical = "folder: 한글/mode: é_e\u0301_\uf022.pth"
+            inventory = artifacts.logical_inventory(root, windows=True)
+            self.assertEqual(inventory, {logical: physical})
+            self.assertEqual(artifacts.resolve_logical(root, logical, windows=True, must_exist=True), physical)
+            self.assertEqual(inventory[logical].read_bytes(), b"unchanged")
+
+    def test_new_windows_destination_is_encoded_without_creating_it(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            path = artifacts.resolve_logical(root, "new:folder/mode: value.pth", windows=True)
+            self.assertEqual(path, root / "new\uf03afolder" / "mode\uf03a value.pth")
+            self.assertFalse(path.exists())
+            self.assertEqual(list(root.iterdir()), [])
+            with self.assertRaisesRegex(ValueError, "Missing existing"):
+                artifacts.resolve_logical(root, "new:folder/mode: value.pth", windows=True, must_exist=True)
+
+    def test_linux_identity_preserves_literal_private_use_character(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            physical = root / "mode\uf03a value.pth"
+            physical.write_bytes(b"identity")
+            self.assertEqual(artifacts.logical_inventory(root, windows=False), {physical.name: physical})
+            self.assertEqual(artifacts.resolve_logical(root, physical.name, windows=False, must_exist=True), physical)
+        names = [PurePosixPath("mode: value.pth"), PurePosixPath("mode\uf03a value.pth")]
+        self.assertEqual(len(artifacts._index_components(names, windows=False)), 2)
+
+    def test_windows_codec_collision_is_rejected_on_every_host(self):
+        names = [PurePosixPath("mode: value.pth"), PurePosixPath("mode\uf03a value.pth")]
+        with self.assertRaisesRegex(ValueError, "collision"):
+            artifacts._index_components(names, windows=True)
+
+    def test_traversal_drive_absolute_and_ambiguous_inputs_are_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            bad = ["", "/absolute", "//server/share", "../outside", "dir/../outside", "./file",
+                   "dir//file", "dir/", "C:relative", "C:/absolute", "dir/D:relative",
+                   "dir\\file", "bad\x00name", "mode\uf03a value.pth"]
+            for name in bad:
+                with self.subTest(name=name), self.assertRaises(ValueError):
+                    artifacts.resolve_logical(Path(directory), name, windows=True)
+
+    def test_external_symlink_target_is_rejected_without_following_it(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "inside"
+            root.mkdir()
+            physical = root / "file.txt"
+            physical.write_bytes(b"fixture")
+            outside = Path(directory) / "outside.txt"
+            original_resolve = Path.resolve
+
+            def escaped(path, *args, **kwargs):
+                return outside if path == physical else original_resolve(path, *args, **kwargs)
+
+            # Simulate a symlink on hosts where link creation needs privileges.
+            with patch.object(Path, "resolve", escaped):
+                with self.assertRaisesRegex(ValueError, "escapes"):
+                    artifacts.logical_inventory(root, windows=True)
+                with self.assertRaisesRegex(ValueError, "escapes"):
+                    artifacts.resolve_logical(root, "file.txt", windows=True, must_exist=True)
 
 
 class LauncherTests(unittest.TestCase):

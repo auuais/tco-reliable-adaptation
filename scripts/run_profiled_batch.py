@@ -1,9 +1,9 @@
 """Serial, local-only Docker launcher for the sealed 36-state LoRA inventory.
 
 Examples (PowerShell, repository root):
-  python scripts/run_profiled_batch.py --manifest manifests/lora_profiled_execution_v1.json --attempt-prefix screen01 --dry-run
-  python scripts/run_profiled_batch.py --manifest manifests/lora_profiled_execution_v1.json --attempt-prefix screen01 --execute --limit 2
-  python scripts/run_profiled_batch.py --manifest manifests/lora_profiled_execution_v1.json --attempt-prefix screen01 --execute
+  python scripts/run_profiled_batch.py --manifest manifests/lora_profiled_execution_v2.json --attempt-prefix screen01 --dry-run
+  python scripts/run_profiled_batch.py --manifest manifests/lora_profiled_execution_v2.json --attempt-prefix screen01 --execute --limit 2
+  python scripts/run_profiled_batch.py --manifest manifests/lora_profiled_execution_v2.json --attempt-prefix screen01 --execute
 
 The last command verifies and skips the first two completed states, then runs
 the remaining states. A partial or failed attempt stops the queue. Investigate
@@ -26,6 +26,8 @@ import subprocess
 import sys
 import time
 import uuid
+
+from profiled_artifacts import logical_inventory, resolve_logical
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -75,12 +77,7 @@ def inside(root, name):
 
 
 def relative_file(parent, name):
-    if not isinstance(name, str) or not name or "\\" in name or Path(name).is_absolute():
-        raise ValueError(f"Invalid sealed relative file name: {name!r}")
-    path = inside(parent, name)
-    if not path.is_file():
-        raise ValueError(f"Missing sealed file: {path}")
-    return path
+    return resolve_logical(parent, name, must_exist=True)
 
 
 def command(args, timeout=60):
@@ -212,11 +209,12 @@ def verify_completed(root, manifest, registry, job, prefix):
         inventory = report.get(key)
         if not isinstance(inventory, dict) or not inventory:
             raise ValueError(f"Missing completion inventory {key}")
-        observed = {file.relative_to(base).as_posix() for file in base.rglob("*") if file.is_file()}
-        if observed != set(inventory) | extra:
+        observed = logical_inventory(base)
+        if set(observed) != set(inventory) | extra:
             raise ValueError(f"Completion inventory differs for {base}")
         for name, expected in inventory.items():
-            if sha(relative_file(base, name)) != expected:
+            physical = resolve_logical(base, name, must_exist=True)
+            if physical != observed[name] or sha(physical) != expected:
                 raise ValueError(f"Completion file hash differs: {base / name}")
     return dict(run_id=job["run_id"], attempt=prefix, complete=path.relative_to(root).as_posix(),
                 complete_sha256=sha(path), raw_files_verified=len(report["raw_files"]),
@@ -441,7 +439,7 @@ def execute(args, checked):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--manifest", type=Path, default=Path("manifests/lora_profiled_execution_v1.json"))
+    parser.add_argument("--manifest", type=Path, default=Path("manifests/lora_profiled_execution_v2.json"))
     parser.add_argument("--attempt-prefix", required=True)
     action = parser.add_mutually_exclusive_group(required=True)
     action.add_argument("--dry-run", action="store_true", help="Validate all source/input/completion hashes and show argv; no writes or launch")
