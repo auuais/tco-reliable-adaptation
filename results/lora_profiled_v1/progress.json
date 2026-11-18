@@ -2,7 +2,7 @@
   "goal": "Calibration-aware predictive LoRA accuracy investigation",
   "checkpoint_date": "2026-11-18",
   "status": "active",
-  "current_phase": "M2 scientific v2: three states verified; serial local screen running",
+  "current_phase": "M2 scientific v2: five states verified; serial local screen running",
   "completed_milestone_weight_percent": 25,
   "percentage_rule": "Conservative whole-milestone credit; completed subchecks are listed separately and are not accuracy evidence",
   "milestones": {
@@ -40,12 +40,12 @@
     "M2": {
       "weight": 25,
       "status": "in_progress",
-      "trained_states_completed": 2,
+      "trained_states_completed": 4,
       "trained_states_planned": 30,
       "frozen_controls_completed": 1,
       "frozen_controls_planned": 6,
       "retired_protocol_states": 1,
-      "note": "Scientific-v2 P0/P1 completed and full artifact inventories verified; original weights unchanged. No accuracy scores accessed."
+      "note": "P0 through P4 on Heads/earlier completed and verified by the serial launcher. Original weights unchanged; no accuracy scores accessed."
     },
     "M3": {
       "weight": 15,
@@ -97,11 +97,11 @@
   "redesigns_executed": 0,
   "redesign_limit": 1,
   "research_gpu_job_at_checkpoint": {
-    "container": "tco-profiled-screen02-heads-earlier-p3",
+    "container": "tco-profiled-screen02-heads-earlier-p5",
     "last_authoritative_state": "running",
     "batch_session_id": 27750,
     "batch_invocation": "20261118T104117Z_ede54062",
-    "instruction": "Serial remaining 34 states running under a six-hour invocation bound. Poll the existing session; never launch a duplicate queue."
+    "instruction": "Serial queue is running the remaining registered cases under a six-hour invocation bound. Poll the existing session; never launch a duplicate queue."
   },
   "implementation_state": {
     "network_and_gradient_bridge": "formal real-model acceptance passed with deterministic arithmetic; original threshold limits preserved",
@@ -116,18 +116,19 @@
     "evidence_archiver": "24 synthetic fixtures pass; real M1 archive copied and verified on distinct C/E disks (136 files, 315628130 bytes)"
   },
   "last_observed_ci": {
-    "commit": "7815a7c0bd3c9be102252df6a13fa2c18a720e09",
-    "run_id": 44286186012,
+    "commit": "36b1cc89866cd0424b85be1ad2c24304b6f88e52",
+    "run_id": 44289091647,
     "conclusion": "success",
-    "scope": "CPU workflow, including dedicated scientific scorer fixtures"
+    "scope": "CPU workflow including dedicated scorer and evidence-archive fixtures"
   },
   "next_command": "Poll batch session 27750 and inspect live Docker state; after all 36 complete, verify the global seal and run the registered scorer as the handoff specifies",
   "next_implementation_action": "Continue registered local cases; prepare separately registered M3 input/scoring contract without reading development labels",
   "handoff": "docs/CALIBRATION_AWARE_LORA_HANDOFF.md",
   "weekly_usage_checkpoint": {
-    "used_percent": 75,
-    "remaining_percent": 25,
+    "used_percent": 77,
+    "remaining_percent": 23,
     "pause_threshold_remaining_percent": 5,
-    "observation": "2026-11-18T10:44Z"
-  }
+    "observation": "2026-11-18T10:56Z"
+  },
+  "validated_code_commit": "36b1cc89866cd0424b85be1ad2c24304b6f88e52"
 }
