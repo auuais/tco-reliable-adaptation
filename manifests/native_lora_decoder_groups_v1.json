@@ -1,0 +1,540 @@
+{
+  "schema": "native_lora_decoder_groups_v1",
+  "prior_revision": "eb7fde7ae653eae8d8c7409476f871e78fe0c1e7",
+  "image": "sha256:74783a8eefee6daad6ff2714a51263ccdcdc5092b83cebee20515310bec46b50",
+  "checkpoint_sha256": "0a615eb05fa9db654050aa655945ee5696e7c6c1b7f93f1ee8c37249010f6feb",
+  "config_sha256": "718eb93dc4f9e4332b60cc0041af962d712cbd346d7770ce35c5b22cff68eae4",
+  "source_sha256_lf": {
+    "scripts/native_lora_decoder_groups.py": "8fc923b61f53fe7990b6feb976658f9c9a0858dd13174186ab82c00e625f1e84",
+    "scripts/run_native_lora_decoder_groups.py": "c13e56934608eec6fb7fa0c5799b6d988b64cddc7e4fcdcba51b21079a895d0a",
+    "scripts/run_native_lora_decoder_groups_local.py": "9562263086c23fbb82c7eed77d8c3fa02bef633e99dbf20ccdfcb59e56575c6b",
+    "scripts/replay_native_lora_decoder_groups.py": "c9e61a8e0c8ccede7661a387d800b794dedec51dfffb53543babb313700d536b",
+    "scripts/test_native_lora_decoder_groups.py": "2c3a229f5f7370390f2c5ef29ee246f643905e5c7fef7811f4e8209472bc706b",
+    "docs/MAST3R_DECODER_GROUP_HANDOFF.md": "69e305b2ae3efb423d63f7d02654d3b59f07720c7a404537e16604de82966843"
+  },
+  "protocol_sha256_lf": "5171fa72133946a933f48993ad55a198de2920c7056f1bd8306de6eee2029833",
+  "development_inputs_sha256": "3b730e95eca6af0e3c3cccb32082cbf4a35d79f0f6a5cc9e82d433258b80517f",
+  "previous_seal_sha256_lf": "b0803361e623df8f10e938a98fbb1cd01bf623657f87a21bcbe433f5453e1106",
+  "previous_scores_sha256_lf": "b9ea79dcdd56c5cfd40d3546c79f33945e18c5ffc6381b0359feed129fc4fe8c",
+  "development_cases": [
+    {
+      "id": "apt1_earlier",
+      "env": "apt1",
+      "side": "earlier",
+      "room": "apt1/living",
+      "packet": {
+        "sha256": "60821501519a2207dbf199e2e8dbc3c60ea990a603897ed2a984cfa64f177cad",
+        "source_frames": [
+          0,
+          4,
+          8,
+          12,
+          16
+        ],
+        "counts": [
+          [
+            20,
+            21,
+            20,
+            21,
+            21
+          ],
+          [
+            21,
+            21,
+            19,
+            21,
+            20
+          ],
+          [
+            13,
+            13,
+            14,
+            14,
+            14
+          ]
+        ],
+        "held_coverage": [
+          {
+            "view": 0,
+            "count": 58,
+            "excluded": 0,
+            "xy_sha256": "835e92b59a7ca43e553ad6a12aa315df7f92f4046de23d06bcae56a7caa99b8b"
+          },
+          {
+            "view": 1,
+            "count": 56,
+            "excluded": 0,
+            "xy_sha256": "afaa8d88de51ac50d9538be76cd11a33b3ab9eb98490bb382a8dc1c4ce9b1447"
+          },
+          {
+            "view": 2,
+            "count": 58,
+            "excluded": 0,
+            "xy_sha256": "cf8f06030cd664d9695ff553960bb7aa34b9b619be5b0e4626f3aaee3a7735f0"
+          },
+          {
+            "view": 3,
+            "count": 58,
+            "excluded": 0,
+            "xy_sha256": "ffe774d365b6af282b16be5651bc6a5e43a5cad524c3dbdf94c385c2c91c3795"
+          },
+          {
+            "view": 4,
+            "count": 56,
+            "excluded": 0,
+            "xy_sha256": "0ba38859e461af10c0c961d5840ac55c4122af51c5ff3794d3662ad7b5d5c8ec"
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt1_later",
+      "env": "apt1",
+      "side": "later",
+      "room": "apt1/living",
+      "packet": {
+        "sha256": "e4472f6d71a7eb393e01ae4ef89a8377982bddf878a53ce6cb0be409ce39aa88",
+        "source_frames": [
+          2,
+          6,
+          10,
+          14,
+          18
+        ],
+        "counts": [
+          [
+            21,
+            21,
+            22,
+            22,
+            21
+          ],
+          [
+            22,
+            21,
+            21,
+            21,
+            21
+          ],
+          [
+            15,
+            14,
+            15,
+            15,
+            14
+          ]
+        ],
+        "held_coverage": [
+          {
+            "view": 0,
+            "count": 54,
+            "excluded": 0,
+            "xy_sha256": "df2a06d0ccea4518eecda80065f1f1456a60549e4495b3cf28da9779560d984a"
+          },
+          {
+            "view": 1,
+            "count": 55,
+            "excluded": 0,
+            "xy_sha256": "cfe0d9d89c0b7307a028d5c3c1bd97982ff7c59efef035d155bef9dfbeebb808"
+          },
+          {
+            "view": 2,
+            "count": 53,
+            "excluded": 0,
+            "xy_sha256": "781f59a6ba4e0e010f66ef9d75135f7fff33ac5ddf924d89483a10829db9dd52"
+          },
+          {
+            "view": 3,
+            "count": 56,
+            "excluded": 0,
+            "xy_sha256": "9243b3aac41505346bbf9c41a70ad8cd904e8b7cdfcaca34ed0679369373f6a0"
+          },
+          {
+            "view": 4,
+            "count": 55,
+            "excluded": 0,
+            "xy_sha256": "4ac9e545b0ef772f4b8486a144757127072b0ff298216cfbe93406fa204ec250"
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt2_earlier",
+      "env": "apt2",
+      "side": "earlier",
+      "room": "apt2/kitchen",
+      "packet": {
+        "sha256": "b94ec6f4fc6e5e5caa83915d6827428ed9edf59a850b3dd7b12e9ba90305c772",
+        "source_frames": [
+          10,
+          14,
+          18,
+          22,
+          26
+        ],
+        "counts": [
+          [
+            21,
+            22,
+            21,
+            21,
+            21
+          ],
+          [
+            21,
+            21,
+            21,
+            20,
+            21
+          ],
+          [
+            14,
+            14,
+            14,
+            14,
+            14
+          ]
+        ],
+        "held_coverage": [
+          {
+            "view": 0,
+            "count": 63,
+            "excluded": 0,
+            "xy_sha256": "017f5ec3558b49a1576ee6e71fd470413749d958deeb80d1a7a9070778164326"
+          },
+          {
+            "view": 1,
+            "count": 64,
+            "excluded": 0,
+            "xy_sha256": "ccdcc802a4c24d824fb6d5fc21c4a73937156de9a65458b570b0551e915e6fac"
+          },
+          {
+            "view": 2,
+            "count": 64,
+            "excluded": 0,
+            "xy_sha256": "0d1b1f91f466b9b24c434be1c5d9045f44b1bb621a1904d3fd3c30c978c51770"
+          },
+          {
+            "view": 3,
+            "count": 63,
+            "excluded": 0,
+            "xy_sha256": "49a0ca807fd713b6b6162545af1c05e746894258fafbfa527eb700c111c69c55"
+          },
+          {
+            "view": 4,
+            "count": 61,
+            "excluded": 0,
+            "xy_sha256": "a8287a6ccf1c06e0a476c8d0a9bee3246a188cea35351dbad6384a5f8c538b54"
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt2_later",
+      "env": "apt2",
+      "side": "later",
+      "room": "apt2/kitchen",
+      "packet": {
+        "sha256": "ad9f0929612318a9d674409928da98b8293996bc6b29b8b8604efd38818f6937",
+        "source_frames": [
+          12,
+          16,
+          20,
+          24,
+          28
+        ],
+        "counts": [
+          [
+            24,
+            24,
+            24,
+            24,
+            23
+          ],
+          [
+            24,
+            24,
+            24,
+            23,
+            23
+          ],
+          [
+            15,
+            16,
+            16,
+            16,
+            15
+          ]
+        ],
+        "held_coverage": [
+          {
+            "view": 0,
+            "count": 56,
+            "excluded": 0,
+            "xy_sha256": "3d17a7a4fcd1f55dbad06484f6b346c021515195985c287ca10d8ddab6290d8b"
+          },
+          {
+            "view": 1,
+            "count": 57,
+            "excluded": 0,
+            "xy_sha256": "685b966df07d8b852d08b2aef5fbed56e85b9a3cb91991bf03db01bb31a2d076"
+          },
+          {
+            "view": 2,
+            "count": 56,
+            "excluded": 0,
+            "xy_sha256": "b3970daa1e2c3bc8b74cee724a5702b73e215c763c27d09cea35de34795c0df6"
+          },
+          {
+            "view": 3,
+            "count": 55,
+            "excluded": 0,
+            "xy_sha256": "277df428949d1334fd7fd7175c46bf14af3853c88b56de6b3bc390b7f3ad5587"
+          },
+          {
+            "view": 4,
+            "count": 56,
+            "excluded": 0,
+            "xy_sha256": "3c3cfefdd1df68a88b8dcb2233cd4b000576915d6c14046ce6d455455ea5fb20"
+          }
+        ]
+      }
+    },
+    {
+      "id": "office2_earlier",
+      "env": "office2",
+      "side": "earlier",
+      "room": "office2/5b",
+      "packet": {
+        "sha256": "e2fa064722aee21524bda66e6b08fddd7138470b8e64c2525877e12d4c086c09",
+        "source_frames": [
+          10,
+          14,
+          18,
+          22,
+          26
+        ],
+        "counts": [
+          [
+            23,
+            23,
+            23,
+            21,
+            21
+          ],
+          [
+            23,
+            23,
+            23,
+            21,
+            20
+          ],
+          [
+            15,
+            15,
+            15,
+            14,
+            14
+          ]
+        ],
+        "held_coverage": [
+          {
+            "view": 0,
+            "count": 63,
+            "excluded": 0,
+            "xy_sha256": "6c32cd812db0f1079ef4d63c548c69a03e2cb007781aa864395535b7fe76c959"
+          },
+          {
+            "view": 1,
+            "count": 63,
+            "excluded": 0,
+            "xy_sha256": "f66ba5861a27dae8fc955e99e9242f95663b9a863c411d4659b323b2aba575a9"
+          },
+          {
+            "view": 2,
+            "count": 64,
+            "excluded": 0,
+            "xy_sha256": "a83f2511c798913036a1307248d9afe8d1ecc19cb305a1b1a38a205f8f12be94"
+          },
+          {
+            "view": 3,
+            "count": 64,
+            "excluded": 0,
+            "xy_sha256": "6360e20009cf4587b4575e90ad8de56cc7e1083a4626a6e75e1642379f3be497"
+          },
+          {
+            "view": 4,
+            "count": 64,
+            "excluded": 0,
+            "xy_sha256": "5c0878c74bae68eeef3879b73eb4b096837bf6fe79471be6d5f52abcd6698ff9"
+          }
+        ]
+      }
+    },
+    {
+      "id": "office2_later",
+      "env": "office2",
+      "side": "later",
+      "room": "office2/5b",
+      "packet": {
+        "sha256": "f9775bac8122287c77d3e1e7c9c30a57386e7026dc299bd75af512513bc88121",
+        "source_frames": [
+          12,
+          16,
+          20,
+          24,
+          28
+        ],
+        "counts": [
+          [
+            23,
+            24,
+            24,
+            24,
+            24
+          ],
+          [
+            24,
+            23,
+            24,
+            24,
+            24
+          ],
+          [
+            16,
+            16,
+            16,
+            16,
+            16
+          ]
+        ],
+        "held_coverage": [
+          {
+            "view": 0,
+            "count": 61,
+            "excluded": 0,
+            "xy_sha256": "cc649a32a4e169035447c020fe2760e054f76a580947831d43e17c3cb5412771"
+          },
+          {
+            "view": 1,
+            "count": 61,
+            "excluded": 0,
+            "xy_sha256": "8c6d28087a5a09827c20865d60622ab39a3813acd881963ff212f16748b8f0d2"
+          },
+          {
+            "view": 2,
+            "count": 61,
+            "excluded": 0,
+            "xy_sha256": "a960cf09650bcdc0628ac71c586e18d4c9416e1eef155f5ce4733c983bcb791d"
+          },
+          {
+            "view": 3,
+            "count": 56,
+            "excluded": 0,
+            "xy_sha256": "5364010c3732ab07cde80a1007fedd723568ccb7299b0fd3abc77fca8852aeee"
+          },
+          {
+            "view": 4,
+            "count": 55,
+            "excluded": 0,
+            "xy_sha256": "0470b8d04747e6828e6388207b79762a8ab82760e94554bef02a855b85eae7ed"
+          }
+        ]
+      }
+    }
+  ],
+  "policies": {
+    "scalar": {
+      "s000": [
+        0,
+        0
+      ],
+      "s025": [
+        0.25,
+        0.25
+      ],
+      "s050": [
+        0.5,
+        0.5
+      ],
+      "s100": [
+        1,
+        1
+      ],
+      "s150": [
+        1.5,
+        1.5
+      ],
+      "s075": [
+        0.75,
+        0.75
+      ],
+      "s125": [
+        1.25,
+        1.25
+      ]
+    },
+    "split": {
+      "s000": [
+        0,
+        0
+      ],
+      "s025": [
+        0.25,
+        0.25
+      ],
+      "s050": [
+        0.5,
+        0.5
+      ],
+      "s100": [
+        1,
+        1
+      ],
+      "s150": [
+        1.5,
+        1.5
+      ],
+      "e050_l150": [
+        0.5,
+        1.5
+      ],
+      "e150_l050": [
+        1.5,
+        0.5
+      ]
+    }
+  },
+  "bridge": "apt1_earlier",
+  "archived": {
+    "s000": "zero",
+    "s025": "quarter",
+    "s050": "half",
+    "s100": "full"
+  },
+  "candidates_per_policy": 7,
+  "development_endpoints": 54,
+  "development_bridge_repeat_endpoints": 1,
+  "fresh_endpoints_if_four_rooms": 72,
+  "selection_tolerance_mm": 0.05,
+  "min_partition": 8,
+  "min_held": 16,
+  "hindsight_relative_gain": 0.01,
+  "fresh": {
+    "environment": "office1",
+    "lock_until_development_pass": true,
+    "sparse_relative_gain": 0.01,
+    "dense_shape": [
+      384,
+      512
+    ],
+    "dense_min_grid_fraction": 0.1,
+    "dense_source_depth_m": [
+      0.2,
+      10.0
+    ],
+    "dense_mask": "exclude both sparse packets, test one-pixel dilation as sensitivity"
+  },
+  "rental_compute_usd": 0
+}
