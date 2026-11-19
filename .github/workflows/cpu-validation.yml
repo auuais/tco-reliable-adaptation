@@ -234,6 +234,12 @@ jobs:
       - name: Replay matched MASt3R decoder group selection and development gate
         if: ${{ hashFiles('results/native_lora_decoder_groups_v1/held_scores.json') != '' }}
         run: python scripts/replay_native_lora_decoder_groups.py
+      - name: Replay the TCO frozen-layer benchmark with missing-control bounds
+        if: ${{ hashFiles('results/tco_frozen_prefix_v1/partial_evidence.json') != '' }}
+        run: python scripts/bound_tco_frozen_prefix.py --evidence results/tco_frozen_prefix_v1/partial_evidence.json
+      - name: Replay the TCO allocator sensitivity comparison
+        if: ${{ hashFiles('results/tco_frozen_prefix_v1/allocator_sensitivity_decision.json') != '' }}
+        run: python scripts/replay_tco_frozen_prefix.py --allocator-sensitivity
       - name: Exercise immutable profiled evidence backup fixtures
         run: python scripts/test_archive_profiled_evidence.py
       - name: Verify prospective M3 fitting inputs without loading predictions
