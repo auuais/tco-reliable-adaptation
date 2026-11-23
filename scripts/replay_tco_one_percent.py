@@ -316,9 +316,19 @@ def publish_or_replay(publish=False, preview=False):
     confirmation_report = PUBLIC / "confirmation_decision.json"
     if CONFIRM_MANIFEST.is_file() and not preview and (publish or confirmation_rows.exists() or confirmation_report.exists()):
         locked = read(CONFIRM_MANIFEST)
-        if (report["nominated"] != locked["candidate"] or locked["development_sha256"] != sha(MANIFEST, text=True)):
+        if (report["nominated"] != locked["candidate"]
+                or locked["development_sha256"] != sha(MANIFEST, text=True)
+                or locked["timing_sha256"] != sha(TIME_MANIFEST, text=True)):
             raise ValueError("The locked recipe differs from the development result")
         evidence = collect(locked["jobs"]) if publish else read(confirmation_rows)
+        prepared = read(PUBLIC / "confirmation_inputs.json")
+        if prepared["confirmation_sha256"] != sha(CONFIRM_MANIFEST, text=True):
+            raise ValueError("Confirmation input qualification refers to a different registration")
+        allowed = {(row["dataset"], row["scene"]): (row["input_sha256"], row["reference_sha256"], row["shape"])
+                   for row in prepared["scenes"]}
+        if any(allowed[row["dataset"], row["scene"]]
+               != (row["input_sha256"], row["reference_sha256"], row["raster_shape"]) for row in evidence["rows"]):
+            raise ValueError("A scored case received different inputs from qualification")
         confirmation = analyze_confirmation(plan, locked, evidence)
         if publish:
             publish_report(confirmation_rows, evidence)
