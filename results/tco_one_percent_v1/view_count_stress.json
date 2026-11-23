@@ -1,0 +1,159 @@
+{
+  "registration_sha256": "14104252e9bdf7cff110f81c18cfd511d862d8fe6ca271cf91ef4c364eca901c",
+  "runs": [
+    {
+      "case": "stress_four_40",
+      "verdict": "oom",
+      "stopped": true,
+      "exit_code": 1,
+      "error": null,
+      "stop_issues": [],
+      "wall_seconds": 37.59300000034273,
+      "result": null,
+      "log_sha256": "3ad9f022d37a4603a883bc6ad6bde9617ace2e6986d9626f0bb38fff501dbb3e",
+      "rental_compute_usd": 0
+    },
+    {
+      "case": "stress_cached12_10",
+      "verdict": "completed",
+      "stopped": true,
+      "exit_code": 0,
+      "error": null,
+      "stop_issues": [],
+      "wall_seconds": 82.375,
+      "result": {
+        "id": "stress_cached12_10",
+        "dataset": "7scenes",
+        "scene": "heads/seq-01",
+        "frames": [
+          0,
+          100,
+          200,
+          300,
+          400,
+          500,
+          600,
+          700,
+          800,
+          900
+        ],
+        "arm": "cached12",
+        "steps": 10,
+        "seed": 42,
+        "phase": "confirmation",
+        "input_sha256": "8739c810b6bda779c39b37e3c4a178553117b15bf6aadf941e09ce2aa00b08fb",
+        "reference_sha256": "7502b8d980c7bde050f3d75ae8f82e417a3875ea0054ff0570afffabfda58798",
+        "output_sha256": "7b6dcc7f085c9da75951b320281993323c6fbfe4e9b9658af869b051b38e8672",
+        "raster_shape": [
+          10,
+          3,
+          392,
+          518
+        ],
+        "scene_seconds": 28.32672413997352,
+        "placement_seconds": 1.3305863079149276,
+        "cold_seconds": 48.08756952895783,
+        "cuda_free_before": 9440329728,
+        "cuda_free_after": 13905920,
+        "cuda_device_total": 10736893952,
+        "peak_allocated": 8320983552,
+        "peak_reserved": 9338617856,
+        "host_peak_bytes": 10889392128,
+        "cold_peak_allocated": 8320983552,
+        "cache": {
+          "start": 12,
+          "builds": 1,
+          "hits": 11,
+          "prefix_stages": 12,
+          "bytes_on_gpu": 213363360
+        },
+        "matches": null,
+        "updates": 10,
+        "losses": {
+          "first_loss": 0.3448415696620941,
+          "last_loss": 0.1668836921453476
+        },
+        "metrics": {
+          "accuracy_mean_m": 0.010241583089676192,
+          "accuracy_median_m": 0.00532558658209549,
+          "completeness_mean_m": 0.010716709250941384,
+          "completeness_median_m": 0.005502490789714978,
+          "normal_consistency_mean": 0.7900887334894537,
+          "normal_consistency_median": 0.9048319246742327,
+          "nc1_mean": 0.7977269028225509,
+          "nc2_mean": 0.7824505641563567,
+          "valid_points": 1347178,
+          "similarity_scale": 0.9148491043903555,
+          "similarity_rotation": [
+            [
+              0.9365861460551812,
+              0.015745111714502005,
+              -0.35008353642323914
+            ],
+            [
+              0.06734800777317117,
+              0.9722809511892733,
+              0.2239062254683136
+            ],
+            [
+              0.3439049823228624,
+              -0.233284897521422,
+              0.9095644670510892
+            ]
+          ],
+          "similarity_translation": [
+            [
+              -0.1611788630790165
+            ],
+            [
+              -0.12935780674537703
+            ],
+            [
+              0.175139621110328
+            ]
+          ],
+          "icp_transformation": [
+            [
+              0.9999690307143041,
+              -0.001217473785028915,
+              -0.007775305131313216,
+              0.00412063345815259
+            ],
+            [
+              0.0012397199488234846,
+              0.9999951504476575,
+              0.002856952155703705,
+              -0.006371123447339725
+            ],
+            [
+              0.007771789160209003,
+              -0.0028665028788164375,
+              0.9999656906386833,
+              -0.015090098959393696
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "protocol": "upstream_Umeyama_then_rigid_ICP_0.1m_then_nearest_neighbor"
+        },
+        "runtime": {
+          "torch": "2.7.1+cu128",
+          "cuda": "12.8",
+          "gpu": "NVIDIA GeForce RTX 3080",
+          "allocator": "garbage_collection_threshold:0.75,expandable_segments:True",
+          "gpu_memory_fraction": 0.875,
+          "gsplat_sha256": "339c0272e544d6a166814cf49e2d21f500eaf9018e69585f1fcaadb5ed3c940e"
+        },
+        "audit": null,
+        "rental_compute_usd": 0
+      },
+      "log_sha256": "350d85708781c79a303dbbec2524d5d1b7caccedac2b87d9cc9ab55c9c7b2b3a",
+      "rental_compute_usd": 0
+    }
+  ],
+  "rental_compute_usd": 0
+}

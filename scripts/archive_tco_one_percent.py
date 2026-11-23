@@ -18,6 +18,7 @@ def snapshot():
     for marker in (MANIFEST, TIME_MANIFEST, CONFIRM_MANIFEST, STRESS_MANIFEST, *sorted(PUBLIC.glob("*.json"))):
         if marker.is_file():
             selection.marker(marker.relative_to(ROOT).as_posix())
+    selection.add((PUBLIC / "README.md").relative_to(ROOT).as_posix())
     for path in ("scripts/replay_tco_one_percent.py", "scripts/prepare_tco_one_percent_confirmation.py",
                  "scripts/prepare_tco_one_percent_timing.py", "scripts/run_tco_one_percent_view_stress.py",
                  "scripts/archive_tco_one_percent.py"):

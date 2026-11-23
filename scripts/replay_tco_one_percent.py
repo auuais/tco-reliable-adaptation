@@ -8,7 +8,7 @@ import random
 from statistics import mean, median
 
 from run_profiled_d0 import read, sha, write_new
-from tco_one_percent_protocol import CONFIRM_MANIFEST, MANIFEST, PUBLIC, TIME_MANIFEST, collect, is_success
+from tco_one_percent_protocol import CONFIRM_MANIFEST, MANIFEST, PUBLIC, ROOT, TIME_MANIFEST, collect, is_success
 
 
 QUALITY = ("accuracy_mean_m", "completeness_mean_m")
@@ -293,6 +293,29 @@ def publish_report(path, report):
         write_new(path, report)
 
 
+def replay_view_stress():
+    path = PUBLIC / "view_count_stress.json"
+    if not path.is_file():
+        return {}
+    registration = ROOT / "manifests/tco_one_percent_view_stress_v1.json"
+    plan, result = read(registration), read(path)
+    if (result["registration_sha256"] != sha(registration, text=True)
+            or plan["confirmation_sha256"] != sha(CONFIRM_MANIFEST, text=True)
+            or len(plan["jobs"]) != len(result["runs"]) or result["rental_compute_usd"] != 0):
+        raise ValueError("Ten-view stress evidence does not match registration")
+    for job, run in zip(plan["jobs"], result["runs"]):
+        if run["case"] != job["id"] or not run["stopped"] or run["rental_compute_usd"] != 0:
+            raise ValueError("Ten-view case or shutdown receipt differs")
+        scored = run["result"]
+        if run["verdict"] == "completed":
+            if (not scored or any(scored[k] != v for k, v in job.items())
+                    or scored["raster_shape"][0] != len(job["frames"]) or scored["updates"] != job["steps"]):
+                raise ValueError("Successful ten-view result differs from registration")
+        elif scored is not None or run["exit_code"] == 0:
+            raise ValueError("Failed ten-view case has a scored result")
+    return {run["case"]: run["verdict"] for run in result["runs"]}
+
+
 def publish_or_replay(publish=False, preview=False):
     plan = read(MANIFEST)
     qualification = read(PUBLIC / "qualification.json")
@@ -340,7 +363,8 @@ def publish_or_replay(publish=False, preview=False):
                           timing_candidates=[key for key, val in report["candidates"].items()
                                              if val["qualifies_for_timing"]],
                           geometry=report["geometry_test"]["passed"],
-                          confirmation={key: value["verdict"] for key, value in (confirmation or {}).items()}),
+                          confirmation={key: value["verdict"] for key, value in (confirmation or {}).items()},
+                          ten_view_stress=replay_view_stress() if not preview else {}),
                      indent=2))
     return report
 
