@@ -1,0 +1,107 @@
+{
+  "confirmation_launcher_interrupted_after": "p_7scenes_redkitchen_seq03_four_04_7",
+  "reason": "Investigate two timeout cases in a separate unscored container. A launch for Office full 10 had just started and was interrupted as the serial queue paused.",
+  "receipts": {
+    "p_7scenes_stairs_seq01_four_40_7": {
+      "job": "p_7scenes_stairs_seq01_four_40_7",
+      "attempt": "attempt01",
+      "utc": "2026-11-23T18:32:13.276596+00:00",
+      "exit_code": null,
+      "error": "TimeoutExpired: Command '['docker', '--host', 'npipe:////./pipe/dockerDesktopLinuxEngine', 'start', '--attach', 'a78350baedd0eb55a0f30af01d63d9a49c47540e7d033751c42a465f14a91050']' timed out after 1200.0 seconds",
+      "stopped": true,
+      "stop_issues": [],
+      "wall_seconds": 1206.6720000002533,
+      "log_sha256": "98d643faef8feef762c5d20f6e910820241ac21c51facff2b3b5ee8a9a999525",
+      "rental_compute_usd": 0
+    },
+    "p_7scenes_stairs_seq01_four_10_7": {
+      "job": "p_7scenes_stairs_seq01_four_10_7",
+      "attempt": "attempt01",
+      "utc": "2026-11-23T18:52:19.783441+00:00",
+      "exit_code": null,
+      "error": "TimeoutExpired: Command '['docker', '--host', 'npipe:////./pipe/dockerDesktopLinuxEngine', 'start', '--attach', '6b5e03c352d2acd7fd5045bf6bc1b5df4ae82b1ed63369d4819f17a15d8bc169']' timed out after 1200.0 seconds",
+      "stopped": true,
+      "stop_issues": [],
+      "wall_seconds": 1206.5,
+      "log_sha256": "1a4efad18ff5fc526d328588a2dcb0892ff905f67e2416260c1baa83e595259a",
+      "rental_compute_usd": 0
+    },
+    "p_7scenes_office_seq02_four_10_7": {
+      "job": "p_7scenes_office_seq02_four_10_7",
+      "attempt": "attempt01",
+      "utc": "2026-11-23T18:55:37.164963+00:00",
+      "exit_code": null,
+      "error": "Container exited unsuccessfully; see private log",
+      "stopped": true,
+      "stop_issues": [],
+      "wall_seconds": 1.125,
+      "log_sha256": "aea56eccbdcdda61273241546488c3e982ef05d5a9cd415d0c986a59bb1bb875",
+      "rental_compute_usd": 0
+    }
+  },
+  "unscored_diagnostic": {
+    "exit_code": 0,
+    "fault": null,
+    "stopped": true,
+    "log_sha256": "167a983df1f3ae7ef746fce19ad8301b0607d3f75b2eeaa9c0702bea46b9ce05",
+    "result": {
+      "id": "stairs_capped875",
+      "dataset": "7scenes",
+      "scene": "stairs/seq-01",
+      "frames": [
+        0,
+        100,
+        200,
+        300,
+        400
+      ],
+      "arm": "four",
+      "steps": 10,
+      "seed": 7,
+      "phase": "confirmation",
+      "probe": "memory",
+      "input_sha256": "78b46723007d54db76a789a97ef848964a5608312f0a452b7e6cc36fc6c9af45",
+      "reference_sha256": "fa1979f0408dba59972035c8df1fa342a6445716639470e92061fe099d6d8b10",
+      "output_sha256": "a295be3089a0368521372ebf676863558067862f819e1adb4b2ef066b91a68f1",
+      "raster_shape": [
+        5,
+        3,
+        392,
+        518
+      ],
+      "scene_seconds": 26.64495053491555,
+      "placement_seconds": 1.559921289095655,
+      "cold_seconds": 46.665778134949505,
+      "cuda_free_before": 9440329728,
+      "cuda_free_after": 0,
+      "cuda_device_total": 10736893952,
+      "peak_allocated": 8398727680,
+      "peak_reserved": 9305063424,
+      "host_peak_bytes": 10848833536,
+      "cold_peak_allocated": 8398727680,
+      "cache": null,
+      "matches": null,
+      "updates": 10,
+      "losses": {
+        "first_loss": 0.30341896414756775,
+        "last_loss": 0.1559416800737381
+      },
+      "metrics": null,
+      "runtime": {
+        "torch": "2.7.1+cu128",
+        "cuda": "12.8",
+        "gpu": "NVIDIA GeForce RTX 3080",
+        "allocator": "garbage_collection_threshold:0.75,expandable_segments:True",
+        "gpu_memory_fraction": 0.875,
+        "gsplat_sha256": "339c0272e544d6a166814cf49e2d21f500eaf9018e69585f1fcaadb5ed3c940e"
+      },
+      "audit": null,
+      "rental_compute_usd": 0
+    },
+    "stop_issues": [],
+    "wall_seconds": 58.79700000025332,
+    "rental_compute_usd": 0
+  },
+  "resumption": "Retry affected jobs once using the original committed protocol and review any additional recorded failures.",
+  "rental_compute_usd": 0
+}
