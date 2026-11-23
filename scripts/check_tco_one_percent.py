@@ -110,7 +110,7 @@ def qualify():
         raise ValueError(f"Required engineering runs are missing: {absent}")
     if len({tuple(row["runtime"].items()) for row in rows.values()}) != 1:
         raise ValueError("The qualification runtimes differ")
-    zero, four = rows["q_zero"], rows["q_four"]
+    zero, four = rows["q_zero_release"], rows["q_four_release"]
     plain, geo, dummy = (rows[name] for name in ("q_plain_fixed", "q_geo_fixed", "q_leak_fixed"))
     last14, un14 = (rows[name] for name in ("q_last14_fixed", "q_un14_fixed"))
     real_a, real_b = (rows[name] for name in ("q_geo_real_a", "q_geo_real_b"))

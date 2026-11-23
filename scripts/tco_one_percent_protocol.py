@@ -24,8 +24,8 @@ SEEDS = (42, 43, 44)
 ORDER_SEED = 20261123
 ETH3D = ("courtyard", "delivery_area", "electro", "facade", "kicker", "office", "playground", "terrains")
 QUALIFICATION = (
-    ("q_zero", "zero", 0, "fixed"),
-    ("q_four", "four", 0, "fixed"),
+    ("q_zero_release", "zero", 0, "identity"),
+    ("q_four_release", "four", 0, "identity"),
     ("q_plain_fixed", "cached12", 1, "fixed"),
     ("q_geo_fixed", "geometry", 1, "fixed"),
     ("q_leak_fixed", "geometry", 1, "leak"),
@@ -98,6 +98,7 @@ def design():
                 suffix=dict(rank=4, alpha=16, dropout=0, learning_rate=0.0003, max_grad_norm=1.0),
                 boundary=dict(rank=4, alpha=4, stage=11, relative_depth_tolerance=0.05,
                               reverse_error_patch_units=0.5, min_pair_baseline=1e-6),
+                fixed_adjoint_width=294,
                 physical_rooms={scene: scene.split("/")[0] for scene in SCENES},
                 confirmation=dict(seeds=[7, 77, 777], eth3d_scenes=list(ETH3D), eth3d_frames=[0, 5, 10, 15, 20],
                                   bootstrap_seed=ORDER_SEED, bootstrap_samples=10000),
@@ -132,7 +133,16 @@ def register():
     raw = file_hashes(DATA / "data", dict.fromkeys(SCENES, FRAMES))
     if raw != {f"7scenes/{name}": checksum for name, checksum in prior["input_source_sha256"].items()}:
         raise ValueError("Development input files differ from the previous study")
-    write_new(MANIFEST, dict(**current, input_source_sha256=raw))
+    if MANIFEST.exists():
+        earlier = read_committed(MANIFEST)
+        if earlier["jobs"] != current["jobs"] or any((PRIVATE / "launches" / job["id"]).exists()
+                                                     for job in earlier["jobs"]):
+            raise ValueError("The scientific schedule is locked before its first launch")
+        target = MANIFEST.with_suffix(".next.json")
+        write_new(target, dict(**current, input_source_sha256=raw))
+        target.replace(MANIFEST)
+    else:
+        write_new(MANIFEST, dict(**current, input_source_sha256=raw))
     print(f"Registered {len(current['jobs'])} scientific jobs and {len(current['probes'])} probes")
 
 

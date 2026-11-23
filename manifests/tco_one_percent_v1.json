@@ -29,6 +29,7 @@
     "reverse_error_patch_units": 0.5,
     "min_pair_baseline": 1e-06
   },
+  "fixed_adjoint_width": 294,
   "physical_rooms": {
     "heads/seq-01": "heads",
     "chess/seq-03": "chess",
@@ -63,7 +64,7 @@
   "timer": "Synchronized CPU-ready model and supplied inputs through final FP32 point map",
   "probes": [
     {
-      "id": "q_zero",
+      "id": "q_zero_release",
       "dataset": "7scenes",
       "scene": "heads/seq-01",
       "frames": [
@@ -77,10 +78,10 @@
       "steps": 0,
       "seed": 42,
       "phase": "qualification",
-      "probe": "fixed"
+      "probe": "identity"
     },
     {
-      "id": "q_four",
+      "id": "q_four_release",
       "dataset": "7scenes",
       "scene": "heads/seq-01",
       "frames": [
@@ -94,7 +95,7 @@
       "steps": 0,
       "seed": 42,
       "phase": "qualification",
-      "probe": "fixed"
+      "probe": "identity"
     },
     {
       "id": "q_plain_fixed",
@@ -1855,10 +1856,10 @@
     "third_party/TCO/base_models/vggt/vggt/heads/dpt_head.py": "b83ff030043f2ba808afb0c0ebc2f40f1d2ddc9d0b4b847bdfd53670f2d03e17",
     "third_party/TCO/base_models/vggt/vggt/heads/camera_head.py": "d177f3d64d53210209b7bbb8496faaaec91f3fc51d04a4ee8d9d6b70f053e132",
     "scripts/tco_one_percent_geometry.py": "3e1dcb7a0fba979fce73adfc68d3155a63dc5eedebd8a87b2fc22cee9bf601ca",
-    "scripts/tco_one_percent_protocol.py": "4936c793d4b698804f28403a172a7b242c6ce85179c55f583a7e330c221f498e",
-    "scripts/run_tco_one_percent.py": "6079e47cca0bcd63539496ccab8177ba7fe2a99538371d9757005edba0f539e9",
+    "scripts/tco_one_percent_protocol.py": "17e506db21bb326e6d9a62d6a053b9ec6df18870b4bde5242e41607b51383c7d",
+    "scripts/run_tco_one_percent.py": "05f7a2ad88a741523828fcfb8abffbd2c542c54016b16da3b8a4e9b4b911596b",
     "scripts/run_tco_one_percent_local.py": "9d44105f0758e0dda1e833f0a4cf3eeb680d33cd96d96cbaa0112c7b01eac67e",
-    "scripts/check_tco_one_percent.py": "2c2b445179efd7ae3813e7c988ae2e1a6caef3a9de8814e1645bcfdc10c4e0e6",
+    "scripts/check_tco_one_percent.py": "9d88925a3e4e4e0ebd8b9097befd62bb5e4268d521fedd9c4fe35e14c46d9e54",
     "docs/TCO_ONE_PERCENT_HANDOFF.md": "d670db9026372f6f03a957e2be839db86e61f98c13216d69646967f9fcd1d9e5",
     "third_party/TCO/datasets/sevenscenes.py": "a784d0aed7df9c2330d1906a70f8da49402b3df6841b557ccfe63eda62f149b3",
     "third_party/TCO/datasets/eth3d.py": "9b184d2fde00b13c099d273ffc2f5d68db0bbaa262fbbb5b2fc92190fce47763",

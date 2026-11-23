@@ -1,0 +1,37 @@
+{
+  "original_development_sha256": "afe2327d32b090647ed8b49f542f510c1ea564a58d4800f8c8fcef2193e3c7e9",
+  "replacement_development_sha256": "10413878a89e12cde375260654d0538bc201f097c77be0949941f9a8e0ecdcf1",
+  "prior_probes": {
+    "q_zero": {
+      "job": "q_zero",
+      "attempt": "attempt01",
+      "utc": "2026-11-23T14:48:14.199757+00:00",
+      "exit_code": 137,
+      "error": "Container exited unsuccessfully; see private log",
+      "stopped": true,
+      "stop_issues": [],
+      "wall_seconds": 372.7649999996647,
+      "log_sha256": "15cb886ddf873f029799c03898b49eb4e0ab8b1b7e89aded84833bbad362cb67",
+      "rental_compute_usd": 0
+    },
+    "q_four": {
+      "job": "q_four",
+      "attempt": "attempt01",
+      "utc": "2026-11-23T14:50:24.281568+00:00",
+      "exit_code": null,
+      "error": "Container exited unsuccessfully; see private log",
+      "stopped": true,
+      "stop_issues": [],
+      "wall_seconds": 130.0789999999106,
+      "log_sha256": "15cb886ddf873f029799c03898b49eb4e0ab8b1b7e89aded84833bbad362cb67",
+      "rental_compute_usd": 0
+    }
+  },
+  "windows_gpu_used_mib_while_stalled": [
+    9850,
+    10004
+  ],
+  "changes": "Use release execution for original/four-output identity and width 294 for fixed-adjoint and leakage probes. Scientific schedule and settings retained.",
+  "explanation": "Two strict deterministic 518px zero-step probes stalled and were stopped. Driver residency observations suggest pressure; the underlying kernel cause was not established.",
+  "rental_compute_usd": 0
+}

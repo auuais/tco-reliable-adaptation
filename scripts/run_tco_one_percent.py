@@ -2,6 +2,7 @@
 
 import argparse
 import contextlib
+import faulthandler
 import hashlib
 import io
 import os
@@ -192,7 +193,7 @@ def observe_losses(state, audit, fixed_gradient):
     return original, loss
 
 
-def load_case(job, out):
+def load_case(job, out, width):
     scene, frames = job["scene"], job["frames"]
     if job["dataset"] == "7scenes":
         metadata = METADATA
@@ -201,10 +202,10 @@ def load_case(job, out):
             seq_dir = DATA_ROOT / "7scenes" / scene
             np.save(metadata, {scene: sum(1 for _ in seq_dir.glob("*.color.png"))})
         dataset = base.SevenScenes(SEVENSCENES_DIR=str(DATA_ROOT / "7scenes"), split="test",
-                                   load_img_size=518, cache_file=str(metadata))
+                                   load_img_size=width, cache_file=str(metadata))
     elif job["dataset"] == "eth3d":
         from datasets.eth3d import ETH3D
-        dataset = ETH3D(ETH3D_DIR=str(DATA_ROOT / "eth3d"), load_img_size=518,
+        dataset = ETH3D(ETH3D_DIR=str(DATA_ROOT / "eth3d"), load_img_size=width,
                         cache_file=str(out / "eth3d_metadata.npy"))
     else:
         raise ValueError(f"Unknown dataset: {job['dataset']}")
@@ -213,7 +214,7 @@ def load_case(job, out):
     if (images.ndim != 4 or tuple(images.shape[:2]) != (len(frames), 3)
             or tuple(images.shape[-2:]) != data["valid_mask"].shape[-2:]):
         raise ValueError(f"Expected matched RGB and reference rasters, got {images.shape}")
-    if job["dataset"] == "7scenes" and tuple(images.shape[-2:]) != (392, 518):
+    if job["dataset"] == "7scenes" and width == 518 and tuple(images.shape[-2:]) != (392, 518):
         raise ValueError("The 7-Scenes crop changed")
     if "images_expected" in job and [Path(path).name for path in data["image_paths"]] != job["images_expected"]:
         raise ValueError("The ETH3D loader selected different images")
@@ -225,11 +226,13 @@ def load_case(job, out):
     return supplied, reference
 
 
-def run(job, out):
+def run(job, out, width):
     arm, seed, steps = (job[field] for field in ("arm", "seed", "steps"))
     probe = job.get("probe")
     fixed = probe in ("fixed", "leak")
-    audit = {} if fixed or probe == "repeat" else None
+    audit = {} if fixed or probe in ("repeat", "identity") else None
+    if probe:
+        faulthandler.dump_traceback_later(90, repeat=True)
     if fixed:
         os.environ["CUBLAS_WORKSPACE_CONFIG"] = ":4096:8"
         torch.use_deterministic_algorithms(True)
@@ -244,7 +247,7 @@ def run(job, out):
     torch.cuda.synchronize()
     torch.cuda.empty_cache()
     out.mkdir(parents=True, exist_ok=False)
-    supplied, reference = load_case(job, out)
+    supplied, reference = load_case(job, out, width)
     cfg = base.OmegaConf.load(ROOT / "configs/7scenes_baseline.yaml")
     cfg.tco_steps, cfg.tco_lr, cfg.seed = steps, 0.0003, seed
     random.seed(seed)
@@ -256,6 +259,8 @@ def run(job, out):
     torch.cuda.reset_peak_memory_stats()
     cold_start = time.perf_counter()
     model = base.tco_module.TCO_VGGT_LoRA.from_pretrained(CHECKPOINT, enable_track=False).eval()
+    if probe:
+        print(f"Checkpoint ready on CPU for {width}px input", flush=True)
     path = install_variant(model, arm, seed, state, audit)
     predictions = {}
 
@@ -272,10 +277,13 @@ def run(job, out):
     place(model, path)
     torch.cuda.synchronize()
     placed = time.perf_counter()
+    if probe:
+        print(f"CUDA placement took {placed - begin:.2f}s", flush=True)
     frozen = tuple(model.named_parameters())
     versions = [param._version for _, param in frozen]
     if audit is not None:
         audit["frozen_start_sha256"] = named_hash(frozen)
+        print("Frozen weights hashed. Entering TCO.", flush=True)
     torch.cuda.manual_seed(seed)
     log = io.StringIO()
     base.tco_module.compute_tco_losses = loss
@@ -334,6 +342,8 @@ def run(job, out):
         cache=assembly, matches=state.get("matches"), updates=state["updates"], losses=losses,
         metrics=metrics, runtime=runtime, audit=audit, rental_compute_usd=0))
     print(f"{job['id']} {end - begin:.2f}s, {peak / 2**30:.3f} GiB peak allocated", flush=True)
+    if probe:
+        faulthandler.cancel_dump_traceback_later()
 
 
 if __name__ == "__main__":
@@ -348,4 +358,5 @@ if __name__ == "__main__":
                 [args.registration])
     job = next(item for item in [*plan["jobs"], *plan.get("probes", [])] if item["id"] == args.job)
     check_case_inputs(job, plan["input_source_sha256"], DATA_ROOT)
-    run(job, PRIVATE / "cases" / args.job / args.attempt)
+    width = plan["fixed_adjoint_width"] if job.get("probe") in ("fixed", "leak") else 518
+    run(job, PRIVATE / "cases" / args.job / args.attempt, width)
