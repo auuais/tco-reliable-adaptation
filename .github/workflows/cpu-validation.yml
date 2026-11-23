@@ -240,6 +240,11 @@ jobs:
       - name: Replay the TCO allocator sensitivity comparison
         if: ${{ hashFiles('results/tco_frozen_prefix_v1/allocator_sensitivity_decision.json') != '' }}
         run: python scripts/replay_tco_frozen_prefix.py --allocator-sensitivity
+      - name: Check the TCO boundary adapter on synthetic camera geometry
+        run: python scripts/check_tco_one_percent.py
+      - name: Replay the TCO one-percent study
+        if: ${{ hashFiles('results/tco_one_percent_v1/decision.json') != '' }}
+        run: python scripts/replay_tco_one_percent.py
       - name: Exercise immutable profiled evidence backup fixtures
         run: python scripts/test_archive_profiled_evidence.py
       - name: Verify prospective M3 fitting inputs without loading predictions
