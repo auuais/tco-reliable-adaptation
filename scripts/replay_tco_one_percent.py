@@ -312,16 +312,18 @@ def publish_or_replay(publish=False, preview=False):
     elif not preview and report != read(PUBLIC / "decision.json"):
         raise ValueError("Published development decision does not replay")
     confirmation = None
-    if CONFIRM_MANIFEST.is_file() and not preview:
+    confirmation_rows = PUBLIC / "confirmation_evidence.json"
+    confirmation_report = PUBLIC / "confirmation_decision.json"
+    if CONFIRM_MANIFEST.is_file() and not preview and (publish or confirmation_rows.exists() or confirmation_report.exists()):
         locked = read(CONFIRM_MANIFEST)
         if (report["nominated"] != locked["candidate"] or locked["development_sha256"] != sha(MANIFEST, text=True)):
             raise ValueError("The locked recipe differs from the development result")
-        evidence = collect(locked["jobs"]) if publish else read(PUBLIC / "confirmation_evidence.json")
+        evidence = collect(locked["jobs"]) if publish else read(confirmation_rows)
         confirmation = analyze_confirmation(plan, locked, evidence)
         if publish:
-            publish_report(PUBLIC / "confirmation_evidence.json", evidence)
-            publish_report(PUBLIC / "confirmation_decision.json", confirmation)
-        elif confirmation != read(PUBLIC / "confirmation_decision.json"):
+            publish_report(confirmation_rows, evidence)
+            publish_report(confirmation_report, confirmation)
+        elif confirmation != read(confirmation_report):
             raise ValueError("Published confirmation decision does not replay")
     print(json.dumps(dict(development=report["verdict"], candidate=report["nominated"],
                           complete=report["complete"], scheduled=report["scheduled"],
