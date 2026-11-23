@@ -191,6 +191,34 @@ def quantile(values, fraction):
     return (1 - weight) * values[lower] + weight * values[upper]
 
 
+def replay_timing(plan, extension, decision, evidence):
+    if extension["development_sha256"] != sha(MANIFEST, text=True):
+        raise ValueError("Timing registration refers to a different experiment")
+    jobs = [job for job in extension["jobs"] if job["phase"] == "timing"]
+    rows = verify_rows(jobs, evidence)
+    times_by_step = defaultdict(dict)
+    stats = decision["comparisons"]
+    reference = {scene: values["scene_seconds"] for scene, values in stats[REFERENCE]["medians_by_sequence"].items()}
+    for row in rows.values():
+        times_by_step[row["steps"]][row["scene"]] = scalar(row, "scene_seconds") / reference[row["scene"]]
+    if any(set(rooms) != set(plan["physical_rooms"]) for rooms in times_by_step.values()):
+        raise ValueError("An activated timing budget lacks a room")
+    pilots = {str(step): mean(ratios.values()) for step, ratios in times_by_step.items()}
+    fixed = {arm: stats[arm]["ratios"]["scene_seconds"] for arm in ("zero_0", "four_5", "four_10", REFERENCE)}
+    targets = {arm: stats[arm]["ratios"]["scene_seconds"] for arm, record in decision["candidates"].items()
+               if record["qualifies_for_timing"]}
+    if (pilots != extension["pilot_time_ratios"] or fixed != extension["fixed_arm_time_ratios"]
+            or targets != extension["target_ratios"] or reference != extension["full40_scene_times"]):
+        raise ValueError("Registered pilot or target times do not replay")
+    all_budgets = {int(arm.rsplit("_", 1)[-1]): duration for arm, duration in fixed.items()}
+    all_budgets.update({int(step): duration for step, duration in pilots.items()})
+    for arm, target in targets.items():
+        chosen = max((step for step, duration in all_budgets.items() if duration <= target), default=0)
+        if (extension["locked_by_candidate"].get(arm) != chosen or chosen + 1 not in all_budgets
+                or all_budgets[chosen + 1] <= target):
+            raise ValueError("A locked budget lacks its adjacent timing comparison")
+
+
 def paired_bootstrap(room_values, seed, count):
     rooms = sorted(room_values)
     generator = random.Random(seed)
@@ -256,6 +284,8 @@ def publish_or_replay(publish=False, preview=False):
         jobs.extend(job for job in time_plan["jobs"] if job["phase"] == "equal_time")
     evidence = collect(jobs) if publish or preview else read(PUBLIC / "evidence.json")
     report = analyze_development(plan, qualification, evidence, time_plan)
+    if time_plan and "locked_by_candidate" in time_plan and not preview:
+        replay_timing(plan, time_plan, report, read(PUBLIC / "timing_evidence.json"))
     if publish:
         write_new(PUBLIC / "evidence.json", evidence)
         write_new(PUBLIC / "decision.json", report)

@@ -17,7 +17,9 @@ TIME_MANIFEST = ROOT / "manifests" / "tco_one_percent_time_v1.json"
 CONFIRM_MANIFEST = ROOT / "manifests" / "tco_one_percent_confirmation_v1.json"
 DATA = Path("E:/ResearchData/TCO")
 METADATA = ROOT / "environment" / "development_dataset_cache_v7.npy"
-ALLOCATOR = "garbage_collection_threshold:0.75"
+ALLOCATOR = "garbage_collection_threshold:0.75,expandable_segments:True"
+GPU_MEMORY_FRACTION = 0.875
+QUALIFICATION_SUFFIX = "_segmented"
 THRESHOLDS = dict(scene_seconds=0.50, peak_allocated=0.80,
                   accuracy_mean_m=1.01, completeness_mean_m=1.01)
 SEEDS = (42, 43, 44)
@@ -94,6 +96,7 @@ def file_hashes(root, scenes):
 def design():
     return dict(study=STUDY, rental_compute_usd=0, upstream=TCO, checkpoint_sha256=CHECKPOINT,
                 docker_image=IMAGE, gpu="NVIDIA GeForce RTX 3080", allocator=ALLOCATOR,
+                gpu_memory_fraction=GPU_MEMORY_FRACTION,
                 launch_timeout_seconds=1200, launch_order_seed=ORDER_SEED, thresholds=THRESHOLDS,
                 suffix=dict(rank=4, alpha=16, dropout=0, learning_rate=0.0003, max_grad_norm=1.0),
                 boundary=dict(rank=4, alpha=4, stage=11, relative_depth_tolerance=0.05,
@@ -103,7 +106,8 @@ def design():
                 confirmation=dict(seeds=[7, 77, 777], eth3d_scenes=list(ETH3D), eth3d_frames=[0, 5, 10, 15, 20],
                                   bootstrap_seed=ORDER_SEED, bootstrap_samples=10000),
                 timer="Synchronized CPU-ready model and supplied inputs through final FP32 point map",
-                probes=[job_for(SCENES[0], arm, steps, SEEDS[0], "qualification", name=name, probe=probe)
+                probes=[job_for(SCENES[0], arm, steps, SEEDS[0], "qualification",
+                                name=name + QUALIFICATION_SUFFIX, probe=probe)
                         for name, arm, steps, probe in QUALIFICATION],
                 jobs=development_jobs(),
                 metadata_sha256=sha(METADATA),

@@ -1,0 +1,101 @@
+{
+  "previous_development_sha256": "10413878a89e12cde375260654d0538bc201f097c77be0949941f9a8e0ecdcf1",
+  "development_sha256": "431aa4608be35c0679478fb9cb8976c5ba0c842dc2d12c66e79d5c88cd6ca882",
+  "unbounded": {
+    "job": "q_full40_peak",
+    "attempt": "attempt01",
+    "utc": "2026-11-23T15:08:26.350443+00:00",
+    "exit_code": 137,
+    "error": "Container exited unsuccessfully; see private log",
+    "stopped": true,
+    "stop_issues": [],
+    "wall_seconds": 380.25,
+    "log_sha256": "a9b34154cc63f45432445ccb818da09d99e16e44acf92e85d002c3f2acc2cb67",
+    "rental_compute_usd": 0
+  },
+  "trials": [
+    {
+      "fraction": 0.875,
+      "exit_code": 1,
+      "fault": null,
+      "wall_seconds": 42.03099999949336,
+      "stopped": true,
+      "stop_issues": [],
+      "result": null,
+      "log_sha256": "3917a4d357ad1c59cd0ffae0bf829d1119a760f77ea54702c3b9835792dd9686",
+      "rental_compute_usd": 0,
+      "failure_kind": "CUDA allocation failed",
+      "failing_request_mib": 496,
+      "torch_active_gib": 7.0,
+      "torch_inactive_reserved_gib": 1.33
+    },
+    {
+      "fraction": 0.875,
+      "allocator": "garbage_collection_threshold:0.75,expandable_segments:True",
+      "exit_code": 0,
+      "fault": null,
+      "wall_seconds": 107.09400000050664,
+      "stopped": true,
+      "stop_issues": [],
+      "result": {
+        "id": "q_full40_peak",
+        "dataset": "7scenes",
+        "scene": "heads/seq-01",
+        "frames": [
+          0,
+          200,
+          400,
+          600,
+          800
+        ],
+        "arm": "four",
+        "steps": 40,
+        "seed": 42,
+        "phase": "qualification",
+        "probe": "memory",
+        "input_sha256": "5d5eebc36f9f41007f8ff929f515788a2de5310d2d5c5f6dc0fbdd9f245c5f59",
+        "reference_sha256": "1a7fe85c5377c154666faf712689ab6c70dbe1e9323bb5b6f0db3aacefc794e9",
+        "output_sha256": "66b26ebe80d4aca600b2d3ebc694b342f0b19d22252e265f0c0b6110c486f83d",
+        "raster_shape": [
+          5,
+          3,
+          392,
+          518
+        ],
+        "scene_seconds": 76.62218620092608,
+        "placement_seconds": 1.4437731970101595,
+        "cold_seconds": 96.10475831106305,
+        "cuda_free_before": 9440329728,
+        "cuda_free_after": 4356833280,
+        "cuda_device_total": 10736893952,
+        "peak_allocated": 8398727680,
+        "peak_reserved": 9367977984,
+        "host_peak_bytes": 10851377152,
+        "cold_peak_allocated": 8398727680,
+        "cache": null,
+        "matches": null,
+        "updates": 40,
+        "losses": {
+          "first_loss": 0.6477410793304443,
+          "last_loss": 0.10069066286087036
+        },
+        "metrics": null,
+        "runtime": {
+          "torch": "2.7.1+cu128",
+          "cuda": "12.8",
+          "gpu": "NVIDIA GeForce RTX 3080",
+          "allocator": "garbage_collection_threshold:0.75,expandable_segments:True",
+          "gsplat_sha256": "339c0272e544d6a166814cf49e2d21f500eaf9018e69585f1fcaadb5ed3c940e"
+        },
+        "audit": null,
+        "rental_compute_usd": 0
+      },
+      "log_sha256": "18b0a6cf9f4c4632831a5880b317efe3d0de3c6a4dbb045f36ac4e8b15659506",
+      "rental_compute_usd": 0
+    }
+  ],
+  "status": "Requalify every registered arm with a native expandable allocator and an 87.5% process cap",
+  "reason": "Release execution stalled at a CUDA synchronization in rotary-position recomputation. The process cap triggered an explicit allocation failure. Expandable segments completed the same unscored full reference within the cap.",
+  "cap_reference": "https://github.com/pytorch/pytorch/blob/v2.7.1/c10/cuda/CUDACachingAllocator.cpp#L1141-L1147",
+  "rental_compute_usd": 0
+}

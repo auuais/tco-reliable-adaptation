@@ -3,7 +3,7 @@
 import argparse
 
 from run_profiled_d0 import sha, write_new
-from tco_one_percent_protocol import MANIFEST, PRIVATE, PUBLIC, collect, verify
+from tco_one_percent_protocol import MANIFEST, PRIVATE, PUBLIC, QUALIFICATION_SUFFIX, collect, verify
 
 
 def fixture():
@@ -104,8 +104,8 @@ def prediction_difference(a, b):
 def qualify():
     plan = verify()
     data = collect(plan["probes"])
-    rows = {row["id"]: row for row in data["rows"]}
-    absent = [job["id"] for job in plan["probes"] if job["id"] not in rows]
+    rows = {row["id"].removesuffix(QUALIFICATION_SUFFIX): row for row in data["rows"]}
+    absent = [job["id"] for job in plan["probes"] if job["id"].removesuffix(QUALIFICATION_SUFFIX) not in rows]
     if absent:
         raise ValueError(f"Required engineering runs are missing: {absent}")
     if len({tuple(row["runtime"].items()) for row in rows.values()}) != 1:

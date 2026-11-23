@@ -21,8 +21,8 @@ from run_profiled_d0 import read, sha, write_new
 from run_tco_frozen_prefix import CHECKPOINT, FIELDS, export, signature
 from tco_frozen_prefix import TAPS, install, place
 from tco_one_percent_geometry import BoundaryCorrection, correspondences, shuffle_edges
-from tco_one_percent_protocol import ALLOCATOR, CONFIRM_MANIFEST, MANIFEST, METADATA, PRIVATE, ROOT, TIME_MANIFEST
-from tco_one_percent_protocol import check_case_inputs
+from tco_one_percent_protocol import ALLOCATOR, CONFIRM_MANIFEST, GPU_MEMORY_FRACTION, MANIFEST, METADATA
+from tco_one_percent_protocol import PRIVATE, ROOT, TIME_MANIFEST, check_case_inputs
 
 
 GEOMETRY_ARMS = ("own", "geometry", "shuffle")
@@ -236,8 +236,10 @@ def run(job, out, width):
     if fixed:
         os.environ["CUBLAS_WORKSPACE_CONFIG"] = ":4096:8"
         torch.use_deterministic_algorithms(True)
+    torch.cuda.set_per_process_memory_fraction(GPU_MEMORY_FRACTION)
     device = torch.cuda.get_device_name()
-    if device != "NVIDIA GeForce RTX 3080" or os.environ.get("PYTORCH_CUDA_ALLOC_CONF") != ALLOCATOR:
+    if (device != "NVIDIA GeForce RTX 3080" or os.environ.get("PYTORCH_CUDA_ALLOC_CONF") != ALLOCATOR
+            or torch.cuda.get_per_process_memory_fraction() != GPU_MEMORY_FRACTION):
         raise ValueError("Use the registered local RTX 3080 and allocator")
     from gsplat.cuda._backend import _C
 
@@ -331,7 +333,7 @@ def run(job, out, width):
         np.savez_compressed(out / "prediction.npz", **arrays)
     metrics = base.evaluate(points, reference, out) if probe is None else None
     runtime = dict(torch=torch.__version__, cuda=torch.version.cuda, gpu=device, allocator=ALLOCATOR,
-                   gsplat_sha256=sha(_C.__file__))
+                   gpu_memory_fraction=GPU_MEMORY_FRACTION, gsplat_sha256=sha(_C.__file__))
     losses = ({key: float(state[key]) for key in ("first_loss", "last_loss")} if steps else None)
     write_new(out / "complete.json", dict(
         **job, input_sha256=inputs, reference_sha256=ref_hash, output_sha256=outputs,

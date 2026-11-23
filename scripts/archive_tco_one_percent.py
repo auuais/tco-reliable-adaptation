@@ -29,6 +29,13 @@ def snapshot():
             for path in sorted(output.iterdir()):
                 if path.name != "complete.json":
                     selection.add(path.relative_to(ROOT).as_posix())
+    for terminal in sorted((PRIVATE / "allocator_probes").glob("*/terminal.json")):
+        relative = terminal.parent.relative_to(ROOT)
+        record = selection.marker(terminal.relative_to(ROOT).as_posix())
+        selection.add((relative / "start.json").as_posix())
+        if record["result"]:
+            output = PRIVATE / "cases" / record["result"]["id"] / terminal.parent.name / "complete.json"
+            selection.marker(output.relative_to(ROOT).as_posix())
     archive = Path("E:/ResearchData/TCO/research_results") / STUDY
     disks = physical_disks(ROOT, archive)
     result = copy_plan(archive, "study-v1", selection.finish(), disks)

@@ -3,7 +3,7 @@
 import argparse
 from statistics import mean
 
-from replay_tco_one_percent import REFERENCE, analyze_development, arm_key
+from replay_tco_one_percent import REFERENCE, analyze_development
 from run_profiled_d0 import sha, write_new
 from run_profiled_d1_local import host_lock
 from run_tco_one_percent_local import launch
@@ -50,26 +50,26 @@ def search(plan, extension):
         raise ValueError("Equal-time budgets are already locked")
     times = {int(arm.rsplit("_", 1)[-1]): duration for arm, duration in extension["fixed_arm_time_ratios"].items()}
     old_steps = set(times)
-    locked = {}
     with host_lock():
-        for arm, target in sorted(extension["target_ratios"].items(), key=lambda entry: entry[1]):
-            while True:
-                low, high = bracket(times, target)
-                if high == low + 1:
-                    locked[arm] = low
-                    break
-                midpoint = (low + high) // 2
-                jobs = [job for job in extension["jobs"] if job["steps"] == midpoint]
-                for job in jobs:
+        while True:
+            brackets = {arm: bracket(times, target) for arm, target in extension["target_ratios"].items()}
+            unsettled = sorted((low, high) for low, high in brackets.values() if high - low > 1)
+            if not unsettled:
+                locked = {arm: low for arm, (low, _) in brackets.items()}
+                break
+            low, high = unsettled[0]
+            midpoint = (low + high) // 2
+            jobs = [job for job in extension["jobs"] if job["steps"] == midpoint]
+            for job in jobs:
+                rows, attempts = case_receipts(job)
+                while not rows and len(attempts) < 2:
+                    launch(job, "time", f"attempt0{len(attempts) + 1}", plan["launch_timeout_seconds"])
                     rows, attempts = case_receipts(job)
-                    while not rows and len(attempts) < 2:
-                        launch(job, "time", f"attempt0{len(attempts) + 1}", plan["launch_timeout_seconds"])
-                        rows, attempts = case_receipts(job)
-                    if not rows:
-                        raise ValueError(f"Timing search lacks a successful local case for {job['id']}")
-                evidence = collect(jobs)
-                times[midpoint] = mean(row["scene_seconds"] / extension["full40_scene_times"][row["scene"]]
-                                       for row in evidence["rows"])
+                if not rows:
+                    raise ValueError(f"Timing search lacks a successful local case for {job['id']}")
+            evidence = collect(jobs)
+            times[midpoint] = mean(row["scene_seconds"] / extension["full40_scene_times"][row["scene"]]
+                                   for row in evidence["rows"])
     observed = collect(extension["jobs"])
     write_new(PUBLIC / "timing_evidence.json", observed)
     selected_steps = set(locked.values())
