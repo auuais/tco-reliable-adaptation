@@ -1,0 +1,937 @@
+{
+  "development_sha256": "431aa4608be35c0679478fb9cb8976c5ba0c842dc2d12c66e79d5c88cd6ca882",
+  "qualified": true,
+  "synthetic_checks": true,
+  "checks": {
+    "zero_path_exact": true,
+    "cache14_exact": true,
+    "identity_predictions": true,
+    "identity_loss": true,
+    "same_suffix_initial": true,
+    "same_initial_suffix_gradients": true,
+    "matched_render_orders": true,
+    "reference_isolation": true,
+    "frozen_weights": true,
+    "frozen_taps": true,
+    "first_gradients": true,
+    "learned_factors": true,
+    "learned_suffix": true,
+    "final_cut_corrected": true
+  },
+  "same_seed_real_loss_variation": {
+    "canonical": {
+      "max_abs": 0.07005441188812256,
+      "relative_l2": 0.0030396852741743532
+    },
+    "pipeline": {
+      "max_abs": 0.07005441188812256,
+      "relative_l2": 0.0030396852741743532
+    },
+    "depth": {
+      "max_abs": 0.06933861970901489,
+      "relative_l2": 0.002055534049149957
+    },
+    "depth_conf": {
+      "max_abs": 0.39766955375671387,
+      "relative_l2": 0.00403078698088348
+    },
+    "extrinsics": {
+      "max_abs": 0.005180001258850098,
+      "relative_l2": 0.0020630328052697196
+    },
+    "intrinsics": {
+      "max_abs": 1.0328369140625,
+      "relative_l2": 0.0015552621397166766
+    }
+  },
+  "last14_screen": {
+    "eligible": false,
+    "full40_bytes": 8398727680,
+    "last14_bytes": 6785560064,
+    "ratio": 0.8079271435551534
+  },
+  "runs": [
+    {
+      "id": "q_zero_release_segmented",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "arm": "zero",
+      "steps": 0,
+      "seed": 42,
+      "phase": "qualification",
+      "probe": "identity",
+      "input_sha256": "5d5eebc36f9f41007f8ff929f515788a2de5310d2d5c5f6dc0fbdd9f245c5f59",
+      "reference_sha256": "1a7fe85c5377c154666faf712689ab6c70dbe1e9323bb5b6f0db3aacefc794e9",
+      "output_sha256": "aad3db933565e61696d3f8fd64d58a42b7d77cb299cbeab80272a6fade4f0063",
+      "raster_shape": [
+        5,
+        3,
+        392,
+        518
+      ],
+      "scene_seconds": 15.015589493094012,
+      "placement_seconds": 1.576294019119814,
+      "cold_seconds": 34.33828360890038,
+      "cuda_free_before": 9440329728,
+      "cuda_free_after": 5898240000,
+      "cuda_device_total": 10736893952,
+      "peak_allocated": 6863917056,
+      "peak_reserved": 7140802560,
+      "host_peak_bytes": 10853654528,
+      "cold_peak_allocated": 6863917056,
+      "cache": null,
+      "matches": null,
+      "updates": 0,
+      "losses": null,
+      "metrics": null,
+      "runtime": {
+        "torch": "2.7.1+cu128",
+        "cuda": "12.8",
+        "gpu": "NVIDIA GeForce RTX 3080",
+        "allocator": "garbage_collection_threshold:0.75,expandable_segments:True",
+        "gpu_memory_fraction": 0.875,
+        "gsplat_sha256": "339c0272e544d6a166814cf49e2d21f500eaf9018e69585f1fcaadb5ed3c940e"
+      },
+      "rental_compute_usd": 0,
+      "attempt": "attempt01",
+      "launch_wall_seconds": 58.84300000034273
+    },
+    {
+      "id": "q_four_release_segmented",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "arm": "four",
+      "steps": 0,
+      "seed": 42,
+      "phase": "qualification",
+      "probe": "identity",
+      "input_sha256": "5d5eebc36f9f41007f8ff929f515788a2de5310d2d5c5f6dc0fbdd9f245c5f59",
+      "reference_sha256": "1a7fe85c5377c154666faf712689ab6c70dbe1e9323bb5b6f0db3aacefc794e9",
+      "output_sha256": "aad3db933565e61696d3f8fd64d58a42b7d77cb299cbeab80272a6fade4f0063",
+      "raster_shape": [
+        5,
+        3,
+        392,
+        518
+      ],
+      "scene_seconds": 15.425231961067766,
+      "placement_seconds": 1.4242329590488225,
+      "cold_seconds": 34.922822684049606,
+      "cuda_free_before": 9440329728,
+      "cuda_free_after": 5940183040,
+      "cuda_device_total": 10736893952,
+      "peak_allocated": 6011129856,
+      "peak_reserved": 6301941760,
+      "host_peak_bytes": 10852417536,
+      "cold_peak_allocated": 6011129856,
+      "cache": null,
+      "matches": null,
+      "updates": 0,
+      "losses": null,
+      "metrics": null,
+      "runtime": {
+        "torch": "2.7.1+cu128",
+        "cuda": "12.8",
+        "gpu": "NVIDIA GeForce RTX 3080",
+        "allocator": "garbage_collection_threshold:0.75,expandable_segments:True",
+        "gpu_memory_fraction": 0.875,
+        "gsplat_sha256": "339c0272e544d6a166814cf49e2d21f500eaf9018e69585f1fcaadb5ed3c940e"
+      },
+      "rental_compute_usd": 0,
+      "attempt": "attempt01",
+      "launch_wall_seconds": 59.5
+    },
+    {
+      "id": "q_plain_fixed_segmented",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "arm": "cached12",
+      "steps": 1,
+      "seed": 42,
+      "phase": "qualification",
+      "probe": "fixed",
+      "input_sha256": "7ef5406c72ee59741843f32fcecd0c9b3b26ceb766d1d465b1df2c8e34cc683f",
+      "reference_sha256": "04e88bc7ae0a32c9870c3ce2a94667a984efa588b463de0d2884e0cec8137824",
+      "output_sha256": "1ebf9b9d023451544f54e1cbd6872e69558c64ca737d213e4f17a2832503971e",
+      "raster_shape": [
+        5,
+        3,
+        224,
+        294
+      ],
+      "scene_seconds": 22.298271395964548,
+      "placement_seconds": 1.6382167029660195,
+      "cold_seconds": 41.42395489406772,
+      "cuda_free_before": 9394192384,
+      "cuda_free_after": 3654287360,
+      "cuda_device_total": 10736893952,
+      "peak_allocated": 5614221824,
+      "peak_reserved": 5731516416,
+      "host_peak_bytes": 13289119744,
+      "cold_peak_allocated": 5614221824,
+      "cache": {
+        "start": 12,
+        "builds": 1,
+        "hits": 2,
+        "prefix_stages": 12,
+        "bytes_on_gpu": 34945680
+      },
+      "matches": null,
+      "updates": 1,
+      "losses": {
+        "first_loss": 0.8243350386619568,
+        "last_loss": 0.8243350386619568
+      },
+      "metrics": null,
+      "runtime": {
+        "torch": "2.7.1+cu128",
+        "cuda": "12.8",
+        "gpu": "NVIDIA GeForce RTX 3080",
+        "allocator": "garbage_collection_threshold:0.75,expandable_segments:True",
+        "gpu_memory_fraction": 0.875,
+        "gsplat_sha256": "339c0272e544d6a166814cf49e2d21f500eaf9018e69585f1fcaadb5ed3c940e"
+      },
+      "rental_compute_usd": 0,
+      "attempt": "attempt01",
+      "launch_wall_seconds": 64.21899999957532
+    },
+    {
+      "id": "q_geo_fixed_segmented",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "arm": "geometry",
+      "steps": 1,
+      "seed": 42,
+      "phase": "qualification",
+      "probe": "fixed",
+      "input_sha256": "7ef5406c72ee59741843f32fcecd0c9b3b26ceb766d1d465b1df2c8e34cc683f",
+      "reference_sha256": "04e88bc7ae0a32c9870c3ce2a94667a984efa588b463de0d2884e0cec8137824",
+      "output_sha256": "a7ce818614dbe0efa37df4d3d525967a3e86f46b5bd78949f7a21a19a51f8841",
+      "raster_shape": [
+        5,
+        3,
+        224,
+        294
+      ],
+      "scene_seconds": 21.720166377024725,
+      "placement_seconds": 1.1910714849364012,
+      "cold_seconds": 40.89662379701622,
+      "cuda_free_before": 9394192384,
+      "cuda_free_after": 3633315840,
+      "cuda_device_total": 10736893952,
+      "peak_allocated": 5624823808,
+      "peak_reserved": 5752487936,
+      "host_peak_bytes": 12886417408,
+      "cold_peak_allocated": 5624823808,
+      "cache": {
+        "start": 12,
+        "builds": 1,
+        "hits": 2,
+        "prefix_stages": 12,
+        "bytes_on_gpu": 34945680
+      },
+      "matches": {
+        "pairs": 10,
+        "scale": 0.8978538513183594,
+        "scale_range": [
+          0.8050006031990051,
+          2.0399417877197266
+        ],
+        "fallback": null,
+        "patches_per_view": 336,
+        "supported_patches": [
+          45,
+          165,
+          48,
+          19,
+          186
+        ],
+        "partner_histogram": [
+          1217,
+          427,
+          36,
+          0,
+          0
+        ],
+        "learned_parameters": 8192,
+        "buffer_bytes": 89040
+      },
+      "updates": 1,
+      "losses": {
+        "first_loss": 0.8243350386619568,
+        "last_loss": 0.8243350386619568
+      },
+      "metrics": null,
+      "runtime": {
+        "torch": "2.7.1+cu128",
+        "cuda": "12.8",
+        "gpu": "NVIDIA GeForce RTX 3080",
+        "allocator": "garbage_collection_threshold:0.75,expandable_segments:True",
+        "gpu_memory_fraction": 0.875,
+        "gsplat_sha256": "339c0272e544d6a166814cf49e2d21f500eaf9018e69585f1fcaadb5ed3c940e"
+      },
+      "rental_compute_usd": 0,
+      "attempt": "attempt01",
+      "launch_wall_seconds": 63.813000000081956
+    },
+    {
+      "id": "q_leak_fixed_segmented",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "arm": "geometry",
+      "steps": 1,
+      "seed": 42,
+      "phase": "qualification",
+      "probe": "leak",
+      "input_sha256": "7ef5406c72ee59741843f32fcecd0c9b3b26ceb766d1d465b1df2c8e34cc683f",
+      "reference_sha256": "7bfb8e00b1e07d296cf31cc3e5ae18e1322d5f2c3c5a0b486ea6ac5c94f44bb6",
+      "output_sha256": "a7ce818614dbe0efa37df4d3d525967a3e86f46b5bd78949f7a21a19a51f8841",
+      "raster_shape": [
+        5,
+        3,
+        224,
+        294
+      ],
+      "scene_seconds": 21.633098086109385,
+      "placement_seconds": 1.141073594102636,
+      "cold_seconds": 40.88360238308087,
+      "cuda_free_before": 9394192384,
+      "cuda_free_after": 3633315840,
+      "cuda_device_total": 10736893952,
+      "peak_allocated": 5624823808,
+      "peak_reserved": 5752487936,
+      "host_peak_bytes": 11543842816,
+      "cold_peak_allocated": 5624823808,
+      "cache": {
+        "start": 12,
+        "builds": 1,
+        "hits": 2,
+        "prefix_stages": 12,
+        "bytes_on_gpu": 34945680
+      },
+      "matches": {
+        "pairs": 10,
+        "scale": 0.8978538513183594,
+        "scale_range": [
+          0.8050006031990051,
+          2.0399417877197266
+        ],
+        "fallback": null,
+        "patches_per_view": 336,
+        "supported_patches": [
+          45,
+          165,
+          48,
+          19,
+          186
+        ],
+        "partner_histogram": [
+          1217,
+          427,
+          36,
+          0,
+          0
+        ],
+        "learned_parameters": 8192,
+        "buffer_bytes": 89040
+      },
+      "updates": 1,
+      "losses": {
+        "first_loss": 0.8243350386619568,
+        "last_loss": 0.8243350386619568
+      },
+      "metrics": null,
+      "runtime": {
+        "torch": "2.7.1+cu128",
+        "cuda": "12.8",
+        "gpu": "NVIDIA GeForce RTX 3080",
+        "allocator": "garbage_collection_threshold:0.75,expandable_segments:True",
+        "gpu_memory_fraction": 0.875,
+        "gsplat_sha256": "339c0272e544d6a166814cf49e2d21f500eaf9018e69585f1fcaadb5ed3c940e"
+      },
+      "rental_compute_usd": 0,
+      "attempt": "attempt01",
+      "launch_wall_seconds": 64.03100000042468
+    },
+    {
+      "id": "q_last14_fixed_segmented",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "arm": "cached14",
+      "steps": 1,
+      "seed": 42,
+      "phase": "qualification",
+      "probe": "fixed",
+      "input_sha256": "7ef5406c72ee59741843f32fcecd0c9b3b26ceb766d1d465b1df2c8e34cc683f",
+      "reference_sha256": "04e88bc7ae0a32c9870c3ce2a94667a984efa588b463de0d2884e0cec8137824",
+      "output_sha256": "ed4bbca0e1c1d1fc537b2228bae426ba4ce78c26ab2ca3449b6fd9a7c9a32054",
+      "raster_shape": [
+        5,
+        3,
+        224,
+        294
+      ],
+      "scene_seconds": 21.701341850915924,
+      "placement_seconds": 1.1891222971025854,
+      "cold_seconds": 40.968735139817,
+      "cuda_free_before": 9394192384,
+      "cuda_free_after": 3400531968,
+      "cuda_device_total": 10736893952,
+      "peak_allocated": 5876077056,
+      "peak_reserved": 5985271808,
+      "host_peak_bytes": 13301260288,
+      "cold_peak_allocated": 5876077056,
+      "cache": {
+        "start": 10,
+        "builds": 1,
+        "hits": 2,
+        "prefix_stages": 10,
+        "bytes_on_gpu": 20978320
+      },
+      "matches": null,
+      "updates": 1,
+      "losses": {
+        "first_loss": 0.8243350386619568,
+        "last_loss": 0.8243350386619568
+      },
+      "metrics": null,
+      "runtime": {
+        "torch": "2.7.1+cu128",
+        "cuda": "12.8",
+        "gpu": "NVIDIA GeForce RTX 3080",
+        "allocator": "garbage_collection_threshold:0.75,expandable_segments:True",
+        "gpu_memory_fraction": 0.875,
+        "gsplat_sha256": "339c0272e544d6a166814cf49e2d21f500eaf9018e69585f1fcaadb5ed3c940e"
+      },
+      "rental_compute_usd": 0,
+      "attempt": "attempt01",
+      "launch_wall_seconds": 63.95299999974668
+    },
+    {
+      "id": "q_un14_fixed_segmented",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "arm": "uncached14",
+      "steps": 1,
+      "seed": 42,
+      "phase": "qualification",
+      "probe": "fixed",
+      "input_sha256": "7ef5406c72ee59741843f32fcecd0c9b3b26ceb766d1d465b1df2c8e34cc683f",
+      "reference_sha256": "04e88bc7ae0a32c9870c3ce2a94667a984efa588b463de0d2884e0cec8137824",
+      "output_sha256": "ed4bbca0e1c1d1fc537b2228bae426ba4ce78c26ab2ca3449b6fd9a7c9a32054",
+      "raster_shape": [
+        5,
+        3,
+        224,
+        294
+      ],
+      "scene_seconds": 22.75668856408447,
+      "placement_seconds": 1.1497276129666716,
+      "cold_seconds": 42.22707889508456,
+      "cuda_free_before": 9394192384,
+      "cuda_free_after": 3400531968,
+      "cuda_device_total": 10736893952,
+      "peak_allocated": 5876077056,
+      "peak_reserved": 5985271808,
+      "host_peak_bytes": 13302038528,
+      "cold_peak_allocated": 5876077056,
+      "cache": {
+        "start": 10,
+        "builds": 0,
+        "hits": 0,
+        "prefix_stages": 30,
+        "bytes_on_gpu": 0
+      },
+      "matches": null,
+      "updates": 1,
+      "losses": {
+        "first_loss": 0.8243350386619568,
+        "last_loss": 0.8243350386619568
+      },
+      "metrics": null,
+      "runtime": {
+        "torch": "2.7.1+cu128",
+        "cuda": "12.8",
+        "gpu": "NVIDIA GeForce RTX 3080",
+        "allocator": "garbage_collection_threshold:0.75,expandable_segments:True",
+        "gpu_memory_fraction": 0.875,
+        "gsplat_sha256": "339c0272e544d6a166814cf49e2d21f500eaf9018e69585f1fcaadb5ed3c940e"
+      },
+      "rental_compute_usd": 0,
+      "attempt": "attempt01",
+      "launch_wall_seconds": 65.53099999949336
+    },
+    {
+      "id": "q_geo_real_a_segmented",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "arm": "geometry",
+      "steps": 2,
+      "seed": 42,
+      "phase": "qualification",
+      "probe": "repeat",
+      "input_sha256": "5d5eebc36f9f41007f8ff929f515788a2de5310d2d5c5f6dc0fbdd9f245c5f59",
+      "reference_sha256": "1a7fe85c5377c154666faf712689ab6c70dbe1e9323bb5b6f0db3aacefc794e9",
+      "output_sha256": "f4bf165acc5a7656f6c8957a0c7341a29939e8d9025301d2b89544860ca8698b",
+      "raster_shape": [
+        5,
+        3,
+        392,
+        518
+      ],
+      "scene_seconds": 24.6647943360731,
+      "placement_seconds": 1.1329846628941596,
+      "cold_seconds": 43.97305874014273,
+      "cuda_free_before": 9440329728,
+      "cuda_free_after": 1636921344,
+      "cuda_device_total": 10736893952,
+      "peak_allocated": 6449060352,
+      "peak_reserved": 7304380416,
+      "host_peak_bytes": 10853404672,
+      "cold_peak_allocated": 6449060352,
+      "cache": {
+        "start": 12,
+        "builds": 1,
+        "hits": 3,
+        "prefix_stages": 12,
+        "bytes_on_gpu": 106681680
+      },
+      "matches": {
+        "pairs": 10,
+        "scale": 0.9261505603790283,
+        "scale_range": [
+          0.740574836730957,
+          1.1026877164840698
+        ],
+        "fallback": null,
+        "patches_per_view": 1036,
+        "supported_patches": [
+          242,
+          224,
+          34,
+          161,
+          254
+        ],
+        "partner_histogram": [
+          4265,
+          907,
+          8,
+          0,
+          0
+        ],
+        "learned_parameters": 8192,
+        "buffer_bytes": 274540
+      },
+      "updates": 2,
+      "losses": {
+        "first_loss": 0.6477410793304443,
+        "last_loss": 0.6107504963874817
+      },
+      "metrics": null,
+      "runtime": {
+        "torch": "2.7.1+cu128",
+        "cuda": "12.8",
+        "gpu": "NVIDIA GeForce RTX 3080",
+        "allocator": "garbage_collection_threshold:0.75,expandable_segments:True",
+        "gpu_memory_fraction": 0.875,
+        "gsplat_sha256": "339c0272e544d6a166814cf49e2d21f500eaf9018e69585f1fcaadb5ed3c940e"
+      },
+      "rental_compute_usd": 0,
+      "attempt": "attempt01",
+      "launch_wall_seconds": 68.31199999991804
+    },
+    {
+      "id": "q_geo_real_b_segmented",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "arm": "geometry",
+      "steps": 2,
+      "seed": 42,
+      "phase": "qualification",
+      "probe": "repeat",
+      "input_sha256": "5d5eebc36f9f41007f8ff929f515788a2de5310d2d5c5f6dc0fbdd9f245c5f59",
+      "reference_sha256": "1a7fe85c5377c154666faf712689ab6c70dbe1e9323bb5b6f0db3aacefc794e9",
+      "output_sha256": "b8caf078224ed2cabb00af8c50342515488d935d48c609b6908e084bf2d274ec",
+      "raster_shape": [
+        5,
+        3,
+        392,
+        518
+      ],
+      "scene_seconds": 25.634968603029847,
+      "placement_seconds": 1.8016555909998715,
+      "cold_seconds": 44.52790738502517,
+      "cuda_free_before": 9440329728,
+      "cuda_free_after": 1648062464,
+      "cuda_device_total": 10736893952,
+      "peak_allocated": 6449060352,
+      "peak_reserved": 7304380416,
+      "host_peak_bytes": 10852814848,
+      "cold_peak_allocated": 6449060352,
+      "cache": {
+        "start": 12,
+        "builds": 1,
+        "hits": 3,
+        "prefix_stages": 12,
+        "bytes_on_gpu": 106681680
+      },
+      "matches": {
+        "pairs": 10,
+        "scale": 0.9261505603790283,
+        "scale_range": [
+          0.740574836730957,
+          1.1026877164840698
+        ],
+        "fallback": null,
+        "patches_per_view": 1036,
+        "supported_patches": [
+          242,
+          224,
+          34,
+          161,
+          254
+        ],
+        "partner_histogram": [
+          4265,
+          907,
+          8,
+          0,
+          0
+        ],
+        "learned_parameters": 8192,
+        "buffer_bytes": 274540
+      },
+      "updates": 2,
+      "losses": {
+        "first_loss": 0.6477410793304443,
+        "last_loss": 0.6185975074768066
+      },
+      "metrics": null,
+      "runtime": {
+        "torch": "2.7.1+cu128",
+        "cuda": "12.8",
+        "gpu": "NVIDIA GeForce RTX 3080",
+        "allocator": "garbage_collection_threshold:0.75,expandable_segments:True",
+        "gpu_memory_fraction": 0.875,
+        "gsplat_sha256": "339c0272e544d6a166814cf49e2d21f500eaf9018e69585f1fcaadb5ed3c940e"
+      },
+      "rental_compute_usd": 0,
+      "attempt": "attempt01",
+      "launch_wall_seconds": 68.48400000017136
+    },
+    {
+      "id": "q_full40_peak_segmented",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "arm": "four",
+      "steps": 40,
+      "seed": 42,
+      "phase": "qualification",
+      "probe": "memory",
+      "input_sha256": "5d5eebc36f9f41007f8ff929f515788a2de5310d2d5c5f6dc0fbdd9f245c5f59",
+      "reference_sha256": "1a7fe85c5377c154666faf712689ab6c70dbe1e9323bb5b6f0db3aacefc794e9",
+      "output_sha256": "d20af9fef405a8e4427bda33daafc02df742f5ff17a4754ef24434d413ecce42",
+      "raster_shape": [
+        5,
+        3,
+        392,
+        518
+      ],
+      "scene_seconds": 76.22364645381458,
+      "placement_seconds": 1.917655985802412,
+      "cold_seconds": 95.65450434200466,
+      "cuda_free_before": 9440329728,
+      "cuda_free_after": 0,
+      "cuda_device_total": 10736893952,
+      "peak_allocated": 8398727680,
+      "peak_reserved": 9370075136,
+      "host_peak_bytes": 10850254848,
+      "cold_peak_allocated": 8398727680,
+      "cache": null,
+      "matches": null,
+      "updates": 40,
+      "losses": {
+        "first_loss": 0.6477410793304443,
+        "last_loss": 0.07590580731630325
+      },
+      "metrics": null,
+      "runtime": {
+        "torch": "2.7.1+cu128",
+        "cuda": "12.8",
+        "gpu": "NVIDIA GeForce RTX 3080",
+        "allocator": "garbage_collection_threshold:0.75,expandable_segments:True",
+        "gpu_memory_fraction": 0.875,
+        "gsplat_sha256": "339c0272e544d6a166814cf49e2d21f500eaf9018e69585f1fcaadb5ed3c940e"
+      },
+      "rental_compute_usd": 0,
+      "attempt": "attempt01",
+      "launch_wall_seconds": 107.26599999982864
+    },
+    {
+      "id": "q_last14_peak_segmented",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "arm": "cached14",
+      "steps": 10,
+      "seed": 42,
+      "phase": "qualification",
+      "probe": "memory",
+      "input_sha256": "5d5eebc36f9f41007f8ff929f515788a2de5310d2d5c5f6dc0fbdd9f245c5f59",
+      "reference_sha256": "1a7fe85c5377c154666faf712689ab6c70dbe1e9323bb5b6f0db3aacefc794e9",
+      "output_sha256": "41cc3f2be2173d9b49f1efc63ffb866c8a077445b2dfde0dfa3282a73d638312",
+      "raster_shape": [
+        5,
+        3,
+        392,
+        518
+      ],
+      "scene_seconds": 19.87477311701514,
+      "placement_seconds": 1.1741103809326887,
+      "cold_seconds": 39.437609386164695,
+      "cuda_free_before": 9440329728,
+      "cuda_free_after": 1245016064,
+      "cuda_device_total": 10736893952,
+      "peak_allocated": 6785560064,
+      "peak_reserved": 7688159232,
+      "host_peak_bytes": 10854068224,
+      "cold_peak_allocated": 6785560064,
+      "cache": {
+        "start": 10,
+        "builds": 1,
+        "hits": 11,
+        "prefix_stages": 10,
+        "bytes_on_gpu": 64042320
+      },
+      "matches": null,
+      "updates": 10,
+      "losses": {
+        "first_loss": 0.6477410793304443,
+        "last_loss": 0.16628248989582062
+      },
+      "metrics": null,
+      "runtime": {
+        "torch": "2.7.1+cu128",
+        "cuda": "12.8",
+        "gpu": "NVIDIA GeForce RTX 3080",
+        "allocator": "garbage_collection_threshold:0.75,expandable_segments:True",
+        "gpu_memory_fraction": 0.875,
+        "gsplat_sha256": "339c0272e544d6a166814cf49e2d21f500eaf9018e69585f1fcaadb5ed3c940e"
+      },
+      "rental_compute_usd": 0,
+      "attempt": "attempt01",
+      "launch_wall_seconds": 50.84399999957532
+    }
+  ],
+  "attempts": [
+    {
+      "job": "q_zero_release_segmented",
+      "attempt": "attempt01",
+      "utc": "2026-11-23T15:15:26.002660+00:00",
+      "exit_code": 0,
+      "error": null,
+      "stopped": true,
+      "stop_issues": [],
+      "wall_seconds": 58.84300000034273,
+      "log_sha256": "447a8eb9482572891a435dde92b5f9ec983e975d8922275aa1a557063228bbca",
+      "rental_compute_usd": 0
+    },
+    {
+      "job": "q_four_release_segmented",
+      "attempt": "attempt01",
+      "utc": "2026-11-23T15:16:25.495977+00:00",
+      "exit_code": 0,
+      "error": null,
+      "stopped": true,
+      "stop_issues": [],
+      "wall_seconds": 59.5,
+      "log_sha256": "2b09fedd4f41c95260cd30da85e03143d81489b13b346556609941d83df2cd20",
+      "rental_compute_usd": 0
+    },
+    {
+      "job": "q_plain_fixed_segmented",
+      "attempt": "attempt01",
+      "utc": "2026-11-23T15:17:29.721374+00:00",
+      "exit_code": 0,
+      "error": null,
+      "stopped": true,
+      "stop_issues": [],
+      "wall_seconds": 64.21899999957532,
+      "log_sha256": "d7bb02ed7fe938b9f5bef036581690a51edc2a53444e5a1c1d9fd4febbfade3a",
+      "rental_compute_usd": 0
+    },
+    {
+      "job": "q_geo_fixed_segmented",
+      "attempt": "attempt01",
+      "utc": "2026-11-23T15:18:33.527280+00:00",
+      "exit_code": 0,
+      "error": null,
+      "stopped": true,
+      "stop_issues": [],
+      "wall_seconds": 63.813000000081956,
+      "log_sha256": "385a824d9cf08f0ba0139aa7b71000a61698f40ff303b5399f1e41e35943e249",
+      "rental_compute_usd": 0
+    },
+    {
+      "job": "q_leak_fixed_segmented",
+      "attempt": "attempt01",
+      "utc": "2026-11-23T15:19:37.562840+00:00",
+      "exit_code": 0,
+      "error": null,
+      "stopped": true,
+      "stop_issues": [],
+      "wall_seconds": 64.03100000042468,
+      "log_sha256": "39be457ab530d377b34a2b19699ca1c0d584bac85d9764efa02e3762373034db",
+      "rental_compute_usd": 0
+    },
+    {
+      "job": "q_last14_fixed_segmented",
+      "attempt": "attempt01",
+      "utc": "2026-11-23T15:20:41.517699+00:00",
+      "exit_code": 0,
+      "error": null,
+      "stopped": true,
+      "stop_issues": [],
+      "wall_seconds": 63.95299999974668,
+      "log_sha256": "68719305770fda2f2f4bbf90dbc81cfba4f0f83146145feb65593260f1ffaa4c",
+      "rental_compute_usd": 0
+    },
+    {
+      "job": "q_un14_fixed_segmented",
+      "attempt": "attempt01",
+      "utc": "2026-11-23T15:21:47.054814+00:00",
+      "exit_code": 0,
+      "error": null,
+      "stopped": true,
+      "stop_issues": [],
+      "wall_seconds": 65.53099999949336,
+      "log_sha256": "373396ae2e6f59dcaacbc4b83abe618d7b4996af08ab267ab3366426fd7bd508",
+      "rental_compute_usd": 0
+    },
+    {
+      "job": "q_geo_real_a_segmented",
+      "attempt": "attempt01",
+      "utc": "2026-11-23T15:22:55.381882+00:00",
+      "exit_code": 0,
+      "error": null,
+      "stopped": true,
+      "stop_issues": [],
+      "wall_seconds": 68.31199999991804,
+      "log_sha256": "5411dcce218d620d75e2fc8a840057e5d7b48beda4ae43672577ef5613c8ccb6",
+      "rental_compute_usd": 0
+    },
+    {
+      "job": "q_geo_real_b_segmented",
+      "attempt": "attempt01",
+      "utc": "2026-11-23T15:24:03.879210+00:00",
+      "exit_code": 0,
+      "error": null,
+      "stopped": true,
+      "stop_issues": [],
+      "wall_seconds": 68.48400000017136,
+      "log_sha256": "41042e572933556e8e5eda803699f7470dc2141b798b0c83c7de72486bfc0768",
+      "rental_compute_usd": 0
+    },
+    {
+      "job": "q_full40_peak_segmented",
+      "attempt": "attempt01",
+      "utc": "2026-11-23T15:25:51.143764+00:00",
+      "exit_code": 0,
+      "error": null,
+      "stopped": true,
+      "stop_issues": [],
+      "wall_seconds": 107.26599999982864,
+      "log_sha256": "7132d0d23f8bfefc0cb09334712b95c9644eb04ced8950ff5ff470f4dc9e40d8",
+      "rental_compute_usd": 0
+    },
+    {
+      "job": "q_last14_peak_segmented",
+      "attempt": "attempt01",
+      "utc": "2026-11-23T15:26:41.987412+00:00",
+      "exit_code": 0,
+      "error": null,
+      "stopped": true,
+      "stop_issues": [],
+      "wall_seconds": 50.84399999957532,
+      "log_sha256": "893058488e3aaa28a50c7451272f8f27152b206222f5b94f6f4501211b87630b",
+      "rental_compute_usd": 0
+    }
+  ],
+  "rental_compute_usd": 0
+}
