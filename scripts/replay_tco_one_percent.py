@@ -285,6 +285,14 @@ def analyze_confirmation(plan, locked, evidence):
     return results
 
 
+def publish_report(path, report):
+    if path.is_file():
+        if read(path) != report:
+            raise ValueError(f"Existing published report differs: {path.name}")
+    else:
+        write_new(path, report)
+
+
 def publish_or_replay(publish=False, preview=False):
     plan = read(MANIFEST)
     qualification = read(PUBLIC / "qualification.json")
@@ -299,8 +307,8 @@ def publish_or_replay(publish=False, preview=False):
     if time_plan and "locked_by_candidate" in time_plan and not preview:
         replay_timing(plan, time_plan, report, read(PUBLIC / "timing_evidence.json"))
     if publish:
-        write_new(PUBLIC / "evidence.json", evidence)
-        write_new(PUBLIC / "decision.json", report)
+        publish_report(PUBLIC / "evidence.json", evidence)
+        publish_report(PUBLIC / "decision.json", report)
     elif not preview and report != read(PUBLIC / "decision.json"):
         raise ValueError("Published development decision does not replay")
     confirmation = None
@@ -311,8 +319,8 @@ def publish_or_replay(publish=False, preview=False):
         evidence = collect(locked["jobs"]) if publish else read(PUBLIC / "confirmation_evidence.json")
         confirmation = analyze_confirmation(plan, locked, evidence)
         if publish:
-            write_new(PUBLIC / "confirmation_evidence.json", evidence)
-            write_new(PUBLIC / "confirmation_decision.json", confirmation)
+            publish_report(PUBLIC / "confirmation_evidence.json", evidence)
+            publish_report(PUBLIC / "confirmation_decision.json", confirmation)
         elif confirmation != read(PUBLIC / "confirmation_decision.json"):
             raise ValueError("Published confirmation decision does not replay")
     print(json.dumps(dict(development=report["verdict"], candidate=report["nominated"],
