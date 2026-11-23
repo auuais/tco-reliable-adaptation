@@ -254,9 +254,17 @@ def analyze_confirmation(plan, locked, evidence):
             gates = {field: study["ratios"][field] <= thresholds[field] for field in FIELDS}
             upper_pass = {field: uncertainty["upper_95"][field] <= thresholds[field] for field in QUALITY}
             control = matched_control(stats, candidate)
-            head_to_head = bool(control and passes_quality_challenge(study["ratios"], stats[control]["ratios"]))
-            verdict = "within_margin" if all(gates.values()) and all(upper_pass.values()) and head_to_head else (
-                "inconclusive_margin" if all(gates.values()) and head_to_head else "missed_confirmation_targets")
+            if control == "zero_0" and locked["locked_full_budget"] > 0:
+                control = None
+            head_to_head = passes_quality_challenge(study["ratios"], stats[control]["ratios"]) if control else None
+            if not all(gates.values()) or head_to_head is False:
+                verdict = "missed_confirmation_targets"
+            elif head_to_head is None:
+                verdict = "inconclusive_time_match"
+            elif not all(upper_pass.values()):
+                verdict = "inconclusive_margin"
+            else:
+                verdict = "within_margin"
             output.update(quality_uncertainty=uncertainty, point_estimate_gates=gates, margin_gates=upper_pass,
                           matched_control=control, matched_quality_passed=head_to_head, verdict=verdict)
             if candidate == GEOMETRY:
@@ -269,6 +277,10 @@ def analyze_confirmation(plan, locked, evidence):
                                               {room: dict(composite=aggregate_errors(values))
                                                for room, values in differences.items()}, **bootstrap))
                 output["geometry_differences"] = geometry
+                output["geometry_supported"] = all(
+                    geometry[name]["composite_uncertainty"]["upper_95"]["composite"] < 0
+                    and passes_quality_challenge(study["ratios"], stats[name]["ratios"])
+                    for name in GEOMETRY_CONTROLS)
         results[dataset] = output
     return results
 

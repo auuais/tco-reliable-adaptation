@@ -30,7 +30,8 @@ def register():
         target_ratios=targets, fixed_arm_time_ratios=measured,
         full40_scene_times={scene: vals["scene_seconds"]
                             for scene, vals in stats[REFERENCE]["medians_by_sequence"].items()},
-        rule="Largest fitting tested step count using fixed controls and adjacent unscored bracketing pilots",
+        rule="Largest fitting tested step count using fixed controls and adjacent unscored bracketing pilots; "
+             "choose interior probes by interpolating between the measured step/time endpoints",
         input_source_sha256=plan["input_source_sha256"], jobs=pilots))
     print("Registered optional single-seed timing pilots in the three development rooms")
 
@@ -40,6 +41,15 @@ def bracket(measured, target):
     low = max((step for step, duration in measured.items() if duration <= target), default=0)
     high = min(step for step, duration in measured.items() if step > low and duration > target)
     return low, high
+
+
+def interpolate(measured, low, high, target):
+    start = measured[low]
+    finish = measured[high]
+    if not start <= target < finish:
+        return low + 1
+    step = round(low + (high - low) * (target - start) / (finish - start))
+    return min(high - 1, max(low + 1, step))
 
 
 def search(plan, extension):
@@ -53,12 +63,13 @@ def search(plan, extension):
     with host_lock():
         while True:
             brackets = {arm: bracket(times, target) for arm, target in extension["target_ratios"].items()}
-            unsettled = sorted((low, high) for low, high in brackets.values() if high - low > 1)
+            unsettled = sorted((extension["target_ratios"][arm], low, high)
+                               for arm, (low, high) in brackets.items() if high - low > 1)
             if not unsettled:
                 locked = {arm: low for arm, (low, _) in brackets.items()}
                 break
-            low, high = unsettled[0]
-            midpoint = (low + high) // 2
+            target, low, high = unsettled[0]
+            midpoint = interpolate(times, low, high, target)
             jobs = [job for job in extension["jobs"] if job["steps"] == midpoint]
             for job in jobs:
                 rows, attempts = case_receipts(job)
