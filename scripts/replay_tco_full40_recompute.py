@@ -2,6 +2,7 @@
 
 import argparse
 from collections import Counter, defaultdict
+import hashlib
 import json
 import math
 import random
@@ -24,6 +25,14 @@ MARGIN = 1.01
 TERMINAL = {"completed", "oom", "timeout", "error", "interrupted", "nonfinite"}
 TAPS = [4, 11, 17, 23]
 LORA_TENSORS = 24 * 2 * 4 * 2
+DEV_SCENES = ("heads/seq-01", "chess/seq-03", "fire/seq-03")
+TRANSFER_SCENES = ("office/seq-02", "pumpkin/seq-01", "redkitchen/seq-03", "stairs/seq-01")
+ETH3D_SCENES = ("courtyard", "delivery_area", "electro", "facade", "kicker", "office", "playground", "terrains")
+TEN_OFF = {"c1_off", "c2_off", "c4_off", "c8_off"}
+DEV_SEEDS = (42, 43, 44)
+CONFIRM_SEEDS = (7, 77, 777)
+DEV_FRAMES = (0, 200, 400, 600, 800)
+TEN_FRAMES = tuple(range(0, 1000, 100))
 
 
 def valid_sha(value):
@@ -55,6 +64,33 @@ def check_jobs(plan):
         expect[key] = job
         seen.add(block)
     return expect
+
+
+def verify_study_roster(plan):
+    candidate, reference, same_chunk = (plan[field] for field in ("candidate", "reference", "chunk_control"))
+    ten_policies = {candidate, *TEN_OFF}
+    require(reference == "c8_off" and candidate in {"c1_on", "c2_on", "c4_on", "c8_on"}
+            and same_chunk == candidate.replace("_on", "_off") and plan["best_off"] in TEN_OFF
+            and set(plan["ten_policies"]) == ten_policies and plan["margin"] == MARGIN,
+            "Invalid locked policy, off controls, or margin")
+    require(plan["bootstrap_seed"] == 20261124 and plan["bootstrap_samples"] == 10000, "Changed bootstrap rules")
+
+    def block(cohort, dataset, scene, seeds, frames, policies):
+        return {(cohort, dataset, scene, seed, tuple(frames), policy) for seed in seeds for policy in policies}
+
+    primary = block("ten", "7scenes", DEV_SCENES[0], DEV_SEEDS, TEN_FRAMES, ten_policies)
+    for scene in TRANSFER_SCENES[:2]:
+        primary |= block("ten", "7scenes", scene, CONFIRM_SEEDS, TEN_FRAMES, ten_policies)
+    for scene in DEV_SCENES:
+        primary |= block("development", "7scenes", scene, DEV_SEEDS, DEV_FRAMES, {candidate, reference, same_chunk})
+    for scene in TRANSFER_SCENES:
+        frames = DEV_FRAMES if scene != "stairs/seq-01" else range(0, 500, 100)
+        primary |= block("confirmation", "7scenes", scene, CONFIRM_SEEDS, frames, {candidate, reference})
+    for scene in ETH3D_SCENES:
+        primary |= block("confirmation", "eth3d", scene, CONFIRM_SEEDS, range(0, 25, 5), {candidate, reference})
+    actual = {(job["cohort"], job["dataset"], job["scene"], job["seed"], tuple(job["frames"]), job["policy"])
+              for job in plan["jobs"]}
+    require(actual == primary, "Locked roster differs from the handoff's scenes, frames, policies or seeds")
 
 
 def check_attempts(run, job):
@@ -115,6 +151,7 @@ def verify_runs(plan, evidence, initial=False):
     records, rows, anchors = {}, {}, {}
     runtime = None
     signatures = {(item["dataset"], item["scene"]): item for item in plan.get("expected_confirmation_signatures", [])}
+    registered = plan.get("study") == STUDY
     for run in evidence["runs"]:
         key = run["id"]
         require(key in expected and key not in records, f"Unexpected or duplicate run {key}")
@@ -125,6 +162,11 @@ def verify_runs(plan, evidence, initial=False):
         if run["verdict"] != "completed":
             require(row is None, f"An unsuccessful case has scientific scores for {key}")
             continue
+        receipt = run["attempts"][-1]
+        if registered:
+            serialized = json.dumps(row, indent=2, allow_nan=False) + "\n"
+            require(hashlib.sha256(serialized.encode("utf-8")).hexdigest() == receipt["complete_sha256"],
+                    f"Mismatched complete result checksum for {key}")
         if job.get("profile") == "fixture":
             require(all(row.get(field) == item for field, item in job.items())
                     and row["fixture"] and row["rental_compute_usd"] == 0, "Unverified head fixture")
@@ -133,6 +175,13 @@ def verify_runs(plan, evidence, initial=False):
         check_result(row, job, scored=job.get("score", True))
         require(runtime is None or runtime == row["runtime"], f"Runtime mismatch for {key}")
         runtime = row["runtime"]
+        if registered:
+            allocation = row["peak_allocated"]
+            require(all(runtime[field] == plan[field] for field in ("gpu", "gpu_memory_fraction", "allocator"))
+                    and runtime["torch"] == "2.7.1+cu128" and runtime["cuda"] == "12.8"
+                    and runtime["gsplat_sha256"] == "339c0272e544d6a166814cf49e2d21f500eaf9018e69585f1fcaadb5ed3c940e"
+                    and allocation <= row["cuda_device_total"] * plan["gpu_memory_fraction"],
+                    f"Result escaped the pinned runtime or memory budget for {key}")
         unit = job["dataset"], job["scene"], tuple(job["frames"]), job.get("width", 518)
         identity = row["input_sha256"], row["reference_sha256"]
         if job.get("probe") != "leak":
@@ -141,7 +190,6 @@ def verify_runs(plan, evidence, initial=False):
             allowed = signatures[unit[:2]]
             require(identity == (allowed["input_sha256"], allowed["reference_sha256"])
                     and row["raster_shape"] == allowed["shape"], f"Confirmation input qualification failed for {key}")
-        receipt = run["attempts"][-1]
         if "output_sha256" in receipt:
             require(row["output_sha256"] == receipt["output_sha256"], f"Mismatched output receipt for {key}")
         rows[key] = row
@@ -194,31 +242,67 @@ def summarize_resource_repeats(plan, records, rows):
     return result
 
 
-def audit_checks(rows, candidate, reference):
-    names = [f"fixed_{policy}" for policy in (candidate, reference)] + [f"leak_{candidate}"]
+def audit_checks(rows, candidate, reference, same_chunk):
+    names = [f"fixed_{policy}" for policy in (candidate, reference, same_chunk)] + [f"leak_{candidate}"]
     if any(name not in rows for name in names):
         return dict(missing=[name for name in names if name not in rows])
-    evaluated, control, changed_reference = [rows[name] for name in names]
+    evaluated, control, matched, changed_reference = [rows[name] for name in names]
     candidate_audit = evaluated["audit"]
     control_audit = control["audit"]
-    pairs = (evaluated, control, changed_reference)
+    matched_audit = matched["audit"]
+    compared = (evaluated, control, matched, changed_reference)
     return dict(
         reference_isolation=(evaluated["input_sha256"] == changed_reference["input_sha256"]
                              and evaluated["reference_sha256"] != changed_reference["reference_sha256"]
-                             and evaluated["output_sha256"] == changed_reference["output_sha256"]),
+                             and evaluated["output_sha256"] == changed_reference["output_sha256"]
+                             and candidate_audit["adapter_final"] == changed_reference["audit"]["adapter_final"]),
         initialized_all_factors=(len(candidate_audit["adapter_initial"]) == LORA_TENSORS
-                                 and candidate_audit["adapter_initial"] == control_audit["adapter_initial"]),
-        matched_render_orders=candidate_audit["render_orders"] == control_audit["render_orders"],
-        frozen_weights=all(row["audit"]["frozen_start_sha256"] == row["audit"]["frozen_end_sha256"] for row in pairs),
+                                 and candidate_audit["adapter_initial"] == control_audit["adapter_initial"]
+                                 == matched_audit["adapter_initial"]),
+        matched_render_orders=candidate_audit["render_orders"] == control_audit["render_orders"]
+        == matched_audit["render_orders"],
+        frozen_weights=all(row["audit"]["frozen_start_sha256"] == row["audit"]["frozen_end_sha256"]
+                           == candidate_audit["frozen_start_sha256"] for row in compared),
         all_factor_gradients_present=all(len(row["audit"]["gradients"]) == row["steps"]
-                                         and all(len(values) == LORA_TENSORS
-                                                 for values in row["audit"]["gradients"].values()) for row in pairs),
+                                        and all(len(values) == LORA_TENSORS
+                                                for values in row["audit"]["gradients"].values()) for row in compared),
+        same_chunk_forward_exact=all(candidate_audit[field] == matched_audit[field]
+                                    for field in ("initial_prediction", "taps", "update_predictions")),
+        same_chunk_gradient_hashes_match=candidate_audit["gradients"] == matched_audit["gradients"],
         candidate_gradients_match_native_by_hash=candidate_audit["gradients"] == control_audit["gradients"],
     )
 
 
-def analyze_initial(plan, evidence, candidate, reference):
+def check_qualification(report, candidate, same_chunk, initial_hash, records, rows, checks):
+    require(report["qualified"] is True and report["candidate"] == candidate and report["same_chunk"] == same_chunk
+            and report["authority_sha256"] == initial_hash and report["rental_compute_usd"] == 0,
+            "Qualification differs from locked policy")
+    require(all(checks.get(key) for key in ("reference_isolation", "initialized_all_factors", "matched_render_orders",
+                                           "frozen_weights", "all_factor_gradients_present",
+                                           "same_chunk_forward_exact")), "Published parity hashes fail replay")
+    fixture = rows["head_fixture"]["fixture"]
+    require(fixture == report["fixture"] and fixture["device"] == "cpu" and fixture["views"] == 10
+            and set(fixture["chunks"]) == {"1", "2", "4", "8"}, "Published CPU fixture differs")
+    for policy, receipts in report["receipts"].items():
+        for kind, digest in receipts.items():
+            row = records[f"{kind}_{policy}"]
+            require(row["attempts"][-1]["complete_sha256"] == digest, f"Qualification checksum changed for {policy}")
+    require(report["fixture_file_sha256"] == records["head_fixture"]["attempts"][-1]["complete_sha256"]
+            and report["leak_audit_file_sha256"] == records[f"leak_{candidate}"]["attempts"][-1]["complete_sha256"],
+            "Fixture or isolation receipts changed")
+    require(report["same_chunk_forward_hashes_identical"] and
+            report["raw_gradient_hashes_identical"] == checks["same_chunk_gradient_hashes_match"]
+            and number(report["same_chunk_factors"]["max_relative_l2"])
+            and report["same_chunk_factors"]["max_relative_l2"] <= 1e-4
+            and number(report["same_chunk_predictions"]["max_relative_l2"])
+            and report["same_chunk_predictions"]["max_relative_l2"] <= 1e-5, "Numerical parity budget exceeded")
+
+
+def analyze_initial(plan, evidence, candidate, reference, same_chunk, qualification=None, initial_hash=None):
     records, rows = verify_runs(plan, evidence, initial=True)
+    checks = audit_checks(rows, candidate, reference, same_chunk)
+    if qualification is not None:
+        check_qualification(qualification, candidate, same_chunk, initial_hash, records, rows, checks)
     return dict(
         observed=len(rows),
         reference_and_profile_runs={
@@ -229,7 +313,8 @@ def analyze_initial(plan, evidence, candidate, reference):
         screen_ten=summarize_screen(plan, records, rows, "screen"),
         screen_five=summarize_screen(plan, records, rows, "screen5"),
         resource_repeats=summarize_resource_repeats(plan, records, rows),
-        candidate_audit=audit_checks(rows, candidate, reference),
+        candidate_audit=checks,
+        qualification_receipt_valid=qualification is not None,
         reference_error_repeatability=repeatability(rows),
     )
 
@@ -380,6 +465,8 @@ def analyze_ten_view(jobs, records, rows, candidate, reference, off_policies):
 
 
 def analyze(plan, evidence):
+    if plan.get("study") == STUDY:
+        verify_study_roster(plan)
     records, rows = verify_runs(plan, evidence)
     candidate, reference = plan["candidate"], plan["reference"]
     require(candidate != reference, "Candidate must differ from the native reference")
@@ -419,7 +506,8 @@ def analyze(plan, evidence):
 
 
 def replay(lock=LOCKED, evidence=PUBLIC / "evidence.json", decision=PUBLIC / "decision.json", publish=False,
-           initial=INITIAL, initial_evidence=PUBLIC / "initial_evidence.json"):
+           initial=INITIAL, initial_evidence=PUBLIC / "initial_evidence.json",
+           qualification=PUBLIC / "qualification.json"):
     plan = read(lock)
     observations = read(evidence)
     digest = sha(lock, text=True)
@@ -430,7 +518,8 @@ def replay(lock=LOCKED, evidence=PUBLIC / "evidence.json", decision=PUBLIC / "de
         first_plan, first_observations = read(initial), read(initial_evidence)
         require(first_observations["registration_sha256"] == plan["initial_sha256"],
                 "Pilot evidence refers to a different registration")
-        result["engineering"] = analyze_initial(first_plan, first_observations, plan["candidate"], plan["reference"])
+        result["engineering"] = analyze_initial(first_plan, first_observations, plan["candidate"], plan["reference"],
+                                                 plan["chunk_control"], read(qualification), plan["initial_sha256"])
     if publish and not decision.is_file():
         write_new(decision, result)
     else:
@@ -449,7 +538,8 @@ if __name__ == "__main__":
     cli.add_argument("--decision", type=Path, default=PUBLIC / "decision.json")
     cli.add_argument("--initial-registration", type=Path, default=INITIAL)
     cli.add_argument("--initial-evidence", type=Path, default=PUBLIC / "initial_evidence.json")
+    cli.add_argument("--qualification", type=Path, default=PUBLIC / "qualification.json")
     cli.add_argument("--publish", action="store_true")
     args = cli.parse_args()
     replay(args.registration, args.evidence, args.decision, args.publish,
-           args.initial_registration, args.initial_evidence)
+           args.initial_registration, args.initial_evidence, args.qualification)
