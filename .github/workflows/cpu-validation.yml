@@ -250,6 +250,13 @@ jobs:
         run: python scripts/replay_tco_full40_recompute.py
       - name: Verify the recomputed depth head on CPU
         run: python scripts/tco_full40_recompute.py
+      - name: Replay the native-batch TCO camera study
+        if: ${{ hashFiles('results/tco_courtyard_camera_v1/decision.json') != '' }}
+        run: |
+          git -C third_party/TCO apply ../../patches/0001-bfloat16-numpy-export.patch
+          python -B -S scripts/replay_tco_courtyard_camera.py
+      - name: Verify camera checkpoint gradients on CPU
+        run: python scripts/tco_courtyard_camera.py
       - name: Exercise immutable profiled evidence backup fixtures
         run: python scripts/test_archive_profiled_evidence.py
       - name: Verify prospective M3 fitting inputs without loading predictions
