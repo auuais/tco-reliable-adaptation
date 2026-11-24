@@ -245,6 +245,11 @@ jobs:
       - name: Replay the TCO one-percent study
         if: ${{ hashFiles('results/tco_one_percent_v1/decision.json') != '' }}
         run: python scripts/replay_tco_one_percent.py
+      - name: Replay the full-40 TCO recomputation study
+        if: ${{ hashFiles('results/tco_full40_recompute_v1/decision.json') != '' }}
+        run: python scripts/replay_tco_full40_recompute.py
+      - name: Verify the recomputed depth head on CPU
+        run: python scripts/tco_full40_recompute.py
       - name: Exercise immutable profiled evidence backup fixtures
         run: python scripts/test_archive_profiled_evidence.py
       - name: Verify prospective M3 fitting inputs without loading predictions
