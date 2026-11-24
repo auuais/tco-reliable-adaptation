@@ -3,7 +3,7 @@
 import argparse
 from collections import defaultdict
 import json
-from pathlib import Path
+import re
 from statistics import median
 
 import numpy as np
@@ -118,12 +118,28 @@ def profile():
 
 def screen():
     rows = {}
+    failures = {}
     for views, prefix in ((5, "screen5"), (10, "screen")):
         rows[views] = {}
         for policy in POLICIES:
             try:
                 _, result = finished(f"{prefix}_{policy}")
             except ValueError:
+                for terminal in sorted((PRIVATE / "launches" / f"{prefix}_{policy}").glob("*/terminal.json")):
+                    receipt = read(terminal)
+                    if receipt["verdict"] == "completed":
+                        raise
+                    item = dict(verdict=receipt["verdict"], log_sha256=receipt["log_sha256"])
+                    logfile = terminal.with_name("stdout.log")
+                    if receipt["verdict"] == "oom" and sha(logfile) == receipt["log_sha256"]:
+                        log = logfile.read_text(encoding="utf-8", errors="replace")
+                        failure = re.search(r"^torch\.OutOfMemoryError: (.+)$", log, re.M)
+                        if failure:
+                            item["memory_error"] = failure.group(1)
+                        last_update = re.findall(r"^\s*(\d+) \|", log, re.M)
+                        item["last_loss_step"] = int(last_update[-1]) if last_update else None
+                        item["phase"] = "backward" if "loss.backward()" in log else "forward"
+                    failures[f"{prefix}_{policy}/{terminal.parent.name}"] = item
                 continue
             rows[views][policy] = {key: result[key] for key in ("scene_seconds", "peak_allocated",
                                                               "peak_reserved", "mean_step_seconds")}
@@ -143,7 +159,7 @@ def screen():
             full[policy] = dict(completed=len(results),
                                 **{key: median(row[key] for row in results) for key in
                                    ("scene_seconds", "peak_allocated", "peak_reserved")})
-    return dict(screen=rows, ranking=ranks, full_length=full, rental_compute_usd=0)
+    return dict(screen=rows, ranking=ranks, full_length=full, failures=failures, rental_compute_usd=0)
 
 
 def main():

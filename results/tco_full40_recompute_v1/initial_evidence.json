@@ -1,0 +1,1090 @@
+{
+  "study": "tco_full40_recompute_v1",
+  "registration_sha256": "5878ef7896afbecdf81a57bcb62eef59b363a7cf55ebcb6982079c45150607dd",
+  "runs": [
+    {
+      "id": "reference_5",
+      "verdict": "timeout",
+      "attempts": [
+        {
+          "job": "reference_5",
+          "attempt": "attempt01",
+          "utc": "2026-11-24T05:46:38.147234+00:00",
+          "verdict": "timeout",
+          "exit_code": null,
+          "error": "TimeoutExpired: exceeded 1200.0s",
+          "stopped": true,
+          "stop_issues": [],
+          "wall_seconds": 1206.171999999322,
+          "outer_seconds": 1200,
+          "complete_sha256": null,
+          "log_sha256": "ee50a3165a83c14babb793470a02bf7c8459cfd8752f5b33de3164058ccda78e",
+          "rental_compute_usd": 0
+        }
+      ],
+      "result": null
+    },
+    {
+      "id": "reference_10",
+      "verdict": "oom",
+      "attempts": [
+        {
+          "job": "reference_10",
+          "attempt": "attempt01",
+          "utc": "2026-11-24T05:47:18.424798+00:00",
+          "verdict": "oom",
+          "exit_code": 1,
+          "error": null,
+          "stopped": true,
+          "stop_issues": [],
+          "wall_seconds": 40.078000000678,
+          "outer_seconds": 1200,
+          "complete_sha256": null,
+          "log_sha256": "7ecb2190a0d8f7b66134ec003a1c8458623ba270539b7d130f03fc4e553217e5",
+          "rental_compute_usd": 0
+        }
+      ],
+      "result": null
+    },
+    {
+      "id": "profile_5",
+      "verdict": "completed",
+      "attempts": [
+        {
+          "job": "profile_5",
+          "attempt": "attempt01",
+          "utc": "2026-11-24T05:49:09.430131+00:00",
+          "verdict": "completed",
+          "exit_code": 0,
+          "error": null,
+          "stopped": true,
+          "stop_issues": [],
+          "wall_seconds": 110.84300000034273,
+          "outer_seconds": 1200,
+          "complete_sha256": "cded304e964e185f2da8dc8ab9bb7a161229df84278cad07772419e62f7ea1c4",
+          "log_sha256": "d4f52d0ae864c9307480ff2edb37385a26872a98d2b9ce2107d285c09557faa1",
+          "rental_compute_usd": 0
+        }
+      ],
+      "result": {
+        "id": "profile_5",
+        "cohort": "profile",
+        "policy": "c8_off",
+        "dataset": "7scenes",
+        "scene": "heads/seq-01",
+        "frames": [
+          0,
+          200,
+          400,
+          600,
+          800
+        ],
+        "steps": 40,
+        "seed": 42,
+        "width": 518,
+        "arm": "four",
+        "phase": "confirmation",
+        "profile": "timeline",
+        "score": false,
+        "input_sha256": "5d5eebc36f9f41007f8ff929f515788a2de5310d2d5c5f6dc0fbdd9f245c5f59",
+        "reference_sha256": "1a7fe85c5377c154666faf712689ab6c70dbe1e9323bb5b6f0db3aacefc794e9",
+        "output_sha256": "48e9aea23633d9465c3ecc7acab6ecfc3e1d86205da68df6e6f09e55b1aa17ba",
+        "raster_shape": [
+          5,
+          3,
+          392,
+          518
+        ],
+        "scene_seconds": 77.28774226503447,
+        "placement_seconds": 1.7450659950263798,
+        "mean_step_seconds": null,
+        "checkpoint_seconds": 20.693322374019772,
+        "cold_seconds": 97.98743428802118,
+        "score_seconds": null,
+        "cuda_free_before": 9440329728,
+        "cuda_free_after": 0,
+        "cuda_device_total": 10736893952,
+        "peak_allocated": 8398746624,
+        "peak_reserved": 9370075136,
+        "host_peak_bytes": 10851770368,
+        "updates": 40,
+        "lora_tensors": 384,
+        "head_taps": [
+          4,
+          11,
+          17,
+          23
+        ],
+        "losses": [
+          0.6477410793304443,
+          0.5456485152244568,
+          0.33787766098976135,
+          0.2208860069513321,
+          0.33100664615631104,
+          0.3098986744880676,
+          0.23238380253314972,
+          0.14144264161586761,
+          0.15764139592647552,
+          0.1551292985677719,
+          0.15435054898262024,
+          0.15201959013938904,
+          0.0873393788933754,
+          0.1419803947210312,
+          0.16539837419986725,
+          0.14796967804431915,
+          0.13213424384593964,
+          0.11254820972681046,
+          0.12838676571846008,
+          0.13501185178756714,
+          0.12180548906326294,
+          0.12820321321487427,
+          0.09131699055433273,
+          0.08103380352258682,
+          0.09508685022592545,
+          0.09990695118904114,
+          0.09005974978208542,
+          0.10178305953741074,
+          0.07557874172925949,
+          0.08315496146678925,
+          0.09438354521989822,
+          0.09676145017147064,
+          0.07927101850509644,
+          0.08699648082256317,
+          0.08751751482486725,
+          0.08582921326160431,
+          0.08079691231250763,
+          0.07791092991828918,
+          0.07896559685468674,
+          0.05698468163609505
+        ],
+        "metrics": null,
+        "runtime": {
+          "torch": "2.7.1+cu128",
+          "cuda": "12.8",
+          "gpu": "NVIDIA GeForce RTX 3080",
+          "allocator": "garbage_collection_threshold:0.75,expandable_segments:True",
+          "gpu_memory_fraction": 0.875,
+          "gsplat_sha256": "339c0272e544d6a166814cf49e2d21f500eaf9018e69585f1fcaadb5ed3c940e"
+        },
+        "audit": null,
+        "rental_compute_usd": 0
+      }
+    },
+    {
+      "id": "profile_10",
+      "verdict": "oom",
+      "attempts": [
+        {
+          "job": "profile_10",
+          "attempt": "attempt01",
+          "utc": "2026-11-24T05:49:49.077607+00:00",
+          "verdict": "oom",
+          "exit_code": 1,
+          "error": null,
+          "stopped": true,
+          "stop_issues": [],
+          "wall_seconds": 39.436999999918044,
+          "outer_seconds": 1200,
+          "complete_sha256": null,
+          "log_sha256": "7095b77a265d28552cbc1b8ad5d600d49ce8a8100f843c1d2eb94536f20beb7e",
+          "rental_compute_usd": 0
+        }
+      ],
+      "result": null
+    },
+    {
+      "id": "head_fixture",
+      "verdict": "completed",
+      "attempts": [
+        {
+          "job": "head_fixture",
+          "attempt": "attempt01",
+          "utc": "2026-11-24T05:50:00.446727+00:00",
+          "verdict": "completed",
+          "exit_code": 0,
+          "error": null,
+          "stopped": true,
+          "stop_issues": [],
+          "wall_seconds": 11.359000000171363,
+          "outer_seconds": 1200,
+          "complete_sha256": "6ae484eade1071d8011d722a32962dbbff7d12a761a3611c6f92acef0cc4277c",
+          "log_sha256": "7804a3d6f0462fe3d10c4c6b44f3b9b899253e7a76afeaf23e736a68ffe96460",
+          "rental_compute_usd": 0
+        }
+      ],
+      "result": {
+        "id": "head_fixture",
+        "cohort": "fixture",
+        "policy": "c8_off",
+        "dataset": "7scenes",
+        "scene": "heads/seq-01",
+        "frames": [
+          0,
+          200,
+          400,
+          600,
+          800
+        ],
+        "steps": 0,
+        "seed": 42,
+        "width": 518,
+        "arm": "four",
+        "phase": "confirmation",
+        "profile": "fixture",
+        "score": false,
+        "fixture": {
+          "device": "cpu",
+          "torch": "2.7.1+cu128",
+          "views": 10,
+          "batch": 2,
+          "atol": 1e-06,
+          "rtol": 1e-05,
+          "chunks": {
+            "8": {
+              "same_chunk": {
+                "depth": {
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0
+                },
+                "confidence": {
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0
+                },
+                "grad_tap_4": {
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0
+                },
+                "grad_tap_11": {
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0
+                },
+                "grad_tap_17": {
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0
+                },
+                "grad_tap_23": {
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0
+                }
+              },
+              "replayed_spans": [
+                "[8:10]",
+                "[0:8]"
+              ]
+            },
+            "4": {
+              "same_chunk": {
+                "depth": {
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0
+                },
+                "confidence": {
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0
+                },
+                "grad_tap_4": {
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0
+                },
+                "grad_tap_11": {
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0
+                },
+                "grad_tap_17": {
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0
+                },
+                "grad_tap_23": {
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0
+                }
+              },
+              "replayed_spans": [
+                "[8:10]",
+                "[4:8]",
+                "[0:4]"
+              ],
+              "permutation": {
+                "depth": {
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0
+                },
+                "confidence": {
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0
+                },
+                "grad_tap_4": {
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0
+                },
+                "grad_tap_11": {
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0
+                },
+                "grad_tap_17": {
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0
+                },
+                "grad_tap_23": {
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0
+                }
+              }
+            },
+            "2": {
+              "same_chunk": {
+                "depth": {
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0
+                },
+                "confidence": {
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0
+                },
+                "grad_tap_4": {
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0
+                },
+                "grad_tap_11": {
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0
+                },
+                "grad_tap_17": {
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0
+                },
+                "grad_tap_23": {
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0
+                }
+              },
+              "replayed_spans": [
+                "[8:10]",
+                "[6:8]",
+                "[4:6]",
+                "[2:4]",
+                "[0:2]"
+              ]
+            },
+            "1": {
+              "same_chunk": {
+                "depth": {
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0
+                },
+                "confidence": {
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0
+                },
+                "grad_tap_4": {
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0
+                },
+                "grad_tap_11": {
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0
+                },
+                "grad_tap_17": {
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0
+                },
+                "grad_tap_23": {
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0
+                }
+              },
+              "replayed_spans": [
+                "[9:10]",
+                "[8:9]",
+                "[7:8]",
+                "[6:7]",
+                "[5:6]",
+                "[4:5]",
+                "[3:4]",
+                "[2:3]",
+                "[1:2]",
+                "[0:1]"
+              ]
+            }
+          }
+        },
+        "rental_compute_usd": 0
+      }
+    },
+    {
+      "id": "screen_c8_off",
+      "verdict": "oom",
+      "attempts": [
+        {
+          "job": "screen_c8_off",
+          "attempt": "attempt01",
+          "utc": "2026-11-24T05:50:39.656872+00:00",
+          "verdict": "oom",
+          "exit_code": 1,
+          "error": null,
+          "stopped": true,
+          "stop_issues": [],
+          "wall_seconds": 39.03099999949336,
+          "outer_seconds": 1200,
+          "complete_sha256": null,
+          "log_sha256": "85836b40908b59c9497fe42386a484cb9e0d36c415e72c81649e562e9f7c392b",
+          "rental_compute_usd": 0
+        }
+      ],
+      "result": null
+    },
+    {
+      "id": "screen5_c8_off",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "fixed_c8_off",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "leak_c8_off",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "identity_c8_off",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "promote_c8_off_r1",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "promote_c8_off_r2",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "promote_c8_off_r3",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "screen_c8_on",
+      "verdict": "oom",
+      "attempts": [
+        {
+          "job": "screen_c8_on",
+          "attempt": "attempt01",
+          "utc": "2026-11-24T05:51:21.459229+00:00",
+          "verdict": "oom",
+          "exit_code": 1,
+          "error": null,
+          "stopped": true,
+          "stop_issues": [],
+          "wall_seconds": 41.65699999965727,
+          "outer_seconds": 1200,
+          "complete_sha256": null,
+          "log_sha256": "56bf857568860e1ac8b270155f98dcc7e1e7bba0a3c4ff70a7d3a17eef887aac",
+          "rental_compute_usd": 0
+        }
+      ],
+      "result": null
+    },
+    {
+      "id": "screen5_c8_on",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "fixed_c8_on",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "leak_c8_on",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "identity_c8_on",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "promote_c8_on_r1",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "promote_c8_on_r2",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "promote_c8_on_r3",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "screen_c4_off",
+      "verdict": "oom",
+      "attempts": [
+        {
+          "job": "screen_c4_off",
+          "attempt": "attempt01",
+          "utc": "2026-11-24T05:52:00.641898+00:00",
+          "verdict": "oom",
+          "exit_code": 1,
+          "error": null,
+          "stopped": true,
+          "stop_issues": [],
+          "wall_seconds": 39.01599999982864,
+          "outer_seconds": 1200,
+          "complete_sha256": null,
+          "log_sha256": "4251eefa2c6f69313aa712bbc64d9b3da09c193a0761ee9741f2a2b14504f87d",
+          "rental_compute_usd": 0
+        }
+      ],
+      "result": null
+    },
+    {
+      "id": "screen5_c4_off",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "fixed_c4_off",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "leak_c4_off",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "identity_c4_off",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "promote_c4_off_r1",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "promote_c4_off_r2",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "promote_c4_off_r3",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "screen_c4_on",
+      "verdict": "oom",
+      "attempts": [
+        {
+          "job": "screen_c4_on",
+          "attempt": "attempt01",
+          "utc": "2026-11-24T05:52:41.444908+00:00",
+          "verdict": "oom",
+          "exit_code": 1,
+          "error": null,
+          "stopped": true,
+          "stop_issues": [],
+          "wall_seconds": 40.64099999982864,
+          "outer_seconds": 1200,
+          "complete_sha256": null,
+          "log_sha256": "7d0a9d807d9b4bf53d873727e73472be8e5c4e51f28f286a686b9f8128e17716",
+          "rental_compute_usd": 0
+        }
+      ],
+      "result": null
+    },
+    {
+      "id": "screen5_c4_on",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "fixed_c4_on",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "leak_c4_on",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "identity_c4_on",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "promote_c4_on_r1",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "promote_c4_on_r2",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "promote_c4_on_r3",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "screen_c2_off",
+      "verdict": "oom",
+      "attempts": [
+        {
+          "job": "screen_c2_off",
+          "attempt": "attempt01",
+          "utc": "2026-11-24T05:53:19.985495+00:00",
+          "verdict": "oom",
+          "exit_code": 1,
+          "error": null,
+          "stopped": true,
+          "stop_issues": [],
+          "wall_seconds": 38.35900000017136,
+          "outer_seconds": 1200,
+          "complete_sha256": null,
+          "log_sha256": "e29cb8c4d9577f30d70e73565f5bfb00562e5f53324b996ebd3cfa394958beb6",
+          "rental_compute_usd": 0
+        }
+      ],
+      "result": null
+    },
+    {
+      "id": "screen5_c2_off",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "fixed_c2_off",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "leak_c2_off",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "identity_c2_off",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "promote_c2_off_r1",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "promote_c2_off_r2",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "promote_c2_off_r3",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "screen_c2_on",
+      "verdict": "completed",
+      "attempts": [
+        {
+          "job": "screen_c2_on",
+          "attempt": "attempt01",
+          "utc": "2026-11-24T05:54:13.665693+00:00",
+          "verdict": "completed",
+          "exit_code": 0,
+          "error": null,
+          "stopped": true,
+          "stop_issues": [],
+          "wall_seconds": 53.51600000075996,
+          "outer_seconds": 1200,
+          "complete_sha256": "ffd18e4f6a6e569ee198ab8a3d0767783c6f9f3085c42c4ef734547470988986",
+          "log_sha256": "68852e43f55c02e9300c928bc5a1f41232dccdb06dd402c94024d6e5730cff3f",
+          "rental_compute_usd": 0
+        }
+      ],
+      "result": {
+        "id": "screen_c2_on",
+        "cohort": "screen",
+        "policy": "c2_on",
+        "dataset": "7scenes",
+        "scene": "heads/seq-01",
+        "frames": [
+          0,
+          100,
+          200,
+          300,
+          400,
+          500,
+          600,
+          700,
+          800,
+          900
+        ],
+        "steps": 2,
+        "seed": 42,
+        "width": 518,
+        "arm": "four",
+        "phase": "confirmation",
+        "profile": false,
+        "score": false,
+        "input_sha256": "8739c810b6bda779c39b37e3c4a178553117b15bf6aadf941e09ce2aa00b08fb",
+        "reference_sha256": "7502b8d980c7bde050f3d75ae8f82e417a3875ea0054ff0570afffabfda58798",
+        "output_sha256": "ac1ab2cea645e55abd60a8ce0f9d2aec9884b760939e2f862a99d021e5aa46c2",
+        "raster_shape": [
+          10,
+          3,
+          392,
+          518
+        ],
+        "scene_seconds": 19.099995189113542,
+        "placement_seconds": 1.746523590059951,
+        "mean_step_seconds": 6.90499853515625,
+        "checkpoint_seconds": 21.762135618831962,
+        "cold_seconds": 40.864568213932216,
+        "score_seconds": null,
+        "cuda_free_before": 9440329728,
+        "cuda_free_after": 0,
+        "cuda_device_total": 10736893952,
+        "peak_allocated": 9030984704,
+        "peak_reserved": 9263120384,
+        "host_peak_bytes": 10886156288,
+        "updates": 2,
+        "lora_tensors": 384,
+        "head_taps": [
+          4,
+          11,
+          17,
+          23
+        ],
+        "losses": [
+          0.3448411822319031,
+          0.3137979507446289
+        ],
+        "metrics": null,
+        "runtime": {
+          "torch": "2.7.1+cu128",
+          "cuda": "12.8",
+          "gpu": "NVIDIA GeForce RTX 3080",
+          "allocator": "garbage_collection_threshold:0.75,expandable_segments:True",
+          "gpu_memory_fraction": 0.875,
+          "gsplat_sha256": "339c0272e544d6a166814cf49e2d21f500eaf9018e69585f1fcaadb5ed3c940e"
+        },
+        "audit": null,
+        "rental_compute_usd": 0
+      }
+    },
+    {
+      "id": "screen5_c2_on",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "fixed_c2_on",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "leak_c2_on",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "identity_c2_on",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "promote_c2_on_r1",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "promote_c2_on_r2",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "promote_c2_on_r3",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "screen_c1_off",
+      "verdict": "oom",
+      "attempts": [
+        {
+          "job": "screen_c1_off",
+          "attempt": "attempt01",
+          "utc": "2026-11-24T05:54:52.756096+00:00",
+          "verdict": "oom",
+          "exit_code": 1,
+          "error": null,
+          "stopped": true,
+          "stop_issues": [],
+          "wall_seconds": 38.92200000025332,
+          "outer_seconds": 1200,
+          "complete_sha256": null,
+          "log_sha256": "c80313f011dec762eb940aa8470494af32e59dbade3e00576dcc174ea2b8fbad",
+          "rental_compute_usd": 0
+        }
+      ],
+      "result": null
+    },
+    {
+      "id": "screen5_c1_off",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "fixed_c1_off",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "leak_c1_off",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "identity_c1_off",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "promote_c1_off_r1",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "promote_c1_off_r2",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "promote_c1_off_r3",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "screen_c1_on",
+      "verdict": "completed",
+      "attempts": [
+        {
+          "job": "screen_c1_on",
+          "attempt": "attempt01",
+          "utc": "2026-11-24T05:55:45.537893+00:00",
+          "verdict": "completed",
+          "exit_code": 0,
+          "error": null,
+          "stopped": true,
+          "stop_issues": [],
+          "wall_seconds": 52.610000000335276,
+          "outer_seconds": 1200,
+          "complete_sha256": "db3dde89aeef9e0e4d56f3db91fdb93f99f8f8be1920b24a308dcba091536084",
+          "log_sha256": "fddea3bd4db868ae1eb4a716d611d97c90dc214e1bd7eaf36aa5841475ed50c9",
+          "rental_compute_usd": 0
+        }
+      ],
+      "result": {
+        "id": "screen_c1_on",
+        "cohort": "screen",
+        "policy": "c1_on",
+        "dataset": "7scenes",
+        "scene": "heads/seq-01",
+        "frames": [
+          0,
+          100,
+          200,
+          300,
+          400,
+          500,
+          600,
+          700,
+          800,
+          900
+        ],
+        "steps": 2,
+        "seed": 42,
+        "width": 518,
+        "arm": "four",
+        "phase": "confirmation",
+        "profile": false,
+        "score": false,
+        "input_sha256": "8739c810b6bda779c39b37e3c4a178553117b15bf6aadf941e09ce2aa00b08fb",
+        "reference_sha256": "7502b8d980c7bde050f3d75ae8f82e417a3875ea0054ff0570afffabfda58798",
+        "output_sha256": "ec79ea8e618ccaa8ada95ee2bd0c4ca4c38b6118f809dfe3da90fbd9bea31a55",
+        "raster_shape": [
+          10,
+          3,
+          392,
+          518
+        ],
+        "scene_seconds": 19.115312526002526,
+        "placement_seconds": 1.6685425979085267,
+        "mean_step_seconds": 6.53901806640625,
+        "checkpoint_seconds": 20.709586968878284,
+        "cold_seconds": 39.827453698031604,
+        "score_seconds": null,
+        "cuda_free_before": 9440329728,
+        "cuda_free_after": 140341248,
+        "cuda_device_total": 10736893952,
+        "peak_allocated": 8899366912,
+        "peak_reserved": 8967421952,
+        "host_peak_bytes": 10889478144,
+        "updates": 2,
+        "lora_tensors": 384,
+        "head_taps": [
+          4,
+          11,
+          17,
+          23
+        ],
+        "losses": [
+          0.3448617160320282,
+          0.31113287806510925
+        ],
+        "metrics": null,
+        "runtime": {
+          "torch": "2.7.1+cu128",
+          "cuda": "12.8",
+          "gpu": "NVIDIA GeForce RTX 3080",
+          "allocator": "garbage_collection_threshold:0.75,expandable_segments:True",
+          "gpu_memory_fraction": 0.875,
+          "gsplat_sha256": "339c0272e544d6a166814cf49e2d21f500eaf9018e69585f1fcaadb5ed3c940e"
+        },
+        "audit": null,
+        "rental_compute_usd": 0
+      }
+    },
+    {
+      "id": "screen5_c1_on",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "fixed_c1_on",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "leak_c1_on",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "identity_c1_on",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "promote_c1_on_r1",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "promote_c1_on_r2",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "promote_c1_on_r3",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "repeat_heads_r1",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "repeat_heads_r2",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "repeat_chess_r1",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    },
+    {
+      "id": "repeat_chess_r2",
+      "verdict": "unattempted",
+      "attempts": [],
+      "result": null
+    }
+  ],
+  "rental_compute_usd": 0
+}
