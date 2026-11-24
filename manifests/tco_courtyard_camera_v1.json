@@ -2149,7 +2149,7 @@
     "scripts/check_tco_one_percent.py": "6e8ba663a01b6271d63bce7252b43a137651f78ee9efc16070cb67b1c960ebc1",
     "scripts/replay_tco_full40_recompute.py": "1b29f7b12c270536192ddb6e6eed60b84bcae277f7ea8bd1214d1ed28ea964b3",
     "scripts/run_experiment.py": "016f49cabd339c817cbfa09dc32d0efa9345476ae8f8c6ec3d995bcb2dcbfbfe",
-    "scripts/run_tco_courtyard_camera.py": "8620b55ef4b6f3069edd7b68a954382847e6fe2c9f748483dc5c789222257eea",
+    "scripts/run_tco_courtyard_camera.py": "247a09866ef8d23eb95efacf33dac387b4bd2b204d247913ce52f1f53eb8cd59",
     "scripts/run_tco_courtyard_camera_local.py": "f0a06d2eed5b84725b7ab02914a4dd7597f28e882f2308fddb1c308928f13b7b",
     "scripts/run_tco_frozen_prefix.py": "c23bb5c42a90489c7124554819f01216abb6912b32d3893bfd583e263748e2bd",
     "scripts/run_tco_frozen_prefix_local.py": "282c1597197071e2aedacd8d774e9e3abd2660e7ac586ac8ade564178b0f9032",
@@ -2181,5 +2181,16 @@
     "third_party/TCO/tco_vggt_lora.py": "bbb4c31d8001aa5cbe5d83429ea40cbd4a396c73523de47573901660e726c5c7",
     "third_party/TCO/utils/geometry.py": "0987a1032224e6aa7a6e8b682e62ce1ceecb7fa0259c7c2dca4706555bbc4541",
     "third_party/TCO/utils/interfaces.py": "a525a3cb77070e57e037a2e4c17dd3c0b131ab886eec3a743cac853e846eb13f"
-  }
+  },
+  "amendments": [
+    {
+      "previous_registration_sha256": "ec72be215f915b95ac6fad063ea6f472bb5859318f004612dc4b36822e8e58a7",
+      "source": "scripts/run_tco_courtyard_camera.py",
+      "previous_source_sha256": "8620b55ef4b6f3069edd7b68a954382847e6fe2c9f748483dc5c789222257eea",
+      "case": "archived_rescore",
+      "attempt": "attempt01",
+      "terminal_sha256": "8f53f5e16e904025611faf7e1ea30363be063ec7d5b56cdf0a555ad4780d6fde",
+      "reason": "Import the pinned TCO geometry after initialization of its Python path. The first CPU attempt stopped before decoding or scoring."
+    }
+  ]
 }

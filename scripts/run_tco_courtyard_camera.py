@@ -13,7 +13,6 @@ from unittest.mock import patch
 
 import numpy as np
 import torch
-from utils.geometry import unproject_depth_to_world_points_torch
 
 from run_profiled_d0 import read, sha, write_new
 from run_tco_frozen_prefix import CHECKPOINT, FIELDS, export, signature
@@ -23,6 +22,7 @@ from tco_courtyard_camera import cpu_fixture, install_camera
 from tco_courtyard_camera_protocol import CAMERA, PRIVATE, REGISTRATIONS, ROOT
 from tco_frozen_prefix import TAPS, place
 from tco_one_percent_protocol import ALLOCATOR, GPU_MEMORY_FRACTION, check_case_inputs
+from utils.geometry import unproject_depth_to_world_points_torch
 
 
 def successful_case(identifier):
