@@ -27,6 +27,8 @@ The pinned PyTorch 2.7.1 CPU fixture reproduced depth, confidence and all four t
 
 Changing from the native chunk size to one image per chunk introduced numerical differences before recomputation. At full-size zero-step inference the largest relative L2 difference across the exported predictions was 0.034%. The fixed-adjoint test showed that gradients can be more sensitive than predictions to this chunk-size change. The registered five-view tests measure how much these differences matter after 40 real updates. [Qualification receipts](qualification.json)
 
+Two native runs with seed 42 also finished independently on each of Heads and Chess. Their accuracy errors were 14.09 and 14.94 mm on Heads, and 15.26 and 15.51 mm on Chess. Completeness errors were 15.60 and 16.40 mm on Heads, and 18.42 and 19.60 mm on Chess. These repeats measure ordinary variation in the reference pipeline. The locked comparisons use fresh seed-matched reference cases and retain the 1% margin. [Repeat measurements](profile.json)
+
 ## Local reproduction
 
 The local launcher uses the pinned offline image, the verified VGGT checkpoint, read-only input data and one fresh process per case. Measurements use the same expandable allocator and 87.5% process cap in all arms. RunPod compute cost is **USD 0**. [Handoff](../../docs/TCO_FULL40_RECOMPUTE_HANDOFF.md) · [Registration](../../manifests/tco_full40_recompute_v1.json) · [Preflight](preflight.json)
