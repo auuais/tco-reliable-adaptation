@@ -1,0 +1,17 @@
+# Where the Courtyard error appeared
+
+The CPU rescore reproduced both published distances for all six archived runs within 0.01 mm, using all 77,863 reference-valid points. The largest historical gap, at seed 777, was present before ICP. After similarity alignment, accuracy error increased from 285.0 to 602.6 mm and completeness error from 265.1 to 512.9 mm. ICP reduced the gaps from 317.7 to 308.2 mm and from 247.8 to 230.4 mm, respectively. Geometry already differed before that refinement. [Archived rescoring and transforms](diagnosis.json)
+
+## The divergence started during prediction and grew during adaptation
+
+All twelve adapter replays reproduced the step-40 training process's final readout bit for bit. The three policies and each duplicate native run used the same initial adapter factors and the same audited render permutations within each seed. Changing from the native five-image depth batch to one-image calls changed raw depth at step 0 by 0.00262% relative L2 across all three seeds. The one-image checkpoint toggle and native duplicate had identical raw depth and points at step 0. Some printed post-ICP score comparisons crossed the repeat threshold at step 0 by floating-point roundoff below one hundred-billionth of a millimetre. Raw same-chunk output differences were first observed after one real update. Both tested changes and native duplicate runs showed substantial raw geometry differences later in adaptation. [Common-readout milestones and matched RNG](diagnosis.json)
+
+| Seed | Native accuracy / completeness | Duplicate native | One-image ordinary execution | One-image checkpointing |
+|---:|---:|---:|---:|---:|
+| 7 | 1035.05 / 844.98 | 877.12 / 763.19 | 238.46 / 224.21 | 604.00 / 499.33 |
+| 77 | 525.28 / 402.67 | 259.47 / 227.31 | 417.26 / 377.75 | 695.85 / 572.83 |
+| 777 | 581.82 / 468.96 | 432.90 / 323.45 | 497.09 / 434.71 | 632.50 / 483.18 |
+
+Distances in the table are in millimetres, with lower values preferred. The absolute same-seed native accuracy spread was 149–266 mm. The older one-image checkpointed policy's accuracy difference from the first fresh native run ranged from a 431 mm improvement to a 171 mm degradation across the three seeds. Its historical 308 mm degradation at seed 777 shrank to 51 mm on the new runs. At seed 7, the same-batch checkpoint comparison still differed by 366 mm after 40 updates. Fixed-adjoint parity from the earlier study and the variable real-loss outcomes leave the single causal contribution of checkpointing unresolved. Three seeds and one native duplicate per seed provide a diagnostic comparison. [Endpoints, traces, and definitions](diagnosis.json)
+
+At seed 777, swapping in the one-image checkpointed run's depth while retaining native cameras increased accuracy error from 581.8 to 742.3 mm. Using its cameras with native depth lowered it to 529.9 mm. Both swapped outputs together gave 632.5 mm. The ordering persisted after normalizing depth and camera translations by the same source-specific median-depth scale. The cross-swap suggests that the depth change contributed to the disparity in this pair, with camera estimates and interactions partly offsetting it. The clean native observer control differed from the traced native run by 149.2 mm in accuracy and 128.6 mm in completeness, close to the native repeat spread for this seed. An effect of tracing therefore remains unresolved. [Hybrid and observer checks](diagnosis.json)
