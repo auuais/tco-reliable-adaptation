@@ -1,0 +1,216 @@
+{
+  "gate": "repeatable_two_update_oom",
+  "ten_view_promoted": false,
+  "cases": {
+    "gate_c8_off": {
+      "verdict": "oom",
+      "attempts": [
+        {
+          "attempt": "attempt01",
+          "verdict": "oom",
+          "exit_code": 1,
+          "log_sha256": "b6df3c63fc4a59334982957ff3fa1b3d41b6d0be9d1fb38bc45767786b117ba6",
+          "complete_sha256": null,
+          "oom_message": "torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 260.00 MiB. GPU 0 has a total capacity of 10.00 GiB of which 0 bytes is free. Including non-PyTorch memory, this process has 17179869184.00 GiB memory in use. 8.75 GiB allowed; Of the allocated memory 8.69 GiB is allocated by PyTorch, and 31.15 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)"
+        }
+      ],
+      "resources": null
+    },
+    "gate_camera": {
+      "verdict": "oom",
+      "attempts": [
+        {
+          "attempt": "attempt01",
+          "verdict": "oom",
+          "exit_code": 1,
+          "log_sha256": "0371356e3d94ba5e1bc99326bea07f7e51cfe406e23444b83bcf30968fe9bca6",
+          "complete_sha256": null,
+          "oom_message": "torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 24.00 MiB. GPU 0 has a total capacity of 10.00 GiB of which 0 bytes is free. 8.75 GiB allowed; Of the allocated memory 8.66 GiB is allocated by PyTorch, and 78.69 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)"
+        },
+        {
+          "attempt": "attempt02",
+          "verdict": "oom",
+          "exit_code": 1,
+          "log_sha256": "530c980f3f853b280d502e426b37f682976f9dcc8f6b9c87580c3ee615a45112",
+          "complete_sha256": null,
+          "oom_message": "torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 24.00 MiB. GPU 0 has a total capacity of 10.00 GiB of which 0 bytes is free. Including non-PyTorch memory, this process has 17179869184.00 GiB memory in use. 8.75 GiB allowed; Of the allocated memory 8.66 GiB is allocated by PyTorch, and 78.64 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)"
+        }
+      ],
+      "resources": null
+    },
+    "profile10_c8_off": {
+      "verdict": "oom",
+      "attempts": [
+        {
+          "attempt": "attempt01",
+          "verdict": "oom",
+          "exit_code": 1,
+          "log_sha256": "a0e39681969b2848b27c5ba9e3b35762846ca6f107e4c6e1dd7b80cc711ee068",
+          "complete_sha256": null,
+          "oom_message": "torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 260.00 MiB. GPU 0 has a total capacity of 10.00 GiB of which 0 bytes is free. 8.75 GiB allowed; Of the allocated memory 8.69 GiB is allocated by PyTorch, and 31.15 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)",
+          "timeline": {
+            "events": 32,
+            "timeline_sha256": "1122213aab5d44aaa153747841ecbcd6c83ea8d5ee13f9aa8d972a92072e2ace",
+            "first_oom": {
+              "phase": "depth.refinenet1.out_conv",
+              "edge": "oom",
+              "updates_done": 0,
+              "elapsed_seconds": 99.83779884299975,
+              "allocated": 9057315328,
+              "reserved": 9361686528,
+              "peak_allocated": 9329028096,
+              "peak_reserved": 9384755200,
+              "device_free": 0,
+              "device_total": 10736893952,
+              "host_peak_bytes": 10899226624
+            },
+            "phase_max_allocated": {
+              "placement": 4640337920,
+              "tco_model": 9057315328,
+              "initial_prediction": 4664706560,
+              "patch_tokens": 4664706560,
+              "transformer": 5906683904,
+              "camera_head": 7543237632,
+              "depth_head": 9057315328,
+              "depth.chunk[0:8]": 9057315328,
+              "depth.refinenet1.out_conv": 9057315328,
+              "depth.chunk[8:10]": 5056091136
+            },
+            "peak_allocated": 9329028096,
+            "peak_reserved": 9384755200,
+            "first_update_camera": {
+              "phase": "camera_head",
+              "edge": "exit",
+              "updates_done": 0,
+              "elapsed_seconds": 5.647747741999865,
+              "allocated": 7543237632,
+              "reserved": 7558135808,
+              "peak_allocated": 7544433664,
+              "peak_reserved": 7558135808,
+              "device_free": 1500262400,
+              "device_total": 10736893952,
+              "host_peak_bytes": 10899226624
+            }
+          }
+        }
+      ],
+      "resources": null
+    },
+    "profile10_camera": {
+      "verdict": "oom",
+      "attempts": [
+        {
+          "attempt": "attempt01",
+          "verdict": "oom",
+          "exit_code": 1,
+          "log_sha256": "1e1f0ba0aaf5a4a59850c8c124b260c5e121eb5da1d1310aadec3f389de30304",
+          "complete_sha256": null,
+          "oom_message": "torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 24.00 MiB. GPU 0 has a total capacity of 10.00 GiB of which 0 bytes is free. Including non-PyTorch memory, this process has 17179869184.00 GiB memory in use. 8.75 GiB allowed; Of the allocated memory 8.66 GiB is allocated by PyTorch, and 78.65 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)",
+          "timeline": {
+            "events": 62,
+            "timeline_sha256": "b5e53b465b3a28d9dfb36cd0d9ac619fd05eb60fd751f36101b2f0d6fd66355e",
+            "first_oom": {
+              "phase": "tco_loss_and_render",
+              "edge": "oom",
+              "updates_done": 1,
+              "elapsed_seconds": 675.3478151100007,
+              "allocated": 9300185600,
+              "reserved": 9382658048,
+              "peak_allocated": 9301872640,
+              "peak_reserved": 9393143808,
+              "device_free": 0,
+              "device_total": 10736893952,
+              "host_peak_bytes": 10899759104
+            },
+            "phase_max_allocated": {
+              "placement": 4640337920,
+              "tco_model": 9300185600,
+              "initial_prediction": 4664706560,
+              "patch_tokens": 4664706560,
+              "transformer": 7659591168,
+              "camera_head": 7346897920,
+              "depth_head": 8446830592,
+              "depth.chunk[0:8]": 7918632960,
+              "depth.refinenet1.out_conv": 8481439744,
+              "depth.chunk[8:10]": 8438708224,
+              "tco_loss_and_render": 9300185600,
+              "backward": 8933595136,
+              "camera.recompute": 8031005184,
+              "clipping": 5246454784,
+              "adam": 5271620096
+            },
+            "peak_allocated": 9301872640,
+            "peak_reserved": 9393143808,
+            "first_update_camera": {
+              "phase": "camera_head",
+              "edge": "exit",
+              "updates_done": 0,
+              "elapsed_seconds": 5.20925675000035,
+              "allocated": 5906685952,
+              "reserved": 6333399040,
+              "peak_allocated": 6920222208,
+              "peak_reserved": 7371489280,
+              "device_free": 3117416448,
+              "device_total": 10736893952,
+              "host_peak_bytes": 10899759104
+            }
+          }
+        }
+      ],
+      "resources": null
+    },
+    "screen5_c8_off": {
+      "verdict": "completed",
+      "attempts": [
+        {
+          "attempt": "attempt01",
+          "verdict": "completed",
+          "exit_code": 0,
+          "log_sha256": "1fb776c000b299041713cbf4c21f45ca5bba0447ee6d517ae18fce100f75a2a0",
+          "complete_sha256": "1047ab9b299e7f3abc38f0954a9b8c45031f742618a2e2c91c4c7b82b3f7d059"
+        }
+      ],
+      "resources": {
+        "updates": 2,
+        "scene_seconds": 14.426388652000242,
+        "peak_allocated": 8398727168,
+        "peak_reserved": 9072279552,
+        "native_depth_batches": [
+          [
+            5
+          ]
+        ]
+      }
+    },
+    "screen5_camera": {
+      "verdict": "completed",
+      "attempts": [
+        {
+          "attempt": "attempt01",
+          "verdict": "completed",
+          "exit_code": 0,
+          "log_sha256": "2c673712a2679d7b39d392d54022b41f89d9c8378dd9423814ee98d58fe4e88c",
+          "complete_sha256": "490546c4d527ce1d7c7675a47b878e276730dfae7af62a5498810f76f250deae"
+        }
+      ],
+      "resources": {
+        "updates": 2,
+        "scene_seconds": 14.540592108000055,
+        "peak_allocated": 6766689280,
+        "peak_reserved": 7621050368,
+        "native_depth_batches": [
+          [
+            5
+          ]
+        ]
+      }
+    },
+    "promote_camera": {
+      "verdict": "unattempted",
+      "attempts": [],
+      "resources": null
+    }
+  },
+  "initial_sha256": "4bee5a47da64ecb5d1c6a48c70a272943ab28ff2c230920d17a7d3fe366d5e5f",
+  "rental_compute_usd": 0
+}
