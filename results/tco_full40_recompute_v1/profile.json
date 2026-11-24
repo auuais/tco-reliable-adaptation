@@ -1,0 +1,231 @@
+{
+  "timelines": {
+    "profile_5/attempt01": {
+      "trace_sha256": "95c66761c0678f731125ac236db2d6f3f6524097b0bf8e555be5236ba1cdfcf9",
+      "terminal_ooms": [],
+      "samples": 102,
+      "highest_global_allocated": 8398746624,
+      "sampled_updates": [
+        0,
+        1,
+        2,
+        19,
+        20,
+        39,
+        40
+      ],
+      "phases": {
+        "placement": {
+          "samples": 2,
+          "max_boundary_allocated": 4640337920,
+          "max_boundary_reserved": 4643094528,
+          "min_device_free": 4818206720
+        },
+        "tco_model": {
+          "samples": 2,
+          "max_boundary_allocated": 4640337920,
+          "max_boundary_reserved": 9370075136,
+          "min_device_free": 0
+        },
+        "initial_prediction": {
+          "samples": 2,
+          "max_boundary_allocated": 4652522496,
+          "max_boundary_reserved": 4664066048,
+          "min_device_free": 4797235200
+        },
+        "patch_tokens": {
+          "samples": 2,
+          "max_boundary_allocated": 4652522496,
+          "max_boundary_reserved": 4664066048,
+          "min_device_free": 4797235200
+        },
+        "transformer": {
+          "samples": 12,
+          "max_boundary_allocated": 6181003776,
+          "max_boundary_reserved": 9370075136,
+          "min_device_free": 0
+        },
+        "camera_head": {
+          "samples": 12,
+          "max_boundary_allocated": 7614055936,
+          "max_boundary_reserved": 9370075136,
+          "min_device_free": 0
+        },
+        "depth_head": {
+          "samples": 12,
+          "max_boundary_allocated": 7592282624,
+          "max_boundary_reserved": 9370075136,
+          "min_device_free": 0
+        },
+        "depth.chunk[0:5]": {
+          "samples": 12,
+          "max_boundary_allocated": 7592282624,
+          "max_boundary_reserved": 9370075136,
+          "min_device_free": 0
+        },
+        "depth.refinenet1.out_conv": {
+          "samples": 12,
+          "max_boundary_allocated": 7700108288,
+          "max_boundary_reserved": 9370075136,
+          "min_device_free": 0
+        },
+        "tco_loss_and_render": {
+          "samples": 8,
+          "max_boundary_allocated": 7929382400,
+          "max_boundary_reserved": 9370075136,
+          "min_device_free": 0
+        },
+        "backward": {
+          "samples": 8,
+          "max_boundary_allocated": 7884306944,
+          "max_boundary_reserved": 9370075136,
+          "min_device_free": 0
+        },
+        "clipping": {
+          "samples": 8,
+          "max_boundary_allocated": 4987019264,
+          "max_boundary_reserved": 9370075136,
+          "min_device_free": 0
+        },
+        "adam": {
+          "samples": 8,
+          "max_boundary_allocated": 4987018752,
+          "max_boundary_reserved": 9370075136,
+          "min_device_free": 0
+        },
+        "final_fp32_unprojection": {
+          "samples": 2,
+          "max_boundary_allocated": 3511188992,
+          "max_boundary_reserved": 9370075136,
+          "min_device_free": 0
+        }
+      }
+    },
+    "profile_10/attempt01": {
+      "trace_sha256": "0248cf6d2a0453b2e930c9767d30fb90f3b9793482d5fe619dd597fbe43e3247",
+      "terminal_ooms": [
+        {
+          "phase": "depth.refinenet1.out_conv",
+          "edge": "oom",
+          "updates_done": 0,
+          "elapsed_seconds": 5.236213428899646,
+          "allocated": 9057315328,
+          "reserved": 9361686528,
+          "peak_allocated": 9329028096,
+          "peak_reserved": 9384755200,
+          "device_free": 0,
+          "device_total": 10736893952,
+          "host_peak_bytes": 10885693440
+        },
+        {
+          "phase": "depth.chunk[0:8]",
+          "edge": "oom",
+          "updates_done": 0,
+          "elapsed_seconds": 5.237366497982293,
+          "allocated": 9057315328,
+          "reserved": 9361686528,
+          "peak_allocated": 9329028096,
+          "peak_reserved": 9384755200,
+          "device_free": 0,
+          "device_total": 10736893952,
+          "host_peak_bytes": 10885693440
+        },
+        {
+          "phase": "depth_head",
+          "edge": "oom",
+          "updates_done": 0,
+          "elapsed_seconds": 5.238282710080966,
+          "allocated": 9057315328,
+          "reserved": 9361686528,
+          "peak_allocated": 9329028096,
+          "peak_reserved": 9384755200,
+          "device_free": 0,
+          "device_total": 10736893952,
+          "host_peak_bytes": 10885693440
+        },
+        {
+          "phase": "tco_model",
+          "edge": "oom",
+          "updates_done": 0,
+          "elapsed_seconds": 5.239410362904891,
+          "allocated": 9057315328,
+          "reserved": 9361686528,
+          "peak_allocated": 9329028096,
+          "peak_reserved": 9384755200,
+          "device_free": 0,
+          "device_total": 10736893952,
+          "host_peak_bytes": 10885693440
+        }
+      ],
+      "samples": 32,
+      "highest_global_allocated": 9329028096,
+      "sampled_updates": [
+        0
+      ],
+      "phases": {
+        "placement": {
+          "samples": 2,
+          "max_boundary_allocated": 4640337920,
+          "max_boundary_reserved": 4643094528,
+          "min_device_free": 4818206720
+        },
+        "tco_model": {
+          "samples": 2,
+          "max_boundary_allocated": 9057315328,
+          "max_boundary_reserved": 9361686528,
+          "min_device_free": 0
+        },
+        "initial_prediction": {
+          "samples": 2,
+          "max_boundary_allocated": 4664706560,
+          "max_boundary_reserved": 4685037568,
+          "min_device_free": 4776263680
+        },
+        "patch_tokens": {
+          "samples": 2,
+          "max_boundary_allocated": 4664706560,
+          "max_boundary_reserved": 4685037568,
+          "min_device_free": 4776263680
+        },
+        "transformer": {
+          "samples": 4,
+          "max_boundary_allocated": 5906683904,
+          "max_boundary_reserved": 6333399040,
+          "min_device_free": 3117416448
+        },
+        "camera_head": {
+          "samples": 4,
+          "max_boundary_allocated": 7543237632,
+          "max_boundary_reserved": 7558135808,
+          "min_device_free": 1558671360
+        },
+        "depth_head": {
+          "samples": 4,
+          "max_boundary_allocated": 9057315328,
+          "max_boundary_reserved": 9361686528,
+          "min_device_free": 0
+        },
+        "depth.chunk[0:8]": {
+          "samples": 4,
+          "max_boundary_allocated": 9057315328,
+          "max_boundary_reserved": 9361686528,
+          "min_device_free": 0
+        },
+        "depth.refinenet1.out_conv": {
+          "samples": 6,
+          "max_boundary_allocated": 9057315328,
+          "max_boundary_reserved": 9384755200,
+          "min_device_free": 0
+        },
+        "depth.chunk[8:10]": {
+          "samples": 2,
+          "max_boundary_allocated": 5056091136,
+          "max_boundary_reserved": 7371489280,
+          "min_device_free": 1747939328
+        }
+      }
+    }
+  },
+  "same_seed_errors_mm": {},
+  "rental_compute_usd": 0
+}
