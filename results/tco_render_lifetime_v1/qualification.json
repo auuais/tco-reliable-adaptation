@@ -1,0 +1,2324 @@
+{
+  "qualified": {
+    "native": false,
+    "camera": false,
+    "n": false,
+    "g": false,
+    "ng": false
+  },
+  "fixtures": {
+    "cpu": {
+      "passed": true
+    },
+    "renderer": {
+      "real_captures": [
+        "31444427e19c28ec2dd449948ebbf15a7cae5a354485646a174a0c6f90b0d7fe",
+        "59314e8fcdd3c7c129ce6bdbb8f83cb39453c493d8ab3dda8e58c09fc4bd8a9a"
+      ],
+      "qualified": {
+        "native": true,
+        "camera": true,
+        "n": true,
+        "g": true,
+        "ng": true,
+        "ngd": true,
+        "camera_d": true
+      }
+    },
+    "native_repeat": {
+      "common": true,
+      "factors": {
+        "steps": {
+          "1": {
+            "passed": false
+          },
+          "2": {
+            "passed": false
+          }
+        },
+        "fields": {
+          "adam_step/1": {
+            "count": 384,
+            "max_abs": 0.0,
+            "max_relative_l2": 0.0,
+            "worst_tensor": "adam_step/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+            "passed": true
+          },
+          "adam_step/2": {
+            "count": 384,
+            "max_abs": 0.0,
+            "max_relative_l2": 0.0,
+            "worst_tensor": "adam_step/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+            "passed": true
+          },
+          "exp_avg/1": {
+            "count": 384,
+            "max_abs": 2.441415563225746e-05,
+            "max_relative_l2": 0.014908887018727947,
+            "worst_tensor": "exp_avg/1/aggregator.global_blocks.0.attn.proj.lora_B",
+            "passed": false
+          },
+          "exp_avg/2": {
+            "count": 384,
+            "max_abs": 0.0005798342172056437,
+            "max_relative_l2": 0.28897918728609384,
+            "worst_tensor": "exp_avg/2/aggregator.frame_blocks.8.mlp.fc2.lora_A",
+            "passed": false
+          },
+          "exp_avg_sq/1": {
+            "count": 384,
+            "max_abs": 1.5556793186988216e-08,
+            "max_relative_l2": 0.03085142737686595,
+            "worst_tensor": "exp_avg_sq/1/aggregator.global_blocks.0.attn.proj.lora_B",
+            "passed": false
+          },
+          "exp_avg_sq/2": {
+            "count": 384,
+            "max_abs": 3.3688547773635946e-07,
+            "max_relative_l2": 0.5026894618886143,
+            "worst_tensor": "exp_avg_sq/2/aggregator.global_blocks.7.mlp.fc2.lora_A",
+            "passed": false
+          },
+          "grad/1": {
+            "count": 384,
+            "max_abs": 0.000244140625,
+            "max_relative_l2": 0.014908883814400923,
+            "worst_tensor": "grad/1/aggregator.global_blocks.0.attn.proj.lora_B",
+            "passed": false
+          },
+          "grad/2": {
+            "count": 384,
+            "max_abs": 0.00579833984375,
+            "max_relative_l2": 0.3038894866609505,
+            "worst_tensor": "grad/2/aggregator.frame_blocks.6.attn.proj.lora_B",
+            "passed": false
+          },
+          "parameter/1": {
+            "count": 384,
+            "max_abs": 0.0005998226988594979,
+            "max_relative_l2": 0.11945404092595938,
+            "worst_tensor": "parameter/1/aggregator.global_blocks.12.attn.proj.lora_B",
+            "passed": false
+          },
+          "parameter/2": {
+            "count": 384,
+            "max_abs": 0.0011631357483565807,
+            "max_relative_l2": 0.1326852706494452,
+            "worst_tensor": "parameter/2/aggregator.frame_blocks.11.mlp.fc2.lora_B",
+            "passed": false
+          },
+          "preclip/1": {
+            "count": 384,
+            "max_abs": 0.000244140625,
+            "max_relative_l2": 0.014908883814400923,
+            "worst_tensor": "preclip/1/aggregator.global_blocks.0.attn.proj.lora_B",
+            "passed": false
+          },
+          "preclip/2": {
+            "count": 384,
+            "max_abs": 0.00579833984375,
+            "max_relative_l2": 0.3038894866609505,
+            "worst_tensor": "preclip/2/aggregator.frame_blocks.6.attn.proj.lora_B",
+            "passed": false
+          }
+        }
+      },
+      "forward_exact_by_update": [
+        true,
+        false
+      ],
+      "losses": {
+        "candidate": [
+          0.8243272304534912,
+          0.7288371324539185
+        ],
+        "native": [
+          0.8243272304534912,
+          0.7540779709815979
+        ]
+      },
+      "matched_restore_valid": null,
+      "passed": false
+    }
+  },
+  "policies": {
+    "native": {
+      "qualified": false,
+      "reasons": [
+        "native_repeat"
+      ],
+      "cpu": {
+        "passed": true
+      },
+      "renderer": {
+        "passed": true
+      },
+      "native_repeat": {
+        "common": true,
+        "factors": {
+          "steps": {
+            "1": {
+              "passed": false
+            },
+            "2": {
+              "passed": false
+            }
+          },
+          "fields": {
+            "adam_step/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "adam_step/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "adam_step/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "adam_step/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "exp_avg/1": {
+              "count": 384,
+              "max_abs": 2.441415563225746e-05,
+              "max_relative_l2": 0.014908887018727947,
+              "worst_tensor": "exp_avg/1/aggregator.global_blocks.0.attn.proj.lora_B",
+              "passed": false
+            },
+            "exp_avg/2": {
+              "count": 384,
+              "max_abs": 0.0005798342172056437,
+              "max_relative_l2": 0.28897918728609384,
+              "worst_tensor": "exp_avg/2/aggregator.frame_blocks.8.mlp.fc2.lora_A",
+              "passed": false
+            },
+            "exp_avg_sq/1": {
+              "count": 384,
+              "max_abs": 1.5556793186988216e-08,
+              "max_relative_l2": 0.03085142737686595,
+              "worst_tensor": "exp_avg_sq/1/aggregator.global_blocks.0.attn.proj.lora_B",
+              "passed": false
+            },
+            "exp_avg_sq/2": {
+              "count": 384,
+              "max_abs": 3.3688547773635946e-07,
+              "max_relative_l2": 0.5026894618886143,
+              "worst_tensor": "exp_avg_sq/2/aggregator.global_blocks.7.mlp.fc2.lora_A",
+              "passed": false
+            },
+            "grad/1": {
+              "count": 384,
+              "max_abs": 0.000244140625,
+              "max_relative_l2": 0.014908883814400923,
+              "worst_tensor": "grad/1/aggregator.global_blocks.0.attn.proj.lora_B",
+              "passed": false
+            },
+            "grad/2": {
+              "count": 384,
+              "max_abs": 0.00579833984375,
+              "max_relative_l2": 0.3038894866609505,
+              "worst_tensor": "grad/2/aggregator.frame_blocks.6.attn.proj.lora_B",
+              "passed": false
+            },
+            "parameter/1": {
+              "count": 384,
+              "max_abs": 0.0005998226988594979,
+              "max_relative_l2": 0.11945404092595938,
+              "worst_tensor": "parameter/1/aggregator.global_blocks.12.attn.proj.lora_B",
+              "passed": false
+            },
+            "parameter/2": {
+              "count": 384,
+              "max_abs": 0.0011631357483565807,
+              "max_relative_l2": 0.1326852706494452,
+              "worst_tensor": "parameter/2/aggregator.frame_blocks.11.mlp.fc2.lora_B",
+              "passed": false
+            },
+            "preclip/1": {
+              "count": 384,
+              "max_abs": 0.000244140625,
+              "max_relative_l2": 0.014908883814400923,
+              "worst_tensor": "preclip/1/aggregator.global_blocks.0.attn.proj.lora_B",
+              "passed": false
+            },
+            "preclip/2": {
+              "count": 384,
+              "max_abs": 0.00579833984375,
+              "max_relative_l2": 0.3038894866609505,
+              "worst_tensor": "preclip/2/aggregator.frame_blocks.6.attn.proj.lora_B",
+              "passed": false
+            }
+          }
+        },
+        "forward_exact_by_update": [
+          true,
+          false
+        ],
+        "losses": {
+          "candidate": [
+            0.8243272304534912,
+            0.7288371324539185
+          ],
+          "native": [
+            0.8243272304534912,
+            0.7540779709815979
+          ]
+        },
+        "matched_restore_valid": null,
+        "passed": false
+      },
+      "fixed": {
+        "common": true,
+        "factors": {
+          "steps": {
+            "1": {
+              "passed": true
+            },
+            "2": {
+              "passed": true
+            }
+          },
+          "fields": {
+            "grad/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "grad/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "grad/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "grad/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "parameter/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "parameter/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "parameter/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "parameter/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "preclip/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "preclip/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "preclip/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "preclip/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            }
+          }
+        },
+        "forward_exact": true,
+        "predictions": {
+          "count": 6,
+          "max_abs": 0.0,
+          "max_relative_l2": 0.0,
+          "worst_tensor": "canonical"
+        },
+        "passed": true
+      },
+      "matched": {
+        "common": true,
+        "factors": {
+          "steps": {
+            "1": {
+              "passed": true
+            },
+            "2": {
+              "passed": true
+            }
+          },
+          "fields": {
+            "adam_step/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "adam_step/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "adam_step/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "adam_step/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "exp_avg/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "exp_avg/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "exp_avg/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "exp_avg/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "exp_avg_sq/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "exp_avg_sq/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "exp_avg_sq/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "exp_avg_sq/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "grad/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "grad/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "grad/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "grad/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "parameter/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "parameter/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "parameter/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "parameter/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "preclip/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "preclip/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "preclip/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "preclip/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            }
+          }
+        },
+        "forward_exact_by_update": [
+          true,
+          true
+        ],
+        "losses": {
+          "candidate": [
+            0.8243272304534912,
+            0.7540779709815979
+          ],
+          "native": [
+            0.8243272304534912,
+            0.7540779709815979
+          ]
+        },
+        "matched_restore_valid": true,
+        "passed": true
+      },
+      "real": {
+        "common": true,
+        "factors": {
+          "steps": {
+            "1": {
+              "passed": true
+            },
+            "2": {
+              "passed": true
+            }
+          },
+          "fields": {
+            "adam_step/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "adam_step/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "adam_step/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "adam_step/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "exp_avg/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "exp_avg/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "exp_avg/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "exp_avg/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "exp_avg_sq/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "exp_avg_sq/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "exp_avg_sq/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "exp_avg_sq/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "grad/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "grad/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "grad/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "grad/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "parameter/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "parameter/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "parameter/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "parameter/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "preclip/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "preclip/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "preclip/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "preclip/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            }
+          }
+        },
+        "forward_exact_by_update": [
+          true,
+          true
+        ],
+        "losses": {
+          "candidate": [
+            0.8243272304534912,
+            0.7540779709815979
+          ],
+          "native": [
+            0.8243272304534912,
+            0.7540779709815979
+          ]
+        },
+        "matched_restore_valid": null,
+        "passed": true
+      },
+      "identity": {
+        "passed": true
+      }
+    },
+    "camera": {
+      "qualified": false,
+      "reasons": [
+        "native_repeat",
+        "matched",
+        "real"
+      ],
+      "cpu": {
+        "passed": true
+      },
+      "renderer": {
+        "passed": true
+      },
+      "native_repeat": {
+        "common": true,
+        "factors": {
+          "steps": {
+            "1": {
+              "passed": false
+            },
+            "2": {
+              "passed": false
+            }
+          },
+          "fields": {
+            "adam_step/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "adam_step/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "adam_step/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "adam_step/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "exp_avg/1": {
+              "count": 384,
+              "max_abs": 2.441415563225746e-05,
+              "max_relative_l2": 0.014908887018727947,
+              "worst_tensor": "exp_avg/1/aggregator.global_blocks.0.attn.proj.lora_B",
+              "passed": false
+            },
+            "exp_avg/2": {
+              "count": 384,
+              "max_abs": 0.0005798342172056437,
+              "max_relative_l2": 0.28897918728609384,
+              "worst_tensor": "exp_avg/2/aggregator.frame_blocks.8.mlp.fc2.lora_A",
+              "passed": false
+            },
+            "exp_avg_sq/1": {
+              "count": 384,
+              "max_abs": 1.5556793186988216e-08,
+              "max_relative_l2": 0.03085142737686595,
+              "worst_tensor": "exp_avg_sq/1/aggregator.global_blocks.0.attn.proj.lora_B",
+              "passed": false
+            },
+            "exp_avg_sq/2": {
+              "count": 384,
+              "max_abs": 3.3688547773635946e-07,
+              "max_relative_l2": 0.5026894618886143,
+              "worst_tensor": "exp_avg_sq/2/aggregator.global_blocks.7.mlp.fc2.lora_A",
+              "passed": false
+            },
+            "grad/1": {
+              "count": 384,
+              "max_abs": 0.000244140625,
+              "max_relative_l2": 0.014908883814400923,
+              "worst_tensor": "grad/1/aggregator.global_blocks.0.attn.proj.lora_B",
+              "passed": false
+            },
+            "grad/2": {
+              "count": 384,
+              "max_abs": 0.00579833984375,
+              "max_relative_l2": 0.3038894866609505,
+              "worst_tensor": "grad/2/aggregator.frame_blocks.6.attn.proj.lora_B",
+              "passed": false
+            },
+            "parameter/1": {
+              "count": 384,
+              "max_abs": 0.0005998226988594979,
+              "max_relative_l2": 0.11945404092595938,
+              "worst_tensor": "parameter/1/aggregator.global_blocks.12.attn.proj.lora_B",
+              "passed": false
+            },
+            "parameter/2": {
+              "count": 384,
+              "max_abs": 0.0011631357483565807,
+              "max_relative_l2": 0.1326852706494452,
+              "worst_tensor": "parameter/2/aggregator.frame_blocks.11.mlp.fc2.lora_B",
+              "passed": false
+            },
+            "preclip/1": {
+              "count": 384,
+              "max_abs": 0.000244140625,
+              "max_relative_l2": 0.014908883814400923,
+              "worst_tensor": "preclip/1/aggregator.global_blocks.0.attn.proj.lora_B",
+              "passed": false
+            },
+            "preclip/2": {
+              "count": 384,
+              "max_abs": 0.00579833984375,
+              "max_relative_l2": 0.3038894866609505,
+              "worst_tensor": "preclip/2/aggregator.frame_blocks.6.attn.proj.lora_B",
+              "passed": false
+            }
+          }
+        },
+        "forward_exact_by_update": [
+          true,
+          false
+        ],
+        "losses": {
+          "candidate": [
+            0.8243272304534912,
+            0.7288371324539185
+          ],
+          "native": [
+            0.8243272304534912,
+            0.7540779709815979
+          ]
+        },
+        "matched_restore_valid": null,
+        "passed": false
+      },
+      "fixed": {
+        "common": true,
+        "factors": {
+          "steps": {
+            "1": {
+              "passed": true
+            },
+            "2": {
+              "passed": true
+            }
+          },
+          "fields": {
+            "grad/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "grad/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "grad/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "grad/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "parameter/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "parameter/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "parameter/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "parameter/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "preclip/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "preclip/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "preclip/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "preclip/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            }
+          }
+        },
+        "forward_exact": true,
+        "predictions": {
+          "count": 6,
+          "max_abs": 0.0,
+          "max_relative_l2": 0.0,
+          "worst_tensor": "canonical"
+        },
+        "passed": true
+      },
+      "matched": {
+        "common": true,
+        "factors": {
+          "steps": {
+            "1": {
+              "passed": false
+            },
+            "2": {
+              "passed": false
+            }
+          },
+          "fields": {
+            "adam_step/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "adam_step/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "adam_step/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "adam_step/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "exp_avg/1": {
+              "count": 384,
+              "max_abs": 3.0517578125e-05,
+              "max_relative_l2": 0.013094245315631142,
+              "worst_tensor": "exp_avg/1/aggregator.global_blocks.14.attn.proj.lora_B",
+              "passed": false
+            },
+            "exp_avg/2": {
+              "count": 384,
+              "max_abs": 4.8827845603227615e-05,
+              "max_relative_l2": 0.00768711861748741,
+              "worst_tensor": "exp_avg/2/aggregator.global_blocks.0.attn.qkv.lora_B",
+              "passed": false
+            },
+            "exp_avg_sq/1": {
+              "count": 384,
+              "max_abs": 1.5318391888285987e-08,
+              "max_relative_l2": 0.0221253468453787,
+              "worst_tensor": "exp_avg_sq/1/aggregator.global_blocks.0.attn.qkv.lora_B",
+              "passed": false
+            },
+            "exp_avg_sq/2": {
+              "count": 384,
+              "max_abs": 3.9816086427890696e-08,
+              "max_relative_l2": 0.018213675855318214,
+              "worst_tensor": "exp_avg_sq/2/aggregator.global_blocks.0.attn.qkv.lora_B",
+              "passed": false
+            },
+            "grad/1": {
+              "count": 384,
+              "max_abs": 0.00030517578125,
+              "max_relative_l2": 0.013094245505253775,
+              "worst_tensor": "grad/1/aggregator.global_blocks.14.attn.proj.lora_B",
+              "passed": false
+            },
+            "grad/2": {
+              "count": 384,
+              "max_abs": 0.00048828125,
+              "max_relative_l2": 0.013886372467726091,
+              "worst_tensor": "grad/2/aggregator.global_blocks.0.attn.qkv.lora_B",
+              "passed": false
+            },
+            "parameter/1": {
+              "count": 384,
+              "max_abs": 0.0005999134154990315,
+              "max_relative_l2": 0.12903511476021237,
+              "worst_tensor": "parameter/1/aggregator.global_blocks.14.attn.proj.lora_B",
+              "passed": false
+            },
+            "parameter/2": {
+              "count": 384,
+              "max_abs": 0.0004902829750790261,
+              "max_relative_l2": 0.01430746459439889,
+              "worst_tensor": "parameter/2/aggregator.frame_blocks.14.attn.qkv.lora_B",
+              "passed": false
+            },
+            "preclip/1": {
+              "count": 384,
+              "max_abs": 0.00030517578125,
+              "max_relative_l2": 0.013094245505253775,
+              "worst_tensor": "preclip/1/aggregator.global_blocks.14.attn.proj.lora_B",
+              "passed": false
+            },
+            "preclip/2": {
+              "count": 384,
+              "max_abs": 0.00048828125,
+              "max_relative_l2": 0.013886372467726091,
+              "worst_tensor": "preclip/2/aggregator.global_blocks.0.attn.qkv.lora_B",
+              "passed": false
+            }
+          }
+        },
+        "forward_exact_by_update": [
+          true,
+          true
+        ],
+        "losses": {
+          "candidate": [
+            0.8243272304534912,
+            0.7540779709815979
+          ],
+          "native": [
+            0.8243272304534912,
+            0.7540779709815979
+          ]
+        },
+        "matched_restore_valid": true,
+        "passed": false
+      },
+      "real": {
+        "common": true,
+        "factors": {
+          "steps": {
+            "1": {
+              "passed": false
+            },
+            "2": {
+              "passed": false
+            }
+          },
+          "fields": {
+            "adam_step/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "adam_step/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "adam_step/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "adam_step/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "exp_avg/1": {
+              "count": 384,
+              "max_abs": 2.5177010684274137e-05,
+              "max_relative_l2": 0.015024872996110043,
+              "worst_tensor": "exp_avg/1/aggregator.global_blocks.0.attn.qkv.lora_B",
+              "passed": false
+            },
+            "exp_avg/2": {
+              "count": 384,
+              "max_abs": 0.0005554200615733862,
+              "max_relative_l2": 0.27958788958429104,
+              "worst_tensor": "exp_avg/2/aggregator.frame_blocks.8.mlp.fc2.lora_A",
+              "passed": false
+            },
+            "exp_avg_sq/1": {
+              "count": 384,
+              "max_abs": 1.1503686891956022e-08,
+              "max_relative_l2": 0.0241806930575892,
+              "worst_tensor": "exp_avg_sq/1/aggregator.global_blocks.0.attn.qkv.lora_B",
+              "passed": false
+            },
+            "exp_avg_sq/2": {
+              "count": 384,
+              "max_abs": 2.4718042368476745e-07,
+              "max_relative_l2": 0.4836816911948811,
+              "worst_tensor": "exp_avg_sq/2/aggregator.frame_blocks.6.mlp.fc2.lora_A",
+              "passed": false
+            },
+            "grad/1": {
+              "count": 384,
+              "max_abs": 0.00025177001953125,
+              "max_relative_l2": 0.015024874336537168,
+              "worst_tensor": "grad/1/aggregator.global_blocks.0.attn.qkv.lora_B",
+              "passed": false
+            },
+            "grad/2": {
+              "count": 384,
+              "max_abs": 0.00555419921875,
+              "max_relative_l2": 0.3012615110641133,
+              "worst_tensor": "grad/2/aggregator.frame_blocks.6.attn.proj.lora_B",
+              "passed": false
+            },
+            "parameter/1": {
+              "count": 384,
+              "max_abs": 0.0005998578853905201,
+              "max_relative_l2": 0.11627734941748603,
+              "worst_tensor": "parameter/1/aggregator.frame_blocks.14.mlp.fc2.lora_B",
+              "passed": false
+            },
+            "parameter/2": {
+              "count": 384,
+              "max_abs": 0.0011618694406934083,
+              "max_relative_l2": 0.13425013078707396,
+              "worst_tensor": "parameter/2/aggregator.global_blocks.7.mlp.fc2.lora_B",
+              "passed": false
+            },
+            "preclip/1": {
+              "count": 384,
+              "max_abs": 0.00025177001953125,
+              "max_relative_l2": 0.015024874336537168,
+              "worst_tensor": "preclip/1/aggregator.global_blocks.0.attn.qkv.lora_B",
+              "passed": false
+            },
+            "preclip/2": {
+              "count": 384,
+              "max_abs": 0.00555419921875,
+              "max_relative_l2": 0.3012615110641133,
+              "worst_tensor": "preclip/2/aggregator.frame_blocks.6.attn.proj.lora_B",
+              "passed": false
+            }
+          }
+        },
+        "forward_exact_by_update": [
+          true,
+          false
+        ],
+        "losses": {
+          "candidate": [
+            0.8243272304534912,
+            0.7243539094924927
+          ],
+          "native": [
+            0.8243272304534912,
+            0.7540779709815979
+          ]
+        },
+        "matched_restore_valid": null,
+        "passed": false
+      },
+      "identity": {
+        "passed": true
+      },
+      "leak": {
+        "passed": true
+      }
+    },
+    "n": {
+      "qualified": false,
+      "reasons": [
+        "native_repeat",
+        "matched",
+        "real"
+      ],
+      "cpu": {
+        "passed": true
+      },
+      "renderer": {
+        "passed": true
+      },
+      "native_repeat": {
+        "common": true,
+        "factors": {
+          "steps": {
+            "1": {
+              "passed": false
+            },
+            "2": {
+              "passed": false
+            }
+          },
+          "fields": {
+            "adam_step/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "adam_step/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "adam_step/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "adam_step/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "exp_avg/1": {
+              "count": 384,
+              "max_abs": 2.441415563225746e-05,
+              "max_relative_l2": 0.014908887018727947,
+              "worst_tensor": "exp_avg/1/aggregator.global_blocks.0.attn.proj.lora_B",
+              "passed": false
+            },
+            "exp_avg/2": {
+              "count": 384,
+              "max_abs": 0.0005798342172056437,
+              "max_relative_l2": 0.28897918728609384,
+              "worst_tensor": "exp_avg/2/aggregator.frame_blocks.8.mlp.fc2.lora_A",
+              "passed": false
+            },
+            "exp_avg_sq/1": {
+              "count": 384,
+              "max_abs": 1.5556793186988216e-08,
+              "max_relative_l2": 0.03085142737686595,
+              "worst_tensor": "exp_avg_sq/1/aggregator.global_blocks.0.attn.proj.lora_B",
+              "passed": false
+            },
+            "exp_avg_sq/2": {
+              "count": 384,
+              "max_abs": 3.3688547773635946e-07,
+              "max_relative_l2": 0.5026894618886143,
+              "worst_tensor": "exp_avg_sq/2/aggregator.global_blocks.7.mlp.fc2.lora_A",
+              "passed": false
+            },
+            "grad/1": {
+              "count": 384,
+              "max_abs": 0.000244140625,
+              "max_relative_l2": 0.014908883814400923,
+              "worst_tensor": "grad/1/aggregator.global_blocks.0.attn.proj.lora_B",
+              "passed": false
+            },
+            "grad/2": {
+              "count": 384,
+              "max_abs": 0.00579833984375,
+              "max_relative_l2": 0.3038894866609505,
+              "worst_tensor": "grad/2/aggregator.frame_blocks.6.attn.proj.lora_B",
+              "passed": false
+            },
+            "parameter/1": {
+              "count": 384,
+              "max_abs": 0.0005998226988594979,
+              "max_relative_l2": 0.11945404092595938,
+              "worst_tensor": "parameter/1/aggregator.global_blocks.12.attn.proj.lora_B",
+              "passed": false
+            },
+            "parameter/2": {
+              "count": 384,
+              "max_abs": 0.0011631357483565807,
+              "max_relative_l2": 0.1326852706494452,
+              "worst_tensor": "parameter/2/aggregator.frame_blocks.11.mlp.fc2.lora_B",
+              "passed": false
+            },
+            "preclip/1": {
+              "count": 384,
+              "max_abs": 0.000244140625,
+              "max_relative_l2": 0.014908883814400923,
+              "worst_tensor": "preclip/1/aggregator.global_blocks.0.attn.proj.lora_B",
+              "passed": false
+            },
+            "preclip/2": {
+              "count": 384,
+              "max_abs": 0.00579833984375,
+              "max_relative_l2": 0.3038894866609505,
+              "worst_tensor": "preclip/2/aggregator.frame_blocks.6.attn.proj.lora_B",
+              "passed": false
+            }
+          }
+        },
+        "forward_exact_by_update": [
+          true,
+          false
+        ],
+        "losses": {
+          "candidate": [
+            0.8243272304534912,
+            0.7288371324539185
+          ],
+          "native": [
+            0.8243272304534912,
+            0.7540779709815979
+          ]
+        },
+        "matched_restore_valid": null,
+        "passed": false
+      },
+      "fixed": {
+        "common": true,
+        "factors": {
+          "steps": {
+            "1": {
+              "passed": true
+            },
+            "2": {
+              "passed": true
+            }
+          },
+          "fields": {
+            "grad/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "grad/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "grad/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "grad/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "parameter/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "parameter/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "parameter/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "parameter/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "preclip/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "preclip/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "preclip/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "preclip/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            }
+          }
+        },
+        "forward_exact": true,
+        "predictions": {
+          "count": 6,
+          "max_abs": 0.0,
+          "max_relative_l2": 0.0,
+          "worst_tensor": "canonical"
+        },
+        "passed": true
+      },
+      "matched": {
+        "common": true,
+        "factors": {
+          "steps": {
+            "1": {
+              "passed": false
+            },
+            "2": {
+              "passed": false
+            }
+          },
+          "fields": {
+            "adam_step/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "adam_step/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "adam_step/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "adam_step/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "exp_avg/1": {
+              "count": 384,
+              "max_abs": 2.441415563225746e-05,
+              "max_relative_l2": 0.01520259151007714,
+              "worst_tensor": "exp_avg/1/aggregator.global_blocks.13.attn.qkv.lora_B",
+              "passed": false
+            },
+            "exp_avg/2": {
+              "count": 384,
+              "max_abs": 3.0517578125e-05,
+              "max_relative_l2": 0.0076087773040808705,
+              "worst_tensor": "exp_avg/2/aggregator.global_blocks.0.attn.qkv.lora_B",
+              "passed": false
+            },
+            "exp_avg_sq/1": {
+              "count": 384,
+              "max_abs": 1.5318391888285987e-08,
+              "max_relative_l2": 0.026703360766901503,
+              "worst_tensor": "exp_avg_sq/1/aggregator.global_blocks.0.attn.qkv.lora_B",
+              "passed": false
+            },
+            "exp_avg_sq/2": {
+              "count": 384,
+              "max_abs": 6.511754691018723e-09,
+              "max_relative_l2": 0.017693772834628623,
+              "worst_tensor": "exp_avg_sq/2/aggregator.global_blocks.0.attn.qkv.lora_B",
+              "passed": false
+            },
+            "grad/1": {
+              "count": 384,
+              "max_abs": 0.000244140625,
+              "max_relative_l2": 0.01520259012454883,
+              "worst_tensor": "grad/1/aggregator.global_blocks.13.attn.qkv.lora_B",
+              "passed": false
+            },
+            "grad/2": {
+              "count": 384,
+              "max_abs": 0.00030517578125,
+              "max_relative_l2": 0.013744860310299149,
+              "worst_tensor": "grad/2/aggregator.global_blocks.0.attn.qkv.lora_B",
+              "passed": false
+            },
+            "parameter/1": {
+              "count": 384,
+              "max_abs": 0.0005998105043545365,
+              "max_relative_l2": 0.12651902833599518,
+              "worst_tensor": "parameter/1/aggregator.global_blocks.12.attn.qkv.lora_B",
+              "passed": false
+            },
+            "parameter/2": {
+              "count": 384,
+              "max_abs": 0.0004644385408028029,
+              "max_relative_l2": 0.01519127605058419,
+              "worst_tensor": "parameter/2/aggregator.global_blocks.12.attn.proj.lora_B",
+              "passed": false
+            },
+            "preclip/1": {
+              "count": 384,
+              "max_abs": 0.000244140625,
+              "max_relative_l2": 0.01520259012454883,
+              "worst_tensor": "preclip/1/aggregator.global_blocks.13.attn.qkv.lora_B",
+              "passed": false
+            },
+            "preclip/2": {
+              "count": 384,
+              "max_abs": 0.00030517578125,
+              "max_relative_l2": 0.013744860310299149,
+              "worst_tensor": "preclip/2/aggregator.global_blocks.0.attn.qkv.lora_B",
+              "passed": false
+            }
+          }
+        },
+        "forward_exact_by_update": [
+          true,
+          true
+        ],
+        "losses": {
+          "candidate": [
+            0.8243272304534912,
+            0.7540779709815979
+          ],
+          "native": [
+            0.8243272304534912,
+            0.7540779709815979
+          ]
+        },
+        "matched_restore_valid": true,
+        "passed": false
+      },
+      "real": {
+        "common": true,
+        "factors": {
+          "steps": {
+            "1": {
+              "passed": false
+            },
+            "2": {
+              "passed": false
+            }
+          },
+          "fields": {
+            "adam_step/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "adam_step/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "adam_step/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "adam_step/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "exp_avg/1": {
+              "count": 384,
+              "max_abs": 2.441415563225746e-05,
+              "max_relative_l2": 0.015119142155155776,
+              "worst_tensor": "exp_avg/1/aggregator.global_blocks.0.attn.qkv.lora_B",
+              "passed": false
+            },
+            "exp_avg/2": {
+              "count": 384,
+              "max_abs": 0.00026901246747002006,
+              "max_relative_l2": 0.1170439758790779,
+              "worst_tensor": "exp_avg/2/aggregator.frame_blocks.23.mlp.fc2.lora_A",
+              "passed": false
+            },
+            "exp_avg_sq/1": {
+              "count": 384,
+              "max_abs": 1.5318391888285987e-08,
+              "max_relative_l2": 0.025992701552926937,
+              "worst_tensor": "exp_avg_sq/1/aggregator.global_blocks.0.attn.qkv.lora_B",
+              "passed": false
+            },
+            "exp_avg_sq/2": {
+              "count": 384,
+              "max_abs": 7.820131031621713e-08,
+              "max_relative_l2": 0.21340280650437243,
+              "worst_tensor": "exp_avg_sq/2/aggregator.global_blocks.23.attn.qkv.lora_A",
+              "passed": false
+            },
+            "grad/1": {
+              "count": 384,
+              "max_abs": 0.000244140625,
+              "max_relative_l2": 0.015119143384485079,
+              "worst_tensor": "grad/1/aggregator.global_blocks.0.attn.qkv.lora_B",
+              "passed": false
+            },
+            "grad/2": {
+              "count": 384,
+              "max_abs": 0.0027313232421875,
+              "max_relative_l2": 0.16577017717200038,
+              "worst_tensor": "grad/2/aggregator.global_blocks.19.attn.qkv.lora_B",
+              "passed": false
+            },
+            "parameter/1": {
+              "count": 384,
+              "max_abs": 0.0005998307024128735,
+              "max_relative_l2": 0.11968302260775998,
+              "worst_tensor": "parameter/1/aggregator.frame_blocks.11.mlp.fc2.lora_B",
+              "passed": false
+            },
+            "parameter/2": {
+              "count": 384,
+              "max_abs": 0.0011625211336649954,
+              "max_relative_l2": 0.09808251134672284,
+              "worst_tensor": "parameter/2/aggregator.frame_blocks.11.mlp.fc2.lora_B",
+              "passed": false
+            },
+            "preclip/1": {
+              "count": 384,
+              "max_abs": 0.000244140625,
+              "max_relative_l2": 0.015119143384485079,
+              "worst_tensor": "preclip/1/aggregator.global_blocks.0.attn.qkv.lora_B",
+              "passed": false
+            },
+            "preclip/2": {
+              "count": 384,
+              "max_abs": 0.0027313232421875,
+              "max_relative_l2": 0.16577017717200038,
+              "worst_tensor": "preclip/2/aggregator.global_blocks.19.attn.qkv.lora_B",
+              "passed": false
+            }
+          }
+        },
+        "forward_exact_by_update": [
+          true,
+          false
+        ],
+        "losses": {
+          "candidate": [
+            0.8243272304534912,
+            0.7368057370185852
+          ],
+          "native": [
+            0.8243272304534912,
+            0.7540779709815979
+          ]
+        },
+        "matched_restore_valid": null,
+        "passed": false
+      },
+      "identity": {
+        "passed": true
+      },
+      "leak": {
+        "passed": true
+      }
+    },
+    "g": {
+      "qualified": false,
+      "reasons": [
+        "native_repeat",
+        "matched",
+        "real"
+      ],
+      "cpu": {
+        "passed": true
+      },
+      "renderer": {
+        "passed": true
+      },
+      "native_repeat": {
+        "common": true,
+        "factors": {
+          "steps": {
+            "1": {
+              "passed": false
+            },
+            "2": {
+              "passed": false
+            }
+          },
+          "fields": {
+            "adam_step/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "adam_step/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "adam_step/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "adam_step/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "exp_avg/1": {
+              "count": 384,
+              "max_abs": 2.441415563225746e-05,
+              "max_relative_l2": 0.014908887018727947,
+              "worst_tensor": "exp_avg/1/aggregator.global_blocks.0.attn.proj.lora_B",
+              "passed": false
+            },
+            "exp_avg/2": {
+              "count": 384,
+              "max_abs": 0.0005798342172056437,
+              "max_relative_l2": 0.28897918728609384,
+              "worst_tensor": "exp_avg/2/aggregator.frame_blocks.8.mlp.fc2.lora_A",
+              "passed": false
+            },
+            "exp_avg_sq/1": {
+              "count": 384,
+              "max_abs": 1.5556793186988216e-08,
+              "max_relative_l2": 0.03085142737686595,
+              "worst_tensor": "exp_avg_sq/1/aggregator.global_blocks.0.attn.proj.lora_B",
+              "passed": false
+            },
+            "exp_avg_sq/2": {
+              "count": 384,
+              "max_abs": 3.3688547773635946e-07,
+              "max_relative_l2": 0.5026894618886143,
+              "worst_tensor": "exp_avg_sq/2/aggregator.global_blocks.7.mlp.fc2.lora_A",
+              "passed": false
+            },
+            "grad/1": {
+              "count": 384,
+              "max_abs": 0.000244140625,
+              "max_relative_l2": 0.014908883814400923,
+              "worst_tensor": "grad/1/aggregator.global_blocks.0.attn.proj.lora_B",
+              "passed": false
+            },
+            "grad/2": {
+              "count": 384,
+              "max_abs": 0.00579833984375,
+              "max_relative_l2": 0.3038894866609505,
+              "worst_tensor": "grad/2/aggregator.frame_blocks.6.attn.proj.lora_B",
+              "passed": false
+            },
+            "parameter/1": {
+              "count": 384,
+              "max_abs": 0.0005998226988594979,
+              "max_relative_l2": 0.11945404092595938,
+              "worst_tensor": "parameter/1/aggregator.global_blocks.12.attn.proj.lora_B",
+              "passed": false
+            },
+            "parameter/2": {
+              "count": 384,
+              "max_abs": 0.0011631357483565807,
+              "max_relative_l2": 0.1326852706494452,
+              "worst_tensor": "parameter/2/aggregator.frame_blocks.11.mlp.fc2.lora_B",
+              "passed": false
+            },
+            "preclip/1": {
+              "count": 384,
+              "max_abs": 0.000244140625,
+              "max_relative_l2": 0.014908883814400923,
+              "worst_tensor": "preclip/1/aggregator.global_blocks.0.attn.proj.lora_B",
+              "passed": false
+            },
+            "preclip/2": {
+              "count": 384,
+              "max_abs": 0.00579833984375,
+              "max_relative_l2": 0.3038894866609505,
+              "worst_tensor": "preclip/2/aggregator.frame_blocks.6.attn.proj.lora_B",
+              "passed": false
+            }
+          }
+        },
+        "forward_exact_by_update": [
+          true,
+          false
+        ],
+        "losses": {
+          "candidate": [
+            0.8243272304534912,
+            0.7288371324539185
+          ],
+          "native": [
+            0.8243272304534912,
+            0.7540779709815979
+          ]
+        },
+        "matched_restore_valid": null,
+        "passed": false
+      },
+      "fixed": {
+        "common": true,
+        "factors": {
+          "steps": {
+            "1": {
+              "passed": true
+            },
+            "2": {
+              "passed": true
+            }
+          },
+          "fields": {
+            "grad/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "grad/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "grad/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "grad/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "parameter/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "parameter/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "parameter/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "parameter/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "preclip/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "preclip/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "preclip/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "preclip/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            }
+          }
+        },
+        "forward_exact": true,
+        "predictions": {
+          "count": 6,
+          "max_abs": 0.0,
+          "max_relative_l2": 0.0,
+          "worst_tensor": "canonical"
+        },
+        "passed": true
+      },
+      "matched": {
+        "common": true,
+        "factors": {
+          "steps": {
+            "1": {
+              "passed": false
+            },
+            "2": {
+              "passed": false
+            }
+          },
+          "fields": {
+            "adam_step/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "adam_step/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "adam_step/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "adam_step/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "exp_avg/1": {
+              "count": 384,
+              "max_abs": 2.441415563225746e-05,
+              "max_relative_l2": 0.016613827853558326,
+              "worst_tensor": "exp_avg/1/aggregator.global_blocks.0.attn.proj.lora_B",
+              "passed": false
+            },
+            "exp_avg/2": {
+              "count": 384,
+              "max_abs": 4.8827845603227615e-05,
+              "max_relative_l2": 0.006101475482052113,
+              "worst_tensor": "exp_avg/2/aggregator.global_blocks.14.attn.proj.lora_B",
+              "passed": false
+            },
+            "exp_avg_sq/1": {
+              "count": 384,
+              "max_abs": 1.5318391888285987e-08,
+              "max_relative_l2": 0.02090316421329065,
+              "worst_tensor": "exp_avg_sq/1/aggregator.global_blocks.0.attn.qkv.lora_B",
+              "passed": false
+            },
+            "exp_avg_sq/2": {
+              "count": 384,
+              "max_abs": 3.9816086427890696e-08,
+              "max_relative_l2": 0.010315316521377382,
+              "worst_tensor": "exp_avg_sq/2/aggregator.frame_blocks.2.attn.proj.lora_B",
+              "passed": false
+            },
+            "grad/1": {
+              "count": 384,
+              "max_abs": 0.000244140625,
+              "max_relative_l2": 0.016613831301280992,
+              "worst_tensor": "grad/1/aggregator.global_blocks.0.attn.proj.lora_B",
+              "passed": false
+            },
+            "grad/2": {
+              "count": 384,
+              "max_abs": 0.00048828125,
+              "max_relative_l2": 0.011581447476382357,
+              "worst_tensor": "grad/2/aggregator.global_blocks.14.attn.proj.lora_B",
+              "passed": false
+            },
+            "parameter/1": {
+              "count": 384,
+              "max_abs": 0.0005998651904519647,
+              "max_relative_l2": 0.12637193207353084,
+              "worst_tensor": "parameter/1/aggregator.frame_blocks.11.mlp.fc2.lora_B",
+              "passed": false
+            },
+            "parameter/2": {
+              "count": 384,
+              "max_abs": 0.0004754116671392694,
+              "max_relative_l2": 0.01620946460905863,
+              "worst_tensor": "parameter/2/aggregator.global_blocks.12.attn.proj.lora_B",
+              "passed": false
+            },
+            "preclip/1": {
+              "count": 384,
+              "max_abs": 0.000244140625,
+              "max_relative_l2": 0.016613831301280992,
+              "worst_tensor": "preclip/1/aggregator.global_blocks.0.attn.proj.lora_B",
+              "passed": false
+            },
+            "preclip/2": {
+              "count": 384,
+              "max_abs": 0.00048828125,
+              "max_relative_l2": 0.011581447476382357,
+              "worst_tensor": "preclip/2/aggregator.global_blocks.14.attn.proj.lora_B",
+              "passed": false
+            }
+          }
+        },
+        "forward_exact_by_update": [
+          true,
+          true
+        ],
+        "losses": {
+          "candidate": [
+            0.8243272304534912,
+            0.7540779709815979
+          ],
+          "native": [
+            0.8243272304534912,
+            0.7540779709815979
+          ]
+        },
+        "matched_restore_valid": true,
+        "passed": false
+      },
+      "real": {
+        "common": true,
+        "factors": {
+          "steps": {
+            "1": {
+              "passed": false
+            },
+            "2": {
+              "passed": false
+            }
+          },
+          "fields": {
+            "adam_step/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "adam_step/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "adam_step/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "adam_step/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "exp_avg/1": {
+              "count": 384,
+              "max_abs": 2.441415563225746e-05,
+              "max_relative_l2": 0.012916789263272194,
+              "worst_tensor": "exp_avg/1/aggregator.global_blocks.0.attn.qkv.lora_B",
+              "passed": false
+            },
+            "exp_avg/2": {
+              "count": 384,
+              "max_abs": 0.00041654591041151434,
+              "max_relative_l2": 0.13398647254508422,
+              "worst_tensor": "exp_avg/2/aggregator.frame_blocks.1.attn.proj.lora_A",
+              "passed": false
+            },
+            "exp_avg_sq/1": {
+              "count": 384,
+              "max_abs": 1.5318391888285987e-08,
+              "max_relative_l2": 0.02635060269174196,
+              "worst_tensor": "exp_avg_sq/1/aggregator.global_blocks.0.attn.qkv.lora_B",
+              "passed": false
+            },
+            "exp_avg_sq/2": {
+              "count": 384,
+              "max_abs": 1.8893183550972026e-07,
+              "max_relative_l2": 0.24622285665666316,
+              "worst_tensor": "exp_avg_sq/2/aggregator.frame_blocks.1.attn.proj.lora_A",
+              "passed": false
+            },
+            "grad/1": {
+              "count": 384,
+              "max_abs": 0.000244140625,
+              "max_relative_l2": 0.012916794732596791,
+              "worst_tensor": "grad/1/aggregator.global_blocks.0.attn.qkv.lora_B",
+              "passed": false
+            },
+            "grad/2": {
+              "count": 384,
+              "max_abs": 0.004180908203125,
+              "max_relative_l2": 0.2563642645457295,
+              "worst_tensor": "grad/2/aggregator.global_blocks.19.attn.qkv.lora_B",
+              "passed": false
+            },
+            "parameter/1": {
+              "count": 384,
+              "max_abs": 0.0005997568659950048,
+              "max_relative_l2": 0.12757845038510543,
+              "worst_tensor": "parameter/1/aggregator.global_blocks.13.attn.proj.lora_B",
+              "passed": false
+            },
+            "parameter/2": {
+              "count": 384,
+              "max_abs": 0.0011566040921024978,
+              "max_relative_l2": 0.12552140763776687,
+              "worst_tensor": "parameter/2/aggregator.global_blocks.18.mlp.fc1.lora_B",
+              "passed": false
+            },
+            "preclip/1": {
+              "count": 384,
+              "max_abs": 0.000244140625,
+              "max_relative_l2": 0.012916794732596791,
+              "worst_tensor": "preclip/1/aggregator.global_blocks.0.attn.qkv.lora_B",
+              "passed": false
+            },
+            "preclip/2": {
+              "count": 384,
+              "max_abs": 0.004180908203125,
+              "max_relative_l2": 0.2563642645457295,
+              "worst_tensor": "preclip/2/aggregator.global_blocks.19.attn.qkv.lora_B",
+              "passed": false
+            }
+          }
+        },
+        "forward_exact_by_update": [
+          true,
+          false
+        ],
+        "losses": {
+          "candidate": [
+            0.8243272304534912,
+            0.7370970249176025
+          ],
+          "native": [
+            0.8243272304534912,
+            0.7540779709815979
+          ]
+        },
+        "matched_restore_valid": null,
+        "passed": false
+      },
+      "identity": {
+        "passed": true
+      },
+      "leak": {
+        "passed": true
+      }
+    },
+    "ng": {
+      "qualified": false,
+      "reasons": [
+        "native_repeat",
+        "matched",
+        "real"
+      ],
+      "cpu": {
+        "passed": true
+      },
+      "renderer": {
+        "passed": true
+      },
+      "native_repeat": {
+        "common": true,
+        "factors": {
+          "steps": {
+            "1": {
+              "passed": false
+            },
+            "2": {
+              "passed": false
+            }
+          },
+          "fields": {
+            "adam_step/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "adam_step/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "adam_step/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "adam_step/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "exp_avg/1": {
+              "count": 384,
+              "max_abs": 2.441415563225746e-05,
+              "max_relative_l2": 0.014908887018727947,
+              "worst_tensor": "exp_avg/1/aggregator.global_blocks.0.attn.proj.lora_B",
+              "passed": false
+            },
+            "exp_avg/2": {
+              "count": 384,
+              "max_abs": 0.0005798342172056437,
+              "max_relative_l2": 0.28897918728609384,
+              "worst_tensor": "exp_avg/2/aggregator.frame_blocks.8.mlp.fc2.lora_A",
+              "passed": false
+            },
+            "exp_avg_sq/1": {
+              "count": 384,
+              "max_abs": 1.5556793186988216e-08,
+              "max_relative_l2": 0.03085142737686595,
+              "worst_tensor": "exp_avg_sq/1/aggregator.global_blocks.0.attn.proj.lora_B",
+              "passed": false
+            },
+            "exp_avg_sq/2": {
+              "count": 384,
+              "max_abs": 3.3688547773635946e-07,
+              "max_relative_l2": 0.5026894618886143,
+              "worst_tensor": "exp_avg_sq/2/aggregator.global_blocks.7.mlp.fc2.lora_A",
+              "passed": false
+            },
+            "grad/1": {
+              "count": 384,
+              "max_abs": 0.000244140625,
+              "max_relative_l2": 0.014908883814400923,
+              "worst_tensor": "grad/1/aggregator.global_blocks.0.attn.proj.lora_B",
+              "passed": false
+            },
+            "grad/2": {
+              "count": 384,
+              "max_abs": 0.00579833984375,
+              "max_relative_l2": 0.3038894866609505,
+              "worst_tensor": "grad/2/aggregator.frame_blocks.6.attn.proj.lora_B",
+              "passed": false
+            },
+            "parameter/1": {
+              "count": 384,
+              "max_abs": 0.0005998226988594979,
+              "max_relative_l2": 0.11945404092595938,
+              "worst_tensor": "parameter/1/aggregator.global_blocks.12.attn.proj.lora_B",
+              "passed": false
+            },
+            "parameter/2": {
+              "count": 384,
+              "max_abs": 0.0011631357483565807,
+              "max_relative_l2": 0.1326852706494452,
+              "worst_tensor": "parameter/2/aggregator.frame_blocks.11.mlp.fc2.lora_B",
+              "passed": false
+            },
+            "preclip/1": {
+              "count": 384,
+              "max_abs": 0.000244140625,
+              "max_relative_l2": 0.014908883814400923,
+              "worst_tensor": "preclip/1/aggregator.global_blocks.0.attn.proj.lora_B",
+              "passed": false
+            },
+            "preclip/2": {
+              "count": 384,
+              "max_abs": 0.00579833984375,
+              "max_relative_l2": 0.3038894866609505,
+              "worst_tensor": "preclip/2/aggregator.frame_blocks.6.attn.proj.lora_B",
+              "passed": false
+            }
+          }
+        },
+        "forward_exact_by_update": [
+          true,
+          false
+        ],
+        "losses": {
+          "candidate": [
+            0.8243272304534912,
+            0.7288371324539185
+          ],
+          "native": [
+            0.8243272304534912,
+            0.7540779709815979
+          ]
+        },
+        "matched_restore_valid": null,
+        "passed": false
+      },
+      "fixed": {
+        "common": true,
+        "factors": {
+          "steps": {
+            "1": {
+              "passed": true
+            },
+            "2": {
+              "passed": true
+            }
+          },
+          "fields": {
+            "grad/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "grad/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "grad/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "grad/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "parameter/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "parameter/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "parameter/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "parameter/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "preclip/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "preclip/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "preclip/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "preclip/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            }
+          }
+        },
+        "forward_exact": true,
+        "predictions": {
+          "count": 6,
+          "max_abs": 0.0,
+          "max_relative_l2": 0.0,
+          "worst_tensor": "canonical"
+        },
+        "passed": true
+      },
+      "matched": {
+        "common": true,
+        "factors": {
+          "steps": {
+            "1": {
+              "passed": false
+            },
+            "2": {
+              "passed": false
+            }
+          },
+          "fields": {
+            "adam_step/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "adam_step/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "adam_step/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "adam_step/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "exp_avg/1": {
+              "count": 384,
+              "max_abs": 2.441415563225746e-05,
+              "max_relative_l2": 0.011336678118272134,
+              "worst_tensor": "exp_avg/1/aggregator.global_blocks.0.attn.qkv.lora_B",
+              "passed": false
+            },
+            "exp_avg/2": {
+              "count": 384,
+              "max_abs": 4.8827845603227615e-05,
+              "max_relative_l2": 0.010530726319956274,
+              "worst_tensor": "exp_avg/2/aggregator.global_blocks.0.attn.qkv.lora_B",
+              "passed": false
+            },
+            "exp_avg_sq/1": {
+              "count": 384,
+              "max_abs": 1.5318391888285987e-08,
+              "max_relative_l2": 0.016670987358108232,
+              "worst_tensor": "exp_avg_sq/1/aggregator.global_blocks.0.attn.qkv.lora_B",
+              "passed": false
+            },
+            "exp_avg_sq/2": {
+              "count": 384,
+              "max_abs": 3.9816086427890696e-08,
+              "max_relative_l2": 0.027169677450384244,
+              "worst_tensor": "exp_avg_sq/2/aggregator.global_blocks.0.attn.qkv.lora_B",
+              "passed": false
+            },
+            "grad/1": {
+              "count": 384,
+              "max_abs": 0.000244140625,
+              "max_relative_l2": 0.011336678006752327,
+              "worst_tensor": "grad/1/aggregator.global_blocks.0.attn.qkv.lora_B",
+              "passed": false
+            },
+            "grad/2": {
+              "count": 384,
+              "max_abs": 0.00048828125,
+              "max_relative_l2": 0.019023202123366365,
+              "worst_tensor": "grad/2/aggregator.global_blocks.0.attn.qkv.lora_B",
+              "passed": false
+            },
+            "parameter/1": {
+              "count": 384,
+              "max_abs": 0.0005998315464239568,
+              "max_relative_l2": 0.11916715620789216,
+              "worst_tensor": "parameter/1/aggregator.global_blocks.12.attn.proj.lora_B",
+              "passed": false
+            },
+            "parameter/2": {
+              "count": 384,
+              "max_abs": 0.0004770880696014501,
+              "max_relative_l2": 0.01585402520595424,
+              "worst_tensor": "parameter/2/aggregator.frame_blocks.6.attn.proj.lora_B",
+              "passed": false
+            },
+            "preclip/1": {
+              "count": 384,
+              "max_abs": 0.000244140625,
+              "max_relative_l2": 0.011336678006752327,
+              "worst_tensor": "preclip/1/aggregator.global_blocks.0.attn.qkv.lora_B",
+              "passed": false
+            },
+            "preclip/2": {
+              "count": 384,
+              "max_abs": 0.00048828125,
+              "max_relative_l2": 0.019023202123366365,
+              "worst_tensor": "preclip/2/aggregator.global_blocks.0.attn.qkv.lora_B",
+              "passed": false
+            }
+          }
+        },
+        "forward_exact_by_update": [
+          true,
+          true
+        ],
+        "losses": {
+          "candidate": [
+            0.8243272304534912,
+            0.7540779709815979
+          ],
+          "native": [
+            0.8243272304534912,
+            0.7540779709815979
+          ]
+        },
+        "matched_restore_valid": true,
+        "passed": false
+      },
+      "real": {
+        "common": true,
+        "factors": {
+          "steps": {
+            "1": {
+              "passed": false
+            },
+            "2": {
+              "passed": false
+            }
+          },
+          "fields": {
+            "adam_step/1": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "adam_step/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "adam_step/2": {
+              "count": 384,
+              "max_abs": 0.0,
+              "max_relative_l2": 0.0,
+              "worst_tensor": "adam_step/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+              "passed": true
+            },
+            "exp_avg/1": {
+              "count": 384,
+              "max_abs": 2.8991707949899137e-05,
+              "max_relative_l2": 0.01432452931642741,
+              "worst_tensor": "exp_avg/1/aggregator.global_blocks.0.attn.qkv.lora_B",
+              "passed": false
+            },
+            "exp_avg/2": {
+              "count": 384,
+              "max_abs": 0.0009399414993822575,
+              "max_relative_l2": 0.37865584281774184,
+              "worst_tensor": "exp_avg/2/aggregator.frame_blocks.8.mlp.fc2.lora_A",
+              "passed": false
+            },
+            "exp_avg_sq/1": {
+              "count": 384,
+              "max_abs": 1.5139562492549885e-08,
+              "max_relative_l2": 0.029029702613339516,
+              "worst_tensor": "exp_avg_sq/1/aggregator.global_blocks.0.attn.qkv.lora_B",
+              "passed": false
+            },
+            "exp_avg_sq/2": {
+              "count": 384,
+              "max_abs": 6.735174338245997e-07,
+              "max_relative_l2": 0.6240628424049153,
+              "worst_tensor": "exp_avg_sq/2/aggregator.frame_blocks.6.mlp.fc2.lora_A",
+              "passed": false
+            },
+            "grad/1": {
+              "count": 384,
+              "max_abs": 0.0002899169921875,
+              "max_relative_l2": 0.014324528327023878,
+              "worst_tensor": "grad/1/aggregator.global_blocks.0.attn.qkv.lora_B",
+              "passed": false
+            },
+            "grad/2": {
+              "count": 384,
+              "max_abs": 0.0093994140625,
+              "max_relative_l2": 0.40665832387959006,
+              "worst_tensor": "grad/2/aggregator.global_blocks.0.attn.qkv.lora_B",
+              "passed": false
+            },
+            "parameter/1": {
+              "count": 384,
+              "max_abs": 0.000599849212449044,
+              "max_relative_l2": 0.13612597996972717,
+              "worst_tensor": "parameter/1/aggregator.global_blocks.12.attn.proj.lora_B",
+              "passed": false
+            },
+            "parameter/2": {
+              "count": 384,
+              "max_abs": 0.0011401607771404088,
+              "max_relative_l2": 0.1517155166788021,
+              "worst_tensor": "parameter/2/aggregator.global_blocks.13.attn.qkv.lora_B",
+              "passed": false
+            },
+            "preclip/1": {
+              "count": 384,
+              "max_abs": 0.0002899169921875,
+              "max_relative_l2": 0.014324528327023878,
+              "worst_tensor": "preclip/1/aggregator.global_blocks.0.attn.qkv.lora_B",
+              "passed": false
+            },
+            "preclip/2": {
+              "count": 384,
+              "max_abs": 0.0093994140625,
+              "max_relative_l2": 0.40665832387959006,
+              "worst_tensor": "preclip/2/aggregator.global_blocks.0.attn.qkv.lora_B",
+              "passed": false
+            }
+          }
+        },
+        "forward_exact_by_update": [
+          true,
+          false
+        ],
+        "losses": {
+          "candidate": [
+            0.8243272304534912,
+            0.7315419316291809
+          ],
+          "native": [
+            0.8243272304534912,
+            0.7540779709815979
+          ]
+        },
+        "matched_restore_valid": null,
+        "passed": false
+      },
+      "identity": {
+        "passed": true
+      },
+      "leak": {
+        "passed": true
+      }
+    }
+  },
+  "jobs": {
+    "cpu_fixture": "63be38ca8509da4c47f3f6c78f74adb8561a26f1bb233668f6bc41ae719205d5",
+    "fixed_camera": "89e4753583bea8a76d9c2bea909a93e3dfb3dade3c00d9605301b4b63af1b98b",
+    "fixed_g": "1ee255ecd8f5db136ece285c2a2753c1b6ede362309a95dfb83968ecfcb20a20",
+    "fixed_n": "f134aecfee7281e51b34c8c3967b4e5c56117e6f05166b1681d91cd49e97257c",
+    "fixed_native": "824002f82859679e8bad5012313866fc4ac6bf225e7c3a6c967cb6cbf68b8cf4",
+    "fixed_ng": "98c713932299674903307ea5071f61441cd2d7d544cd8ee8b80c8d36c9bcc2df",
+    "identity_camera": "36888c415d90e2b791a8d53c36df7e2488eb90392ec9b09583fd29adf593c599",
+    "identity_g": "99c8d9b34e6cb75a9a59e212d5312fd8f0569f3d32f7f9a52525286659901b00",
+    "identity_n": "c7a079efb42e427d4410f63b54d49f9884d215848311ba95e4e00e2f61c59c0d",
+    "identity_native": "d357cb09e4be1d43de3c8802e5f36c311772a62a3d478b9392290c729f928eaf",
+    "identity_ng": "8a2e9abb600b8ecf9e038d3d47aa0ac72cf54a2481f65c84be9d63dec7cea777",
+    "leak_camera": "c234df1775da04b69ffdfbcf8ca7bc341bf053435b93054d221ecc04a49ceb46",
+    "leak_g": "127127bebfc57acabc3dec9c09b2e99a04cd7a485ddb3c465398236e38f50c16",
+    "leak_n": "8d5cb5a673b812ba58613c9c0770bea98c23711c8e6d3558981aebb646b776fe",
+    "leak_ng": "ae3c2ee70deadb92e4fd627f4dca3e6cb527bba6e50114bc4ace95468d4226f2",
+    "matched_camera": "13aaa28d432b65392d56dc63720db6871b96197c8e983c260a1c5e5c32fa7c14",
+    "matched_g": "99c68e60f4d06911343fb490b5a6518f36520d601328f38ac7d8b01b5563a13f",
+    "matched_n": "aabe2c5459aea639200d9d38fb5d1b749e66e41a391a271ea5951e0edd83c70d",
+    "matched_native": "04b4dcd11111473d7d987baee461966d49102a3f703f489505216973c67a1a57",
+    "matched_ng": "fd8fe4347b4ce7b85ae98f570260b922818645ea71b86185a19b270aa8d8912f",
+    "real_camera": "cc5e5fed51a2ef2591daf80e50605db729c7ccbb42056bcab269c0ed442d5d6c",
+    "real_g": "91ee94898f1a8068253a187a4c58f6189ecb327d4b1817bb5ed1c066e3725b58",
+    "real_n": "11193a840eef97e9986fa6cb48695828ac2ade45e916c8d368f53fc475a5631a",
+    "real_native": "466c7009b60f738c0d3b06881ffdd741652e895647f82eccddbcc53f536b3d06",
+    "real_native_2": "d98531e162144653d9d3806ec5aed09e73ddda9ffda84aede678a01fc7c3bbbb",
+    "real_ng": "4f96bbad7df4c6a9f433f30bcd7889d635f3913764d6baeb18412ab70452db49",
+    "renderer_capture": "4eef3658ec7f78d5e5dce7bd37110ce7b7700df270bea14a1901cce39c54cd36",
+    "renderer_replay": "a1ba93ab3ebe3ae9cc1885d8c7690d150b3f7eb1b2a842c7d3fc37ac370314f9"
+  },
+  "initial_sha256": "b044f19eb80f2a12104bcc696ee0111e14fc216839bf514078684e6adb086dd6",
+  "rental_compute_usd": 0,
+  "qualification_reader_sha256": "ede9603d793524842c04f7ba4be218143dd195675bcfeab51823f657fd0288cb"
+}
