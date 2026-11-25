@@ -22,6 +22,7 @@ TOOLS = (
     ROOT / "scripts/profiled_artifacts.py",
     ROOT / "scripts/replay_tco_render_lifetime.py",
     ROOT / "scripts/test_tco_render_lifetime_replay.py",
+    ROOT / "scripts/qualify_tco_render_lifetime.py",
 )
 
 

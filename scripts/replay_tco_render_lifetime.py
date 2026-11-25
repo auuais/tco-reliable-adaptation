@@ -446,6 +446,9 @@ def factor_checks(report, families):
 
 def verify_qualification(qualification, records, rows, digest):
     require(qualification["rental_compute_usd"] == 0, "Invalid qualification budget")
+    reader = ROOT / "scripts/qualify_tco_render_lifetime.py"
+    require(qualification["qualification_reader_sha256"] == sha(reader, text=True),
+            "Qualification reader differs from the recorded gradient index correction")
     declared = qualification["qualified"]
     policies = qualification["policies"]
     require(set(declared) == set(policies), "Qualification policy inventory differs")
