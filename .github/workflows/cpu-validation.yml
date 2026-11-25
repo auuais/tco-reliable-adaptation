@@ -257,6 +257,9 @@ jobs:
           python -B -S scripts/replay_tco_courtyard_camera.py
       - name: Verify camera checkpoint gradients on CPU
         run: python scripts/tco_courtyard_camera.py
+      - name: Replay the native-batch TCO render-lifetime study
+        if: ${{ hashFiles('results/tco_render_lifetime_v1/decision.json') != '' }}
+        run: python -B -S scripts/replay_tco_render_lifetime.py
       - name: Exercise immutable profiled evidence backup fixtures
         run: python scripts/test_archive_profiled_evidence.py
       - name: Verify prospective M3 fitting inputs without loading predictions
