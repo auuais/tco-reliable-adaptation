@@ -1,0 +1,2593 @@
+{
+  "study": "tco_five_view_replay_cache_v1",
+  "reference": "native",
+  "max_attempts": 2,
+  "margin": 1.01,
+  "source_sha256_lf": {
+    "configs/7scenes_baseline.yaml": "da2393f4f571e3a5e361fe2cc84bb1a948371192801edd4891ee6c265dc68c39",
+    "docs/TCO_COURTYARD_CAMERA_HANDOFF.md": "2d3186bd7a0e706de96ab84a4d9e179dcfac254d24beb8820f3ca64cc36113e9",
+    "docs/TCO_FIVE_VIEW_REPLAY_CACHE_HANDOFF.md": "2c80dd98b145c836aab43b036303e15a7b8893711c27d8d9dd26b661f8e305ff",
+    "docs/TCO_FROZEN_PREFIX_HANDOFF.md": "0d1e8c5884b410f215746da11802bb67b4039809c014cd3634be880e984065fe",
+    "docs/TCO_FULL40_RECOMPUTE_HANDOFF.md": "176ed1a36068a67a98ac34a11fed684443435973fbf4ef0bc6805039572125e0",
+    "docs/TCO_ONE_PERCENT_HANDOFF.md": "d670db9026372f6f03a957e2be839db86e61f98c13216d69646967f9fcd1d9e5",
+    "docs/TCO_RENDER_LIFETIME_HANDOFF.md": "5767b26f1443be16eabb45d5f54b806648041983c3b2c9cab680c9d24c1edbd8",
+    "scripts/archive_tco_courtyard_camera.py": "32aef1fd0d3257e844a7830677fd1c0608031355a29785048b45ec3b3b10273a",
+    "scripts/archive_tco_five_view_replay_cache.py": "b76ae2ce314da11fdbd18f314823cefba70f50038c5e369f3fd563fc68598606",
+    "scripts/archive_tco_render_lifetime.py": "fce1a07f60c3f8a2bde998091a044ddecdfe92aa75d950883f9f03bf6722b05d",
+    "scripts/check_tco_courtyard_camera.py": "198f7e24c49ab3f35d6798d8b8f2d4938d363078d2d695487455746aff4aa16f",
+    "scripts/check_tco_five_view_replay_cache.py": "1a0b0f04537d0d4f55641e4436dd42897fa2479ac8dafa4a613df506190cfb55",
+    "scripts/check_tco_frozen_prefix.py": "aa7c6389313b85553c72fac155a2c48756d0a267f4e8de1e782144c6f6efa413",
+    "scripts/check_tco_one_percent.py": "6e8ba663a01b6271d63bce7252b43a137651f78ee9efc16070cb67b1c960ebc1",
+    "scripts/check_tco_render_lifetime.py": "e2f29a6ce8245e1eb5368d88612d3a192fd0a101ab0c9a2749cda34971ac5a7e",
+    "scripts/prepare_tco_one_percent_confirmation.py": "96df116319947101d1260647574f28d90a5c0fc0a76991cb6f432037bad264e9",
+    "scripts/replay_tco_courtyard_camera.py": "8184545e8f427ba2ed02309e9c5d2fc6506737e8d06bb7393adc85ff9c2b07e2",
+    "scripts/replay_tco_five_view_replay_cache.py": "28d1fb4166fd598a284faebedc3659425ec7a582ef97adf32255f4ae25b35e9a",
+    "scripts/replay_tco_full40_recompute.py": "1b29f7b12c270536192ddb6e6eed60b84bcae277f7ea8bd1214d1ed28ea964b3",
+    "scripts/replay_tco_render_lifetime.py": "4eaffa3f048a3a25fb55b80f6591a8ec3f7e15d2e188c408d24c540c8d2d630b",
+    "scripts/run_experiment.py": "016f49cabd339c817cbfa09dc32d0efa9345476ae8f8c6ec3d995bcb2dcbfbfe",
+    "scripts/run_tco_courtyard_camera.py": "247a09866ef8d23eb95efacf33dac387b4bd2b204d247913ce52f1f53eb8cd59",
+    "scripts/run_tco_courtyard_camera_local.py": "f0a06d2eed5b84725b7ab02914a4dd7597f28e882f2308fddb1c308928f13b7b",
+    "scripts/run_tco_courtyard_input_audit.py": "e30dff5de5f674186ff968f44022994bd26bee452e8d661b16d01e939ee116b9",
+    "scripts/run_tco_five_view_replay_cache.py": "946a0946d1e8c76ed9021d198231dd5e4919875e8d4280a1c0888fd507d47fff",
+    "scripts/run_tco_five_view_replay_cache_local.py": "7ddc82169162db1fe4ef5966046aaa28f45c1a315211ec7cc4eb4cbd14ff163c",
+    "scripts/run_tco_frozen_prefix.py": "c23bb5c42a90489c7124554819f01216abb6912b32d3893bfd583e263748e2bd",
+    "scripts/run_tco_frozen_prefix_local.py": "282c1597197071e2aedacd8d774e9e3abd2660e7ac586ac8ade564178b0f9032",
+    "scripts/run_tco_full40_recompute.py": "49a87b65d2b6f6c3abfbdd6016188b466fbb654d55357cf282aa34d356b2d013",
+    "scripts/run_tco_full40_recompute_local.py": "50bce8a105c63d00da96590fc4ecd0437d7b49b3dc852e2d78ceecb6a942daee",
+    "scripts/run_tco_one_percent.py": "f543fc90fc20ae9663689a13b20337025ae14557699a4a75dff4828a3dadb94f",
+    "scripts/run_tco_one_percent_local.py": "9d44105f0758e0dda1e833f0a4cf3eeb680d33cd96d96cbaa0112c7b01eac67e",
+    "scripts/run_tco_render_lifetime.py": "00ba3dd880945f37e02ea8aadc1164cd79178c0561bdd8e9860eb6d5a0cea50c",
+    "scripts/run_tco_render_lifetime_local.py": "0f3621ce1b0d02f08d8794de66641cd3c8c48695690a7d119f74da6baad6c8c6",
+    "scripts/score_tco_courtyard_trace.py": "b10d4e0c5c39566541edf96a4e9889d36e2c7d1aafb1b76e0459d27aa2a7382a",
+    "scripts/summarize_tco_courtyard_camera.py": "5d1ce8c6fe58b17a0cc5345bb2e2a07c1640d92af2f3699326a6dd080120ea22",
+    "scripts/summarize_tco_five_view_gradients.py": "a363e11a3113325770fb4039dccaf053f28cc3b796e29d6b7974e24e52f2f1bb",
+    "scripts/tco_courtyard_camera.py": "535a57af67bc5ff686b331c5e835fd25a346248ad00412f30c9ceb4642dcbd50",
+    "scripts/tco_courtyard_camera_protocol.py": "3f84760c5ed123ae97b42f41121ba13799faafd9ef5af9f53325a4c85556a9c9",
+    "scripts/tco_courtyard_trace.py": "4502ff95b97b7dfaa44077defe9dd088689a02016855d6c25f5f5e670d5514f9",
+    "scripts/tco_five_view_gradients.py": "b966fe83e43ebe548c9a746243ce8e5711494a39023471dfc5765791354a90a9",
+    "scripts/tco_five_view_policy.py": "c2463cf51e93ac4e39a841c33ee5c2250d22804bf5bcf0c2306621363ed9b546",
+    "scripts/tco_five_view_replay_cache_protocol.py": "928a286de293aa77bb7b4ca1a07bc2de945422bb39a6ae7c6e9e0439ced67560",
+    "scripts/tco_frozen_prefix.py": "091a564824b350cbbea748103ab008fff49243f05c702f59ca73718f0bce522d",
+    "scripts/tco_frozen_prefix_protocol.py": "6fa69aedcaf2fb8cd840f41c0a993f17f4044a3dd5651e5cca5ce5cbef77fae3",
+    "scripts/tco_full40_recompute.py": "dfe662510132e3da00d1b39a8db246a84a851a48f37726f002dca94d15afdfa2",
+    "scripts/tco_full40_recompute_protocol.py": "d487d539b6ec8a77ab27b46e6a8a397a4a09285b8dddf2fb91b6bee9b4e70684",
+    "scripts/tco_one_percent_geometry.py": "3e1dcb7a0fba979fce73adfc68d3155a63dc5eedebd8a87b2fc22cee9bf601ca",
+    "scripts/tco_one_percent_protocol.py": "0be3102c5dc3741f4a0710daf6db725a28946ef067697a5f5221b5824f359f3d",
+    "scripts/tco_render_lifetime.py": "8fd023385008e292e30951261b5556e48ecae2772e3986d7f242cdaa0aeec929",
+    "scripts/tco_render_lifetime_protocol.py": "eca0e9f8993c2bd019df9e2a7e192a42fbd19886ab8b161aaf4db849a1ff679c",
+    "scripts/test_tco_courtyard_camera_replay.py": "d4059df32b1e880b1769d4045bafdd786a30c8ecd9eb0d3e8e037255d05f3102",
+    "scripts/test_tco_five_view_gradients.py": "f0a980cf5da5e2a289fcb2449dc133087484218936fd07ec8e1583960bd67504",
+    "scripts/test_tco_five_view_replay_cache.py": "ad4308e20e15058b18c90b24585fc501f141e7139f086554948e633974401da2",
+    "scripts/test_tco_render_lifetime_replay.py": "0a166b0ed8a22648c3357cc45daf2b004155c64a9e2f91cd5e6bd353bc54c3e9",
+    "third_party/TCO/base_models/vggt/vggt/heads/camera_head.py": "d177f3d64d53210209b7bbb8496faaaec91f3fc51d04a4ee8d9d6b70f053e132",
+    "third_party/TCO/base_models/vggt/vggt/heads/dpt_head.py": "b83ff030043f2ba808afb0c0ebc2f40f1d2ddc9d0b4b847bdfd53670f2d03e17",
+    "third_party/TCO/datasets/eth3d.py": "9b184d2fde00b13c099d273ffc2f5d68db0bbaa262fbbb5b2fc92190fce47763",
+    "third_party/TCO/datasets/seq-id-maps/ETH3D_mv-recon_seq-id-map-kf5.json": "f66b73fb3331de45b98d605b3b3cc673cbe98bd7d4a15c61dd9e681d95af3811",
+    "third_party/TCO/datasets/sevenscenes.py": "a784d0aed7df9c2330d1906a70f8da49402b3df6841b557ccfe63eda62f149b3",
+    "third_party/TCO/datasets/utils/cropping.py": "9833943312b181d259a99b2da8b860285a0703783ef522901e53bc8d86814883",
+    "third_party/TCO/evaluation/mv_recon/utils.py": "b7d4a3dfc1f6b7742c6d55ad1464d27df342ed4f1be0296cd15ab6d179eb38d6",
+    "third_party/TCO/objective.py": "dc52712559a17637f5e34529972a657fd7e5b702a7001351252eeb9d45a8de4b",
+    "third_party/TCO/peft/lora.py": "efa3a15890fcec03d144556de7cd319c2377b8c341159872c3d3900fa9301c36",
+    "third_party/TCO/tco_loss.py": "5899bb2873b4aca1002f2f7a8d058d2dee0163810f9cc60e756bb5ec3317e5f3",
+    "third_party/TCO/tco_vggt_lora.py": "bbb4c31d8001aa5cbe5d83429ea40cbd4a396c73523de47573901660e726c5c7",
+    "third_party/TCO/utils/geometry.py": "0987a1032224e6aa7a6e8b682e62ce1ceecb7fa0259c7c2dca4706555bbc4541",
+    "third_party/TCO/utils/interfaces.py": "a525a3cb77070e57e037a2e4c17dd3c0b131ab886eec3a743cac853e846eb13f"
+  },
+  "launch_order_seed": 20261126,
+  "bootstrap_seed": 20261126,
+  "bootstrap_samples": 10000,
+  "input_source_sha256": {
+    "7scenes/chess/seq-03/frame-000000.color.png": "f4b86066ab446c220847f8c101b42bb2282da71075800ad3057ee29506005aa7",
+    "7scenes/chess/seq-03/frame-000000.depth.proj.png": "b4be5c9bea2a8b953c932e3b7d331f8de775fac0cc12187de58e5f2ee10f5b54",
+    "7scenes/chess/seq-03/frame-000000.pose.txt": "0dc60e07d4e81b81fdcc0faf6d69fc96962239d633b42fc039147f5d653ae16e",
+    "7scenes/chess/seq-03/frame-000200.color.png": "bb102ccfdadaf8d04d07a30418a74712ac7ebe0c0132167494eb7f3d26deee63",
+    "7scenes/chess/seq-03/frame-000200.depth.proj.png": "dedbca485e2cedc1fd922674b150db8899e19c417799fc427e8282de24e6288c",
+    "7scenes/chess/seq-03/frame-000200.pose.txt": "9240aa7dd4690b7aace4347220ec7a05e0a1c293cecde85853b5e5a072da9da0",
+    "7scenes/chess/seq-03/frame-000400.color.png": "33a11ca1348d2190770dd4e373ba7f8984f368a9560ada6ed56d00bd790c4576",
+    "7scenes/chess/seq-03/frame-000400.depth.proj.png": "16c4b3b194c06caa696eed1368686ff5ecbe9ef91b9280bb370365ee2bcd2000",
+    "7scenes/chess/seq-03/frame-000400.pose.txt": "35558f4fb4ec16dfd27652a1dc48afcbdfc7f4f6ddaad35747eddcb0df4bd52a",
+    "7scenes/chess/seq-03/frame-000600.color.png": "b92c565f75cddd669e40e41ca861633db5e653f7dd884676d5ed72adc4653865",
+    "7scenes/chess/seq-03/frame-000600.depth.proj.png": "6a66eee0803456d3fce2d5b6f932495c06e52c3cf6420dc985cd62f2e282e444",
+    "7scenes/chess/seq-03/frame-000600.pose.txt": "46fe13cd2d0ff1f65743877a6c441989d62a5366981d21df4559282ea5793d32",
+    "7scenes/chess/seq-03/frame-000800.color.png": "9db3e1d72256a0af5a8b3b361d117a686cf3ed2b9b3fda1d1b467dcd7e92e10e",
+    "7scenes/chess/seq-03/frame-000800.depth.proj.png": "2963a2f78bef0ee7d25a1e0a43f52927ef7cd8362daf3e21d2e63a2b814283ed",
+    "7scenes/chess/seq-03/frame-000800.pose.txt": "7c02b5be4bbbae1fda587992dc44e859c963529beb2798da53170b4efad14b69",
+    "7scenes/chess/seq-05/frame-000162.color.png": "58e2b2bce849e977c360dcef68f4f11f886ef886b3a5c2be3c2e87ed6d157e7c",
+    "7scenes/chess/seq-05/frame-000162.depth.proj.png": "4de23c11a7611fe008899632a5be1e15fe3fde73a9db24cdb720e9e873bd57ef",
+    "7scenes/chess/seq-05/frame-000162.pose.txt": "7c3b1c33d5be1624ce22ff628b63290a0a7f227189493538b4ab76b62ccfa3be",
+    "7scenes/chess/seq-05/frame-000362.color.png": "c3ffa3bb5bb9ee2e6cbe60eb4b6038ac08888a136d0c2ff2ae520ef36982c1fa",
+    "7scenes/chess/seq-05/frame-000362.depth.proj.png": "7c13dd2e9f65203dc35fe4ac6ac905549d433b85e4ca16a232b4192ad16c4d74",
+    "7scenes/chess/seq-05/frame-000362.pose.txt": "dfeaa2f7bb25e66a6af44d9df7b15954f67d1c83b3c840420e75ec9f64420a5f",
+    "7scenes/chess/seq-05/frame-000562.color.png": "4af0e00b1e7a6563b44e7ec3dc935da438d85e335ae9a4795c7ef627c2b6ff1f",
+    "7scenes/chess/seq-05/frame-000562.depth.proj.png": "c0098aeb2b12e354e7732958618e31b0c8a65817bda08b2ac4e8eb9a213008e2",
+    "7scenes/chess/seq-05/frame-000562.pose.txt": "121b0c4ea35d2fe1f73f2c07a02bda2591849daad3ce41839cf938715723be4f",
+    "7scenes/chess/seq-05/frame-000762.color.png": "c43db01f6d2b72df1b67effcb893bc6b27aa06e8b0060b2db80143e803539f10",
+    "7scenes/chess/seq-05/frame-000762.depth.proj.png": "fe0656734a95ae2602e9349dbf2187b1af04602a47d06451818f77155cb43aac",
+    "7scenes/chess/seq-05/frame-000762.pose.txt": "14cac28e5733e2813bebfe9243b37201b701dc76d7725d0db7993399a11a0e1d",
+    "7scenes/chess/seq-05/frame-000962.color.png": "2d38bfb6c282ac402b4383f39e81b9895e8bc078f31644adaa43b0f5e9516e02",
+    "7scenes/chess/seq-05/frame-000962.depth.proj.png": "9a24d95490d2c6b1a73a2fe38eb4715c8234407dad65c9411e520d76c5f4ed36",
+    "7scenes/chess/seq-05/frame-000962.pose.txt": "79cea66c50d44e18d320f2cb7c44c7ad292ed1c1cc7e939c849fcdbf3d2f08f1",
+    "7scenes/fire/seq-04/frame-000162.color.png": "93afb258d81a79577c6ffd42d165b699574c0556b26896cf853f15f4ca256b12",
+    "7scenes/fire/seq-04/frame-000162.depth.proj.png": "15fd2312a5568f9c975795338796f18aceda85ecb442388997fb98772a1b96d8",
+    "7scenes/fire/seq-04/frame-000162.pose.txt": "df8b30effa201cf03e393909c3c4546ff0f98e35e292d58d5626426279fab9d6",
+    "7scenes/fire/seq-04/frame-000362.color.png": "58f73f33d8a5a7fcd809f71805a507aaf251d177935240e394349184b3a4d900",
+    "7scenes/fire/seq-04/frame-000362.depth.proj.png": "0039144c721a34f0d24f190f06c374c33695e32e69a13f7d99b99e7cdf2633c1",
+    "7scenes/fire/seq-04/frame-000362.pose.txt": "685cd291a75b37fc166376d8a36eb90a8da6f3b9ee7f2e86edb80bcc0a6c3ed9",
+    "7scenes/fire/seq-04/frame-000562.color.png": "9d7a976c7e916e173b8df36d77a5910979cadaece7f84f93eaf1fee274945708",
+    "7scenes/fire/seq-04/frame-000562.depth.proj.png": "b70d365b87aa39d4e8b4455468aa9d0f250a7c1f51f1e18859af3d62fb9c6f85",
+    "7scenes/fire/seq-04/frame-000562.pose.txt": "0036f0c118ef797defbd61fa4c2151725b4a262f54814eed897b63730729a665",
+    "7scenes/fire/seq-04/frame-000762.color.png": "c154afdd97bc46a955c6ef7c238b7f42128c11fe15fc0576aef9654795298413",
+    "7scenes/fire/seq-04/frame-000762.depth.proj.png": "835b087ed6698035c3d113f36ea80cb0dfa7f608077f5756e007e590ebc09668",
+    "7scenes/fire/seq-04/frame-000762.pose.txt": "bf44b65cf3d276340fd3f41654abc9ffaafa2a585c90a2b82d7fe080770e6fa6",
+    "7scenes/fire/seq-04/frame-000962.color.png": "917011895ddc74c6faf38e876cbee80ddda524f68186ab59010c343a5d4348ff",
+    "7scenes/fire/seq-04/frame-000962.depth.proj.png": "28d7901d0a70abbdfaa367f72bcf0020b204ff4ef83b581a31715c6be66cee74",
+    "7scenes/fire/seq-04/frame-000962.pose.txt": "f380469c4143b13f2bee5825b476a24fc0f8f380db9f52a10beae991ae0c346b",
+    "7scenes/heads/seq-01/frame-000000.color.png": "a9dc174f3983cc8ba9bd6a31a9835f3a930b99eaf5aebd3d0f51a1c5ec92b90d",
+    "7scenes/heads/seq-01/frame-000000.depth.proj.png": "ac08a39aa376b7cb5b113b2ab36b87d47c28c65e4b9e74022f8c4ff213b9ecab",
+    "7scenes/heads/seq-01/frame-000000.pose.txt": "941dc1b84eb3a8b8a4b7200e51a67467325dd2d6f3db8f86c016db2bafa43afb",
+    "7scenes/heads/seq-01/frame-000075.color.png": "1a9e072061343f9cc3ffec12117a948689e2cdf3bb9b377a7c1128aef06a8016",
+    "7scenes/heads/seq-01/frame-000075.depth.proj.png": "7ca255ded8d3aeb206e9a0626ef9536b6ce92f47c4144a12aa93a1897bbe7111",
+    "7scenes/heads/seq-01/frame-000075.pose.txt": "9f3dc11c87f100e5938c23e1bb1fd09c94eede2577674a237e9bdbeb464f350c",
+    "7scenes/heads/seq-01/frame-000200.color.png": "73b35fe887b6a79a644f85c0db74b38300c113e223b3f1074489a0c8cd7fc3a8",
+    "7scenes/heads/seq-01/frame-000200.depth.proj.png": "5565f38ee9b69318cd2f7d1467720fa54ed72f5d719f6abbc99da8a1aa4b5edd",
+    "7scenes/heads/seq-01/frame-000200.pose.txt": "136b37128d6014d44a3a9008945997bc19d39fdc61c12129494858d288658380",
+    "7scenes/heads/seq-01/frame-000275.color.png": "4193bdcec030b8471d5c52c5162d4ac82f78c01f39c3c2e80d1485dbee3c8f81",
+    "7scenes/heads/seq-01/frame-000275.depth.proj.png": "ba5e08b744ca6dd62426864683d5ddeb2e80f570c5eafa32989b647729ee8c6d",
+    "7scenes/heads/seq-01/frame-000275.pose.txt": "8a7b8b5a291e3a5c26f079f574f7899ab1f1bf8706cf28d4db234a2022f551a5",
+    "7scenes/heads/seq-01/frame-000400.color.png": "3a37c2ec877c29f333503725a9558b928c97761d791dfd52772cfa3ec0df8f80",
+    "7scenes/heads/seq-01/frame-000400.depth.proj.png": "f18a63f27268925c28b57ad1e978fbfff4802eb02eadc014a8599de912f762d8",
+    "7scenes/heads/seq-01/frame-000400.pose.txt": "ed6433a846516dcfcb5992bb60bed787cd7d5cf136b0e7c76566641317238287",
+    "7scenes/heads/seq-01/frame-000475.color.png": "3f6e60857a5502ad21ca0ced40104e175beecfd85ffce3ef014428a249130adf",
+    "7scenes/heads/seq-01/frame-000475.depth.proj.png": "a2f751d4b1dc60eb4d656b9c7eeae01750af9cdf1e429c949c50f73378643038",
+    "7scenes/heads/seq-01/frame-000475.pose.txt": "0707c880e45a56691ccc87ecc5558b2dee71a1b6cca1810222d39dd0f4ef4990",
+    "7scenes/heads/seq-01/frame-000600.color.png": "39733d54a136e111ac61a6804b4f2fe3058ea5b3c1fc6374b991af7de0aaa793",
+    "7scenes/heads/seq-01/frame-000600.depth.proj.png": "87f9e23982209ebc233322b3a50e79172c51f9ae9cf9b3d9014ccbe50b1c746c",
+    "7scenes/heads/seq-01/frame-000600.pose.txt": "576318e72c3182dc450f25ff123fffa4afb9f58afdd1b50bfb02a38f7297b439",
+    "7scenes/heads/seq-01/frame-000675.color.png": "56251796756e6b739965098a670cd655746e6eaad6fd5b766c1e0d5f53b12d0c",
+    "7scenes/heads/seq-01/frame-000675.depth.proj.png": "902ae4b2802182db00b22087cf12d6320662243e0cd806c33d021cf9c05890e5",
+    "7scenes/heads/seq-01/frame-000675.pose.txt": "ec285afc032e7338b899d129c844d22d5a980b60bcad31b117640f15234fe7a2",
+    "7scenes/heads/seq-01/frame-000800.color.png": "f425e69523b658b3b28a746a582cc181db8efd785a8b7a7fd404f7f8cf9b14d5",
+    "7scenes/heads/seq-01/frame-000800.depth.proj.png": "fb707dfa995589f5f6f3d123ba7951b8fc03c0486f3b14a7e46af0313213344b",
+    "7scenes/heads/seq-01/frame-000800.pose.txt": "2cfa6404fae8d577fda503e25226ad12c78bc0ab97470f1c00900b732ddae1d1",
+    "7scenes/heads/seq-01/frame-000875.color.png": "f4e7ed4ac5fed7e81336de5c125e5472a31de5a641ffb01e6b24efcee53566a1",
+    "7scenes/heads/seq-01/frame-000875.depth.proj.png": "93c351b923ef2f21a294a27266716a602166c13d5d4345c11bd8efa1bd50873e",
+    "7scenes/heads/seq-01/frame-000875.pose.txt": "9506acaf3554134ee829b3b3561d6703746984b33a451a5abd8eb23260f6c5f4",
+    "7scenes/office/seq-06/frame-000162.color.png": "18060297d4960fd81e10eb30a2ba173e406e7d66b3fde10935c13416327f3a5a",
+    "7scenes/office/seq-06/frame-000162.depth.proj.png": "9dcd805baa38cd12de9dff28b36a4f6920728720d072bd5941e2ed838090ec34",
+    "7scenes/office/seq-06/frame-000162.pose.txt": "1dd1a69cffaed7ba41acc512373fc9195f61fcdb4a53da3d0796de7e07fecf05",
+    "7scenes/office/seq-06/frame-000362.color.png": "948651d22b1b2ed68d63039c26636d7042822f450352860d533f56ab123ef43f",
+    "7scenes/office/seq-06/frame-000362.depth.proj.png": "c4f9dad4600ba46739c3a683aee10fb50d0e5d70e46ca03ab849977219a93a14",
+    "7scenes/office/seq-06/frame-000362.pose.txt": "36e374ceb5ceb078c4c2d739e3270cd400c949e07ef838a93c660741edf20843",
+    "7scenes/office/seq-06/frame-000562.color.png": "f9083ff2b46787d346954d9f1b5417285dabd942a133fd89198e8252faf7e648",
+    "7scenes/office/seq-06/frame-000562.depth.proj.png": "307e3014e67ac1424a183965f0cb09dde8b7b5c66f8737e342afa4e9599947e4",
+    "7scenes/office/seq-06/frame-000562.pose.txt": "352c40b3f62442f81a4a9e9a06c40a3fd087bfc66707205f3b7564e44b25ecc6",
+    "7scenes/office/seq-06/frame-000762.color.png": "3fb2f288c11a2b1ce6fdfd034f276e46d49e06b2010dccd3842aa35cfda2d34a",
+    "7scenes/office/seq-06/frame-000762.depth.proj.png": "19d0478ca54a20980538f26c72c1d24e5074c8e27944fd8cfab4dbe15ba3e0a5",
+    "7scenes/office/seq-06/frame-000762.pose.txt": "09265da5034f007c1d3a0fe3d6e2e837aca6449a1c5aabf1f617ae6405eb33ac",
+    "7scenes/office/seq-06/frame-000962.color.png": "d3f175bd0103d3d7f409f63ff92ebd93ac3780ebe42f1aa3afffcda68e452449",
+    "7scenes/office/seq-06/frame-000962.depth.proj.png": "ffc6cd4b21fd897d456f2098a47c2b075fe1f79ac83791aeb8eda22f454ae98a",
+    "7scenes/office/seq-06/frame-000962.pose.txt": "bb2bdad0d8b4211a4cd0ec4d3aabe234e4ce208c6cbf7f4dd0ae35b1aad0ac3e",
+    "7scenes/pumpkin/seq-07/frame-000162.color.png": "0ecb45dd12f1be2db0ef4411f5732cdc4bbf338caf9a737b0a482e8d26821fe1",
+    "7scenes/pumpkin/seq-07/frame-000162.depth.proj.png": "3cb4015c78d803b8e183a2d03dbd013ffebb900dfa4008ea8ed4009ead638b0a",
+    "7scenes/pumpkin/seq-07/frame-000162.pose.txt": "1885956bc90147f6e0b257024576af09b8b09b3c9b53a8939bda571ee5ebbf2d",
+    "7scenes/pumpkin/seq-07/frame-000362.color.png": "b64df3387690d056ab2d5c976ba3e20f323402e95c936663a997bfe617d9c27c",
+    "7scenes/pumpkin/seq-07/frame-000362.depth.proj.png": "a154ed80806dfaed846eeb174c760cfbbe92e46d72234600dc5206a4dd474033",
+    "7scenes/pumpkin/seq-07/frame-000362.pose.txt": "fd27b00ca81db0865e5d26d905a6bbe7b85060b45d162de0141a708c79b774b3",
+    "7scenes/pumpkin/seq-07/frame-000562.color.png": "0dba5952f9191834ae268d696bad614b42edfdb4747153d0e8befdec53048d7f",
+    "7scenes/pumpkin/seq-07/frame-000562.depth.proj.png": "fba441a06a6ece0a032358941734c2c54445d5efe64f780887d3aad3dde3c502",
+    "7scenes/pumpkin/seq-07/frame-000562.pose.txt": "2a69311c37bab1898cf50ad9b88a50aa7d238b087910b9fa55aee6b08d6a11d8",
+    "7scenes/pumpkin/seq-07/frame-000762.color.png": "a47a036b212ac8f090f0568431df10bc15c3002bcc0991c745cac4329ca55ffe",
+    "7scenes/pumpkin/seq-07/frame-000762.depth.proj.png": "86ecd83b9ad0f37b4849b81002a4ed4198087fba71e78a15e18649821f21c822",
+    "7scenes/pumpkin/seq-07/frame-000762.pose.txt": "63de5bf2c0157ed768b15da7d2d742b0f4a5c352fa45cae0c57917be39df8738",
+    "7scenes/pumpkin/seq-07/frame-000962.color.png": "812c5519c3a1547ec520abed2a00516ddd68163ec2331e59a74057db45a41d2c",
+    "7scenes/pumpkin/seq-07/frame-000962.depth.proj.png": "8c99ebbe68bf866d71d46854870a5404287906bbf6cca6a169c3c07d30fa7204",
+    "7scenes/pumpkin/seq-07/frame-000962.pose.txt": "ac754ff482fe0d4a899129cb6c02c5a88f80611bfc2d8bc3f1df2732bada2a8a",
+    "7scenes/redkitchen/seq-04/frame-000162.color.png": "040c0fc177442cad0de725c1be492ad8986c9a1c7d4222e759870589db879c74",
+    "7scenes/redkitchen/seq-04/frame-000162.depth.proj.png": "be01b1841917c2998b70c1051091ee85435e13477ccfa6ea8c6ea9b578899588",
+    "7scenes/redkitchen/seq-04/frame-000162.pose.txt": "434a90e60aa03aeb8830ff7b14fbad57b99e51dcfc1b02c9b19074b2b50b7e60",
+    "7scenes/redkitchen/seq-04/frame-000362.color.png": "47cc6229fe15a0b3b8d58277d66f2f6c50f1655ff09983e0afe8512cab40cbdb",
+    "7scenes/redkitchen/seq-04/frame-000362.depth.proj.png": "a422dcf387eb4ce42a858b9f877e1e0ec35f82030588b17226691c2087542e83",
+    "7scenes/redkitchen/seq-04/frame-000362.pose.txt": "1af0d0b1fc34831f5f552e1f8cbe544536f9e04336700eaec2a3974f7b98b203",
+    "7scenes/redkitchen/seq-04/frame-000562.color.png": "ebe0ea16e9cc0241bb8127abc5486f8045e9d883292e3f4123a0e9310778a9d0",
+    "7scenes/redkitchen/seq-04/frame-000562.depth.proj.png": "2bc1dfc1b0c5cbdf5457fc35797d185d2426d82ef5d8f1a780f23707117f8d15",
+    "7scenes/redkitchen/seq-04/frame-000562.pose.txt": "eb4e574a8d5a879bbd9a7878b53621261e188d7915d6a76084c4da078cc946a0",
+    "7scenes/redkitchen/seq-04/frame-000762.color.png": "b6f75dbf88108359b5b7404517ebe26d6e90aad99799b34c87919797c35c07b5",
+    "7scenes/redkitchen/seq-04/frame-000762.depth.proj.png": "330196ce352c013e0a83ee6767ed33d3740dfa726e3be5c9f640f8720f253124",
+    "7scenes/redkitchen/seq-04/frame-000762.pose.txt": "3127cbd034f7595bdcb09696f53bdcb528aac54de6a1e33f071dfde3ab378509",
+    "7scenes/redkitchen/seq-04/frame-000962.color.png": "7e0253c787423bbb2bca7891bf4c4e1147dc396b69827957e2dc658ee71bea2b",
+    "7scenes/redkitchen/seq-04/frame-000962.depth.proj.png": "50489002b239ad21012bc2cf89f6545e046e48083c9ed66f0690b518d48287c9",
+    "7scenes/redkitchen/seq-04/frame-000962.pose.txt": "f90dfab62208d228a4f056920ccabe7a47f8eec985beac86725fe1199b584883",
+    "7scenes/stairs/seq-04/frame-000087.color.png": "d030008fca54619463f218cf55c5fd7679bf2acd4c0d659d0e555be3f44488e8",
+    "7scenes/stairs/seq-04/frame-000087.depth.proj.png": "312a7f8db25588734a1b58561a74f616bc9d07c33f353f5b1d4dfc79648ed15c",
+    "7scenes/stairs/seq-04/frame-000087.pose.txt": "03afde4fd0ca58bb628640edcd92b3408f6705ccc2dcb51794a315f6d8b5acb5",
+    "7scenes/stairs/seq-04/frame-000187.color.png": "b9ca4183142d664c9bc226e0d9bf8bb978384f5129bb95ab0f0452ea102a7f1b",
+    "7scenes/stairs/seq-04/frame-000187.depth.proj.png": "1d6a626b9079f29b2ab04c62ac2d76f08686357f4cc6fde241a154ff9c5e2523",
+    "7scenes/stairs/seq-04/frame-000187.pose.txt": "c24513d6176f30d879326d85990d8d2ece137e1c317d1c102f757fd965a32344",
+    "7scenes/stairs/seq-04/frame-000287.color.png": "0b1727e4e128e37d28adbbce4ab008c1059f7a1e0add7cc99baf12205db68c26",
+    "7scenes/stairs/seq-04/frame-000287.depth.proj.png": "fd7570e3ce1e18abb32abca072b9d941630ff0725310040db36de052da12d096",
+    "7scenes/stairs/seq-04/frame-000287.pose.txt": "404454b24e486fb0e8bd8d07469ffca17c843a80d54e4c0526a64ba55ca9a026",
+    "7scenes/stairs/seq-04/frame-000387.color.png": "bf63139702f951091a5cee290c44b8ba91392260440cf691798013bbb64bfa2c",
+    "7scenes/stairs/seq-04/frame-000387.depth.proj.png": "42c15c41b1bf52fc73e86b7692401328ab98ab44de11a343225e77f7db34adbf",
+    "7scenes/stairs/seq-04/frame-000387.pose.txt": "7362d9db57b77fee3011a0d4d4ed4887d1804c5efac0071be094e37533808f79",
+    "7scenes/stairs/seq-04/frame-000487.color.png": "04e960b46a74fbf3d727aed930dc6a7b6320fb82adf6b9969667bdb9a603e9c5",
+    "7scenes/stairs/seq-04/frame-000487.depth.proj.png": "5a4f97010ccf4fc050d4c151341a322ae198f1b6abc0e2884454935b0c04806f",
+    "7scenes/stairs/seq-04/frame-000487.pose.txt": "17c9cf332d40a94ca15bff8be0899618ee53e2b2cd58eb00f6968e7b1be92fe4",
+    "eth3d/courtyard/images/custom_undistorted/DSC_0286.JPG": "e06f96bb23ec05f92d28ee72022656e2f9df82aff470792c757b25596e7972f9",
+    "eth3d/courtyard/ground_truth_depth/custom_undistorted/DSC_0286.JPG": "82454f9a388f0b14bee1dcc73a4148869a2044799145819c7f8ad00e49f2eb11",
+    "eth3d/courtyard/custom_undistorted_cam/DSC_0286.npz": "f5be4f8d48cceca04edcd9d5e0d118ecd0cc09b1b6f0e815579113fd07ffc529",
+    "eth3d/courtyard/images/custom_undistorted/DSC_0291.JPG": "adc9601acef932c60474f6135a31b3566bb82f6ae5a5793fbb5823859d5fbf9f",
+    "eth3d/courtyard/ground_truth_depth/custom_undistorted/DSC_0291.JPG": "879e62d58ecec32f7de4314e8bf4d82381fe0b81d2ababbc762d51ee7afea7dc",
+    "eth3d/courtyard/custom_undistorted_cam/DSC_0291.npz": "b64bbf5453007433200ad859e0776fc179184a05027c5ad0278f582772679d0a",
+    "eth3d/courtyard/images/custom_undistorted/DSC_0296.JPG": "a41bbcced9d332ae90a7ea81b3fb0d04565e4190661aa614b271ca915db30100",
+    "eth3d/courtyard/ground_truth_depth/custom_undistorted/DSC_0296.JPG": "d3c4e9fe6f32cfab46fc9f24770a19ac81b1fa57503ddee88bdca83a5e0485db",
+    "eth3d/courtyard/custom_undistorted_cam/DSC_0296.npz": "418f7f12ef594c2d3646e214d505446acbfd15432559a107cd135bc152876f44",
+    "eth3d/courtyard/images/custom_undistorted/DSC_0301.JPG": "907de706d2bf95dafc3fd8968f1d0a0c76d34755ba29d70e6dd6779beeca46b3",
+    "eth3d/courtyard/ground_truth_depth/custom_undistorted/DSC_0301.JPG": "7824efa41219b399e4f56dd243a5ac56d798fe7c47847545688d5dd82ef9b013",
+    "eth3d/courtyard/custom_undistorted_cam/DSC_0301.npz": "26f8969cfb2c7af2d59f5ab4403164a268f54445ca9398e796e74d119064c839",
+    "eth3d/courtyard/images/custom_undistorted/DSC_0303.JPG": "7ddb837f50dbaf3ae49de0a18613411bc1bb017a663254275b264f33dd21941d",
+    "eth3d/courtyard/ground_truth_depth/custom_undistorted/DSC_0303.JPG": "6c16cb2807ecac0c73717b5839e4739a03170f50f9c9fe9e3f3d2ed9bfe6d304",
+    "eth3d/courtyard/custom_undistorted_cam/DSC_0303.npz": "0f2d74765b5aa90a713eb10e0bf323264321a9539abb9830a0284b390b1364df",
+    "eth3d/courtyard/images/custom_undistorted/DSC_0306.JPG": "fceff602dd59c7bf96c0663f795d08c188a1188d2a2b105b3f001a1a265ed934",
+    "eth3d/courtyard/ground_truth_depth/custom_undistorted/DSC_0306.JPG": "8b5614708cc8881592cc08762bf8ceb5ff5d186621df2a6a87e90cd96eb54aa3",
+    "eth3d/courtyard/custom_undistorted_cam/DSC_0306.npz": "cf529bff068c6f83c6e5e9b5ba3e8010f448d17746922f4c3963225be793edb3",
+    "eth3d/courtyard/images/custom_undistorted/DSC_0308.JPG": "d73e78ea4216e1bf32dcd19bb00edfc0cfb2842c83e84b80cd56cbcbbf146fc1",
+    "eth3d/courtyard/ground_truth_depth/custom_undistorted/DSC_0308.JPG": "44c9178b65bac9b49c73efcd9fe6346b1dcfc840bfe379b39c08e39b71e5eda7",
+    "eth3d/courtyard/custom_undistorted_cam/DSC_0308.npz": "34b22f759572269be59f9efc08c2f15bdadd5a3a443642095762d07da58d72ad",
+    "eth3d/courtyard/images/custom_undistorted/DSC_0313.JPG": "0f14c27ef8b79939d19b40a28a0a0beee6fe0a7d0300fe7cf0d86ce4b90464a4",
+    "eth3d/courtyard/ground_truth_depth/custom_undistorted/DSC_0313.JPG": "283d7d3897bf552519993e942584229c60838659c891bf427375944a3966442e",
+    "eth3d/courtyard/custom_undistorted_cam/DSC_0313.npz": "47030200a71d8683244be10a94199eafea04b690f361eb70b87f9a81a7688f99",
+    "eth3d/courtyard/images/custom_undistorted/DSC_0318.JPG": "234d2c5fa16a7b9316505cc7867470712750f58f31912baaf43ef41de9db6a6a",
+    "eth3d/courtyard/ground_truth_depth/custom_undistorted/DSC_0318.JPG": "450a8eb222fb191c60cc82b5d8e5f4fb207ade22aefeee90a4b7c30193077aed",
+    "eth3d/courtyard/custom_undistorted_cam/DSC_0318.npz": "956894f4ddd544475f53aaca59aa7a5e18e282a9c68ac07fbdc292611ab12a86",
+    "eth3d/courtyard/images/custom_undistorted/DSC_0323.JPG": "2c81ba423cc705a3e16fcd1ed452cd92415abd1f00b635dc7acb6016bab195cb",
+    "eth3d/courtyard/ground_truth_depth/custom_undistorted/DSC_0323.JPG": "31acad83a803a6539c553adc24380d47952e759fc83f6cad1134aabc24d9b557",
+    "eth3d/courtyard/custom_undistorted_cam/DSC_0323.npz": "f974e3fe1c61d8ed809011f72166fc19958f4c28c5f4cfd759215a8ad726340b",
+    "eth3d/delivery_area/images/custom_undistorted/DSC_0677.JPG": "dd34e716caf258cfddc3e336a19d6954b6b2d1599bb972b4eec31eb4ac47be06",
+    "eth3d/delivery_area/ground_truth_depth/custom_undistorted/DSC_0677.JPG": "9ebee663923c26709a0974953e7b948b1f53fecb272d1bf2436a5f613e0e38ab",
+    "eth3d/delivery_area/custom_undistorted_cam/DSC_0677.npz": "bb3a94003cab7d8112b2f259e070692eb7a65a389366a7eb24edf978d70dc55d",
+    "eth3d/delivery_area/images/custom_undistorted/DSC_0682.JPG": "883ce70de5b766bacddb5fdb959643c114c671f14e49efdc388a504050545f3a",
+    "eth3d/delivery_area/ground_truth_depth/custom_undistorted/DSC_0682.JPG": "785446137da80a51223503cb2797718f349f488c52bc458252bd99b64c7a843c",
+    "eth3d/delivery_area/custom_undistorted_cam/DSC_0682.npz": "4f1720c260d6947c851015599c33bb7822793b8cf56e4bf0f6cce7b4eb872160",
+    "eth3d/delivery_area/images/custom_undistorted/DSC_0687.JPG": "404e2e694b965717ff56053dce8f0b0e0086f9003bdafc3208876debedbd35f2",
+    "eth3d/delivery_area/ground_truth_depth/custom_undistorted/DSC_0687.JPG": "85a12c0d833305dab60df458a7a8be8302b5c6e36a37e1836b785627dd9102e3",
+    "eth3d/delivery_area/custom_undistorted_cam/DSC_0687.npz": "6456acfe9786614ca2d6f29a8280062e0204071dfa267569f681b9117cec853e",
+    "eth3d/delivery_area/images/custom_undistorted/DSC_0692.JPG": "616f65faa7d98ae27480d8078eea31da25517472a045d1be78f08479e94008b0",
+    "eth3d/delivery_area/ground_truth_depth/custom_undistorted/DSC_0692.JPG": "3fd3737969214249c2580374cd53481f8449b633068dc282a25f7603436fff6a",
+    "eth3d/delivery_area/custom_undistorted_cam/DSC_0692.npz": "704fcbcb10a49861c6513c619297ab84e1dbcf05fe1061590820529fbcc6b1e8",
+    "eth3d/delivery_area/images/custom_undistorted/DSC_0697.JPG": "5bfa1e7cd00ddab1671c85e53a7f4f4d20b909d5bda76f34d401886addff0263",
+    "eth3d/delivery_area/ground_truth_depth/custom_undistorted/DSC_0697.JPG": "cd4173deb0fa5307bf8f1ffd95084839278ac809309e936defd4f996cc07c247",
+    "eth3d/delivery_area/custom_undistorted_cam/DSC_0697.npz": "f116f281db7dab7e82cf5b138aeeef7208e9189d778cc5e671835d7963fbd9bf",
+    "eth3d/electro/images/custom_undistorted/DSC_9278.JPG": "240beb8699e1a29b9f35df26fc820bf65faa54f128c7e6f5c8c9de5475e22a59",
+    "eth3d/electro/ground_truth_depth/custom_undistorted/DSC_9278.JPG": "d5354321a2dd9d8dc594eb1d2b36e82d36742366d0092c94a7f047867f152e98",
+    "eth3d/electro/custom_undistorted_cam/DSC_9278.npz": "224d971a7026c84a0e6fda9a6f010a38176d523d644c3744b97ee67b41c7c16e",
+    "eth3d/electro/images/custom_undistorted/DSC_9283.JPG": "668fd2ab93328a3fc22517fcfc248c84b8bc998d15f8bcf80adc5796019e8bbd",
+    "eth3d/electro/ground_truth_depth/custom_undistorted/DSC_9283.JPG": "a0483558d1a23c42b98bd995b20de5e7dba75dab28c86165da59c6d774a06551",
+    "eth3d/electro/custom_undistorted_cam/DSC_9283.npz": "8e1e56e7e7375278615efafa7d6c70763ea96ef5abc3a5b585ec04a258e9d77d",
+    "eth3d/electro/images/custom_undistorted/DSC_9290.JPG": "5118ea577e38ad1e37ec54d45c57796af719eccbe2ae367f9654b4587e0298fc",
+    "eth3d/electro/ground_truth_depth/custom_undistorted/DSC_9290.JPG": "2ba9324868ab3314c733cf9c6101f28523d7356a2954f35f63807c3a86665acc",
+    "eth3d/electro/custom_undistorted_cam/DSC_9290.npz": "ed629bb45d50a153005cab15308b07eb8095e333672da33997fdc16cb80819a0",
+    "eth3d/electro/images/custom_undistorted/DSC_9295.JPG": "3879d2ab218dabc658537ddf4bcf7e1c2a4090b43fa940aba4b892159f1325a9",
+    "eth3d/electro/ground_truth_depth/custom_undistorted/DSC_9295.JPG": "5fa5fa3d712bf22dffcedf42a6ac8f5a5bd3676f9e139830bd733fe32c0fe2b7",
+    "eth3d/electro/custom_undistorted_cam/DSC_9295.npz": "277d140f62c89fb05f13bf756fa020177d2c0cb5ce3c29bd26df9e7b38f89d26",
+    "eth3d/electro/images/custom_undistorted/DSC_9300.JPG": "cace553772ce65ae68ca3ead65252ade524758764eef40d6fb79dcea8abbcc91",
+    "eth3d/electro/ground_truth_depth/custom_undistorted/DSC_9300.JPG": "68b39c744abd6138522f2239abdfb30c2c5671b5d07491aeb41d691e12526de8",
+    "eth3d/electro/custom_undistorted_cam/DSC_9300.npz": "94cf77507dded6487981152d2361b11d65102f0b3c02d3b585ad889582d88e7d",
+    "eth3d/facade/images/custom_undistorted/DSC_0327.JPG": "141394797146b88d660cbac058d31807f2b80ac883fa32845aa62e8e0e428671",
+    "eth3d/facade/ground_truth_depth/custom_undistorted/DSC_0327.JPG": "30235e2fb6b4c468e24b0b27d2766150b9de45b56243723f91fda237311653ba",
+    "eth3d/facade/custom_undistorted_cam/DSC_0327.npz": "c715d6048d36b6e58ce4873bea089ab5428fd20111a6d707f2d1658c6c082e34",
+    "eth3d/facade/images/custom_undistorted/DSC_0332.JPG": "a479b22d52842c6e731b18e479de2ac959dafb2a026d3c96ac4895988276bd87",
+    "eth3d/facade/ground_truth_depth/custom_undistorted/DSC_0332.JPG": "a5949232ac46c33df807634b3e11b1f696d9bf16f8b309f6aad1312dd7b0103b",
+    "eth3d/facade/custom_undistorted_cam/DSC_0332.npz": "90f7ebc2ea7b838f4aa110274f8e42b45314dcbce1bc2865ddcc63313bf3bbeb",
+    "eth3d/facade/images/custom_undistorted/DSC_0337.JPG": "d9440ac912718a7519fccca17a64b61b399d818fe874e68c196fb99c9e4caf6d",
+    "eth3d/facade/ground_truth_depth/custom_undistorted/DSC_0337.JPG": "336cfa79d83f535db7a1f7d563825e3f768e1b82eb3d03c5a52a9bf75b4348b2",
+    "eth3d/facade/custom_undistorted_cam/DSC_0337.npz": "33453f9fbc88c85fc2aa3dd61e6ff3c566ec96095991d834cf63ea6183cb5470",
+    "eth3d/facade/images/custom_undistorted/DSC_0342.JPG": "546339923ee5d30894d49b16600372287cfab2ebb9b5de1d23762451732c12b6",
+    "eth3d/facade/ground_truth_depth/custom_undistorted/DSC_0342.JPG": "2075df652ad4b0a9930e9207989771d250c580ddef89df7dc50167d1347030d8",
+    "eth3d/facade/custom_undistorted_cam/DSC_0342.npz": "9e649a5e5d89d1a7fb160c28359010ce49c7642445e4badc3b7424e9379db43f",
+    "eth3d/facade/images/custom_undistorted/DSC_0347.JPG": "dad5d4c1f8a5aa4f87b4e1cedbd4c3cd9e582383e04e7f98e6bea9eae8f8027a",
+    "eth3d/facade/ground_truth_depth/custom_undistorted/DSC_0347.JPG": "c52f093539cd1428e50dd3a96c22f2fdce4833728624f94b547d8cf52bf2c8a9",
+    "eth3d/facade/custom_undistorted_cam/DSC_0347.npz": "1f11c73765b3dc3d47ad4e2171f3d6cb65cf4dbf17882501f16a2455ecc467e5",
+    "eth3d/kicker/images/custom_undistorted/DSC_6494.JPG": "7171f940da35b309d21cfd66e13a397f39e293ee69a1e9432e1d13542dfdc472",
+    "eth3d/kicker/ground_truth_depth/custom_undistorted/DSC_6494.JPG": "67e9f6b7279118644734191afa1051cd1652df9494f856efdf2c7c44572f1b90",
+    "eth3d/kicker/custom_undistorted_cam/DSC_6494.npz": "f970f6629345cc9632d0c222e00aad515f6bd9d12777a80414375a5b5eb8383c",
+    "eth3d/kicker/images/custom_undistorted/DSC_6500.JPG": "8b9ced11c2cd99f7948614cda4afa2c9021c927baddc820b3b5e02a48b7a5561",
+    "eth3d/kicker/ground_truth_depth/custom_undistorted/DSC_6500.JPG": "d7670e5e499c1a7fd727f603f03693432e36c5bcd83b358ebffddfcc59548458",
+    "eth3d/kicker/custom_undistorted_cam/DSC_6500.npz": "ab24836dde0d96083419283b07e059135ee179920c7004f1d9dff73a4e1ccebe",
+    "eth3d/kicker/images/custom_undistorted/DSC_6506.JPG": "70c5df3768929e372189659bf25315adf968336061e982de75c9c1e386bf927c",
+    "eth3d/kicker/ground_truth_depth/custom_undistorted/DSC_6506.JPG": "795defd5a7e5bc6b49c77a77dad35b73dc4512dc7a3e1b676d875f4567014505",
+    "eth3d/kicker/custom_undistorted_cam/DSC_6506.npz": "8f5a9a2b15c821ee1fe46c8ecedb9b1c613a883360b0008084f3477fe84ab912",
+    "eth3d/kicker/images/custom_undistorted/DSC_6511.JPG": "9ea8ffc18be854b584abff96f4a54f6cabf836820db348698fe15c6ef9bb766b",
+    "eth3d/kicker/ground_truth_depth/custom_undistorted/DSC_6511.JPG": "6f8b22c9cfb7c4f59134df856100695a3bf6279debf0d23f6c377ff4ae2b9550",
+    "eth3d/kicker/custom_undistorted_cam/DSC_6511.npz": "606d06f77f69b856e77f9488646364ab293262b21af35d4fe290e897a61cc9e8",
+    "eth3d/kicker/images/custom_undistorted/DSC_6516.JPG": "e3bda71cb57b90af60df1dc10a8db309a3ed75671148febfd2cd26021a6ff38d",
+    "eth3d/kicker/ground_truth_depth/custom_undistorted/DSC_6516.JPG": "559ab64f3d9a917c62971ea94607176788391b70334b8498d6c4977aa8388a1d",
+    "eth3d/kicker/custom_undistorted_cam/DSC_6516.npz": "208d3c27fea9fa1f778688d8a5c7bfd02874d3ce85c48a20947195eb8610d520",
+    "eth3d/office/images/custom_undistorted/DSC_0220.JPG": "604c5faa056bdd9276a1f9cdee18ba4e5fbfc5cdc1c5cf0a708bc3b5af09b0c5",
+    "eth3d/office/ground_truth_depth/custom_undistorted/DSC_0220.JPG": "3bb8c2e1ed0be0c8581ea94fd0014996f33c56b561651acec0b0ecd824fc50b1",
+    "eth3d/office/custom_undistorted_cam/DSC_0220.npz": "a2d66ee87e560cf2c34ca08cb5362ec6ae770fff4c916c79a217fe2d6bd96662",
+    "eth3d/office/images/custom_undistorted/DSC_0229.JPG": "70d0442c3d00c79e073721dcfa0bcce7e2960116ad8f244c58aa4c80fa9e1cd9",
+    "eth3d/office/ground_truth_depth/custom_undistorted/DSC_0229.JPG": "776ff25356facbfbecf136d7d5ee259a14418a446e3fa5668c4d1e2652073b8b",
+    "eth3d/office/custom_undistorted_cam/DSC_0229.npz": "4f7a7e127da26757efed4e9a90d23e47ce02344a8682909443ccd414aff3fd8f",
+    "eth3d/office/images/custom_undistorted/DSC_0237.JPG": "355f543d2c9e7408bf6eec7f231913c063cba445d67bb49902ed0d12244b7b5a",
+    "eth3d/office/ground_truth_depth/custom_undistorted/DSC_0237.JPG": "3ccf64ac274e0e8bc192a89a4e58c69430b9d7aa6426ce0f712c1fe9712bace2",
+    "eth3d/office/custom_undistorted_cam/DSC_0237.npz": "d46e048cce3618a28b1d37cbf7a8def2fbcfbfb0ab3d618273e4d8a8c8376588",
+    "eth3d/office/images/custom_undistorted/DSC_0242.JPG": "db1423fdaa66c06d416ac075c6a3d07b5273af5bc63b43b8d662266526913dc5",
+    "eth3d/office/ground_truth_depth/custom_undistorted/DSC_0242.JPG": "18c1f48b15efa35a2eeae6e11c94273071839ff20fc44ae14e68c3f53190e0bb",
+    "eth3d/office/custom_undistorted_cam/DSC_0242.npz": "f2e6d9b89ac16abab3bd81216b0955faa182c6195527192ec26562b439b0b991",
+    "eth3d/office/images/custom_undistorted/DSC_0251.JPG": "5b066642cefef327356df2cc181d43f27f4e85c2b7c466d30c0e93c2113e9216",
+    "eth3d/office/ground_truth_depth/custom_undistorted/DSC_0251.JPG": "8f619b91edf311ea5813e48bce95bef86eabbe5ee1c6983c0a325be03a5e56eb",
+    "eth3d/office/custom_undistorted_cam/DSC_0251.npz": "1af4f80578d41684ef392316f4faae705fbb9fc51ce6b95324f4b42b24640691",
+    "eth3d/playground/images/custom_undistorted/DSC_0570.JPG": "1e3cf4db45c9bec4af4abf41551ca6b3d2668e69f73acd134a979b82d7f303cc",
+    "eth3d/playground/ground_truth_depth/custom_undistorted/DSC_0570.JPG": "5a3caf46fa5abe0dc7c8407510e9abe0d4aa4d977cb04a82e961adb40fd35cdd",
+    "eth3d/playground/custom_undistorted_cam/DSC_0570.npz": "73be48d6257344d5d74a7274a2ae216d37890596767f33f0a2fc9930dccfeaeb",
+    "eth3d/playground/images/custom_undistorted/DSC_0575.JPG": "b172573898f7abf831b612293fa50a6bd5c908296a7e088e79152fe00a60eb87",
+    "eth3d/playground/ground_truth_depth/custom_undistorted/DSC_0575.JPG": "1444dd8e4d6eb9ed446e022f372d398ca928c93c7c7e00dc4b83a8ec9bcdaecb",
+    "eth3d/playground/custom_undistorted_cam/DSC_0575.npz": "b07441e3a7cbaf2967db0841616eb8dc83ee50f627a60d862de876b1ebd9a338",
+    "eth3d/playground/images/custom_undistorted/DSC_0580.JPG": "21bb5bc088e8dcaeb16cfaa36d7642b4906b060777bfcdaa3eab36f239454a30",
+    "eth3d/playground/ground_truth_depth/custom_undistorted/DSC_0580.JPG": "b8c4347111850fdf998bcbcde74f261b1e7067f03862d418a84790ccc2a972c7",
+    "eth3d/playground/custom_undistorted_cam/DSC_0580.npz": "b42873c0ee7ebb62520e20182c4d0483f71ea3d94a2617be5224d09c94b3d843",
+    "eth3d/playground/images/custom_undistorted/DSC_0585.JPG": "e93680e4b0ecd54c73e1e1a849a1f14e662a041029b247d22a87fd80bde8ef53",
+    "eth3d/playground/ground_truth_depth/custom_undistorted/DSC_0585.JPG": "89aff0ef2d9bbbf3f62a3a1bdedb9a3b7edda0e14b46d9c91f8977aa8024debb",
+    "eth3d/playground/custom_undistorted_cam/DSC_0585.npz": "b6fa4a377657de44f71b7d3fbf808677b35485cf693a10cf678dd899aacc3bcb",
+    "eth3d/playground/images/custom_undistorted/DSC_0590.JPG": "f81c815e5500ac3d917c99a7fc77009d70f229bb20c4552ffd4ba578e8bb39a5",
+    "eth3d/playground/ground_truth_depth/custom_undistorted/DSC_0590.JPG": "4df6e21c588bdffdaf983a4bba1c3c98ef468670e10d634cae75335f9d793a2d",
+    "eth3d/playground/custom_undistorted_cam/DSC_0590.npz": "144083931cb6fe008faed72e30eff3bce68f10ba4783e336ff549cf89a2a7673",
+    "eth3d/terrains/images/custom_undistorted/DSC_0649.JPG": "a98b807171fc2a22486fe679142b3d5710d857c70f45dd0703a6c8a7460dd662",
+    "eth3d/terrains/ground_truth_depth/custom_undistorted/DSC_0649.JPG": "76033313b91034e5037f786c2812d680745326d35b7a0364140248faf754fd13",
+    "eth3d/terrains/custom_undistorted_cam/DSC_0649.npz": "69bd579a9dc19852c281b950adcf863956d059110d970e9e1ec8eca04cbed336",
+    "eth3d/terrains/images/custom_undistorted/DSC_0654.JPG": "3b9304d7482b8ca13b59ef8a544b65c374acd64b4f2ed7eb8fa80dc060378973",
+    "eth3d/terrains/ground_truth_depth/custom_undistorted/DSC_0654.JPG": "78f00b4036e873bf2cdb51ea512684b41128f9046bc980a83b9efe15ab13af25",
+    "eth3d/terrains/custom_undistorted_cam/DSC_0654.npz": "1d237267d8e8122c8f4ea4c18069c6369d70ec811d695979d702bb8bf5d60f36",
+    "eth3d/terrains/images/custom_undistorted/DSC_0659.JPG": "fb308ac98808988f6ba40cfa704b69ea5d0b136d1cb7d679bb933cbcaf3f92ee",
+    "eth3d/terrains/ground_truth_depth/custom_undistorted/DSC_0659.JPG": "72dd1edee62b407f3ef301713a0298d833a7c362bbfe16509d01b0ab50eabccf",
+    "eth3d/terrains/custom_undistorted_cam/DSC_0659.npz": "a63d3d2998c69faa7fb639b0fdf0b05f3ce7281139cc9d9008cbd0a9da3bb399",
+    "eth3d/terrains/images/custom_undistorted/DSC_0664.JPG": "69750d38eb50f8c3f2f066e7e18a670043cd4e6211f6ab3f6f92002e979c4001",
+    "eth3d/terrains/ground_truth_depth/custom_undistorted/DSC_0664.JPG": "e55b3ed9530e177432ceda65da9ae1b1e1b5b3dc4b9469d4a92c2b94a48c7bbc",
+    "eth3d/terrains/custom_undistorted_cam/DSC_0664.npz": "87faa953347a412fccb413cd58dc6ccd15cd3dbf2d38f39a9b2711ea2e1bcd68",
+    "eth3d/terrains/images/custom_undistorted/DSC_0669.JPG": "a63d153f70b0c33d470852d6ebe17da30daf15338a9288198ff30d4ceff7630d",
+    "eth3d/terrains/ground_truth_depth/custom_undistorted/DSC_0669.JPG": "5eef8f173d968fb0bc4e3402b31d62b73d0b162c37b9917a07db89bb78411a40",
+    "eth3d/terrains/custom_undistorted_cam/DSC_0669.npz": "ffe9b82bc6b5a91a86a19e4101f41696f97b62474819a6ebc63828a18c6c1efc"
+  },
+  "planned_windows": [
+    {
+      "id": "window_7scenes_chess",
+      "cohort": "confirmation",
+      "policy": "native",
+      "dataset": "7scenes",
+      "scene": "chess/seq-05",
+      "frames": [
+        162,
+        362,
+        562,
+        762,
+        962
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 40,
+      "camera": "native",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "window_7scenes_fire",
+      "cohort": "confirmation",
+      "policy": "native",
+      "dataset": "7scenes",
+      "scene": "fire/seq-04",
+      "frames": [
+        162,
+        362,
+        562,
+        762,
+        962
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 40,
+      "camera": "native",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "window_7scenes_heads",
+      "cohort": "confirmation",
+      "policy": "native",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        75,
+        275,
+        475,
+        675,
+        875
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 40,
+      "camera": "native",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "window_7scenes_office",
+      "cohort": "confirmation",
+      "policy": "native",
+      "dataset": "7scenes",
+      "scene": "office/seq-06",
+      "frames": [
+        162,
+        362,
+        562,
+        762,
+        962
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 40,
+      "camera": "native",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "window_7scenes_pumpkin",
+      "cohort": "confirmation",
+      "policy": "native",
+      "dataset": "7scenes",
+      "scene": "pumpkin/seq-07",
+      "frames": [
+        162,
+        362,
+        562,
+        762,
+        962
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 40,
+      "camera": "native",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "window_7scenes_redkitchen",
+      "cohort": "confirmation",
+      "policy": "native",
+      "dataset": "7scenes",
+      "scene": "redkitchen/seq-04",
+      "frames": [
+        162,
+        362,
+        562,
+        762,
+        962
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 40,
+      "camera": "native",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "window_7scenes_stairs",
+      "cohort": "confirmation",
+      "policy": "native",
+      "dataset": "7scenes",
+      "scene": "stairs/seq-04",
+      "frames": [
+        87,
+        187,
+        287,
+        387,
+        487
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 40,
+      "camera": "native",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "window_eth3d_delivery_area",
+      "cohort": "confirmation",
+      "policy": "native",
+      "dataset": "eth3d",
+      "scene": "delivery_area",
+      "frames": [
+        2,
+        7,
+        12,
+        17,
+        22
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 40,
+      "camera": "native",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0677.JPG",
+        "DSC_0682.JPG",
+        "DSC_0687.JPG",
+        "DSC_0692.JPG",
+        "DSC_0697.JPG"
+      ]
+    },
+    {
+      "id": "window_eth3d_electro",
+      "cohort": "confirmation",
+      "policy": "native",
+      "dataset": "eth3d",
+      "scene": "electro",
+      "frames": [
+        21,
+        26,
+        31,
+        36,
+        41
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 40,
+      "camera": "native",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_9278.JPG",
+        "DSC_9283.JPG",
+        "DSC_9290.JPG",
+        "DSC_9295.JPG",
+        "DSC_9300.JPG"
+      ]
+    },
+    {
+      "id": "window_eth3d_facade",
+      "cohort": "confirmation",
+      "policy": "native",
+      "dataset": "eth3d",
+      "scene": "facade",
+      "frames": [
+        3,
+        8,
+        13,
+        18,
+        23
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 40,
+      "camera": "native",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0327.JPG",
+        "DSC_0332.JPG",
+        "DSC_0337.JPG",
+        "DSC_0342.JPG",
+        "DSC_0347.JPG"
+      ]
+    },
+    {
+      "id": "window_eth3d_kicker",
+      "cohort": "confirmation",
+      "policy": "native",
+      "dataset": "eth3d",
+      "scene": "kicker",
+      "frames": [
+        6,
+        11,
+        16,
+        21,
+        26
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 40,
+      "camera": "native",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_6494.JPG",
+        "DSC_6500.JPG",
+        "DSC_6506.JPG",
+        "DSC_6511.JPG",
+        "DSC_6516.JPG"
+      ]
+    },
+    {
+      "id": "window_eth3d_office",
+      "cohort": "confirmation",
+      "policy": "native",
+      "dataset": "eth3d",
+      "scene": "office",
+      "frames": [
+        1,
+        6,
+        11,
+        16,
+        21
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 40,
+      "camera": "native",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0220.JPG",
+        "DSC_0229.JPG",
+        "DSC_0237.JPG",
+        "DSC_0242.JPG",
+        "DSC_0251.JPG"
+      ]
+    },
+    {
+      "id": "window_eth3d_playground",
+      "cohort": "confirmation",
+      "policy": "native",
+      "dataset": "eth3d",
+      "scene": "playground",
+      "frames": [
+        3,
+        8,
+        13,
+        18,
+        23
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 40,
+      "camera": "native",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0570.JPG",
+        "DSC_0575.JPG",
+        "DSC_0580.JPG",
+        "DSC_0585.JPG",
+        "DSC_0590.JPG"
+      ]
+    },
+    {
+      "id": "window_eth3d_terrains",
+      "cohort": "confirmation",
+      "policy": "native",
+      "dataset": "eth3d",
+      "scene": "terrains",
+      "frames": [
+        19,
+        24,
+        29,
+        34,
+        39
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 40,
+      "camera": "native",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0649.JPG",
+        "DSC_0654.JPG",
+        "DSC_0659.JPG",
+        "DSC_0664.JPG",
+        "DSC_0669.JPG"
+      ]
+    },
+    {
+      "id": "window_eth3d_courtyard",
+      "cohort": "confirmation",
+      "policy": "native",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        17,
+        22,
+        27,
+        32,
+        37
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 40,
+      "camera": "native",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0303.JPG",
+        "DSC_0308.JPG",
+        "DSC_0313.JPG",
+        "DSC_0318.JPG",
+        "DSC_0323.JPG"
+      ]
+    }
+  ],
+  "development_windows": [
+    {
+      "id": "window_heads",
+      "cohort": "development",
+      "policy": "native",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 40,
+      "camera": "native",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "window_chess",
+      "cohort": "development",
+      "policy": "native",
+      "dataset": "7scenes",
+      "scene": "chess/seq-03",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 40,
+      "camera": "native",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "window_courtyard",
+      "cohort": "development",
+      "policy": "native",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 40,
+      "camera": "native",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    }
+  ],
+  "expected_confirmation_signatures": [
+    {
+      "scene": "chess/seq-05",
+      "dataset": "7scenes",
+      "frames": [
+        162,
+        362,
+        562,
+        762,
+        962
+      ],
+      "width": 518,
+      "input_sha256": "6d4dc452a7648d689e61a7c47f5ec085fe3764e5df83818c92987e4b013474bc",
+      "reference_sha256": "3b7d753cee40cdc4a7501034ec64253e1e5082db15af75a1c0d6053519897196",
+      "raster_shape": [
+        5,
+        3,
+        392,
+        518
+      ],
+      "valid_points": 724309,
+      "valid_points_by_view": [
+        151042,
+        152672,
+        135824,
+        145626,
+        139145
+      ]
+    },
+    {
+      "scene": "fire/seq-04",
+      "dataset": "7scenes",
+      "frames": [
+        162,
+        362,
+        562,
+        762,
+        962
+      ],
+      "width": 518,
+      "input_sha256": "264762b50e798cea595371f82708833a9d0a2a74a8857b2afaedd2913b75181a",
+      "reference_sha256": "cbb5e66da96a696279231848297aa4fd5962fba40811ff85ab7cb49608c4daea",
+      "raster_shape": [
+        5,
+        3,
+        392,
+        518
+      ],
+      "valid_points": 717971,
+      "valid_points_by_view": [
+        145922,
+        151635,
+        135329,
+        147398,
+        137687
+      ]
+    },
+    {
+      "scene": "heads/seq-01",
+      "dataset": "7scenes",
+      "frames": [
+        75,
+        275,
+        475,
+        675,
+        875
+      ],
+      "width": 518,
+      "input_sha256": "0c5b1821dde6612a7ac7b5aac6f9983c31a38d98d39987079499ece49b24b783",
+      "reference_sha256": "d225d42077f89f68dc4a2bce7de18a5657534d7ef4fe4be4e6aea495155197d6",
+      "raster_shape": [
+        5,
+        3,
+        392,
+        518
+      ],
+      "valid_points": 643867,
+      "valid_points_by_view": [
+        96460,
+        147280,
+        144929,
+        151326,
+        103872
+      ]
+    },
+    {
+      "scene": "office/seq-06",
+      "dataset": "7scenes",
+      "frames": [
+        162,
+        362,
+        562,
+        762,
+        962
+      ],
+      "width": 518,
+      "input_sha256": "4bbe5ceff20a52a56e25561c430676df6b0d483d1cc3c6b45d0a78c908ff6720",
+      "reference_sha256": "3bdb445ae8dc0e5a4d841958a70b7b844f86391be789067148e02d01b26e394b",
+      "raster_shape": [
+        5,
+        3,
+        392,
+        518
+      ],
+      "valid_points": 713004,
+      "valid_points_by_view": [
+        158785,
+        133807,
+        133227,
+        142850,
+        144335
+      ]
+    },
+    {
+      "scene": "pumpkin/seq-07",
+      "dataset": "7scenes",
+      "frames": [
+        162,
+        362,
+        562,
+        762,
+        962
+      ],
+      "width": 518,
+      "input_sha256": "61ce07de1c6dee1f70b6eb65da5c165fa3da641e608715036ab53f3082c82d43",
+      "reference_sha256": "3d666cc37fd0828431db7242566e4dc521fdcbf608169d6aa2ccb0659ee46429",
+      "raster_shape": [
+        5,
+        3,
+        392,
+        518
+      ],
+      "valid_points": 716776,
+      "valid_points_by_view": [
+        135254,
+        140556,
+        155961,
+        135628,
+        149377
+      ]
+    },
+    {
+      "scene": "redkitchen/seq-04",
+      "dataset": "7scenes",
+      "frames": [
+        162,
+        362,
+        562,
+        762,
+        962
+      ],
+      "width": 518,
+      "input_sha256": "75a232d07e47a3890f1c6b218cabdcc26b44b97cc1cd5d002ca16944cba2ff7c",
+      "reference_sha256": "dcc7efe42da71a528781e398e902b7564415381a0416becceec9ec995c501d98",
+      "raster_shape": [
+        5,
+        3,
+        392,
+        518
+      ],
+      "valid_points": 703414,
+      "valid_points_by_view": [
+        139183,
+        137217,
+        151852,
+        140245,
+        134917
+      ]
+    },
+    {
+      "scene": "stairs/seq-04",
+      "dataset": "7scenes",
+      "frames": [
+        87,
+        187,
+        287,
+        387,
+        487
+      ],
+      "width": 518,
+      "input_sha256": "f9be1a4f778d4f68ac883dc0d8e73653cb7b8610c82910cfc4776442edd6ebdb",
+      "reference_sha256": "fd896c443824190e6e249822f2c55d26eef6c1fc6be45e31e07e437ef3f58af6",
+      "raster_shape": [
+        5,
+        3,
+        392,
+        518
+      ],
+      "valid_points": 706784,
+      "valid_points_by_view": [
+        136063,
+        151370,
+        138152,
+        130837,
+        150362
+      ]
+    },
+    {
+      "scene": "delivery_area",
+      "dataset": "eth3d",
+      "frames": [
+        2,
+        7,
+        12,
+        17,
+        22
+      ],
+      "width": 518,
+      "images_expected": [
+        "DSC_0677.JPG",
+        "DSC_0682.JPG",
+        "DSC_0687.JPG",
+        "DSC_0692.JPG",
+        "DSC_0697.JPG"
+      ],
+      "input_sha256": "e3ad7cda3510b39ed343821fa90ec79bbcc2d2c1f0651eebbec4769a8a0830cc",
+      "reference_sha256": "ae732a16374d33ed2272ab001537750f1fc7ea640d0053b843707a9689d23183",
+      "raster_shape": [
+        5,
+        3,
+        350,
+        518
+      ],
+      "valid_points": 72623,
+      "valid_points_by_view": [
+        17081,
+        17486,
+        11693,
+        10894,
+        15469
+      ]
+    },
+    {
+      "scene": "electro",
+      "dataset": "eth3d",
+      "frames": [
+        21,
+        26,
+        31,
+        36,
+        41
+      ],
+      "width": 518,
+      "images_expected": [
+        "DSC_9278.JPG",
+        "DSC_9283.JPG",
+        "DSC_9290.JPG",
+        "DSC_9295.JPG",
+        "DSC_9300.JPG"
+      ],
+      "input_sha256": "26d4f2dc0c3e79be46d9823379f32973d482e0f5759bd352cea78a8ff2536293",
+      "reference_sha256": "e8fcb0e0b89a6bd559ddecfd67a1c9997d5939f3e9acf97d6d04bdb8c164fd89",
+      "raster_shape": [
+        5,
+        3,
+        350,
+        518
+      ],
+      "valid_points": 179260,
+      "valid_points_by_view": [
+        62165,
+        34563,
+        15102,
+        27044,
+        40386
+      ]
+    },
+    {
+      "scene": "facade",
+      "dataset": "eth3d",
+      "frames": [
+        3,
+        8,
+        13,
+        18,
+        23
+      ],
+      "width": 518,
+      "images_expected": [
+        "DSC_0327.JPG",
+        "DSC_0332.JPG",
+        "DSC_0337.JPG",
+        "DSC_0342.JPG",
+        "DSC_0347.JPG"
+      ],
+      "input_sha256": "1ba7fe9111249f2fafda4d493bd533f5e46d821a3ec91de0e06207b9f59ea846",
+      "reference_sha256": "e68db65d7d0d4749345a3584c3c55306fe75ae0dd74b77bd6cbe2f2f242df470",
+      "raster_shape": [
+        5,
+        3,
+        350,
+        518
+      ],
+      "valid_points": 153894,
+      "valid_points_by_view": [
+        14633,
+        29614,
+        35107,
+        36870,
+        37670
+      ]
+    },
+    {
+      "scene": "kicker",
+      "dataset": "eth3d",
+      "frames": [
+        6,
+        11,
+        16,
+        21,
+        26
+      ],
+      "width": 518,
+      "images_expected": [
+        "DSC_6494.JPG",
+        "DSC_6500.JPG",
+        "DSC_6506.JPG",
+        "DSC_6511.JPG",
+        "DSC_6516.JPG"
+      ],
+      "input_sha256": "c56c7c303cd8014732e887c66a78f4e491ab125c016ec860cd57fe9796add0db",
+      "reference_sha256": "ac99f733c0835462bdfcbaaa090a5cb125795cd03c1dd100e63272496bfa9f76",
+      "raster_shape": [
+        5,
+        3,
+        350,
+        518
+      ],
+      "valid_points": 155578,
+      "valid_points_by_view": [
+        10072,
+        67969,
+        37263,
+        13913,
+        26361
+      ]
+    },
+    {
+      "scene": "office",
+      "dataset": "eth3d",
+      "frames": [
+        1,
+        6,
+        11,
+        16,
+        21
+      ],
+      "width": 518,
+      "images_expected": [
+        "DSC_0220.JPG",
+        "DSC_0229.JPG",
+        "DSC_0237.JPG",
+        "DSC_0242.JPG",
+        "DSC_0251.JPG"
+      ],
+      "input_sha256": "0f4aa469dfba62382c79c4d050ddc2b8feb0d9c012ce7915cd9317abe35640dd",
+      "reference_sha256": "d503e700fc9f705fd6348ca25cd3361984def159ef050534eb34ef0fbaa5b13a",
+      "raster_shape": [
+        5,
+        3,
+        350,
+        518
+      ],
+      "valid_points": 197735,
+      "valid_points_by_view": [
+        47448,
+        45190,
+        58004,
+        25490,
+        21603
+      ]
+    },
+    {
+      "scene": "playground",
+      "dataset": "eth3d",
+      "frames": [
+        3,
+        8,
+        13,
+        18,
+        23
+      ],
+      "width": 518,
+      "images_expected": [
+        "DSC_0570.JPG",
+        "DSC_0575.JPG",
+        "DSC_0580.JPG",
+        "DSC_0585.JPG",
+        "DSC_0590.JPG"
+      ],
+      "input_sha256": "41e764b7ca0e907be9c2e4bed242d533a495fab5dc85c3aa61f6e94083fa7d44",
+      "reference_sha256": "b757be827fffca0abe158aea8398fca78adcc09e8e6ad6037313f586a9e1b6cd",
+      "raster_shape": [
+        5,
+        3,
+        350,
+        518
+      ],
+      "valid_points": 67485,
+      "valid_points_by_view": [
+        16634,
+        7548,
+        9897,
+        16461,
+        16945
+      ]
+    },
+    {
+      "scene": "terrains",
+      "dataset": "eth3d",
+      "frames": [
+        19,
+        24,
+        29,
+        34,
+        39
+      ],
+      "width": 518,
+      "images_expected": [
+        "DSC_0649.JPG",
+        "DSC_0654.JPG",
+        "DSC_0659.JPG",
+        "DSC_0664.JPG",
+        "DSC_0669.JPG"
+      ],
+      "input_sha256": "0ea4a42234aad4af40cb2ce0d305c4f0a462291cc0558d0d5b8fa766ff5a1551",
+      "reference_sha256": "c72ca7fdaae67bb9162618e06e6d0db51b868b89cd13b3df75a10215a02cd54b",
+      "raster_shape": [
+        5,
+        3,
+        350,
+        518
+      ],
+      "valid_points": 214818,
+      "valid_points_by_view": [
+        19671,
+        51800,
+        55776,
+        15062,
+        72509
+      ]
+    },
+    {
+      "scene": "courtyard",
+      "dataset": "eth3d",
+      "frames": [
+        17,
+        22,
+        27,
+        32,
+        37
+      ],
+      "width": 518,
+      "images_expected": [
+        "DSC_0303.JPG",
+        "DSC_0308.JPG",
+        "DSC_0313.JPG",
+        "DSC_0318.JPG",
+        "DSC_0323.JPG"
+      ],
+      "input_sha256": "0fc05f38ad9cc453667f8ec7808584436c26fa08d6f1d95cb5380bb1ee3ced27",
+      "reference_sha256": "a294274a98dc5384b5a3ebdf1ab85c1b29cd913d1368ffbc8161c8700ff94cdb",
+      "raster_shape": [
+        5,
+        3,
+        350,
+        518
+      ],
+      "valid_points": 242327,
+      "valid_points_by_view": [
+        17441,
+        26686,
+        59045,
+        68458,
+        70697
+      ]
+    }
+  ],
+  "decoded_windows": [
+    {
+      "scene": "chess/seq-05",
+      "dataset": "7scenes",
+      "frames": [
+        162,
+        362,
+        562,
+        762,
+        962
+      ],
+      "width": 518,
+      "input_sha256": "6d4dc452a7648d689e61a7c47f5ec085fe3764e5df83818c92987e4b013474bc",
+      "reference_sha256": "3b7d753cee40cdc4a7501034ec64253e1e5082db15af75a1c0d6053519897196",
+      "raster_shape": [
+        5,
+        3,
+        392,
+        518
+      ],
+      "valid_points": 724309,
+      "valid_points_by_view": [
+        151042,
+        152672,
+        135824,
+        145626,
+        139145
+      ]
+    },
+    {
+      "scene": "fire/seq-04",
+      "dataset": "7scenes",
+      "frames": [
+        162,
+        362,
+        562,
+        762,
+        962
+      ],
+      "width": 518,
+      "input_sha256": "264762b50e798cea595371f82708833a9d0a2a74a8857b2afaedd2913b75181a",
+      "reference_sha256": "cbb5e66da96a696279231848297aa4fd5962fba40811ff85ab7cb49608c4daea",
+      "raster_shape": [
+        5,
+        3,
+        392,
+        518
+      ],
+      "valid_points": 717971,
+      "valid_points_by_view": [
+        145922,
+        151635,
+        135329,
+        147398,
+        137687
+      ]
+    },
+    {
+      "scene": "heads/seq-01",
+      "dataset": "7scenes",
+      "frames": [
+        75,
+        275,
+        475,
+        675,
+        875
+      ],
+      "width": 518,
+      "input_sha256": "0c5b1821dde6612a7ac7b5aac6f9983c31a38d98d39987079499ece49b24b783",
+      "reference_sha256": "d225d42077f89f68dc4a2bce7de18a5657534d7ef4fe4be4e6aea495155197d6",
+      "raster_shape": [
+        5,
+        3,
+        392,
+        518
+      ],
+      "valid_points": 643867,
+      "valid_points_by_view": [
+        96460,
+        147280,
+        144929,
+        151326,
+        103872
+      ]
+    },
+    {
+      "scene": "office/seq-06",
+      "dataset": "7scenes",
+      "frames": [
+        162,
+        362,
+        562,
+        762,
+        962
+      ],
+      "width": 518,
+      "input_sha256": "4bbe5ceff20a52a56e25561c430676df6b0d483d1cc3c6b45d0a78c908ff6720",
+      "reference_sha256": "3bdb445ae8dc0e5a4d841958a70b7b844f86391be789067148e02d01b26e394b",
+      "raster_shape": [
+        5,
+        3,
+        392,
+        518
+      ],
+      "valid_points": 713004,
+      "valid_points_by_view": [
+        158785,
+        133807,
+        133227,
+        142850,
+        144335
+      ]
+    },
+    {
+      "scene": "pumpkin/seq-07",
+      "dataset": "7scenes",
+      "frames": [
+        162,
+        362,
+        562,
+        762,
+        962
+      ],
+      "width": 518,
+      "input_sha256": "61ce07de1c6dee1f70b6eb65da5c165fa3da641e608715036ab53f3082c82d43",
+      "reference_sha256": "3d666cc37fd0828431db7242566e4dc521fdcbf608169d6aa2ccb0659ee46429",
+      "raster_shape": [
+        5,
+        3,
+        392,
+        518
+      ],
+      "valid_points": 716776,
+      "valid_points_by_view": [
+        135254,
+        140556,
+        155961,
+        135628,
+        149377
+      ]
+    },
+    {
+      "scene": "redkitchen/seq-04",
+      "dataset": "7scenes",
+      "frames": [
+        162,
+        362,
+        562,
+        762,
+        962
+      ],
+      "width": 518,
+      "input_sha256": "75a232d07e47a3890f1c6b218cabdcc26b44b97cc1cd5d002ca16944cba2ff7c",
+      "reference_sha256": "dcc7efe42da71a528781e398e902b7564415381a0416becceec9ec995c501d98",
+      "raster_shape": [
+        5,
+        3,
+        392,
+        518
+      ],
+      "valid_points": 703414,
+      "valid_points_by_view": [
+        139183,
+        137217,
+        151852,
+        140245,
+        134917
+      ]
+    },
+    {
+      "scene": "stairs/seq-04",
+      "dataset": "7scenes",
+      "frames": [
+        87,
+        187,
+        287,
+        387,
+        487
+      ],
+      "width": 518,
+      "input_sha256": "f9be1a4f778d4f68ac883dc0d8e73653cb7b8610c82910cfc4776442edd6ebdb",
+      "reference_sha256": "fd896c443824190e6e249822f2c55d26eef6c1fc6be45e31e07e437ef3f58af6",
+      "raster_shape": [
+        5,
+        3,
+        392,
+        518
+      ],
+      "valid_points": 706784,
+      "valid_points_by_view": [
+        136063,
+        151370,
+        138152,
+        130837,
+        150362
+      ]
+    },
+    {
+      "scene": "delivery_area",
+      "dataset": "eth3d",
+      "frames": [
+        2,
+        7,
+        12,
+        17,
+        22
+      ],
+      "width": 518,
+      "images_expected": [
+        "DSC_0677.JPG",
+        "DSC_0682.JPG",
+        "DSC_0687.JPG",
+        "DSC_0692.JPG",
+        "DSC_0697.JPG"
+      ],
+      "input_sha256": "e3ad7cda3510b39ed343821fa90ec79bbcc2d2c1f0651eebbec4769a8a0830cc",
+      "reference_sha256": "ae732a16374d33ed2272ab001537750f1fc7ea640d0053b843707a9689d23183",
+      "raster_shape": [
+        5,
+        3,
+        350,
+        518
+      ],
+      "valid_points": 72623,
+      "valid_points_by_view": [
+        17081,
+        17486,
+        11693,
+        10894,
+        15469
+      ]
+    },
+    {
+      "scene": "electro",
+      "dataset": "eth3d",
+      "frames": [
+        21,
+        26,
+        31,
+        36,
+        41
+      ],
+      "width": 518,
+      "images_expected": [
+        "DSC_9278.JPG",
+        "DSC_9283.JPG",
+        "DSC_9290.JPG",
+        "DSC_9295.JPG",
+        "DSC_9300.JPG"
+      ],
+      "input_sha256": "26d4f2dc0c3e79be46d9823379f32973d482e0f5759bd352cea78a8ff2536293",
+      "reference_sha256": "e8fcb0e0b89a6bd559ddecfd67a1c9997d5939f3e9acf97d6d04bdb8c164fd89",
+      "raster_shape": [
+        5,
+        3,
+        350,
+        518
+      ],
+      "valid_points": 179260,
+      "valid_points_by_view": [
+        62165,
+        34563,
+        15102,
+        27044,
+        40386
+      ]
+    },
+    {
+      "scene": "facade",
+      "dataset": "eth3d",
+      "frames": [
+        3,
+        8,
+        13,
+        18,
+        23
+      ],
+      "width": 518,
+      "images_expected": [
+        "DSC_0327.JPG",
+        "DSC_0332.JPG",
+        "DSC_0337.JPG",
+        "DSC_0342.JPG",
+        "DSC_0347.JPG"
+      ],
+      "input_sha256": "1ba7fe9111249f2fafda4d493bd533f5e46d821a3ec91de0e06207b9f59ea846",
+      "reference_sha256": "e68db65d7d0d4749345a3584c3c55306fe75ae0dd74b77bd6cbe2f2f242df470",
+      "raster_shape": [
+        5,
+        3,
+        350,
+        518
+      ],
+      "valid_points": 153894,
+      "valid_points_by_view": [
+        14633,
+        29614,
+        35107,
+        36870,
+        37670
+      ]
+    },
+    {
+      "scene": "kicker",
+      "dataset": "eth3d",
+      "frames": [
+        6,
+        11,
+        16,
+        21,
+        26
+      ],
+      "width": 518,
+      "images_expected": [
+        "DSC_6494.JPG",
+        "DSC_6500.JPG",
+        "DSC_6506.JPG",
+        "DSC_6511.JPG",
+        "DSC_6516.JPG"
+      ],
+      "input_sha256": "c56c7c303cd8014732e887c66a78f4e491ab125c016ec860cd57fe9796add0db",
+      "reference_sha256": "ac99f733c0835462bdfcbaaa090a5cb125795cd03c1dd100e63272496bfa9f76",
+      "raster_shape": [
+        5,
+        3,
+        350,
+        518
+      ],
+      "valid_points": 155578,
+      "valid_points_by_view": [
+        10072,
+        67969,
+        37263,
+        13913,
+        26361
+      ]
+    },
+    {
+      "scene": "office",
+      "dataset": "eth3d",
+      "frames": [
+        1,
+        6,
+        11,
+        16,
+        21
+      ],
+      "width": 518,
+      "images_expected": [
+        "DSC_0220.JPG",
+        "DSC_0229.JPG",
+        "DSC_0237.JPG",
+        "DSC_0242.JPG",
+        "DSC_0251.JPG"
+      ],
+      "input_sha256": "0f4aa469dfba62382c79c4d050ddc2b8feb0d9c012ce7915cd9317abe35640dd",
+      "reference_sha256": "d503e700fc9f705fd6348ca25cd3361984def159ef050534eb34ef0fbaa5b13a",
+      "raster_shape": [
+        5,
+        3,
+        350,
+        518
+      ],
+      "valid_points": 197735,
+      "valid_points_by_view": [
+        47448,
+        45190,
+        58004,
+        25490,
+        21603
+      ]
+    },
+    {
+      "scene": "playground",
+      "dataset": "eth3d",
+      "frames": [
+        3,
+        8,
+        13,
+        18,
+        23
+      ],
+      "width": 518,
+      "images_expected": [
+        "DSC_0570.JPG",
+        "DSC_0575.JPG",
+        "DSC_0580.JPG",
+        "DSC_0585.JPG",
+        "DSC_0590.JPG"
+      ],
+      "input_sha256": "41e764b7ca0e907be9c2e4bed242d533a495fab5dc85c3aa61f6e94083fa7d44",
+      "reference_sha256": "b757be827fffca0abe158aea8398fca78adcc09e8e6ad6037313f586a9e1b6cd",
+      "raster_shape": [
+        5,
+        3,
+        350,
+        518
+      ],
+      "valid_points": 67485,
+      "valid_points_by_view": [
+        16634,
+        7548,
+        9897,
+        16461,
+        16945
+      ]
+    },
+    {
+      "scene": "terrains",
+      "dataset": "eth3d",
+      "frames": [
+        19,
+        24,
+        29,
+        34,
+        39
+      ],
+      "width": 518,
+      "images_expected": [
+        "DSC_0649.JPG",
+        "DSC_0654.JPG",
+        "DSC_0659.JPG",
+        "DSC_0664.JPG",
+        "DSC_0669.JPG"
+      ],
+      "input_sha256": "0ea4a42234aad4af40cb2ce0d305c4f0a462291cc0558d0d5b8fa766ff5a1551",
+      "reference_sha256": "c72ca7fdaae67bb9162618e06e6d0db51b868b89cd13b3df75a10215a02cd54b",
+      "raster_shape": [
+        5,
+        3,
+        350,
+        518
+      ],
+      "valid_points": 214818,
+      "valid_points_by_view": [
+        19671,
+        51800,
+        55776,
+        15062,
+        72509
+      ]
+    },
+    {
+      "scene": "courtyard",
+      "dataset": "eth3d",
+      "frames": [
+        17,
+        22,
+        27,
+        32,
+        37
+      ],
+      "width": 518,
+      "images_expected": [
+        "DSC_0303.JPG",
+        "DSC_0308.JPG",
+        "DSC_0313.JPG",
+        "DSC_0318.JPG",
+        "DSC_0323.JPG"
+      ],
+      "input_sha256": "0fc05f38ad9cc453667f8ec7808584436c26fa08d6f1d95cb5380bb1ee3ced27",
+      "reference_sha256": "a294274a98dc5384b5a3ebdf1ab85c1b29cd913d1368ffbc8161c8700ff94cdb",
+      "raster_shape": [
+        5,
+        3,
+        350,
+        518
+      ],
+      "valid_points": 242327,
+      "valid_points_by_view": [
+        17441,
+        26686,
+        59045,
+        68458,
+        70697
+      ]
+    },
+    {
+      "scene": "heads/seq-01",
+      "dataset": "7scenes",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "input_sha256": "5d5eebc36f9f41007f8ff929f515788a2de5310d2d5c5f6dc0fbdd9f245c5f59",
+      "reference_sha256": "1a7fe85c5377c154666faf712689ab6c70dbe1e9323bb5b6f0db3aacefc794e9",
+      "raster_shape": [
+        5,
+        3,
+        392,
+        518
+      ],
+      "valid_points": 688882,
+      "valid_points_by_view": [
+        131032,
+        149374,
+        138703,
+        121046,
+        148727
+      ]
+    },
+    {
+      "scene": "chess/seq-03",
+      "dataset": "7scenes",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "input_sha256": "b3e20cd11ae3ce16f119f2b8ef81dd54ce23bea6e80e584cd833811a72b9bcf2",
+      "reference_sha256": "8efdc6bd1ce9dc112fdece2512e8d5dfffeb42c14522866ee0017219b7747629",
+      "raster_shape": [
+        5,
+        3,
+        392,
+        518
+      ],
+      "valid_points": 716290,
+      "valid_points_by_view": [
+        139062,
+        150469,
+        149331,
+        145293,
+        132135
+      ]
+    },
+    {
+      "scene": "courtyard",
+      "dataset": "eth3d",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ],
+      "input_sha256": "11118e2d92cf2e139310182ddaf52552087b41a777be387918284ca1ef9fe66a",
+      "reference_sha256": "878e11275262424aae48c8e745ea5bc33c01d3a83aa3086df645ebc50b846e80",
+      "raster_shape": [
+        5,
+        3,
+        350,
+        518
+      ],
+      "valid_points": 77863,
+      "valid_points_by_view": [
+        21108,
+        12167,
+        14963,
+        12324,
+        17301
+      ]
+    }
+  ],
+  "thresholds": {
+    "loss_atol": 1e-06,
+    "output_rtol": 1e-05,
+    "gradient_rtol": 0.0001,
+    "rescore_mm": 0.01,
+    "uniform_peak_difference_MiB": 64,
+    "primary": 1.01,
+    "secondary": [
+      1.03,
+      1.05
+    ]
+  },
+  "upstream": "65387333877723cf99086f7f29089379dd50c59a",
+  "checkpoint_sha256": "f164acf60724910d8fe1578bb499d800850c7bb0948db7555c413f9fbe60467e",
+  "docker_image": "sha256:541dd1e09a32b8da7851929e73810882415aa30967b0ae2acd5473c9cf5ec3f1",
+  "allocator": "garbage_collection_threshold:0.75,expandable_segments:True",
+  "gpu_memory_fraction": 0.875,
+  "gpu": "NVIDIA GeForce RTX 3080",
+  "launch_timeout_seconds": 1200,
+  "rental_compute_usd": 0,
+  "registration": "screen",
+  "previous_registration_sha256": "1baeaa424ef3440597d0d62e760054baea95228f26cc286ecd7a9461a2da500e",
+  "initial_sha256": "1baeaa424ef3440597d0d62e760054baea95228f26cc286ecd7a9461a2da500e",
+  "authority_sha256_lf": {
+    "results/tco_five_view_replay_cache_v1/screen_plan.json": "fc97939c2e49ef3eda7b299b4198394249c745b06fff4df5b8a90f414df3dac6",
+    "results/tco_five_view_replay_cache_v1/initial_evidence.json": "be2bde50b727cb5906617482efcfaf174df7df0281877ad4ec9d6c40887c2fce",
+    "results/tco_five_view_replay_cache_v1/qualification.json": "b83319612affd8a57f30a2bd428404ae0dd95a8723dda4cd5769cd0502235d14",
+    "results/tco_five_view_replay_cache_v1/deterministic_extension.json": "f87996cfef80898fd1d1358cf1209bb8aefaad936942ebc654bc955d38703f24"
+  },
+  "jobs": [
+    {
+      "id": "det_match_camera",
+      "cohort": "deterministic_qualification",
+      "policy": "camera",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 294,
+      "seed": 42,
+      "steps": 2,
+      "camera": "checkpoint",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": "real",
+      "backend": "deterministic",
+      "gradient_mode": "replay",
+      "source_job": "grad_deterministic_capture"
+    },
+    {
+      "id": "det_match_last",
+      "cohort": "deterministic_qualification",
+      "policy": "last",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 294,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": "real",
+      "backend": "deterministic",
+      "gradient_mode": "replay",
+      "source_job": "grad_deterministic_capture"
+    },
+    {
+      "id": "single_heads_block_frame_0",
+      "cohort": "single_site",
+      "policy": "last",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "frame:0"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "single_heads_block_frame_23",
+      "cohort": "single_site",
+      "policy": "last",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "frame:23"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "single_courtyard_block_frame_15",
+      "cohort": "single_site",
+      "policy": "last",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "frame:15"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    },
+    {
+      "id": "diagnostic_heads_block",
+      "cohort": "screen_diagnostic",
+      "policy": "last",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "frame:7",
+        "global:7"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": "timeline",
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "single_heads_block_global_23",
+      "cohort": "single_site",
+      "policy": "last",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "global:23"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "single_heads_block_frame_7",
+      "cohort": "single_site",
+      "policy": "last",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "frame:7"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "single_courtyard_block_global_23",
+      "cohort": "single_site",
+      "policy": "last",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "global:23"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    },
+    {
+      "id": "single_courtyard_block_global_7",
+      "cohort": "single_site",
+      "policy": "last",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "global:7"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    },
+    {
+      "id": "single_courtyard_block_frame_7",
+      "cohort": "single_site",
+      "policy": "last",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "frame:7"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    },
+    {
+      "id": "single_heads_block_global_7",
+      "cohort": "single_site",
+      "policy": "last",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "global:7"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "single_heads_block_global_15",
+      "cohort": "single_site",
+      "policy": "last",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "global:15"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "single_heads_block_frame_15",
+      "cohort": "single_site",
+      "policy": "last",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "frame:15"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "diagnostic_courtyard_block",
+      "cohort": "screen_diagnostic",
+      "policy": "last",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "frame:7",
+        "global:7"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": "timeline",
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    },
+    {
+      "id": "single_courtyard_block_global_0",
+      "cohort": "single_site",
+      "policy": "last",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "global:0"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    },
+    {
+      "id": "single_courtyard_block_frame_0",
+      "cohort": "single_site",
+      "policy": "last",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "frame:0"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    },
+    {
+      "id": "single_heads_block_global_0",
+      "cohort": "single_site",
+      "policy": "last",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "global:0"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "single_courtyard_block_global_15",
+      "cohort": "single_site",
+      "policy": "last",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "global:15"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    },
+    {
+      "id": "single_courtyard_block_frame_23",
+      "cohort": "single_site",
+      "policy": "last",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "frame:23"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    }
+  ],
+  "candidate": null,
+  "configuration": null
+}
