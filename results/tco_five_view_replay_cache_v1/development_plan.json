@@ -1,0 +1,2149 @@
+{
+  "study": "tco_five_view_replay_cache_v1",
+  "parent_registration_sha256": "fd59bc8d568995c0a396d28c875da94f494a246915c122914c0b1ce16173ff27",
+  "authority_sha256_lf": {
+    "initial_evidence.json": "be2bde50b727cb5906617482efcfaf174df7df0281877ad4ec9d6c40887c2fce",
+    "combination_evidence.json": "5243035d8b36f9e5412e72ee0529613a390b88ba52033ee1b37a1bad886d70a5",
+    "qualification.json": "b83319612affd8a57f30a2bd428404ae0dd95a8723dda4cd5769cd0502235d14",
+    "deterministic_extension.json": "f87996cfef80898fd1d1358cf1209bb8aefaad936942ebc654bc955d38703f24",
+    "deterministic_screen_qualification.json": "682b8e96aafd953cec7d52735416ba467fe6797bd43038c7276bfbd31925b9f7"
+  },
+  "jobs": [
+    {
+      "id": "det_match_retention",
+      "cohort": "deterministic_qualification",
+      "policy": "retention",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 294,
+      "seed": 42,
+      "steps": 2,
+      "camera": "native",
+      "retention": "block",
+      "sites": [
+        "global:7",
+        "global:0"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": "real",
+      "backend": "deterministic",
+      "gradient_mode": "replay",
+      "source_job": "grad_deterministic_capture"
+    },
+    {
+      "id": "det_match_combined",
+      "cohort": "deterministic_qualification",
+      "policy": "combined",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 294,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "global:7",
+        "global:0"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": "real",
+      "backend": "deterministic",
+      "gradient_mode": "replay",
+      "source_job": "grad_deterministic_capture"
+    },
+    {
+      "id": "det_match_uniform",
+      "cohort": "deterministic_qualification",
+      "policy": "uniform",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 294,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "frame:6",
+        "frame:18"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": "real",
+      "backend": "deterministic",
+      "gradient_mode": "replay",
+      "source_job": "grad_deterministic_capture"
+    },
+    {
+      "id": "matched_retention",
+      "cohort": "qualification",
+      "policy": "retention",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 294,
+      "seed": 42,
+      "steps": 2,
+      "camera": "native",
+      "retention": "block",
+      "sites": [
+        "global:7",
+        "global:0"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": "real",
+      "gradient_mode": "replay",
+      "backend": "production",
+      "source_job": "grad_production_capture"
+    },
+    {
+      "id": "matched_combined",
+      "cohort": "qualification",
+      "policy": "combined",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 294,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "global:7",
+        "global:0"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": "real",
+      "gradient_mode": "replay",
+      "backend": "production",
+      "source_job": "grad_production_capture"
+    },
+    {
+      "id": "matched_uniform",
+      "cohort": "qualification",
+      "policy": "uniform",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 294,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "frame:6",
+        "frame:18"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": "real",
+      "gradient_mode": "replay",
+      "backend": "production",
+      "source_job": "grad_production_capture"
+    },
+    {
+      "id": "dev_heads_last_42",
+      "cohort": "development",
+      "policy": "last",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 40,
+      "camera": "last",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "dev_heads_camera_42",
+      "cohort": "development",
+      "policy": "camera",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 40,
+      "camera": "checkpoint",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "dev_heads_uniform_42",
+      "cohort": "development",
+      "policy": "uniform",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 40,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "frame:6",
+        "frame:18"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "dev_heads_combined_42",
+      "cohort": "development",
+      "policy": "combined",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 40,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "global:7",
+        "global:0"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "dev_heads_native_42",
+      "cohort": "development",
+      "policy": "native",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 40,
+      "camera": "native",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "dev_heads_retention_42",
+      "cohort": "development",
+      "policy": "retention",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 40,
+      "camera": "native",
+      "retention": "block",
+      "sites": [
+        "global:7",
+        "global:0"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "dev_heads_combined_43",
+      "cohort": "development",
+      "policy": "combined",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 43,
+      "steps": 40,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "global:7",
+        "global:0"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "dev_heads_camera_43",
+      "cohort": "development",
+      "policy": "camera",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 43,
+      "steps": 40,
+      "camera": "checkpoint",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "dev_heads_uniform_43",
+      "cohort": "development",
+      "policy": "uniform",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 43,
+      "steps": 40,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "frame:6",
+        "frame:18"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "dev_heads_native_43",
+      "cohort": "development",
+      "policy": "native",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 43,
+      "steps": 40,
+      "camera": "native",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "dev_heads_last_43",
+      "cohort": "development",
+      "policy": "last",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 43,
+      "steps": 40,
+      "camera": "last",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "dev_heads_retention_43",
+      "cohort": "development",
+      "policy": "retention",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 43,
+      "steps": 40,
+      "camera": "native",
+      "retention": "block",
+      "sites": [
+        "global:7",
+        "global:0"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "dev_heads_uniform_44",
+      "cohort": "development",
+      "policy": "uniform",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 44,
+      "steps": 40,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "frame:6",
+        "frame:18"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "dev_heads_last_44",
+      "cohort": "development",
+      "policy": "last",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 44,
+      "steps": 40,
+      "camera": "last",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "dev_heads_combined_44",
+      "cohort": "development",
+      "policy": "combined",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 44,
+      "steps": 40,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "global:7",
+        "global:0"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "dev_heads_camera_44",
+      "cohort": "development",
+      "policy": "camera",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 44,
+      "steps": 40,
+      "camera": "checkpoint",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "dev_heads_retention_44",
+      "cohort": "development",
+      "policy": "retention",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 44,
+      "steps": 40,
+      "camera": "native",
+      "retention": "block",
+      "sites": [
+        "global:7",
+        "global:0"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "dev_heads_native_44",
+      "cohort": "development",
+      "policy": "native",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 44,
+      "steps": 40,
+      "camera": "native",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "dev_chess_camera_42",
+      "cohort": "development",
+      "policy": "camera",
+      "dataset": "7scenes",
+      "scene": "chess/seq-03",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 40,
+      "camera": "checkpoint",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "dev_chess_retention_42",
+      "cohort": "development",
+      "policy": "retention",
+      "dataset": "7scenes",
+      "scene": "chess/seq-03",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 40,
+      "camera": "native",
+      "retention": "block",
+      "sites": [
+        "global:7",
+        "global:0"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "dev_chess_repeat_42",
+      "cohort": "repeatability",
+      "policy": "native",
+      "dataset": "7scenes",
+      "scene": "chess/seq-03",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 40,
+      "camera": "native",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": true,
+      "probe": null
+    },
+    {
+      "id": "dev_chess_native_42",
+      "cohort": "development",
+      "policy": "native",
+      "dataset": "7scenes",
+      "scene": "chess/seq-03",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 40,
+      "camera": "native",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": true,
+      "probe": null
+    },
+    {
+      "id": "dev_chess_combined_42",
+      "cohort": "development",
+      "policy": "combined",
+      "dataset": "7scenes",
+      "scene": "chess/seq-03",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 40,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "global:7",
+        "global:0"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "dev_chess_uniform_42",
+      "cohort": "development",
+      "policy": "uniform",
+      "dataset": "7scenes",
+      "scene": "chess/seq-03",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 40,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "frame:6",
+        "frame:18"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "dev_chess_last_42",
+      "cohort": "development",
+      "policy": "last",
+      "dataset": "7scenes",
+      "scene": "chess/seq-03",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 40,
+      "camera": "last",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "dev_chess_native_43",
+      "cohort": "development",
+      "policy": "native",
+      "dataset": "7scenes",
+      "scene": "chess/seq-03",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 43,
+      "steps": 40,
+      "camera": "native",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": true,
+      "probe": null
+    },
+    {
+      "id": "dev_chess_last_43",
+      "cohort": "development",
+      "policy": "last",
+      "dataset": "7scenes",
+      "scene": "chess/seq-03",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 43,
+      "steps": 40,
+      "camera": "last",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "dev_chess_repeat_43",
+      "cohort": "repeatability",
+      "policy": "native",
+      "dataset": "7scenes",
+      "scene": "chess/seq-03",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 43,
+      "steps": 40,
+      "camera": "native",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": true,
+      "probe": null
+    },
+    {
+      "id": "dev_chess_combined_43",
+      "cohort": "development",
+      "policy": "combined",
+      "dataset": "7scenes",
+      "scene": "chess/seq-03",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 43,
+      "steps": 40,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "global:7",
+        "global:0"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "dev_chess_retention_43",
+      "cohort": "development",
+      "policy": "retention",
+      "dataset": "7scenes",
+      "scene": "chess/seq-03",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 43,
+      "steps": 40,
+      "camera": "native",
+      "retention": "block",
+      "sites": [
+        "global:7",
+        "global:0"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "dev_chess_uniform_43",
+      "cohort": "development",
+      "policy": "uniform",
+      "dataset": "7scenes",
+      "scene": "chess/seq-03",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 43,
+      "steps": 40,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "frame:6",
+        "frame:18"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "dev_chess_camera_43",
+      "cohort": "development",
+      "policy": "camera",
+      "dataset": "7scenes",
+      "scene": "chess/seq-03",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 43,
+      "steps": 40,
+      "camera": "checkpoint",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "dev_chess_combined_44",
+      "cohort": "development",
+      "policy": "combined",
+      "dataset": "7scenes",
+      "scene": "chess/seq-03",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 44,
+      "steps": 40,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "global:7",
+        "global:0"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "dev_chess_retention_44",
+      "cohort": "development",
+      "policy": "retention",
+      "dataset": "7scenes",
+      "scene": "chess/seq-03",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 44,
+      "steps": 40,
+      "camera": "native",
+      "retention": "block",
+      "sites": [
+        "global:7",
+        "global:0"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "dev_chess_uniform_44",
+      "cohort": "development",
+      "policy": "uniform",
+      "dataset": "7scenes",
+      "scene": "chess/seq-03",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 44,
+      "steps": 40,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "frame:6",
+        "frame:18"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "dev_chess_repeat_44",
+      "cohort": "repeatability",
+      "policy": "native",
+      "dataset": "7scenes",
+      "scene": "chess/seq-03",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 44,
+      "steps": 40,
+      "camera": "native",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": true,
+      "probe": null
+    },
+    {
+      "id": "dev_chess_last_44",
+      "cohort": "development",
+      "policy": "last",
+      "dataset": "7scenes",
+      "scene": "chess/seq-03",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 44,
+      "steps": 40,
+      "camera": "last",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "dev_chess_native_44",
+      "cohort": "development",
+      "policy": "native",
+      "dataset": "7scenes",
+      "scene": "chess/seq-03",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 44,
+      "steps": 40,
+      "camera": "native",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": true,
+      "probe": null
+    },
+    {
+      "id": "dev_chess_camera_44",
+      "cohort": "development",
+      "policy": "camera",
+      "dataset": "7scenes",
+      "scene": "chess/seq-03",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 44,
+      "steps": 40,
+      "camera": "checkpoint",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "dev_courtyard_repeat_42",
+      "cohort": "repeatability",
+      "policy": "native",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 40,
+      "camera": "native",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": true,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    },
+    {
+      "id": "dev_courtyard_last_42",
+      "cohort": "development",
+      "policy": "last",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 40,
+      "camera": "last",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    },
+    {
+      "id": "dev_courtyard_combined_42",
+      "cohort": "development",
+      "policy": "combined",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 40,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "global:7",
+        "global:0"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    },
+    {
+      "id": "dev_courtyard_retention_42",
+      "cohort": "development",
+      "policy": "retention",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 40,
+      "camera": "native",
+      "retention": "block",
+      "sites": [
+        "global:7",
+        "global:0"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    },
+    {
+      "id": "dev_courtyard_uniform_42",
+      "cohort": "development",
+      "policy": "uniform",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 40,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "frame:6",
+        "frame:18"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    },
+    {
+      "id": "dev_courtyard_camera_42",
+      "cohort": "development",
+      "policy": "camera",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 40,
+      "camera": "checkpoint",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    },
+    {
+      "id": "dev_courtyard_native_42",
+      "cohort": "development",
+      "policy": "native",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 40,
+      "camera": "native",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": true,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    },
+    {
+      "id": "dev_courtyard_native_43",
+      "cohort": "development",
+      "policy": "native",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 43,
+      "steps": 40,
+      "camera": "native",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": true,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    },
+    {
+      "id": "dev_courtyard_retention_43",
+      "cohort": "development",
+      "policy": "retention",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 43,
+      "steps": 40,
+      "camera": "native",
+      "retention": "block",
+      "sites": [
+        "global:7",
+        "global:0"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    },
+    {
+      "id": "dev_courtyard_repeat_43",
+      "cohort": "repeatability",
+      "policy": "native",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 43,
+      "steps": 40,
+      "camera": "native",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": true,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    },
+    {
+      "id": "dev_courtyard_combined_43",
+      "cohort": "development",
+      "policy": "combined",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 43,
+      "steps": 40,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "global:7",
+        "global:0"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    },
+    {
+      "id": "dev_courtyard_camera_43",
+      "cohort": "development",
+      "policy": "camera",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 43,
+      "steps": 40,
+      "camera": "checkpoint",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    },
+    {
+      "id": "dev_courtyard_uniform_43",
+      "cohort": "development",
+      "policy": "uniform",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 43,
+      "steps": 40,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "frame:6",
+        "frame:18"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    },
+    {
+      "id": "dev_courtyard_last_43",
+      "cohort": "development",
+      "policy": "last",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 43,
+      "steps": 40,
+      "camera": "last",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    },
+    {
+      "id": "dev_courtyard_uniform_44",
+      "cohort": "development",
+      "policy": "uniform",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 44,
+      "steps": 40,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "frame:6",
+        "frame:18"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    },
+    {
+      "id": "dev_courtyard_combined_44",
+      "cohort": "development",
+      "policy": "combined",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 44,
+      "steps": 40,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "global:7",
+        "global:0"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    },
+    {
+      "id": "dev_courtyard_native_44",
+      "cohort": "development",
+      "policy": "native",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 44,
+      "steps": 40,
+      "camera": "native",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": true,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    },
+    {
+      "id": "dev_courtyard_camera_44",
+      "cohort": "development",
+      "policy": "camera",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 44,
+      "steps": 40,
+      "camera": "checkpoint",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    },
+    {
+      "id": "dev_courtyard_last_44",
+      "cohort": "development",
+      "policy": "last",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 44,
+      "steps": 40,
+      "camera": "last",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    },
+    {
+      "id": "dev_courtyard_retention_44",
+      "cohort": "development",
+      "policy": "retention",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 44,
+      "steps": 40,
+      "camera": "native",
+      "retention": "block",
+      "sites": [
+        "global:7",
+        "global:0"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    },
+    {
+      "id": "dev_courtyard_repeat_44",
+      "cohort": "repeatability",
+      "policy": "native",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 44,
+      "steps": 40,
+      "camera": "native",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": true,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    }
+  ],
+  "selected_combination": "block_rank2",
+  "chosen_uniform": "block_uniform2",
+  "uniform_difference_mib": [
+    0.0,
+    0.0
+  ],
+  "uniform_within_64_mib": true,
+  "resource_screen": {
+    "block_rank1": {
+      "configuration": {
+        "retention": "block",
+        "sites": [
+          "global:7"
+        ],
+        "operation": "attention"
+      },
+      "peaks": [
+        7452455936.0,
+        7081343488.0
+      ],
+      "mean_time_ratio": 1.009600183198648,
+      "time_ratios": [
+        0.9814956973201315,
+        1.0377046690771647
+      ],
+      "peak_ratios": [
+        0.8873315904813066,
+        0.879175252410704
+      ],
+      "fits_native": true
+    },
+    "block_uniform1": {
+      "configuration": {
+        "retention": "block",
+        "sites": [
+          "frame:12"
+        ],
+        "operation": "attention"
+      },
+      "peaks": [
+        7452455936.0,
+        7081343488.0
+      ],
+      "mean_time_ratio": 0.987232054530083,
+      "time_ratios": [
+        0.9562793165718771,
+        1.018184792488289
+      ],
+      "peak_ratios": [
+        0.8873315904813066,
+        0.879175252410704
+      ],
+      "fits_native": true
+    },
+    "block_rank2": {
+      "configuration": {
+        "retention": "block",
+        "sites": [
+          "global:7",
+          "global:0"
+        ],
+        "operation": "attention"
+      },
+      "peaks": [
+        7730181632.0,
+        7332153856.0
+      ],
+      "mean_time_ratio": 0.9892875775197068,
+      "time_ratios": [
+        0.9800226838407491,
+        0.9985524711986644
+      ],
+      "peak_ratios": [
+        0.9203991839921618,
+        0.9103142967131432
+      ],
+      "fits_native": true
+    },
+    "block_uniform2": {
+      "configuration": {
+        "retention": "block",
+        "sites": [
+          "frame:6",
+          "frame:18"
+        ],
+        "operation": "attention"
+      },
+      "peaks": [
+        7730181632.0,
+        7332153856.0
+      ],
+      "mean_time_ratio": 1.0006919968158572,
+      "time_ratios": [
+        0.9690624092177782,
+        1.0323215844139364
+      ],
+      "peak_ratios": [
+        0.9203991839921618,
+        0.9103142967131432
+      ],
+      "fits_native": true
+    },
+    "block_rank4": {
+      "configuration": {
+        "retention": "block",
+        "sites": [
+          "global:7",
+          "global:0",
+          "global:23",
+          "frame:23"
+        ],
+        "operation": "attention"
+      },
+      "peaks": [
+        8285633024.0,
+        7833774592.0
+      ],
+      "mean_time_ratio": 1.0007656189726466,
+      "time_ratios": [
+        0.9443735474911229,
+        1.0571576904541704
+      ],
+      "peak_ratios": [
+        0.9865343710138722,
+        0.9725923853180217
+      ],
+      "fits_native": true
+    },
+    "block_uniform4": {
+      "configuration": {
+        "retention": "block",
+        "sites": [
+          "frame:3",
+          "frame:9",
+          "frame:15",
+          "frame:21"
+        ],
+        "operation": "attention"
+      },
+      "peaks": [
+        8285633024.0,
+        7833774592.0
+      ],
+      "mean_time_ratio": 1.0038712846532292,
+      "time_ratios": [
+        0.9762686653311798,
+        1.0314739039752785
+      ],
+      "peak_ratios": [
+        0.9865343710138722,
+        0.9725923853180217
+      ],
+      "fits_native": true
+    }
+  },
+  "deterministic_extension": "Apply the same deterministic check to the selected retention sites."
+}
