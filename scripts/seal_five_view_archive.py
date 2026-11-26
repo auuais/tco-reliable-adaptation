@@ -48,7 +48,13 @@ def main():
     def validate(markers):
         return complete_markers(markers, validate_terminals)
 
-    with patch.multiple(core, terminal_targets=validate, TOOLS=(*core.TOOLS, Path(__file__).resolve())):
+    extension = core.ROOT / "results" / study.STUDY / "deterministic_extension.json"
+    sources = read(extension)["source_sha256_lf"] if extension.is_file() else {}
+    for name, digest in sources.items():
+        if sha(core.ROOT / name, text=True) != digest:
+            raise ValueError(f"Amended protocol source changed: {name}")
+    tools = (*core.TOOLS, Path(__file__).resolve(), *(core.ROOT / name for name in sources))
+    with patch.multiple(core, terminal_targets=validate, TOOLS=tools):
         study.main()
 
 
