@@ -1,0 +1,1925 @@
+{
+  "study": "tco_five_view_replay_cache_v1",
+  "stage": "development",
+  "backend": "deterministic",
+  "reference": "grad_deterministic_fallback_fixed_1",
+  "anchor": "grad_deterministic_capture",
+  "tolerance": {
+    "atol": 1e-06,
+    "gradient_rtol": 0.0001
+  },
+  "original_production_sha256": "a178c30079b38e75b13c25d42748a8fbbc6c89b07ae8af2b1ecad848369da780",
+  "original_production_eligible": [],
+  "eligible": [
+    "retention",
+    "combined",
+    "uniform"
+  ],
+  "newly_supported": [
+    "retention",
+    "combined",
+    "uniform"
+  ],
+  "policy_checks": {
+    "retention": {
+      "production_status": "unresolved_outside_observed_native_spread",
+      "candidate": "det_match_retention",
+      "additional_route": true,
+      "production_structural_controls": {
+        "camera_fixture": true,
+        "zero_step_and_leak": true,
+        "frozen_hash_unchanged": true,
+        "signed_negative": true,
+        "detached_opacity": true,
+        "native_depth_and_factors": true,
+        "retention_fixture": true,
+        "camera_tokens_step_1": true,
+        "camera_tokens_step_2": true
+      },
+      "same_policy_configuration": true,
+      "production_receipt": {
+        "attempts": [
+          "completed"
+        ],
+        "complete_sha256": "f65ab26e2fda7562191605139f958555f94e7bd8ef829bf7a2a27c8d2df26759",
+        "gradient_summary_sha256": "815b87279050fe63aa681c36c3bf84594e47160667317ec508a8d4d97af9fc38"
+      },
+      "deterministic": {
+        "status": "exact",
+        "passed": true,
+        "exact": true,
+        "updates": {
+          "1": {
+            "camera_tokens": {
+              "same_tokens": true,
+              "signed_gradient": {
+                "present": true,
+                "reference_present": true,
+                "passed": true,
+                "diff_norm": 0.0,
+                "ref_norm": 0.04795646406579458,
+                "norm": 0.04795646406579458,
+                "max_abs": 0.0,
+                "relative_l2": 0.0,
+                "cosine": 1.0,
+                "dot": 0.0022998224456938473
+              }
+            },
+            "loRA_adam": {
+              "preclip": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 0.638061465371083,
+                "reference_norm": 0.638061465371083,
+                "relative_l2": 0.0,
+                "cosine": 1.0000000000000002,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_B",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.00229986777254214,
+                  "norm": 0.00229986777254214,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 5.289391771177946e-06
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.0,
+                  "norm": 0.0,
+                  "max_abs": 0.0,
+                  "relative_l2": null,
+                  "cosine": null,
+                  "dot": 0.0
+                }
+              },
+              "grad": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 0.638061465371083,
+                "reference_norm": 0.638061465371083,
+                "relative_l2": 0.0,
+                "cosine": 1.0000000000000002,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_B",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.00229986777254214,
+                  "norm": 0.00229986777254214,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 5.289391771177946e-06
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.0,
+                  "norm": 0.0,
+                  "max_abs": 0.0,
+                  "relative_l2": null,
+                  "cosine": null,
+                  "dot": 0.0
+                }
+              },
+              "parameter": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 16.00502776886022,
+                "reference_norm": 16.00502776886022,
+                "relative_l2": 0.0,
+                "cosine": 1.0,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 1.1579492470935384,
+                  "norm": 1.1579492470935384,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 1.3408464588444926
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 1.1579492470935384,
+                  "norm": 1.1579492470935384,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 1.3408464588444926
+                }
+              },
+              "exp_avg": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 0.06380614762327004,
+                "reference_norm": 0.06380614762327004,
+                "relative_l2": 0.0,
+                "cosine": 1.0000000000000002,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_B",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.000229986781307031,
+                  "norm": 0.000229986781307031,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 5.289391957596811e-08
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.0,
+                  "norm": 0.0,
+                  "max_abs": 0.0,
+                  "relative_l2": null,
+                  "cosine": null,
+                  "dot": 0.0
+                }
+              },
+              "exp_avg_sq": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 4.578538272658622e-06,
+                "reference_norm": 4.578538272658622e-06,
+                "relative_l2": 0.0,
+                "cosine": 1.0,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_B",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 2.6054589401332264e-10,
+                  "norm": 2.6054589401332264e-10,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 6.788416288720156e-20
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.0,
+                  "norm": 0.0,
+                  "max_abs": 0.0,
+                  "relative_l2": null,
+                  "cosine": null,
+                  "dot": 0.0
+                }
+              },
+              "adam_step": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 19.595917942265423,
+                "reference_norm": 19.595917942265423,
+                "relative_l2": 0.0,
+                "cosine": 1.0000000000000002,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 1.0,
+                  "norm": 1.0,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 1.0
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 1.0,
+                  "norm": 1.0,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 1.0
+                }
+              },
+              "delta": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 0.39763078849535666,
+                "reference_norm": 0.39763078849535666,
+                "relative_l2": 0.0,
+                "cosine": 1.0,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_B",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.03252555677831365,
+                  "norm": 0.03252555677831365,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 0.0010579118437393047
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.0,
+                  "norm": 0.0,
+                  "max_abs": 0.0,
+                  "relative_l2": null,
+                  "cosine": null,
+                  "dot": 0.0
+                }
+              }
+            },
+            "passed": true,
+            "exact": true
+          },
+          "2": {
+            "camera_tokens": {
+              "same_tokens": true,
+              "signed_gradient": {
+                "present": true,
+                "reference_present": true,
+                "passed": true,
+                "diff_norm": 0.0,
+                "ref_norm": 0.041203046632771786,
+                "norm": 0.041203046632771786,
+                "max_abs": 0.0,
+                "relative_l2": 0.0,
+                "cosine": 1.0,
+                "dot": 0.0016976910518223664
+              }
+            },
+            "loRA_adam": {
+              "preclip": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 0.571818341815819,
+                "reference_norm": 0.571818341815819,
+                "relative_l2": 0.0,
+                "cosine": 0.9999999999999997,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.0005489768833424942,
+                  "norm": 0.0005489768833424942,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 3.0137561844443845e-07
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.0005489768833424942,
+                  "norm": 0.0005489768833424942,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 3.0137561844443845e-07
+                }
+              },
+              "grad": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 0.571818341815819,
+                "reference_norm": 0.571818341815819,
+                "relative_l2": 0.0,
+                "cosine": 0.9999999999999997,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.0005489768833424942,
+                  "norm": 0.0005489768833424942,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 3.0137561844443845e-07
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.0005489768833424942,
+                  "norm": 0.0005489768833424942,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 3.0137561844443845e-07
+                }
+              },
+              "parameter": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 16.030359460501845,
+                "reference_norm": 16.030359460501845,
+                "relative_l2": 0.0,
+                "cosine": 1.0,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 1.1583702588346663,
+                  "norm": 1.1583702588346663,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 1.341821656552692
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 1.1583702588346663,
+                  "norm": 1.1583702588346663,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 1.341821656552692
+                }
+              },
+              "exp_avg": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 0.11319927901776819,
+                "reference_norm": 0.11319927901776819,
+                "relative_l2": 0.0,
+                "cosine": 1.0,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 5.4897689090165124e-05,
+                  "norm": 5.4897689090165124e-05,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 3.013756267440435e-09
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 5.4897689090165124e-05,
+                  "norm": 5.4897689090165124e-05,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 3.013756267440435e-09
+                }
+              },
+              "exp_avg_sq": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 8.074585553982407e-06,
+                "reference_norm": 8.074585553982407e-06,
+                "relative_l2": 0.0,
+                "cosine": 0.9999999999999998,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 7.604262112067766e-11,
+                  "norm": 7.604262112067766e-11,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 5.782480226902932e-21
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 7.604262112067766e-11,
+                  "norm": 7.604262112067766e-11,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 5.782480226902932e-21
+                }
+              },
+              "adam_step": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 39.191835884530846,
+                "reference_norm": 39.191835884530846,
+                "relative_l2": 0.0,
+                "cosine": 1.0000000000000002,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 2.0,
+                  "norm": 2.0,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 4.0
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 2.0,
+                  "norm": 2.0,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 4.0
+                }
+              },
+              "delta": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 0.45348698080302985,
+                "reference_norm": 0.45348698080302985,
+                "relative_l2": 0.0,
+                "cosine": 1.0000000000000002,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.012847634720308514,
+                  "norm": 0.012847634720308514,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 0.00016506171790647682
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.012847634720308514,
+                  "norm": 0.012847634720308514,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 0.00016506171790647682
+                }
+              }
+            },
+            "passed": true,
+            "exact": true
+          }
+        },
+        "controls": {
+          "deterministic_backend": true,
+          "source_capture": true,
+          "original_signed_derivative": true,
+          "same_inputs": true,
+          "same_frozen_model": true,
+          "full_inventory": true,
+          "update_1_anchor_sha256": true,
+          "update_1_pre_state_sha256": true,
+          "update_1_boundary": true,
+          "update_1_derivatives": true,
+          "update_1_source_views": true,
+          "update_1_target_views": true,
+          "update_1_pre_forward_rng_sha256": true,
+          "update_1_pre_permutation_rng_sha256": true,
+          "update_1_post_permutation_rng_sha256": true,
+          "update_1_pre_backward_rng_sha256": true,
+          "update_1_captured_q_sha256": true,
+          "update_2_anchor_sha256": true,
+          "update_2_pre_state_sha256": true,
+          "update_2_boundary": true,
+          "update_2_derivatives": true,
+          "update_2_source_views": true,
+          "update_2_target_views": true,
+          "update_2_pre_forward_rng_sha256": true,
+          "update_2_pre_permutation_rng_sha256": true,
+          "update_2_post_permutation_rng_sha256": true,
+          "update_2_pre_backward_rng_sha256": true,
+          "update_2_captured_q_sha256": true
+        },
+        "sources": {
+          "det_match_retention": {
+            "attempts": [
+              "completed"
+            ],
+            "complete_sha256": "48009ca621f35ef2a02bf9bc694efdc42972d5c7e333d53068761ac1589ae90a",
+            "gradient_summary_sha256": "9fc468c02ccdd78670296093ba92e09a565ca69fd774954a62beed9701c829e3"
+          },
+          "grad_deterministic_fallback_fixed_1": {
+            "attempts": [
+              "completed"
+            ],
+            "complete_sha256": "83881f6a2bf30817c4068fe404f312cd88cfc84b608b83b3be44cf5871bc5114",
+            "gradient_summary_sha256": "9fc468c02ccdd78670296093ba92e09a565ca69fd774954a62beed9701c829e3"
+          },
+          "grad_deterministic_capture": {
+            "attempts": [
+              "completed"
+            ],
+            "complete_sha256": "698f7ecb1290d0ee554699b0cc25fef0536431e4c61585c0c45dae0ff856cee7",
+            "gradient_summary_sha256": "568f3d8d3e98712ec7963631e4025e5e119523468f64e9fbb038075002e76eb8"
+          }
+        }
+      },
+      "status": "exact"
+    },
+    "combined": {
+      "production_status": "unresolved_outside_observed_native_spread",
+      "candidate": "det_match_combined",
+      "additional_route": true,
+      "production_structural_controls": {
+        "camera_fixture": true,
+        "zero_step_and_leak": true,
+        "frozen_hash_unchanged": true,
+        "signed_negative": true,
+        "detached_opacity": true,
+        "native_depth_and_factors": true,
+        "retention_fixture": true,
+        "camera_tokens_step_1": true,
+        "camera_tokens_step_2": true
+      },
+      "same_policy_configuration": true,
+      "production_receipt": {
+        "attempts": [
+          "completed"
+        ],
+        "complete_sha256": "56569e808490e2faaff41b73252f88fbfeed217f502b65f9f841146893fbcdf4",
+        "gradient_summary_sha256": "815b87279050fe63aa681c36c3bf84594e47160667317ec508a8d4d97af9fc38"
+      },
+      "deterministic": {
+        "status": "exact",
+        "passed": true,
+        "exact": true,
+        "updates": {
+          "1": {
+            "camera_tokens": {
+              "same_tokens": true,
+              "signed_gradient": {
+                "present": true,
+                "reference_present": true,
+                "passed": true,
+                "diff_norm": 0.0,
+                "ref_norm": 0.04795646406579458,
+                "norm": 0.04795646406579458,
+                "max_abs": 0.0,
+                "relative_l2": 0.0,
+                "cosine": 1.0,
+                "dot": 0.0022998224456938473
+              }
+            },
+            "loRA_adam": {
+              "preclip": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 0.638061465371083,
+                "reference_norm": 0.638061465371083,
+                "relative_l2": 0.0,
+                "cosine": 1.0000000000000002,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_B",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.00229986777254214,
+                  "norm": 0.00229986777254214,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 5.289391771177946e-06
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.0,
+                  "norm": 0.0,
+                  "max_abs": 0.0,
+                  "relative_l2": null,
+                  "cosine": null,
+                  "dot": 0.0
+                }
+              },
+              "grad": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 0.638061465371083,
+                "reference_norm": 0.638061465371083,
+                "relative_l2": 0.0,
+                "cosine": 1.0000000000000002,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_B",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.00229986777254214,
+                  "norm": 0.00229986777254214,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 5.289391771177946e-06
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.0,
+                  "norm": 0.0,
+                  "max_abs": 0.0,
+                  "relative_l2": null,
+                  "cosine": null,
+                  "dot": 0.0
+                }
+              },
+              "parameter": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 16.00502776886022,
+                "reference_norm": 16.00502776886022,
+                "relative_l2": 0.0,
+                "cosine": 1.0,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 1.1579492470935384,
+                  "norm": 1.1579492470935384,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 1.3408464588444926
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 1.1579492470935384,
+                  "norm": 1.1579492470935384,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 1.3408464588444926
+                }
+              },
+              "exp_avg": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 0.06380614762327004,
+                "reference_norm": 0.06380614762327004,
+                "relative_l2": 0.0,
+                "cosine": 1.0000000000000002,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_B",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.000229986781307031,
+                  "norm": 0.000229986781307031,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 5.289391957596811e-08
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.0,
+                  "norm": 0.0,
+                  "max_abs": 0.0,
+                  "relative_l2": null,
+                  "cosine": null,
+                  "dot": 0.0
+                }
+              },
+              "exp_avg_sq": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 4.578538272658622e-06,
+                "reference_norm": 4.578538272658622e-06,
+                "relative_l2": 0.0,
+                "cosine": 1.0,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_B",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 2.6054589401332264e-10,
+                  "norm": 2.6054589401332264e-10,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 6.788416288720156e-20
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.0,
+                  "norm": 0.0,
+                  "max_abs": 0.0,
+                  "relative_l2": null,
+                  "cosine": null,
+                  "dot": 0.0
+                }
+              },
+              "adam_step": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 19.595917942265423,
+                "reference_norm": 19.595917942265423,
+                "relative_l2": 0.0,
+                "cosine": 1.0000000000000002,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 1.0,
+                  "norm": 1.0,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 1.0
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 1.0,
+                  "norm": 1.0,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 1.0
+                }
+              },
+              "delta": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 0.39763078849535666,
+                "reference_norm": 0.39763078849535666,
+                "relative_l2": 0.0,
+                "cosine": 1.0,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_B",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.03252555677831365,
+                  "norm": 0.03252555677831365,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 0.0010579118437393047
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.0,
+                  "norm": 0.0,
+                  "max_abs": 0.0,
+                  "relative_l2": null,
+                  "cosine": null,
+                  "dot": 0.0
+                }
+              }
+            },
+            "passed": true,
+            "exact": true
+          },
+          "2": {
+            "camera_tokens": {
+              "same_tokens": true,
+              "signed_gradient": {
+                "present": true,
+                "reference_present": true,
+                "passed": true,
+                "diff_norm": 0.0,
+                "ref_norm": 0.041203046632771786,
+                "norm": 0.041203046632771786,
+                "max_abs": 0.0,
+                "relative_l2": 0.0,
+                "cosine": 1.0,
+                "dot": 0.0016976910518223664
+              }
+            },
+            "loRA_adam": {
+              "preclip": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 0.571818341815819,
+                "reference_norm": 0.571818341815819,
+                "relative_l2": 0.0,
+                "cosine": 0.9999999999999997,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.0005489768833424942,
+                  "norm": 0.0005489768833424942,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 3.0137561844443845e-07
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.0005489768833424942,
+                  "norm": 0.0005489768833424942,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 3.0137561844443845e-07
+                }
+              },
+              "grad": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 0.571818341815819,
+                "reference_norm": 0.571818341815819,
+                "relative_l2": 0.0,
+                "cosine": 0.9999999999999997,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.0005489768833424942,
+                  "norm": 0.0005489768833424942,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 3.0137561844443845e-07
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.0005489768833424942,
+                  "norm": 0.0005489768833424942,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 3.0137561844443845e-07
+                }
+              },
+              "parameter": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 16.030359460501845,
+                "reference_norm": 16.030359460501845,
+                "relative_l2": 0.0,
+                "cosine": 1.0,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 1.1583702588346663,
+                  "norm": 1.1583702588346663,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 1.341821656552692
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 1.1583702588346663,
+                  "norm": 1.1583702588346663,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 1.341821656552692
+                }
+              },
+              "exp_avg": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 0.11319927901776819,
+                "reference_norm": 0.11319927901776819,
+                "relative_l2": 0.0,
+                "cosine": 1.0,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 5.4897689090165124e-05,
+                  "norm": 5.4897689090165124e-05,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 3.013756267440435e-09
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 5.4897689090165124e-05,
+                  "norm": 5.4897689090165124e-05,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 3.013756267440435e-09
+                }
+              },
+              "exp_avg_sq": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 8.074585553982407e-06,
+                "reference_norm": 8.074585553982407e-06,
+                "relative_l2": 0.0,
+                "cosine": 0.9999999999999998,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 7.604262112067766e-11,
+                  "norm": 7.604262112067766e-11,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 5.782480226902932e-21
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 7.604262112067766e-11,
+                  "norm": 7.604262112067766e-11,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 5.782480226902932e-21
+                }
+              },
+              "adam_step": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 39.191835884530846,
+                "reference_norm": 39.191835884530846,
+                "relative_l2": 0.0,
+                "cosine": 1.0000000000000002,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 2.0,
+                  "norm": 2.0,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 4.0
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 2.0,
+                  "norm": 2.0,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 4.0
+                }
+              },
+              "delta": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 0.45348698080302985,
+                "reference_norm": 0.45348698080302985,
+                "relative_l2": 0.0,
+                "cosine": 1.0000000000000002,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.012847634720308514,
+                  "norm": 0.012847634720308514,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 0.00016506171790647682
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.012847634720308514,
+                  "norm": 0.012847634720308514,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 0.00016506171790647682
+                }
+              }
+            },
+            "passed": true,
+            "exact": true
+          }
+        },
+        "controls": {
+          "deterministic_backend": true,
+          "source_capture": true,
+          "original_signed_derivative": true,
+          "same_inputs": true,
+          "same_frozen_model": true,
+          "full_inventory": true,
+          "update_1_anchor_sha256": true,
+          "update_1_pre_state_sha256": true,
+          "update_1_boundary": true,
+          "update_1_derivatives": true,
+          "update_1_source_views": true,
+          "update_1_target_views": true,
+          "update_1_pre_forward_rng_sha256": true,
+          "update_1_pre_permutation_rng_sha256": true,
+          "update_1_post_permutation_rng_sha256": true,
+          "update_1_pre_backward_rng_sha256": true,
+          "update_1_captured_q_sha256": true,
+          "update_2_anchor_sha256": true,
+          "update_2_pre_state_sha256": true,
+          "update_2_boundary": true,
+          "update_2_derivatives": true,
+          "update_2_source_views": true,
+          "update_2_target_views": true,
+          "update_2_pre_forward_rng_sha256": true,
+          "update_2_pre_permutation_rng_sha256": true,
+          "update_2_post_permutation_rng_sha256": true,
+          "update_2_pre_backward_rng_sha256": true,
+          "update_2_captured_q_sha256": true
+        },
+        "sources": {
+          "det_match_combined": {
+            "attempts": [
+              "completed"
+            ],
+            "complete_sha256": "905ebfaf4338e04b3116c7a0866e5ff4bf72a166c4a94d8be6d06617698af292",
+            "gradient_summary_sha256": "9fc468c02ccdd78670296093ba92e09a565ca69fd774954a62beed9701c829e3"
+          },
+          "grad_deterministic_fallback_fixed_1": {
+            "attempts": [
+              "completed"
+            ],
+            "complete_sha256": "83881f6a2bf30817c4068fe404f312cd88cfc84b608b83b3be44cf5871bc5114",
+            "gradient_summary_sha256": "9fc468c02ccdd78670296093ba92e09a565ca69fd774954a62beed9701c829e3"
+          },
+          "grad_deterministic_capture": {
+            "attempts": [
+              "completed"
+            ],
+            "complete_sha256": "698f7ecb1290d0ee554699b0cc25fef0536431e4c61585c0c45dae0ff856cee7",
+            "gradient_summary_sha256": "568f3d8d3e98712ec7963631e4025e5e119523468f64e9fbb038075002e76eb8"
+          }
+        }
+      },
+      "status": "exact"
+    },
+    "uniform": {
+      "production_status": "unresolved_outside_observed_native_spread",
+      "candidate": "det_match_uniform",
+      "additional_route": true,
+      "production_structural_controls": {
+        "camera_fixture": true,
+        "zero_step_and_leak": true,
+        "frozen_hash_unchanged": true,
+        "signed_negative": true,
+        "detached_opacity": true,
+        "native_depth_and_factors": true,
+        "retention_fixture": true,
+        "camera_tokens_step_1": true,
+        "camera_tokens_step_2": true
+      },
+      "same_policy_configuration": true,
+      "production_receipt": {
+        "attempts": [
+          "completed"
+        ],
+        "complete_sha256": "e4af587883739247ecba4093126da7bdf20a3050bc8518baa76966034ccacdf9",
+        "gradient_summary_sha256": "815b87279050fe63aa681c36c3bf84594e47160667317ec508a8d4d97af9fc38"
+      },
+      "deterministic": {
+        "status": "exact",
+        "passed": true,
+        "exact": true,
+        "updates": {
+          "1": {
+            "camera_tokens": {
+              "same_tokens": true,
+              "signed_gradient": {
+                "present": true,
+                "reference_present": true,
+                "passed": true,
+                "diff_norm": 0.0,
+                "ref_norm": 0.04795646406579458,
+                "norm": 0.04795646406579458,
+                "max_abs": 0.0,
+                "relative_l2": 0.0,
+                "cosine": 1.0,
+                "dot": 0.0022998224456938473
+              }
+            },
+            "loRA_adam": {
+              "preclip": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 0.638061465371083,
+                "reference_norm": 0.638061465371083,
+                "relative_l2": 0.0,
+                "cosine": 1.0000000000000002,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_B",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.00229986777254214,
+                  "norm": 0.00229986777254214,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 5.289391771177946e-06
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.0,
+                  "norm": 0.0,
+                  "max_abs": 0.0,
+                  "relative_l2": null,
+                  "cosine": null,
+                  "dot": 0.0
+                }
+              },
+              "grad": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 0.638061465371083,
+                "reference_norm": 0.638061465371083,
+                "relative_l2": 0.0,
+                "cosine": 1.0000000000000002,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_B",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.00229986777254214,
+                  "norm": 0.00229986777254214,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 5.289391771177946e-06
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.0,
+                  "norm": 0.0,
+                  "max_abs": 0.0,
+                  "relative_l2": null,
+                  "cosine": null,
+                  "dot": 0.0
+                }
+              },
+              "parameter": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 16.00502776886022,
+                "reference_norm": 16.00502776886022,
+                "relative_l2": 0.0,
+                "cosine": 1.0,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 1.1579492470935384,
+                  "norm": 1.1579492470935384,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 1.3408464588444926
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 1.1579492470935384,
+                  "norm": 1.1579492470935384,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 1.3408464588444926
+                }
+              },
+              "exp_avg": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 0.06380614762327004,
+                "reference_norm": 0.06380614762327004,
+                "relative_l2": 0.0,
+                "cosine": 1.0000000000000002,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_B",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.000229986781307031,
+                  "norm": 0.000229986781307031,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 5.289391957596811e-08
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.0,
+                  "norm": 0.0,
+                  "max_abs": 0.0,
+                  "relative_l2": null,
+                  "cosine": null,
+                  "dot": 0.0
+                }
+              },
+              "exp_avg_sq": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 4.578538272658622e-06,
+                "reference_norm": 4.578538272658622e-06,
+                "relative_l2": 0.0,
+                "cosine": 1.0,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_B",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 2.6054589401332264e-10,
+                  "norm": 2.6054589401332264e-10,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 6.788416288720156e-20
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.0,
+                  "norm": 0.0,
+                  "max_abs": 0.0,
+                  "relative_l2": null,
+                  "cosine": null,
+                  "dot": 0.0
+                }
+              },
+              "adam_step": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 19.595917942265423,
+                "reference_norm": 19.595917942265423,
+                "relative_l2": 0.0,
+                "cosine": 1.0000000000000002,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 1.0,
+                  "norm": 1.0,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 1.0
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 1.0,
+                  "norm": 1.0,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 1.0
+                }
+              },
+              "delta": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 0.39763078849535666,
+                "reference_norm": 0.39763078849535666,
+                "relative_l2": 0.0,
+                "cosine": 1.0,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_B",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.03252555677831365,
+                  "norm": 0.03252555677831365,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 0.0010579118437393047
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.0,
+                  "norm": 0.0,
+                  "max_abs": 0.0,
+                  "relative_l2": null,
+                  "cosine": null,
+                  "dot": 0.0
+                }
+              }
+            },
+            "passed": true,
+            "exact": true
+          },
+          "2": {
+            "camera_tokens": {
+              "same_tokens": true,
+              "signed_gradient": {
+                "present": true,
+                "reference_present": true,
+                "passed": true,
+                "diff_norm": 0.0,
+                "ref_norm": 0.041203046632771786,
+                "norm": 0.041203046632771786,
+                "max_abs": 0.0,
+                "relative_l2": 0.0,
+                "cosine": 1.0,
+                "dot": 0.0016976910518223664
+              }
+            },
+            "loRA_adam": {
+              "preclip": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 0.571818341815819,
+                "reference_norm": 0.571818341815819,
+                "relative_l2": 0.0,
+                "cosine": 0.9999999999999997,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.0005489768833424942,
+                  "norm": 0.0005489768833424942,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 3.0137561844443845e-07
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.0005489768833424942,
+                  "norm": 0.0005489768833424942,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 3.0137561844443845e-07
+                }
+              },
+              "grad": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 0.571818341815819,
+                "reference_norm": 0.571818341815819,
+                "relative_l2": 0.0,
+                "cosine": 0.9999999999999997,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.0005489768833424942,
+                  "norm": 0.0005489768833424942,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 3.0137561844443845e-07
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.0005489768833424942,
+                  "norm": 0.0005489768833424942,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 3.0137561844443845e-07
+                }
+              },
+              "parameter": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 16.030359460501845,
+                "reference_norm": 16.030359460501845,
+                "relative_l2": 0.0,
+                "cosine": 1.0,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 1.1583702588346663,
+                  "norm": 1.1583702588346663,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 1.341821656552692
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 1.1583702588346663,
+                  "norm": 1.1583702588346663,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 1.341821656552692
+                }
+              },
+              "exp_avg": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 0.11319927901776819,
+                "reference_norm": 0.11319927901776819,
+                "relative_l2": 0.0,
+                "cosine": 1.0,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 5.4897689090165124e-05,
+                  "norm": 5.4897689090165124e-05,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 3.013756267440435e-09
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 5.4897689090165124e-05,
+                  "norm": 5.4897689090165124e-05,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 3.013756267440435e-09
+                }
+              },
+              "exp_avg_sq": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 8.074585553982407e-06,
+                "reference_norm": 8.074585553982407e-06,
+                "relative_l2": 0.0,
+                "cosine": 0.9999999999999998,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 7.604262112067766e-11,
+                  "norm": 7.604262112067766e-11,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 5.782480226902932e-21
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 7.604262112067766e-11,
+                  "norm": 7.604262112067766e-11,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 5.782480226902932e-21
+                }
+              },
+              "adam_step": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 39.191835884530846,
+                "reference_norm": 39.191835884530846,
+                "relative_l2": 0.0,
+                "cosine": 1.0000000000000002,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 2.0,
+                  "norm": 2.0,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 4.0
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 2.0,
+                  "norm": 2.0,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 4.0
+                }
+              },
+              "delta": {
+                "count": 384,
+                "passed": true,
+                "failed": 0,
+                "diff_norm": 0.0,
+                "actual_norm": 0.45348698080302985,
+                "reference_norm": 0.45348698080302985,
+                "relative_l2": 0.0,
+                "cosine": 1.0000000000000002,
+                "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "worst_relative": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.012847634720308514,
+                  "norm": 0.012847634720308514,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 0.00016506171790647682
+                },
+                "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+                "largest_difference": {
+                  "present": true,
+                  "reference_present": true,
+                  "passed": true,
+                  "diff_norm": 0.0,
+                  "ref_norm": 0.012847634720308514,
+                  "norm": 0.012847634720308514,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "cosine": 1.0,
+                  "dot": 0.00016506171790647682
+                }
+              }
+            },
+            "passed": true,
+            "exact": true
+          }
+        },
+        "controls": {
+          "deterministic_backend": true,
+          "source_capture": true,
+          "original_signed_derivative": true,
+          "same_inputs": true,
+          "same_frozen_model": true,
+          "full_inventory": true,
+          "update_1_anchor_sha256": true,
+          "update_1_pre_state_sha256": true,
+          "update_1_boundary": true,
+          "update_1_derivatives": true,
+          "update_1_source_views": true,
+          "update_1_target_views": true,
+          "update_1_pre_forward_rng_sha256": true,
+          "update_1_pre_permutation_rng_sha256": true,
+          "update_1_post_permutation_rng_sha256": true,
+          "update_1_pre_backward_rng_sha256": true,
+          "update_1_captured_q_sha256": true,
+          "update_2_anchor_sha256": true,
+          "update_2_pre_state_sha256": true,
+          "update_2_boundary": true,
+          "update_2_derivatives": true,
+          "update_2_source_views": true,
+          "update_2_target_views": true,
+          "update_2_pre_forward_rng_sha256": true,
+          "update_2_pre_permutation_rng_sha256": true,
+          "update_2_post_permutation_rng_sha256": true,
+          "update_2_pre_backward_rng_sha256": true,
+          "update_2_captured_q_sha256": true
+        },
+        "sources": {
+          "det_match_uniform": {
+            "attempts": [
+              "completed"
+            ],
+            "complete_sha256": "40f88de422c1ee7182e52d93a420c17dc6b36224a58040ced5a3cc6fbfb392e4",
+            "gradient_summary_sha256": "9fc468c02ccdd78670296093ba92e09a565ca69fd774954a62beed9701c829e3"
+          },
+          "grad_deterministic_fallback_fixed_1": {
+            "attempts": [
+              "completed"
+            ],
+            "complete_sha256": "83881f6a2bf30817c4068fe404f312cd88cfc84b608b83b3be44cf5871bc5114",
+            "gradient_summary_sha256": "9fc468c02ccdd78670296093ba92e09a565ca69fd774954a62beed9701c829e3"
+          },
+          "grad_deterministic_capture": {
+            "attempts": [
+              "completed"
+            ],
+            "complete_sha256": "698f7ecb1290d0ee554699b0cc25fef0536431e4c61585c0c45dae0ff856cee7",
+            "gradient_summary_sha256": "568f3d8d3e98712ec7963631e4025e5e119523468f64e9fbb038075002e76eb8"
+          }
+        }
+      },
+      "status": "exact"
+    },
+    "camera_retention": {
+      "production_status": "unavailable",
+      "candidate": "det_match_camera_retention",
+      "additional_route": false,
+      "status": "unavailable"
+    }
+  },
+  "rental_compute_usd": 0
+}
