@@ -1,0 +1,657 @@
+{
+  "study": "tco_five_view_replay_cache_v1",
+  "parent_registration_sha256": "1baeaa424ef3440597d0d62e760054baea95228f26cc286ecd7a9461a2da500e",
+  "authority_sha256_lf": {
+    "initial_evidence.json": "be2bde50b727cb5906617482efcfaf174df7df0281877ad4ec9d6c40887c2fce",
+    "qualification.json": "b83319612affd8a57f30a2bd428404ae0dd95a8723dda4cd5769cd0502235d14",
+    "deterministic_extension.json": "f87996cfef80898fd1d1358cf1209bb8aefaad936942ebc654bc955d38703f24"
+  },
+  "jobs": [
+    {
+      "id": "det_match_camera",
+      "cohort": "deterministic_qualification",
+      "policy": "camera",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 294,
+      "seed": 42,
+      "steps": 2,
+      "camera": "checkpoint",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": "real",
+      "backend": "deterministic",
+      "gradient_mode": "replay",
+      "source_job": "grad_deterministic_capture"
+    },
+    {
+      "id": "det_match_last",
+      "cohort": "deterministic_qualification",
+      "policy": "last",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 294,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "original",
+      "sites": [],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": "real",
+      "backend": "deterministic",
+      "gradient_mode": "replay",
+      "source_job": "grad_deterministic_capture"
+    },
+    {
+      "id": "single_heads_block_frame_0",
+      "cohort": "single_site",
+      "policy": "last",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "frame:0"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "single_heads_block_frame_23",
+      "cohort": "single_site",
+      "policy": "last",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "frame:23"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "single_courtyard_block_frame_15",
+      "cohort": "single_site",
+      "policy": "last",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "frame:15"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    },
+    {
+      "id": "diagnostic_heads_block",
+      "cohort": "screen_diagnostic",
+      "policy": "last",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "frame:7",
+        "global:7"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": "timeline",
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "single_heads_block_global_23",
+      "cohort": "single_site",
+      "policy": "last",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "global:23"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "single_heads_block_frame_7",
+      "cohort": "single_site",
+      "policy": "last",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "frame:7"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "single_courtyard_block_global_23",
+      "cohort": "single_site",
+      "policy": "last",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "global:23"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    },
+    {
+      "id": "single_courtyard_block_global_7",
+      "cohort": "single_site",
+      "policy": "last",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "global:7"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    },
+    {
+      "id": "single_courtyard_block_frame_7",
+      "cohort": "single_site",
+      "policy": "last",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "frame:7"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    },
+    {
+      "id": "single_heads_block_global_7",
+      "cohort": "single_site",
+      "policy": "last",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "global:7"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "single_heads_block_global_15",
+      "cohort": "single_site",
+      "policy": "last",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "global:15"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "single_heads_block_frame_15",
+      "cohort": "single_site",
+      "policy": "last",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "frame:15"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "diagnostic_courtyard_block",
+      "cohort": "screen_diagnostic",
+      "policy": "last",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "frame:7",
+        "global:7"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": "timeline",
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    },
+    {
+      "id": "single_courtyard_block_global_0",
+      "cohort": "single_site",
+      "policy": "last",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "global:0"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    },
+    {
+      "id": "single_courtyard_block_frame_0",
+      "cohort": "single_site",
+      "policy": "last",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "frame:0"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    },
+    {
+      "id": "single_heads_block_global_0",
+      "cohort": "single_site",
+      "policy": "last",
+      "dataset": "7scenes",
+      "scene": "heads/seq-01",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "global:0"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null
+    },
+    {
+      "id": "single_courtyard_block_global_15",
+      "cohort": "single_site",
+      "policy": "last",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "global:15"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    },
+    {
+      "id": "single_courtyard_block_frame_23",
+      "cohort": "single_site",
+      "policy": "last",
+      "dataset": "eth3d",
+      "scene": "courtyard",
+      "frames": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "width": 518,
+      "seed": 42,
+      "steps": 2,
+      "camera": "last",
+      "retention": "block",
+      "sites": [
+        "frame:23"
+      ],
+      "operation": "attention",
+      "arm": "four",
+      "phase": "confirmation",
+      "profile": false,
+      "score": false,
+      "probe": null,
+      "images_expected": [
+        "DSC_0286.JPG",
+        "DSC_0291.JPG",
+        "DSC_0296.JPG",
+        "DSC_0301.JPG",
+        "DSC_0306.JPG"
+      ]
+    }
+  ],
+  "camera": "last",
+  "operation": null,
+  "site_sample": [
+    "frame:0",
+    "global:0",
+    "frame:7",
+    "global:7",
+    "frame:15",
+    "global:15",
+    "frame:23",
+    "global:23"
+  ],
+  "observed_recompute_attention": {
+    "profile_heads_native": [],
+    "profile_courtyard_native": [
+      "aten._scaled_dot_product_flash_attention.default"
+    ]
+  },
+  "deterministic_extension": "The production repeat envelope was crossed by unchanged Native. Retain the production verdict and test the camera arms using identical actual q at the separate verified deterministic anchor."
+}
