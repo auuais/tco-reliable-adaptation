@@ -33,8 +33,7 @@ def commit_lock(path):
         raise RuntimeError("Unexpected Git status for "+rel)
 
 
-def wait_development(pid):
-    # The currently running owner is finishing both development and its separate duplicates.
+def wait_owner(pid):
     # On Windows a process handle remains the correct identity until it exits, even if its PID is later reused.
     import ctypes
     from ctypes import wintypes
@@ -54,6 +53,10 @@ def wait_development(pid):
                     raise OSError("Could not wait on existing local launcher")
         finally:
             kernel.CloseHandle(handle)
+
+
+def wait_development(pid):
+    wait_owner(pid)
     plan = read(MANIFEST)
     for j in plan["development"]+plan["duplicates"]:
         paths = attempts(j["id"])
@@ -64,9 +67,14 @@ def wait_development(pid):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--active-development-pid",type=int)
+    parser.add_argument("--after-followup-pid",type=int, help="Continue an existing campaign through gated replication and archive")
     args = parser.parse_args()
     if not LOCK.is_file() or not read(RAW/"qualification_pass.json")["passed"]:
         raise RuntimeError("Require the engineering gate and exact fresh-room lock")
+    if args.after_followup_pid:
+        wait_owner(args.after_followup_pid)
+        finish()
+        return
     if args.active_development_pid:
         wait_development(args.active_development_pid)
     else:
@@ -81,7 +89,25 @@ def main():
     model("followup")
     model("diagnostics")
     score("followup")
-    print("Primary and bounded development branch finished. Review the ARKit branch gate.",flush=True)
+    finish()
+
+
+def finish():
+    from lock_tco_final_ln_replication import REPL_LOCK, gate, prepare
+    from tco_final_ln_protocol import seal
+    decision = gate()
+    if decision["status"] == "pending":
+        raise RuntimeError("Scientific branch is still pending: "+str(decision))
+    if decision["status"] == "eligible":
+        prepare(decision)
+        commit_lock(REPL_LOCK)
+        model("replication")
+        score("replication")
+    elif decision["status"] != "not_promoted":
+        raise ValueError("Unknown replication status")
+    seal(PUBLIC/"replication_gate.json",decision)
+    run("archive_tco_final_ln.py","final")
+    print("Research artifacts archived; run final independent verification and publish.",flush=True)
 
 
 if __name__ == "__main__":
