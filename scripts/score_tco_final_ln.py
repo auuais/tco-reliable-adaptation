@@ -79,14 +79,14 @@ def check_against(score, other):
     return diffs
 
 
-def main():
+def main(argv=None):
     p = argparse.ArgumentParser(description=__doc__)
     for name in ("case", "model", "reference", "out"):
         p.add_argument(f"--{name}", required=True, type=Path)
     for name in ("input-file-sha", "reference-file-sha"):
         p.add_argument(f"--{name}", required=True)
     p.add_argument("--against", type=Path)
-    args = p.parse_args()
+    args = p.parse_args(argv)
 
     import numpy as np
     import torch

@@ -85,6 +85,24 @@ class TestReplay(unittest.TestCase):
         self.assertEqual(out["lower_95"],1.75)
         self.assertEqual(out["environment_ratios"],{"apt2":.25,"office1":2.5})
 
+    def test_followup_gate_uses_fresh_candidate_and_both_development_controls(self):
+        plan, rows = inputs()
+        room_map = {r["room"]: new for r,new in zip(plan["rooms"], ("heads/seq-01","chess/seq-03"))}
+        plan = dict(dataset="development",seeds=[42,43,44],rooms=[
+            dict(room=v, environment=v.split("/")[0]) for v in room_map.values()])
+        follow=[]
+        for row in rows:
+            if row["room"] in room_map:
+                arm={"LN10":"LN20","L10":"L20","L40":"L40"}[row["arm"]]
+                follow.append(dict(row,role="development" if arm=="L40" else "followup",arm=arm,room=room_map[row["room"]]))
+        result=analyze(plan,follow,"LN20","L20","L40",draws=100)
+        self.assertEqual(result["joint_verdict"],"development")
+        self.assertTrue(result["independent_replication_gate"]["eligible"])
+        failed=analyze(plan,follow[:-1],"LN20","L20","L40",draws=100)
+        self.assertFalse(failed["independent_replication_gate"]["eligible"])
+        hurt=[dict(row, completeness_mm=106) if row["arm"]=="LN20" else row for row in follow]
+        self.assertFalse(analyze(plan,hurt,"LN20","L20","L40",draws=100)["independent_replication_gate"]["eligible"])
+
 
 def positive_receipt():
     lora, ln = expected_names("both",10)

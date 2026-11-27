@@ -169,6 +169,14 @@ def analyze(plan, rows, candidate="LN10", short="L10", full="L40", draws=DRAWS):
         accuracy_vs_full=full_cmp["accuracy_mm"]["ratio"] <= 1.01,
         completeness_vs_full=full_cmp["completeness_mm"]["ratio"] <= 1.03,
         faster_vs_full=full_cmp["scene_seconds"]["ratio"] < 1.0)
+    if plan["dataset"] == "development" and candidate in ("LN20","LN10_low"):
+        qualify = complete and all(result["point_gates"].values())
+        result["independent_replication_gate"] = dict(
+            criterion="All development slots completed, accuracy improves over the matched short arm, "
+                      "both full-length point margins pass and shorter scene time.",
+            candidate=candidate,coverage_complete=complete,room_count=len(rooms),
+            preregistered_development_rooms=set(rooms)=={"heads/seq-01","chess/seq-03"},
+            eligible=qualify and set(rooms)=={"heads/seq-01","chess/seq-03"})
     if not formal:
         verdict = "development" if plan["dataset"] == "development" and complete else "insufficient_coverage"
     elif all(v == "pass" for v in grades.values()):
