@@ -53,7 +53,7 @@ def acquire(root, split, video):
         req = urllib.request.Request(url + "?ln-size=1", headers={"Range": "bytes=0-0"})
         with urllib.request.urlopen(req, timeout=30) as response:
             m = re.fullmatch(r"bytes 0-0/(\d+)", response.headers.get("Content-Range", ""))
-            if not m or response.read(2).__len__() != 1:
+            if not m or len(response.read(2)) != 1:
                 raise ValueError("Public asset did not supply its exact size")
             size = int(m.group(1))
         path = directory / asset
@@ -241,16 +241,9 @@ def build(root, split, visit, video, out):
     return row
 
 
-def main():
-    p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("split", choices=("Training", "Validation"))
-    p.add_argument("visit", type=int)
-    p.add_argument("video", type=int)
-    p.add_argument("--data", type=Path, default=DATA_ROOT)
-    p.add_argument("--packets", type=Path, default=DEFAULT_PACKETS)
-    args = p.parse_args()
+def build_record(data, split, visit, video, packets):
     proof = fixture()
-    row = build(args.data, args.split, args.visit, args.video, args.packets)
+    row = build(data, split, visit, video, packets)
     record = dict(scene=row, independent_geometry_fixture=proof, publisher_source_revision=REVISION,
                   split_csv_sha256=METADATA_SHA,
                   registration=("Match exact rounded-millisecond RGB/depth timestamp; intrinsics prefer same then -1/+1 ms. "
@@ -263,9 +256,22 @@ def main():
                                 "surface points on 518-wide raster without interpolation into missing points. "
                                 "Reference support is dense at the physical sensor's 256×192 resolution. "
                                 "Each adjacent pair must overlap on at least 5% of sampled native points at 50 mm."))
-    fn = "arkit_training_input.json" if args.split == "Training" else f"arkit_validation_{args.visit}.json"
-    write_json(OUTPUT/fn,record)
+    fn = "arkit_training_input.json" if split == "Training" else f"arkit_validation_{visit}.json"
+    write_json(OUTPUT/fn, record)
     print(row["scene"],row["frames"],row["adjacent_native_overlap_at_50mm"])
+    return row
+
+
+def main():
+    p = argparse.ArgumentParser(description=__doc__, epilog=(
+        "Validation is acquired only through lock_tco_final_ln_replication.py prepare after its scientific gate."))
+    p.add_argument("split", choices=("Training",))
+    p.add_argument("visit", type=int)
+    p.add_argument("video", type=int)
+    p.add_argument("--data", type=Path, default=DATA_ROOT)
+    p.add_argument("--packets", type=Path, default=DEFAULT_PACKETS)
+    args = p.parse_args()
+    build_record(args.data, args.split, args.visit, args.video, args.packets)
 
 
 if __name__ == "__main__":

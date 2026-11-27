@@ -43,6 +43,10 @@ def ledger(jobs):
                     f"Invalid start, terminal or job receipt {identifier}/{i}")
             if job["role"] in ("primary","anchor"):
                 require(start["primary_lock_sha256"] == sha(LOCK), f"Different input lock {identifier}")
+            if job["role"] == "replication":
+                from tco_final_ln_protocol import STUDY, ROOT
+                require(start["replication_lock_sha256"] == sha(ROOT/"manifests"/(STUDY+"_replication.json")),
+                        f"Different replication lock {identifier}")
             if i > 1:
                 require(history[-1]["status"] in {"provisioning","interrupted","timeout"}, "Unregistered retry")
             history.append(dict(attempt=i, status=term["status"], exit_code=term["exit_code"],

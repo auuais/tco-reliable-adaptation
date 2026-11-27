@@ -99,8 +99,10 @@ def launch(job):
     cmd += [IMAGE,"python","-B","-u","scripts/run_tco_final_ln_model.py","--job","/case/job.json",
             "--inputs","/inputs/room.npz","--out","/case/model"]
     created = utc()
+    repl = ROOT/"manifests"/(STUDY+"_replication.json")
     seal(directory / "start.json", dict(job=job["id"],name=name,started=created,device=telemetry,
          image=IMAGE,registration_sha256=sha(MANIFEST),primary_lock_sha256=sha(LOCK) if job["role"] in ("primary","anchor") else None,
+         replication_lock_sha256=sha(repl) if job["role"] == "replication" else None,
          input_file_sha256=sha(inp),worker_sha256=sha(ROOT / "scripts/run_tco_final_ln_model.py"),deadline_seconds=1200,rental_compute_usd=0))
     cid,rc,error,stop_state = None,None,None,None
     status = "provisioning"
@@ -149,12 +151,12 @@ def select(stage):
         raise ValueError("Qualification is pending")
     if stage in ("development","duplicates"):
         return plan[stage]
-    if stage in ("primary","anchor"):
-        lock = read(LOCK)
+    if stage in ("primary","anchor","replication"):
+        lock = read(ROOT/"manifests"/(STUDY+"_replication.json") if stage == "replication" else LOCK)
         for rel,digest in lock["pinned_files"].items():
             if sha(ROOT/rel) != digest:
                 raise ValueError("Lock bytes changed: "+rel)
-        return lock[stage]
+        return lock["jobs" if stage == "replication" else stage]
     if stage == "diagnostics":
         return read(ROOT/"manifests"/(STUDY+"_followup.json"))["diagnostics"]
     return read(ROOT/"manifests"/(STUDY+"_"+stage+".json"))["jobs"]
