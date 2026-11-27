@@ -1,0 +1,3661 @@
+{
+  "study": "tco_native_stalls_quality_capacity_v1",
+  "rental_compute_usd": 0,
+  "attempts": {
+    "capacity_trace_camera": {
+      "attempt01": {
+        "host_sha256": "70971a49d2a82b4ab8cf17421751f92adeb9dcc40647d2fa6d28c7521b33f880",
+        "phase_sha256": "3f0ef730e97a57a8200c68587138869805743c4a11086c4522fd6ce679c44d2e",
+        "full_attempt": {
+          "samples": 21,
+          "first_utc": "2026-11-27T10:30:44.1911550+00:00",
+          "last_utc": "2026-11-27T10:31:26.2541905+00:00",
+          "counters": {
+            "host": {
+              "AvailableMBytes": {
+                "count": 21,
+                "first": 50953,
+                "minimum": 50892,
+                "median": 51093,
+                "maximum": 51177,
+                "last": 50892
+              },
+              "CommitLimit": {
+                "count": 21,
+                "first": 186900299776,
+                "minimum": 186900299776,
+                "median": 186900299776,
+                "maximum": 186900299776,
+                "last": 186900299776
+              },
+              "CommittedBytes": {
+                "count": 21,
+                "first": 73854013440,
+                "minimum": 73645641728,
+                "median": 73970601984,
+                "maximum": 83366514688,
+                "last": 83366514688
+              },
+              "PagesInputPersec": {
+                "count": 21,
+                "first": 0,
+                "minimum": 0,
+                "median": 3,
+                "maximum": 714,
+                "last": 0
+              },
+              "PagesOutputPersec": {
+                "count": 21,
+                "first": 0,
+                "minimum": 0,
+                "median": 0,
+                "maximum": 0,
+                "last": 0
+              }
+            },
+            "nvidia": {
+              "free_mib": {
+                "count": 21,
+                "first": 9263,
+                "minimum": 160,
+                "median": 8856,
+                "maximum": 9263,
+                "last": 344
+              },
+              "total_mib": {
+                "count": 21,
+                "first": 10240,
+                "minimum": 10240,
+                "median": 10240,
+                "maximum": 10240,
+                "last": 10240
+              },
+              "used_mib": {
+                "count": 21,
+                "first": 791,
+                "minimum": 791,
+                "median": 1198,
+                "maximum": 9894,
+                "last": 9710
+              },
+              "utilization_gpu_pct": {
+                "count": 21,
+                "first": 0,
+                "minimum": 0,
+                "median": 2,
+                "maximum": 97,
+                "last": 93
+              },
+              "utilization_memory_pct": {
+                "count": 21,
+                "first": 0,
+                "minimum": 0,
+                "median": 7,
+                "maximum": 50,
+                "last": 50
+              }
+            },
+            "sampler": {
+              "sample_seconds": {
+                "count": 21,
+                "first": 3.8780622,
+                "minimum": 0.34532769999999996,
+                "median": 0.37583439999999996,
+                "maximum": 3.8780622,
+                "last": 0.37431509999999996
+              }
+            },
+            "wddm": {
+              "luid_0x00000000_0x00011D92_phys_0/DedicatedUsage": {
+                "count": 21,
+                "first": 0,
+                "minimum": 0,
+                "median": 0,
+                "maximum": 0,
+                "last": 0
+              },
+              "luid_0x00000000_0x00011D92_phys_0/SharedUsage": {
+                "count": 21,
+                "first": 8192,
+                "minimum": 8192,
+                "median": 8192,
+                "maximum": 8192,
+                "last": 8192
+              },
+              "luid_0x00000002_0x78878482_phys_0/DedicatedUsage": {
+                "count": 21,
+                "first": 958586880,
+                "minimum": 958173184,
+                "median": 1264254976,
+                "maximum": 10382462976,
+                "last": 10030145536
+              },
+              "luid_0x00000002_0x78878482_phys_0/SharedUsage": {
+                "count": 21,
+                "first": 140849152,
+                "minimum": 100868096,
+                "median": 177270784,
+                "maximum": 177766400,
+                "last": 177766400
+              }
+            }
+          },
+          "unavailable": []
+        },
+        "phase_windows": {
+          "slowest_adam": {
+            "phase": "adam",
+            "updates_at_entry": 0,
+            "begin_utc": "2026-11-27T10:31:25.340+00:00",
+            "polled_end_utc": "2026-11-27T10:31:25.475+00:00",
+            "end_edge": "cuda_complete",
+            "cuda_elapsed_ms": 76.31462097167969,
+            "telemetry": {
+              "samples": 0
+            }
+          },
+          "slowest_backward": {
+            "phase": "backward",
+            "updates_at_entry": 0,
+            "begin_utc": "2026-11-27T10:31:22.854+00:00",
+            "polled_end_utc": "2026-11-27T10:31:25.474+00:00",
+            "end_edge": "cuda_complete",
+            "cuda_elapsed_ms": 2471.739501953125,
+            "telemetry": {
+              "samples": 1,
+              "first_utc": "2026-11-27T10:31:24.2470071+00:00",
+              "last_utc": "2026-11-27T10:31:24.2470071+00:00",
+              "counters": {
+                "host": {
+                  "AvailableMBytes": {
+                    "count": 1,
+                    "first": 51051,
+                    "minimum": 51051,
+                    "median": 51051,
+                    "maximum": 51051,
+                    "last": 51051
+                  },
+                  "CommitLimit": {
+                    "count": 1,
+                    "first": 186900299776,
+                    "minimum": 186900299776,
+                    "median": 186900299776,
+                    "maximum": 186900299776,
+                    "last": 186900299776
+                  },
+                  "CommittedBytes": {
+                    "count": 1,
+                    "first": 83200016384,
+                    "minimum": 83200016384,
+                    "median": 83200016384,
+                    "maximum": 83200016384,
+                    "last": 83200016384
+                  },
+                  "PagesInputPersec": {
+                    "count": 1,
+                    "first": 3,
+                    "minimum": 3,
+                    "median": 3,
+                    "maximum": 3,
+                    "last": 3
+                  },
+                  "PagesOutputPersec": {
+                    "count": 1,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  }
+                },
+                "nvidia": {
+                  "free_mib": {
+                    "count": 1,
+                    "first": 160,
+                    "minimum": 160,
+                    "median": 160,
+                    "maximum": 160,
+                    "last": 160
+                  },
+                  "total_mib": {
+                    "count": 1,
+                    "first": 10240,
+                    "minimum": 10240,
+                    "median": 10240,
+                    "maximum": 10240,
+                    "last": 10240
+                  },
+                  "used_mib": {
+                    "count": 1,
+                    "first": 9894,
+                    "minimum": 9894,
+                    "median": 9894,
+                    "maximum": 9894,
+                    "last": 9894
+                  },
+                  "utilization_gpu_pct": {
+                    "count": 1,
+                    "first": 97,
+                    "minimum": 97,
+                    "median": 97,
+                    "maximum": 97,
+                    "last": 97
+                  },
+                  "utilization_memory_pct": {
+                    "count": 1,
+                    "first": 41,
+                    "minimum": 41,
+                    "median": 41,
+                    "maximum": 41,
+                    "last": 41
+                  }
+                },
+                "sampler": {
+                  "sample_seconds": {
+                    "count": 1,
+                    "first": 0.3687662,
+                    "minimum": 0.3687662,
+                    "median": 0.3687662,
+                    "maximum": 0.3687662,
+                    "last": 0.3687662
+                  }
+                },
+                "wddm": {
+                  "luid_0x00000000_0x00011D92_phys_0/DedicatedUsage": {
+                    "count": 1,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  },
+                  "luid_0x00000000_0x00011D92_phys_0/SharedUsage": {
+                    "count": 1,
+                    "first": 8192,
+                    "minimum": 8192,
+                    "median": 8192,
+                    "maximum": 8192,
+                    "last": 8192
+                  },
+                  "luid_0x00000002_0x78878482_phys_0/DedicatedUsage": {
+                    "count": 1,
+                    "first": 10382462976,
+                    "minimum": 10382462976,
+                    "median": 10382462976,
+                    "maximum": 10382462976,
+                    "last": 10382462976
+                  },
+                  "luid_0x00000002_0x78878482_phys_0/SharedUsage": {
+                    "count": 1,
+                    "first": 177270784,
+                    "minimum": 177270784,
+                    "median": 177270784,
+                    "maximum": 177270784,
+                    "last": 177270784
+                  }
+                }
+              },
+              "unavailable": []
+            }
+          },
+          "slowest_render.rgb": {
+            "phase": "render.rgb",
+            "updates_at_entry": 0,
+            "begin_utc": "2026-11-27T10:31:22.783+00:00",
+            "polled_end_utc": "2026-11-27T10:31:22.869+00:00",
+            "end_edge": "cuda_complete",
+            "cuda_elapsed_ms": 53.15379333496094,
+            "telemetry": {
+              "samples": 0
+            }
+          },
+          "slowest_transformer": {
+            "phase": "transformer",
+            "updates_at_entry": 0,
+            "begin_utc": "2026-11-27T10:31:19.111+00:00",
+            "polled_end_utc": "2026-11-27T10:31:20.196+00:00",
+            "end_edge": "cuda_complete",
+            "cuda_elapsed_ms": 1025.98046875,
+            "telemetry": {
+              "samples": 0
+            }
+          }
+        }
+      }
+    },
+    "capacity_trace_ng": {
+      "attempt01": {
+        "host_sha256": "77c653d0b2655599c0ceb5a748bde93afff6ead66fefdd5b0bfa62f1905fbc06",
+        "phase_sha256": "47f9beaf568ff5eaa99daa09e2b7ffd98589c113ef57947b38fd24c4f63500c9",
+        "full_attempt": {
+          "samples": 23,
+          "first_utc": "2026-11-27T10:31:28.2996501+00:00",
+          "last_utc": "2026-11-27T10:32:12.5329760+00:00",
+          "counters": {
+            "host": {
+              "AvailableMBytes": {
+                "count": 23,
+                "first": 50887,
+                "minimum": 50664,
+                "median": 50979,
+                "maximum": 51143,
+                "last": 50724
+              },
+              "CommitLimit": {
+                "count": 23,
+                "first": 186900299776,
+                "minimum": 186900299776,
+                "median": 186900299776,
+                "maximum": 186900299776,
+                "last": 186900299776
+              },
+              "CommittedBytes": {
+                "count": 23,
+                "first": 73970307072,
+                "minimum": 73693204480,
+                "median": 74310422528,
+                "maximum": 83757228032,
+                "last": 82871062528
+              },
+              "PagesInputPersec": {
+                "count": 23,
+                "first": 0,
+                "minimum": 0,
+                "median": 3,
+                "maximum": 302,
+                "last": 0
+              },
+              "PagesOutputPersec": {
+                "count": 23,
+                "first": 0,
+                "minimum": 0,
+                "median": 0,
+                "maximum": 0,
+                "last": 0
+              }
+            },
+            "nvidia": {
+              "free_mib": {
+                "count": 23,
+                "first": 9265,
+                "minimum": 128,
+                "median": 8817,
+                "maximum": 9265,
+                "last": 128
+              },
+              "total_mib": {
+                "count": 23,
+                "first": 10240,
+                "minimum": 10240,
+                "median": 10240,
+                "maximum": 10240,
+                "last": 10240
+              },
+              "used_mib": {
+                "count": 23,
+                "first": 789,
+                "minimum": 789,
+                "median": 1237,
+                "maximum": 9926,
+                "last": 9926
+              },
+              "utilization_gpu_pct": {
+                "count": 23,
+                "first": 0,
+                "minimum": 0,
+                "median": 2,
+                "maximum": 97,
+                "last": 96
+              },
+              "utilization_memory_pct": {
+                "count": 23,
+                "first": 0,
+                "minimum": 0,
+                "median": 4,
+                "maximum": 51,
+                "last": 23
+              }
+            },
+            "sampler": {
+              "sample_seconds": {
+                "count": 23,
+                "first": 0.8329995,
+                "minimum": 0.36119209999999996,
+                "median": 0.3807973,
+                "maximum": 0.8329995,
+                "last": 0.3755577
+              }
+            },
+            "wddm": {
+              "luid_0x00000000_0x00011D92_phys_0/DedicatedUsage": {
+                "count": 23,
+                "first": 0,
+                "minimum": 0,
+                "median": 0,
+                "maximum": 0,
+                "last": 0
+              },
+              "luid_0x00000000_0x00011D92_phys_0/SharedUsage": {
+                "count": 23,
+                "first": 8192,
+                "minimum": 8192,
+                "median": 8192,
+                "maximum": 8192,
+                "last": 8192
+              },
+              "luid_0x00000002_0x78878482_phys_0/DedicatedUsage": {
+                "count": 23,
+                "first": 835608576,
+                "minimum": 835608576,
+                "median": 1305341952,
+                "maximum": 10416640000,
+                "last": 10416640000
+              },
+              "luid_0x00000002_0x78878482_phys_0/SharedUsage": {
+                "count": 23,
+                "first": 102268928,
+                "minimum": 102268928,
+                "median": 153743360,
+                "maximum": 398585856,
+                "last": 398585856
+              }
+            }
+          },
+          "unavailable": []
+        },
+        "phase_windows": {
+          "slowest_adam": {
+            "phase": "adam",
+            "updates_at_entry": 0,
+            "begin_utc": "2026-11-27T10:32:10.647+00:00",
+            "polled_end_utc": "2026-11-27T10:32:11.106+00:00",
+            "end_edge": "cuda_complete",
+            "cuda_elapsed_ms": 245.70777893066406,
+            "telemetry": {
+              "samples": 0
+            }
+          },
+          "slowest_backward": {
+            "phase": "backward",
+            "updates_at_entry": 0,
+            "begin_utc": "2026-11-27T10:32:06.570+00:00",
+            "polled_end_utc": "2026-11-27T10:32:10.700+00:00",
+            "end_edge": "cuda_complete",
+            "cuda_elapsed_ms": 4048.7802734375,
+            "telemetry": {
+              "samples": 2,
+              "first_utc": "2026-11-27T10:32:08.5243156+00:00",
+              "last_utc": "2026-11-27T10:32:10.5281057+00:00",
+              "counters": {
+                "host": {
+                  "AvailableMBytes": {
+                    "count": 2,
+                    "first": 50745,
+                    "minimum": 50664,
+                    "median": 50704.5,
+                    "maximum": 50745,
+                    "last": 50664
+                  },
+                  "CommitLimit": {
+                    "count": 2,
+                    "first": 186900299776,
+                    "minimum": 186900299776,
+                    "median": 186900299776.0,
+                    "maximum": 186900299776,
+                    "last": 186900299776
+                  },
+                  "CommittedBytes": {
+                    "count": 2,
+                    "first": 83616522240,
+                    "minimum": 83616522240,
+                    "median": 83686875136.0,
+                    "maximum": 83757228032,
+                    "last": 83757228032
+                  },
+                  "PagesInputPersec": {
+                    "count": 2,
+                    "first": 3,
+                    "minimum": 3,
+                    "median": 17.0,
+                    "maximum": 31,
+                    "last": 31
+                  },
+                  "PagesOutputPersec": {
+                    "count": 2,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0.0,
+                    "maximum": 0,
+                    "last": 0
+                  }
+                },
+                "nvidia": {
+                  "free_mib": {
+                    "count": 2,
+                    "first": 166,
+                    "minimum": 158,
+                    "median": 162.0,
+                    "maximum": 166,
+                    "last": 158
+                  },
+                  "total_mib": {
+                    "count": 2,
+                    "first": 10240,
+                    "minimum": 10240,
+                    "median": 10240.0,
+                    "maximum": 10240,
+                    "last": 10240
+                  },
+                  "used_mib": {
+                    "count": 2,
+                    "first": 9888,
+                    "minimum": 9888,
+                    "median": 9892.0,
+                    "maximum": 9896,
+                    "last": 9896
+                  },
+                  "utilization_gpu_pct": {
+                    "count": 2,
+                    "first": 97,
+                    "minimum": 97,
+                    "median": 97.0,
+                    "maximum": 97,
+                    "last": 97
+                  },
+                  "utilization_memory_pct": {
+                    "count": 2,
+                    "first": 30,
+                    "minimum": 25,
+                    "median": 27.5,
+                    "maximum": 30,
+                    "last": 25
+                  }
+                },
+                "sampler": {
+                  "sample_seconds": {
+                    "count": 2,
+                    "first": 0.3763881,
+                    "minimum": 0.3763881,
+                    "median": 0.42345415,
+                    "maximum": 0.4705202,
+                    "last": 0.4705202
+                  }
+                },
+                "wddm": {
+                  "luid_0x00000000_0x00011D92_phys_0/DedicatedUsage": {
+                    "count": 2,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0.0,
+                    "maximum": 0,
+                    "last": 0
+                  },
+                  "luid_0x00000000_0x00011D92_phys_0/SharedUsage": {
+                    "count": 2,
+                    "first": 8192,
+                    "minimum": 8192,
+                    "median": 8192.0,
+                    "maximum": 8192,
+                    "last": 8192
+                  },
+                  "luid_0x00000002_0x78878482_phys_0/DedicatedUsage": {
+                    "count": 2,
+                    "first": 10378891264,
+                    "minimum": 10378891264,
+                    "median": 10382036992.0,
+                    "maximum": 10385182720,
+                    "last": 10385182720
+                  },
+                  "luid_0x00000002_0x78878482_phys_0/SharedUsage": {
+                    "count": 2,
+                    "first": 398585856,
+                    "minimum": 398585856,
+                    "median": 398585856.0,
+                    "maximum": 398585856,
+                    "last": 398585856
+                  }
+                }
+              },
+              "unavailable": []
+            }
+          },
+          "slowest_render.rgb": {
+            "phase": "render.rgb",
+            "updates_at_entry": 0,
+            "begin_utc": "2026-11-27T10:32:06.559+00:00",
+            "polled_end_utc": "2026-11-27T10:32:06.636+00:00",
+            "end_edge": "cuda_complete",
+            "cuda_elapsed_ms": 7.325695991516113,
+            "telemetry": {
+              "samples": 0
+            }
+          },
+          "slowest_transformer": {
+            "phase": "transformer",
+            "updates_at_entry": 1,
+            "begin_utc": "2026-11-27T10:32:10.926+00:00",
+            "polled_end_utc": "2026-11-27T10:32:12.758+00:00",
+            "end_edge": "cuda_complete",
+            "cuda_elapsed_ms": 1788.90234375,
+            "telemetry": {
+              "samples": 1,
+              "first_utc": "2026-11-27T10:32:12.5329760+00:00",
+              "last_utc": "2026-11-27T10:32:12.5329760+00:00",
+              "counters": {
+                "host": {
+                  "AvailableMBytes": {
+                    "count": 1,
+                    "first": 50724,
+                    "minimum": 50724,
+                    "median": 50724,
+                    "maximum": 50724,
+                    "last": 50724
+                  },
+                  "CommitLimit": {
+                    "count": 1,
+                    "first": 186900299776,
+                    "minimum": 186900299776,
+                    "median": 186900299776,
+                    "maximum": 186900299776,
+                    "last": 186900299776
+                  },
+                  "CommittedBytes": {
+                    "count": 1,
+                    "first": 82871062528,
+                    "minimum": 82871062528,
+                    "median": 82871062528,
+                    "maximum": 82871062528,
+                    "last": 82871062528
+                  },
+                  "PagesInputPersec": {
+                    "count": 1,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  },
+                  "PagesOutputPersec": {
+                    "count": 1,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  }
+                },
+                "nvidia": {
+                  "free_mib": {
+                    "count": 1,
+                    "first": 128,
+                    "minimum": 128,
+                    "median": 128,
+                    "maximum": 128,
+                    "last": 128
+                  },
+                  "total_mib": {
+                    "count": 1,
+                    "first": 10240,
+                    "minimum": 10240,
+                    "median": 10240,
+                    "maximum": 10240,
+                    "last": 10240
+                  },
+                  "used_mib": {
+                    "count": 1,
+                    "first": 9926,
+                    "minimum": 9926,
+                    "median": 9926,
+                    "maximum": 9926,
+                    "last": 9926
+                  },
+                  "utilization_gpu_pct": {
+                    "count": 1,
+                    "first": 96,
+                    "minimum": 96,
+                    "median": 96,
+                    "maximum": 96,
+                    "last": 96
+                  },
+                  "utilization_memory_pct": {
+                    "count": 1,
+                    "first": 23,
+                    "minimum": 23,
+                    "median": 23,
+                    "maximum": 23,
+                    "last": 23
+                  }
+                },
+                "sampler": {
+                  "sample_seconds": {
+                    "count": 1,
+                    "first": 0.3755577,
+                    "minimum": 0.3755577,
+                    "median": 0.3755577,
+                    "maximum": 0.3755577,
+                    "last": 0.3755577
+                  }
+                },
+                "wddm": {
+                  "luid_0x00000000_0x00011D92_phys_0/DedicatedUsage": {
+                    "count": 1,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  },
+                  "luid_0x00000000_0x00011D92_phys_0/SharedUsage": {
+                    "count": 1,
+                    "first": 8192,
+                    "minimum": 8192,
+                    "median": 8192,
+                    "maximum": 8192,
+                    "last": 8192
+                  },
+                  "luid_0x00000002_0x78878482_phys_0/DedicatedUsage": {
+                    "count": 1,
+                    "first": 10416640000,
+                    "minimum": 10416640000,
+                    "median": 10416640000,
+                    "maximum": 10416640000,
+                    "last": 10416640000
+                  },
+                  "luid_0x00000002_0x78878482_phys_0/SharedUsage": {
+                    "count": 1,
+                    "first": 398585856,
+                    "minimum": 398585856,
+                    "median": 398585856,
+                    "maximum": 398585856,
+                    "last": 398585856
+                  }
+                }
+              },
+              "unavailable": []
+            }
+          }
+        }
+      }
+    },
+    "trace_chess_camera": {
+      "attempt01": {
+        "host_sha256": "bf5703ca81ff1e7e22717bd141a04936386a1614bf02c9921d5169dcd964c63f",
+        "phase_sha256": "dae11fb90d7fa0659b8459f2e16e4a5457e83dd591b9afc9c24bcf7de4dc5ddc",
+        "full_attempt": {
+          "samples": 62,
+          "first_utc": "2026-11-27T06:51:53.6961672+00:00",
+          "last_utc": "2026-11-27T06:53:56.3397177+00:00",
+          "counters": {
+            "host": {
+              "AvailableMBytes": {
+                "count": 62,
+                "first": 49832,
+                "minimum": 49510,
+                "median": 49904.5,
+                "maximum": 50040,
+                "last": 49773
+              },
+              "CommitLimit": {
+                "count": 62,
+                "first": 186900299776,
+                "minimum": 186900299776,
+                "median": 186900299776.0,
+                "maximum": 186900299776,
+                "last": 186900299776
+              },
+              "CommittedBytes": {
+                "count": 62,
+                "first": 73928183808,
+                "minimum": 73589727232,
+                "median": 81577480192.0,
+                "maximum": 81935749120,
+                "last": 81801039872
+              },
+              "PagesInputPersec": {
+                "count": 62,
+                "first": 7,
+                "minimum": 0,
+                "median": 0.0,
+                "maximum": 52829,
+                "last": 0
+              },
+              "PagesOutputPersec": {
+                "count": 62,
+                "first": 0,
+                "minimum": 0,
+                "median": 0.0,
+                "maximum": 0,
+                "last": 0
+              }
+            },
+            "nvidia": {
+              "free_mib": {
+                "count": 62,
+                "first": 9207,
+                "minimum": 1583,
+                "median": 1643.0,
+                "maximum": 9207,
+                "last": 1583
+              },
+              "total_mib": {
+                "count": 62,
+                "first": 10240,
+                "minimum": 10240,
+                "median": 10240.0,
+                "maximum": 10240,
+                "last": 10240
+              },
+              "used_mib": {
+                "count": 62,
+                "first": 847,
+                "minimum": 847,
+                "median": 8411.0,
+                "maximum": 8471,
+                "last": 8471
+              },
+              "utilization_gpu_pct": {
+                "count": 62,
+                "first": 1,
+                "minimum": 0,
+                "median": 37.0,
+                "maximum": 97,
+                "last": 1
+              },
+              "utilization_memory_pct": {
+                "count": 62,
+                "first": 7,
+                "minimum": 0,
+                "median": 18.5,
+                "maximum": 55,
+                "last": 7
+              }
+            },
+            "sampler": {
+              "sample_seconds": {
+                "count": 62,
+                "first": 0.6416588,
+                "minimum": 0.344601,
+                "median": 0.37345664999999995,
+                "maximum": 0.6416588,
+                "last": 0.37770139999999996
+              }
+            },
+            "wddm": {
+              "luid_0x00000000_0x00011D92_phys_0/DedicatedUsage": {
+                "count": 62,
+                "first": 0,
+                "minimum": 0,
+                "median": 0.0,
+                "maximum": 0,
+                "last": 0
+              },
+              "luid_0x00000000_0x00011D92_phys_0/SharedUsage": {
+                "count": 62,
+                "first": 8192,
+                "minimum": 8192,
+                "median": 8192.0,
+                "maximum": 8192,
+                "last": 8192
+              },
+              "luid_0x00000002_0x78878482_phys_0/DedicatedUsage": {
+                "count": 62,
+                "first": 895963136,
+                "minimum": 895963136,
+                "median": 8827662336.0,
+                "maximum": 8890576896,
+                "last": 8890052608
+              },
+              "luid_0x00000002_0x78878482_phys_0/SharedUsage": {
+                "count": 62,
+                "first": 89178112,
+                "minimum": 88936448,
+                "median": 148185088.0,
+                "maximum": 165502976,
+                "last": 148594688
+              }
+            }
+          },
+          "unavailable": []
+        },
+        "phase_windows": {
+          "slowest_adam": {
+            "phase": "adam",
+            "updates_at_entry": 39,
+            "begin_utc": "2026-11-27T06:53:36.058+00:00",
+            "polled_end_utc": "2026-11-27T06:53:36.528+00:00",
+            "end_edge": "cuda_complete",
+            "cuda_elapsed_ms": 222.04039001464844,
+            "telemetry": {
+              "samples": 1,
+              "first_utc": "2026-11-27T06:53:36.2400557+00:00",
+              "last_utc": "2026-11-27T06:53:36.2400557+00:00",
+              "counters": {
+                "host": {
+                  "AvailableMBytes": {
+                    "count": 1,
+                    "first": 49739,
+                    "minimum": 49739,
+                    "median": 49739,
+                    "maximum": 49739,
+                    "last": 49739
+                  },
+                  "CommitLimit": {
+                    "count": 1,
+                    "first": 186900299776,
+                    "minimum": 186900299776,
+                    "median": 186900299776,
+                    "maximum": 186900299776,
+                    "last": 186900299776
+                  },
+                  "CommittedBytes": {
+                    "count": 1,
+                    "first": 81898967040,
+                    "minimum": 81898967040,
+                    "median": 81898967040,
+                    "maximum": 81898967040,
+                    "last": 81898967040
+                  },
+                  "PagesInputPersec": {
+                    "count": 1,
+                    "first": 43158,
+                    "minimum": 43158,
+                    "median": 43158,
+                    "maximum": 43158,
+                    "last": 43158
+                  },
+                  "PagesOutputPersec": {
+                    "count": 1,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  }
+                },
+                "nvidia": {
+                  "free_mib": {
+                    "count": 1,
+                    "first": 1583,
+                    "minimum": 1583,
+                    "median": 1583,
+                    "maximum": 1583,
+                    "last": 1583
+                  },
+                  "total_mib": {
+                    "count": 1,
+                    "first": 10240,
+                    "minimum": 10240,
+                    "median": 10240,
+                    "maximum": 10240,
+                    "last": 10240
+                  },
+                  "used_mib": {
+                    "count": 1,
+                    "first": 8471,
+                    "minimum": 8471,
+                    "median": 8471,
+                    "maximum": 8471,
+                    "last": 8471
+                  },
+                  "utilization_gpu_pct": {
+                    "count": 1,
+                    "first": 1,
+                    "minimum": 1,
+                    "median": 1,
+                    "maximum": 1,
+                    "last": 1
+                  },
+                  "utilization_memory_pct": {
+                    "count": 1,
+                    "first": 1,
+                    "minimum": 1,
+                    "median": 1,
+                    "maximum": 1,
+                    "last": 1
+                  }
+                },
+                "sampler": {
+                  "sample_seconds": {
+                    "count": 1,
+                    "first": 0.41099929999999996,
+                    "minimum": 0.41099929999999996,
+                    "median": 0.41099929999999996,
+                    "maximum": 0.41099929999999996,
+                    "last": 0.41099929999999996
+                  }
+                },
+                "wddm": {
+                  "luid_0x00000000_0x00011D92_phys_0/DedicatedUsage": {
+                    "count": 1,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  },
+                  "luid_0x00000000_0x00011D92_phys_0/SharedUsage": {
+                    "count": 1,
+                    "first": 8192,
+                    "minimum": 8192,
+                    "median": 8192,
+                    "maximum": 8192,
+                    "last": 8192
+                  },
+                  "luid_0x00000002_0x78878482_phys_0/DedicatedUsage": {
+                    "count": 1,
+                    "first": 8890486784,
+                    "minimum": 8890486784,
+                    "median": 8890486784,
+                    "maximum": 8890486784,
+                    "last": 8890486784
+                  },
+                  "luid_0x00000002_0x78878482_phys_0/SharedUsage": {
+                    "count": 1,
+                    "first": 102928384,
+                    "minimum": 102928384,
+                    "median": 102928384,
+                    "maximum": 102928384,
+                    "last": 102928384
+                  }
+                }
+              },
+              "unavailable": []
+            }
+          },
+          "slowest_backward": {
+            "phase": "backward",
+            "updates_at_entry": 39,
+            "begin_utc": "2026-11-27T06:53:34.670+00:00",
+            "polled_end_utc": "2026-11-27T06:53:36.100+00:00",
+            "end_edge": "cuda_complete",
+            "cuda_elapsed_ms": 1366.340576171875,
+            "telemetry": {
+              "samples": 0
+            }
+          },
+          "slowest_final.transformer": {
+            "phase": "final.transformer",
+            "updates_at_entry": 40,
+            "begin_utc": "2026-11-27T06:53:39.984+00:00",
+            "polled_end_utc": "2026-11-27T06:53:40.833+00:00",
+            "end_edge": "cuda_complete",
+            "cuda_elapsed_ms": 658.302978515625,
+            "telemetry": {
+              "samples": 1,
+              "first_utc": "2026-11-27T06:53:40.2494543+00:00",
+              "last_utc": "2026-11-27T06:53:40.2494543+00:00",
+              "counters": {
+                "host": {
+                  "AvailableMBytes": {
+                    "count": 1,
+                    "first": 49793,
+                    "minimum": 49793,
+                    "median": 49793,
+                    "maximum": 49793,
+                    "last": 49793
+                  },
+                  "CommitLimit": {
+                    "count": 1,
+                    "first": 186900299776,
+                    "minimum": 186900299776,
+                    "median": 186900299776,
+                    "maximum": 186900299776,
+                    "last": 186900299776
+                  },
+                  "CommittedBytes": {
+                    "count": 1,
+                    "first": 81834840064,
+                    "minimum": 81834840064,
+                    "median": 81834840064,
+                    "maximum": 81834840064,
+                    "last": 81834840064
+                  },
+                  "PagesInputPersec": {
+                    "count": 1,
+                    "first": 5118,
+                    "minimum": 5118,
+                    "median": 5118,
+                    "maximum": 5118,
+                    "last": 5118
+                  },
+                  "PagesOutputPersec": {
+                    "count": 1,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  }
+                },
+                "nvidia": {
+                  "free_mib": {
+                    "count": 1,
+                    "first": 1583,
+                    "minimum": 1583,
+                    "median": 1583,
+                    "maximum": 1583,
+                    "last": 1583
+                  },
+                  "total_mib": {
+                    "count": 1,
+                    "first": 10240,
+                    "minimum": 10240,
+                    "median": 10240,
+                    "maximum": 10240,
+                    "last": 10240
+                  },
+                  "used_mib": {
+                    "count": 1,
+                    "first": 8471,
+                    "minimum": 8471,
+                    "median": 8471,
+                    "maximum": 8471,
+                    "last": 8471
+                  },
+                  "utilization_gpu_pct": {
+                    "count": 1,
+                    "first": 97,
+                    "minimum": 97,
+                    "median": 97,
+                    "maximum": 97,
+                    "last": 97
+                  },
+                  "utilization_memory_pct": {
+                    "count": 1,
+                    "first": 19,
+                    "minimum": 19,
+                    "median": 19,
+                    "maximum": 19,
+                    "last": 19
+                  }
+                },
+                "sampler": {
+                  "sample_seconds": {
+                    "count": 1,
+                    "first": 0.3735846,
+                    "minimum": 0.3735846,
+                    "median": 0.3735846,
+                    "maximum": 0.3735846,
+                    "last": 0.3735846
+                  }
+                },
+                "wddm": {
+                  "luid_0x00000000_0x00011D92_phys_0/DedicatedUsage": {
+                    "count": 1,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  },
+                  "luid_0x00000000_0x00011D92_phys_0/SharedUsage": {
+                    "count": 1,
+                    "first": 8192,
+                    "minimum": 8192,
+                    "median": 8192,
+                    "maximum": 8192,
+                    "last": 8192
+                  },
+                  "luid_0x00000002_0x78878482_phys_0/DedicatedUsage": {
+                    "count": 1,
+                    "first": 8890486784,
+                    "minimum": 8890486784,
+                    "median": 8890486784,
+                    "maximum": 8890486784,
+                    "last": 8890486784
+                  },
+                  "luid_0x00000002_0x78878482_phys_0/SharedUsage": {
+                    "count": 1,
+                    "first": 102928384,
+                    "minimum": 102928384,
+                    "median": 102928384,
+                    "maximum": 102928384,
+                    "last": 102928384
+                  }
+                }
+              },
+              "unavailable": []
+            }
+          },
+          "slowest_render.rgb": {
+            "phase": "render.rgb",
+            "updates_at_entry": 22,
+            "begin_utc": "2026-11-27T06:53:06.783+00:00",
+            "polled_end_utc": "2026-11-27T06:53:06.942+00:00",
+            "end_edge": "cuda_complete",
+            "cuda_elapsed_ms": 20.82918357849121,
+            "telemetry": {
+              "samples": 0
+            }
+          },
+          "slowest_score_alignment_icp": {
+            "phase": "score_alignment_icp",
+            "updates_at_entry": 40,
+            "begin_utc": "2026-11-27T06:53:40.877+00:00",
+            "polled_end_utc": "2026-11-27T06:53:52.749+00:00",
+            "end_edge": "exit",
+            "cuda_elapsed_ms": null,
+            "telemetry": {
+              "samples": 6,
+              "first_utc": "2026-11-27T06:53:42.2623094+00:00",
+              "last_utc": "2026-11-27T06:53:52.3178007+00:00",
+              "counters": {
+                "host": {
+                  "AvailableMBytes": {
+                    "count": 6,
+                    "first": 49764,
+                    "minimum": 49659,
+                    "median": 49765.0,
+                    "maximum": 49868,
+                    "last": 49868
+                  },
+                  "CommitLimit": {
+                    "count": 6,
+                    "first": 186900299776,
+                    "minimum": 186900299776,
+                    "median": 186900299776.0,
+                    "maximum": 186900299776,
+                    "last": 186900299776
+                  },
+                  "CommittedBytes": {
+                    "count": 6,
+                    "first": 81849077760,
+                    "minimum": 81719877632,
+                    "median": 81831948288.0,
+                    "maximum": 81935749120,
+                    "last": 81719877632
+                  },
+                  "PagesInputPersec": {
+                    "count": 6,
+                    "first": 13878,
+                    "minimum": 0,
+                    "median": 2558.0,
+                    "maximum": 13878,
+                    "last": 0
+                  },
+                  "PagesOutputPersec": {
+                    "count": 6,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0.0,
+                    "maximum": 0,
+                    "last": 0
+                  }
+                },
+                "nvidia": {
+                  "free_mib": {
+                    "count": 6,
+                    "first": 1583,
+                    "minimum": 1583,
+                    "median": 1583.0,
+                    "maximum": 1583,
+                    "last": 1583
+                  },
+                  "total_mib": {
+                    "count": 6,
+                    "first": 10240,
+                    "minimum": 10240,
+                    "median": 10240.0,
+                    "maximum": 10240,
+                    "last": 10240
+                  },
+                  "used_mib": {
+                    "count": 6,
+                    "first": 8471,
+                    "minimum": 8471,
+                    "median": 8471.0,
+                    "maximum": 8471,
+                    "last": 8471
+                  },
+                  "utilization_gpu_pct": {
+                    "count": 6,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 1.5,
+                    "maximum": 4,
+                    "last": 2
+                  },
+                  "utilization_memory_pct": {
+                    "count": 6,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 5.5,
+                    "maximum": 7,
+                    "last": 7
+                  }
+                },
+                "sampler": {
+                  "sample_seconds": {
+                    "count": 6,
+                    "first": 0.3781829,
+                    "minimum": 0.3629736,
+                    "median": 0.3779622,
+                    "maximum": 0.40690909999999997,
+                    "last": 0.3629736
+                  }
+                },
+                "wddm": {
+                  "luid_0x00000000_0x00011D92_phys_0/DedicatedUsage": {
+                    "count": 6,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0.0,
+                    "maximum": 0,
+                    "last": 0
+                  },
+                  "luid_0x00000000_0x00011D92_phys_0/SharedUsage": {
+                    "count": 6,
+                    "first": 8192,
+                    "minimum": 8192,
+                    "median": 8192.0,
+                    "maximum": 8192,
+                    "last": 8192
+                  },
+                  "luid_0x00000002_0x78878482_phys_0/DedicatedUsage": {
+                    "count": 6,
+                    "first": 8890568704,
+                    "minimum": 8890052608,
+                    "median": 8890310656.0,
+                    "maximum": 8890576896,
+                    "last": 8890052608
+                  },
+                  "luid_0x00000002_0x78878482_phys_0/SharedUsage": {
+                    "count": 6,
+                    "first": 141762560,
+                    "minimum": 141762560,
+                    "median": 148424704.0,
+                    "maximum": 148594688,
+                    "last": 148594688
+                  }
+                }
+              },
+              "unavailable": []
+            }
+          },
+          "slowest_serialize_prediction": {
+            "phase": "serialize_prediction",
+            "updates_at_entry": 40,
+            "begin_utc": "2026-11-27T06:53:52.750+00:00",
+            "polled_end_utc": "2026-11-27T06:53:54.282+00:00",
+            "end_edge": "exit",
+            "cuda_elapsed_ms": null,
+            "telemetry": {
+              "samples": 0
+            }
+          },
+          "slowest_transformer": {
+            "phase": "transformer",
+            "updates_at_entry": 22,
+            "begin_utc": "2026-11-27T06:53:05.430+00:00",
+            "polled_end_utc": "2026-11-27T06:53:06.708+00:00",
+            "end_edge": "cuda_complete",
+            "cuda_elapsed_ms": 1091.684326171875,
+            "telemetry": {
+              "samples": 1,
+              "first_utc": "2026-11-27T06:53:06.1157573+00:00",
+              "last_utc": "2026-11-27T06:53:06.1157573+00:00",
+              "counters": {
+                "host": {
+                  "AvailableMBytes": {
+                    "count": 1,
+                    "first": 49871,
+                    "minimum": 49871,
+                    "median": 49871,
+                    "maximum": 49871,
+                    "last": 49871
+                  },
+                  "CommitLimit": {
+                    "count": 1,
+                    "first": 186900299776,
+                    "minimum": 186900299776,
+                    "median": 186900299776,
+                    "maximum": 186900299776,
+                    "last": 186900299776
+                  },
+                  "CommittedBytes": {
+                    "count": 1,
+                    "first": 81752043520,
+                    "minimum": 81752043520,
+                    "median": 81752043520,
+                    "maximum": 81752043520,
+                    "last": 81752043520
+                  },
+                  "PagesInputPersec": {
+                    "count": 1,
+                    "first": 84,
+                    "minimum": 84,
+                    "median": 84,
+                    "maximum": 84,
+                    "last": 84
+                  },
+                  "PagesOutputPersec": {
+                    "count": 1,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  }
+                },
+                "nvidia": {
+                  "free_mib": {
+                    "count": 1,
+                    "first": 1643,
+                    "minimum": 1643,
+                    "median": 1643,
+                    "maximum": 1643,
+                    "last": 1643
+                  },
+                  "total_mib": {
+                    "count": 1,
+                    "first": 10240,
+                    "minimum": 10240,
+                    "median": 10240,
+                    "maximum": 10240,
+                    "last": 10240
+                  },
+                  "used_mib": {
+                    "count": 1,
+                    "first": 8411,
+                    "minimum": 8411,
+                    "median": 8411,
+                    "maximum": 8411,
+                    "last": 8411
+                  },
+                  "utilization_gpu_pct": {
+                    "count": 1,
+                    "first": 30,
+                    "minimum": 30,
+                    "median": 30,
+                    "maximum": 30,
+                    "last": 30
+                  },
+                  "utilization_memory_pct": {
+                    "count": 1,
+                    "first": 18,
+                    "minimum": 18,
+                    "median": 18,
+                    "maximum": 18,
+                    "last": 18
+                  }
+                },
+                "sampler": {
+                  "sample_seconds": {
+                    "count": 1,
+                    "first": 0.4588788,
+                    "minimum": 0.4588788,
+                    "median": 0.4588788,
+                    "maximum": 0.4588788,
+                    "last": 0.4588788
+                  }
+                },
+                "wddm": {
+                  "luid_0x00000000_0x00011D92_phys_0/DedicatedUsage": {
+                    "count": 1,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  },
+                  "luid_0x00000000_0x00011D92_phys_0/SharedUsage": {
+                    "count": 1,
+                    "first": 8192,
+                    "minimum": 8192,
+                    "median": 8192,
+                    "maximum": 8192,
+                    "last": 8192
+                  },
+                  "luid_0x00000002_0x78878482_phys_0/DedicatedUsage": {
+                    "count": 1,
+                    "first": 8827662336,
+                    "minimum": 8827662336,
+                    "median": 8827662336,
+                    "maximum": 8827662336,
+                    "last": 8827662336
+                  },
+                  "luid_0x00000002_0x78878482_phys_0/SharedUsage": {
+                    "count": 1,
+                    "first": 148254720,
+                    "minimum": 148254720,
+                    "median": 148254720,
+                    "maximum": 148254720,
+                    "last": 148254720
+                  }
+                }
+              },
+              "unavailable": []
+            }
+          }
+        }
+      }
+    },
+    "trace_chess_native": {
+      "attempt01": {
+        "host_sha256": "d82661021696135aa8603a0a6ea572028ee1425ffda594f5615cf6ce400d99ba",
+        "phase_sha256": "e64fabced953a054b20a7043b2d1cfa040bcb6c167bb44a0ed8c295cdeec5064",
+        "full_attempt": {
+          "samples": 65,
+          "first_utc": "2026-11-27T06:49:40.9109711+00:00",
+          "last_utc": "2026-11-27T06:51:51.1330779+00:00",
+          "counters": {
+            "host": {
+              "AvailableMBytes": {
+                "count": 65,
+                "first": 50095,
+                "minimum": 49783,
+                "median": 50084,
+                "maximum": 50279,
+                "last": 49783
+              },
+              "CommitLimit": {
+                "count": 65,
+                "first": 186900299776,
+                "minimum": 186900299776,
+                "median": 186900299776,
+                "maximum": 186900299776,
+                "last": 186900299776
+              },
+              "CommittedBytes": {
+                "count": 65,
+                "first": 73769762816,
+                "minimum": 73769762816,
+                "median": 83201249280,
+                "maximum": 83395289088,
+                "last": 83364003840
+              },
+              "PagesInputPersec": {
+                "count": 65,
+                "first": 0,
+                "minimum": 0,
+                "median": 0,
+                "maximum": 421,
+                "last": 0
+              },
+              "PagesOutputPersec": {
+                "count": 65,
+                "first": 0,
+                "minimum": 0,
+                "median": 0,
+                "maximum": 0,
+                "last": 0
+              }
+            },
+            "nvidia": {
+              "free_mib": {
+                "count": 65,
+                "first": 9210,
+                "minimum": 105,
+                "median": 160,
+                "maximum": 9210,
+                "last": 143
+              },
+              "total_mib": {
+                "count": 65,
+                "first": 10240,
+                "minimum": 10240,
+                "median": 10240,
+                "maximum": 10240,
+                "last": 10240
+              },
+              "used_mib": {
+                "count": 65,
+                "first": 844,
+                "minimum": 844,
+                "median": 9894,
+                "maximum": 9949,
+                "last": 9911
+              },
+              "utilization_gpu_pct": {
+                "count": 65,
+                "first": 1,
+                "minimum": 0,
+                "median": 80,
+                "maximum": 94,
+                "last": 2
+              },
+              "utilization_memory_pct": {
+                "count": 65,
+                "first": 4,
+                "minimum": 0,
+                "median": 35,
+                "maximum": 54,
+                "last": 7
+              }
+            },
+            "sampler": {
+              "sample_seconds": {
+                "count": 65,
+                "first": 3.6612788999999997,
+                "minimum": 0.344645,
+                "median": 0.3676432,
+                "maximum": 3.6612788999999997,
+                "last": 0.344645
+              }
+            },
+            "wddm": {
+              "luid_0x00000000_0x00011D92_phys_0/DedicatedUsage": {
+                "count": 65,
+                "first": 0,
+                "minimum": 0,
+                "median": 0,
+                "maximum": 0,
+                "last": 0
+              },
+              "luid_0x00000000_0x00011D92_phys_0/SharedUsage": {
+                "count": 65,
+                "first": 8192,
+                "minimum": 8192,
+                "median": 8192,
+                "maximum": 8192,
+                "last": 8192
+              },
+              "luid_0x00000002_0x78878482_phys_0/DedicatedUsage": {
+                "count": 65,
+                "first": 892862464,
+                "minimum": 892735488,
+                "median": 10382364672,
+                "maximum": 10440138752,
+                "last": 10401214464
+              },
+              "luid_0x00000002_0x78878482_phys_0/SharedUsage": {
+                "count": 65,
+                "first": 76079104,
+                "minimum": 25985024,
+                "median": 167997440,
+                "maximum": 335527936,
+                "last": 332447744
+              }
+            }
+          },
+          "unavailable": []
+        },
+        "phase_windows": {
+          "slowest_adam": {
+            "phase": "adam",
+            "updates_at_entry": 39,
+            "begin_utc": "2026-11-27T06:51:32.160+00:00",
+            "polled_end_utc": "2026-11-27T06:51:32.571+00:00",
+            "end_edge": "cuda_complete",
+            "cuda_elapsed_ms": 198.00575256347656,
+            "telemetry": {
+              "samples": 0
+            }
+          },
+          "slowest_backward": {
+            "phase": "backward",
+            "updates_at_entry": 32,
+            "begin_utc": "2026-11-27T06:51:14.738+00:00",
+            "polled_end_utc": "2026-11-27T06:51:16.514+00:00",
+            "end_edge": "cuda_complete",
+            "cuda_elapsed_ms": 1664.41943359375,
+            "telemetry": {
+              "samples": 1,
+              "first_utc": "2026-11-27T06:51:14.9805546+00:00",
+              "last_utc": "2026-11-27T06:51:14.9805546+00:00",
+              "counters": {
+                "host": {
+                  "AvailableMBytes": {
+                    "count": 1,
+                    "first": 49943,
+                    "minimum": 49943,
+                    "median": 49943,
+                    "maximum": 49943,
+                    "last": 49943
+                  },
+                  "CommitLimit": {
+                    "count": 1,
+                    "first": 186900299776,
+                    "minimum": 186900299776,
+                    "median": 186900299776,
+                    "maximum": 186900299776,
+                    "last": 186900299776
+                  },
+                  "CommittedBytes": {
+                    "count": 1,
+                    "first": 83253698560,
+                    "minimum": 83253698560,
+                    "median": 83253698560,
+                    "maximum": 83253698560,
+                    "last": 83253698560
+                  },
+                  "PagesInputPersec": {
+                    "count": 1,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  },
+                  "PagesOutputPersec": {
+                    "count": 1,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  }
+                },
+                "nvidia": {
+                  "free_mib": {
+                    "count": 1,
+                    "first": 160,
+                    "minimum": 160,
+                    "median": 160,
+                    "maximum": 160,
+                    "last": 160
+                  },
+                  "total_mib": {
+                    "count": 1,
+                    "first": 10240,
+                    "minimum": 10240,
+                    "median": 10240,
+                    "maximum": 10240,
+                    "last": 10240
+                  },
+                  "used_mib": {
+                    "count": 1,
+                    "first": 9894,
+                    "minimum": 9894,
+                    "median": 9894,
+                    "maximum": 9894,
+                    "last": 9894
+                  },
+                  "utilization_gpu_pct": {
+                    "count": 1,
+                    "first": 87,
+                    "minimum": 87,
+                    "median": 87,
+                    "maximum": 87,
+                    "last": 87
+                  },
+                  "utilization_memory_pct": {
+                    "count": 1,
+                    "first": 35,
+                    "minimum": 35,
+                    "median": 35,
+                    "maximum": 35,
+                    "last": 35
+                  }
+                },
+                "sampler": {
+                  "sample_seconds": {
+                    "count": 1,
+                    "first": 0.38929169999999996,
+                    "minimum": 0.38929169999999996,
+                    "median": 0.38929169999999996,
+                    "maximum": 0.38929169999999996,
+                    "last": 0.38929169999999996
+                  }
+                },
+                "wddm": {
+                  "luid_0x00000000_0x00011D92_phys_0/DedicatedUsage": {
+                    "count": 1,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  },
+                  "luid_0x00000000_0x00011D92_phys_0/SharedUsage": {
+                    "count": 1,
+                    "first": 8192,
+                    "minimum": 8192,
+                    "median": 8192,
+                    "maximum": 8192,
+                    "last": 8192
+                  },
+                  "luid_0x00000002_0x78878482_phys_0/DedicatedUsage": {
+                    "count": 1,
+                    "first": 10382336000,
+                    "minimum": 10382336000,
+                    "median": 10382336000,
+                    "maximum": 10382336000,
+                    "last": 10382336000
+                  },
+                  "luid_0x00000002_0x78878482_phys_0/SharedUsage": {
+                    "count": 1,
+                    "first": 266592256,
+                    "minimum": 266592256,
+                    "median": 266592256,
+                    "maximum": 266592256,
+                    "last": 266592256
+                  }
+                }
+              },
+              "unavailable": []
+            }
+          },
+          "slowest_final.transformer": {
+            "phase": "final.transformer",
+            "updates_at_entry": 40,
+            "begin_utc": "2026-11-27T06:51:36.916+00:00",
+            "polled_end_utc": "2026-11-27T06:51:38.308+00:00",
+            "end_edge": "cuda_complete",
+            "cuda_elapsed_ms": 1387.1707763671875,
+            "telemetry": {
+              "samples": 1,
+              "first_utc": "2026-11-27T06:51:37.0662823+00:00",
+              "last_utc": "2026-11-27T06:51:37.0662823+00:00",
+              "counters": {
+                "host": {
+                  "AvailableMBytes": {
+                    "count": 1,
+                    "first": 49823,
+                    "minimum": 49823,
+                    "median": 49823,
+                    "maximum": 49823,
+                    "last": 49823
+                  },
+                  "CommitLimit": {
+                    "count": 1,
+                    "first": 186900299776,
+                    "minimum": 186900299776,
+                    "median": 186900299776,
+                    "maximum": 186900299776,
+                    "last": 186900299776
+                  },
+                  "CommittedBytes": {
+                    "count": 1,
+                    "first": 83382689792,
+                    "minimum": 83382689792,
+                    "median": 83382689792,
+                    "maximum": 83382689792,
+                    "last": 83382689792
+                  },
+                  "PagesInputPersec": {
+                    "count": 1,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  },
+                  "PagesOutputPersec": {
+                    "count": 1,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  }
+                },
+                "nvidia": {
+                  "free_mib": {
+                    "count": 1,
+                    "first": 143,
+                    "minimum": 143,
+                    "median": 143,
+                    "maximum": 143,
+                    "last": 143
+                  },
+                  "total_mib": {
+                    "count": 1,
+                    "first": 10240,
+                    "minimum": 10240,
+                    "median": 10240,
+                    "maximum": 10240,
+                    "last": 10240
+                  },
+                  "used_mib": {
+                    "count": 1,
+                    "first": 9911,
+                    "minimum": 9911,
+                    "median": 9911,
+                    "maximum": 9911,
+                    "last": 9911
+                  },
+                  "utilization_gpu_pct": {
+                    "count": 1,
+                    "first": 5,
+                    "minimum": 5,
+                    "median": 5,
+                    "maximum": 5,
+                    "last": 5
+                  },
+                  "utilization_memory_pct": {
+                    "count": 1,
+                    "first": 1,
+                    "minimum": 1,
+                    "median": 1,
+                    "maximum": 1,
+                    "last": 1
+                  }
+                },
+                "sampler": {
+                  "sample_seconds": {
+                    "count": 1,
+                    "first": 0.3613302,
+                    "minimum": 0.3613302,
+                    "median": 0.3613302,
+                    "maximum": 0.3613302,
+                    "last": 0.3613302
+                  }
+                },
+                "wddm": {
+                  "luid_0x00000000_0x00011D92_phys_0/DedicatedUsage": {
+                    "count": 1,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  },
+                  "luid_0x00000000_0x00011D92_phys_0/SharedUsage": {
+                    "count": 1,
+                    "first": 8192,
+                    "minimum": 8192,
+                    "median": 8192,
+                    "maximum": 8192,
+                    "last": 8192
+                  },
+                  "luid_0x00000002_0x78878482_phys_0/DedicatedUsage": {
+                    "count": 1,
+                    "first": 10401333248,
+                    "minimum": 10401333248,
+                    "median": 10401333248,
+                    "maximum": 10401333248,
+                    "last": 10401333248
+                  },
+                  "luid_0x00000002_0x78878482_phys_0/SharedUsage": {
+                    "count": 1,
+                    "first": 328884224,
+                    "minimum": 328884224,
+                    "median": 328884224,
+                    "maximum": 328884224,
+                    "last": 328884224
+                  }
+                }
+              },
+              "unavailable": []
+            }
+          },
+          "slowest_render.rgb": {
+            "phase": "render.rgb",
+            "updates_at_entry": 37,
+            "begin_utc": "2026-11-27T06:51:25.777+00:00",
+            "polled_end_utc": "2026-11-27T06:51:25.893+00:00",
+            "end_edge": "cuda_complete",
+            "cuda_elapsed_ms": 22.650880813598633,
+            "telemetry": {
+              "samples": 0
+            }
+          },
+          "slowest_score_alignment_icp": {
+            "phase": "score_alignment_icp",
+            "updates_at_entry": 40,
+            "begin_utc": "2026-11-27T06:51:38.534+00:00",
+            "polled_end_utc": "2026-11-27T06:51:50.294+00:00",
+            "end_edge": "exit",
+            "cuda_elapsed_ms": null,
+            "telemetry": {
+              "samples": 6,
+              "first_utc": "2026-11-27T06:51:39.0801381+00:00",
+              "last_utc": "2026-11-27T06:51:49.1248560+00:00",
+              "counters": {
+                "host": {
+                  "AvailableMBytes": {
+                    "count": 6,
+                    "first": 49837,
+                    "minimum": 49793,
+                    "median": 49833.5,
+                    "maximum": 49841,
+                    "last": 49829
+                  },
+                  "CommitLimit": {
+                    "count": 6,
+                    "first": 186900299776,
+                    "minimum": 186900299776,
+                    "median": 186900299776.0,
+                    "maximum": 186900299776,
+                    "last": 186900299776
+                  },
+                  "CommittedBytes": {
+                    "count": 6,
+                    "first": 83341193216,
+                    "minimum": 83321397248,
+                    "median": 83333642240.0,
+                    "maximum": 83395289088,
+                    "last": 83326091264
+                  },
+                  "PagesInputPersec": {
+                    "count": 6,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0.0,
+                    "maximum": 31,
+                    "last": 0
+                  },
+                  "PagesOutputPersec": {
+                    "count": 6,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0.0,
+                    "maximum": 0,
+                    "last": 0
+                  }
+                },
+                "nvidia": {
+                  "free_mib": {
+                    "count": 6,
+                    "first": 143,
+                    "minimum": 143,
+                    "median": 143.0,
+                    "maximum": 143,
+                    "last": 143
+                  },
+                  "total_mib": {
+                    "count": 6,
+                    "first": 10240,
+                    "minimum": 10240,
+                    "median": 10240.0,
+                    "maximum": 10240,
+                    "last": 10240
+                  },
+                  "used_mib": {
+                    "count": 6,
+                    "first": 9911,
+                    "minimum": 9911,
+                    "median": 9911.0,
+                    "maximum": 9911,
+                    "last": 9911
+                  },
+                  "utilization_gpu_pct": {
+                    "count": 6,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 1.5,
+                    "maximum": 5,
+                    "last": 2
+                  },
+                  "utilization_memory_pct": {
+                    "count": 6,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 4.0,
+                    "maximum": 7,
+                    "last": 7
+                  }
+                },
+                "sampler": {
+                  "sample_seconds": {
+                    "count": 6,
+                    "first": 0.34945,
+                    "minimum": 0.34945,
+                    "median": 0.37714594999999995,
+                    "maximum": 0.39682429999999996,
+                    "last": 0.3774668
+                  }
+                },
+                "wddm": {
+                  "luid_0x00000000_0x00011D92_phys_0/DedicatedUsage": {
+                    "count": 6,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0.0,
+                    "maximum": 0,
+                    "last": 0
+                  },
+                  "luid_0x00000000_0x00011D92_phys_0/SharedUsage": {
+                    "count": 6,
+                    "first": 8192,
+                    "minimum": 8192,
+                    "median": 8192.0,
+                    "maximum": 8192,
+                    "last": 8192
+                  },
+                  "luid_0x00000002_0x78878482_phys_0/DedicatedUsage": {
+                    "count": 6,
+                    "first": 10401333248,
+                    "minimum": 10401214464,
+                    "median": 10401214464.0,
+                    "maximum": 10401333248,
+                    "last": 10401214464
+                  },
+                  "luid_0x00000002_0x78878482_phys_0/SharedUsage": {
+                    "count": 6,
+                    "first": 329666560,
+                    "minimum": 329666560,
+                    "median": 332447744.0,
+                    "maximum": 332447744,
+                    "last": 332447744
+                  }
+                }
+              },
+              "unavailable": []
+            }
+          },
+          "slowest_serialize_prediction": {
+            "phase": "serialize_prediction",
+            "updates_at_entry": 40,
+            "begin_utc": "2026-11-27T06:51:50.294+00:00",
+            "polled_end_utc": "2026-11-27T06:51:51.692+00:00",
+            "end_edge": "exit",
+            "cuda_elapsed_ms": null,
+            "telemetry": {
+              "samples": 1,
+              "first_utc": "2026-11-27T06:51:51.1330779+00:00",
+              "last_utc": "2026-11-27T06:51:51.1330779+00:00",
+              "counters": {
+                "host": {
+                  "AvailableMBytes": {
+                    "count": 1,
+                    "first": 49783,
+                    "minimum": 49783,
+                    "median": 49783,
+                    "maximum": 49783,
+                    "last": 49783
+                  },
+                  "CommitLimit": {
+                    "count": 1,
+                    "first": 186900299776,
+                    "minimum": 186900299776,
+                    "median": 186900299776,
+                    "maximum": 186900299776,
+                    "last": 186900299776
+                  },
+                  "CommittedBytes": {
+                    "count": 1,
+                    "first": 83364003840,
+                    "minimum": 83364003840,
+                    "median": 83364003840,
+                    "maximum": 83364003840,
+                    "last": 83364003840
+                  },
+                  "PagesInputPersec": {
+                    "count": 1,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  },
+                  "PagesOutputPersec": {
+                    "count": 1,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  }
+                },
+                "nvidia": {
+                  "free_mib": {
+                    "count": 1,
+                    "first": 143,
+                    "minimum": 143,
+                    "median": 143,
+                    "maximum": 143,
+                    "last": 143
+                  },
+                  "total_mib": {
+                    "count": 1,
+                    "first": 10240,
+                    "minimum": 10240,
+                    "median": 10240,
+                    "maximum": 10240,
+                    "last": 10240
+                  },
+                  "used_mib": {
+                    "count": 1,
+                    "first": 9911,
+                    "minimum": 9911,
+                    "median": 9911,
+                    "maximum": 9911,
+                    "last": 9911
+                  },
+                  "utilization_gpu_pct": {
+                    "count": 1,
+                    "first": 2,
+                    "minimum": 2,
+                    "median": 2,
+                    "maximum": 2,
+                    "last": 2
+                  },
+                  "utilization_memory_pct": {
+                    "count": 1,
+                    "first": 7,
+                    "minimum": 7,
+                    "median": 7,
+                    "maximum": 7,
+                    "last": 7
+                  }
+                },
+                "sampler": {
+                  "sample_seconds": {
+                    "count": 1,
+                    "first": 0.344645,
+                    "minimum": 0.344645,
+                    "median": 0.344645,
+                    "maximum": 0.344645,
+                    "last": 0.344645
+                  }
+                },
+                "wddm": {
+                  "luid_0x00000000_0x00011D92_phys_0/DedicatedUsage": {
+                    "count": 1,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  },
+                  "luid_0x00000000_0x00011D92_phys_0/SharedUsage": {
+                    "count": 1,
+                    "first": 8192,
+                    "minimum": 8192,
+                    "median": 8192,
+                    "maximum": 8192,
+                    "last": 8192
+                  },
+                  "luid_0x00000002_0x78878482_phys_0/DedicatedUsage": {
+                    "count": 1,
+                    "first": 10401214464,
+                    "minimum": 10401214464,
+                    "median": 10401214464,
+                    "maximum": 10401214464,
+                    "last": 10401214464
+                  },
+                  "luid_0x00000002_0x78878482_phys_0/SharedUsage": {
+                    "count": 1,
+                    "first": 332447744,
+                    "minimum": 332447744,
+                    "median": 332447744,
+                    "maximum": 332447744,
+                    "last": 332447744
+                  }
+                }
+              },
+              "unavailable": []
+            }
+          },
+          "slowest_transformer": {
+            "phase": "transformer",
+            "updates_at_entry": 39,
+            "begin_utc": "2026-11-27T06:51:29.419+00:00",
+            "polled_end_utc": "2026-11-27T06:51:30.714+00:00",
+            "end_edge": "cuda_complete",
+            "cuda_elapsed_ms": 1245.1737060546875,
+            "telemetry": {
+              "samples": 0
+            }
+          }
+        }
+      }
+    },
+    "trace_courtyard_native": {
+      "attempt01": {
+        "host_sha256": "a34da09fd141cb93935533a65a7cdc479f7a0dbfe0b1f18c9e4d6232b4f31083",
+        "phase_sha256": "35e2ff1a6c48bde35dc6083ad492e40b88ce2460e785a58ee4479f5d0ab8f83d",
+        "full_attempt": {
+          "samples": 56,
+          "first_utc": "2026-11-27T06:53:57.4001721+00:00",
+          "last_utc": "2026-11-27T06:55:47.9493457+00:00",
+          "counters": {
+            "host": {
+              "AvailableMBytes": {
+                "count": 56,
+                "first": 49894,
+                "minimum": 49455,
+                "median": 49681.0,
+                "maximum": 49895,
+                "last": 49616
+              },
+              "CommitLimit": {
+                "count": 56,
+                "first": 186900299776,
+                "minimum": 186900299776,
+                "median": 186900299776.0,
+                "maximum": 186900299776,
+                "last": 186900299776
+              },
+              "CommittedBytes": {
+                "count": 56,
+                "first": 73935413248,
+                "minimum": 73678663680,
+                "median": 83074998272.0,
+                "maximum": 83228266496,
+                "last": 83131011072
+              },
+              "PagesInputPersec": {
+                "count": 56,
+                "first": 53,
+                "minimum": 0,
+                "median": 0.0,
+                "maximum": 124,
+                "last": 0
+              },
+              "PagesOutputPersec": {
+                "count": 56,
+                "first": 0,
+                "minimum": 0,
+                "median": 0.0,
+                "maximum": 0,
+                "last": 0
+              }
+            },
+            "nvidia": {
+              "free_mib": {
+                "count": 56,
+                "first": 9208,
+                "minimum": 448,
+                "median": 468.0,
+                "maximum": 9208,
+                "last": 448
+              },
+              "total_mib": {
+                "count": 56,
+                "first": 10240,
+                "minimum": 10240,
+                "median": 10240.0,
+                "maximum": 10240,
+                "last": 10240
+              },
+              "used_mib": {
+                "count": 56,
+                "first": 846,
+                "minimum": 846,
+                "median": 9586.0,
+                "maximum": 9606,
+                "last": 9606
+              },
+              "utilization_gpu_pct": {
+                "count": 56,
+                "first": 2,
+                "minimum": 0,
+                "median": 43.5,
+                "maximum": 92,
+                "last": 1
+              },
+              "utilization_memory_pct": {
+                "count": 56,
+                "first": 7,
+                "minimum": 0,
+                "median": 23.5,
+                "maximum": 54,
+                "last": 1
+              }
+            },
+            "sampler": {
+              "sample_seconds": {
+                "count": 56,
+                "first": 0.653538,
+                "minimum": 0.3445988,
+                "median": 0.3695998,
+                "maximum": 0.653538,
+                "last": 0.37345839999999997
+              }
+            },
+            "wddm": {
+              "luid_0x00000000_0x00011D92_phys_0/DedicatedUsage": {
+                "count": 56,
+                "first": 0,
+                "minimum": 0,
+                "median": 0.0,
+                "maximum": 0,
+                "last": 0
+              },
+              "luid_0x00000000_0x00011D92_phys_0/SharedUsage": {
+                "count": 56,
+                "first": 8192,
+                "minimum": 8192,
+                "median": 8192.0,
+                "maximum": 8192,
+                "last": 8192
+              },
+              "luid_0x00000002_0x78878482_phys_0/DedicatedUsage": {
+                "count": 56,
+                "first": 895111168,
+                "minimum": 895111168,
+                "median": 10059743232.0,
+                "maximum": 10080743424,
+                "last": 10080600064
+              },
+              "luid_0x00000002_0x78878482_phys_0/SharedUsage": {
+                "count": 56,
+                "first": 73097216,
+                "minimum": 72855552,
+                "median": 146941952.0,
+                "maximum": 150732800,
+                "last": 98852864
+              }
+            }
+          },
+          "unavailable": []
+        },
+        "phase_windows": {
+          "slowest_adam": {
+            "phase": "adam",
+            "updates_at_entry": 39,
+            "begin_utc": "2026-11-27T06:55:40.821+00:00",
+            "polled_end_utc": "2026-11-27T06:55:41.249+00:00",
+            "end_edge": "cuda_complete",
+            "cuda_elapsed_ms": 219.30726623535156,
+            "telemetry": {
+              "samples": 0
+            }
+          },
+          "slowest_backward": {
+            "phase": "backward",
+            "updates_at_entry": 22,
+            "begin_utc": "2026-11-27T06:55:14.947+00:00",
+            "polled_end_utc": "2026-11-27T06:55:16.350+00:00",
+            "end_edge": "cuda_complete",
+            "cuda_elapsed_ms": 1319.4532470703125,
+            "telemetry": {
+              "samples": 1,
+              "first_utc": "2026-11-27T06:55:15.7771888+00:00",
+              "last_utc": "2026-11-27T06:55:15.7771888+00:00",
+              "counters": {
+                "host": {
+                  "AvailableMBytes": {
+                    "count": 1,
+                    "first": 49614,
+                    "minimum": 49614,
+                    "median": 49614,
+                    "maximum": 49614,
+                    "last": 49614
+                  },
+                  "CommitLimit": {
+                    "count": 1,
+                    "first": 186900299776,
+                    "minimum": 186900299776,
+                    "median": 186900299776,
+                    "maximum": 186900299776,
+                    "last": 186900299776
+                  },
+                  "CommittedBytes": {
+                    "count": 1,
+                    "first": 83162484736,
+                    "minimum": 83162484736,
+                    "median": 83162484736,
+                    "maximum": 83162484736,
+                    "last": 83162484736
+                  },
+                  "PagesInputPersec": {
+                    "count": 1,
+                    "first": 62,
+                    "minimum": 62,
+                    "median": 62,
+                    "maximum": 62,
+                    "last": 62
+                  },
+                  "PagesOutputPersec": {
+                    "count": 1,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  }
+                },
+                "nvidia": {
+                  "free_mib": {
+                    "count": 1,
+                    "first": 468,
+                    "minimum": 468,
+                    "median": 468,
+                    "maximum": 468,
+                    "last": 468
+                  },
+                  "total_mib": {
+                    "count": 1,
+                    "first": 10240,
+                    "minimum": 10240,
+                    "median": 10240,
+                    "maximum": 10240,
+                    "last": 10240
+                  },
+                  "used_mib": {
+                    "count": 1,
+                    "first": 9586,
+                    "minimum": 9586,
+                    "median": 9586,
+                    "maximum": 9586,
+                    "last": 9586
+                  },
+                  "utilization_gpu_pct": {
+                    "count": 1,
+                    "first": 58,
+                    "minimum": 58,
+                    "median": 58,
+                    "maximum": 58,
+                    "last": 58
+                  },
+                  "utilization_memory_pct": {
+                    "count": 1,
+                    "first": 34,
+                    "minimum": 34,
+                    "median": 34,
+                    "maximum": 34,
+                    "last": 34
+                  }
+                },
+                "sampler": {
+                  "sample_seconds": {
+                    "count": 1,
+                    "first": 0.4418715,
+                    "minimum": 0.4418715,
+                    "median": 0.4418715,
+                    "maximum": 0.4418715,
+                    "last": 0.4418715
+                  }
+                },
+                "wddm": {
+                  "luid_0x00000000_0x00011D92_phys_0/DedicatedUsage": {
+                    "count": 1,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  },
+                  "luid_0x00000000_0x00011D92_phys_0/SharedUsage": {
+                    "count": 1,
+                    "first": 8192,
+                    "minimum": 8192,
+                    "median": 8192,
+                    "maximum": 8192,
+                    "last": 8192
+                  },
+                  "luid_0x00000002_0x78878482_phys_0/DedicatedUsage": {
+                    "count": 1,
+                    "first": 10059743232,
+                    "minimum": 10059743232,
+                    "median": 10059743232,
+                    "maximum": 10059743232,
+                    "last": 10059743232
+                  },
+                  "luid_0x00000002_0x78878482_phys_0/SharedUsage": {
+                    "count": 1,
+                    "first": 148434944,
+                    "minimum": 148434944,
+                    "median": 148434944,
+                    "maximum": 148434944,
+                    "last": 148434944
+                  }
+                }
+              },
+              "unavailable": []
+            }
+          },
+          "slowest_final.transformer": {
+            "phase": "final.transformer",
+            "updates_at_entry": 40,
+            "begin_utc": "2026-11-27T06:55:44.371+00:00",
+            "polled_end_utc": "2026-11-27T06:55:45.148+00:00",
+            "end_edge": "cuda_complete",
+            "cuda_elapsed_ms": 605.83935546875,
+            "telemetry": {
+              "samples": 0
+            }
+          },
+          "slowest_render.rgb": {
+            "phase": "render.rgb",
+            "updates_at_entry": 36,
+            "begin_utc": "2026-11-27T06:55:35.440+00:00",
+            "polled_end_utc": "2026-11-27T06:55:35.570+00:00",
+            "end_edge": "cuda_complete",
+            "cuda_elapsed_ms": 17.569791793823242,
+            "telemetry": {
+              "samples": 0
+            }
+          },
+          "slowest_score_alignment_icp": {
+            "phase": "score_alignment_icp",
+            "updates_at_entry": 40,
+            "begin_utc": "2026-11-27T06:55:45.205+00:00",
+            "polled_end_utc": "2026-11-27T06:55:47.158+00:00",
+            "end_edge": "exit",
+            "cuda_elapsed_ms": null,
+            "telemetry": {
+              "samples": 1,
+              "first_utc": "2026-11-27T06:55:45.9469498+00:00",
+              "last_utc": "2026-11-27T06:55:45.9469498+00:00",
+              "counters": {
+                "host": {
+                  "AvailableMBytes": {
+                    "count": 1,
+                    "first": 49582,
+                    "minimum": 49582,
+                    "median": 49582,
+                    "maximum": 49582,
+                    "last": 49582
+                  },
+                  "CommitLimit": {
+                    "count": 1,
+                    "first": 186900299776,
+                    "minimum": 186900299776,
+                    "median": 186900299776,
+                    "maximum": 186900299776,
+                    "last": 186900299776
+                  },
+                  "CommittedBytes": {
+                    "count": 1,
+                    "first": 83211010048,
+                    "minimum": 83211010048,
+                    "median": 83211010048,
+                    "maximum": 83211010048,
+                    "last": 83211010048
+                  },
+                  "PagesInputPersec": {
+                    "count": 1,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  },
+                  "PagesOutputPersec": {
+                    "count": 1,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  }
+                },
+                "nvidia": {
+                  "free_mib": {
+                    "count": 1,
+                    "first": 448,
+                    "minimum": 448,
+                    "median": 448,
+                    "maximum": 448,
+                    "last": 448
+                  },
+                  "total_mib": {
+                    "count": 1,
+                    "first": 10240,
+                    "minimum": 10240,
+                    "median": 10240,
+                    "maximum": 10240,
+                    "last": 10240
+                  },
+                  "used_mib": {
+                    "count": 1,
+                    "first": 9606,
+                    "minimum": 9606,
+                    "median": 9606,
+                    "maximum": 9606,
+                    "last": 9606
+                  },
+                  "utilization_gpu_pct": {
+                    "count": 1,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  },
+                  "utilization_memory_pct": {
+                    "count": 1,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  }
+                },
+                "sampler": {
+                  "sample_seconds": {
+                    "count": 1,
+                    "first": 0.4331426,
+                    "minimum": 0.4331426,
+                    "median": 0.4331426,
+                    "maximum": 0.4331426,
+                    "last": 0.4331426
+                  }
+                },
+                "wddm": {
+                  "luid_0x00000000_0x00011D92_phys_0/DedicatedUsage": {
+                    "count": 1,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  },
+                  "luid_0x00000000_0x00011D92_phys_0/SharedUsage": {
+                    "count": 1,
+                    "first": 8192,
+                    "minimum": 8192,
+                    "median": 8192,
+                    "maximum": 8192,
+                    "last": 8192
+                  },
+                  "luid_0x00000002_0x78878482_phys_0/DedicatedUsage": {
+                    "count": 1,
+                    "first": 10080600064,
+                    "minimum": 10080600064,
+                    "median": 10080600064,
+                    "maximum": 10080600064,
+                    "last": 10080600064
+                  },
+                  "luid_0x00000002_0x78878482_phys_0/SharedUsage": {
+                    "count": 1,
+                    "first": 98852864,
+                    "minimum": 98852864,
+                    "median": 98852864,
+                    "maximum": 98852864,
+                    "last": 98852864
+                  }
+                }
+              },
+              "unavailable": []
+            }
+          },
+          "slowest_serialize_prediction": {
+            "phase": "serialize_prediction",
+            "updates_at_entry": 40,
+            "begin_utc": "2026-11-27T06:55:47.158+00:00",
+            "polled_end_utc": "2026-11-27T06:55:48.463+00:00",
+            "end_edge": "exit",
+            "cuda_elapsed_ms": null,
+            "telemetry": {
+              "samples": 1,
+              "first_utc": "2026-11-27T06:55:47.9493457+00:00",
+              "last_utc": "2026-11-27T06:55:47.9493457+00:00",
+              "counters": {
+                "host": {
+                  "AvailableMBytes": {
+                    "count": 1,
+                    "first": 49616,
+                    "minimum": 49616,
+                    "median": 49616,
+                    "maximum": 49616,
+                    "last": 49616
+                  },
+                  "CommitLimit": {
+                    "count": 1,
+                    "first": 186900299776,
+                    "minimum": 186900299776,
+                    "median": 186900299776,
+                    "maximum": 186900299776,
+                    "last": 186900299776
+                  },
+                  "CommittedBytes": {
+                    "count": 1,
+                    "first": 83131011072,
+                    "minimum": 83131011072,
+                    "median": 83131011072,
+                    "maximum": 83131011072,
+                    "last": 83131011072
+                  },
+                  "PagesInputPersec": {
+                    "count": 1,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  },
+                  "PagesOutputPersec": {
+                    "count": 1,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  }
+                },
+                "nvidia": {
+                  "free_mib": {
+                    "count": 1,
+                    "first": 448,
+                    "minimum": 448,
+                    "median": 448,
+                    "maximum": 448,
+                    "last": 448
+                  },
+                  "total_mib": {
+                    "count": 1,
+                    "first": 10240,
+                    "minimum": 10240,
+                    "median": 10240,
+                    "maximum": 10240,
+                    "last": 10240
+                  },
+                  "used_mib": {
+                    "count": 1,
+                    "first": 9606,
+                    "minimum": 9606,
+                    "median": 9606,
+                    "maximum": 9606,
+                    "last": 9606
+                  },
+                  "utilization_gpu_pct": {
+                    "count": 1,
+                    "first": 1,
+                    "minimum": 1,
+                    "median": 1,
+                    "maximum": 1,
+                    "last": 1
+                  },
+                  "utilization_memory_pct": {
+                    "count": 1,
+                    "first": 1,
+                    "minimum": 1,
+                    "median": 1,
+                    "maximum": 1,
+                    "last": 1
+                  }
+                },
+                "sampler": {
+                  "sample_seconds": {
+                    "count": 1,
+                    "first": 0.37345839999999997,
+                    "minimum": 0.37345839999999997,
+                    "median": 0.37345839999999997,
+                    "maximum": 0.37345839999999997,
+                    "last": 0.37345839999999997
+                  }
+                },
+                "wddm": {
+                  "luid_0x00000000_0x00011D92_phys_0/DedicatedUsage": {
+                    "count": 1,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  },
+                  "luid_0x00000000_0x00011D92_phys_0/SharedUsage": {
+                    "count": 1,
+                    "first": 8192,
+                    "minimum": 8192,
+                    "median": 8192,
+                    "maximum": 8192,
+                    "last": 8192
+                  },
+                  "luid_0x00000002_0x78878482_phys_0/DedicatedUsage": {
+                    "count": 1,
+                    "first": 10080600064,
+                    "minimum": 10080600064,
+                    "median": 10080600064,
+                    "maximum": 10080600064,
+                    "last": 10080600064
+                  },
+                  "luid_0x00000002_0x78878482_phys_0/SharedUsage": {
+                    "count": 1,
+                    "first": 98852864,
+                    "minimum": 98852864,
+                    "median": 98852864,
+                    "maximum": 98852864,
+                    "last": 98852864
+                  }
+                }
+              },
+              "unavailable": []
+            }
+          },
+          "slowest_transformer": {
+            "phase": "transformer",
+            "updates_at_entry": 9,
+            "begin_utc": "2026-11-27T06:54:55.418+00:00",
+            "polled_end_utc": "2026-11-27T06:54:56.394+00:00",
+            "end_edge": "cuda_complete",
+            "cuda_elapsed_ms": 821.6209716796875,
+            "telemetry": {
+              "samples": 1,
+              "first_utc": "2026-11-27T06:54:55.6548935+00:00",
+              "last_utc": "2026-11-27T06:54:55.6548935+00:00",
+              "counters": {
+                "host": {
+                  "AvailableMBytes": {
+                    "count": 1,
+                    "first": 49612,
+                    "minimum": 49612,
+                    "median": 49612,
+                    "maximum": 49612,
+                    "last": 49612
+                  },
+                  "CommitLimit": {
+                    "count": 1,
+                    "first": 186900299776,
+                    "minimum": 186900299776,
+                    "median": 186900299776,
+                    "maximum": 186900299776,
+                    "last": 186900299776
+                  },
+                  "CommittedBytes": {
+                    "count": 1,
+                    "first": 83190194176,
+                    "minimum": 83190194176,
+                    "median": 83190194176,
+                    "maximum": 83190194176,
+                    "last": 83190194176
+                  },
+                  "PagesInputPersec": {
+                    "count": 1,
+                    "first": 62,
+                    "minimum": 62,
+                    "median": 62,
+                    "maximum": 62,
+                    "last": 62
+                  },
+                  "PagesOutputPersec": {
+                    "count": 1,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  }
+                },
+                "nvidia": {
+                  "free_mib": {
+                    "count": 1,
+                    "first": 468,
+                    "minimum": 468,
+                    "median": 468,
+                    "maximum": 468,
+                    "last": 468
+                  },
+                  "total_mib": {
+                    "count": 1,
+                    "first": 10240,
+                    "minimum": 10240,
+                    "median": 10240,
+                    "maximum": 10240,
+                    "last": 10240
+                  },
+                  "used_mib": {
+                    "count": 1,
+                    "first": 9586,
+                    "minimum": 9586,
+                    "median": 9586,
+                    "maximum": 9586,
+                    "last": 9586
+                  },
+                  "utilization_gpu_pct": {
+                    "count": 1,
+                    "first": 41,
+                    "minimum": 41,
+                    "median": 41,
+                    "maximum": 41,
+                    "last": 41
+                  },
+                  "utilization_memory_pct": {
+                    "count": 1,
+                    "first": 25,
+                    "minimum": 25,
+                    "median": 25,
+                    "maximum": 25,
+                    "last": 25
+                  }
+                },
+                "sampler": {
+                  "sample_seconds": {
+                    "count": 1,
+                    "first": 0.44219559999999997,
+                    "minimum": 0.44219559999999997,
+                    "median": 0.44219559999999997,
+                    "maximum": 0.44219559999999997,
+                    "last": 0.44219559999999997
+                  }
+                },
+                "wddm": {
+                  "luid_0x00000000_0x00011D92_phys_0/DedicatedUsage": {
+                    "count": 1,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  },
+                  "luid_0x00000000_0x00011D92_phys_0/SharedUsage": {
+                    "count": 1,
+                    "first": 8192,
+                    "minimum": 8192,
+                    "median": 8192,
+                    "maximum": 8192,
+                    "last": 8192
+                  },
+                  "luid_0x00000002_0x78878482_phys_0/DedicatedUsage": {
+                    "count": 1,
+                    "first": 10059747328,
+                    "minimum": 10059747328,
+                    "median": 10059747328,
+                    "maximum": 10059747328,
+                    "last": 10059747328
+                  },
+                  "luid_0x00000002_0x78878482_phys_0/SharedUsage": {
+                    "count": 1,
+                    "first": 148676608,
+                    "minimum": 148676608,
+                    "median": 148676608,
+                    "maximum": 148676608,
+                    "last": 148676608
+                  }
+                }
+              },
+              "unavailable": []
+            }
+          }
+        }
+      }
+    },
+    "trace_heads_native": {
+      "attempt01": {
+        "host_sha256": "93f8d12f684f6a08d9fdf37ff83ffaaec67a5c23c26812dd0714e669f441a3a7",
+        "phase_sha256": "00ff3579001761b60a74366268c5963b36b808b1883e05c84d68f01111efa196",
+        "full_attempt": {
+          "samples": 60,
+          "first_utc": "2026-11-27T06:55:50.4836180+00:00",
+          "last_utc": "2026-11-27T06:57:49.0204099+00:00",
+          "counters": {
+            "host": {
+              "AvailableMBytes": {
+                "count": 60,
+                "first": 49633,
+                "minimum": 49602,
+                "median": 49935.0,
+                "maximum": 49982,
+                "last": 49609
+              },
+              "CommitLimit": {
+                "count": 60,
+                "first": 186900299776,
+                "minimum": 186900299776,
+                "median": 186900299776.0,
+                "maximum": 186900299776,
+                "last": 186900299776
+              },
+              "CommittedBytes": {
+                "count": 60,
+                "first": 74180849664,
+                "minimum": 73830748160,
+                "median": 83039643648.0,
+                "maximum": 83560038400,
+                "last": 83511762944
+              },
+              "PagesInputPersec": {
+                "count": 60,
+                "first": 35,
+                "minimum": 0,
+                "median": 0.0,
+                "maximum": 41,
+                "last": 0
+              },
+              "PagesOutputPersec": {
+                "count": 60,
+                "first": 0,
+                "minimum": 0,
+                "median": 0.0,
+                "maximum": 0,
+                "last": 0
+              }
+            },
+            "nvidia": {
+              "free_mib": {
+                "count": 60,
+                "first": 9208,
+                "minimum": 126,
+                "median": 205.0,
+                "maximum": 9209,
+                "last": 126
+              },
+              "total_mib": {
+                "count": 60,
+                "first": 10240,
+                "minimum": 10240,
+                "median": 10240.0,
+                "maximum": 10240,
+                "last": 10240
+              },
+              "used_mib": {
+                "count": 60,
+                "first": 846,
+                "minimum": 845,
+                "median": 9849.0,
+                "maximum": 9928,
+                "last": 9928
+              },
+              "utilization_gpu_pct": {
+                "count": 60,
+                "first": 1,
+                "minimum": 0,
+                "median": 53.5,
+                "maximum": 95,
+                "last": 1
+              },
+              "utilization_memory_pct": {
+                "count": 60,
+                "first": 1,
+                "minimum": 0,
+                "median": 24.5,
+                "maximum": 54,
+                "last": 7
+              }
+            },
+            "sampler": {
+              "sample_seconds": {
+                "count": 60,
+                "first": 0.6306573999999999,
+                "minimum": 0.34407879999999996,
+                "median": 0.362293,
+                "maximum": 0.6306573999999999,
+                "last": 0.36053569999999996
+              }
+            },
+            "wddm": {
+              "luid_0x00000000_0x00011D92_phys_0/DedicatedUsage": {
+                "count": 60,
+                "first": 0,
+                "minimum": 0,
+                "median": 0.0,
+                "maximum": 0,
+                "last": 0
+              },
+              "luid_0x00000000_0x00011D92_phys_0/SharedUsage": {
+                "count": 60,
+                "first": 8192,
+                "minimum": 8192,
+                "median": 8192.0,
+                "maximum": 8192,
+                "last": 8192
+              },
+              "luid_0x00000002_0x78878482_phys_0/DedicatedUsage": {
+                "count": 60,
+                "first": 894566400,
+                "minimum": 894091264,
+                "median": 10334744576.0,
+                "maximum": 10418782208,
+                "last": 10418638848
+              },
+              "luid_0x00000002_0x78878482_phys_0/SharedUsage": {
+                "count": 60,
+                "first": 68784128,
+                "minimum": 68784128,
+                "median": 147841024.0,
+                "maximum": 250802176,
+                "last": 199516160
+              }
+            }
+          },
+          "unavailable": []
+        },
+        "phase_windows": {
+          "slowest_adam": {
+            "phase": "adam",
+            "updates_at_entry": 39,
+            "begin_utc": "2026-11-27T06:57:33.138+00:00",
+            "polled_end_utc": "2026-11-27T06:57:33.538+00:00",
+            "end_edge": "cuda_complete",
+            "cuda_elapsed_ms": 190.85311889648438,
+            "telemetry": {
+              "samples": 0
+            }
+          },
+          "slowest_backward": {
+            "phase": "backward",
+            "updates_at_entry": 36,
+            "begin_utc": "2026-11-27T06:57:26.097+00:00",
+            "polled_end_utc": "2026-11-27T06:57:27.854+00:00",
+            "end_edge": "cuda_complete",
+            "cuda_elapsed_ms": 1719.91162109375,
+            "telemetry": {
+              "samples": 1,
+              "first_utc": "2026-11-27T06:57:26.9119577+00:00",
+              "last_utc": "2026-11-27T06:57:26.9119577+00:00",
+              "counters": {
+                "host": {
+                  "AvailableMBytes": {
+                    "count": 1,
+                    "first": 49657,
+                    "minimum": 49657,
+                    "median": 49657,
+                    "maximum": 49657,
+                    "last": 49657
+                  },
+                  "CommitLimit": {
+                    "count": 1,
+                    "first": 186900299776,
+                    "minimum": 186900299776,
+                    "median": 186900299776,
+                    "maximum": 186900299776,
+                    "last": 186900299776
+                  },
+                  "CommittedBytes": {
+                    "count": 1,
+                    "first": 83509415936,
+                    "minimum": 83509415936,
+                    "median": 83509415936,
+                    "maximum": 83509415936,
+                    "last": 83509415936
+                  },
+                  "PagesInputPersec": {
+                    "count": 1,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  },
+                  "PagesOutputPersec": {
+                    "count": 1,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  }
+                },
+                "nvidia": {
+                  "free_mib": {
+                    "count": 1,
+                    "first": 126,
+                    "minimum": 126,
+                    "median": 126,
+                    "maximum": 126,
+                    "last": 126
+                  },
+                  "total_mib": {
+                    "count": 1,
+                    "first": 10240,
+                    "minimum": 10240,
+                    "median": 10240,
+                    "maximum": 10240,
+                    "last": 10240
+                  },
+                  "used_mib": {
+                    "count": 1,
+                    "first": 9928,
+                    "minimum": 9928,
+                    "median": 9928,
+                    "maximum": 9928,
+                    "last": 9928
+                  },
+                  "utilization_gpu_pct": {
+                    "count": 1,
+                    "first": 48,
+                    "minimum": 48,
+                    "median": 48,
+                    "maximum": 48,
+                    "last": 48
+                  },
+                  "utilization_memory_pct": {
+                    "count": 1,
+                    "first": 26,
+                    "minimum": 26,
+                    "median": 26,
+                    "maximum": 26,
+                    "last": 26
+                  }
+                },
+                "sampler": {
+                  "sample_seconds": {
+                    "count": 1,
+                    "first": 0.4473638,
+                    "minimum": 0.4473638,
+                    "median": 0.4473638,
+                    "maximum": 0.4473638,
+                    "last": 0.4473638
+                  }
+                },
+                "wddm": {
+                  "luid_0x00000000_0x00011D92_phys_0/DedicatedUsage": {
+                    "count": 1,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  },
+                  "luid_0x00000000_0x00011D92_phys_0/SharedUsage": {
+                    "count": 1,
+                    "first": 8192,
+                    "minimum": 8192,
+                    "median": 8192,
+                    "maximum": 8192,
+                    "last": 8192
+                  },
+                  "luid_0x00000002_0x78878482_phys_0/DedicatedUsage": {
+                    "count": 1,
+                    "first": 10418782208,
+                    "minimum": 10418782208,
+                    "median": 10418782208,
+                    "maximum": 10418782208,
+                    "last": 10418782208
+                  },
+                  "luid_0x00000002_0x78878482_phys_0/SharedUsage": {
+                    "count": 1,
+                    "first": 250802176,
+                    "minimum": 250802176,
+                    "median": 250802176,
+                    "maximum": 250802176,
+                    "last": 250802176
+                  }
+                }
+              },
+              "unavailable": []
+            }
+          },
+          "slowest_final.transformer": {
+            "phase": "final.transformer",
+            "updates_at_entry": 40,
+            "begin_utc": "2026-11-27T06:57:37.630+00:00",
+            "polled_end_utc": "2026-11-27T06:57:38.261+00:00",
+            "end_edge": "cuda_complete",
+            "cuda_elapsed_ms": 597.668212890625,
+            "telemetry": {
+              "samples": 0
+            }
+          },
+          "slowest_render.rgb": {
+            "phase": "render.rgb",
+            "updates_at_entry": 36,
+            "begin_utc": "2026-11-27T06:57:26.029+00:00",
+            "polled_end_utc": "2026-11-27T06:57:26.231+00:00",
+            "end_edge": "cuda_complete",
+            "cuda_elapsed_ms": 20.202495574951172,
+            "telemetry": {
+              "samples": 0
+            }
+          },
+          "slowest_score_alignment_icp": {
+            "phase": "score_alignment_icp",
+            "updates_at_entry": 40,
+            "begin_utc": "2026-11-27T06:57:38.459+00:00",
+            "polled_end_utc": "2026-11-27T06:57:47.136+00:00",
+            "end_edge": "exit",
+            "cuda_elapsed_ms": null,
+            "telemetry": {
+              "samples": 5,
+              "first_utc": "2026-11-27T06:57:38.9762372+00:00",
+              "last_utc": "2026-11-27T06:57:47.0049633+00:00",
+              "counters": {
+                "host": {
+                  "AvailableMBytes": {
+                    "count": 5,
+                    "first": 49660,
+                    "minimum": 49602,
+                    "median": 49660,
+                    "maximum": 49662,
+                    "last": 49602
+                  },
+                  "CommitLimit": {
+                    "count": 5,
+                    "first": 186900299776,
+                    "minimum": 186900299776,
+                    "median": 186900299776,
+                    "maximum": 186900299776,
+                    "last": 186900299776
+                  },
+                  "CommittedBytes": {
+                    "count": 5,
+                    "first": 83492794368,
+                    "minimum": 83471638528,
+                    "median": 83492794368,
+                    "maximum": 83558060032,
+                    "last": 83558060032
+                  },
+                  "PagesInputPersec": {
+                    "count": 5,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 11,
+                    "last": 0
+                  },
+                  "PagesOutputPersec": {
+                    "count": 5,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  }
+                },
+                "nvidia": {
+                  "free_mib": {
+                    "count": 5,
+                    "first": 126,
+                    "minimum": 126,
+                    "median": 126,
+                    "maximum": 126,
+                    "last": 126
+                  },
+                  "total_mib": {
+                    "count": 5,
+                    "first": 10240,
+                    "minimum": 10240,
+                    "median": 10240,
+                    "maximum": 10240,
+                    "last": 10240
+                  },
+                  "used_mib": {
+                    "count": 5,
+                    "first": 9928,
+                    "minimum": 9928,
+                    "median": 9928,
+                    "maximum": 9928,
+                    "last": 9928
+                  },
+                  "utilization_gpu_pct": {
+                    "count": 5,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 1,
+                    "maximum": 2,
+                    "last": 2
+                  },
+                  "utilization_memory_pct": {
+                    "count": 5,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 1,
+                    "maximum": 7,
+                    "last": 7
+                  }
+                },
+                "sampler": {
+                  "sample_seconds": {
+                    "count": 5,
+                    "first": 0.3489664,
+                    "minimum": 0.3489664,
+                    "median": 0.3750052,
+                    "maximum": 0.3822386,
+                    "last": 0.3750052
+                  }
+                },
+                "wddm": {
+                  "luid_0x00000000_0x00011D92_phys_0/DedicatedUsage": {
+                    "count": 5,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  },
+                  "luid_0x00000000_0x00011D92_phys_0/SharedUsage": {
+                    "count": 5,
+                    "first": 8192,
+                    "minimum": 8192,
+                    "median": 8192,
+                    "maximum": 8192,
+                    "last": 8192
+                  },
+                  "luid_0x00000002_0x78878482_phys_0/DedicatedUsage": {
+                    "count": 5,
+                    "first": 10418782208,
+                    "minimum": 10418638848,
+                    "median": 10418638848,
+                    "maximum": 10418782208,
+                    "last": 10418638848
+                  },
+                  "luid_0x00000002_0x78878482_phys_0/SharedUsage": {
+                    "count": 5,
+                    "first": 250802176,
+                    "minimum": 199458816,
+                    "median": 199516160,
+                    "maximum": 250802176,
+                    "last": 199516160
+                  }
+                }
+              },
+              "unavailable": []
+            }
+          },
+          "slowest_serialize_prediction": {
+            "phase": "serialize_prediction",
+            "updates_at_entry": 40,
+            "begin_utc": "2026-11-27T06:57:47.137+00:00",
+            "polled_end_utc": "2026-11-27T06:57:48.507+00:00",
+            "end_edge": "exit",
+            "cuda_elapsed_ms": null,
+            "telemetry": {
+              "samples": 0
+            }
+          },
+          "slowest_transformer": {
+            "phase": "transformer",
+            "updates_at_entry": 6,
+            "begin_utc": "2026-11-27T06:56:36.007+00:00",
+            "polled_end_utc": "2026-11-27T06:56:37.321+00:00",
+            "end_edge": "cuda_complete",
+            "cuda_elapsed_ms": 1103.245361328125,
+            "telemetry": {
+              "samples": 1,
+              "first_utc": "2026-11-27T06:56:36.7360483+00:00",
+              "last_utc": "2026-11-27T06:56:36.7360483+00:00",
+              "counters": {
+                "host": {
+                  "AvailableMBytes": {
+                    "count": 1,
+                    "first": 49905,
+                    "minimum": 49905,
+                    "median": 49905,
+                    "maximum": 49905,
+                    "last": 49905
+                  },
+                  "CommitLimit": {
+                    "count": 1,
+                    "first": 186900299776,
+                    "minimum": 186900299776,
+                    "median": 186900299776,
+                    "maximum": 186900299776,
+                    "last": 186900299776
+                  },
+                  "CommittedBytes": {
+                    "count": 1,
+                    "first": 83133730816,
+                    "minimum": 83133730816,
+                    "median": 83133730816,
+                    "maximum": 83133730816,
+                    "last": 83133730816
+                  },
+                  "PagesInputPersec": {
+                    "count": 1,
+                    "first": 35,
+                    "minimum": 35,
+                    "median": 35,
+                    "maximum": 35,
+                    "last": 35
+                  },
+                  "PagesOutputPersec": {
+                    "count": 1,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  }
+                },
+                "nvidia": {
+                  "free_mib": {
+                    "count": 1,
+                    "first": 206,
+                    "minimum": 206,
+                    "median": 206,
+                    "maximum": 206,
+                    "last": 206
+                  },
+                  "total_mib": {
+                    "count": 1,
+                    "first": 10240,
+                    "minimum": 10240,
+                    "median": 10240,
+                    "maximum": 10240,
+                    "last": 10240
+                  },
+                  "used_mib": {
+                    "count": 1,
+                    "first": 9848,
+                    "minimum": 9848,
+                    "median": 9848,
+                    "maximum": 9848,
+                    "last": 9848
+                  },
+                  "utilization_gpu_pct": {
+                    "count": 1,
+                    "first": 29,
+                    "minimum": 29,
+                    "median": 29,
+                    "maximum": 29,
+                    "last": 29
+                  },
+                  "utilization_memory_pct": {
+                    "count": 1,
+                    "first": 17,
+                    "minimum": 17,
+                    "median": 17,
+                    "maximum": 17,
+                    "last": 17
+                  }
+                },
+                "sampler": {
+                  "sample_seconds": {
+                    "count": 1,
+                    "first": 0.4200799,
+                    "minimum": 0.4200799,
+                    "median": 0.4200799,
+                    "maximum": 0.4200799,
+                    "last": 0.4200799
+                  }
+                },
+                "wddm": {
+                  "luid_0x00000000_0x00011D92_phys_0/DedicatedUsage": {
+                    "count": 1,
+                    "first": 0,
+                    "minimum": 0,
+                    "median": 0,
+                    "maximum": 0,
+                    "last": 0
+                  },
+                  "luid_0x00000000_0x00011D92_phys_0/SharedUsage": {
+                    "count": 1,
+                    "first": 8192,
+                    "minimum": 8192,
+                    "median": 8192,
+                    "maximum": 8192,
+                    "last": 8192
+                  },
+                  "luid_0x00000002_0x78878482_phys_0/DedicatedUsage": {
+                    "count": 1,
+                    "first": 10333958144,
+                    "minimum": 10333958144,
+                    "median": 10333958144,
+                    "maximum": 10333958144,
+                    "last": 10333958144
+                  },
+                  "luid_0x00000002_0x78878482_phys_0/SharedUsage": {
+                    "count": 1,
+                    "first": 147841024,
+                    "minimum": 147841024,
+                    "median": 147841024,
+                    "maximum": 147841024,
+                    "last": 147841024
+                  }
+                }
+              },
+              "unavailable": []
+            }
+          }
+        }
+      }
+    }
+  },
+  "method": "NVIDIA-SMI device counters, WDDM counters per adapter, Windows host memory and observed start-to-polled-end phase windows. WDDM values are adapter-wide. A completion can be observed later than it occurred, and short scopes can fall between samples."
+}
