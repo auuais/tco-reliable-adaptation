@@ -44,18 +44,20 @@ def lock_primary():
 
 def lock_followup(decision):
     results = read(decision)
-    if results["dataset"] != "stanford12" or not results.get("formal_coverage"):
-        raise ValueError("Full primary coverage required to select a scientific follow-up")
+    if results["dataset"] != "stanford12":
+        raise ValueError("Expected the registered Stanford primary outcome")
     if results["joint_verdict"] == "pass":
         branch = "all_pass"
     else:
-        grades = results["decisions_on_complete_rooms"]
-        passed = all(grades[name] == "pass" for name in ("accuracy_superiority_vs_short","completeness_vs_short"))
+        grades = results.get("decisions_on_complete_rooms", {})
+        passed = results.get("formal_coverage") and all(grades.get(name) == "pass" for name in ("accuracy_superiority_vs_short","completeness_vs_short"))
         branch = "equal_update_pass_only" if passed else "other"
     initial = read(MANIFEST)
     arms = initial["followups"][branch]
     record = dict(study=STUDY,stage="followup",branch=branch,primary_decision_sha256=sha(decision),arms=arms,
-                  jobs=matrix(initial["development_rooms"],arms,"followup"))
+                  jobs=matrix(initial["development_rooms"],arms,"followup"),
+                  diagnostics=[job(r,42,"LN10","diagnostics","diagnostic") for r in initial["development_rooms"]]
+                  if branch == "other" else [])
     seal(ROOT/"manifests"/(STUDY+"_followup.json"),record)
     print("Locked follow-up",branch,arms,len(record["jobs"]))
 

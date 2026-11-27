@@ -155,12 +155,14 @@ def select(stage):
             if sha(ROOT/rel) != digest:
                 raise ValueError("Lock bytes changed: "+rel)
         return lock[stage]
+    if stage == "diagnostics":
+        return read(ROOT/"manifests"/(STUDY+"_followup.json"))["diagnostics"]
     return read(ROOT/"manifests"/(STUDY+"_"+stage+".json"))["jobs"]
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("stage", choices=("engineering","development","duplicates","primary","anchor","followup","replication"))
+    parser.add_argument("stage", choices=("engineering","development","duplicates","primary","anchor","followup","diagnostics","replication"))
     parser.add_argument("--only", action="append",default=[])
     parser.add_argument("--status",action="store_true")
     args = parser.parse_args()
