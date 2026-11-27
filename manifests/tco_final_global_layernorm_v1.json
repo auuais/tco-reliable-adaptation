@@ -1,0 +1,938 @@
+{
+  "arkit": {
+    "commit": "474aaa83d7b1c9080619d8485de2d7c885c01fc5",
+    "downloader_sha256": "1eca7fb832aab84c15da8ed5ffe38d4f1f7ffb4256fcfd755ef4b39a31b48137",
+    "metadata_sha256": "5a817c0ee8150cea1de4fa9d6399880eaa646c2b62326c3314e674d201536c57",
+    "selection": "Validation, ascending distinct numeric visit ID, lowest eligible video ID, audit project exposure, six, one window each. Fix metadata-only geometry rules on Training."
+  },
+  "arms": {
+    "L10": {
+      "ln_lr": 0,
+      "ln_policy": "none",
+      "steps": 10
+    },
+    "L2": {
+      "ln_lr": 0,
+      "ln_policy": "none",
+      "steps": 2
+    },
+    "L20": {
+      "ln_lr": 0,
+      "ln_policy": "none",
+      "steps": 20
+    },
+    "L40": {
+      "ln_lr": 0,
+      "ln_policy": "none",
+      "steps": 40
+    },
+    "LN10": {
+      "ln_lr": 3e-05,
+      "ln_policy": "both",
+      "steps": 10
+    },
+    "LN10_bias": {
+      "ln_lr": 3e-05,
+      "ln_policy": "bias",
+      "steps": 10
+    },
+    "LN10_low": {
+      "ln_lr": 1e-05,
+      "ln_policy": "both",
+      "steps": 10
+    },
+    "LN10_scale": {
+      "ln_lr": 3e-05,
+      "ln_policy": "scale",
+      "steps": 10
+    },
+    "LN2": {
+      "ln_lr": 3e-05,
+      "ln_policy": "both",
+      "steps": 2
+    },
+    "LN20": {
+      "ln_lr": 3e-05,
+      "ln_policy": "both",
+      "steps": 20
+    },
+    "LN2_zero": {
+      "ln_lr": 0,
+      "ln_policy": "both",
+      "steps": 2
+    },
+    "ZERO": {
+      "ln_lr": 0,
+      "ln_policy": "none",
+      "steps": 0
+    }
+  },
+  "development": [
+    {
+      "arm": "LN10",
+      "dataset": "7scenes",
+      "diagnostic": false,
+      "environment": "chess",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "id": "development_chess__seq-03_42_LN10",
+      "input_file_sha256": "b9fbb64088abc80a05559f31d7b48d06fd279e47be4986ddc348198ca80e234a",
+      "input_sha256": "b3e20cd11ae3ce16f119f2b8ef81dd54ce23bea6e80e584cd833811a72b9bcf2",
+      "ln_lr": 3e-05,
+      "ln_policy": "both",
+      "profile": "clean",
+      "reference_file_sha256": "85c40690206762f60a3c25e7f87e366ddacdb2215c94f3ad5381d36c4671dd0e",
+      "reference_sha256": "8efdc6bd1ce9dc112fdece2512e8d5dfffeb42c14522866ee0017219b7747629",
+      "role": "development",
+      "room": "chess/seq-03",
+      "seed": 42,
+      "slug": "chess__seq-03",
+      "steps": 10
+    },
+    {
+      "arm": "L40",
+      "dataset": "7scenes",
+      "diagnostic": false,
+      "environment": "chess",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "id": "development_chess__seq-03_42_L40",
+      "input_file_sha256": "b9fbb64088abc80a05559f31d7b48d06fd279e47be4986ddc348198ca80e234a",
+      "input_sha256": "b3e20cd11ae3ce16f119f2b8ef81dd54ce23bea6e80e584cd833811a72b9bcf2",
+      "ln_lr": 0,
+      "ln_policy": "none",
+      "profile": "clean",
+      "reference_file_sha256": "85c40690206762f60a3c25e7f87e366ddacdb2215c94f3ad5381d36c4671dd0e",
+      "reference_sha256": "8efdc6bd1ce9dc112fdece2512e8d5dfffeb42c14522866ee0017219b7747629",
+      "role": "development",
+      "room": "chess/seq-03",
+      "seed": 42,
+      "slug": "chess__seq-03",
+      "steps": 40
+    },
+    {
+      "arm": "L10",
+      "dataset": "7scenes",
+      "diagnostic": false,
+      "environment": "chess",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "id": "development_chess__seq-03_42_L10",
+      "input_file_sha256": "b9fbb64088abc80a05559f31d7b48d06fd279e47be4986ddc348198ca80e234a",
+      "input_sha256": "b3e20cd11ae3ce16f119f2b8ef81dd54ce23bea6e80e584cd833811a72b9bcf2",
+      "ln_lr": 0,
+      "ln_policy": "none",
+      "profile": "clean",
+      "reference_file_sha256": "85c40690206762f60a3c25e7f87e366ddacdb2215c94f3ad5381d36c4671dd0e",
+      "reference_sha256": "8efdc6bd1ce9dc112fdece2512e8d5dfffeb42c14522866ee0017219b7747629",
+      "role": "development",
+      "room": "chess/seq-03",
+      "seed": 42,
+      "slug": "chess__seq-03",
+      "steps": 10
+    },
+    {
+      "arm": "L40",
+      "dataset": "7scenes",
+      "diagnostic": false,
+      "environment": "chess",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "id": "development_chess__seq-03_44_L40",
+      "input_file_sha256": "b9fbb64088abc80a05559f31d7b48d06fd279e47be4986ddc348198ca80e234a",
+      "input_sha256": "b3e20cd11ae3ce16f119f2b8ef81dd54ce23bea6e80e584cd833811a72b9bcf2",
+      "ln_lr": 0,
+      "ln_policy": "none",
+      "profile": "clean",
+      "reference_file_sha256": "85c40690206762f60a3c25e7f87e366ddacdb2215c94f3ad5381d36c4671dd0e",
+      "reference_sha256": "8efdc6bd1ce9dc112fdece2512e8d5dfffeb42c14522866ee0017219b7747629",
+      "role": "development",
+      "room": "chess/seq-03",
+      "seed": 44,
+      "slug": "chess__seq-03",
+      "steps": 40
+    },
+    {
+      "arm": "L10",
+      "dataset": "7scenes",
+      "diagnostic": false,
+      "environment": "chess",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "id": "development_chess__seq-03_44_L10",
+      "input_file_sha256": "b9fbb64088abc80a05559f31d7b48d06fd279e47be4986ddc348198ca80e234a",
+      "input_sha256": "b3e20cd11ae3ce16f119f2b8ef81dd54ce23bea6e80e584cd833811a72b9bcf2",
+      "ln_lr": 0,
+      "ln_policy": "none",
+      "profile": "clean",
+      "reference_file_sha256": "85c40690206762f60a3c25e7f87e366ddacdb2215c94f3ad5381d36c4671dd0e",
+      "reference_sha256": "8efdc6bd1ce9dc112fdece2512e8d5dfffeb42c14522866ee0017219b7747629",
+      "role": "development",
+      "room": "chess/seq-03",
+      "seed": 44,
+      "slug": "chess__seq-03",
+      "steps": 10
+    },
+    {
+      "arm": "LN10",
+      "dataset": "7scenes",
+      "diagnostic": false,
+      "environment": "chess",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "id": "development_chess__seq-03_44_LN10",
+      "input_file_sha256": "b9fbb64088abc80a05559f31d7b48d06fd279e47be4986ddc348198ca80e234a",
+      "input_sha256": "b3e20cd11ae3ce16f119f2b8ef81dd54ce23bea6e80e584cd833811a72b9bcf2",
+      "ln_lr": 3e-05,
+      "ln_policy": "both",
+      "profile": "clean",
+      "reference_file_sha256": "85c40690206762f60a3c25e7f87e366ddacdb2215c94f3ad5381d36c4671dd0e",
+      "reference_sha256": "8efdc6bd1ce9dc112fdece2512e8d5dfffeb42c14522866ee0017219b7747629",
+      "role": "development",
+      "room": "chess/seq-03",
+      "seed": 44,
+      "slug": "chess__seq-03",
+      "steps": 10
+    },
+    {
+      "arm": "L10",
+      "dataset": "7scenes",
+      "diagnostic": false,
+      "environment": "heads",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "id": "development_heads__seq-01_43_L10",
+      "input_file_sha256": "8b888d738fe61ccd69e1accbf4bb3e4348f85016a6fb4e4973d478e4fd89b190",
+      "input_sha256": "5d5eebc36f9f41007f8ff929f515788a2de5310d2d5c5f6dc0fbdd9f245c5f59",
+      "ln_lr": 0,
+      "ln_policy": "none",
+      "profile": "clean",
+      "reference_file_sha256": "8f291956c726b40471efe9fad752bbc2534f657eb75ed06bf85a61fe735b6c2b",
+      "reference_sha256": "1a7fe85c5377c154666faf712689ab6c70dbe1e9323bb5b6f0db3aacefc794e9",
+      "role": "development",
+      "room": "heads/seq-01",
+      "seed": 43,
+      "slug": "heads__seq-01",
+      "steps": 10
+    },
+    {
+      "arm": "L40",
+      "dataset": "7scenes",
+      "diagnostic": false,
+      "environment": "heads",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "id": "development_heads__seq-01_43_L40",
+      "input_file_sha256": "8b888d738fe61ccd69e1accbf4bb3e4348f85016a6fb4e4973d478e4fd89b190",
+      "input_sha256": "5d5eebc36f9f41007f8ff929f515788a2de5310d2d5c5f6dc0fbdd9f245c5f59",
+      "ln_lr": 0,
+      "ln_policy": "none",
+      "profile": "clean",
+      "reference_file_sha256": "8f291956c726b40471efe9fad752bbc2534f657eb75ed06bf85a61fe735b6c2b",
+      "reference_sha256": "1a7fe85c5377c154666faf712689ab6c70dbe1e9323bb5b6f0db3aacefc794e9",
+      "role": "development",
+      "room": "heads/seq-01",
+      "seed": 43,
+      "slug": "heads__seq-01",
+      "steps": 40
+    },
+    {
+      "arm": "LN10",
+      "dataset": "7scenes",
+      "diagnostic": false,
+      "environment": "heads",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "id": "development_heads__seq-01_43_LN10",
+      "input_file_sha256": "8b888d738fe61ccd69e1accbf4bb3e4348f85016a6fb4e4973d478e4fd89b190",
+      "input_sha256": "5d5eebc36f9f41007f8ff929f515788a2de5310d2d5c5f6dc0fbdd9f245c5f59",
+      "ln_lr": 3e-05,
+      "ln_policy": "both",
+      "profile": "clean",
+      "reference_file_sha256": "8f291956c726b40471efe9fad752bbc2534f657eb75ed06bf85a61fe735b6c2b",
+      "reference_sha256": "1a7fe85c5377c154666faf712689ab6c70dbe1e9323bb5b6f0db3aacefc794e9",
+      "role": "development",
+      "room": "heads/seq-01",
+      "seed": 43,
+      "slug": "heads__seq-01",
+      "steps": 10
+    },
+    {
+      "arm": "L40",
+      "dataset": "7scenes",
+      "diagnostic": false,
+      "environment": "chess",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "id": "development_chess__seq-03_43_L40",
+      "input_file_sha256": "b9fbb64088abc80a05559f31d7b48d06fd279e47be4986ddc348198ca80e234a",
+      "input_sha256": "b3e20cd11ae3ce16f119f2b8ef81dd54ce23bea6e80e584cd833811a72b9bcf2",
+      "ln_lr": 0,
+      "ln_policy": "none",
+      "profile": "clean",
+      "reference_file_sha256": "85c40690206762f60a3c25e7f87e366ddacdb2215c94f3ad5381d36c4671dd0e",
+      "reference_sha256": "8efdc6bd1ce9dc112fdece2512e8d5dfffeb42c14522866ee0017219b7747629",
+      "role": "development",
+      "room": "chess/seq-03",
+      "seed": 43,
+      "slug": "chess__seq-03",
+      "steps": 40
+    },
+    {
+      "arm": "LN10",
+      "dataset": "7scenes",
+      "diagnostic": false,
+      "environment": "chess",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "id": "development_chess__seq-03_43_LN10",
+      "input_file_sha256": "b9fbb64088abc80a05559f31d7b48d06fd279e47be4986ddc348198ca80e234a",
+      "input_sha256": "b3e20cd11ae3ce16f119f2b8ef81dd54ce23bea6e80e584cd833811a72b9bcf2",
+      "ln_lr": 3e-05,
+      "ln_policy": "both",
+      "profile": "clean",
+      "reference_file_sha256": "85c40690206762f60a3c25e7f87e366ddacdb2215c94f3ad5381d36c4671dd0e",
+      "reference_sha256": "8efdc6bd1ce9dc112fdece2512e8d5dfffeb42c14522866ee0017219b7747629",
+      "role": "development",
+      "room": "chess/seq-03",
+      "seed": 43,
+      "slug": "chess__seq-03",
+      "steps": 10
+    },
+    {
+      "arm": "L10",
+      "dataset": "7scenes",
+      "diagnostic": false,
+      "environment": "chess",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "id": "development_chess__seq-03_43_L10",
+      "input_file_sha256": "b9fbb64088abc80a05559f31d7b48d06fd279e47be4986ddc348198ca80e234a",
+      "input_sha256": "b3e20cd11ae3ce16f119f2b8ef81dd54ce23bea6e80e584cd833811a72b9bcf2",
+      "ln_lr": 0,
+      "ln_policy": "none",
+      "profile": "clean",
+      "reference_file_sha256": "85c40690206762f60a3c25e7f87e366ddacdb2215c94f3ad5381d36c4671dd0e",
+      "reference_sha256": "8efdc6bd1ce9dc112fdece2512e8d5dfffeb42c14522866ee0017219b7747629",
+      "role": "development",
+      "room": "chess/seq-03",
+      "seed": 43,
+      "slug": "chess__seq-03",
+      "steps": 10
+    },
+    {
+      "arm": "LN10",
+      "dataset": "7scenes",
+      "diagnostic": false,
+      "environment": "heads",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "id": "development_heads__seq-01_42_LN10",
+      "input_file_sha256": "8b888d738fe61ccd69e1accbf4bb3e4348f85016a6fb4e4973d478e4fd89b190",
+      "input_sha256": "5d5eebc36f9f41007f8ff929f515788a2de5310d2d5c5f6dc0fbdd9f245c5f59",
+      "ln_lr": 3e-05,
+      "ln_policy": "both",
+      "profile": "clean",
+      "reference_file_sha256": "8f291956c726b40471efe9fad752bbc2534f657eb75ed06bf85a61fe735b6c2b",
+      "reference_sha256": "1a7fe85c5377c154666faf712689ab6c70dbe1e9323bb5b6f0db3aacefc794e9",
+      "role": "development",
+      "room": "heads/seq-01",
+      "seed": 42,
+      "slug": "heads__seq-01",
+      "steps": 10
+    },
+    {
+      "arm": "L10",
+      "dataset": "7scenes",
+      "diagnostic": false,
+      "environment": "heads",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "id": "development_heads__seq-01_42_L10",
+      "input_file_sha256": "8b888d738fe61ccd69e1accbf4bb3e4348f85016a6fb4e4973d478e4fd89b190",
+      "input_sha256": "5d5eebc36f9f41007f8ff929f515788a2de5310d2d5c5f6dc0fbdd9f245c5f59",
+      "ln_lr": 0,
+      "ln_policy": "none",
+      "profile": "clean",
+      "reference_file_sha256": "8f291956c726b40471efe9fad752bbc2534f657eb75ed06bf85a61fe735b6c2b",
+      "reference_sha256": "1a7fe85c5377c154666faf712689ab6c70dbe1e9323bb5b6f0db3aacefc794e9",
+      "role": "development",
+      "room": "heads/seq-01",
+      "seed": 42,
+      "slug": "heads__seq-01",
+      "steps": 10
+    },
+    {
+      "arm": "L40",
+      "dataset": "7scenes",
+      "diagnostic": false,
+      "environment": "heads",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "id": "development_heads__seq-01_42_L40",
+      "input_file_sha256": "8b888d738fe61ccd69e1accbf4bb3e4348f85016a6fb4e4973d478e4fd89b190",
+      "input_sha256": "5d5eebc36f9f41007f8ff929f515788a2de5310d2d5c5f6dc0fbdd9f245c5f59",
+      "ln_lr": 0,
+      "ln_policy": "none",
+      "profile": "clean",
+      "reference_file_sha256": "8f291956c726b40471efe9fad752bbc2534f657eb75ed06bf85a61fe735b6c2b",
+      "reference_sha256": "1a7fe85c5377c154666faf712689ab6c70dbe1e9323bb5b6f0db3aacefc794e9",
+      "role": "development",
+      "room": "heads/seq-01",
+      "seed": 42,
+      "slug": "heads__seq-01",
+      "steps": 40
+    },
+    {
+      "arm": "L10",
+      "dataset": "7scenes",
+      "diagnostic": false,
+      "environment": "heads",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "id": "development_heads__seq-01_44_L10",
+      "input_file_sha256": "8b888d738fe61ccd69e1accbf4bb3e4348f85016a6fb4e4973d478e4fd89b190",
+      "input_sha256": "5d5eebc36f9f41007f8ff929f515788a2de5310d2d5c5f6dc0fbdd9f245c5f59",
+      "ln_lr": 0,
+      "ln_policy": "none",
+      "profile": "clean",
+      "reference_file_sha256": "8f291956c726b40471efe9fad752bbc2534f657eb75ed06bf85a61fe735b6c2b",
+      "reference_sha256": "1a7fe85c5377c154666faf712689ab6c70dbe1e9323bb5b6f0db3aacefc794e9",
+      "role": "development",
+      "room": "heads/seq-01",
+      "seed": 44,
+      "slug": "heads__seq-01",
+      "steps": 10
+    },
+    {
+      "arm": "LN10",
+      "dataset": "7scenes",
+      "diagnostic": false,
+      "environment": "heads",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "id": "development_heads__seq-01_44_LN10",
+      "input_file_sha256": "8b888d738fe61ccd69e1accbf4bb3e4348f85016a6fb4e4973d478e4fd89b190",
+      "input_sha256": "5d5eebc36f9f41007f8ff929f515788a2de5310d2d5c5f6dc0fbdd9f245c5f59",
+      "ln_lr": 3e-05,
+      "ln_policy": "both",
+      "profile": "clean",
+      "reference_file_sha256": "8f291956c726b40471efe9fad752bbc2534f657eb75ed06bf85a61fe735b6c2b",
+      "reference_sha256": "1a7fe85c5377c154666faf712689ab6c70dbe1e9323bb5b6f0db3aacefc794e9",
+      "role": "development",
+      "room": "heads/seq-01",
+      "seed": 44,
+      "slug": "heads__seq-01",
+      "steps": 10
+    },
+    {
+      "arm": "L40",
+      "dataset": "7scenes",
+      "diagnostic": false,
+      "environment": "heads",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "id": "development_heads__seq-01_44_L40",
+      "input_file_sha256": "8b888d738fe61ccd69e1accbf4bb3e4348f85016a6fb4e4973d478e4fd89b190",
+      "input_sha256": "5d5eebc36f9f41007f8ff929f515788a2de5310d2d5c5f6dc0fbdd9f245c5f59",
+      "ln_lr": 0,
+      "ln_policy": "none",
+      "profile": "clean",
+      "reference_file_sha256": "8f291956c726b40471efe9fad752bbc2534f657eb75ed06bf85a61fe735b6c2b",
+      "reference_sha256": "1a7fe85c5377c154666faf712689ab6c70dbe1e9323bb5b6f0db3aacefc794e9",
+      "role": "development",
+      "room": "heads/seq-01",
+      "seed": 44,
+      "slug": "heads__seq-01",
+      "steps": 40
+    }
+  ],
+  "development_rooms": [
+    {
+      "dataset": "7scenes",
+      "environment": "heads",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "input_file_sha256": "8b888d738fe61ccd69e1accbf4bb3e4348f85016a6fb4e4973d478e4fd89b190",
+      "input_sha256": "5d5eebc36f9f41007f8ff929f515788a2de5310d2d5c5f6dc0fbdd9f245c5f59",
+      "reference_file_sha256": "8f291956c726b40471efe9fad752bbc2534f657eb75ed06bf85a61fe735b6c2b",
+      "reference_sha256": "1a7fe85c5377c154666faf712689ab6c70dbe1e9323bb5b6f0db3aacefc794e9",
+      "room": "heads/seq-01",
+      "slug": "heads__seq-01"
+    },
+    {
+      "dataset": "7scenes",
+      "environment": "chess",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "input_file_sha256": "b9fbb64088abc80a05559f31d7b48d06fd279e47be4986ddc348198ca80e234a",
+      "input_sha256": "b3e20cd11ae3ce16f119f2b8ef81dd54ce23bea6e80e584cd833811a72b9bcf2",
+      "reference_file_sha256": "85c40690206762f60a3c25e7f87e366ddacdb2215c94f3ad5381d36c4671dd0e",
+      "reference_sha256": "8efdc6bd1ce9dc112fdece2512e8d5dfffeb42c14522866ee0017219b7747629",
+      "room": "chess/seq-03",
+      "slug": "chess__seq-03"
+    }
+  ],
+  "duplicates": [
+    {
+      "arm": "L10",
+      "dataset": "7scenes",
+      "diagnostic": false,
+      "environment": "chess",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "id": "duplicate_chess__seq-03_42_L10",
+      "input_file_sha256": "b9fbb64088abc80a05559f31d7b48d06fd279e47be4986ddc348198ca80e234a",
+      "input_sha256": "b3e20cd11ae3ce16f119f2b8ef81dd54ce23bea6e80e584cd833811a72b9bcf2",
+      "ln_lr": 0,
+      "ln_policy": "none",
+      "profile": "clean",
+      "reference_file_sha256": "85c40690206762f60a3c25e7f87e366ddacdb2215c94f3ad5381d36c4671dd0e",
+      "reference_sha256": "8efdc6bd1ce9dc112fdece2512e8d5dfffeb42c14522866ee0017219b7747629",
+      "role": "duplicate",
+      "room": "chess/seq-03",
+      "seed": 42,
+      "slug": "chess__seq-03",
+      "steps": 10
+    },
+    {
+      "arm": "LN10",
+      "dataset": "7scenes",
+      "diagnostic": false,
+      "environment": "chess",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "id": "duplicate_chess__seq-03_42_LN10",
+      "input_file_sha256": "b9fbb64088abc80a05559f31d7b48d06fd279e47be4986ddc348198ca80e234a",
+      "input_sha256": "b3e20cd11ae3ce16f119f2b8ef81dd54ce23bea6e80e584cd833811a72b9bcf2",
+      "ln_lr": 3e-05,
+      "ln_policy": "both",
+      "profile": "clean",
+      "reference_file_sha256": "85c40690206762f60a3c25e7f87e366ddacdb2215c94f3ad5381d36c4671dd0e",
+      "reference_sha256": "8efdc6bd1ce9dc112fdece2512e8d5dfffeb42c14522866ee0017219b7747629",
+      "role": "duplicate",
+      "room": "chess/seq-03",
+      "seed": 42,
+      "slug": "chess__seq-03",
+      "steps": 10
+    },
+    {
+      "arm": "L40",
+      "dataset": "7scenes",
+      "diagnostic": false,
+      "environment": "chess",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "id": "duplicate_chess__seq-03_42_L40",
+      "input_file_sha256": "b9fbb64088abc80a05559f31d7b48d06fd279e47be4986ddc348198ca80e234a",
+      "input_sha256": "b3e20cd11ae3ce16f119f2b8ef81dd54ce23bea6e80e584cd833811a72b9bcf2",
+      "ln_lr": 0,
+      "ln_policy": "none",
+      "profile": "clean",
+      "reference_file_sha256": "85c40690206762f60a3c25e7f87e366ddacdb2215c94f3ad5381d36c4671dd0e",
+      "reference_sha256": "8efdc6bd1ce9dc112fdece2512e8d5dfffeb42c14522866ee0017219b7747629",
+      "role": "duplicate",
+      "room": "chess/seq-03",
+      "seed": 42,
+      "slug": "chess__seq-03",
+      "steps": 40
+    }
+  ],
+  "engineering": [
+    {
+      "arm": "L2",
+      "dataset": "7scenes",
+      "diagnostic": false,
+      "environment": "heads",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "id": "engineering_bridge_fixed",
+      "input_file_sha256": "d1517a7d02503f93bcac8fef45de5fae69456b9c5eca2b996ff74d295f12bd77",
+      "input_sha256": "7ef5406c72ee59741843f32fcecd0c9b3b26ceb766d1d465b1df2c8e34cc683f",
+      "ln_lr": 0,
+      "ln_policy": "none",
+      "profile": "fixed_bridge",
+      "reference_file_sha256": "3815f046ef4924a61e073cca15d793335197b029dceaec3be111e09c9baf9585",
+      "reference_sha256": "04e88bc7ae0a32c9870c3ce2a94667a984efa588b463de0d2884e0cec8137824",
+      "role": "engineering",
+      "room": "heads/seq-01",
+      "seed": 42,
+      "slug": "heads__seq-01_294",
+      "steps": 2
+    },
+    {
+      "arm": "L2",
+      "dataset": "7scenes",
+      "diagnostic": false,
+      "environment": "heads",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "id": "engineering_standard_fixed",
+      "input_file_sha256": "d1517a7d02503f93bcac8fef45de5fae69456b9c5eca2b996ff74d295f12bd77",
+      "input_sha256": "7ef5406c72ee59741843f32fcecd0c9b3b26ceb766d1d465b1df2c8e34cc683f",
+      "ln_lr": 0,
+      "ln_policy": "none",
+      "profile": "fixed",
+      "reference_file_sha256": "3815f046ef4924a61e073cca15d793335197b029dceaec3be111e09c9baf9585",
+      "reference_sha256": "04e88bc7ae0a32c9870c3ce2a94667a984efa588b463de0d2884e0cec8137824",
+      "role": "engineering",
+      "room": "heads/seq-01",
+      "seed": 42,
+      "slug": "heads__seq-01_294",
+      "steps": 2
+    },
+    {
+      "arm": "LN2_zero",
+      "dataset": "7scenes",
+      "diagnostic": false,
+      "environment": "heads",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "id": "engineering_zerolr_fixed",
+      "input_file_sha256": "d1517a7d02503f93bcac8fef45de5fae69456b9c5eca2b996ff74d295f12bd77",
+      "input_sha256": "7ef5406c72ee59741843f32fcecd0c9b3b26ceb766d1d465b1df2c8e34cc683f",
+      "ln_lr": 0,
+      "ln_policy": "both",
+      "profile": "fixed",
+      "reference_file_sha256": "3815f046ef4924a61e073cca15d793335197b029dceaec3be111e09c9baf9585",
+      "reference_sha256": "04e88bc7ae0a32c9870c3ce2a94667a984efa588b463de0d2884e0cec8137824",
+      "role": "engineering",
+      "room": "heads/seq-01",
+      "seed": 42,
+      "slug": "heads__seq-01_294",
+      "steps": 2
+    },
+    {
+      "arm": "L2",
+      "dataset": "7scenes",
+      "diagnostic": false,
+      "environment": "heads",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "id": "engineering_bridge_native",
+      "input_file_sha256": "8b888d738fe61ccd69e1accbf4bb3e4348f85016a6fb4e4973d478e4fd89b190",
+      "input_sha256": "5d5eebc36f9f41007f8ff929f515788a2de5310d2d5c5f6dc0fbdd9f245c5f59",
+      "ln_lr": 0,
+      "ln_policy": "none",
+      "profile": "native_bridge",
+      "reference_file_sha256": "8f291956c726b40471efe9fad752bbc2534f657eb75ed06bf85a61fe735b6c2b",
+      "reference_sha256": "1a7fe85c5377c154666faf712689ab6c70dbe1e9323bb5b6f0db3aacefc794e9",
+      "role": "engineering",
+      "room": "heads/seq-01",
+      "seed": 42,
+      "slug": "heads__seq-01",
+      "steps": 2
+    },
+    {
+      "arm": "L2",
+      "dataset": "7scenes",
+      "diagnostic": true,
+      "environment": "heads",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "id": "engineering_standard_native",
+      "input_file_sha256": "8b888d738fe61ccd69e1accbf4bb3e4348f85016a6fb4e4973d478e4fd89b190",
+      "input_sha256": "5d5eebc36f9f41007f8ff929f515788a2de5310d2d5c5f6dc0fbdd9f245c5f59",
+      "ln_lr": 0,
+      "ln_policy": "none",
+      "profile": "diagnostic",
+      "reference_file_sha256": "8f291956c726b40471efe9fad752bbc2534f657eb75ed06bf85a61fe735b6c2b",
+      "reference_sha256": "1a7fe85c5377c154666faf712689ab6c70dbe1e9323bb5b6f0db3aacefc794e9",
+      "role": "engineering",
+      "room": "heads/seq-01",
+      "seed": 42,
+      "slug": "heads__seq-01",
+      "steps": 2
+    },
+    {
+      "arm": "L2",
+      "dataset": "7scenes",
+      "diagnostic": true,
+      "environment": "heads",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "id": "engineering_repeat_native",
+      "input_file_sha256": "8b888d738fe61ccd69e1accbf4bb3e4348f85016a6fb4e4973d478e4fd89b190",
+      "input_sha256": "5d5eebc36f9f41007f8ff929f515788a2de5310d2d5c5f6dc0fbdd9f245c5f59",
+      "ln_lr": 0,
+      "ln_policy": "none",
+      "profile": "diagnostic",
+      "reference_file_sha256": "8f291956c726b40471efe9fad752bbc2534f657eb75ed06bf85a61fe735b6c2b",
+      "reference_sha256": "1a7fe85c5377c154666faf712689ab6c70dbe1e9323bb5b6f0db3aacefc794e9",
+      "role": "engineering",
+      "room": "heads/seq-01",
+      "seed": 42,
+      "slug": "heads__seq-01",
+      "steps": 2
+    },
+    {
+      "arm": "LN2_zero",
+      "dataset": "7scenes",
+      "diagnostic": true,
+      "environment": "heads",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "id": "engineering_zerolr_native",
+      "input_file_sha256": "8b888d738fe61ccd69e1accbf4bb3e4348f85016a6fb4e4973d478e4fd89b190",
+      "input_sha256": "5d5eebc36f9f41007f8ff929f515788a2de5310d2d5c5f6dc0fbdd9f245c5f59",
+      "ln_lr": 0,
+      "ln_policy": "both",
+      "profile": "diagnostic",
+      "reference_file_sha256": "8f291956c726b40471efe9fad752bbc2534f657eb75ed06bf85a61fe735b6c2b",
+      "reference_sha256": "1a7fe85c5377c154666faf712689ab6c70dbe1e9323bb5b6f0db3aacefc794e9",
+      "role": "engineering",
+      "room": "heads/seq-01",
+      "seed": 42,
+      "slug": "heads__seq-01",
+      "steps": 2
+    },
+    {
+      "arm": "LN2",
+      "dataset": "7scenes",
+      "diagnostic": true,
+      "environment": "heads",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "id": "engineering_positive_native",
+      "input_file_sha256": "8b888d738fe61ccd69e1accbf4bb3e4348f85016a6fb4e4973d478e4fd89b190",
+      "input_sha256": "5d5eebc36f9f41007f8ff929f515788a2de5310d2d5c5f6dc0fbdd9f245c5f59",
+      "ln_lr": 3e-05,
+      "ln_policy": "both",
+      "profile": "diagnostic",
+      "reference_file_sha256": "8f291956c726b40471efe9fad752bbc2534f657eb75ed06bf85a61fe735b6c2b",
+      "reference_sha256": "1a7fe85c5377c154666faf712689ab6c70dbe1e9323bb5b6f0db3aacefc794e9",
+      "role": "engineering",
+      "room": "heads/seq-01",
+      "seed": 42,
+      "slug": "heads__seq-01",
+      "steps": 2
+    }
+  ],
+  "followup_gate": "Follow handoff. No fresh-room tuning. At most one independently locked candidate.",
+  "followups": {
+    "all_pass": [
+      "LN10_scale",
+      "LN10_bias"
+    ],
+    "equal_update_pass_only": [
+      "L20",
+      "LN20"
+    ],
+    "other": [
+      "LN10_low"
+    ]
+  },
+  "handoff_commit": "b39c61c",
+  "handoff_sha256": "79f84591452fd2ac38f793ae91f72549ae5b03b93815365f9a330c4d6204f223",
+  "pins": {
+    "allocator": "garbage_collection_threshold:0.75,expandable_segments:True",
+    "checkpoint_sha256": "f164acf60724910d8fe1578bb499d800850c7bb0948db7555c413f9fbe60467e",
+    "docker_image": "sha256:541dd1e09a32b8da7851929e73810882415aa30967b0ae2acd5473c9cf5ec3f1",
+    "gpu": "NVIDIA GeForce RTX 3080",
+    "gsplat_sha256": "339c0272e544d6a166814cf49e2d21f500eaf9018e69585f1fcaadb5ed3c940e",
+    "torch": "2.7.1+cu128",
+    "upstream": "65387333877723cf99086f7f29089379dd50c59a"
+  },
+  "protocol": {
+    "alpha": 16,
+    "bootstrap_draws": 10000,
+    "bootstrap_seed": 20261128,
+    "camera_checkpoint": true,
+    "cuda_cap_mib": 8960,
+    "deadline_seconds": 1200,
+    "fixed_qual_width": 294,
+    "fresh_rooms": [
+      "apt2/living",
+      "apt2/luke",
+      "all eligible office1 rooms in lexical order"
+    ],
+    "lora_lr": 0.0003,
+    "min_formal_rooms": 6,
+    "prelock_rule": "First metadata-eligible window per immutable handoff; all eligible rooms",
+    "rank": 4,
+    "render_mode": "RGB+ED",
+    "rental_compute_usd": 0,
+    "retry": "One unchanged retry of provisioning/interruption; one diagnostic repeat for ambiguous watchdog. Preserve first outcome.",
+    "schedule_seed": 2026112802,
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "separate_clipping": [
+      1,
+      1
+    ],
+    "timing": "Synchronized scene, CPU checkpoint loaded through final FP32 readout, clean GPU, CPU scoring separate",
+    "views": 5,
+    "width": 518
+  },
+  "study": "tco_final_global_layernorm_v1",
+  "thresholds": {
+    "LN10_vs_L10": {
+      "accuracy_strict": 1.0,
+      "completeness_inclusive": 1.03
+    },
+    "LN10_vs_L40": {
+      "accuracy_inclusive": 1.01,
+      "completeness_inclusive": 1.03,
+      "time_strict": 1.0
+    },
+    "gate": "Both ratio estimate and one-sided 95% upper bound, joint intersection"
+  }
+}
