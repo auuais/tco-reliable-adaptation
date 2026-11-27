@@ -2,8 +2,10 @@
 import argparse
 from collections import Counter
 from statistics import mean
+import math
 
 from replay_tco_final_ln import METRICS, analyze, require
+from score_tco_final_ln import PROTOCOL, check_against
 from tco_final_ln_protocol import IMAGE, LOCK, MANIFEST, PUBLIC, RAW, ROOT, SEEDS, STUDY, read, seal, sha
 
 
@@ -21,6 +23,114 @@ def by_id(rows):
     lookup = {r["id"]: r for r in rows}
     require(len(lookup) == len(rows), "Duplicate case identifier")
     return lookup
+
+
+def prespecified_rescores(jobs):
+    """Select before considering success; a failed selected slot remains a documented gap."""
+    selected = {}
+    for j in jobs:
+        if j["seed"] == 42 and j["role"] in {"primary","development","replication","followup"}:
+            key = (j["role"],j["environment"],j["arm"])
+            choice = (j["room"],j["id"])
+            selected[key] = min(selected.get(key,choice),choice)
+    return {v[1] for v in selected.values()}
+
+
+def raw_rescore_record(model_dir, scores_dir, j, evaluator_pins):
+    """Bind independent score and original score to the actual saved model output."""
+    uid=j["id"]
+    first_path=scores_dir/"first"/uid/"score.json"
+    independent_path=scores_dir/"independent"/uid/"score.json"
+    first,second=read(first_path),read(independent_path)
+    pred_sha=sha(model_dir/"prediction.npz")
+    complete_sha=sha(model_dir/"complete.json")
+    require(pred_sha==read(model_dir/"complete.json")["predictions_sha256"]==first["predictions_sha256"]
+            and complete_sha==first["model_receipt_sha256"],"Saved prediction or model receipt changed for "+uid)
+    first_sha=sha(first_path)
+    require(first_sha==second["first_score_sha256"] and first["scoring_cpu"] and second["scoring_cpu"]
+            and first["protocol"]==PROTOCOL and all(first["evaluator_sha256"].get(k)==v for k,v in evaluator_pins.items())
+            and (first["room"],first["arm"],first["seed"])==(j["room"],j["arm"],j["seed"])
+            and first["reference_sha256"]==j["reference_sha256"] and first["input_sha256"]==j["input_sha256"]
+            and first["reference_file_sha256"]==j["reference_file_sha256"]
+            and first["model_file_sha256"]==j["input_file_sha256"],"CPU scorer did not use the locked pair for "+uid)
+    diffs=check_against(second,first)
+    require(diffs==second["independent_rescore_mm_difference"],"Stored independent differences changed for "+uid)
+    return dict(first_sha256=first_sha,independent_sha256=sha(independent_path),prediction_sha256=pred_sha,
+                complete_sha256=complete_sha,first_mm={k:first[k] for k in diffs},
+                independent_mm={k:second[k] for k in diffs},valid_points=first["valid_points"])
+
+
+def check_public_rescores(jobs, records, attestations):
+    expected=prespecified_rescores(jobs)
+    target={k for k in expected if records[k]["status"]=="completed"}
+    require(set(attestations)==target,"Missing or extra raw independent rescore attestations")
+    max_diff=None
+    for uid,entry in attestations.items():
+        row=records[uid]
+        require(row["score_sha256"]==entry["first_sha256"] and row["rescore_sha256"]==entry["independent_sha256"]
+                and row["predictions_sha256"]==entry["prediction_sha256"]
+                and row["model_receipt_sha256"]==entry["complete_sha256"] and row["valid_points"]==entry["valid_points"],
+                "Public row differs from authenticated raw rescore "+uid)
+        for k in ("accuracy_mm","completeness_mm"):
+            diff=abs(entry["first_mm"][k]-entry["independent_mm"][k])
+            require(row[k]==entry["first_mm"][k] and row["rescore_mm_differences"][k]==diff
+                    and math.isfinite(diff) and diff<=RESCORE_TOLERANCE_MM,"Raw mm rescore mismatch for "+uid)
+            max_diff=max(max_diff or 0.,diff)
+    return dict(prespecified=len(expected),verified=len(target),missing=sorted(expected-target),
+                tolerance_mm=RESCORE_TOLERANCE_MM,max_absolute_difference_mm=max_diff)
+
+
+def check_development_diagnostics(document, jobs, scored, development):
+    """Check the public per-step curves and paired endpoint deltas, including missing controls."""
+    planned,diag=by_id(jobs),by_id(document["rows"])
+    require(set(planned)==set(diag),"Development diagnostics did not cover the locked jobs")
+    control={(r["room"],r["seed"],r["arm"]):r for r in development.values() if r["role"]=="development"}
+    probes,low,missing,missing_controls={},[],[],[]
+    vectors={f"aggregator.global_blocks.23.norm{i}.{k}" for i in (1,2) for k in ("weight","bias")}
+    for uid,j in planned.items():
+        row,rec=diag[uid],scored[uid]
+        if rec["status"]!="completed":
+            require(row.get("status")==rec["status"],"Missing diagnostic failure "+uid)
+            missing.append(uid)
+            continue
+        require(all(row[k]==rec[k] for k in ("role","arm","seed","room"))
+                and row["surface_accuracy_mm"]==rec["accuracy_mm"]
+                and row["surface_completeness_mm"]==rec["completeness_mm"],"Wrong model score for diagnostic "+uid)
+        steps=j["steps"]
+        require(len(row["loss_by_step"])==steps and all(math.isfinite(x) for x in row["loss_by_step"])
+                and set(row["preclip_l2"])=={"lora","ln"},"Missing per-update loss or clips "+uid)
+        for role, values in row["preclip_l2"].items():
+            require(len(values)==steps and all(math.isfinite(v) and v>=0 for v in values)
+                    and row["times_clipped"][role]==sum(v>1. for v in values),"Invalid clipping series "+uid)
+        require(set(row["comparisons"])=={"L10","LN10"},"Missing development endpoint comparison "+uid)
+        for arm, pair in row["comparisons"].items():
+            ref=control[(j["room"],j["seed"],arm)]
+            if ref["status"]!="completed":
+                require(pair=={"status":"missing_development_control"},"Wrong missing control indication "+uid)
+                missing_controls.append(dict(id=uid,control=arm))
+                continue
+            require(pair["accuracy_delta_mm"]==rec["accuracy_mm"]-ref["accuracy_mm"]
+                    and pair["completeness_delta_mm"]==rec["completeness_mm"]-ref["completeness_mm"],
+                    "Diagnostic surface deltas disagree with the matched scores "+uid)
+            require(pair["positive_pixels"]>0 and pair["depth_scale_ratio"]>0
+                    and all(math.isfinite(v) for v in pair.values()),"Invalid depth/camera diagnostic "+uid)
+        if j["role"]=="diagnostics":
+            disp=row["ln_displacement_from_initial_by_step"]
+            require(row["diagnostic_only"] and len(disp)==steps and all(set(v)==vectors and
+                    all(math.isfinite(x) and x>=0 for x in v.values()) for v in disp),"Missing LN displacement curves "+uid)
+            require(all(x>0 for x in disp[-1].values()),"Selected pretrained parameters never moved "+uid)
+            probes[j["room"]]=dict(id=uid,seed=j["seed"],updates=steps,loss_first=row["loss_by_step"][0],
+                    loss_last=row["loss_by_step"][-1],ln_clips=row["times_clipped"]["ln"],
+                    ln_joint_final_displacement=math.sqrt(sum(x*x for x in disp[-1].values())))
+        else:
+            require(not row["diagnostic_only"] and j["arm"]=="LN10_low","Unexpected learning-rate diagnostic "+uid)
+            pair=row["comparisons"]["LN10"]
+            if "accuracy_delta_mm" in pair:
+                low.append(pair)
+    mean_lower={k:mean(v[k] for v in low) for k in ("accuracy_delta_mm","completeness_delta_mm")} if low else None
+    return dict(planned=len(jobs),completed=len(jobs)-len(missing),missing=sorted(missing),
+                missing_controls=missing_controls,original_lr_probes=probes,
+                matched_lower_lr_vs_original_pairs=len(low),mean_lower_lr_minus_original_mm=mean_lower)
 
 
 def selected_branch(primary):
@@ -70,12 +180,7 @@ def checked_stage(stage, jobs, carry, candidate="LN10", short="L10", components=
     environments = {j["room"]:j["environment"] for j in jobs}
     require(plan["rooms"] == [dict(room=r,environment=e) for r,e in sorted(environments.items())]
             and plan["seeds"] == SEEDS, "Analysis roster or seed schedule changed")
-    independent = {}
-    for j in jobs:
-        if j["seed"] == 42 and j["role"] in ("primary","development","replication","followup"):
-            key = j["environment"], j["arm"]
-            independent[key] = min(independent.get(key,(j["room"], j["id"])), (j["room"],j["id"]))
-    expected_rescores = {x[1] for x in independent.values()}
+    expected_rescores = prespecified_rescores(jobs)
     for key, job in mapping.items():
         row = records[key]
         require(all(row[k]==job[k] for k in ("id","room","environment","seed","role","arm","profile")),
@@ -107,6 +212,10 @@ def evidence_from_raw(jobs):
     actual = {p.name for p in (RAW/"cases").iterdir() if p.is_dir()}
     require(actual == set(expected), "Private attempt inventory differs from the registered workflow")
     cases = {}
+    rescored={}
+    selected=prespecified_rescores(jobs)
+    pins=read(LOCK)["pinned_files"]
+    evaluator_pins={k:pins[k] for k in ("scripts/run_experiment.py","third_party/TCO/evaluation/mv_recon/utils.py")}
     for key, job in expected.items():
         folder = RAW/"cases"/key
         history = []
@@ -123,6 +232,8 @@ def evidence_from_raw(jobs):
             complete_sha=t.get("complete_sha256")
             if t["status"]=="completed":
                 require(complete_sha==sha(directory/"model/complete.json"),"Raw completed receipt changed")
+                if key in selected:
+                    rescored[key]=raw_rescore_record(directory/"model",RAW/"scores",job,evaluator_pins)
             history.append(dict(attempt=t["attempt"],status=t["status"],stopped=t["stopped"],terminal_sha256=sha(directory/"terminal.json"),
                                 start_sha256=sha(directory/"start.json"),exit_code=t["exit_code"],wall_seconds=t["wall_seconds"],
                                 complete_sha256=complete_sha,start_cost_usd=s["rental_compute_usd"],terminal_cost_usd=t["rental_compute_usd"]))
@@ -133,7 +244,8 @@ def evidence_from_raw(jobs):
         batches.append(dict(terminal_sha256=sha(path),exit_code=receipt["exit_code"],stopped=receipt["stopped"],
                             rental_compute_usd=receipt["rental_compute_usd"]))
     require(batches,"No local CPU scoring batch evidence")
-    return dict(study=STUDY,registration_sha256=sha(MANIFEST),image=IMAGE,cases=cases,scoring_batches=batches)
+    return dict(study=STUDY,registration_sha256=sha(MANIFEST),image=IMAGE,cases=cases,scoring_batches=batches,
+                raw_rescore_attestations=rescored)
 
 
 def validate_cost_and_coverage(jobs, records, audit, qualification):
@@ -228,9 +340,14 @@ def collect(mode):
     carry={k:r for k,r in dev_rows.items() if r["role"]=="development" and r["arm"] in controls}
     follow_jobs=follow["jobs"]+follow.get("diagnostics",[])
     followup,follow_rows=checked_stage("followup",follow_jobs,carry,cand,short,branch=="all_pass")
+    diagnostics=None
     if branch=="other":
         diag=read(PUBLIC/"followup_development_diagnostics.json")
-        require(isinstance(diag["rows"],list),"Missing development diagnostics")
+        diagnostics=check_development_diagnostics(diag,follow_jobs,follow_rows,dev_rows)
+        if mode=="write":
+            # Re-read saved prediction arrays and model optimizer histories only at private release.
+            from release_tco_final_ln import ledger, negative_branch
+            require(negative_branch(ledger(follow_jobs))==diag,"Real model diagnostics differ from raw predictions/receipts")
     choice=candidate_to_replicate(branch,followup)
     rep_jobs=[]
     rep_rows={}
@@ -252,7 +369,8 @@ def collect(mode):
         # Pending acquisition or a missing scoring batch is not a terminal research outcome.
         path=PUBLIC/"arkit_roster_intake.json"
         intake=read(path)
-        require("selected" in intake and len(intake["selected"])<6 and intake["missing_or_duplicate"],
+        require(intake.get("roster_exhausted") is True and intake.get("ranked_visit_count",0)>0
+                and "selected" in intake and len(intake["selected"])<6 and isinstance(intake.get("missing_or_duplicate"),list),
                 "Promoted arm has pending replication")
         replication_status="intake_unverified"
         evidence.append(path)
@@ -273,6 +391,7 @@ def collect(mode):
     require(read(PUBLIC/"environment.json")["runpod_usd"]==0, "Unexpected rental in environment receipt")
     audit=evidence_from_raw(plans) if mode=="write" else read(AUDIT)
     coverage=validate_cost_and_coverage(plans,records,audit,qualification)
+    coverage["independent_raw_rescores"]=check_public_rescores(plans,records,audit["raw_rescore_attestations"])
     if mode=="write":
         seal(AUDIT,audit)
     evidence.append(AUDIT)
@@ -281,7 +400,7 @@ def collect(mode):
                          if branch=="all_pass" else compact(followup),
                 replication=dict(status=replication_status,candidate=choice[0] if choice else None,
                                  result=compact(replication) if replication else None),
-                coverage=coverage,summary=interpretation(primary,replication),
+                coverage=coverage,development_diagnostics=diagnostics,summary=interpretation(primary,replication),
                 evidence_sha256={p.relative_to(ROOT).as_posix():sha(p) for p in evidence})
     return result
 
@@ -342,6 +461,26 @@ def render(r):
         key="a matched 20-update comparison" if r["branch"]=="equal_update_pass_only" else "a reduced LayerNorm learning rate"
         lines+=[f"The registered development follow-up tested {key}. [Follow-up decisions](followup_decision.json)","",
                 *comparison_table(r["followup"])]
+    if r["development_diagnostics"] is not None:
+        diag=r["development_diagnostics"]
+        lines+=["The original-rate development diagnostics measured the joint L2 displacement of all four LayerNorm "
+                "vectors from their pretrained values after ten updates. The clip count is the number of updates whose "
+                "LayerNorm gradient norm exceeded 1 before clipping. [Paired model diagnostics](followup_development_diagnostics.json)","",
+                "| Room | Seed | Final joint displacement | LayerNorm clips / updates |",
+                "|---|---:|---:|---:|"]
+        for room,probe in sorted(diag["original_lr_probes"].items()):
+            lines.append(f"| {room} | {probe['seed']} | {probe['ln_joint_final_displacement']:.6g} | "
+                         f"{probe['ln_clips']} / {probe['updates']} |")
+        lines.append("")
+        delta=diag["mean_lower_lr_minus_original_mm"]
+        if delta:
+            lines += [f"Across {diag['matched_lower_lr_vs_original_pairs']} matched development room–seed pairs, lowering "
+                      f"the LayerNorm learning rate changed mean surface accuracy error by {delta['accuracy_delta_mm']:+.4f} mm "
+                      f"and completeness error by {delta['completeness_delta_mm']:+.4f} mm relative to the original rate. "
+                      "These are arithmetic means of paired differences. The formal development gate uses per-room seed medians.",""]
+        if diag["missing"] or diag["missing_controls"]:
+            lines += [f"{len(diag['missing'])} diagnostic or sensitivity slots and {len(diag['missing_controls'])} matched "
+                      "control comparisons were unavailable. The verdict records their IDs.",""]
     rep=r["replication"]
     if rep["result"]:
         lines+=["## Independent ARKitScenes visits","",
@@ -360,6 +499,13 @@ def render(r):
             "| Stage role | Registered | Completed | First attempt completed | Attempts |","|---|---:|---:|---:|---:|"]
     for role,row in c["by_role"].items():
         lines.append(f"| {role} | {row['expected']} | {row['completed']} | {row['first_try_completed']} | {row['attempts']} |")
+    checks=c["independent_raw_rescores"]
+    lines += ["",f"Independent CPU scoring reloaded the saved FP32 predictions for **{checks['verified']} of "
+              f"{checks['prespecified']}** prespecified room–seed–arm slots."]
+    if checks["max_absolute_difference_mm"] is not None:
+        lines[-1]+=f" The largest absolute score difference across both directed errors was {checks['max_absolute_difference_mm']:.3g} mm."
+    if checks["missing"]:
+        lines[-1]+=f" The selected slots missing predictions were {', '.join(checks['missing'])}."
     lines+=["","Replay the decisions on CPU from the repository root using the public files.","",
             "```powershell","python -B -S scripts/finalize_tco_final_ln.py verify","```","",
             "[Final verdict and evidence digests](final_verdict.json) · [Development](development_summary.md) · "

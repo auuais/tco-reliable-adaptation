@@ -1,15 +1,72 @@
 """Synthetic final decision gates and public reporting checks for LayerNorm TCO."""
 from copy import deepcopy
+import json
+from pathlib import Path
+import tempfile
 import unittest
 from unittest.mock import patch
 
-from finalize_tco_final_ln import (IMAGE, candidate_to_replicate, compact, comparison_table, interpretation,
-                                   selected_branch, validate_cost_and_coverage)
+from finalize_tco_final_ln import (IMAGE, PROTOCOL, candidate_to_replicate, compact, comparison_table, interpretation,
+                                   check_development_diagnostics, check_public_rescores,
+                                   raw_rescore_record, selected_branch, sha, validate_cost_and_coverage)
 from replay_tco_final_ln import analyze
 from test_tco_final_ln_replay import inputs
 
 
 class TestFinalization(unittest.TestCase):
+    def test_independent_scores_authenticate_same_prediction_and_report_missing_selection(self):
+        original_job=dict(id="a",role="primary",environment="apt2",room="apt2/one",seed=42,arm="LN10",
+                          input_sha256="input",reference_sha256="ref",reference_file_sha256="ref_file",
+                          input_file_sha256="inputs_file")
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)
+            model=root/"model"
+            model.mkdir()
+            saved=model/"prediction.npz"
+            saved.write_bytes(b"test-prediction")
+            (model/"complete.json").write_text(json.dumps({"predictions_sha256":sha(saved)}))
+            first,second=(root/"scores"/kind/"a"/"score.json" for kind in ("first","independent"))
+            first.parent.mkdir(parents=True); second.parent.mkdir(parents=True)
+            score=dict(room="apt2/one",arm="LN10",seed=42,scoring_cpu=True,model_file_sha256="inputs_file",
+                       input_sha256="input",reference_file_sha256="ref_file",reference_sha256="ref",
+                       predictions_sha256=sha(saved),model_receipt_sha256=sha(model/"complete.json"),
+                       valid_points=10,evaluator_sha256={"evaluator":"pinned"},protocol=PROTOCOL,accuracy_mm=1.,completeness_mm=2.)
+            first.write_text(json.dumps(score))
+            diff={"accuracy_mm":0.,"completeness_mm":0.}
+            second.write_text(json.dumps(dict(score,first_score_sha256=sha(first),independent_rescore_mm_difference=diff)))
+            actual=raw_rescore_record(model,root/"scores",original_job,{"evaluator":"pinned"})
+            rows={"a":dict(score,status="completed",score_sha256=sha(first),rescore_sha256=sha(second),
+                           rescore_mm_differences=diff),"b":{"status":"oom"}}
+            jobs=[original_job,dict(original_job,id="b",arm="L40")]
+            public=check_public_rescores(jobs,rows,{"a":actual})
+            self.assertEqual((public["prespecified"],public["verified"],public["missing"]),(2,1,["b"]))
+            bad=deepcopy(actual); bad["independent_mm"]["accuracy_mm"]+=.1
+            with self.assertRaises(ValueError):
+                check_public_rescores(jobs,rows,{"a":bad})
+            saved.write_bytes(b"different-prediction")
+            with self.assertRaises(ValueError):
+                raw_rescore_record(model,root/"scores",original_job,{"evaluator":"pinned"})
+
+    def test_diagnostics_cannot_pass_empty_and_can_record_failed_arms(self):
+        job=dict(id="diag",room="heads",arm="LN10",seed=42,role="diagnostics",steps=2)
+        both={f"aggregator.global_blocks.23.norm{i}.{k}":.1 for i in (1,2) for k in ("weight","bias")}
+        scored={"diag":dict(job,status="completed",accuracy_mm=2.,completeness_mm=3.)}
+        dev={arm:dict(room="heads",arm=arm,role="development",seed=42,status="completed",accuracy_mm=1.,
+                      completeness_mm=2.) for arm in ("L10","LN10")}
+        pair=dict(accuracy_delta_mm=1.,completeness_delta_mm=1.,positive_pixels=10,depth_scale_ratio=1.)
+        d=dict(job,surface_accuracy_mm=2.,surface_completeness_mm=3.,loss_by_step=[.3,.2],
+               preclip_l2={"ln":[.1,.3],"lora":[2.,.2]},times_clipped={"ln":0,"lora":1},
+               comparisons={"L10":pair,"LN10":pair},diagnostic_only=True,ln_displacement_from_initial_by_step=[both,both])
+        result=check_development_diagnostics(dict(rows=[d]),[job],scored,dev)
+        self.assertAlmostEqual(result["original_lr_probes"]["heads"]["ln_joint_final_displacement"],.2)
+        with self.assertRaises(ValueError):
+            check_development_diagnostics({"rows":[]},[job],scored,dev)
+        bad=dict(d,ln_displacement_from_initial_by_step=[])
+        with self.assertRaises(ValueError):
+            check_development_diagnostics({"rows":[bad]},[job],scored,dev)
+        self.assertEqual(check_development_diagnostics({"rows":[dict(id="diag",status="oom")]},[job],
+                         {"diag":{"status":"oom"}},dev)["missing"],["diag"])
+
     def test_original_candidate_survives_successful_primary(self):
         plan, rows = inputs()
         result = analyze(plan,rows,draws=90)
