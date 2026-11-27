@@ -8,12 +8,35 @@ from unittest.mock import patch
 
 from finalize_tco_final_ln import (IMAGE, PROTOCOL, candidate_to_replicate, compact, comparison_table, interpretation,
                                    check_development_diagnostics, check_public_rescores,
-                                   raw_rescore_record, selected_branch, sha, validate_cost_and_coverage)
+                                   raw_rescore_record, same_seed_repeats, selected_branch, sha, validate_cost_and_coverage)
 from replay_tco_final_ln import analyze
 from test_tco_final_ln_replay import inputs
 
 
 class TestFinalization(unittest.TestCase):
+    def test_repeat_deltas_reversal_and_unavailable_pair(self):
+        rows,jobs={},[]
+        for arm,aa,bb in (("L10",10.,11.),("LN10",9.,12.),("L40",8.,7.)):
+            seed=dict(room="chess/seq-03",seed=42,arm=arm,environment="chess",profile="clean",
+                      input_sha256="input",reference_sha256="ref")
+            steps=40 if arm=="L40" else 10
+            jobs.append(dict(seed,id="duplicate_"+arm,steps=steps,role="duplicate"))
+            for role,x in (("development",aa),("duplicate",bb)):
+                key=role+"_"+arm
+                rows[key]=dict(seed,id=key,role=role,status="completed",valid_points=17,adam_updates=steps,
+                               predictions_sha256=key,accuracy_mm=x,completeness_mm=x+1)
+        result=same_seed_repeats(rows,jobs)
+        self.assertEqual(result["matched_pairs"],3)
+        self.assertEqual(result["by_arm"]["LN10"]["metrics"]["accuracy_mm"]["delta_mm"],3.)
+        self.assertTrue(result["ln10_vs_l10_percent"]["accuracy_mm"]["ordering_reversed"])
+        rows["duplicate_L40"]["status"]="oom"
+        limited=same_seed_repeats(rows,jobs)
+        self.assertEqual(limited["matched_pairs"],2)
+        self.assertNotIn("metrics",limited["by_arm"]["L40"])
+        rows["duplicate_LN10"]["input_sha256"]="different"
+        with self.assertRaisesRegex(ValueError, "identical input"):
+            same_seed_repeats(rows,jobs)
+
     def test_independent_scores_authenticate_same_prediction_and_report_missing_selection(self):
         original_job=dict(id="a",role="primary",environment="apt2",room="apt2/one",seed=42,arm="LN10",
                           input_sha256="input",reference_sha256="ref",reference_file_sha256="ref_file",

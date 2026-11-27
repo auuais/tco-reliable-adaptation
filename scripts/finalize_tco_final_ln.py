@@ -297,6 +297,44 @@ def validate_cost_and_coverage(jobs, records, audit, qualification):
                 rental_compute_usd=0)
 
 
+def same_seed_repeats(dev_rows, duplicate_jobs):
+    """Compare only the prospectively duplicated development room, with original and duplicate kept separate."""
+    metrics=("accuracy_mm","completeness_mm")
+    require({(j["room"],j["seed"],j["arm"]) for j in duplicate_jobs}
+            =={("chess/seq-03",42,a) for a in ("L10","LN10","L40")} and len(duplicate_jobs)==3,
+            "Unexpected duplicate roster")
+    originals={(r["room"],r["seed"],r["arm"]):r for r in dev_rows.values() if r["role"]=="development"}
+    pairs={}
+    for job in duplicate_jobs:
+        arm=job["arm"]
+        original=originals.get((job["room"],job["seed"],arm))
+        duplicate=dev_rows.get(job["id"])
+        statuses=[row["status"] if row else "missing" for row in (original,duplicate)]
+        pair=dict(original_id=original["id"] if original else None, duplicate_id=job["id"],
+                  original_status=statuses[0],duplicate_status=statuses[1],available=all(s=="completed" for s in statuses))
+        if duplicate:
+            require(duplicate["role"]=="duplicate" and all(duplicate[k]==job[k] for k in ("room","seed","arm","environment")),
+                    "Registered duplicate case mismatch")
+        if pair["available"]:
+            require(all(original[k]==duplicate[k] for k in ("input_sha256","reference_sha256","valid_points","adam_updates","profile","environment"))
+                    and all(duplicate[k]==job[k] for k in ("input_sha256","reference_sha256","profile"))
+                    and duplicate["adam_updates"]==job["steps"] and duplicate["valid_points"]>0,
+                    "Same-seed comparison does not use identical input, reference, support and updates")
+            pair.update(valid_points=duplicate["valid_points"],same_prediction=original["predictions_sha256"]==duplicate["predictions_sha256"],
+                        metrics={k:dict(original=original[k], duplicate=duplicate[k], delta_mm=duplicate[k]-original[k],
+                                        percent_change=100*(duplicate[k]/original[k]-1)) for k in metrics})
+        pairs[arm]=pair
+    contrasts={}
+    if all(pairs[arm]["available"] for arm in ("LN10","L10")):
+        require(pairs["LN10"]["valid_points"]==pairs["L10"]["valid_points"], "Different supports across repeat arms")
+        for k in metrics:
+            values={role:100*(pairs["LN10"]["metrics"][k][role]/pairs["L10"]["metrics"][k][role]-1)
+                    for role in ("original","duplicate")}
+            contrasts[k]=dict(**values,ordering_reversed=values["original"]*values["duplicate"]<0)
+    return dict(room="chess/seq-03",seed=42,matched_pairs=sum(p["available"] for p in pairs.values()),
+                by_arm=pairs,ln10_vs_l10_percent=contrasts)
+
+
 def compact(result):
     cand,short,full=result["arms"]
     comparisons={}
@@ -400,7 +438,8 @@ def collect(mode):
                          if branch=="all_pass" else compact(followup),
                 replication=dict(status=replication_status,candidate=choice[0] if choice else None,
                                  result=compact(replication) if replication else None),
-                coverage=coverage,development_diagnostics=diagnostics,summary=interpretation(primary,replication),
+                coverage=coverage,development_diagnostics=diagnostics,
+                same_seed_repeatability=same_seed_repeats(dev_rows,initial["duplicates"]),summary=interpretation(primary,replication),
                 evidence_sha256={p.relative_to(ROOT).as_posix():sha(p) for p in evidence})
     return result
 
@@ -451,6 +490,25 @@ def render(r):
                           ("Completeness within 3% of forty-step LoRA","completeness_vs_full"),
                           ("Faster scene reconstruction than forty-step LoRA","faster_vs_full")):
             lines.append(f"- {label} **{p['decisions'][key].replace('_',' ')}**.")
+    repeats=r["same_seed_repeatability"]
+    lines+=["","## Same-seed repeatability on Chess","",
+            f"{repeats['matched_pairs']} of three prespecified duplicate pairs were scorable on Chess/seq-03 at seed 42. "
+            "Each delta subtracts the original error from its duplicate in millimetres. Positive means worse on the repeat. "
+            "[Development case scores](development_rows.json)","",
+            "| Arm | Accuracy change | Completeness change |","|---|---:|---:|"]
+    for arm in ("L10","LN10","L40"):
+        repeat=repeats["by_arm"][arm]
+        if not repeat["available"]:
+            lines.append(f"| {arm} | Unavailable ({repeat['original_status']}, {repeat['duplicate_status']}) | — |")
+            continue
+        a,cerr=(repeat["metrics"][k] for k in ("accuracy_mm","completeness_mm"))
+        lines.append(f"| {arm} | {a['delta_mm']:+.3f} mm ({a['percent_change']:+.2f}%) | "
+                     f"{cerr['delta_mm']:+.3f} mm ({cerr['percent_change']:+.2f}%) |")
+    reversed_metrics=[k.split("_")[0] for k,d in repeats["ln10_vs_l10_percent"].items() if d["ordering_reversed"]]
+    lines.append("")
+    if reversed_metrics:
+        lines.append("The ordering of LN10 and L10 reversed on "+" and ".join(reversed_metrics)+" across the two executions. ")
+    lines.append("These pairs measure execution variability on one room and seed. The registered fresh-room estimates use their own original runs.")
     lines+=["","## Outcome-selected follow-up",""]
     if r["branch"]=="all_pass":
         lines+=["The development ablation separated the updated scale and bias vectors. The original LN10 candidate was selected "

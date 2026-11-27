@@ -274,6 +274,14 @@ jobs:
           python -B -S scripts/test_tco_native_stalls_quality_capacity.py
       - name: Exercise immutable profiled evidence backup fixtures
         run: python scripts/test_archive_profiled_evidence.py
+      - name: Replay the five-view LoRA and LayerNorm comparison
+        if: ${{ hashFiles('results/tco_final_global_layernorm_v1/final_verdict.json') != '' }}
+        run: |
+          python -B -S scripts/finalize_tco_final_ln.py verify
+          python -B scripts/audit_tco_final_ln_release.py --stage primary
+          if [ -f results/tco_final_global_layernorm_v1/replication_decision.json ]; then
+            python -B scripts/audit_tco_final_ln_release.py --stage replication
+          fi
       - name: Verify prospective M3 fitting inputs without loading predictions
         run: |
           python scripts/check_profiled_m3_inputs.py
