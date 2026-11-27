@@ -263,7 +263,8 @@ jobs:
       - name: Replay the five-view TCO retention study
         if: ${{ hashFiles('results/tco_five_view_replay_cache_v1/decision.json') != '' }}
         run: |
-          python -B -S scripts/replay_tco_five_view_replay_cache.py
+          python -B -S scripts/replay_five_view_release.py replay
+          python -B -S scripts/replay_five_view_release.py allocator-receipt
           python -B -S scripts/test_tco_five_view_replay_cache.py
           python -B scripts/test_tco_five_view_gradients.py
       - name: Exercise immutable profiled evidence backup fixtures
