@@ -201,7 +201,7 @@ def run_model(job, out, supplied, reference):
         if path.name != "complete.json":
             return store(path, payload)
         steps, views = job["steps"], len(job["frames"])
-        expected_layout = [[5]] if views == 5 else [[8, 2]]
+        expected_layout = [(5,)] if views == 5 else [(8, 2)]
         if (payload["updates"] != steps or optimizer["step_calls"] != steps
                 or payload["native_depth_batches"] != expected_layout or final.get("views") != views
                 or payload["head_taps"] != [4, 11, 17, 23]

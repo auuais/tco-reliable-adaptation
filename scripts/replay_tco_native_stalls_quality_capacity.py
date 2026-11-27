@@ -13,7 +13,7 @@ from replay_tco_five_view_replay_cache import (
 from replay_tco_full40_recompute import valid_sha
 from run_profiled_d0 import read, sha, write_new
 from tco_native_stalls_quality_capacity_protocol import (
-    LOCKED, CAPACITY, INITIAL, POLICIES, PUBLIC, ROOT, SELECTION, STUDY, job_table,
+    LOCKED, CAPACITY, INITIAL, POLICIES, PUBLIC, ROOT, SELECTION, STUDY, job_table, receipt_correction,
 )
 
 
@@ -120,7 +120,7 @@ def verify(plan, ledger, initial_sha, expected_windows=None):
     signatures = {window(row): row for row in (expected_windows or [])}
     for identifier, job in jobs.items():
         record = by_id[identifier]
-        verify_attempts(job, record, plan["max_attempts"])
+        verify_attempts(job, record, receipt_correction(plan).get("retry_limits", {}).get(job["id"], plan["max_attempts"]))
         result = record["result"]
         if result is None:
             continue

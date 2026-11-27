@@ -11,7 +11,8 @@ import run_tco_courtyard_camera_local as host
 from run_profiled_d0 import read, sha, write_new
 from run_profiled_d1_local import host_lock
 from tco_native_stalls_quality_capacity_protocol import (
-    CAPACITY, CPU_PROFILES, IMAGE, INITIAL, LOCKED, PRIVATE, PUBLIC, SELECTION, STUDY, verify,
+    CAPACITY, CPU_PROFILES, IMAGE, INITIAL, LOCKED, PRIVATE, PUBLIC, SELECTION, STUDY,
+    receipt_correction, verify,
 )
 
 
@@ -113,7 +114,7 @@ def run(job, plan, retry=True):
     row = state(job, plan)
     if row["verdict"] in {"completed", "gated", "nonfinite"}:
         return row
-    limit = 2 if retry else 1
+    limit = receipt_correction(plan).get("retry_limits", {}).get(job["id"], 2) if retry else 1
     while len(row["attempts"]) < limit:
         attempt = f"attempt{len(row['attempts']) + 1:02d}"
         trace = nullcontext()

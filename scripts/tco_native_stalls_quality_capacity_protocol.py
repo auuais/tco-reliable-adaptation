@@ -18,6 +18,7 @@ PUBLIC = ROOT / "results" / STUDY
 INITIAL = ROOT / "manifests" / f"{STUDY}.json"
 LOCKED = INITIAL.with_name(f"{STEM}_locked_v1.json")
 CAPACITY = INITIAL.with_name(f"{STEM}_capacity_v1.json")
+AMENDMENT = INITIAL.with_name(f"{STEM}_receipt_correction_v1.json")
 REGISTRATIONS = {"initial": INITIAL, "locked": LOCKED, "capacity": CAPACITY}
 CPU_PROFILES = {"fixture", "rescore", "input_audit"}
 IMAGE = runtime_pins()["docker_image"]
@@ -159,6 +160,19 @@ def source_hashes():
     return {name: sha(ROOT / name, text=True) for name in SOURCES}
 
 
+def receipt_correction(plan):
+    if not AMENDMENT.is_file():
+        return {}
+    record = read(AMENDMENT)
+    if (record["study"] != STUDY or record["initial_sha256"] != sha(INITIAL, text=True)
+            or set(record["retry_limits"]) != {"repeat_chess_42_camera"}
+            or record["retry_limits"]["repeat_chess_42_camera"] != 3
+            or any(plan["source_sha256_lf"].get(name) != change["before"]
+                   for name, change in record["source_changes"].items())):
+        raise ValueError("Invalid receipt correction authority")
+    return record
+
+
 def register():
     prior = read(PRIOR)
     sealed = read(PRIOR_LOCK)
@@ -204,7 +218,10 @@ def verify(registration="initial", *, sources=True):
     plan = read(INITIAL)
     if plan["study"] != STUDY or plan["rental_compute_usd"] != 0 or plan["margin"] != MARGIN:
         raise ValueError("Study, cost or quality margin differ")
-    if sources and plan["source_sha256_lf"] != source_hashes():
+    correction = receipt_correction(plan)
+    expected = {**plan["source_sha256_lf"], **{name: change["after"] for name, change in
+                correction.get("source_changes", {}).items()}}
+    if sources and expected != source_hashes():
         raise ValueError("Registered effective source changed")
     if plan["jobs"] != job_table(plan["planned_windows"]):
         raise ValueError("Registered case design changed")
