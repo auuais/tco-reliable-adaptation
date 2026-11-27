@@ -1,0 +1,1299 @@
+{
+  "study": "tco_native_stalls_quality_capacity_v1",
+  "stage": "quality",
+  "checks": {
+    "camera_head_fixture": true,
+    "zero_update_identity": true,
+    "matched_actual_signed_gradient": true,
+    "wrong_sign_detected": true,
+    "dummy_reference_invariance": true
+  },
+  "rental_compute_usd": 0,
+  "deterministic": {
+    "passed": true,
+    "controls": {
+      "same_inputs": true,
+      "original_capture": true,
+      "correct_mode": true,
+      "original_signed_q": true,
+      "backend": true,
+      "model": true,
+      "state_and_forward_1": true,
+      "q_source_1": true,
+      "derivative_1": true,
+      "state_and_forward_2": true,
+      "q_source_2": true,
+      "derivative_2": true,
+      "inventory": true,
+      "final_gradient_availability": true
+    },
+    "comparison": {
+      "1": {
+        "preclip": {
+          "count": 384,
+          "passed": true,
+          "failed": 0,
+          "diff_norm": 0.0,
+          "actual_norm": 0.6383477095383633,
+          "reference_norm": 0.6383477095383633,
+          "relative_l2": 0.0,
+          "cosine": 0.9999999999999998,
+          "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_B",
+          "worst_relative": {
+            "present": true,
+            "reference_present": true,
+            "passed": true,
+            "diff_norm": 0.0,
+            "ref_norm": 0.002294197979572365,
+            "norm": 0.002294197979572365,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "dot": 5.263344369473921e-06
+          },
+          "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+          "largest_difference": {
+            "present": true,
+            "reference_present": true,
+            "passed": true,
+            "diff_norm": 0.0,
+            "ref_norm": 0.0,
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "relative_l2": null,
+            "cosine": null,
+            "dot": 0.0
+          }
+        },
+        "grad": {
+          "count": 384,
+          "passed": true,
+          "failed": 0,
+          "diff_norm": 0.0,
+          "actual_norm": 0.6383477095383633,
+          "reference_norm": 0.6383477095383633,
+          "relative_l2": 0.0,
+          "cosine": 0.9999999999999998,
+          "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_B",
+          "worst_relative": {
+            "present": true,
+            "reference_present": true,
+            "passed": true,
+            "diff_norm": 0.0,
+            "ref_norm": 0.002294197979572365,
+            "norm": 0.002294197979572365,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "dot": 5.263344369473921e-06
+          },
+          "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+          "largest_difference": {
+            "present": true,
+            "reference_present": true,
+            "passed": true,
+            "diff_norm": 0.0,
+            "ref_norm": 0.0,
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "relative_l2": null,
+            "cosine": null,
+            "dot": 0.0
+          }
+        },
+        "parameter": {
+          "count": 384,
+          "passed": true,
+          "failed": 0,
+          "diff_norm": 0.0,
+          "actual_norm": 16.005027921829925,
+          "reference_norm": 16.005027921829925,
+          "relative_l2": 0.0,
+          "cosine": 1.0,
+          "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+          "worst_relative": {
+            "present": true,
+            "reference_present": true,
+            "passed": true,
+            "diff_norm": 0.0,
+            "ref_norm": 1.1579492470935384,
+            "norm": 1.1579492470935384,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "dot": 1.3408464588444926
+          },
+          "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+          "largest_difference": {
+            "present": true,
+            "reference_present": true,
+            "passed": true,
+            "diff_norm": 0.0,
+            "ref_norm": 1.1579492470935384,
+            "norm": 1.1579492470935384,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "dot": 1.3408464588444926
+          }
+        },
+        "exp_avg": {
+          "count": 384,
+          "passed": true,
+          "failed": 0,
+          "diff_norm": 0.0,
+          "actual_norm": 0.06383477204976312,
+          "reference_norm": 0.06383477204976312,
+          "relative_l2": 0.0,
+          "cosine": 1.0000000000000002,
+          "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_B",
+          "worst_relative": {
+            "present": true,
+            "reference_present": true,
+            "passed": true,
+            "diff_norm": 0.0,
+            "ref_norm": 0.00022941980189169844,
+            "norm": 0.00022941980189169844,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "dot": 5.263344550002616e-08
+          },
+          "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+          "largest_difference": {
+            "present": true,
+            "reference_present": true,
+            "passed": true,
+            "diff_norm": 0.0,
+            "ref_norm": 0.0,
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "relative_l2": null,
+            "cosine": null,
+            "dot": 0.0
+          }
+        },
+        "exp_avg_sq": {
+          "count": 384,
+          "passed": true,
+          "failed": 0,
+          "diff_norm": 0.0,
+          "actual_norm": 4.5792573039078204e-06,
+          "reference_norm": 4.5792573039078204e-06,
+          "relative_l2": 0.0,
+          "cosine": 1.0000000000000002,
+          "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_B",
+          "worst_relative": {
+            "present": true,
+            "reference_present": true,
+            "passed": true,
+            "diff_norm": 0.0,
+            "ref_norm": 2.5918242400200796e-10,
+            "norm": 2.5918242400200796e-10,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "dot": 6.717552891155665e-20
+          },
+          "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+          "largest_difference": {
+            "present": true,
+            "reference_present": true,
+            "passed": true,
+            "diff_norm": 0.0,
+            "ref_norm": 0.0,
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "relative_l2": null,
+            "cosine": null,
+            "dot": 0.0
+          }
+        },
+        "adam_step": {
+          "count": 384,
+          "passed": true,
+          "failed": 0,
+          "diff_norm": 0.0,
+          "actual_norm": 19.595917942265423,
+          "reference_norm": 19.595917942265423,
+          "relative_l2": 0.0,
+          "cosine": 1.0000000000000002,
+          "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+          "worst_relative": {
+            "present": true,
+            "reference_present": true,
+            "passed": true,
+            "diff_norm": 0.0,
+            "ref_norm": 1.0,
+            "norm": 1.0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "dot": 1.0
+          },
+          "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+          "largest_difference": {
+            "present": true,
+            "reference_present": true,
+            "passed": true,
+            "diff_norm": 0.0,
+            "ref_norm": 1.0,
+            "norm": 1.0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "dot": 1.0
+          }
+        },
+        "delta": {
+          "count": 384,
+          "passed": true,
+          "failed": 0,
+          "diff_norm": 0.0,
+          "actual_norm": 0.397636945627951,
+          "reference_norm": 0.397636945627951,
+          "relative_l2": 0.0,
+          "cosine": 1.0000000000000002,
+          "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_B",
+          "worst_relative": {
+            "present": true,
+            "reference_present": true,
+            "passed": true,
+            "diff_norm": 0.0,
+            "ref_norm": 0.032518228156393145,
+            "norm": 0.032518228156393145,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "dot": 0.0010574351624312397
+          },
+          "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+          "largest_difference": {
+            "present": true,
+            "reference_present": true,
+            "passed": true,
+            "diff_norm": 0.0,
+            "ref_norm": 0.0,
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "relative_l2": null,
+            "cosine": null,
+            "dot": 0.0
+          }
+        }
+      },
+      "2": {
+        "preclip": {
+          "count": 384,
+          "passed": true,
+          "failed": 0,
+          "diff_norm": 0.0,
+          "actual_norm": 0.5694751153172654,
+          "reference_norm": 0.5694751153172654,
+          "relative_l2": 0.0,
+          "cosine": 1.0000000000000002,
+          "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+          "worst_relative": {
+            "present": true,
+            "reference_present": true,
+            "passed": true,
+            "diff_norm": 0.0,
+            "ref_norm": 0.0005226849713133003,
+            "norm": 0.0005226849713133003,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "dot": 2.731995792367856e-07
+          },
+          "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+          "largest_difference": {
+            "present": true,
+            "reference_present": true,
+            "passed": true,
+            "diff_norm": 0.0,
+            "ref_norm": 0.0005226849713133003,
+            "norm": 0.0005226849713133003,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "dot": 2.731995792367856e-07
+          }
+        },
+        "grad": {
+          "count": 384,
+          "passed": true,
+          "failed": 0,
+          "diff_norm": 0.0,
+          "actual_norm": 0.5694751153172654,
+          "reference_norm": 0.5694751153172654,
+          "relative_l2": 0.0,
+          "cosine": 1.0000000000000002,
+          "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+          "worst_relative": {
+            "present": true,
+            "reference_present": true,
+            "passed": true,
+            "diff_norm": 0.0,
+            "ref_norm": 0.0005226849713133003,
+            "norm": 0.0005226849713133003,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "dot": 2.731995792367856e-07
+          },
+          "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+          "largest_difference": {
+            "present": true,
+            "reference_present": true,
+            "passed": true,
+            "diff_norm": 0.0,
+            "ref_norm": 0.0005226849713133003,
+            "norm": 0.0005226849713133003,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "dot": 2.731995792367856e-07
+          }
+        },
+        "parameter": {
+          "count": 384,
+          "passed": true,
+          "failed": 0,
+          "diff_norm": 0.0,
+          "actual_norm": 16.030204961671345,
+          "reference_norm": 16.030204961671345,
+          "relative_l2": 0.0,
+          "cosine": 1.0000000000000002,
+          "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+          "worst_relative": {
+            "present": true,
+            "reference_present": true,
+            "passed": true,
+            "diff_norm": 0.0,
+            "ref_norm": 1.1583775798425935,
+            "norm": 1.1583775798425935,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "dot": 1.3418386174819843
+          },
+          "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+          "largest_difference": {
+            "present": true,
+            "reference_present": true,
+            "passed": true,
+            "diff_norm": 0.0,
+            "ref_norm": 1.1583775798425935,
+            "norm": 1.1583775798425935,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "dot": 1.3418386174819843
+          }
+        },
+        "exp_avg": {
+          "count": 384,
+          "passed": true,
+          "failed": 0,
+          "diff_norm": 0.0,
+          "actual_norm": 0.1127188265374312,
+          "reference_norm": 0.1127188265374312,
+          "relative_l2": 0.0,
+          "cosine": 1.0,
+          "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+          "worst_relative": {
+            "present": true,
+            "reference_present": true,
+            "passed": true,
+            "diff_norm": 0.0,
+            "ref_norm": 5.226849811662901e-05,
+            "norm": 5.226849811662901e-05,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "dot": 2.7319958953680504e-09
+          },
+          "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+          "largest_difference": {
+            "present": true,
+            "reference_present": true,
+            "passed": true,
+            "diff_norm": 0.0,
+            "ref_norm": 5.226849811662901e-05,
+            "norm": 5.226849811662901e-05,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "dot": 2.7319958953680504e-09
+          }
+        },
+        "exp_avg_sq": {
+          "count": 384,
+          "passed": true,
+          "failed": 0,
+          "diff_norm": 0.0,
+          "actual_norm": 8.276494374661332e-06,
+          "reference_norm": 8.276494374661332e-06,
+          "relative_l2": 0.0,
+          "cosine": 1.0,
+          "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+          "worst_relative": {
+            "present": true,
+            "reference_present": true,
+            "passed": true,
+            "diff_norm": 0.0,
+            "ref_norm": 6.907735432404757e-11,
+            "norm": 6.907735432404757e-11,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "dot": 4.771680880410014e-21
+          },
+          "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+          "largest_difference": {
+            "present": true,
+            "reference_present": true,
+            "passed": true,
+            "diff_norm": 0.0,
+            "ref_norm": 6.907735432404757e-11,
+            "norm": 6.907735432404757e-11,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "dot": 4.771680880410014e-21
+          }
+        },
+        "adam_step": {
+          "count": 384,
+          "passed": true,
+          "failed": 0,
+          "diff_norm": 0.0,
+          "actual_norm": 39.191835884530846,
+          "reference_norm": 39.191835884530846,
+          "relative_l2": 0.0,
+          "cosine": 1.0000000000000002,
+          "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+          "worst_relative": {
+            "present": true,
+            "reference_present": true,
+            "passed": true,
+            "diff_norm": 0.0,
+            "ref_norm": 2.0,
+            "norm": 2.0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "dot": 4.0
+          },
+          "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+          "largest_difference": {
+            "present": true,
+            "reference_present": true,
+            "passed": true,
+            "diff_norm": 0.0,
+            "ref_norm": 2.0,
+            "norm": 2.0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "dot": 4.0
+          }
+        },
+        "delta": {
+          "count": 384,
+          "passed": true,
+          "failed": 0,
+          "diff_norm": 0.0,
+          "actual_norm": 0.4510240807568787,
+          "reference_norm": 0.4510240807568787,
+          "relative_l2": 0.0,
+          "cosine": 1.0,
+          "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+          "worst_relative": {
+            "present": true,
+            "reference_present": true,
+            "passed": true,
+            "diff_norm": 0.0,
+            "ref_norm": 0.012816104415929246,
+            "norm": 0.012816104415929246,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "dot": 0.00016425253240000113
+          },
+          "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+          "largest_difference": {
+            "present": true,
+            "reference_present": true,
+            "passed": true,
+            "diff_norm": 0.0,
+            "ref_norm": 0.012816104415929246,
+            "norm": 0.012816104415929246,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "dot": 0.00016425253240000113
+          }
+        }
+      }
+    }
+  },
+  "negative": {
+    "passed": true,
+    "controls": {
+      "same_inputs": true,
+      "original_capture": true,
+      "correct_mode": true,
+      "original_signed_q": true,
+      "backend": true,
+      "model": true,
+      "state_and_forward_1": true,
+      "q_source_1": true,
+      "derivative_1": true,
+      "state_and_forward_2": true,
+      "q_source_2": true,
+      "derivative_2": true,
+      "inventory": true,
+      "final_gradient_availability": true
+    },
+    "comparison": {
+      "1": {
+        "preclip": {
+          "count": 384,
+          "passed": false,
+          "failed": 192,
+          "diff_norm": 0.01673698458069358,
+          "actual_norm": 0.6301328495716657,
+          "reference_norm": 0.6383477095383633,
+          "relative_l2": 0.02621922869089221,
+          "cosine": 0.9997356793364947,
+          "worst_relative_name": "aggregator.global_blocks.0.attn.qkv.lora_B",
+          "worst_relative": {
+            "present": true,
+            "reference_present": true,
+            "passed": false,
+            "diff_norm": 0.00022454767851073942,
+            "ref_norm": 0.004281091617713747,
+            "norm": 0.004177650256953972,
+            "max_abs": 9.72747802734375e-05,
+            "relative_l2": 0.052451033185469585,
+            "cosine": 0.998889523088121,
+            "dot": 1.7865042724380965e-05
+          },
+          "largest_difference_name": "aggregator.frame_blocks.14.attn.qkv.lora_B",
+          "largest_difference": {
+            "present": true,
+            "reference_present": true,
+            "passed": false,
+            "diff_norm": 0.0037857503124475956,
+            "ref_norm": 0.1824905650740322,
+            "norm": 0.18074093708928063,
+            "max_abs": 0.0006866455078125,
+            "relative_l2": 0.020744909803483837,
+            "cosine": 0.999829146361602,
+            "dot": 0.03297788038776134
+          }
+        },
+        "grad": {
+          "count": 384,
+          "passed": false,
+          "failed": 192,
+          "diff_norm": 0.01673698458069358,
+          "actual_norm": 0.6301328495716657,
+          "reference_norm": 0.6383477095383633,
+          "relative_l2": 0.02621922869089221,
+          "cosine": 0.9997356793364947,
+          "worst_relative_name": "aggregator.global_blocks.0.attn.qkv.lora_B",
+          "worst_relative": {
+            "present": true,
+            "reference_present": true,
+            "passed": false,
+            "diff_norm": 0.00022454767851073942,
+            "ref_norm": 0.004281091617713747,
+            "norm": 0.004177650256953972,
+            "max_abs": 9.72747802734375e-05,
+            "relative_l2": 0.052451033185469585,
+            "cosine": 0.998889523088121,
+            "dot": 1.7865042724380965e-05
+          },
+          "largest_difference_name": "aggregator.frame_blocks.14.attn.qkv.lora_B",
+          "largest_difference": {
+            "present": true,
+            "reference_present": true,
+            "passed": false,
+            "diff_norm": 0.0037857503124475956,
+            "ref_norm": 0.1824905650740322,
+            "norm": 0.18074093708928063,
+            "max_abs": 0.0006866455078125,
+            "relative_l2": 0.020744909803483837,
+            "cosine": 0.999829146361602,
+            "dot": 0.03297788038776134
+          }
+        },
+        "parameter": {
+          "count": 384,
+          "passed": false,
+          "failed": 192,
+          "diff_norm": 0.0598149814092876,
+          "actual_norm": 16.005027641056262,
+          "reference_norm": 16.005027921829925,
+          "relative_l2": 0.003737261921780433,
+          "cosine": 0.9999930164365411,
+          "worst_relative_name": "aggregator.global_blocks.17.attn.qkv.lora_B",
+          "worst_relative": {
+            "present": true,
+            "reference_present": true,
+            "passed": false,
+            "diff_norm": 0.008386490306027995,
+            "ref_norm": 0.033197272064204524,
+            "norm": 0.033198102665484376,
+            "max_abs": 0.000599902996327728,
+            "relative_l2": 0.2526258871454338,
+            "cosine": 0.9680908792565149,
+            "dot": 0.001066919836719877
+          },
+          "largest_difference_name": "aggregator.global_blocks.17.attn.qkv.lora_B",
+          "largest_difference": {
+            "present": true,
+            "reference_present": true,
+            "passed": false,
+            "diff_norm": 0.008386490306027995,
+            "ref_norm": 0.033197272064204524,
+            "norm": 0.033198102665484376,
+            "max_abs": 0.000599902996327728,
+            "relative_l2": 0.2526258871454338,
+            "cosine": 0.9680908792565149,
+            "dot": 0.001066919836719877
+          }
+        },
+        "exp_avg": {
+          "count": 384,
+          "passed": false,
+          "failed": 192,
+          "diff_norm": 0.0016736984790985615,
+          "actual_norm": 0.06301328605633448,
+          "reference_norm": 0.06383477204976312,
+          "relative_l2": 0.026219228570187592,
+          "cosine": 0.9997356793362308,
+          "worst_relative_name": "aggregator.global_blocks.0.attn.qkv.lora_B",
+          "worst_relative": {
+            "present": true,
+            "reference_present": true,
+            "passed": false,
+            "diff_norm": 2.245476824558839e-05,
+            "ref_norm": 0.00042810916913425535,
+            "norm": 0.0004177650330397726,
+            "max_abs": 9.727478754939511e-06,
+            "relative_l2": 0.052451033204912643,
+            "cosine": 0.9988895230782805,
+            "dot": 1.786504334552908e-07
+          },
+          "largest_difference_name": "aggregator.frame_blocks.14.attn.qkv.lora_B",
+          "largest_difference": {
+            "present": true,
+            "reference_present": true,
+            "passed": false,
+            "diff_norm": 0.0003785749777592829,
+            "ref_norm": 0.018249056784190282,
+            "norm": 0.018074094044193655,
+            "max_abs": 6.866455078125e-05,
+            "relative_l2": 0.02074490655797915,
+            "cosine": 0.9998291463977313,
+            "dot": 0.00032977881500858625
+          }
+        },
+        "exp_avg_sq": {
+          "count": 384,
+          "passed": true,
+          "failed": 0,
+          "diff_norm": 1.2652712302273638e-07,
+          "actual_norm": 4.500315298285156e-06,
+          "reference_norm": 4.5792573039078204e-06,
+          "relative_l2": 0.027630489973725955,
+          "cosine": 0.9997627808531021,
+          "worst_relative_name": "aggregator.global_blocks.0.attn.qkv.lora_B",
+          "worst_relative": {
+            "present": true,
+            "reference_present": true,
+            "passed": true,
+            "diff_norm": 1.1036743196341626e-10,
+            "ref_norm": 1.5318163138316033e-09,
+            "norm": 1.4761469733092412e-09,
+            "max_abs": 4.0745365414984747e-11,
+            "relative_l2": 0.07205004344636406,
+            "cosine": 0.9979917851732584,
+            "dot": 2.256645068046237e-18
+          },
+          "largest_difference_name": "aggregator.frame_blocks.14.attn.qkv.lora_B",
+          "largest_difference": {
+            "present": true,
+            "reference_present": true,
+            "passed": true,
+            "diff_norm": 7.870927632513781e-08,
+            "ref_norm": 3.3279520981452943e-06,
+            "norm": 3.273148796298209e-06,
+            "max_abs": 3.7774441352667054e-08,
+            "relative_l2": 0.02365096431796701,
+            "cosine": 0.9998534938610435,
+            "dot": 1.0891286530039224e-11
+          }
+        },
+        "adam_step": {
+          "count": 384,
+          "passed": true,
+          "failed": 0,
+          "diff_norm": 0.0,
+          "actual_norm": 19.595917942265423,
+          "reference_norm": 19.595917942265423,
+          "relative_l2": 0.0,
+          "cosine": 1.0000000000000002,
+          "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+          "worst_relative": {
+            "present": true,
+            "reference_present": true,
+            "passed": true,
+            "diff_norm": 0.0,
+            "ref_norm": 1.0,
+            "norm": 1.0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "dot": 1.0
+          },
+          "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+          "largest_difference": {
+            "present": true,
+            "reference_present": true,
+            "passed": true,
+            "diff_norm": 0.0,
+            "ref_norm": 1.0,
+            "norm": 1.0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "dot": 1.0
+          }
+        },
+        "delta": {
+          "count": 384,
+          "passed": false,
+          "failed": 192,
+          "diff_norm": 0.0598149814092876,
+          "actual_norm": 0.39762564422789415,
+          "reference_norm": 0.397636945627951,
+          "relative_l2": 0.15042611625242058,
+          "cosine": 0.9886856706093744,
+          "worst_relative_name": "aggregator.global_blocks.17.attn.qkv.lora_B",
+          "worst_relative": {
+            "present": true,
+            "reference_present": true,
+            "passed": false,
+            "diff_norm": 0.008386490306027995,
+            "ref_norm": 0.033197272064204524,
+            "norm": 0.033198102665484376,
+            "max_abs": 0.000599902996327728,
+            "relative_l2": 0.2526258871454338,
+            "cosine": 0.9680908792565149,
+            "dot": 0.001066919836719877
+          },
+          "largest_difference_name": "aggregator.global_blocks.17.attn.qkv.lora_B",
+          "largest_difference": {
+            "present": true,
+            "reference_present": true,
+            "passed": false,
+            "diff_norm": 0.008386490306027995,
+            "ref_norm": 0.033197272064204524,
+            "norm": 0.033198102665484376,
+            "max_abs": 0.000599902996327728,
+            "relative_l2": 0.2526258871454338,
+            "cosine": 0.9680908792565149,
+            "dot": 0.001066919836719877
+          }
+        }
+      },
+      "2": {
+        "preclip": {
+          "count": 384,
+          "passed": false,
+          "failed": 384,
+          "diff_norm": 0.015801615305940396,
+          "actual_norm": 0.5602815099958622,
+          "reference_norm": 0.5694751153172654,
+          "relative_l2": 0.02774768357900418,
+          "cosine": 0.9997411687988593,
+          "worst_relative_name": "aggregator.global_blocks.0.attn.proj.lora_B",
+          "worst_relative": {
+            "present": true,
+            "reference_present": true,
+            "passed": false,
+            "diff_norm": 0.00015014308325595347,
+            "ref_norm": 0.003959474872741842,
+            "norm": 0.003881842996886555,
+            "max_abs": 7.62939453125e-05,
+            "relative_l2": 0.03791994849862072,
+            "cosine": 0.9994627139546248,
+            "dot": 1.5361801687450804e-05
+          },
+          "largest_difference_name": "aggregator.frame_blocks.14.attn.qkv.lora_B",
+          "largest_difference": {
+            "present": true,
+            "reference_present": true,
+            "passed": false,
+            "diff_norm": 0.004480236173121007,
+            "ref_norm": 0.17226921768164782,
+            "norm": 0.16895295400889943,
+            "max_abs": 0.0009765625,
+            "relative_l2": 0.02600717779656055,
+            "cosine": 0.9998441025799993,
+            "dot": 0.029100855756406654
+          }
+        },
+        "grad": {
+          "count": 384,
+          "passed": false,
+          "failed": 384,
+          "diff_norm": 0.015801615305940396,
+          "actual_norm": 0.5602815099958622,
+          "reference_norm": 0.5694751153172654,
+          "relative_l2": 0.02774768357900418,
+          "cosine": 0.9997411687988593,
+          "worst_relative_name": "aggregator.global_blocks.0.attn.proj.lora_B",
+          "worst_relative": {
+            "present": true,
+            "reference_present": true,
+            "passed": false,
+            "diff_norm": 0.00015014308325595347,
+            "ref_norm": 0.003959474872741842,
+            "norm": 0.003881842996886555,
+            "max_abs": 7.62939453125e-05,
+            "relative_l2": 0.03791994849862072,
+            "cosine": 0.9994627139546248,
+            "dot": 1.5361801687450804e-05
+          },
+          "largest_difference_name": "aggregator.frame_blocks.14.attn.qkv.lora_B",
+          "largest_difference": {
+            "present": true,
+            "reference_present": true,
+            "passed": false,
+            "diff_norm": 0.004480236173121007,
+            "ref_norm": 0.17226921768164782,
+            "norm": 0.16895295400889943,
+            "max_abs": 0.0009765625,
+            "relative_l2": 0.02600717779656055,
+            "cosine": 0.9998441025799993,
+            "dot": 0.029100855756406654
+          }
+        },
+        "parameter": {
+          "count": 384,
+          "passed": false,
+          "failed": 374,
+          "diff_norm": 0.022413159086728973,
+          "actual_norm": 16.030224070189714,
+          "reference_norm": 16.030204961671345,
+          "relative_l2": 0.0013981829390403583,
+          "cosine": 0.9999990225441096,
+          "worst_relative_name": "aggregator.global_blocks.17.attn.qkv.lora_B",
+          "worst_relative": {
+            "present": true,
+            "reference_present": true,
+            "passed": false,
+            "diff_norm": 0.004050109139354153,
+            "ref_norm": 0.06362193601655472,
+            "norm": 0.06332613096884472,
+            "max_abs": 0.00048827224236447364,
+            "relative_l2": 0.06365900494289102,
+            "cosine": 0.9979751597630849,
+            "dot": 0.0040207731109685885
+          },
+          "largest_difference_name": "aggregator.global_blocks.17.attn.qkv.lora_B",
+          "largest_difference": {
+            "present": true,
+            "reference_present": true,
+            "passed": false,
+            "diff_norm": 0.004050109139354153,
+            "ref_norm": 0.06362193601655472,
+            "norm": 0.06332613096884472,
+            "max_abs": 0.00048827224236447364,
+            "relative_l2": 0.06365900494289102,
+            "cosine": 0.9979751597630849,
+            "dot": 0.0040207731109685885
+          }
+        },
+        "exp_avg": {
+          "count": 384,
+          "passed": false,
+          "failed": 350,
+          "diff_norm": 0.001580161558306338,
+          "actual_norm": 0.11181310821408506,
+          "reference_norm": 0.1127188265374312,
+          "relative_l2": 0.014018612567631766,
+          "cosine": 0.9999334870258997,
+          "worst_relative_name": "aggregator.frame_blocks.14.mlp.fc1.lora_A",
+          "worst_relative": {
+            "present": true,
+            "reference_present": true,
+            "passed": false,
+            "diff_norm": 1.959907482042786e-05,
+            "ref_norm": 0.0008153565955910811,
+            "norm": 0.0007979125614967552,
+            "max_abs": 1.9073486328125e-06,
+            "relative_l2": 0.02403742721455487,
+            "cosine": 0.9999386478164686,
+            "dot": 6.505433550171871e-07
+          },
+          "largest_difference_name": "aggregator.frame_blocks.14.attn.qkv.lora_B",
+          "largest_difference": {
+            "present": true,
+            "reference_present": true,
+            "passed": false,
+            "diff_norm": 0.0004480236750772732,
+            "ref_norm": 0.03348492549553119,
+            "norm": 0.0331491884486076,
+            "max_abs": 9.765615686774254e-05,
+            "relative_l2": 0.013379861786972327,
+            "cosine": 0.9999603576581251,
+            "dot": 0.0011099541025145724
+          }
+        },
+        "exp_avg_sq": {
+          "count": 384,
+          "passed": true,
+          "failed": 0,
+          "diff_norm": 1.6783165374073897e-07,
+          "actual_norm": 8.128679482281063e-06,
+          "reference_norm": 8.276494374661332e-06,
+          "relative_l2": 0.02027810883972316,
+          "cosine": 0.9999530432064113,
+          "worst_relative_name": "aggregator.global_blocks.13.attn.qkv.lora_A",
+          "worst_relative": {
+            "present": true,
+            "reference_present": true,
+            "passed": true,
+            "diff_norm": 6.022328137139016e-10,
+            "ref_norm": 1.17054946482846e-08,
+            "norm": 1.11173869669319e-08,
+            "max_abs": 4.086180283024987e-10,
+            "relative_l2": 0.05144872829463527,
+            "cosine": 0.999935398701786,
+            "dot": 1.3012610678580647e-16
+          },
+          "largest_difference_name": "aggregator.frame_blocks.14.attn.qkv.lora_B",
+          "largest_difference": {
+            "present": true,
+            "reference_present": true,
+            "passed": true,
+            "diff_norm": 1.2743112456106718e-07,
+            "ref_norm": 6.2393206773610055e-06,
+            "norm": 6.118953886690335e-06,
+            "max_abs": 7.438666216330603e-08,
+            "relative_l2": 0.02042387803906974,
+            "cosine": 0.9999770742061623,
+            "dot": 3.8177240245440224e-11
+          }
+        },
+        "adam_step": {
+          "count": 384,
+          "passed": true,
+          "failed": 0,
+          "diff_norm": 0.0,
+          "actual_norm": 39.191835884530846,
+          "reference_norm": 39.191835884530846,
+          "relative_l2": 0.0,
+          "cosine": 1.0000000000000002,
+          "worst_relative_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+          "worst_relative": {
+            "present": true,
+            "reference_present": true,
+            "passed": true,
+            "diff_norm": 0.0,
+            "ref_norm": 2.0,
+            "norm": 2.0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "dot": 4.0
+          },
+          "largest_difference_name": "aggregator.frame_blocks.0.attn.qkv.lora_A",
+          "largest_difference": {
+            "present": true,
+            "reference_present": true,
+            "passed": true,
+            "diff_norm": 0.0,
+            "ref_norm": 2.0,
+            "norm": 2.0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "dot": 4.0
+          }
+        },
+        "delta": {
+          "count": 384,
+          "passed": false,
+          "failed": 384,
+          "diff_norm": 0.022413159086728973,
+          "actual_norm": 0.45085329395086016,
+          "reference_norm": 0.4510240807568787,
+          "relative_l2": 0.04969392997623696,
+          "cosine": 0.9987648606517407,
+          "worst_relative_name": "aggregator.global_blocks.17.attn.qkv.lora_B",
+          "worst_relative": {
+            "present": true,
+            "reference_present": true,
+            "passed": false,
+            "diff_norm": 0.004050109139354153,
+            "ref_norm": 0.031271761253740996,
+            "norm": 0.03107345981561463,
+            "max_abs": 0.00048827224236447364,
+            "relative_l2": 0.12951330455906587,
+            "cosine": 0.991579863547677,
+            "dot": 0.000963539786391457
+          },
+          "largest_difference_name": "aggregator.global_blocks.17.attn.qkv.lora_B",
+          "largest_difference": {
+            "present": true,
+            "reference_present": true,
+            "passed": false,
+            "diff_norm": 0.004050109139354153,
+            "ref_norm": 0.031271761253740996,
+            "norm": 0.03107345981561463,
+            "max_abs": 0.00048827224236447364,
+            "relative_l2": 0.12951330455906587,
+            "cosine": 0.991579863547677,
+            "dot": 0.000963539786391457
+          }
+        }
+      }
+    }
+  },
+  "production": {
+    "native_repeat": {
+      "comparison": {
+        "steps": {
+          "1": {
+            "passed": false
+          },
+          "2": {
+            "passed": false
+          }
+        },
+        "fields": {
+          "adam_step/1": {
+            "count": 384,
+            "max_abs": 0.0,
+            "max_relative_l2": 0.0,
+            "worst_tensor": "adam_step/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+            "passed": true
+          },
+          "adam_step/2": {
+            "count": 384,
+            "max_abs": 0.0,
+            "max_relative_l2": 0.0,
+            "worst_tensor": "adam_step/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+            "passed": true
+          },
+          "exp_avg/1": {
+            "count": 384,
+            "max_abs": 3.662100061774254e-05,
+            "max_relative_l2": 0.017531825017953515,
+            "worst_tensor": "exp_avg/1/aggregator.global_blocks.0.attn.qkv.lora_B",
+            "passed": false
+          },
+          "exp_avg/2": {
+            "count": 384,
+            "max_abs": 2.746586687862873e-05,
+            "max_relative_l2": 0.006132377775077074,
+            "worst_tensor": "exp_avg/2/aggregator.global_blocks.13.attn.qkv.lora_B",
+            "passed": false
+          },
+          "exp_avg_sq/1": {
+            "count": 384,
+            "max_abs": 1.5556793186988216e-08,
+            "max_relative_l2": 0.028959395998834125,
+            "worst_tensor": "exp_avg_sq/1/aggregator.global_blocks.0.attn.qkv.lora_B",
+            "passed": false
+          },
+          "exp_avg_sq/2": {
+            "count": 384,
+            "max_abs": 1.2099803825549316e-08,
+            "max_relative_l2": 0.009307247540369646,
+            "worst_tensor": "exp_avg_sq/2/aggregator.global_blocks.14.mlp.fc1.lora_A",
+            "passed": false
+          },
+          "grad/1": {
+            "count": 384,
+            "max_abs": 0.0003662109375,
+            "max_relative_l2": 0.017531826231103925,
+            "worst_tensor": "grad/1/aggregator.global_blocks.0.attn.qkv.lora_B",
+            "passed": false
+          },
+          "grad/2": {
+            "count": 384,
+            "max_abs": 0.000274658203125,
+            "max_relative_l2": 0.012364022444923304,
+            "worst_tensor": "grad/2/aggregator.global_blocks.13.attn.qkv.lora_B",
+            "passed": false
+          },
+          "parameter/1": {
+            "count": 384,
+            "max_abs": 0.0005998492415528744,
+            "max_relative_l2": 0.12882171863839223,
+            "worst_tensor": "parameter/1/aggregator.global_blocks.12.attn.proj.lora_B",
+            "passed": false
+          },
+          "parameter/2": {
+            "count": 384,
+            "max_abs": 0.0004766204656334594,
+            "max_relative_l2": 0.015224299172174416,
+            "worst_tensor": "parameter/2/aggregator.global_blocks.12.attn.proj.lora_B",
+            "passed": false
+          },
+          "preclip/1": {
+            "count": 384,
+            "max_abs": 0.0003662109375,
+            "max_relative_l2": 0.017531826231103925,
+            "worst_tensor": "preclip/1/aggregator.global_blocks.0.attn.qkv.lora_B",
+            "passed": false
+          },
+          "preclip/2": {
+            "count": 384,
+            "max_abs": 0.000274658203125,
+            "max_relative_l2": 0.012364022444923304,
+            "worst_tensor": "preclip/2/aggregator.global_blocks.13.attn.qkv.lora_B",
+            "passed": false
+          }
+        }
+      },
+      "same_forward": [
+        true,
+        true
+      ]
+    },
+    "checkpoint_vs_native": {
+      "comparison": {
+        "steps": {
+          "1": {
+            "passed": false
+          },
+          "2": {
+            "passed": false
+          }
+        },
+        "fields": {
+          "adam_step/1": {
+            "count": 384,
+            "max_abs": 0.0,
+            "max_relative_l2": 0.0,
+            "worst_tensor": "adam_step/1/aggregator.frame_blocks.0.attn.proj.lora_A",
+            "passed": true
+          },
+          "adam_step/2": {
+            "count": 384,
+            "max_abs": 0.0,
+            "max_relative_l2": 0.0,
+            "worst_tensor": "adam_step/2/aggregator.frame_blocks.0.attn.proj.lora_A",
+            "passed": true
+          },
+          "exp_avg/1": {
+            "count": 384,
+            "max_abs": 3.662108792923391e-05,
+            "max_relative_l2": 0.021088445002257584,
+            "worst_tensor": "exp_avg/1/aggregator.global_blocks.0.attn.qkv.lora_B",
+            "passed": false
+          },
+          "exp_avg/2": {
+            "count": 384,
+            "max_abs": 2.1362327970564365e-05,
+            "max_relative_l2": 0.005566987492374341,
+            "worst_tensor": "exp_avg/2/aggregator.global_blocks.13.attn.qkv.lora_B",
+            "passed": false
+          },
+          "exp_avg_sq/1": {
+            "count": 384,
+            "max_abs": 1.5318391888285987e-08,
+            "max_relative_l2": 0.03233581944174742,
+            "worst_tensor": "exp_avg_sq/1/aggregator.global_blocks.0.attn.qkv.lora_B",
+            "passed": false
+          },
+          "exp_avg_sq/2": {
+            "count": 384,
+            "max_abs": 6.869413482490927e-09,
+            "max_relative_l2": 0.010593490198448186,
+            "worst_tensor": "exp_avg_sq/2/aggregator.frame_blocks.9.mlp.fc1.lora_A",
+            "passed": false
+          },
+          "grad/1": {
+            "count": 384,
+            "max_abs": 0.0003662109375,
+            "max_relative_l2": 0.021088445306882978,
+            "worst_tensor": "grad/1/aggregator.global_blocks.0.attn.qkv.lora_B",
+            "passed": false
+          },
+          "grad/2": {
+            "count": 384,
+            "max_abs": 0.000213623046875,
+            "max_relative_l2": 0.011224090203604051,
+            "worst_tensor": "grad/2/aggregator.global_blocks.13.attn.qkv.lora_B",
+            "passed": false
+          },
+          "parameter/1": {
+            "count": 384,
+            "max_abs": 0.0005998252599965781,
+            "max_relative_l2": 0.12350037300990799,
+            "worst_tensor": "parameter/1/aggregator.frame_blocks.11.attn.proj.lora_B",
+            "passed": false
+          },
+          "parameter/2": {
+            "count": 384,
+            "max_abs": 0.000455083092674613,
+            "max_relative_l2": 0.013762334019143039,
+            "worst_tensor": "parameter/2/aggregator.global_blocks.1.mlp.fc2.lora_B",
+            "passed": false
+          },
+          "preclip/1": {
+            "count": 384,
+            "max_abs": 0.0003662109375,
+            "max_relative_l2": 0.021088445306882978,
+            "worst_tensor": "preclip/1/aggregator.global_blocks.0.attn.qkv.lora_B",
+            "passed": false
+          },
+          "preclip/2": {
+            "count": 384,
+            "max_abs": 0.000213623046875,
+            "max_relative_l2": 0.011224090203604051,
+            "worst_tensor": "preclip/2/aggregator.global_blocks.13.attn.qkv.lora_B",
+            "passed": false
+          }
+        }
+      },
+      "same_forward": [
+        true,
+        true
+      ]
+    }
+  },
+  "qualified": {
+    "camera": true
+  },
+  "receipt_sha256": {
+    "qual_anchor": "beb3451ce5682dfac0c5d0dc6a8c460b92af004157de19fdc613d6b4dec102bc",
+    "qual_camera": "09905cc74e721784ee6ac00bea3a483597fb011d0a855b866ab19145378161f6",
+    "qual_camera_head": "2f858613f628fea8cb1e318481db4c8deea379619f6362df3c4e4e0f93bb16a2",
+    "qual_camera_identity": "8555e335d4fcb4ac39d89222b48894df61c8af5462f218d679ae851e605c76e4",
+    "qual_leak_base": "dcde8e47ffe313dafe658522e8f12b542e508394b3a9c945d4ffa3212ae751c1",
+    "qual_leak_dummy": "5fd4a772e43ff28aba52958afbf3f581168163b5b8179d3873ce5eb1d78b2d7e",
+    "qual_native_identity": "d176404ddb8d34f4cf11c18011f907eda3b90f26886cb24af46abf28e6dfb9f0",
+    "qual_native_replay": "8cfd3c82eeff64b9c1919e153c0bd953450885f59de35d3a1abf8f71bec1816e",
+    "qual_negative": "18d4c63e05575b1161440b794527aadfe58ddb0543cd241df9b8014f0928010b",
+    "qual_production_camera": "e43ef00a1ba6d7e25bdfc04b1b8fa241e3d13539874ce4f8ece33b689374a0da",
+    "qual_production_native_a": "ba5e825dc8dfdb205dc87cc913b2741ad2c7a6a1dacfb5b01145b373b111f9c5",
+    "qual_production_native_b": "23965cba3287e1e9c90b027382ceab100425a7387c904a078c962810d4bf2b47"
+  },
+  "qualification_reader": {
+    "registration_sha256": "c6463bb4e7d91e5e0a52947380fe9c30d3e3dd301358275a989b0ea12b8eff38",
+    "registered_reader_sha256": "e79d647dfddfdc4544e40a37f367bc17cbf7e43f0886503a8d7f79d6e9544032",
+    "index_reader_sha256": "364ab05c1b83eace62da510de32073cae7115415b9ea573e8b91151cff3bc306",
+    "correction": "Present only the clipped-gradient keys grad/0 and grad/1 as grad/1 and grad/2."
+  }
+}
