@@ -55,6 +55,7 @@ def main():
             raise ValueError(f"Amended protocol source changed: {name}")
     tools = (*core.TOOLS, Path(__file__).resolve(), core.ROOT / "scripts/report_five_view_resources.py",
              core.ROOT / "scripts/replay_five_view_release.py",
+             core.ROOT / "scripts/verify_five_view_native_scores.py",
              *(core.ROOT / name for name in sources))
     with patch.multiple(core, terminal_targets=validate, TOOLS=tools):
         study.main()
