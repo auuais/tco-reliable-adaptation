@@ -27,6 +27,10 @@ MISSING = {"", "none", "unknown", "nan", "n/a", "na", "null", "-1"}
 SKIP_REASONS = {"No five-view window from the registered time/pose rules", "Missing registered public asset"}
 
 
+class InsufficientEligibleVisits(Exception):
+    """The published validation roster was exhausted after all documented exclusions."""
+
+
 def gate_branch(primary, follow_lock, follow):
     """The all-pass branch preserves the original candidate regardless of its component ranking."""
     if primary["dataset"] != "stanford12" or follow["dataset"] != "development":
@@ -238,7 +242,10 @@ def prepare(decision):
     unavailable = {groups.get(v,v) for v in exposed}
     lookup = {number(r["video_id"]): number(r["visit_id"]) for r in assets}
     rooms, exclusions, reached = [], [], set()
-    for visit, videos in ranked_visits(splits):
+    visits = ranked_visits(splits)
+    if not visits:
+        raise ValueError("No Validation visits in the downloaded split metadata")
+    for visit, videos in visits:
         group = groups.get(visit, visit)
         if group in unavailable or group in reached:
             exclusions.append(dict(visit=visit, reason="prior exposure or duplicate published physical site/scan", site_group=group))
@@ -264,12 +271,13 @@ def prepare(decision):
             break
         if len(rooms) == 6:
             break
-    evidence = dict(public_metadata_sha256=hashes, missing_or_duplicate=exclusions, previously_exposed=sorted(exposed),
+    evidence = dict(public_metadata_sha256=hashes, ranked_visit_count=len(visits),
+                    roster_exhausted=len(rooms) < 6, missing_or_duplicate=exclusions, previously_exposed=sorted(exposed),
                     previous_exposure_records=exposure_sources,selected=rooms,
                     identity_evidence="Distinct registered visits, explicit shared site identifiers and laser scan IDs where available")
     seal(PUBLIC/"arkit_roster_intake.json", evidence)
     if len(rooms) != 6:
-        raise ValueError("Replication intake incomplete; see arkit_roster_intake.json")
+        raise InsufficientEligibleVisits(f"The public roster supplied {len(rooms)} eligible visits of six required")
     arms = [decision["short"],decision["candidate"],"L40"]
     jobs = matrix(rooms, arms, "replication")
     files = [CODE, ROOT/"scripts/prepare_tco_final_ln_arkit.py", PUBLIC/"arkit_roster_intake.json",

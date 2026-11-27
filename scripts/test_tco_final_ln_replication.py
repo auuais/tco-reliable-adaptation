@@ -3,6 +3,7 @@ import sys
 import unittest
 from unittest.mock import patch
 
+import continue_tco_final_ln as campaign
 import lock_tco_final_ln_replication as roster
 
 
@@ -46,6 +47,28 @@ class ReplicationTest(unittest.TestCase):
                   patch.object(roster,"prepare") as acquire):
                 roster.main()
                 acquire.assert_not_called()
+
+    def test_only_documented_exhaustion_can_release_without_replication(self):
+        for failure in (roster.InsufficientEligibleVisits("five visits"), ConnectionError("interrupted")):
+            with (patch.object(roster,"gate",return_value={"status":"eligible"}),
+                  patch.object(roster,"prepare",side_effect=failure),
+                  patch.object(campaign,"commit_lock") as commit,
+                  patch.object(campaign,"model") as model,
+                  patch.object(campaign,"score") as score,
+                  patch("tco_final_ln_protocol.seal") as publish_gate,
+                  patch.object(campaign,"run") as run):
+                if isinstance(failure, ConnectionError):
+                    with self.assertRaises(ConnectionError):
+                        campaign.finish()
+                    run.assert_not_called()
+                    publish_gate.assert_not_called()
+                else:
+                    campaign.finish()
+                    run.assert_called_once_with("archive_tco_final_ln.py","final")
+                    publish_gate.assert_called_once()
+                commit.assert_not_called()
+                model.assert_not_called()
+                score.assert_not_called()
 
 
 if __name__ == "__main__":

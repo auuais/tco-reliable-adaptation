@@ -93,16 +93,20 @@ def main():
 
 
 def finish():
-    from lock_tco_final_ln_replication import REPL_LOCK, gate, prepare
+    from lock_tco_final_ln_replication import InsufficientEligibleVisits, REPL_LOCK, gate, prepare
     from tco_final_ln_protocol import seal
     decision = gate()
     if decision["status"] == "pending":
         raise RuntimeError("Scientific branch is still pending: "+str(decision))
     if decision["status"] == "eligible":
-        prepare(decision)
-        commit_lock(REPL_LOCK)
-        model("replication")
-        score("replication")
+        try:
+            prepare(decision)
+        except InsufficientEligibleVisits as exc:
+            print("Independent replication remains unverified.", str(exc), flush=True)
+        else:
+            commit_lock(REPL_LOCK)
+            model("replication")
+            score("replication")
     elif decision["status"] != "not_promoted":
         raise ValueError("Unknown replication status")
     seal(PUBLIC/"replication_gate.json",decision)
