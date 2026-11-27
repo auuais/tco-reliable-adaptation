@@ -267,6 +267,11 @@ jobs:
           python -B -S scripts/replay_five_view_release.py allocator-receipt
           python -B -S scripts/test_tco_five_view_replay_cache.py
           python -B scripts/test_tco_five_view_gradients.py
+      - name: Replay the local TCO stall, quality and capacity study
+        if: ${{ hashFiles('results/tco_native_stalls_quality_capacity_v1/decision.json') != '' }}
+        run: |
+          python -B -S scripts/replay_tco_native_stalls_quality_capacity_release.py
+          python -B -S scripts/test_tco_native_stalls_quality_capacity.py
       - name: Exercise immutable profiled evidence backup fixtures
         run: python scripts/test_archive_profiled_evidence.py
       - name: Verify prospective M3 fitting inputs without loading predictions
