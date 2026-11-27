@@ -10,7 +10,7 @@ import uuid
 
 from replay_tco_final_ln import analyze, require
 from score_tco_final_ln import check_against, check_optimizer
-from tco_final_ln_protocol import IMAGE, LOCK, MANIFEST, PREP, PUBLIC, RAW, ROOT, SEEDS, read, seal, sha
+from tco_final_ln_protocol import IMAGE, LOCK, MANIFEST, PREP, PUBLIC, RAW, ROOT, SEEDS, STUDY, read, seal, sha
 
 
 def jobs_for(stage):
@@ -19,6 +19,9 @@ def jobs_for(stage):
         return select(stage) + select("duplicates")
     if stage == "primary":
         return select(stage) + select("anchor")
+    if stage == "followup":
+        branch = read(ROOT/"manifests"/(STUDY+"_followup.json"))
+        return select(stage) + branch.get("diagnostics",[])
     return select(stage)
 
 
@@ -203,7 +206,7 @@ def report(stage, rows, result):
     from statistics import median
     grouped = defaultdict(list)
     for r in rows:
-        if r["role"] != "duplicate" and r["status"] == "completed":
+        if r["role"] not in {"duplicate","diagnostics"} and r["status"] == "completed":
             grouped[(r["room"],r["arm"])].append(r)
     for (room,arm), group in sorted(grouped.items()):
         values = [median(r[k] for r in group) for k in ("accuracy_mm","completeness_mm","scene_seconds",
@@ -215,14 +218,84 @@ def report(stage, rows, result):
     return "\n".join(lines)
 
 
+def endpoint_deltas(path, native_path):
+    """Compare camera trajectories in the first camera's frame and separate depth scale from shape."""
+    import numpy as np
+    def prediction(path):
+        with np.load(path, allow_pickle=False) as data:
+            return tuple(data[k][0].astype(np.float64) for k in ("depth","extrinsics","intrinsics"))
+    da, Ta, Ka = prediction(path)
+    db, Tb, Kb = prediction(native_path)
+    use = (da>0)&(db>0)&np.isfinite(da)&np.isfinite(db)
+    require(use.sum()>0 and Ta.shape==Tb.shape==(5,4,4), "Unusable depth/camera probe")
+    # Native extrinsics map world to camera. Compare T_i T_0^-1 to remove the camera coordinate gauge.
+    Pa,Pb = Ta@np.linalg.inv(Ta[0]),Tb@np.linalg.inv(Tb[0])
+    rel=Pa[1:,:3,:3]@np.swapaxes(Pb[1:,:3,:3],-1,-2)
+    rotation_deg=np.rad2deg(np.arccos(np.clip((np.trace(rel,axis1=1,axis2=2)-1)/2,-1,1)))
+    ra,rb=np.median(da[use]),np.median(db[use])
+    geom=dict(
+        positive_pixels=int(use.sum()),depth_scale_ratio=float(ra/rb),
+        mean_abs_depth_change_in_native_model_units=float(np.mean(np.abs(da[use]-db[use]))),
+        mean_abs_change_after_independent_median_depth_normalization=float(np.mean(np.abs(da[use]/ra-db[use]/rb))),
+        mean_camera0_relative_rotation_degrees=float(np.mean(rotation_deg)),
+        mean_camera0_relative_translation_change_in_native_model_units=float(np.linalg.norm(Pa[1:,:3,3]-Pb[1:,:3,3],axis=1).mean()),
+        mean_absolute_fx_change_px=float(np.abs(Ka[:,0,0]-Kb[:,0,0]).mean()),
+        mean_absolute_fy_change_px=float(np.abs(Ka[:,1,1]-Kb[:,1,1]).mean()))
+    require(all(np.isfinite(v) for v in geom.values()),"Nonfinite endpoint diagnostic")
+    return geom
+
+
+def negative_branch(records):
+    from run_tco_final_ln_local import success
+    jobs = [j for j in jobs_for("development") if j["role"]=="development" and j["arm"] in {"L10","LN10"}]
+    controls={ (j["room"],j["seed"],j["arm"]):j for j in jobs}
+    out=[]
+    for uid,rec in records.items():
+        j=rec["job"]
+        if not rec["success"]:
+            out.append(dict(id=uid,status=rec["attempts"][-1]["status"]))
+            continue
+        folder=RAW/rec["success"]["path"]
+        result=read(folder/"complete.json")
+        opts=result["optimizer"]
+        comparisons={}
+        scored=read(RAW/"scores/first"/uid/"score.json")
+        for arm in ("L10","LN10"):
+            ref=controls[(j["room"],j["seed"],arm)]
+            path=success(ref)
+            if path is None:
+                comparisons[arm] = dict(status="missing_development_control")
+                continue
+            pred=path/"model/prediction.npz"
+            baseline=read(RAW/"scores/first"/ref["id"]/"score.json")
+            require(baseline["input_sha256"]==scored["input_sha256"]
+                    and baseline["reference_sha256"]==scored["reference_sha256"]
+                    and baseline["predictions_sha256"]==sha(pred),"Unmatched model diagnostic")
+            comparisons[arm]=dict(endpoint_deltas(folder/"prediction.npz",pred),
+                                  accuracy_delta_mm=scored["accuracy_mm"]-baseline["accuracy_mm"],
+                                  completeness_delta_mm=scored["completeness_mm"]-baseline["completeness_mm"])
+        out.append(dict(id=uid,room=j["room"],seed=j["seed"],arm=j["arm"],role=j["role"],
+                        surface_accuracy_mm=scored["accuracy_mm"],surface_completeness_mm=scored["completeness_mm"],
+                        diagnostic_only=j["role"]=="diagnostics",loss_by_step=result["losses"],
+                        preclip_l2=opts["preclip_norms"],
+                        times_clipped={k:sum(value>1.0 for value in v) for k,v in opts["preclip_norms"].items()},
+                        ln_displacement_from_initial_by_step=opts.get("ln_delta_norms"),
+                        comparisons=comparisons))
+    return dict(reference="Matched clean L10 and original-LR LN10 at the same scene and seed",
+                interpretation="Per-update displacements are available on the separate untimed diagnostic cases. "
+                               "Surface deltas are in mm; unmatched metric translation/depth values are native model units.",
+                rows=out)
+
+
 def release(stage, jobs, records):
     rows = rows_from(records)
     for r in rows:
-        require(r["role"] in {"development","duplicate","primary","anchor","followup","replication"},
+        require(r["role"] in {"development","duplicate","primary","anchor","followup","replication","diagnostics"},
                 "Unknown scientific result role")
     dataset = {"primary":"stanford12", "development":"development", "replication":"arkitscenes"}.get(stage,"development")
     arms = {"LN10":"L10","LN20":"L20","LN10_low":"L10"}
-    candidate = next((a for a in ("LN20","LN10_low","LN10") if any(r["arm"] == a for r in rows)),None)
+    candidate = next((a for a in ("LN20","LN10_low","LN10") if any(r["arm"] == a and
+                     r["role"] != "diagnostics" for r in rows)),None)
     # Follow-up arms are compared to the previously locked development controls.
     component = stage == "followup" and candidate is None and set(r["arm"] for r in rows) == {"LN10_scale","LN10_bias"}
     if stage == "followup":
@@ -233,6 +306,8 @@ def release(stage, jobs, records):
     plan = dict(dataset=dataset,seeds=SEEDS,rooms=[dict(room=r,environment=e) for r,e in sorted(room_map.items())])
     seal(PUBLIC/(stage+"_rows.json"),dict(rows=rows))
     seal(PUBLIC/(stage+"_analysis_plan.json"),plan)
+    if stage=="followup" and candidate=="LN10_low":
+        seal(PUBLIC/"followup_development_diagnostics.json",negative_branch(records))
     if component:
         reports = {}
         for arm in ("LN10_scale","LN10_bias","LN10"):

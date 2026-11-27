@@ -101,7 +101,7 @@ def collect(plan, rows, arms):
             anchors[room] = row
             continue
         if role not in {"primary", "development", "followup", "replication"}:
-            require(role in {"duplicate", "engineering"}, "Unknown row role")
+            require(role in {"duplicate", "engineering", "diagnostics"}, "Unknown row role")
             excluded[role] += 1
             continue
         require(plan["dataset"] == "development" or role in {"primary","replication"},
@@ -149,6 +149,9 @@ def analyze(plan, rows, candidate="LN10", short="L10", full="L40", draws=DRAWS):
                                  for _,row in sorted(cases.items()) if row.get("status","completed") == "completed"])
     if not complete_rooms:
         result["joint_verdict"] = "insufficient_coverage"
+        if plan["dataset"] == "development" and candidate in ("LN20","LN10_low"):
+            result["independent_replication_gate"] = dict(candidate=candidate,coverage_complete=False,
+                                                         reason="No complete development rooms",eligible=False)
         return result
     for ref in (short, full):
         result["comparisons"][ref] = compare(complete_rooms, cases, candidate, ref, plan["dataset"], draws)
