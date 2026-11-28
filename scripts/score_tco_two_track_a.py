@@ -1,5 +1,6 @@
 """Score isolated, registered five-view outputs and publish paired case-level evidence."""
 import argparse
+from datetime import datetime, timezone
 import math
 from pathlib import Path
 import re
@@ -137,6 +138,9 @@ def launch_scores(stage, selected, repeat):
     cid, code = None, None
     with host_lock():
         begin = time.monotonic()
+        started = datetime.now(timezone.utc).isoformat()
+        seal(execution/"start.json",dict(started=started,image=IMAGE,stage=stage,kind=kind,
+                                        index_sha256=digest(folder/(index+".json")),rental_compute_usd=0))
         try:
             cid = subprocess.check_output(cmd,text=True,timeout=60).strip()
             cfg, = docker_json(["inspect",cid])
@@ -151,7 +155,8 @@ def launch_scores(stage, selected, repeat):
                 state,_ = ensure_stopped(cid)
                 require(state and not state["State"]["Running"], "Scorer still running")
                 subprocess.run(DOCKER+["rm",cid],check=True,capture_output=True,timeout=30)
-            seal(execution/"terminal.json",dict(image=IMAGE,elapsed_seconds=time.monotonic()-begin,exit_code=code,
+            seal(execution/"terminal.json",dict(image=IMAGE,started=started,utc=datetime.now(timezone.utc).isoformat(),
+                                               elapsed_seconds=time.monotonic()-begin,exit_code=code,
                                                index_sha256=digest(folder/(index+".json")),rental_compute_usd=0))
 
 
