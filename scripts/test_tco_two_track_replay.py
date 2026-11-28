@@ -42,6 +42,22 @@ def b_rows(p,seeds):
 
 
 class StudyTest(unittest.TestCase):
+    def test_capacity_bound_can_rule_out_saving_when_control_timed_out(self):
+        rooms=packets(3)
+        data=a_rows(rooms,SEEDS)
+        for record in data:
+            if record["arm"]=="Refresh1":
+                record["peak_allocated_bytes"]=8*2**30
+                record["peak_reserved_bytes"]=8*2**30
+            if record["arm"]=="Full40" and record["seed"]==43:
+                record["status"]="timeout"
+        result=a_analysis(data,rooms,SEEDS,["Refresh1"],["Full10","Full40","Cache10"],draws=10)
+        branch=result["candidates"]["Refresh1"]
+        self.assertFalse(branch["comparisons"]["Full40"]["coverage_complete"])
+        self.assertAlmostEqual(branch["peak_ratio_lower_bound_from_cap"],8/8.75)
+        self.assertEqual(next_hybrid(result),"Narrow")
+        self.assertFalse(branch["stretch_point"]["passed"])
+
     def test_registration_integrity(self):
         reg=read(MANIFEST)
         self.assertEqual(reg,registration())

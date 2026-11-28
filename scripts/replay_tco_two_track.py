@@ -172,6 +172,15 @@ def a_analysis(rows, packets, seeds, candidates, controls, fresh=False, draws=10
         analysis = dict(equal_step=classify(tables["Full10"],A_GATES,fresh),comparisons=tables)
         if "Full40" in tables:
             full=tables["Full40"]
+            if not fresh and not full["coverage_complete"] and all(
+                    clean_row(index,(room,candidate,s)) and (room,"Full40",s) in index for room in rooms for s in seeds):
+                # Any feasible completed Full40 fits the same physical allocator cap. A missing
+                # Full40 error or time remains unknown. This inequality can only rule OUT the
+                # memory stretch target for a complete candidate, never establish a benefit.
+                cap = read(MANIFEST)["runtime"]["cap_mib"] * 2**20
+                candidate_peaks = [median(index[room,candidate,s]["peak_allocated_bytes"] for s in seeds)
+                                   for room in rooms]
+                analysis["peak_ratio_lower_bound_from_cap"] = mean(candidate_peaks) / cap
             analysis["full_length_quality"]=classify(full,{"accuracy_mm":(1.01,False),"completeness_mm":(1.03,False)},fresh)
             stretch={"scene_seconds":(.25,False),"peak_allocated_bytes":(.764,False)}
             analysis["stretch_point"]=classify(full,stretch,False)
@@ -190,7 +199,8 @@ def next_hybrid(development):
     equal=original["comparisons"]["Full10"]
     # Only a recorded hybrid OOM, not missing output or a transient provisioning failure, establishes no-fit.
     oom=any(x["status"]=="oom" and x["arm"]=="Refresh1" for x in development["coverage"]["failed"])
-    if oom or (full["coverage_complete"] and full["metrics"]["peak_allocated_bytes"]["ratio"]>.764):
+    if (oom or (full["coverage_complete"] and full["metrics"]["peak_allocated_bytes"]["ratio"]>.764)
+            or original.get("peak_ratio_lower_bound_from_cap",0)>.764):
         return "Narrow"
     if (equal["coverage_complete"] and equal["metrics"]["scene_seconds"]["ratio"]<1.
             and not original["equal_step"]["passed"]):
