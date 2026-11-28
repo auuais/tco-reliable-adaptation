@@ -37,6 +37,24 @@ A previous local study also saw native Chess seed 42 take 1,032.22 s and 88.72 s
 
 ## Local reproduction
 
+### Resume after the weekly reserve
+
+All 18 registered Office and Courtyard stress runs finished on their first attempt. Each saved prediction has ten actual optimizer updates and a verified second-disk copy. The local GPU and scoring queues exited at the user's 5% weekly reserve. The Office and Courtyard ground-truth scores and their selection decision remain pending. The fusion branch closed on its development result. Total RunPod spend is USD 0. [Stress inference checkpoint](a_stress_inference_checkpoint.json) · [Alternative backup](archive_alternative.json)
+
+On explicit resumption, check the weekly allowance and use the following PowerShell commands from the repository root. The first command removes the empty private queue-pause marker. The saved stress predictions supply the CPU scorer. Run each subsequent command only after the preceding one succeeds.
+
+```powershell
+if (Test-Path -LiteralPath 'reports/tco_two_track_v1/operator_pause') { Remove-Item -LiteralPath 'reports/tco_two_track_v1/operator_pause' }
+python -B scripts/score_tco_two_track_a.py stress_hybrid
+python -B -S scripts/plan_tco_two_track_a_followup.py distillation-gate
+python -B -S scripts/report_tco_two_track_hybrid_selection.py stress --out results/tco_two_track_v1/a_hybrid_selection_stress.md
+python -B scripts/audit_tco_two_track_rescore_coverage.py stress_hybrid
+python -B scripts/archive_tco_two_track.py stress_hybrid
+python -B -S scripts/summarize_tco_two_track_controls.py current --stages development alternative
+```
+
+Commit the scores and decision. If `a_distillation_trigger.json` records `proceed: true`, run `python -B scripts/lock_tco_two_track_arkit.py Training` and commit the six-visit teacher roster before launching its local GPU jobs. Otherwise proceed to the nomination and comparable-time controls in the handoff. The operative budget remains the local RTX 3080 and USD 0 rental. [Full execution handoff](../../docs/TCO_TWO_TRACK_SOL_HANDOFF.md)
+
 Run commands from the repository root in PowerShell. The registered Windows launcher uses the pinned offline Docker image on the physical 3080. Supply the separate five-view model and reference packets at the locations in the handoff. The model container sees only RGB and the permitted camera priors. The CPU scorer checks the model-output hash and uses the fixed ground-truth support.
 
 ```powershell
