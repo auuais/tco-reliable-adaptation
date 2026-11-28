@@ -46,6 +46,8 @@ jobs:
       - run: python scripts/verify_public_development_tables.py
       - run: python -B -S scripts/tco_two_track_protocol.py verify
       - run: python -B -S scripts/replay_tco_two_track.py b-development
+      - run: python -B -S scripts/replay_tco_two_track.py a-development
+      - run: python -B -S scripts/report_tco_two_track_development.py
       - run: python scripts/verify_camera_studies.py
       - run: python scripts/summarize_sensor_windows.py
       - run: python scripts/summarize_sensor_extrinsic.py

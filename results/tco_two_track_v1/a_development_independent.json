@@ -1,0 +1,676 @@
+{
+  "arms": {
+    "Cache10": [
+      42,
+      43,
+      44
+    ],
+    "Full10": [
+      42,
+      43,
+      44
+    ],
+    "Full40": [
+      42,
+      43,
+      44
+    ],
+    "Refresh1": [
+      42,
+      43,
+      44
+    ],
+    "Refresh1Uncached": [
+      42,
+      43,
+      44
+    ]
+  },
+  "bounded_alternative": "Narrow",
+  "candidates": {
+    "Refresh1": {
+      "comparisons": {
+        "Cache10": {
+          "candidate": "Refresh1",
+          "complete_rooms": [
+            "heads/seq-01",
+            "chess/seq-03",
+            "fire/seq-03"
+          ],
+          "coverage_complete": true,
+          "expected_slots": 18,
+          "metrics": {
+            "accuracy_mm": {
+              "equal_room_candidate": 15.04376513644088,
+              "equal_room_reference": 15.076227701620939,
+              "leave_one_room_out": {
+                "chess/seq-03": 0.9933377385882985,
+                "fire/seq-03": 1.002733786440145,
+                "heads/seq-01": 0.9967520337624993
+              },
+              "lower_95": 0.9869824920036155,
+              "percent_change": -0.23921470696857128,
+              "ratio": 0.9976078529303143,
+              "room_ratios": {
+                "chess/seq-03": 1.0061480816143458,
+                "fire/seq-03": 0.9873559859106529,
+                "heads/seq-01": 0.9993194912659442
+              },
+              "upper_95": 1.011269832932622,
+              "worst_room": "chess/seq-03"
+            },
+            "completeness_mm": {
+              "equal_room_candidate": 17.70820669554147,
+              "equal_room_reference": 17.941489164267587,
+              "leave_one_room_out": {
+                "chess/seq-03": 1.0012984908953269,
+                "fire/seq-03": 0.9975727386233472,
+                "heads/seq-01": 0.9780316791806494
+              },
+              "lower_95": 0.9700365741571225,
+              "percent_change": -0.7699030433558907,
+              "ratio": 0.9923009695664411,
+              "room_ratios": {
+                "chess/seq-03": 0.9743059269086698,
+                "fire/seq-03": 0.9817574314526291,
+                "heads/seq-01": 1.0208395503380245
+              },
+              "upper_95": 1.0182229399040217,
+              "worst_room": "heads/seq-01"
+            },
+            "peak_allocated_bytes": {
+              "equal_room_candidate": 8311843328,
+              "equal_room_reference": 6416603648,
+              "leave_one_room_out": {
+                "chess/seq-03": 1.2953649288577658,
+                "fire/seq-03": 1.2953649288577658,
+                "heads/seq-01": 1.2953649288577658
+              },
+              "lower_95": 1.2953649288577658,
+              "percent_change": 29.53649288577658,
+              "ratio": 1.2953649288577658,
+              "room_ratios": {
+                "chess/seq-03": 1.2953649288577658,
+                "fire/seq-03": 1.2953649288577658,
+                "heads/seq-01": 1.2953649288577658
+              },
+              "upper_95": 1.2953649288577658,
+              "worst_room": "heads/seq-01"
+            },
+            "peak_reserved_bytes": {
+              "equal_room_candidate": 8814329856,
+              "equal_room_reference": 7362401621.333333,
+              "leave_one_room_out": {
+                "chess/seq-03": 1.1943951031467313,
+                "fire/seq-03": 1.2012027957908273,
+                "heads/seq-01": 1.1961115975676955
+              },
+              "lower_95": 1.1904671162227505,
+              "percent_change": 19.723649883508475,
+              "ratio": 1.1972364988350848,
+              "room_ratios": {
+                "chess/seq-03": 1.2029192902117916,
+                "fire/seq-03": 1.1893039049235994,
+                "heads/seq-01": 1.1994863013698631
+              },
+              "upper_95": 1.2029258592681291,
+              "worst_room": "chess/seq-03"
+            },
+            "scene_seconds": {
+              "equal_room_candidate": 20.484759776678402,
+              "equal_room_reference": 18.71715825900901,
+              "leave_one_room_out": {
+                "chess/seq-03": 1.0793110391225507,
+                "fire/seq-03": 1.0754388890497508,
+                "heads/seq-01": 1.1317175916183206
+              },
+              "lower_95": 1.0435914914161388,
+              "percent_change": 9.54891732635408,
+              "ratio": 1.0954891732635408,
+              "room_ratios": {
+                "chess/seq-03": 1.1278454415455208,
+                "fire/seq-03": 1.1355897416911205,
+                "heads/seq-01": 1.023032336553981
+              },
+              "upper_95": 1.148104296817358,
+              "worst_room": "fire/seq-03"
+            }
+          },
+          "missing_or_failed": [],
+          "per_room": {
+            "chess/seq-03": {
+              "candidate": {
+                "accuracy_mm": 17.83456778033055,
+                "completeness_mm": 23.026634853080367,
+                "peak_allocated_bytes": 8311843328,
+                "peak_reserved_bytes": 8814329856,
+                "scene_seconds": 20.87309605500195
+              },
+              "reference": {
+                "accuracy_mm": 17.725589409975637,
+                "completeness_mm": 23.63388563809779,
+                "peak_allocated_bytes": 6416603648,
+                "peak_reserved_bytes": 7327449088,
+                "scene_seconds": 18.507053614011966
+              }
+            },
+            "fire/seq-03": {
+              "candidate": {
+                "accuracy_mm": 15.486875798515849,
+                "completeness_mm": 18.130749579916053,
+                "peak_allocated_bytes": 8311843328,
+                "peak_reserved_bytes": 8814329856,
+                "scene_seconds": 20.88140142103657
+              },
+              "reference": {
+                "accuracy_mm": 15.685199684318595,
+                "completeness_mm": 18.46764689429385,
+                "peak_allocated_bytes": 6416603648,
+                "peak_reserved_bytes": 7411335168,
+                "scene_seconds": 18.388156087021343
+              }
+            },
+            "heads/seq-01": {
+              "candidate": {
+                "accuracy_mm": 11.809851830476244,
+                "completeness_mm": 11.967235653627993,
+                "peak_allocated_bytes": 8311843328,
+                "peak_reserved_bytes": 8814329856,
+                "scene_seconds": 19.699781853996683
+              },
+              "reference": {
+                "accuracy_mm": 11.817894010568581,
+                "completeness_mm": 11.722934960411118,
+                "peak_allocated_bytes": 6416603648,
+                "peak_reserved_bytes": 7348420608,
+                "scene_seconds": 19.256265075993724
+              }
+            }
+          },
+          "reference": "Cache10",
+          "unit": "paired"
+        },
+        "Full10": {
+          "candidate": "Refresh1",
+          "complete_rooms": [
+            "heads/seq-01",
+            "chess/seq-03",
+            "fire/seq-03"
+          ],
+          "coverage_complete": true,
+          "expected_slots": 18,
+          "metrics": {
+            "accuracy_mm": {
+              "equal_room_candidate": 15.04376513644088,
+              "equal_room_reference": 15.071236300093176,
+              "leave_one_room_out": {
+                "chess/seq-03": 0.9576598373797277,
+                "fire/seq-03": 0.9883350276056806,
+                "heads/seq-01": 1.0294747170227765
+              },
+              "lower_95": 0.9439004349580388,
+              "percent_change": -0.8176805997271774,
+              "ratio": 0.9918231940027282,
+              "room_ratios": {
+                "chess/seq-03": 1.0601499072487293,
+                "fire/seq-03": 0.9987995267968236,
+                "heads/seq-01": 0.9165201479626318
+              },
+              "upper_95": 1.0441868410934623,
+              "worst_room": "chess/seq-03"
+            },
+            "completeness_mm": {
+              "equal_room_candidate": 17.70820669554147,
+              "equal_room_reference": 17.925620390289833,
+              "leave_one_room_out": {
+                "chess/seq-03": 0.921734899483697,
+                "fire/seq-03": 0.9677530804627414,
+                "heads/seq-01": 1.0287801505692518
+              },
+              "lower_95": 0.9004525782019979,
+              "percent_change": -2.724395649476996,
+              "ratio": 0.97275604350523,
+              "room_ratios": {
+                "chess/seq-03": 1.074798331548296,
+                "fire/seq-03": 0.9827619695902073,
+                "heads/seq-01": 0.8607078293771867
+              },
+              "upper_95": 1.0542411656665183,
+              "worst_room": "chess/seq-03"
+            },
+            "peak_allocated_bytes": {
+              "equal_room_candidate": 8311843328,
+              "equal_room_reference": 8398735872,
+              "leave_one_room_out": {
+                "chess/seq-03": 0.9896540925534181,
+                "fire/seq-03": 0.9896540925534181,
+                "heads/seq-01": 0.9896540925534181
+              },
+              "lower_95": 0.9896540925534181,
+              "percent_change": -1.0345907446581926,
+              "ratio": 0.9896540925534181,
+              "room_ratios": {
+                "chess/seq-03": 0.9896540925534181,
+                "fire/seq-03": 0.9896540925534181,
+                "heads/seq-01": 0.9896540925534181
+              },
+              "upper_95": 0.9896540925534181,
+              "worst_room": "heads/seq-01"
+            },
+            "peak_reserved_bytes": {
+              "equal_room_candidate": 8814329856,
+              "equal_room_reference": 9223274496,
+              "leave_one_room_out": {
+                "chess/seq-03": 0.9556666051779561,
+                "fire/seq-03": 0.9545776561528958,
+                "heads/seq-01": 0.9567506134179662
+              },
+              "lower_95": 0.9520678440748913,
+              "percent_change": -4.433504175039394,
+              "ratio": 0.9556649582496061,
+              "room_ratios": {
+                "chess/seq-03": 0.9556616643929059,
+                "fire/seq-03": 0.9578395624430265,
+                "heads/seq-01": 0.9534936479128857
+              },
+              "upper_95": 0.9631647139490772,
+              "worst_room": "fire/seq-03"
+            },
+            "scene_seconds": {
+              "equal_room_candidate": 20.484759776678402,
+              "equal_room_reference": 81.4093313026436,
+              "leave_one_room_out": {
+                "chess/seq-03": 0.4207289342458254,
+                "fire/seq-03": 0.6323786059538783,
+                "heads/seq-01": 0.32869485763173456
+              },
+              "lower_95": 0.18058173267699154,
+              "percent_change": -53.939920072285396,
+              "ratio": 0.46060079927714603,
+              "room_ratios": {
+                "chess/seq-03": 0.5403445293397874,
+                "fire/seq-03": 0.1170451859236817,
+                "heads/seq-01": 0.7244126825679691
+              },
+              "upper_95": 0.7357952786460403,
+              "worst_room": "heads/seq-01"
+            }
+          },
+          "missing_or_failed": [],
+          "per_room": {
+            "chess/seq-03": {
+              "candidate": {
+                "accuracy_mm": 17.83456778033055,
+                "completeness_mm": 23.026634853080367,
+                "peak_allocated_bytes": 8311843328,
+                "peak_reserved_bytes": 8814329856,
+                "scene_seconds": 20.87309605500195
+              },
+              "reference": {
+                "accuracy_mm": 16.822684847102717,
+                "completeness_mm": 21.424144583393097,
+                "peak_allocated_bytes": 8398735872,
+                "peak_reserved_bytes": 9223274496,
+                "scene_seconds": 38.62923546298407
+              }
+            },
+            "fire/seq-03": {
+              "candidate": {
+                "accuracy_mm": 15.486875798515849,
+                "completeness_mm": 18.130749579916053,
+                "peak_allocated_bytes": 8311843328,
+                "peak_reserved_bytes": 8814329856,
+                "scene_seconds": 20.88140142103657
+              },
+              "reference": {
+                "accuracy_mm": 15.505489723430955,
+                "completeness_mm": 18.448770038869355,
+                "peak_allocated_bytes": 8398735872,
+                "peak_reserved_bytes": 9202302976,
+                "scene_seconds": 178.4046157579869
+              }
+            },
+            "heads/seq-01": {
+              "candidate": {
+                "accuracy_mm": 11.809851830476244,
+                "completeness_mm": 11.967235653627993,
+                "peak_allocated_bytes": 8311843328,
+                "peak_reserved_bytes": 8814329856,
+                "scene_seconds": 19.699781853996683
+              },
+              "reference": {
+                "accuracy_mm": 12.885534329745857,
+                "completeness_mm": 13.903946548607042,
+                "peak_allocated_bytes": 8398735872,
+                "peak_reserved_bytes": 9244246016,
+                "scene_seconds": 27.19414268695982
+              }
+            }
+          },
+          "reference": "Full10",
+          "unit": "paired"
+        },
+        "Full40": {
+          "candidate": "Refresh1",
+          "complete_rooms": [
+            "heads/seq-01"
+          ],
+          "coverage_complete": false,
+          "expected_slots": 18,
+          "metrics": {
+            "accuracy_mm": {
+              "equal_room_candidate": 11.809851830476244,
+              "equal_room_reference": 14.08265299591296,
+              "leave_one_room_out": {},
+              "lower_95": 0.7923324033328065,
+              "percent_change": -16.139012770507975,
+              "ratio": 0.8386098722949202,
+              "room_ratios": {
+                "heads/seq-01": 0.8386098722949202
+              },
+              "upper_95": 0.9168089264195965,
+              "worst_room": "heads/seq-01"
+            },
+            "completeness_mm": {
+              "equal_room_candidate": 11.967235653627993,
+              "equal_room_reference": 15.584335297384067,
+              "leave_one_room_out": {},
+              "lower_95": 0.7361375538125733,
+              "percent_change": -23.209842285434068,
+              "ratio": 0.7679015771456593,
+              "room_ratios": {
+                "heads/seq-01": 0.7679015771456593
+              },
+              "upper_95": 0.8307333038536867,
+              "worst_room": "heads/seq-01"
+            },
+            "peak_allocated_bytes": {
+              "equal_room_candidate": 8311843328,
+              "equal_room_reference": 8398766592,
+              "leave_one_room_out": {},
+              "lower_95": 0.9896504727155061,
+              "percent_change": -1.0349527284493898,
+              "ratio": 0.9896504727155061,
+              "room_ratios": {
+                "heads/seq-01": 0.9896504727155061
+              },
+              "upper_95": 0.9896504727155061,
+              "worst_room": "heads/seq-01"
+            },
+            "peak_reserved_bytes": {
+              "equal_room_candidate": 8814329856,
+              "equal_room_reference": 9347006464,
+              "leave_one_room_out": {},
+              "lower_95": 0.9387983024346661,
+              "percent_change": -5.698900605788648,
+              "ratio": 0.9430109939421135,
+              "room_ratios": {
+                "heads/seq-01": 0.9430109939421135
+              },
+              "upper_95": 0.9470482199188823,
+              "worst_room": "heads/seq-01"
+            },
+            "scene_seconds": {
+              "equal_room_candidate": 19.699781853996683,
+              "equal_room_reference": 73.87828806001926,
+              "leave_one_room_out": {},
+              "lower_95": 0.019030385504130044,
+              "percent_change": -73.33481544944242,
+              "ratio": 0.26665184550557586,
+              "room_ratios": {
+                "heads/seq-01": 0.26665184550557586
+              },
+              "upper_95": 0.26870832230230063,
+              "worst_room": "heads/seq-01"
+            }
+          },
+          "missing_or_failed": [
+            [
+              "chess/seq-03",
+              "Full40",
+              42
+            ],
+            [
+              "fire/seq-03",
+              "Full40",
+              43
+            ],
+            [
+              "fire/seq-03",
+              "Full40",
+              44
+            ]
+          ],
+          "per_room": {
+            "heads/seq-01": {
+              "candidate": {
+                "accuracy_mm": 11.809851830476244,
+                "completeness_mm": 11.967235653627993,
+                "peak_allocated_bytes": 8311843328,
+                "peak_reserved_bytes": 8814329856,
+                "scene_seconds": 19.699781853996683
+              },
+              "reference": {
+                "accuracy_mm": 14.08265299591296,
+                "completeness_mm": 15.584335297384067,
+                "peak_allocated_bytes": 8398766592,
+                "peak_reserved_bytes": 9347006464,
+                "scene_seconds": 73.87828806001926
+              }
+            }
+          },
+          "reference": "Full40",
+          "unit": "paired"
+        },
+        "Refresh1Uncached": {
+          "candidate": "Refresh1",
+          "complete_rooms": [
+            "heads/seq-01",
+            "chess/seq-03",
+            "fire/seq-03"
+          ],
+          "coverage_complete": true,
+          "expected_slots": 18,
+          "metrics": {
+            "accuracy_mm": {
+              "equal_room_candidate": 15.04376513644088,
+              "equal_room_reference": 14.976641806526693,
+              "leave_one_room_out": {
+                "chess/seq-03": 1.0031702640560622,
+                "fire/seq-03": 1.00695268300323,
+                "heads/seq-01": 1.0034581609238589
+              },
+              "lower_95": 0.987859659070109,
+              "percent_change": 0.45270359943836436,
+              "ratio": 1.0045270359943836,
+              "room_ratios": {
+                "chess/seq-03": 1.0072405798710267,
+                "fire/seq-03": 0.9996757419766911,
+                "heads/seq-01": 1.0066647861354334
+              },
+              "upper_95": 1.0120765515575527,
+              "worst_room": "chess/seq-03"
+            },
+            "completeness_mm": {
+              "equal_room_candidate": 17.70820669554147,
+              "equal_room_reference": 17.75893296499511,
+              "leave_one_room_out": {
+                "chess/seq-03": 1.005023445113633,
+                "fire/seq-03": 0.9977210631001883,
+                "heads/seq-01": 0.9950340184077299
+              },
+              "lower_95": 0.9771530271108603,
+              "percent_change": -0.07404911261496006,
+              "ratio": 0.9992595088738504,
+              "room_ratios": {
+                "chess/seq-03": 0.987731636394285,
+                "fire/seq-03": 1.0023364004211748,
+                "heads/seq-01": 1.0077104898060916
+              },
+              "upper_95": 1.0104762246262287,
+              "worst_room": "heads/seq-01"
+            },
+            "peak_allocated_bytes": {
+              "equal_room_candidate": 8311843328,
+              "equal_room_reference": 8311843328,
+              "leave_one_room_out": {
+                "chess/seq-03": 1.0,
+                "fire/seq-03": 1.0,
+                "heads/seq-01": 1.0
+              },
+              "lower_95": 1.0,
+              "percent_change": 0.0,
+              "ratio": 1.0,
+              "room_ratios": {
+                "chess/seq-03": 1.0,
+                "fire/seq-03": 1.0,
+                "heads/seq-01": 1.0
+              },
+              "upper_95": 1.0,
+              "worst_room": "heads/seq-01"
+            },
+            "peak_reserved_bytes": {
+              "equal_room_candidate": 8814329856,
+              "equal_room_reference": 8814329856,
+              "leave_one_room_out": {
+                "chess/seq-03": 1.0,
+                "fire/seq-03": 1.0,
+                "heads/seq-01": 1.0
+              },
+              "lower_95": 1.0,
+              "percent_change": 0.0,
+              "ratio": 1.0,
+              "room_ratios": {
+                "chess/seq-03": 1.0,
+                "fire/seq-03": 1.0,
+                "heads/seq-01": 1.0
+              },
+              "upper_95": 1.0,
+              "worst_room": "heads/seq-01"
+            },
+            "scene_seconds": {
+              "equal_room_candidate": 20.484759776678402,
+              "equal_room_reference": 27.74630193899308,
+              "leave_one_room_out": {
+                "chess/seq-03": 0.7382714018950962,
+                "fire/seq-03": 0.7374781379811666,
+                "heads/seq-01": 0.739031730440287
+              },
+              "lower_95": 0.7273078263629692,
+              "percent_change": -26.17395765611501,
+              "ratio": 0.7382604234388499,
+              "room_ratios": {
+                "chess/seq-03": 0.7382384665263574,
+                "fire/seq-03": 0.7398249943542167,
+                "heads/seq-01": 0.7367178094359758
+              },
+              "upper_95": 0.7577765985880123,
+              "worst_room": "fire/seq-03"
+            }
+          },
+          "missing_or_failed": [],
+          "per_room": {
+            "chess/seq-03": {
+              "candidate": {
+                "accuracy_mm": 17.83456778033055,
+                "completeness_mm": 23.026634853080367,
+                "peak_allocated_bytes": 8311843328,
+                "peak_reserved_bytes": 8814329856,
+                "scene_seconds": 20.87309605500195
+              },
+              "reference": {
+                "accuracy_mm": 17.70636344160617,
+                "completeness_mm": 23.31264283195293,
+                "peak_allocated_bytes": 8311843328,
+                "peak_reserved_bytes": 8814329856,
+                "scene_seconds": 28.27419187896885
+              }
+            },
+            "fire/seq-03": {
+              "candidate": {
+                "accuracy_mm": 15.486875798515849,
+                "completeness_mm": 18.130749579916053,
+                "peak_allocated_bytes": 8311843328,
+                "peak_reserved_bytes": 8814329856,
+                "scene_seconds": 20.88140142103657
+              },
+              "reference": {
+                "accuracy_mm": 15.491899171118376,
+                "completeness_mm": 18.088487629799374,
+                "peak_allocated_bytes": 8311843328,
+                "peak_reserved_bytes": 8814329856,
+                "scene_seconds": 28.22478502400918
+              }
+            },
+            "heads/seq-01": {
+              "candidate": {
+                "accuracy_mm": 11.809851830476244,
+                "completeness_mm": 11.967235653627993,
+                "peak_allocated_bytes": 8311843328,
+                "peak_reserved_bytes": 8814329856,
+                "scene_seconds": 19.699781853996683
+              },
+              "reference": {
+                "accuracy_mm": 11.731662806855534,
+                "completeness_mm": 11.875668433233026,
+                "peak_allocated_bytes": 8311843328,
+                "peak_reserved_bytes": 8814329856,
+                "scene_seconds": 26.73992891400121
+              }
+            }
+          },
+          "reference": "Refresh1Uncached",
+          "unit": "paired"
+        }
+      },
+      "equal_step": {
+        "grades": {
+          "accuracy_mm": "pass",
+          "completeness_mm": "pass",
+          "scene_seconds": "pass"
+        },
+        "passed": true,
+        "verdict": "pass"
+      },
+      "full_length_quality": {
+        "grades": {},
+        "passed": false,
+        "verdict": "insufficient_coverage"
+      },
+      "peak_ratio_lower_bound_from_cap": 0.8846865517752511,
+      "stretch_bounds": null,
+      "stretch_point": {
+        "grades": {},
+        "passed": false,
+        "verdict": "insufficient_coverage"
+      }
+    }
+  },
+  "coverage": {
+    "expected": 45,
+    "failed": [
+      {
+        "arm": "Full40",
+        "room": "chess/seq-03",
+        "seed": 42,
+        "status": "timeout"
+      },
+      {
+        "arm": "Full40",
+        "room": "fire/seq-03",
+        "seed": 43,
+        "status": "timeout"
+      },
+      {
+        "arm": "Full40",
+        "room": "fire/seq-03",
+        "seed": 44,
+        "status": "timeout"
+      }
+    ],
+    "missing": [],
+    "scored": 42
+  },
+  "eligible_fastest": "Refresh1",
+  "point_only": true
+}
