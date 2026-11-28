@@ -6,13 +6,19 @@ Research proposal, 28 November 2026. Start on the local 10 GiB RTX 3080 with pub
 
 The fast model performs ten real Adam updates on LoRA in the final 12 VGGT stages and reuses features from the frozen early stages. The full TCO reference adapts LoRA across all 24 stages. All adapted runs in this comparison receive five RGB frames and camera pose and intrinsics priors. Zero-step VGGT predicts from the images. Reference depth and surfaces enter the evaluator only. The original TCO paper also gives a baseline which backprojects frozen VGGT depth using supplied cameras. Include that inexpensive prior-aware baseline in the next comparison. [TCO paper](https://openaccess.thecvf.com/content/CVPR2026/papers/Zhou_Learning_3D_Reconstruction_with_Priors_in_Test_Time_CVPR_2026_paper.pdf)
 
-| Cohort | Cached 10 accuracy error vs VGGT | Completeness error vs VGGT | Scenes improving both | Speed vs full TCO 40 | Peak live memory saving vs full TCO 40 |
-|---|---:|---:|---:|---:|---:|
-| 7-Scenes development, 3 rooms | −5.62% | −12.28% | 3/3 | 4.04× | 23.60% |
-| 7-Scenes transfer, 4 rooms | −16.19% | −9.28% | 3/4 | 4.02× | 23.60% |
-| ETH3D transfer, 8 scenes | −15.02% | −28.83% | 6/8 | 4.17× | 23.64% |
+| Five-view evaluation | Method | Accuracy error vs VGGT | Completeness error vs VGGT | Scenes improving both | Speed vs TCO 40 | Peak live memory saving vs TCO 40 |
+|---|---|---:|---:|---:|---:|---:|
+| 7-Scenes development | Cached 10 (ours) | −5.6% | −12.3% | 3/3 | 4.04× | 23.6% |
+| 7-Scenes development | Standard TCO 10 | −7.0% | −12.4% | 3/3 | 2.86× | 0.0% |
+| 7-Scenes development | Standard TCO 40 | −2.6% | −5.2% | 2/3 | 1.00× | 0.0% |
+| 7-Scenes transfer | Cached 10 (ours) | −16.2% | −9.3% | 3/4 | 4.02× | 23.6% |
+| 7-Scenes transfer | Standard TCO 10 | −21.1% | −13.2% | 3/4 | 2.86× | 0.0% |
+| 7-Scenes transfer | Standard TCO 40 | −37.7% | −25.4% | 3/4 | 1.00× | 0.0% |
+| ETH3D transfer | Cached 10 (ours) | −15.0% | −28.8% | 6/8 | 4.17× | 23.6% |
+| ETH3D transfer | Standard TCO 10 | −31.4% | −36.9% | 6/8 | 2.84× | 0.0% |
+| ETH3D transfer | Standard TCO 40 | −48.5% | −50.3% | 8/8 | 1.00× | 0.0% |
 
-For the retrospective VGGT comparison, pair the archived rows by dataset, scene, input and reference hashes and seed. Use the median error across the three seeds for each arm within each scene. Compute cached error divided by zero-step error for each scene, then average those ratios with equal scene weight. Negative changes are improvements. On 7-Scenes transfer, the mean scene times across these medians were 3.56 seconds for VGGT, 18.35 for cached 10, 25.85 for full 10, and 73.83 for full 40. ETH3D times were 2.89, 16.12, 23.65 and 67.19 seconds. The time includes placement, adaptation and final reconstruction, with the model and inputs initially on CPU. [Development rows](../results/tco_one_percent_v1/evidence.json) · [Transfer rows](../results/tco_one_percent_v1/confirmation_evidence.json) · [Timing protocol and original decisions](../results/tco_one_percent_v1/README.md)
+For the retrospective VGGT comparison, pair the archived rows by dataset, scene, input and reference hashes and seed. Use the median error across the three seeds for each arm within each scene. Compute each method's error divided by zero-step error for each scene, then average those ratios with equal scene weight. Negative changes are improvements. On 7-Scenes transfer, the mean scene times across these medians were 3.56 seconds for VGGT, 18.35 for cached 10, 25.85 for full 10, and 73.83 for full 40. ETH3D times were 2.89, 16.12, 23.65 and 67.19 seconds. The time includes placement, adaptation and final reconstruction, with the model and inputs initially on CPU. [Development rows](../results/tco_one_percent_v1/evidence.json) · [Transfer rows](../results/tco_one_percent_v1/confirmation_evidence.json) · [Timing protocol and original decisions](../results/tco_one_percent_v1/README.md)
 
 Three baselines matter. At equal ten updates, caching saved 29.0% of scene time on 7-Scenes and 31.8% on ETH3D, while accuracy/completeness errors increased 11.18%/6.90% and 54.93%/88.35%, respectively. At approximately equal elapsed time, ordinary TCO at five updates on 7-Scenes or four on ETH3D also had better average geometry, while using more memory. Against full TCO at 40, the speed and memory wins persisted, but both errors increased substantially. The last-block LayerNorm experiment provided no speed advantage at equal updates. Its lower rate showed small point improvements on ARKitScenes with no established accuracy superiority. [LayerNorm study](../results/tco_final_global_layernorm_v1/README.md)
 
