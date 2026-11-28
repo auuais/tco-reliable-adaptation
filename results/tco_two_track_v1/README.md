@@ -12,6 +12,19 @@ Refresh1 lets all transformer stages adapt on the first update, then freezes the
 
 At full resolution the cached and uncached engineering twins matched on all 1,177 signed-gradient, effective-weight and output comparisons. A deliberately stale cache kept its old values. Invalidating it changed 5,327,156 entries and recovered the independently recomputed values exactly. The first deterministic diagnostic exceeded the 8.75 GiB cap. The successful diagnostic kept saved autograd tensors on CPU. The two production controls used the ordinary GPU path. These tests establish implementation fidelity. Speed and geometry require the clean runs and surface evaluation. [Engineering evidence](a_engineering.json)
 
+### First matched ten-update window
+
+All four Heads seed-42 outputs received independent CPU rescores. This is one prespecified development window. The selection decision uses the full development roster.
+
+| Ten-update method | Accuracy error (mm) ↓ | Completeness error (mm) ↓ | Scene time (s) | Peak live (GiB) | Allocator retries |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Full10 | 13.021 | 13.917 | 130.62 | 7.822 | 7 |
+| Cache10 | 11.718 | 11.755 | 19.54 | 5.976 | 0 |
+| Refresh1 | 11.990 | 11.939 | 21.20 | 7.741 | 0 |
+| Refresh1 uncached | 11.732 | 11.736 | 28.56 | 7.741 | 0 |
+
+Refresh1 reduced both errors relative to Full10 on this window. Cache10 produced the lowest errors and shortest time. Holding the update schedule fixed, caching reduced time by 25.8%, while the production runs differed in accuracy error by 2.2%. Full10's seven allocator retries warrant a separate matched timing check. The same seed and window in the historical Full10 study took 27.61 s. [Paired scores](a_pilot_rows.json) · [Allocator measurements](a_allocator_pilot.json) · [Native timing bridge](../../docs/TCO_TWO_TRACK_NATIVE_TIMING_BRIDGE.md)
+
 ## Local reproduction
 
 Run commands from the repository root in PowerShell. The registered Windows launcher uses the pinned offline Docker image on the physical 3080. Supply the separate five-view model and reference packets at the locations in the handoff. The model container sees only RGB and the permitted camera priors. The CPU scorer checks the model-output hash and uses the fixed ground-truth support.
