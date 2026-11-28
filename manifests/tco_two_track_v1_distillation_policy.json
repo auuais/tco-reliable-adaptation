@@ -1,0 +1,14 @@
+{
+  "study": "tco_two_track_v1",
+  "teacher": "Full40 seed 42, native five-view TCO, one clean prediction per ARKitScenes Training visit",
+  "cohort": "Six disjoint eligible training visits from the committed split/exposure intake, one window per visit. Ascending numeric visit order repeated unchanged over four passes.",
+  "normalization": "Six calibration forwards use the same untouched seed-42 cached suffix at the native training prediction precision. Use the arithmetic window-mean of each raw term with floor 1e-8. Record calibration time separately.",
+  "depth_term": "For positive finite teacher axial depth pixels, smooth L1 (beta 1) between log(s_student * z_student) and log(s_teacher * z_teacher). Require positive finite student depth everywhere on teacher support and at least one pixel per view. No reference depth or confidence threshold.",
+  "scale": "s = median over unordered nondegenerate pairs of (supplied camera distance / predicted camera distance). Exclude distances <=1e-6, require two valid pairs. Average the two middle values when even. Keep the student scale differentiable; teacher targets detached.",
+  "camera_term": "For each non-anchor camera, compare R_i R_0^T and s * R_0(C_i-C_0) / median(supplied valid pair distances), with C=-R^T t. Mean squared Frobenius relative rotation discrepancy divided by eight, and mean squared relative centre-vector norm. Equal weighting of the two errors.",
+  "candidate": "Distilled uses 0.5 * raw_depth / depth_normalizer + 0.5 * raw_camera / camera_normalizer. No other loss or dense reference supervision.",
+  "control": "OfflineOriginal uses unmodified native TCO ordinary loss, same suffix inventory, shared initialization, sorted windows, outer Adam optimizer hyperparameters, clipping and 24 updates. No teacher prediction is mounted for this control.",
+  "optimizer": {"name":"Adam","lr":0.0001,"betas":[0.9,0.999],"eps":1e-8,"weight_decay":0,"clip_global_l2":1.0,"passes":4,"windows":6,"updates":24,"initialization_seed":42,"sample_seed":"42 plus zero-based update index"},
+  "checkpoint": "All and only 192 native suffix factors, stages 12 through 23 in both streams, exact fully qualified names and FP32 tensors in a content-addressed safetensors file. Carry named Adam moments and step across all 24 windows during training. Deployment loads only factors after name seeding and starts a new scene optimizer.",
+  "accounting": "Record immutable input and teacher receipts and times, six calibration timings, 24 training timings, peak allocation and all checkpoint hashes. Compare with ordinary cache10 initialization and matched OfflineOriginal. Report Full40 teacher and calibration costs separately from deployment. RunPod USD 0."
+}
