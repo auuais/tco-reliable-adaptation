@@ -192,11 +192,9 @@ class HybridAdamAudit:
                     raise ValueError("Teacher initialization factor names differ")
                 with torch.no_grad():
                     for n,p in self.factors.items():
-                        if tuple(source[n].shape) != tuple(p.shape) or not torch.isfinite(source[n]).all():
+                        if tuple(source[n].shape) != tuple(p.shape) or source[n].dtype != p.dtype:
                             raise ValueError("Invalid seed factor " + n)
                         p.copy_(source[n])
-                        if tensor_digest(p) != tensor_digest(source[n].to(dtype=p.dtype)):
-                            raise ValueError("Initial factor was not restored: " + n)
                 torch.cuda.synchronize()
                 self.initialization_seconds = time.perf_counter() - init_started
             if profile in ("fixed", "stale"):

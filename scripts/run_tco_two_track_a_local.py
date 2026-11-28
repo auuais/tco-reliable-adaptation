@@ -63,6 +63,10 @@ def launch(job, ledger):
     init_args = []
     if job.get("initialization_sha256"):
         artifact = PREP/"initializations"/(job["initialization_sha256"]+".safetensors")
+        proof = read(RAW/"restore_audits"/job["initialization_sha256"]/"proof.json")
+        if (not proof["passed"] or proof["arm"] != job["arm"] or proof["factors"] != 192
+                or proof["restore_policy_sha256"] != sha(POLICY) or proof["initialization_sha256"] != job["initialization_sha256"]):
+            raise ValueError("Initialization has not passed its independent GPU restoration audit")
         if sha(artifact) != job["initialization_sha256"]:
             raise ValueError("Wrong training artifact")
         cmd += mount(artifact,"/inputs/init.safetensors")
