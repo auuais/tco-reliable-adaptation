@@ -1,0 +1,133 @@
+{
+  "arithmetic": "Both complete expected updates. First losses must match within 1e-5 absolute plus 1e-5 relative. Exact final global CUDA state on lean must match replay of N native randperm(5) calls, and inferred orders equal current directly observed schedule. Report terminal loss and native prediction field differences descriptively.",
+  "common": "Production config and renderer, same GPU, absolute 8960 MiB cap, warm-up, CPU threads, live stdout, seed, input, loss, ten/forty real updates, FP32 delivered surface and timer boundary",
+  "core_sha256": "25be18934af258c82afc02752fcddde803dbf4447c69aea9b04661c38d2041c9",
+  "fire_gate": "Only when both registered Fire44 Full40 primary attempts ended in watchdog timeout, Heads completions pass arithmetic and schedule checks, and current Heads takes at least 2x lean AND >=30 s longer AND has more allocator retries. Then one lean Fire44 40-step case. No rerun of primary failures, no substitutions, no GPU retry for this diagnostic.",
+  "historical_sha256": "431aa4608be35c0679478fb9cb8976c5ba0c842dc2d12c66e79d5c88cd6ca882",
+  "jobs": [
+    {
+      "arm": "Full10",
+      "dataset": "7scenes",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "harness": "legacy_lifetimes",
+      "id": "nativebridge_heads_legacy_lifetimes",
+      "input_file_sha256": "8b888d738fe61ccd69e1accbf4bb3e4348f85016a6fb4e4973d478e4fd89b190",
+      "input_sha256": "5d5eebc36f9f41007f8ff929f515788a2de5310d2d5c5f6dc0fbdd9f245c5f59",
+      "original_case_id": "development_heads_seq-01_42_Full10",
+      "profile": "clean",
+      "raster": [
+        392,
+        518
+      ],
+      "raster_shape": [
+        5,
+        3,
+        392,
+        518
+      ],
+      "reference_file_sha256": "8f291956c726b40471efe9fad752bbc2534f657eb75ed06bf85a61fe735b6c2b",
+      "reference_sha256": "1a7fe85c5377c154666faf712689ab6c70dbe1e9323bb5b6f0db3aacefc794e9",
+      "room": "heads/seq-01",
+      "seed": 42,
+      "slug": "heads__seq-01",
+      "steps": 10
+    },
+    {
+      "arm": "Full10",
+      "dataset": "7scenes",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "harness": "current",
+      "id": "nativebridge_heads_current",
+      "input_file_sha256": "8b888d738fe61ccd69e1accbf4bb3e4348f85016a6fb4e4973d478e4fd89b190",
+      "input_sha256": "5d5eebc36f9f41007f8ff929f515788a2de5310d2d5c5f6dc0fbdd9f245c5f59",
+      "original_case_id": "development_heads_seq-01_42_Full10",
+      "profile": "clean",
+      "raster": [
+        392,
+        518
+      ],
+      "raster_shape": [
+        5,
+        3,
+        392,
+        518
+      ],
+      "reference_file_sha256": "8f291956c726b40471efe9fad752bbc2534f657eb75ed06bf85a61fe735b6c2b",
+      "reference_sha256": "1a7fe85c5377c154666faf712689ab6c70dbe1e9323bb5b6f0db3aacefc794e9",
+      "room": "heads/seq-01",
+      "seed": 42,
+      "slug": "heads__seq-01",
+      "steps": 10
+    },
+    {
+      "arm": "Full40",
+      "dataset": "7scenes",
+      "frames": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "harness": "legacy_lifetimes",
+      "id": "nativebridge_fire_legacy_lifetimes",
+      "input_file_sha256": "0d2422e8cc677f0d5e1ab12d73a4a4a261d29a36341f92afd4fea7567efddd8d",
+      "input_sha256": "60846479353bbf98f84bce5974e21f2f2cfdfb1ad05cb8478ed1f4141c3da88f",
+      "original_case_id": "development_fire_seq-03_44_Full40",
+      "profile": "clean",
+      "raster": [
+        392,
+        518
+      ],
+      "raster_shape": [
+        5,
+        3,
+        392,
+        518
+      ],
+      "reference_file_sha256": "d97c78ef012b92bb7aa415b0e6398b6e45512524b2b234ca3454b76b85f276b4",
+      "reference_sha256": "c9b28f19dd0fa1c725c7d7c4b8cc9e76dbe330912c8359808d74e6d04f3858ec",
+      "room": "fire/seq-03",
+      "seed": 44,
+      "slug": "fire__seq-03",
+      "steps": 40
+    }
+  ],
+  "lean": "Use archived install_variant(model,'four',...,audit=None) and observe_losses(...,None,False), historical non-owning update counter, first/last CUDA scalar only. No retained permutation or Adam owner beyond model return.",
+  "order": "Heads lean first, unchanged current second, fresh processes under one host lock",
+  "registration_sha256": "0a817839ae592a2f64af439b4e14b5322322e57ec4e0309cbcf7f0232b828438",
+  "role": "Ancillary harness investigation outside all model-selection and primary rows",
+  "safety": "Deadline 1200 s each; no scorer while the pair runs, no dense reference mount, no rental. Infrastructure failure or reverse/inconclusive contrast stays recorded. No timing-gate changes.",
+  "source_sha256_lf": {
+    "configs/7scenes_baseline.yaml": "da2393f4f571e3a5e361fe2cc84bb1a948371192801edd4891ee6c265dc68c39",
+    "scripts/run_experiment.py": "016f49cabd339c817cbfa09dc32d0efa9345476ae8f8c6ec3d995bcb2dcbfbfe",
+    "scripts/run_tco_final_ln_model.py": "78b19797b8bb39b51e3293712441bf24f4f725b45cb56025e13bf151d584442e",
+    "scripts/run_tco_native_lifetime_bridge.py": "0216ee5d571e9d8d375b76203e90600fdaed8de3bf950f0da47479dae6735e0e",
+    "scripts/run_tco_one_percent.py": "f543fc90fc20ae9663689a13b20337025ae14557699a4a75dff4828a3dadb94f",
+    "scripts/run_tco_two_track_a.py": "960be010260dba2f90b1a62d0d023e62fec0c38ef3afdc142d577c6cb067162e",
+    "scripts/run_tco_two_track_a_local.py": "5e14a70932f41bb811ad586b4a7aa80dfe5c175e8072133d2deed3008159dd7e",
+    "scripts/tco_frozen_prefix.py": "091a564824b350cbbea748103ab008fff49243f05c702f59ca73718f0bce522d",
+    "scripts/tco_native_harness_bridge.py": "6052bd927b3824404441bcb5f8a0c22b23d69f1b07954f8b69044f9a21635530",
+    "scripts/tco_two_track_hybrid.py": "5878debe2f0c112ba62c343e0dab5db7be512322ed6df8a012d6dc02ee491a5a",
+    "third_party/TCO/objective.py": "dc52712559a17637f5e34529972a657fd7e5b702a7001351252eeb9d45a8de4b",
+    "third_party/TCO/peft/lora.py": "efa3a15890fcec03d144556de7cd319c2377b8c341159872c3d3900fa9301c36",
+    "third_party/TCO/tco_loss.py": "5899bb2873b4aca1002f2f7a8d058d2dee0163810f9cc60e756bb5ec3317e5f3",
+    "third_party/TCO/tco_vggt_lora.py": "bbb4c31d8001aa5cbe5d83429ea40cbd4a396c73523de47573901660e726c5c7",
+    "third_party/TCO/utils/geometry.py": "0987a1032224e6aa7a6e8b682e62ce1ceecb7fa0259c7c2dca4706555bbc4541",
+    "third_party/TCO/utils/interfaces.py": "a525a3cb77070e57e037a2e4c17dd3c0b131ab886eec3a743cac853e846eb13f"
+  },
+  "study": "tco_two_track_v1",
+  "version": 1
+}
