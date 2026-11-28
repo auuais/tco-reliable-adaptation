@@ -90,6 +90,9 @@ def run(job, packet, out, initialization):
     saved = torch.autograd.graph.save_on_cpu(pin_memory=False) if offload else nullcontext()
     with saved, patch.object(base.tco_module, "compute_tco_losses", measured_loss):
         base.infer_mv_pointclouds_w_priors_v2(supplied, model, cfg, sample_idx=1, scene_name=job["room"].replace("/","-"))
+    if arm == "ZERO":
+        torch.cuda.synchronize()
+        native_readout_start = time.perf_counter()
     with torch.no_grad(), torch.autocast("cuda", enabled=False):
         depth, extr, intr = (captured[k].float() for k in ("depth","extrinsics","intrinsics"))
         canonical = unproject_depth_to_world_points_torch(depth, extr, intr)[0].cpu().numpy()
@@ -100,6 +103,7 @@ def run(job, packet, out, initialization):
     end_free, _ = torch.cuda.mem_get_info()
     arrays = dict(canonical=canonical, **{k:export(v) for k,v in captured.items()})
     prior_time, prior_scale = None, None
+    supplied_peak_allocated, supplied_peak_reserved = None, None
     if arm == "ZERO":
         begin = time.perf_counter()
         with torch.no_grad(), torch.autocast("cuda", enabled=False):
@@ -115,6 +119,8 @@ def run(job, packet, out, initialization):
             arrays["supplied_canonical"] = unproject_depth_to_world_points_torch(depth*scale,rig[None],K[None])[0].cpu().numpy()
         torch.cuda.synchronize()
         prior_time = time.perf_counter() - begin
+        supplied_peak_allocated = torch.cuda.max_memory_allocated()
+        supplied_peak_reserved = torch.cuda.max_memory_reserved()
     counters = audit.finish()
     orders = [v.cpu().tolist() for v in schedule]
     history = [float(v) for v in losses]
@@ -127,6 +133,8 @@ def run(job, packet, out, initialization):
     cache = None if path is None else dict(builds=path.builds,hits=path.hits,prefix_stages=path.prefix_stages,
                bytes=path.cached_bytes,generation=getattr(path,"generation",0),
                calls_by_generation=dict(getattr(path,"calls_by_generation",{})))
+    if hasattr(path,"stable_bytes"):
+        cache.update(stable_bytes=path.stable_bytes(), stable_builds=path.stable_builds, stable_hits=path.stable_hits)
     stale = None
     if profile == "stale":
         adapter = next(p for n,p in audit.factors.items() if n.startswith("aggregator.global_blocks.11.") and n.endswith(".lora_B"))
@@ -140,9 +148,11 @@ def run(job, packet, out, initialization):
     result.update(profile=profile, input_sha256=input_id, output_sha256=signature(arrays),
           predictions_sha256=sha(out / "prediction.npz"), fixed_signed_gradients_sha256=signed,
           lora_initial_sha256=audit.initial, adam_state_counts=counters, active_counts=audit.steps,
-          completed_adam_updates=audit.updates, cache=cache, stale=stale, losses=history, view_permutations=orders,
+          initialization_seconds=audit.initialization_seconds, completed_adam_updates=audit.updates, cache=cache, stale=stale, losses=history, view_permutations=orders,
           raster_shape=list(supplied["images"].shape), scene_seconds=end-start, cold_seconds=end-cold,
           checkpoint_seconds=loaded-cold, placement_seconds=placement, supplied_readout_seconds=prior_time,
+          native_readout_seconds=end-native_readout_start if arm=="ZERO" else None,
+          supplied_peak_allocated=supplied_peak_allocated,supplied_peak_reserved=supplied_peak_reserved,
           supplied_scale=prior_scale, peak_allocated=allocated, peak_reserved=reserved, cap_bytes=CAP,
           cap_mib=8960, cuda_free_before=free_before,cuda_free_after=end_free,cuda_device_total=total,
           allocation_retries=stats.get("num_alloc_retries"),oom_count=stats.get("num_ooms"),

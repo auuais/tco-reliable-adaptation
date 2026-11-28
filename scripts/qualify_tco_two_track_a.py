@@ -15,7 +15,8 @@ def verify(directory):
         raise ValueError("Case digest mismatch")
     if meta.get("fixed_signed_gradients_sha256") and sha(directory/"model/fixed_signed_gradients.npz") != meta["fixed_signed_gradients_sha256"]:
         raise ValueError("Gradient digest mismatch")
-    if meta["completed_adam_updates"]!=2 or meta["active_counts"]!=[384,192] or meta["adam_state_counts"]!={"prefix_1":192,"suffix_2":192}:
+    prefix = 16 if meta["arm"].startswith("Narrow") else 192
+    if meta["completed_adam_updates"]!=2 or meta["active_counts"]!=[prefix+192,192] or meta["adam_state_counts"]!={"prefix_1":prefix,"suffix_2":192}:
         raise ValueError("Unexpected Adam counts")
     return meta
 
@@ -30,7 +31,7 @@ def signed_twins(refdir,altdir,ref,alt):
         names = ref["lora_initial_sha256"]
         expected = {"final/"+n for n in names} | {"grad/1/"+n for n in names}
         expected.update("grad/2/"+n for n in names if int(n.split(".")[2])>=12)
-        if set(baseline.files)!=expected or set(twin.files)!=expected or len(expected)!=960:
+        if set(baseline.files)!=expected or set(twin.files)!=expected or len(expected)!=2*len(names)+192:
             raise ValueError("Missing signed tensor")
         sign_negative_control = False
         for name in sorted(expected):
@@ -70,12 +71,15 @@ def signed_twins(refdir,altdir,ref,alt):
     # Its rebuilt BF16 and FP16 entries still must have matching physical tensors.
     cache_ok = (a["generation"]==b["generation"]==1 and a["builds"]>0 and b["builds"]==b["hits"]==0
                 and b["prefix_stages"]>=a["prefix_stages"])
+    if ref["arm"].startswith("Narrow"):
+        cache_ok = (cache_ok and a["stable_builds"]>0 and a["stable_hits"]>0
+                    and b["stable_builds"]==b["stable_hits"]==0)
     return dict(passed=not misses and cache_ok,checked=len(metrics),bitwise=sum(v["exact"] for v in metrics.values()),
                 failures=misses,nonzero_effective_modules=len(nonzero),sign_negative_control=sign_negative_control,
                 cached=a,uncached=b,cache_check=cache_ok)
 
 
-def run(ledger, raw):
+def run(ledger, raw, fixed_only=False):
     rows = read(ledger)["jobs"]
     items = {}
     for row in rows:
@@ -88,9 +92,14 @@ def run(ledger, raw):
     def select(profile):
         return [items[j["id"]] for j in rows if j["profile"]==profile]
     (d1,r1),(d2,r2) = select("fixed")
+    fixed = signed_twins(d1,d2,r1,r2)
+    if fixed_only:
+        if {r1["arm"],r2["arm"]} != {"Narrow","NarrowUncached"}:
+            raise ValueError("Expected narrow boundary qualification")
+        return dict(passed=fixed["passed"],ledger_sha256=sha(ledger),fixed=fixed,rental_compute_usd=0,
+                    source_cases=[dict(id=k,complete_sha256=sha(p/"model/complete.json")) for k,(p,r) in items.items()])
     (stale_dir, stale), = select("stale")
     (d3,p1),(d4,p2) = select("real")
-    fixed = signed_twins(d1,d2,r1,r2)
     control = stale["stale"]
     real = {}
     with np.load(d3/"model/prediction.npz") as a, np.load(d4/"model/prediction.npz") as b:
@@ -112,9 +121,10 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--jobs",type=Path,default=ROOT/"manifests/tco_two_track_v1_engineering.json")
     ap.add_argument("--raw",type=Path,default=ROOT/"reports/tco_two_track_v1")
+    ap.add_argument("--fixed-only",action="store_true")
     args = ap.parse_args()
-    result = run(args.jobs,args.raw)
-    target = args.raw/"qualification_pass.json"
+    result = run(args.jobs,args.raw,args.fixed_only)
+    target = args.raw/("narrow_qualification_pass.json" if args.fixed_only else "qualification_pass.json")
     seal(target,result)
     print(result["passed"],result["fixed"]["checked"],result["fixed"]["bitwise"],flush=True)
     if not result["passed"]:

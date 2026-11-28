@@ -1,0 +1,108 @@
+{
+  "distinct_attempts": 6,
+  "earlier_full_width_deterministic_attempt": {
+    "error": "CUDA out of memory. Tried to allocate 324.00 MiB. GPU 0 has a total capacity of 10.00 GiB of which 0 bytes is free. 8.75 GiB allowed; Of the allocated memory 8.50 GiB is allocated by PyTorch, and 85.30 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)",
+    "id": "engineering_heads_fixed_1_Refresh1",
+    "log_sha256": "61b2dcd69cdd326e1823f4809a83f98d7d01146cff5ae92cce00b4f36f258b34",
+    "replacement_ledger": "manifests/tco_two_track_v1_engineering_v2.json",
+    "stage": "native DPT deterministic bilinear interpolation, before optimizer update",
+    "status": "oom"
+  },
+  "fixed": {
+    "bitwise": 1177,
+    "cache_check": true,
+    "cached": {
+      "builds": 1,
+      "bytes": 106681680,
+      "calls_by_generation": {
+        "0": 2,
+        "1": 2
+      },
+      "generation": 1,
+      "hits": 1,
+      "prefix_stages": 12
+    },
+    "checked": 1177,
+    "failures": {},
+    "nonzero_effective_modules": 192,
+    "passed": true,
+    "sign_negative_control": true,
+    "uncached": {
+      "builds": 0,
+      "bytes": 0,
+      "calls_by_generation": {
+        "0": 2,
+        "1": 2
+      },
+      "generation": 1,
+      "hits": 0,
+      "prefix_stages": 24
+    }
+  },
+  "ledger_sha256": "e24bbff45dacf052fff9627bfea01969a5e2ca6fcf1777b1969920726bd2b2f3",
+  "passed": true,
+  "qualifying_completed_cases": 5,
+  "real_loss_differences": {
+    "canonical": {
+      "max_abs": 0.06738865375518799,
+      "relative_l2": 0.0010238056673676848
+    },
+    "depth": {
+      "max_abs": 0.06390976905822754,
+      "relative_l2": 0.0011871203151693642
+    },
+    "depth_conf": {
+      "max_abs": 0.6660430431365967,
+      "relative_l2": 0.003114393199367622
+    },
+    "extrinsics": {
+      "max_abs": 0.0012716948986053467,
+      "relative_l2": 0.0007137560460951625
+    },
+    "intrinsics": {
+      "max_abs": 0.275360107421875,
+      "relative_l2": 0.0003658619665854006
+    }
+  },
+  "real_losses": [
+    [
+      0.6477410793304443,
+      0.5463433265686035
+    ],
+    [
+      0.6477410793304443,
+      0.5478168725967407
+    ]
+  ],
+  "real_view_orders_equal": true,
+  "rental_compute_usd": 0,
+  "source_cases": [
+    {
+      "complete_sha256": "3ec7e80292c3cf3bdba8065f63c06a49350bfd2e7119cec7f6e2ee387afa28d0",
+      "id": "engineering_v2_heads_fixed_1_Refresh1"
+    },
+    {
+      "complete_sha256": "6955aba1f4217cec494fa54de8bb2b7049380ca2854461692e51be1f85c03a4e",
+      "id": "engineering_v2_heads_fixed_2_Refresh1Uncached"
+    },
+    {
+      "complete_sha256": "cb61d8f9e0ae1af47f4bbaac3cfc0748e9bb6f4e4e011b1b618d6adef7eb4314",
+      "id": "engineering_v2_heads_stale_3_Refresh1"
+    },
+    {
+      "complete_sha256": "43d645230fe6a6d1ffe340277465172fe073e5bec3e3689c2799517e196ed86d",
+      "id": "engineering_heads_real_4_Refresh1"
+    },
+    {
+      "complete_sha256": "f4279e069bc6a7ef14758df29ad404ac53d29a5aa42e821ca51263157f2da457",
+      "id": "engineering_heads_real_5_Refresh1"
+    }
+  ],
+  "stale": {
+    "changed_elements": 5327156,
+    "compared_elements": 10659840,
+    "max_change": 0.21281886100769043,
+    "rebuilt_matches_fresh": true,
+    "stale_unchanged": true
+  }
+}

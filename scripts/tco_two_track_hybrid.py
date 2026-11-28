@@ -2,6 +2,7 @@
 from collections import Counter
 import hashlib
 import re
+import time
 
 
 import torch
@@ -60,6 +61,11 @@ class RefreshPath(SceneAggregator):
 
     def configure(self, next_step):
         self.start = self.early_start if next_step in self.refresh_steps else SUFFIX
+        if self.start < SUFFIX:
+            # The broader backward has to execute stages before the old suffix.
+            # Its next update will advance the weight generation separately.
+            self.cache.clear()
+            self.cached_bytes = 0
         self.reuse = self.start == SUFFIX and not self.arm.endswith("Uncached")
 
     def __call__(self, patch_tokens, B, S, H, W, register_token_override=None, use_checkpoint=False):
@@ -111,11 +117,47 @@ class RefreshPath(SceneAggregator):
         return evidence
 
 
+class NarrowPath(RefreshPath):
+    """Cache immutable pairs 0..10 separately from the mutable pair-11 prefix."""
+    def __init__(self, model, arm):
+        super().__init__(model, arm)
+        self.stable = {}
+        self.stable_builds = self.stable_hits = 0
+        self.stable_key = None
+
+    def __call__(self, patch_tokens, B, S, H, W, register_token_override=None, use_checkpoint=False):
+        signature = (patch_tokens._version, B, S, H, W, self.model.training)
+        if self.source_tokens is not patch_tokens or self.identity != signature:
+            self.stable.clear()
+        device = patch_tokens.device.type
+        self.stable_key = (torch.is_autocast_enabled(device), torch.get_autocast_dtype(device))
+        return super().__call__(patch_tokens, B, S, H, W, register_token_override, use_checkpoint)
+
+    def stage(self, index, tokens, pos, outputs, batch, views, checkpoint):
+        cache_first_boundary = index < 11 and not self.arm.endswith("Uncached")
+        stored = self.stable.get(self.stable_key) if cache_first_boundary else None
+        if stored is not None:
+            if index == 4:
+                outputs[4] = stored[1]
+            if index == 10:
+                self.stable_hits += 1
+                return stored[0]
+            return tokens
+        result = super().stage(index, tokens, pos, outputs, batch, views, checkpoint)
+        if index == 10 and cache_first_boundary:
+            self.stable[self.stable_key] = (result.detach(),outputs[4].detach())
+            self.stable_builds += 1
+        return result
+
+    def stable_bytes(self):
+        return sum(t.numel()*t.element_size() for pair in self.stable.values() for t in pair)
+
+
 class HybridAdamAudit:
     def __init__(self, model, arm, seed, profile, initialization=None):
         self.model, self.arm, self.profile = model, arm, profile
         self.initialization = initialization
-        self.initialization_sha = None
+        self.initialization_seconds = None
         self.updates = 0
         self.signed = {}
         self.initial = {}
@@ -128,7 +170,7 @@ class HybridAdamAudit:
         native = ("zero" if arm == "ZERO" else "cached12" if arm == "Cache10" or arm in INITIALIZED else "four")
         self.path = install_baseline(model, native, seed)
         if arm in HYBRIDS:
-            self.path = RefreshPath(model, arm)
+            self.path = NarrowPath(model, arm) if arm.startswith("Narrow") else RefreshPath(model, arm)
             model.aggregate_with_patch_tokens = self.path
         original = model.backbone_peft_setup
 
@@ -143,6 +185,8 @@ class HybridAdamAudit:
                 raise ValueError("Incorrect LoRA tensor count: " + str(len(self.factors)))
             if initialization is not None:
                 from safetensors.torch import load_file
+                torch.cuda.synchronize()
+                init_started = time.perf_counter()
                 source = load_file(str(initialization))
                 if set(source) != set(self.factors):
                     raise ValueError("Teacher initialization factor names differ")
@@ -153,6 +197,8 @@ class HybridAdamAudit:
                         p.copy_(source[n])
                         if tensor_digest(p) != tensor_digest(source[n].to(dtype=p.dtype)):
                             raise ValueError("Initial factor was not restored: " + n)
+                torch.cuda.synchronize()
+                self.initialization_seconds = time.perf_counter() - init_started
             if profile in ("fixed", "stale"):
                 self.initial = {n:tensor_digest(p) for n,p in self.factors.items()}
                 for n,p in self.factors.items():
