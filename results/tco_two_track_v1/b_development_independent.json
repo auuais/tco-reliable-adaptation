@@ -1,0 +1,291 @@
+{
+  "anchor": {
+    "candidate": "fusion",
+    "complete_rooms": [
+      "heads/seq-01",
+      "chess/seq-03",
+      "fire/seq-03"
+    ],
+    "coverage_complete": true,
+    "expected_slots": 6,
+    "metrics": {
+      "accuracy_mm": {
+        "equal_room_candidate": 15.605478747810874,
+        "equal_room_reference": 15.475365630596817,
+        "leave_one_room_out": {
+          "chess/seq-03": 1.005254132204589,
+          "fire/seq-03": 1.0099709740935756,
+          "heads/seq-01": 1.0094190010612607
+        },
+        "lower_95": 1.0050701411938172,
+        "percent_change": 0.8214702453141598,
+        "ratio": 1.0082147024531416,
+        "room_ratios": {
+          "chess/seq-03": 1.0141358429502472,
+          "fire/seq-03": 1.004702159172274,
+          "heads/seq-01": 1.0058061052369038
+        },
+        "upper_95": 1.011359263712466,
+        "worst_room": "chess/seq-03"
+      },
+      "completeness_mm": {
+        "equal_room_candidate": 17.910179770022438,
+        "equal_room_reference": 18.593896036728662,
+        "leave_one_room_out": {
+          "chess/seq-03": 0.9516122022013109,
+          "fire/seq-03": 0.9626558383928063,
+          "heads/seq-01": 0.9701375650190524
+        },
+        "lower_95": 0.9491182933258956,
+        "percent_change": -3.8531464795610093,
+        "ratio": 0.9614685352043899,
+        "room_ratios": {
+          "chess/seq-03": 0.9811812012105476,
+          "fire/seq-03": 0.9590939288275571,
+          "heads/seq-01": 0.9441304755750649
+        },
+        "upper_95": 0.9738187770828842,
+        "worst_room": "chess/seq-03"
+      }
+    },
+    "missing_or_failed": [],
+    "per_room": {
+      "chess/seq-03": {
+        "candidate": {
+          "accuracy_mm": 16.775595906945266,
+          "completeness_mm": 20.744672951290998
+        },
+        "reference": {
+          "accuracy_mm": 16.541764127124207,
+          "completeness_mm": 21.14255035226616
+        }
+      },
+      "fire/seq-03": {
+        "candidate": {
+          "accuracy_mm": 15.475361750118083,
+          "completeness_mm": 18.0750530247612
+        },
+        "reference": {
+          "accuracy_mm": 15.402934699441166,
+          "completeness_mm": 18.845967513168414
+        }
+      },
+      "heads/seq-01": {
+        "candidate": {
+          "accuracy_mm": 14.565478586369272,
+          "completeness_mm": 14.910813334015112
+        },
+        "reference": {
+          "accuracy_mm": 14.481398065225079,
+          "completeness_mm": 15.793170244751408
+        }
+      }
+    },
+    "reference": "native",
+    "unit": "triplet"
+  },
+  "coverage": {
+    "expected": 24,
+    "failed": [],
+    "missing": [],
+    "scored": 24
+  },
+  "eligible": false,
+  "independent_rescore_tolerance_mm": 0.0001,
+  "interpretation": "Descriptive three-room gate. Synthetic invariance, fixed output support and prediction provenance must pass qualification.",
+  "native": {
+    "candidate": "fusion",
+    "complete_rooms": [
+      "heads/seq-01",
+      "chess/seq-03",
+      "fire/seq-03"
+    ],
+    "coverage_complete": true,
+    "expected_slots": 12,
+    "metrics": {
+      "accuracy_mm": {
+        "equal_room_candidate": 15.605478747810874,
+        "equal_room_reference": 15.249361862723546,
+        "leave_one_room_out": {
+          "chess/seq-03": 1.0281559065047299,
+          "fire/seq-03": 1.0450916352870498,
+          "heads/seq-01": 1.0031621116592513
+        },
+        "lower_95": 0.9975168687318111,
+        "percent_change": 2.546988448367693,
+        "ratio": 1.025469884483677,
+        "room_ratios": {
+          "chess/seq-03": 1.0200978404415713,
+          "fire/seq-03": 0.9862263828769311,
+          "heads/seq-01": 1.0700854301325287
+        },
+        "upper_95": 1.0534229002355429,
+        "worst_room": "heads/seq-01"
+      },
+      "completeness_mm": {
+        "equal_room_candidate": 17.910179770022438,
+        "equal_room_reference": 18.035064341191838,
+        "leave_one_room_out": {
+          "chess/seq-03": 0.9922316340018371,
+          "fire/seq-03": 1.0050338099082272,
+          "heads/seq-01": 0.9852861005579525
+        },
+        "lower_95": 0.9810187085891559,
+        "percent_change": -0.5816151843994422,
+        "ratio": 0.9941838481560056,
+        "room_ratios": {
+          "chess/seq-03": 0.9980882764643424,
+          "fire/seq-03": 0.9724839246515625,
+          "heads/seq-01": 1.0119793433521118
+        },
+        "upper_95": 1.0073489877228552,
+        "worst_room": "heads/seq-01"
+      }
+    },
+    "missing_or_failed": [],
+    "per_room": {
+      "chess/seq-03": {
+        "candidate": {
+          "accuracy_mm": 16.775595906945266,
+          "completeness_mm": 20.744672951290998
+        },
+        "reference": {
+          "accuracy_mm": 16.44508520837922,
+          "completeness_mm": 20.784406991310973
+        }
+      },
+      "fire/seq-03": {
+        "candidate": {
+          "accuracy_mm": 15.475361750118083,
+          "completeness_mm": 18.0750530247612
+        },
+        "reference": {
+          "accuracy_mm": 15.691490330014034,
+          "completeness_mm": 18.586480009155345
+        }
+      },
+      "heads/seq-01": {
+        "candidate": {
+          "accuracy_mm": 14.565478586369272,
+          "completeness_mm": 14.910813334015112
+        },
+        "reference": {
+          "accuracy_mm": 13.611510049777387,
+          "completeness_mm": 14.734306023109198
+        }
+      }
+    },
+    "reference": "native",
+    "unit": "triplet"
+  },
+  "point_gates": {
+    "complete": true,
+    "more_accurate_than_native": false,
+    "more_accurate_than_reprojected": false,
+    "native_accuracy_wins_at_least_two": false,
+    "native_completeness_allowed": true,
+    "sham_surface_verified": true
+  },
+  "reprojected": {
+    "candidate": "fusion",
+    "complete_rooms": [
+      "heads/seq-01",
+      "chess/seq-03",
+      "fire/seq-03"
+    ],
+    "coverage_complete": true,
+    "expected_slots": 12,
+    "metrics": {
+      "accuracy_mm": {
+        "equal_room_candidate": 15.605478747810874,
+        "equal_room_reference": 15.292376031756511,
+        "leave_one_room_out": {
+          "chess/seq-03": 1.022211853041119,
+          "fire/seq-03": 1.0415571729016508,
+          "heads/seq-01": 1.0027580068803308
+        },
+        "lower_95": 0.9963095669268203,
+        "percent_change": 2.217567760770023,
+        "ratio": 1.0221756776077002,
+        "room_ratios": {
+          "chess/seq-03": 1.0221033267408626,
+          "fire/seq-03": 0.9834126870197991,
+          "heads/seq-01": 1.0610110190624389
+        },
+        "upper_95": 1.04804178828858,
+        "worst_room": "heads/seq-01"
+      },
+      "completeness_mm": {
+        "equal_room_candidate": 17.910179770022438,
+        "equal_room_reference": 17.692622666860558,
+        "leave_one_room_out": {
+          "chess/seq-03": 1.0117542856894213,
+          "fire/seq-03": 1.0206233810372627,
+          "heads/seq-01": 1.0067269350089918
+        },
+        "lower_95": 1.0037705698930448,
+        "percent_change": 1.303486724522518,
+        "ratio": 1.0130348672452252,
+        "room_ratios": {
+          "chess/seq-03": 1.0155960303568332,
+          "fire/seq-03": 0.9978578396611505,
+          "heads/seq-01": 1.025650731717692
+        },
+        "upper_95": 1.0222991645974056,
+        "worst_room": "heads/seq-01"
+      }
+    },
+    "missing_or_failed": [],
+    "per_room": {
+      "chess/seq-03": {
+        "candidate": {
+          "accuracy_mm": 16.775595906945266,
+          "completeness_mm": 20.744672951290998
+        },
+        "reference": {
+          "accuracy_mm": 16.412818027348465,
+          "completeness_mm": 20.426106770033638
+        }
+      },
+      "fire/seq-03": {
+        "candidate": {
+          "accuracy_mm": 15.475361750118083,
+          "completeness_mm": 18.0750530247612
+        },
+        "reference": {
+          "accuracy_mm": 15.736386111730646,
+          "completeness_mm": 18.113855808257288
+        }
+      },
+      "heads/seq-01": {
+        "candidate": {
+          "accuracy_mm": 14.565478586369272,
+          "completeness_mm": 14.910813334015112
+        },
+        "reference": {
+          "accuracy_mm": 13.727923956190425,
+          "completeness_mm": 14.537905422290752
+        }
+      }
+    },
+    "reference": "reprojected",
+    "unit": "triplet"
+  },
+  "rooms_with_lower_accuracy": 1,
+  "sham_surface_error_differences": {
+    "chess/seq-03": {
+      "accuracy_mm": 8.633094239485217e-13,
+      "completeness_mm": 4.746425474877469e-12
+    },
+    "fire/seq-03": {
+      "accuracy_mm": 5.135447622706124e-12,
+      "completeness_mm": 1.5624834759364603e-11
+    },
+    "heads/seq-01": {
+      "accuracy_mm": 1.2168044349891716e-12,
+      "completeness_mm": 5.488942633746774e-13
+    }
+  },
+  "study": "tco_two_track_v1",
+  "unit": "one_triplet_per_room"
+}

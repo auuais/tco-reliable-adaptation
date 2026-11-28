@@ -1,0 +1,577 @@
+{
+  "jobs": {
+    "independent": [
+      {
+        "start": {
+          "action": "independent",
+          "image": "sha256:541dd1e09a32b8da7851929e73810882415aa30967b0ae2acd5473c9cf5ec3f1",
+          "registration_sha256": "0a817839ae592a2f64af439b4e14b5322322e57ec4e0309cbcf7f0232b828438",
+          "rental_compute_usd": 0,
+          "source_lock_sha256": "097c0f8f39dcd367f69ed3129ee52fe9858cd46ba196755dfbcc948623a0537d",
+          "utc": "2026-11-28T13:02:45.359208+00:00"
+        },
+        "terminal": {
+          "action": "independent",
+          "exit_code": 0,
+          "rental_compute_usd": 0,
+          "stopped": true,
+          "utc": "2026-11-28T13:04:10.335198+00:00",
+          "wall_seconds": 84.96899999957532
+        }
+      }
+    ],
+    "infer": [
+      {
+        "start": {
+          "action": "infer",
+          "image": "sha256:541dd1e09a32b8da7851929e73810882415aa30967b0ae2acd5473c9cf5ec3f1",
+          "registration_sha256": "0a817839ae592a2f64af439b4e14b5322322e57ec4e0309cbcf7f0232b828438",
+          "rental_compute_usd": 0,
+          "source_lock_sha256": "097c0f8f39dcd367f69ed3129ee52fe9858cd46ba196755dfbcc948623a0537d",
+          "utc": "2026-11-28T12:54:30.029753+00:00"
+        },
+        "terminal": {
+          "action": "infer",
+          "exit_code": 0,
+          "rental_compute_usd": 0,
+          "stopped": true,
+          "utc": "2026-11-28T12:54:44.781129+00:00",
+          "wall_seconds": 14.75
+        }
+      }
+    ],
+    "leak-check": [
+      {
+        "start": {
+          "action": "leak-check",
+          "image": "sha256:541dd1e09a32b8da7851929e73810882415aa30967b0ae2acd5473c9cf5ec3f1",
+          "registration_sha256": "0a817839ae592a2f64af439b4e14b5322322e57ec4e0309cbcf7f0232b828438",
+          "rental_compute_usd": 0,
+          "source_lock_sha256": "097c0f8f39dcd367f69ed3129ee52fe9858cd46ba196755dfbcc948623a0537d",
+          "utc": "2026-11-28T12:56:44.673087+00:00"
+        },
+        "terminal": {
+          "action": "leak-check",
+          "exit_code": 0,
+          "rental_compute_usd": 0,
+          "stopped": true,
+          "utc": "2026-11-28T12:57:05.344444+00:00",
+          "wall_seconds": 20.671999999321997
+        }
+      }
+    ],
+    "score": [
+      {
+        "start": {
+          "action": "score",
+          "image": "sha256:541dd1e09a32b8da7851929e73810882415aa30967b0ae2acd5473c9cf5ec3f1",
+          "registration_sha256": "0a817839ae592a2f64af439b4e14b5322322e57ec4e0309cbcf7f0232b828438",
+          "rental_compute_usd": 0,
+          "source_lock_sha256": "097c0f8f39dcd367f69ed3129ee52fe9858cd46ba196755dfbcc948623a0537d",
+          "utc": "2026-11-28T12:56:00.575762+00:00"
+        },
+        "terminal": {
+          "action": "score",
+          "exit_code": 0,
+          "rental_compute_usd": 0,
+          "stopped": true,
+          "utc": "2026-11-28T13:02:44.659771+00:00",
+          "wall_seconds": 404.0939999995753
+        }
+      }
+    ]
+  },
+  "reference_ablation": "Independent prediction bytes with the real evaluator withheld and an all-invalid, constant-depth decoy mounted separately. All five saved outputs per room matched the original reference-free run.",
+  "registration_sha256": "0a817839ae592a2f64af439b4e14b5322322e57ec4e0309cbcf7f0232b828438",
+  "rental_compute_usd": 0,
+  "rooms": [
+    {
+      "actual_reference_file_sha256": "8f291956c726b40471efe9fad752bbc2534f657eb75ed06bf85a61fe735b6c2b",
+      "archives": [
+        {
+          "array_sha256": "069abdc787b79c798f83c8c052849e4b9804b4ce1250562d49ac7f027635f265",
+          "digest": "3e9c5b88e7410589fd8a145f938fca2630ae2dee6e05abfa989ab3dc9a176098",
+          "file": "heads_seq01_four_40_42.npz",
+          "receipt_sha256": "69ea05631b984ae5f2f1bebaa85a42bc24fa27092b6c967c02657fe3efc3dc53",
+          "seed": 42
+        },
+        {
+          "array_sha256": "d5baab45625c697cc96cae1e398cec323e2558542a476ce35fc0f586c75acabc",
+          "digest": "5b64ed2ca4b83cf3bf674914b82cc840c870d5e0e56efdcca0c13727bfda3a1a",
+          "file": "heads_seq01_four_40_43.npz",
+          "receipt_sha256": "3f5f8efd83c0b3f14770988c60db15f586d56739c34794dac04b250a29c1900d",
+          "seed": 43
+        },
+        {
+          "array_sha256": "d30b442ef647df89c231a6cb9dbee1709209a0c2288c74f2f34b1c1764a7ee16",
+          "digest": "e84f050181ea07b004c4cb0397cad4e701b2bb956a1ea9e987ef3ccadc93bda8",
+          "file": "heads_seq01_four_40_44.npz",
+          "receipt_sha256": "4f3f1095abe7d256af49d9aaca0f3f8c539aa2a9fd1e1598284551900c6adef7",
+          "seed": 44
+        }
+      ],
+      "decoy_all_five_arms_byte_identical": true,
+      "decoy_file_sha256": "a47fee61db8177897ca89c5deb51bb9dc1cbb2b3b5cf09f42458d4dfc2ecb7b0",
+      "decoy_run_receipt_sha256": "a52051562700743f010fda24d9ff4cd1adbe010c94766b39f9deab8f12381d76",
+      "failed_gauges": [],
+      "fusion_only_cpu_seconds": 1.1032150780083612,
+      "input_sha256": "5d5eebc36f9f41007f8ff929f515788a2de5310d2d5c5f6dc0fbdd9f245c5f59",
+      "points_sha256": {
+        "fusion": "a1b1643fdcc9f5ade46cdfb4732dd10fd1035ac88d2f37593cf18b53077c163a",
+        "project0": "d3f2d7132417c175bc55acf00f21067ca2ea333474f59a556b47568ac0f6651a",
+        "project1": "7bb9ea173ac2a473e84fe73be99aa18e603e570fa5ef8d597671ba807fc88f64",
+        "project2": "a116c80983090c9d194dfe13bb0ac3222c8155a7ee1175218194957dfeb9c234",
+        "triplicate_anchor": "d3f2d7132417c175bc55acf00f21067ca2ea333474f59a556b47568ac0f6651a"
+      },
+      "prediction_receipt_sha256": "892e549c7a1deb89c126f415ec11f6ed6214fb85ea1f40448f360b34a98df52e",
+      "rig_fits": [
+        {
+          "centre_rms_m": 0.007962105755942694,
+          "pairs": 10,
+          "rotation": [
+            [
+              0.9283359481720899,
+              0.02664632928581711,
+              -0.3707861114807515
+            ],
+            [
+              0.06775702289585465,
+              0.9685908843794379,
+              0.2392502550580628
+            ],
+            [
+              0.3655151887127478,
+              -0.247227975424807,
+              0.8973722610977197
+            ]
+          ],
+          "scale": 0.8809828656281115,
+          "translation": [
+            -0.15260848877721528,
+            -0.131711343470686,
+            0.1819317943624464
+          ]
+        },
+        {
+          "centre_rms_m": 0.008623534368173803,
+          "pairs": 10,
+          "rotation": [
+            [
+              0.9311259634195032,
+              0.010396503346294364,
+              -0.36454952059257045
+            ],
+            [
+              0.07975002393009016,
+              0.9695968863727217,
+              0.23134781524681258
+            ],
+            [
+              0.3558712884305959,
+              -0.2444867903476465,
+              0.9019877135616948
+            ]
+          ],
+          "scale": 0.8105763264072579,
+          "translation": [
+            -0.150622687164083,
+            -0.12925297316938578,
+            0.18181376139616398
+          ]
+        },
+        {
+          "centre_rms_m": 0.005687521553417114,
+          "pairs": 10,
+          "rotation": [
+            [
+              0.9315472841848147,
+              0.023345772751492622,
+              -0.36286999355489746
+            ],
+            [
+              0.06701060659246942,
+              0.9698225511341361,
+              0.2344222641213603
+            ],
+            [
+              0.357392271785506,
+              -0.24269156187702698,
+              0.9018711492567455
+            ]
+          ],
+          "scale": 1.0094304205279439,
+          "translation": [
+            -0.14815480871322062,
+            -0.12697856201973218,
+            0.1827569838708531
+          ]
+        }
+      ],
+      "room": "heads/seq-01",
+      "sham_max_abs_m": 0.0,
+      "support": {
+        "fusion_anchor_fallback": 8208,
+        "per_seed_anchor_fill": [
+          0,
+          36620,
+          31250
+        ],
+        "per_seed_collision_drops": [
+          0,
+          20848,
+          11669
+        ],
+        "per_seed_visible": [
+          1015280,
+          978660,
+          984030
+        ],
+        "per_view_median_supported_log_depth_range": [
+          0.06486893343691255,
+          0.04827121020991154,
+          0.05334215714874187,
+          0.06226126206657845,
+          0.055834936342338576
+        ],
+        "pixels": 1015280,
+        "support_count_histogram_0_through_3": [
+          0,
+          8208,
+          51454,
+          955618
+        ]
+      },
+      "unprojection_max_abs_per_seed": [
+        2.05668740704823e-07,
+        2.240537870790149e-07,
+        2.085250601080446e-07
+      ]
+    },
+    {
+      "actual_reference_file_sha256": "85c40690206762f60a3c25e7f87e366ddacdb2215c94f3ad5381d36c4671dd0e",
+      "archives": [
+        {
+          "array_sha256": "761322aa15238b0bc86f0d9009e83c050264108051034330e1a888c1273f1d1f",
+          "digest": "bb08842bd667fe8a6ae2bccce8650b975f6fc644e6298c032df8e0c56394d21e",
+          "file": "chess_seq03_four_40_42.npz",
+          "receipt_sha256": "988d06549352077bd8ed3cdae413d5b034410c81829890d999a8914ad5a1001e",
+          "seed": 42
+        },
+        {
+          "array_sha256": "cbba20f1b781afca1882096dfe4f105748d9915bae4e1a7a2fe14ae49f5f75d3",
+          "digest": "7009f0ec94fd44ebf769a0f6659ed8eaeb0e03cb38ed73bd132e8ef728c3f4ef",
+          "file": "chess_seq03_four_40_43.npz",
+          "receipt_sha256": "d5f1ac59797cecc7491232774412e80a599c9329d3b52f398d08f16f6479b1c3",
+          "seed": 43
+        },
+        {
+          "array_sha256": "72aadeda4c427dd567974d200075c49f9ad3c8f1f9202ce0ae9c6043c8878009",
+          "digest": "76d8a9cc02c8e7aadb065e7f0f73f3746236342d34bda781470ea35ff22b0e25",
+          "file": "chess_seq03_four_40_44.npz",
+          "receipt_sha256": "0515cb709d348568a945d7434be8f45f09322fd82a99e79fbef3a82a6d33e1d8",
+          "seed": 44
+        }
+      ],
+      "decoy_all_five_arms_byte_identical": true,
+      "decoy_file_sha256": "a47fee61db8177897ca89c5deb51bb9dc1cbb2b3b5cf09f42458d4dfc2ecb7b0",
+      "decoy_run_receipt_sha256": "c61985ddde3d9e25bfab00ea9717e317de2a469a49976cc6c4f57f09df59e017",
+      "failed_gauges": [],
+      "fusion_only_cpu_seconds": 1.2068780760164373,
+      "input_sha256": "b3e20cd11ae3ce16f119f2b8ef81dd54ce23bea6e80e584cd833811a72b9bcf2",
+      "points_sha256": {
+        "fusion": "6642c47e45c961370a0be063853936766ef242626c5b5cab1552d9d65e979c6e",
+        "project0": "22118731980081a5a0b157756d8139ad4a313e7f748db465cc0bb28ea7bc6033",
+        "project1": "0da6472b3d3ced255e570cb7e691013e8eebc58a6ded8eafb84ff6727967b79d",
+        "project2": "e2eb2471159a473edf22091ad9fd395802599ecea06ba68651c2deea70ef11a9",
+        "triplicate_anchor": "22118731980081a5a0b157756d8139ad4a313e7f748db465cc0bb28ea7bc6033"
+      },
+      "prediction_receipt_sha256": "81a90d17195bd654ccac3aa47582d120980841205ffb6cfb3a163e9ba174ad78",
+      "rig_fits": [
+        {
+          "centre_rms_m": 0.01005913911098284,
+          "pairs": 10,
+          "rotation": [
+            [
+              0.9968461380603628,
+              0.024888639074100827,
+              0.07535471238866862
+            ],
+            [
+              -0.05021467022200343,
+              0.9331037297230336,
+              0.3560841424038125
+            ],
+            [
+              -0.06145131348177427,
+              -0.35874501421204796,
+              0.9314106241875072
+            ]
+          ],
+          "scale": 2.423090335321753,
+          "translation": [
+            -0.06145979619917408,
+            -0.7841644210471694,
+            -0.7008320605655063
+          ]
+        },
+        {
+          "centre_rms_m": 0.010386523217100705,
+          "pairs": 10,
+          "rotation": [
+            [
+              0.9967994393809873,
+              0.025163956392243753,
+              0.07587919970873958
+            ],
+            [
+              -0.050347276902236934,
+              0.9348868568248591,
+              0.35135696470208966
+            ],
+            [
+              -0.06209693517621501,
+              -0.3540527365165043,
+              0.9331616314481093
+            ]
+          ],
+          "scale": 2.3765958308621453,
+          "translation": [
+            -0.05789762658784359,
+            -0.7776305614470468,
+            -0.702676639791904
+          ]
+        },
+        {
+          "centre_rms_m": 0.014927307817881917,
+          "pairs": 10,
+          "rotation": [
+            [
+              0.9968492435769385,
+              0.025347868386181176,
+              0.07516030300871063
+            ],
+            [
+              -0.05126115078950693,
+              0.9289740148435506,
+              0.366578196521819
+            ],
+            [
+              -0.06052999256418077,
+              -0.3692760015404882,
+              0.9273464049029618
+            ]
+          ],
+          "scale": 2.538397416820724,
+          "translation": [
+            -0.058611948609328224,
+            -0.8007154327498011,
+            -0.6960424162989511
+          ]
+        }
+      ],
+      "room": "chess/seq-03",
+      "sham_max_abs_m": 0.0,
+      "support": {
+        "fusion_anchor_fallback": 1175,
+        "per_seed_anchor_fill": [
+          0,
+          23112,
+          19711
+        ],
+        "per_seed_collision_drops": [
+          0,
+          10203,
+          8820
+        ],
+        "per_seed_visible": [
+          1015280,
+          992168,
+          995569
+        ],
+        "per_view_median_supported_log_depth_range": [
+          0.029685956188199636,
+          0.03454723159727463,
+          0.032214660450075705,
+          0.03752283662463135,
+          0.0485691004366435
+        ],
+        "pixels": 1015280,
+        "support_count_histogram_0_through_3": [
+          0,
+          1175,
+          40473,
+          973632
+        ]
+      },
+      "unprojection_max_abs_per_seed": [
+        2.2056994275487796e-07,
+        2.237550176253933e-07,
+        2.3321030484524385e-07
+      ]
+    },
+    {
+      "actual_reference_file_sha256": "d97c78ef012b92bb7aa415b0e6398b6e45512524b2b234ca3454b76b85f276b4",
+      "archives": [
+        {
+          "array_sha256": "1d08a12f82f8a6a6b3e3ec5c203e61d54f39f47af14c70a49f8918a99d67e82f",
+          "digest": "5177a4b998e9d1bf0daf0d851d05c8b48deebeef99e4e610c4458c49d2fe69fb",
+          "file": "fire_seq03_four_40_42.npz",
+          "receipt_sha256": "d1a1ba39f69e15a77620c62eee4f954ea27aff16f8b107d3c16aa6e3b74ed217",
+          "seed": 42
+        },
+        {
+          "array_sha256": "2c8f212fe26ec448ce100fba7ccceb219672037e519530c3ed896470acccd973",
+          "digest": "fd44e46d690de682d65e462166a0599f2453990202eb0872b8b3ccd2d36ee29f",
+          "file": "fire_seq03_four_40_43.npz",
+          "receipt_sha256": "54e171fea08a1c2577d2a0cdb25a20d7d06aa6603c3569411f43a2a13a5e3e11",
+          "seed": 43
+        },
+        {
+          "array_sha256": "d38b489e2b17662ae1d5d7b33323ac910f334e7887a8f264ebd6b86477605473",
+          "digest": "95cbeb9d4fc645b266f920b7efd73f09d478eecc462a51fa7e5d15df8b389359",
+          "file": "fire_seq03_four_40_44.npz",
+          "receipt_sha256": "d3215374e0da310f2028952064ba1d1b3eb8fd3a599007a05c0fe17d418dc999",
+          "seed": 44
+        }
+      ],
+      "decoy_all_five_arms_byte_identical": true,
+      "decoy_file_sha256": "a47fee61db8177897ca89c5deb51bb9dc1cbb2b3b5cf09f42458d4dfc2ecb7b0",
+      "decoy_run_receipt_sha256": "198c5a62c8ce66d7988290e06593211c5bdd0a7a3c5238541d01ef2a34fcbfcb",
+      "failed_gauges": [],
+      "fusion_only_cpu_seconds": 1.0381502640084364,
+      "input_sha256": "60846479353bbf98f84bce5974e21f2f2cfdfb1ad05cb8478ed1f4141c3da88f",
+      "points_sha256": {
+        "fusion": "a84beb88d14d8ec14b8b6cc4f380911f0e08faeb4b8d9e3652e9431198f635ba",
+        "project0": "ade3333462dc5459f8c86470e96ada3f0f2404a2a1ee56ef2993f294a08c6e44",
+        "project1": "3c8610e759fc8819399b2404cb771107026c90443245f55fe3bd59cb417b8563",
+        "project2": "76b5df8ebce4787dfac83621a52c1bca326bc97deeaa385cc0567c1fc9da1f8e",
+        "triplicate_anchor": "ade3333462dc5459f8c86470e96ada3f0f2404a2a1ee56ef2993f294a08c6e44"
+      },
+      "prediction_receipt_sha256": "3a8e5192332891d7e56915857d0c54a317fba33d0ecffcc5a3fabd7863e4783e",
+      "rig_fits": [
+        {
+          "centre_rms_m": 0.008865587194963172,
+          "pairs": 10,
+          "rotation": [
+            [
+              0.9727336466480555,
+              -0.21125546821790114,
+              0.09570987319399457
+            ],
+            [
+              0.17626038988786544,
+              0.9415945007693479,
+              0.28693565668543
+            ],
+            [
+              -0.15073661677028888,
+              -0.262242108115681,
+              0.9531566235911547
+            ]
+          ],
+          "scale": 1.8218500305866567,
+          "translation": [
+            -0.023666216283548897,
+            -0.4017778544871755,
+            0.2350423585196757
+          ]
+        },
+        {
+          "centre_rms_m": 0.010685062120208158,
+          "pairs": 10,
+          "rotation": [
+            [
+              0.9726457553232672,
+              -0.2116032145447118,
+              0.09583482793837006
+            ],
+            [
+              0.1758284219486949,
+              0.9402530925375658,
+              0.29156215119349177
+            ],
+            [
+              -0.15180448177397166,
+              -0.266736202207141,
+              0.9517390386789064
+            ]
+          ],
+          "scale": 1.8586512566231865,
+          "translation": [
+            -0.021604889093050826,
+            -0.4063440592301468,
+            0.2353844734420828
+          ]
+        },
+        {
+          "centre_rms_m": 0.010279901249857157,
+          "pairs": 10,
+          "rotation": [
+            [
+              0.972361121053828,
+              -0.21077528575534155,
+              0.10043719021208036
+            ],
+            [
+              0.17556121986198517,
+              0.9436272117341925,
+              0.28061707602233515
+            ],
+            [
+              -0.1539224101406784,
+              -0.25522825899478185,
+              0.9545503797427235
+            ]
+          ],
+          "scale": 1.7172365541477195,
+          "translation": [
+            -0.02548871480005771,
+            -0.39808845860201525,
+            0.23927753579898048
+          ]
+        }
+      ],
+      "room": "fire/seq-03",
+      "sham_max_abs_m": 0.0,
+      "support": {
+        "fusion_anchor_fallback": 765,
+        "per_seed_anchor_fill": [
+          0,
+          19544,
+          29241
+        ],
+        "per_seed_collision_drops": [
+          0,
+          5365,
+          5667
+        ],
+        "per_seed_visible": [
+          1015280,
+          995736,
+          986039
+        ],
+        "per_view_median_supported_log_depth_range": [
+          0.047703617556163924,
+          0.05284142970112932,
+          0.042190529503655316,
+          0.04901730698148471,
+          0.05941381804438533
+        ],
+        "pixels": 1015280,
+        "support_count_histogram_0_through_3": [
+          0,
+          765,
+          47255,
+          967260
+        ]
+      },
+      "unprojection_max_abs_per_seed": [
+        2.2729365745099983e-07,
+        2.142080082201403e-07,
+        2.1336833011531553e-07
+      ]
+    }
+  ],
+  "source_lock_sha256": "097c0f8f39dcd367f69ed3129ee52fe9858cd46ba196755dfbcc948623a0537d",
+  "study": "tco_two_track_v1"
+}

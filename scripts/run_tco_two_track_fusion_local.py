@@ -108,11 +108,28 @@ def launch(action):
     for directory in ("scripts","configs","third_party/TCO"):
         args+=mount(ROOT/directory,"/workspace/"+directory)
     args+=mount(SRC,"/sources")+mount(PREP/"model","/model")
-    if action=="infer":
-        args+=mount(points,"/outputs",True)
+    infer_action=action in ("infer","leak-check")
+    if infer_action:
+        output_root=points if action=="infer" else RAW/"points_reference_ablation"
+        output_root.mkdir(exist_ok=True)
+        args+=mount(output_root,"/outputs",True)
+        if action=="leak-check":
+            # Place deliberately wrong, same-shaped evaluation packets on a separate mount.
+            # The inference interface has no reference argument. Original inference had no such mount.
+            decoy=RAW/"decoy_reference"
+            decoy.mkdir(exist_ok=True)
+            for room in lock["rooms"]:
+                path=decoy/(room["slug"]+".npz")
+                if not path.exists():
+                    with np.load(PREP/"reference"/path.name,allow_pickle=False) as orig:
+                        surface=np.full_like(orig["pointclouds"],-123.0)
+                        masks=np.zeros_like(orig["valid_mask"])
+                    np.savez_compressed(path,pointclouds=surface,valid_mask=masks)
+                require(sha(path)!=room["reference_file_sha256"],"Decoy and actual reference packets identical")
+            args+=mount(decoy,"/decoy-evaluator-only")
     else:
         args+=mount(points,"/points")+mount(PREP/"reference","/reference")+mount(scores,"/scores",True)
-    args += [IMAGE,"python","-B","-u","scripts/run_tco_two_track_fusion.py",action]
+    args += [IMAGE,"python","-B","-u","scripts/run_tco_two_track_fusion.py","infer" if infer_action else action]
     cid=None
     ret=None
     elapsed=time.monotonic()
@@ -123,7 +140,8 @@ def launch(action):
         info,=docker_json(["inspect",cid])
         mounts={v["Destination"] for v in info["Mounts"]}
         require(info["Image"]==IMAGE and not info["HostConfig"].get("DeviceRequests") and
-                info["HostConfig"]["NetworkMode"]=="none" and (("/reference" in mounts)==(action!="infer"))
+                info["HostConfig"]["NetworkMode"]=="none" and (("/reference" in mounts)==(not infer_action))
+                and (("/decoy-evaluator-only" in mounts)==(action=="leak-check"))
                 and "/data" not in mounts,"Unexpected model or score sandbox")
         with (receipt/"stdout.log").open("xb") as output:
             ret=subprocess.run(DOCKER+["start","--attach",cid],stdout=output,stderr=subprocess.STDOUT,timeout=5400).returncode
@@ -141,7 +159,7 @@ def launch(action):
 
 if __name__=="__main__":
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("stage",choices=("prepare","infer","score","independent"))
+    parser.add_argument("stage",choices=("prepare","infer","score","independent","leak-check"))
     args=parser.parse_args()
     if args.stage=="prepare":
         stage()

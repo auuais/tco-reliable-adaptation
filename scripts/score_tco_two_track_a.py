@@ -14,7 +14,7 @@ from tco_two_track_protocol import MANIFEST, PRIVATE, PUBLIC, ROOT, STUDY, diges
 PREP = Path("E:/ResearchData/TCO/preparation") / STUDY
 
 
-def score(job, case, prepared, target, against=None):
+def score(job, case, prepared, target, against=None, *, output_key="canonical"):
     import numpy as np
     import torch
     from run_experiment import evaluate
@@ -43,7 +43,9 @@ def score(job, case, prepared, target, against=None):
     with np.load(prediction, allow_pickle=False) as outputs:
         arrays = {k:outputs[k] for k in outputs.files}
     require(receipt["output_sha256"] == signature(arrays), "Prediction content differs from receipt")
-    canonical = arrays["canonical"]
+    require(output_key == "canonical" or (output_key == "supplied_canonical" and job["arm"] == "ZERO"
+            and job["steps"] == 0), "Readout is not registered for this case")
+    canonical = arrays[output_key]
     require(images.shape[:2] == (5,3) and canonical.shape == points.shape == (5,*images.shape[2:],3)
             and canonical.dtype == np.float32 and np.isfinite(canonical).all(), "Invalid shared readout")
     require(mask.shape == points.shape[:-1] and mask.dtype == np.bool_ and np.isfinite(points[mask]).all()
@@ -54,7 +56,7 @@ def score(job, case, prepared, target, against=None):
         t0 = time.monotonic()
         metrics = evaluate(canonical, dict(images=torch.from_numpy(images), pointclouds=points, valid_mask=mask), Path(scratch))
         secs = time.monotonic()-t0
-    result = dict(id=job["id"], room=job["room"], arm=job["arm"], seed=job["seed"], scoring_cpu=True,
+    result = dict(id=job["id"], room=job["room"], arm=job["arm"], seed=job["seed"], scoring_cpu=True, readout=output_key,
                   input_sha256=input_hash, model_file_sha256=digest(model), reference_sha256=ref_hash,
                   reference_file_sha256=digest(ref), predictions_sha256=receipt["predictions_sha256"],
                   model_receipt_sha256=digest(report), valid_points=metrics["valid_points"], protocol=metrics["protocol"],
@@ -63,6 +65,7 @@ def score(job, case, prepared, target, against=None):
     require(result["protocol"] == PROTOCOL and result["valid_points"] == int(mask.sum()) and
             all(result[k] > 0 and math.isfinite(result[k]) for k in ("accuracy_mm","completeness_mm")), "Invalid score")
     if against:
+        require(read(against)["readout"] == output_key, "Independent rescore used a different readout")
         result["first_score_sha256"] = digest(against)
         result["independent_rescore_mm_difference"] = check_against(result, read(against))
     seal(target, result)
@@ -191,7 +194,10 @@ def release(stage):
                 row[k] = s[k]
             row.update(score_sha256=digest(metrics),scene_seconds=rec["scene_seconds"],
                        peak_allocated_bytes=rec["peak_allocated"],peak_reserved_bytes=rec["peak_reserved"],
-                       completed_adam_updates=rec["completed_adam_updates"])
+                       completed_adam_updates=rec["completed_adam_updates"],cold_seconds=rec["cold_seconds"],
+                       placement_seconds=rec["placement_seconds"],allocation_retries=rec["allocation_retries"],
+                       model_oom_count=rec["oom_count"],adam_state_counts=rec["adam_state_counts"],
+                       cache=rec["cache"],first_ten_view_permutations=order)
             if uid in repeat:
                 other = PRIVATE/"scores/independent"/uid/"score.json"
                 audit = read(other)

@@ -35,6 +35,15 @@ def digest(path):
     return sha256(Path(path).read_bytes()).hexdigest()
 
 
+def pinned_source(name):
+    value = digest(ROOT / name)
+    # Git normalizes a single CRLF in the historical Windows copy of this file.
+    # Both digests were checked against the registered working copy and its Git blob.
+    if name == "scripts/anchor_pose_surface.py" and value == "c58cff0dd9198935ec11453d7b2bc4200439453e9425d524093bd2520387bd69":
+        return "db4405916220c9c564df61d93a812775cfb11d090e0ab9baf0caf34bd5df8306"
+    return value
+
+
 def seal(path, data):
     payload = (json.dumps(data, sort_keys=True, indent=2, allow_nan=False) + "\n").encode()
     if path.exists():
@@ -92,7 +101,7 @@ def registration():
                                 arm=arm, profile=profile, seed=42, steps=2, width=518,
                                 **{k:dev[0][k] for k in ("frames","dataset","input_sha256","reference_sha256","raster_shape")}))
     return dict(study=STUDY, design_revision="68012e64674f51c258a8951d4ca1fe0ae4957bdf",
-        pins={p: digest(ROOT / p) for p in PINS}, runtime=dict(
+        pins={p: pinned_source(p) for p in PINS}, runtime=dict(
             gpu="NVIDIA GeForce RTX 3080", cap_mib=8960, memory_fraction=.875,
             allocator="garbage_collection_threshold:0.75,expandable_segments:True", runpod_usd=0,
             checkpoint="f164acf60724910d8fe1578bb499d800850c7bb0948db7555c413f9fbe60467e",

@@ -1,18 +1,13 @@
 """Verify both local disks for model inputs and experimental evidence at a sealed stage."""
 import argparse
-import hashlib
 from pathlib import Path
 import shutil
 
 from tco_two_track_protocol import PRIVATE, PUBLIC, STUDY, digest, read, seal
+from score_tco_final_ln import digest as hash_file
 
 PREP = Path("E:/ResearchData/TCO/preparation")/STUDY
 ARCHIVE = Path("E:/ResearchData/TCO/research_results")/STUDY
-
-
-def hash_file(path):
-    with path.open("rb") as stream:
-        return hashlib.file_digest(stream,"sha256").hexdigest()
 
 
 def copy_checked(src, dest):
