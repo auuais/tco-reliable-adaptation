@@ -105,7 +105,10 @@ def current(stages):
     fields=ALL+EXTRA if all("cold_seconds" in r for r in rows if r["status"]=="completed") else ALL
     same=table(rows,packets,SEEDS,comparisons,fields)
     old=historical_rows(OLD/"evidence.json")
-    historical_controls=("ZERO","Full5","Full6")
+    # All nine historical Full40 predictions on these exact inputs were independently
+    # rescored by Track B. Keep this geometry-only context even if a current control
+    # timed out; the same-stack timing and primary failure denominator stay separate.
+    historical_controls=("ZERO","Full5","Full6","Full10","Full40")
     substituted=[{**r,"arm":"historical_"+r["arm"]} for r in old if r["arm"] in historical_controls]
     cross=[(a,"historical_"+b) for a in quality_arms for b in historical_controls]
     different=table(rows+substituted,packets,SEEDS,cross,GEOMETRY)
