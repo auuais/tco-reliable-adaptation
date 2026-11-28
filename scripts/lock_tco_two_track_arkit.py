@@ -35,6 +35,18 @@ def compact(raw, group):
                 reference_file_sha256=raw["reference_npz_sha256"])
 
 
+def overlap_diagnostic(original):
+    """The measured LiDAR overlap can describe a fixed window but cannot change its membership."""
+    def record(*args):
+        try:
+            return original(*args)
+        except ValueError as exc:
+            if str(exc) != "Insufficient adjacent native LiDAR surface overlap":
+                raise
+            return None
+    return record
+
+
 def intake(split):
     stage = "teacher" if split == "Training" else "fresh"
     trigger = PUBLIC/("a_distillation_trigger.json" if stage=="teacher" else "nominees.json")
@@ -87,7 +99,7 @@ def intake(split):
 
         # The older bridge permits exactly one Training visit. Keep its decoder and
         # geometry tests, and supply this registered study's six-visit membership rule.
-        with patch.object(arkit,"fetch_membership",membership):
+        with patch.object(arkit,"fetch_membership",membership), patch.object(arkit,"adjacency",overlap_diagnostic(arkit.adjacency)):
             for visit in sorted(available):
                 group=sites.get(visit,visit)
                 if group in denied:
@@ -106,7 +118,7 @@ def intake(split):
                         continue
                     except ValueError as e:
                         if str(e) not in {"No five-view window from the registered time/pose rules",
-                                         "Missing registered public asset","Insufficient adjacent native LiDAR surface overlap"}:
+                                         "Missing registered public asset"}:
                             raise
                         excluded.append(dict(visit=visit,video=video,reason=str(e)))
                         continue
@@ -116,6 +128,7 @@ def intake(split):
                     if frame_hashes & seen_rgb or raw["input_sha256"] in seen_packets:
                         excluded.append(dict(visit=visit,video=video,reason="duplicate RGB or model input"))
                         continue
+                    raw["all_adjacent_pairs_reach_5pct_overlap"] = raw["adjacent_native_overlap_at_50mm"] is not None
                     seal(PUBLIC/f"arkit_{stage}_{visit}.json",raw)
                     rooms.append(compact(raw,group))
                     seen_packets.add(raw["input_sha256"])
