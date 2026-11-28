@@ -27,6 +27,31 @@ def copy_checked(src, dest):
 def archive(stage):
     if stage=="fusion":
         roots=[(PRIVATE/"fusion", ARCHIVE/"evidence/fusion","evidence/fusion")]
+    elif stage in ("alternative", "stress_hybrid"):
+        ledger=MANIFEST.with_name(f"{STUDY}_{stage}.json")
+        release=read(PUBLIC/f"a_{stage}_rows.json")
+        ids={j["id"] for j in read(ledger)["jobs"]}
+        if release["plan_sha256"]!=digest(ledger) or ids!={r["id"] for r in release["rows"]}:
+            raise ValueError("The scored release must cover this registered stage")
+        for row in release['rows']:
+            if row['status']!='completed':
+                continue
+            score=PRIVATE/'scores/first'/row['id']/'score.json'
+            if digest(score)!=row['score_sha256']:
+                raise ValueError('Primary score changed: '+row['id'])
+            if row.get('rescore_sha256') and digest(PRIVATE/'scores/independent'/row['id']/'score.json')!=row['rescore_sha256']:
+                raise ValueError('Independent score changed: '+row['id'])
+        if stage=="alternative":
+            qualification=MANIFEST.with_name(f"{STUDY}_engineering_narrow.json")
+            if qualification.is_file():
+                ids.update(j["id"] for j in read(qualification)["jobs"])
+        roots=[]
+        for uid in sorted(ids):
+            if not list((PRIVATE/'cases'/uid).glob('attempt*/terminal.json')):
+                raise ValueError('Missing terminal case: '+uid)
+            for relative in (Path('cases')/uid, Path('scores/first')/uid, Path('scores/independent')/uid):
+                if (PRIVATE/relative).is_dir():
+                    roots.append((PRIVATE/relative,ARCHIVE/'evidence'/relative,'evidence/'+relative.as_posix()))
     elif stage=="development":
         sources=[read(MANIFEST.with_name(STUDY+"_"+name+".json"))["jobs"]
                  for name in ("development","engineering","engineering_v2")]
@@ -40,7 +65,7 @@ def archive(stage):
     else:
         roots=[(PRIVATE, ARCHIVE/"evidence","evidence")]
     # The E: preparation packets need C: copies independently of the C: model evidence.
-    if stage!="development":
+    if stage in ("fusion", "final"):
         roots.append((PREP,PRIVATE/"input_backup","inputs"))
     records={}
     for source, destination, label in roots:
@@ -65,5 +90,5 @@ def archive(stage):
 
 if __name__=="__main__":
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("stage",choices=("fusion","development","final"))
+    parser.add_argument("stage",choices=("fusion","development","alternative","stress_hybrid","final"))
     archive(parser.parse_args().stage)

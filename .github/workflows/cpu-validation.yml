@@ -48,6 +48,12 @@ jobs:
       - run: python -B -S scripts/replay_tco_two_track.py b-development
       - run: python -B -S scripts/replay_tco_two_track.py a-development
       - run: python -B -S scripts/report_tco_two_track_development.py
+      - name: Independently replay the narrow hybrid selection from matched surface measurements
+        run: |
+          python -B -S scripts/report_tco_two_track_hybrid_selection.py alternative --out results/tco_two_track_v1/a_hybrid_selection_development.md
+          if [ -f results/tco_two_track_v1/a_hybrid_selection_stress.md ]; then
+            python -B -S scripts/report_tco_two_track_hybrid_selection.py stress --out results/tco_two_track_v1/a_hybrid_selection_stress.md
+          fi
       - run: python scripts/verify_camera_studies.py
       - run: python scripts/summarize_sensor_windows.py
       - run: python scripts/summarize_sensor_extrinsic.py
