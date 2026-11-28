@@ -214,14 +214,40 @@ def release(stage):
     print(out)
 
 
+def wait_for_roster(stage):
+    """Wait outside the workstation lock while the registered GPU launcher owns it."""
+    from run_profiled_d1_local import host_lock
+    plan = MANIFEST.with_name(STUDY+"_"+stage+".json")
+    jobs = read(plan)["jobs"]
+    pending_retry = {"timeout","interrupted","provisioning"}
+    while True:
+        for job in jobs:
+            attempts = sorted((PRIVATE/"cases"/job["id"]).glob("attempt[0-9][0-9]"))
+            if not attempts or not (attempts[-1]/"terminal.json").exists():
+                break
+            terminal = read(attempts[-1]/"terminal.json")
+            if terminal["status"] in pending_retry and terminal["attempt"] < 2:
+                break
+        else:
+            try:
+                with host_lock():
+                    return
+            except OSError:
+                pass
+        time.sleep(15)
+
+
 if __name__ == "__main__":
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("stage")
     p.add_argument("--inside",action="store_true")
     p.add_argument("--independent",action="store_true")
+    p.add_argument("--wait",action="store_true",help="Wait for every registered attempt before starting CPU scoring")
     args = p.parse_args()
     require(re.fullmatch(r"[A-Za-z0-9_-]+",args.stage),"Invalid stage")
     if args.inside:
         inside(args.stage,args.independent)
     else:
+        if args.wait:
+            wait_for_roster(args.stage)
         release(args.stage)
