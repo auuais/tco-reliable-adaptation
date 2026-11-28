@@ -49,3 +49,23 @@ python -B -S scripts/replay_tco_two_track.py a-development
 ```
 
 Clean model runs and CPU scoring occupy separate time windows. Each scored endpoint retains its paired inputs, elapsed scene time, peak live and reserved allocation, update counts and scoring provenance. Reported rental compute for both tracks is USD 0. The handoff specifies conditional experiments and confidence bounds. [Registered design](../../manifests/tco_two_track_v1.json) · [Execution handoff](../../docs/TCO_TWO_TRACK_SOL_HANDOFF.md)
+
+### Continuing after a native timeout
+
+The clean launcher allows one unchanged retry for an ambiguous watchdog timeout. If it stops after the second timeout, the following command preserves completed and exhausted slots and continues in the original order. Run it only after the prior launcher exits.
+
+```powershell
+python -B scripts/resume_tco_two_track_clean.py --jobs manifests/tco_two_track_v1_development.json
+```
+
+After all 45 slots have terminal receipts, run the development scorer and replay above, then run the commands below. The replay includes failed slots in coverage. The allocator audit retains all completed times and separately describes paired zero-retry cases. The native timing bridge checks whether observer bookkeeping affected ordinary TCO's timing.
+
+```powershell
+python -B -S scripts/plan_tco_two_track_a_followup.py alternative
+python -B scripts/audit_tco_two_track_development.py development --save
+python -B -S scripts/audit_tco_two_track_timing.py --stages development
+python -B scripts/tco_native_harness_bridge.py heads
+python -B scripts/tco_native_harness_bridge.py fire
+```
+
+The alternative gate chooses at most one additional refresh schedule. If it chooses Narrow, generate and commit the engineering ledger, run the cached and uncached diagnostic twins, and verify their signed derivatives before launching the nine clean cases. The next decision is `python -B -S scripts/plan_tco_two_track_a_followup.py stress-hybrid`. This selects the candidate, if any, for Office and Courtyard. Only the subsequent `distillation-gate` decision opens the six-visit Training intake. Fresh Validation runs require a frozen nominee. [Conditional decisions](../../scripts/plan_tco_two_track_a_followup.py) · [Teacher objective](../../manifests/tco_two_track_v1_distillation_policy.json)
