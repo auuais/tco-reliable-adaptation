@@ -68,8 +68,8 @@ After all 45 slots have terminal receipts, run the development scorer and replay
 python -B -S scripts/plan_tco_two_track_a_followup.py alternative
 python -B scripts/audit_tco_two_track_development.py development --save
 python -B -S scripts/audit_tco_two_track_timing.py --stages development
-python -B scripts/tco_native_harness_bridge.py heads
-python -B scripts/tco_native_harness_bridge.py fire
+python -B scripts/run_tco_native_bridge_local.py heads
+python -B scripts/run_tco_native_bridge_local.py fire
 ```
 
 The alternative gate chooses at most one additional refresh schedule. If it chooses Narrow, generate and commit the engineering ledger, run the cached and uncached diagnostic twins, and verify their signed derivatives before launching the nine clean cases. The next decision is `python -B -S scripts/plan_tco_two_track_a_followup.py stress-hybrid`. This selects the candidate, if any, for Office and Courtyard. Only the subsequent `distillation-gate` decision opens the six-visit Training intake. Fresh Validation runs require a frozen nominee. [Conditional decisions](../../scripts/plan_tco_two_track_a_followup.py) · [Teacher objective](../../manifests/tco_two_track_v1_distillation_policy.json)

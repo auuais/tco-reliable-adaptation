@@ -36,8 +36,8 @@ python -B -S scripts/tco_native_harness_bridge.py audit
 python -B -S scripts/tco_native_harness_bridge.py register
 python -B scripts/test_tco_native_harness_bridge.py
 # Commit the registration and both workers before the diagnostic.
-python -B scripts/tco_native_harness_bridge.py heads
-python -B scripts/tco_native_harness_bridge.py fire
+python -B scripts/run_tco_native_bridge_local.py heads
+python -B scripts/run_tco_native_bridge_local.py fire
 python -B scripts/tco_native_harness_bridge.py replay-heads
 ```
 
