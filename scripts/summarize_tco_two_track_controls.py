@@ -1,7 +1,6 @@
 """Replay the paired resource/quality controls, keeping all historical comparisons explicitly retrospective."""
 import argparse
 from collections import Counter, defaultdict
-from statistics import mean, median
 
 from replay_tco_two_track import ALL, A_CANDIDATES, GEOMETRY, a_analysis, classify, compare, validated_index
 from tco_two_track_protocol import MANIFEST, NEW_SEEDS, PUBLIC, ROOT, SEEDS, STUDY, digest, read, seal
@@ -61,6 +60,12 @@ def capacity(rows):
     return result
 
 
+def capacity_advantage(rows,comparisons):
+    index={(r["room"],r["seed"],r["arm"]):r["status"] for r in rows}
+    return {a+"/"+b: [{"room":room,"seed":seed} for (room,seed,arm),status in sorted(index.items())
+                      if a==arm and status=="completed" and index.get((room,seed,b))=="oom"] for a,b in comparisons}
+
+
 def historical():
     groups={}
     for phase,file in (("development",OLD/"evidence.json"),("transfer",OLD/"confirmation_evidence.json")):
@@ -71,8 +76,11 @@ def historical():
             references=[a for a in ("ZERO","Full4","Full5","Full10","Full40") if a in arms]
             targets=[a for a in ("Cache10","Full10","Full40") if a in arms]
             comparisons=[(a,b) for a in targets for b in references if a!=b]
-            summary=table(cohort,make_packets(cohort),SEEDS,comparisons,ALL+EXTRA)
-            groups[ds+"_"+phase]=dict(paired=summary,source_sha256=digest(file),coverage=capacity(cohort))
+            seeds=SEEDS if phase=="development" else NEW_SEEDS
+            if sorted({r["seed"] for r in cohort}) != sorted(seeds):
+                raise ValueError("Archived repeat seeds differ from phase registration")
+            summary=table(cohort,make_packets(cohort),seeds,comparisons,ALL+EXTRA)
+            groups[ds+"_"+phase]=dict(paired=summary,seeds=seeds,source_sha256=digest(file),coverage=capacity(cohort))
     seal(PUBLIC/"a_historical_baselines.json",dict(study=STUDY,groups=groups,cap_mib=8960,
          provenance="Within the archived one-percent study. Archived transfer results belong only to those recipes.",
          timer="Original synchronized scene and cold elapsed seconds; no current-machine timing claim."))
@@ -110,11 +118,15 @@ def current(stages):
         Narrow="no full 10-update uncached evidence unless present in paired table; qualification alone tests two updates",
         Refresh2="no registered full matrix for an identically refreshing uncached twin",
         Distilled="same factor inventory and 24 offline updates as OfflineOriginal; compare against ordinary Cache10 too")
-    seal(PUBLIC/"a_comparator_summary.json",dict(study=STUDY,current_same_stack=same,
+    nom=PUBLIC/"a_nomination.json"
+    final=nom.is_file() and stages==read(nom)["stages"] and prior_file.is_file()
+    label="a_comparator_summary.json" if final else "a_comparator_"+"_".join(stages)+("_with_prior" if prior_file.is_file() else "_raw")+".json"
+    seal(PUBLIC/label,dict(study=STUDY,current_same_stack=same,
         current_vs_historical_geometry_only=different, parameter_matched_control_scope=scope,
         current_sources=sources, historical_development_sha256=digest(OLD/"evidence.json"),
         historical_supplied_readouts_sha256=digest(prior_file) if prior_file.is_file() else None,
-        capacity=capacity(rows), cap_mib=8960, rental_compute_usd=0,
+        capacity=capacity(rows),candidate_completed_where_control_oom=capacity_advantage(rows,comparisons),
+        cap_mib=8960, rental_compute_usd=0,
         limitations="Historical controls are reference/input-matched diagnostics. They cannot validate current resource gates or a frozen equal-time claim."))
 
 
@@ -140,6 +152,8 @@ def fresh(dataset):
     merged=[r for r in first if r["arm"]!="ZERO"]+extra
     arm=plan["candidate"]
     stats=a_analysis(merged,plan["rooms"],NEW_SEEDS,[arm],plan["controls"],fresh=True,singleton_controls=plan["singleton_controls"])
+    resource_rows=table(merged,plan["rooms"],NEW_SEEDS,[(arm,c) for c in plan["controls"]],EXTRA,
+                        which_single=plan["singleton_controls"])
     matched=stats["candidates"][arm]["comparisons"][plan["time_control"]]
     criterion={m:(1.,True) for m in GEOMETRY}
     pareto=classify(matched,{**criterion,"scene_seconds":(1.,False)},True)
@@ -148,7 +162,8 @@ def fresh(dataset):
     outcome=dict(analysis=stats,comparable_time_control=plan["time_control"],paired_time_geometry=matched,
                  actual_time_ratio=matched["metrics"].get("scene_seconds"),closest_affordable_in_development=affordable,
                  per_metric_superiority=classify(matched,criterion,True),equal_budget_pareto=pareto,
-                 equal_budget_pareto_supported=positive,common_cap=capacity(merged),cap_mib=8960,
+                 equal_budget_pareto_supported=positive,cold_time=resource_rows,common_cap=capacity(merged),cap_mib=8960,
+                 candidate_completed_where_control_oom=capacity_advantage(merged,[(arm,c) for c in plan["controls"]]),
                  cohort_sha256=digest(cp),rows_sha256=digest(source),zero_rows_sha256=digest(zr))
     seal(PUBLIC/("a_"+stage+"_comparator_decision.json"),outcome)
 

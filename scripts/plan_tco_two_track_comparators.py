@@ -123,6 +123,10 @@ def choose_time():
 
 def fresh_roster(dataset, source):
     arm = require_nominee()
+    if dataset=="hypersim":
+        primary=read(PUBLIC/"a_arkitscenes_fresh_comparator_decision.json")["analysis"]
+        if not primary["candidates"][arm]["equal_step"]["passed"]:
+            raise ValueError("Cross-dataset replication requires a supported primary result")
     match = read(MATCH)
     if match["nomination_sha256"] != digest(NOM) or arm != match["candidate"]:
         raise ValueError("Candidate changed after timing lock")

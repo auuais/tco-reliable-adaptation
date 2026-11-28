@@ -1,5 +1,6 @@
 """Audit the two zero-update camera readouts with a reference-free projection and a separate CPU scorer."""
 import argparse
+from datetime import datetime, timezone
 from pathlib import Path
 import subprocess
 import time
@@ -13,6 +14,10 @@ PREP = Path("E:/ResearchData/TCO/preparation") / STUDY
 OLD = ROOT/"results/tco_one_percent_v1"
 ARCH = Path("E:/ResearchData/TCO/research_results/tco_one_percent_v1/snapshots/study-v1")
 KEYS = ("canonical","supplied_canonical")
+
+
+def utc():
+    return datetime.now(timezone.utc).isoformat()
 
 
 def source_plan(stage):
@@ -75,6 +80,7 @@ def build_old(plan):
         with np.load(src,allow_pickle=False) as z:
             arrays={k:z[k] for k in z.files}
         require(signature(arrays)==j["archive_array_sha256"],"Archive tensor signature differs")
+        projection_start_utc=utc()
         before=time.perf_counter()
         with torch.no_grad():
             depth=torch.from_numpy(arrays["depth"]).float()
@@ -88,6 +94,7 @@ def build_old(plan):
                 rig=torch.cat((rig,bottom),dim=1)
             projected=unproject_depth_to_world_points_torch(depth*s,rig[None],K[None])[0].numpy()
         projection_seconds=time.perf_counter()-before
+        projection_end_utc=utc()
         output=dict(canonical=arrays["canonical"],supplied_canonical=projected)
         require(projected.shape==output["canonical"].shape and projected.dtype==np.float32 and
                 all(np.isfinite(a).all() for a in output.values()),"Invalid reprojected historical control")
@@ -97,6 +104,7 @@ def build_old(plan):
         tmp.replace(folder/"prediction.npz")
         seal(folder/"complete.json",dict(**j,completed_adam_updates=0,output_sha256=signature(output),
              predictions_sha256=sha(folder/"prediction.npz"),supplied_scale=fit,projection_cpu_seconds=projection_seconds,
+             projection_start_utc=projection_start_utc,projection_end_utc=projection_end_utc,
              provenance="Derived from archived ordinary zero forward; projected on CPU without references",
              rental_compute_usd=0))
 
@@ -150,6 +158,9 @@ def launch(stage,action):
     cid,code=None,None
     with host_lock():
         begin=time.monotonic()
+        start_utc=utc()
+        seal(receipt/"start.json",dict(action=action,stage=stage,start_utc=start_utc,plan_sha256=sha(plan_path),
+                                      image=IMAGE,rental_compute_usd=0))
         try:
             cid=subprocess.check_output(cmd,text=True,timeout=45).strip()
             cfg,=docker_json(["inspect",cid])
@@ -166,7 +177,7 @@ def launch(stage,action):
                 require(stopped and not stopped["State"]["Running"],"Zero control worker still active")
                 subprocess.run(DOCKER+["rm",cid],check=True,timeout=30,capture_output=True)
             seal(receipt/"terminal.json",dict(action=action,plan_sha256=sha(plan_path),exit_code=code,
-                 elapsed_seconds=time.monotonic()-begin,image=IMAGE,rental_compute_usd=0))
+                 start_utc=start_utc,end_utc=utc(),elapsed_seconds=time.monotonic()-begin,image=IMAGE,rental_compute_usd=0))
 
 
 def report(stage,plan,raw,cases):

@@ -2,7 +2,7 @@
 import unittest
 
 from plan_tco_two_track_comparators import jobs_for, select_count
-from summarize_tco_two_track_controls import capacity, make_packets
+from summarize_tco_two_track_controls import OLD, capacity, capacity_advantage, historical_rows, make_packets
 
 
 class Controls(unittest.TestCase):
@@ -44,6 +44,17 @@ class Controls(unittest.TestCase):
         rows[-1]["input_sha256"]="changed"
         with self.assertRaisesRegex(ValueError,"Unmatched"):
             make_packets(rows)
+
+    def test_distinct_historical_seed_schedules(self):
+        for name,seeds in (("evidence.json",{42,43,44}),("confirmation_evidence.json",{7,77,777})):
+            self.assertEqual({r["seed"] for r in historical_rows(OLD/name)}, seeds)
+
+    def test_capacity_claim_requires_matched_oom(self):
+        first=dict(room="x",seed=42,arm="Refresh1",status="completed")
+        cmp=dict(first,arm="Full10",status="timeout")
+        self.assertEqual(capacity_advantage([first,cmp],[("Refresh1","Full10")])["Refresh1/Full10"],[])
+        cmp["status"]="oom"
+        self.assertEqual(capacity_advantage([first,cmp],[("Refresh1","Full10")])["Refresh1/Full10"],[dict(room="x",seed=42)])
 
 
 if __name__=="__main__":
