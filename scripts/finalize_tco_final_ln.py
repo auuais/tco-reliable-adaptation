@@ -507,7 +507,7 @@ def render(r):
     reversed_metrics=[k.split("_")[0] for k,d in repeats["ln10_vs_l10_percent"].items() if d["ordering_reversed"]]
     lines.append("")
     if reversed_metrics:
-        lines.append("The ordering of LN10 and L10 reversed on "+" and ".join(reversed_metrics)+" across the two executions. ")
+        lines.append("The ordering of LN10 and L10 reversed on "+" and ".join(reversed_metrics)+" across the two executions.")
     lines.append("These pairs measure execution variability on one room and seed. The registered fresh-room estimates use their own original runs.")
     lines+=["","## Outcome-selected follow-up",""]
     if r["branch"]=="all_pass":
