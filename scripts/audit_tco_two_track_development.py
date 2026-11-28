@@ -212,9 +212,11 @@ def audit(stage, partial):
     historic, first_loss, counts, waiting={},defaultdict(list),Counter(),[]
     public_scores=0
     case_evidence,ends=[],[]
+    registered_arms=set()
     for cohort in selected:
         ledger=read(ROOT/"manifests"/(STUDY+"_"+cohort+".json"))
         check(ledger["registration_sha256"]==kh,"Unregistered ledger")
+        registered_arms.update(j["arm"] for j in ledger["jobs"])
         score_path=PUBLIC/("a_"+cohort+"_rows.json")
         public={r["id"]:r for r in read(score_path)["rows"]} if stage!="pilot" and score_path.exists() else {}
         if public:
@@ -304,6 +306,10 @@ def audit(stage, partial):
             for control,comp in entry["comparisons"].items():
                 key=arm+"/"+control
                 if key not in ratios:
+                    if not partial and arm in registered_arms and control in registered_arms:
+                        check(not comp["complete_rooms"] and not comp["metrics"],
+                              "Primary ratios present without complete raw room: "+key)
+                        verified.append(source+"/"+key+"/no-complete-rooms")
                     continue
                 local=ratios[key]
                 check(set(local["rooms"])==set(comp["complete_rooms"]),"Different complete room set")
