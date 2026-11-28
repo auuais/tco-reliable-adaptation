@@ -33,7 +33,7 @@ def arm_steps(arm):
         return ARMS[arm]
     if arm.startswith("Full") and arm[4:].isdigit():
         return int(arm[4:])
-    if arm in {"ZERO", "PriorZERO"}:
+    if arm in {"ZERO", "PriorZERO", "ZERO_supplied"}:
         return 0
     return None
 

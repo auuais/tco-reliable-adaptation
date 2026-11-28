@@ -3,6 +3,7 @@ import unittest
 
 from plan_tco_two_track_comparators import jobs_for, select_count
 from summarize_tco_two_track_controls import OLD, capacity, capacity_advantage, historical_rows, make_packets
+from audit_tco_two_track_timing import compact
 
 
 class Controls(unittest.TestCase):
@@ -55,6 +56,24 @@ class Controls(unittest.TestCase):
         self.assertEqual(capacity_advantage([first,cmp],[("Refresh1","Full10")])["Refresh1/Full10"],[])
         cmp["status"]="oom"
         self.assertEqual(capacity_advantage([first,cmp],[("Refresh1","Full10")])["Refresh1/Full10"],[dict(room="x",seed=42)])
+
+    def test_retry_subgroup_keeps_primary_and_needs_complete_rooms(self):
+        rows=[]
+        for room in ("a","b","c"):
+            for s in (42,43,44):
+                for arm in ("Refresh1","Refresh1Uncached","Full10"):
+                    retries=int(room=="a" and s==43 and arm=="Full10")
+                    rows.append(dict(id=f"{room}_{s}_{arm}",room=room,seed=s,arm=arm,
+                        status="timeout" if room=="c" and s==44 and arm=="Full10" else "completed",
+                        allocation_retries=retries,scene_seconds=(20. if arm=="Full10" else 10.)+100*retries,
+                        input_sha256=room,reference_sha256=room+"r",adam_state_counts={"suffix":10}))
+        result=compact(rows)
+        pair=result["matched_pairs"]["Refresh1/Full10"]
+        self.assertEqual(set(pair["all_completed_room_median_ratios"]),{"a","b"})
+        self.assertEqual(set(pair["both_no_retry_full_three_seed_room_ratios"]),{"b"})
+        self.assertEqual(pair["registered_pair_distribution"],dict(both_zero=7,both_complete_at_least_one_retry=1,incomplete=1))
+        self.assertEqual(result["by_arm_and_room"]["Full10"]["all"]["one_or_more_retries"]["max_seconds"],120.)
+        self.assertTrue(result["matched_pairs"]["Refresh1/Refresh1Uncached"]["parameter_schedule_matched"])
 
 
 if __name__=="__main__":
