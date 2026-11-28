@@ -1,5 +1,6 @@
 """Run one physically isolated five-view Track A case from its preregistered RGB/rig packet."""
 import argparse
+from contextlib import nullcontext
 import faulthandler
 import json
 import math
@@ -29,11 +30,11 @@ def run(job, packet, out, initialization):
     profile = job.get("profile", "clean")
     arm, steps, seed = job["arm"], job["steps"], job["seed"]
     if (profile not in ("fixed", "stale", "real", "clean") or
-            arm not in HYBRIDS | INITIALIZED | {"Full10","Full40","Full120","Full4","Full5","Cache10","ZERO","FullTime"}
+            arm not in HYBRIDS | INITIALIZED | {"Full1","Full2","Full3","Full4","Full5","Full6","Full10","Full40","Full48","Full120","Cache10","ZERO","FullTime"}
             or len(set(job["frames"])) != 5 or sha(_C.__file__) != GSPLAT):
         raise ValueError("Invalid registered case, frames or rasterizer")
-    if (initialization is not None) != (arm == "Distilled"):
-        raise ValueError("Initialization required only for distilled arm")
+    if (initialization is not None) != (arm in INITIALIZED):
+        raise ValueError("Initialization required for both offline-trained student arms")
     if initialization and sha(initialization) != job["initialization_sha256"]:
         raise ValueError("Initialization file digest disagrees with case")
     fixed = profile in ("fixed", "stale")
@@ -83,7 +84,11 @@ def run(job, packet, out, initialization):
     torch.cuda.synchronize()
     placement = time.perf_counter() - start
     torch.cuda.manual_seed(seed)
-    with patch.object(base.tco_module, "compute_tco_losses", measured_loss):
+    offload = job.get("qualification_saved_on_cpu",False)
+    if offload and not fixed:
+        raise ValueError("Saved-tensor offload is restricted to untimed engineering")
+    saved = torch.autograd.graph.save_on_cpu(pin_memory=False) if offload else nullcontext()
+    with saved, patch.object(base.tco_module, "compute_tco_losses", measured_loss):
         base.infer_mv_pointclouds_w_priors_v2(supplied, model, cfg, sample_idx=1, scene_name=job["room"].replace("/","-"))
     with torch.no_grad(), torch.autocast("cuda", enabled=False):
         depth, extr, intr = (captured[k].float() for k in ("depth","extrinsics","intrinsics"))
