@@ -25,6 +25,8 @@ All four Heads seed-42 outputs received independent CPU rescores. This is one pr
 
 Refresh1 reduced both errors relative to Full10 on this window. Cache10 produced the lowest errors and shortest time. Holding the update schedule fixed, caching reduced time by 25.8%, while the production runs differed in accuracy error by 2.2%. Full10's seven allocator retries warrant a separate matched timing check. The same seed and window in the historical Full10 study took 27.61 s. [Paired scores](a_pilot_rows.json) · [Allocator measurements](a_allocator_pilot.json) · [Native timing bridge](../../docs/TCO_TWO_TRACK_NATIVE_TIMING_BRIDGE.md)
 
+A previous local study also saw native Chess seed 42 take 1,032.22 s and 88.72 s in independent Full40 runs at the same 7.822 GiB peak. The slowdown therefore predates the new timing harness. The bridge tests whether bookkeeping contributes additional variability on this workstation. [Prior native stall diagnosis](../tco_native_stalls_quality_capacity_v1/README.md)
+
 ## Local reproduction
 
 Run commands from the repository root in PowerShell. The registered Windows launcher uses the pinned offline Docker image on the physical 3080. Supply the separate five-view model and reference packets at the locations in the handoff. The model container sees only RGB and the permitted camera priors. The CPU scorer checks the model-output hash and uses the fixed ground-truth support.
